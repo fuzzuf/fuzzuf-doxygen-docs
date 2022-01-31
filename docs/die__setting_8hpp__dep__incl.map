@@ -1,0 +1,13 @@
+<map id="include/fuzzuf/algorithms/die/die_setting.hpp" name="include/fuzzuf/algorithms/die/die_setting.hpp">
+<area shape="rect" id="node1" title="Local option for DIE." alt="" coords="703,5,889,47"/>
+<area shape="rect" id="node2" href="$die__state_8hpp.html" title="Global state for HierarFlow loop." alt="" coords="335,95,521,136"/>
+<area shape="rect" id="node8" href="$algorithms_2die_2loop_8cpp.html" title="Test code for VUzzers loop." alt="" coords="789,288,934,329"/>
+<area shape="rect" id="node11" href="$build__die__fuzzer__from__args_8hpp.html" title="Register CLI option for DIE." alt="" coords="711,184,881,240"/>
+<area shape="rect" id="node3" href="$die__hierarflow__routines_8cpp_source.html" title=" " alt="" coords="5,377,187,419"/>
+<area shape="rect" id="node4" href="$die__state_8cpp_source.html" title=" " alt="" coords="546,191,686,233"/>
+<area shape="rect" id="node5" href="$die__fuzzer_8hpp.html" title="Fuzzing loop of DIE." alt="" coords="335,191,521,233"/>
+<area shape="rect" id="node9" href="$die__hierarflow__routines_8hpp.html" title="Hierarflow routines for DIE." alt="" coords="87,288,318,329"/>
+<area shape="rect" id="node10" href="$die__mutator_8hpp.html" title="Mutation methods of DIE." alt="" coords="124,191,311,233"/>
+<area shape="rect" id="node6" href="$die__fuzzer_8cpp.html" title="Fuzzing loop of DIE." alt="" coords="266,377,406,419"/>
+<area shape="rect" id="node7" href="$register__die__fuzzer_8cpp.html" title="Register CLI option for DIE." alt="" coords="542,288,709,329"/>
+</map>
