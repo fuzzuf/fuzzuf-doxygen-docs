@@ -65,10 +65,10 @@ $(function() {
 <div class="title">チュートリアル </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md522"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md322"></a>
 ファザーコレクションとしてのfuzzufの使い方</h1>
 <p>ここでは、ファザーコレクションとしてのfuzzufを、どのように使えばよいかを段階的に説明します。 ファザー構築フレームワークとしてのfuzzufの使い方は、別のドキュメントを参照してください。</p>
-<h1><a class="anchor" id="autotoc_md523"></a>
+<h1><a class="anchor" id="autotoc_md323"></a>
 ビルド要件</h1>
 <ul>
 <li><a href="https://gcc.gnu.org/">gcc</a> バージョン7以上<ul>
@@ -91,7 +91,7 @@ $(function() {
 <li>(optional) <a href="https://sourceforge.net/projects/dia-installer/">Dia Diagram Editor</a></li>
 <li>(optional) <a href="https://software.intel.com/content/www/us/en/develop/articles/pin-a-dynamic-binary-instrumentation-tool.html">Intel Pin</a> <a href="https://software.intel.com/sites/landingpage/pintool/downloads/pin-3.7-97619-g0d0c92f4f-gcc-linux.tar.gz">3.7</a> </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md524"></a>
+<h2><a class="anchor" id="autotoc_md324"></a>
 ビルド方法</h2>
 <p>推奨環境: Ubuntu 20.04（あるいは18.04）</p>
 <p>まずはUbuntu 20.04を例に、fuzzufのビルド手順を示します。</p>
@@ -114,7 +114,7 @@ $(function() {
 <div class="line">$ cd $_</div>
 <div class="line">$ cmake ../ -DCMAKE_BUILD_TYPE=Release # 古い形式のコマンドなのは、aptでインストールされるCMakeのバージョンが古いため</div>
 <div class="line">$ make -j$(nproc)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md525"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md325"></a>
 ファザーの使い方</h2>
 <p>このセクションでは、<a href="/docs/resources/exifutil">docs/resources/exifutil</a>ディレクトリ以下に配置された、JPEGファイルからexif情報をパースするプログラム<code>exifutil</code>に対して、ファジングを行います。 ファジングを行うためには、プログラムのコンパイル時に計装を呼ばれる作業が必要です。このために、追加でaptから<code>afl++-clang</code>または<code>afl-clang</code>パッケージをインストールする必要があります。</p>
 <p>以下のコマンドで計装用コンパイララッパーをインストールし、プログラムを計装ビルドします。</p>
@@ -138,7 +138,7 @@ $(function() {
 <p>このとき、PUTはファザーにより様々な入力を与えられながら繰り返し実行されており、その実行結果がクラッシュ、またはハングするようなら、その入力は保存されます。 <br  />
  具体的にはPUTをクラッシュさせる入力が発見され、それ以前に保存されたものと重複しないと判断されると、その入力は<code>--out_dir</code>オプションで示されたディレクトリ以下の、<code>crashes</code>ディレクトリに保存され、上記UIの右上にある<code>unique crashes</code>の数値が1増加します。 <br  />
  ファジングを終了するには、<code>Ctrl-C</code>で<code>fuzzuf</code>プロセスに対して<code>SIGINT</code>を送ります。<code>--out_dir</code>ディレクトリ以下の、クラッシュやハングを引き起こした入力を確認し、その原因を分析しましょう。</p>
-<h2><a class="anchor" id="autotoc_md526"></a>
+<h2><a class="anchor" id="autotoc_md326"></a>
 使用するファザーの変更</h2>
 <p>fuzzufで利用できるファザーは、AFLだけではありません。次は、AFLFastを使って、同じテスト用バイナリをファジングします。AFLFastがどのようなファザーかについては、AFLFastのドキュメントを参照してください。 使用するファザーを変更するには、fuzzufのコマンドライン引数（およびそれに伴うオプション）を変えるだけです。先ほどのコマンドにおけるファザーの指定を、<code>afl</code>から<code>aflfast</code>に変えて実行してみましょう。</p>
 <div class="fragment"><div class="line">$ ./fuzzuf aflfast --in_dir=/tmp/input \</div>

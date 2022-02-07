@@ -77,12 +77,12 @@ $(function() {
 </ul>
 <p>結果としてオリジナルのNezhaをできるだけ忠実にfuzzufに移植しようとすると実行結果の違いを取るというよりは、クラッシュするかしないかだけを取る、という論文で説明されている手法からは離れた物が出来上がる</p>
 <p>そこでfuzzufではオリジナルの実装に近い終了ステータスに基づくバージョンと、論文の説明の近い結果を得るための標準出力のハッシュを比較するバージョンの2種類をHierarFlowの組み替えで実現できる事を示す</p>
-<h1><a class="anchor" id="autotoc_md379"></a>
+<h1><a class="anchor" id="autotoc_md207"></a>
 blackbox fuzzingについて</h1>
 <p>Nezhaの論文では実行結果をカバレッジの代わりに使ってcorpusに要素を追加する事でblackbox fuzzingにも出来ることが述べられているが、カバレッジ以外の物からlibFuzzerのfeatureを計算する方法は自明ではない。</p>
 <p>オリジナルのNezhaの実装を見る限りblackbox fuzzingのための実装は見当たらないため、blackbox fuzzing版は公開されているコードに含まれていないのではないか、と見ている。</p>
 <p>このためfuzzufではNezhaのblackbox fuzzing版を実装していない。</p>
-<h1><a class="anchor" id="autotoc_md380"></a>
+<h1><a class="anchor" id="autotoc_md208"></a>
 δ-diversityについて</h1>
 <p>Nezhaの論文ではカバレッジのタプルからδ-diversityを求めて実行結果をcorpusに追加するかどうかを決定することが述べられているが、実際にはNezhaに実装されたコードの中にこのような計算を行っている箇所はない。</p>
 <p>実際に行われているのは各ターゲットを実行するたびにlibFuzzerの本来の手順に従ってその実行結果をcorpusに追加するというもので、個々のターゲットのedgeのindexが重複しないようにオフセットされている限り、これは論文で説明されているようなδ-diversityを求めて実行結果をcorpusに追加するのと等価な振る舞いをする。</p>

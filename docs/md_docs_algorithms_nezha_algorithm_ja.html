@@ -65,7 +65,7 @@ $(function() {
 <div class="title">Nezha </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md364"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md192"></a>
 Nezhaとは</h1>
 <p><a href="https://github.com/nezha-dt/nezha">https://github.com/nezha-dt/nezha</a></p>
 <p>NezhaはLLVMのlibFuzzerを拡張して作られたdifferential fuzzingの実装で、greybox fuzzingでもblackbox fuzzingでも用いる事ができる(とされているが、上記の実装ではgreybox fuzzingのみが実装されているように見える)。Nezhaはfuzzufでもdifferential fuzzingが実装可能であることを示すユースケースの一つとして再実装された。</p>
@@ -76,23 +76,23 @@ Nezhaとは</h1>
 <p>つまりcorpusには全く同じ入力値で実行しているにもかかわらず結果が異なる実行結果が最大でターゲットの数だけ登録される。</p>
 <p>これらのcorpusの要素に対して個別に重みが与えられるため、ある入力値が実際に選ばれる確率はcorpusに登録されている同じ入力値の実行結果の重みの総和になる。</p>
 <p>全てのターゲットを実行した後でcorpusへの追加状況と各ターゲットからの出力を見て実行結果を「一部の実装の不具合を突く入力」と見做すかどうかを判断する。</p>
-<h1><a class="anchor" id="autotoc_md365"></a>
+<h1><a class="anchor" id="autotoc_md193"></a>
 NezhaがlibFuzzerから分岐した位置について</h1>
 <p>githubのNezhaのリポジトリではlibFuzzerのコードの追加および新しいバージョンへの追従とNezhaの実装が混ざって1つのcommitになっているため、NezhaがLLVMのどの時点からforkしたのかは明らかではない。</p>
 <p>ただし、様々な時点のlibFuzzerのソースとNezhaのソースでdiffをとって差分の量を比較した結果、現在のNezhaのmasterはLLVM 4.xブランチがLLVMのmasterから分かれた後、LLVM 5.0.0-rc1が作られるより前のmasterのどこかからforkしたとすると最も差分が小さくなる。</p>
 <p>NezhaのmasterとLLVM 5.0.0-rc1時点のlibFuzzerのdiffをとった物は<a href="/docs/algorithms/nezha/nezha-5.0.0-rc1.diff">こんな内容</a>になる。</p>
-<h1><a class="anchor" id="autotoc_md366"></a>
+<h1><a class="anchor" id="autotoc_md194"></a>
 fuzzufにおける実装</h1>
 <p>移植の状況</p>
-<h1><a class="anchor" id="autotoc_md367"></a>
+<h1><a class="anchor" id="autotoc_md195"></a>
 Nezha固有のノード</h1>
 <p>fuzzufの実装では以下のノードをlibFuzzerとは別に実装している。</p>
-<h2><a class="anchor" id="autotoc_md368"></a>
+<h2><a class="anchor" id="autotoc_md196"></a>
 collect_features</h2>
 <p>libFuzzerのcollect_featuresではfeatureが初めて発見された物であるか、あるいは過去にこのfeatureを発見した入力より短い入力でfeatureを発見した場合に限り、実行結果のunique_feature_setにfeatureを追加する。</p>
 <p>一方Nezhaのcollect_featuresでは発見した全てのfeatureをunique_feature_setに追加する。</p>
 <p>同じfeatureを持った実行結果が出来やすくなるため、NezhaではlibFuzzerより頻繁にcorpusの要素のreplaceが起こるようになる。</p>
-<h2><a class="anchor" id="autotoc_md369"></a>
+<h2><a class="anchor" id="autotoc_md197"></a>
 add_to_solutions</h2>
 <p>入力値を複数のターゲットで実行して得た複数の実行結果から</p>
 <ul>
@@ -100,16 +100,16 @@ add_to_solutions</h2>
 <li>それぞれの出力をvectorにしたもの</li>
 </ul>
 <p>を引数に取り、それらのうちいずれかが過去にadd_to_solutionsを呼び出した際に渡された事のない値の場合かつ、ターゲット毎に実行結果が食い違っている場合にその実行結果と入力値をsolutionsに追加する。</p>
-<h2><a class="anchor" id="autotoc_md370"></a>
+<h2><a class="anchor" id="autotoc_md198"></a>
 gather_trace</h2>
 <p>引数で渡した実行結果がcorpusに追加されていたかどうかを、引数で渡したvectorに追加する</p>
-<h2><a class="anchor" id="autotoc_md371"></a>
+<h2><a class="anchor" id="autotoc_md199"></a>
 gather_status</h2>
 <p>引数で渡した実行結果に含まれる終了理由を、引数で渡したvectorに追加する</p>
-<h2><a class="anchor" id="autotoc_md372"></a>
+<h2><a class="anchor" id="autotoc_md200"></a>
 gather_output</h2>
 <p>引数で渡した標準出力のハッシュ値を、引数で渡したvectorに追加する</p>
-<h1><a class="anchor" id="autotoc_md373"></a>
+<h1><a class="anchor" id="autotoc_md201"></a>
 標準的なNezhaの組み方</h1>
 <p>test/algorithms/libfuzzer/execute.cpp の中で組み立てているものがオリジナルのNezhaのFuzzer::Loop()に近い処理になっている</p>
 <p>test/algorithms/libfuzzer/output_hash.cpp の中で組み立てているものはexecute.cppと殆ど同じ動きをするが、ターゲットの出力として終了理由ではなく標準出力のハッシュ値を用いる </p>

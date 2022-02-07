@@ -65,7 +65,7 @@ $(function() {
 <div class="title">DIE </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md123"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md72"></a>
 DIEとは</h1>
 <p><a href="https://github.com/sslab-gatech/DIE/">DIE</a>[^die]は、<a href="https://gts3.org/">SSLab</a>によって開発されたJavaScriptエンジン用のファザーです。ファジングでJavaScriptエンジンを扱う際には次のような問題点が挙げられます。</p>
 <ul>
@@ -78,9 +78,9 @@ DIEとは</h1>
 <p>このような問題に対応したState-of-the-Artのファザーとしては<a href="https://github.com/googleprojectzero/fuzzilli">fuzzilli</a>などが挙げられます。DIEも同様にこれらの問題を解決しているのですが、加えてaspect-preservingという特徴を持ちます。</p>
 <p>DIEは「過去に見つかったバグに近いバグ」を優先的に見つけることを目的としています。そのために、既存のテストケースの関数呼び出しやfor文といった、基本的なスクリプトの構造を維持した状態でミューテーションします。このようなミューテーションをaspect-preservingと呼び、これによりJITによる最適化など、元のテストケースが持つ「意図」をミューテーションを通して高い確率で保持できます。</p>
 <p>fuzzufでは、外部のミューテーションエンジンを利用する例としてDIEモードが実装されています。</p>
-<h1><a class="anchor" id="autotoc_md124"></a>
+<h1><a class="anchor" id="autotoc_md73"></a>
 CLI上での使用方法</h1>
-<h2><a class="anchor" id="autotoc_md125"></a>
+<h2><a class="anchor" id="autotoc_md74"></a>
 要件</h2>
 <p>DIEを実行するには以下のツールが必要です。各自でインストールしてください。（Ubuntu 14.04/18.04/20.04でテスト済みです）</p>
 <ul>
@@ -91,12 +91,12 @@ CLI上での使用方法</h1>
 </li>
 <li>Python 3 (3.6以降を推奨)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md126"></a>
+<h2><a class="anchor" id="autotoc_md75"></a>
 自動セットアップ</h2>
 <p>fuzzufはDIEを利用するためのスクリプトを提供します。上述の「要件」を満たし、fuzzufを <a href="/TUTORIAL.md#building-fuzzuf">ビルドした</a> 後、次のコマンドを実行するとセットアップが自動で実行されます。</p>
 <div class="fragment"><div class="line">cmake --build build --target die</div>
 </div><!-- fragment --><p>上記コマンド実行後、以下のメッセージが表示されればインストール成功です。次々節の「シードの用意」に進んでください。 </p><div class="fragment"><div class="line">[+] DIE successfully setup!</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md127"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md76"></a>
 手動セットアップ</h2>
 <p>何らかの理由で自動セットアップを選択しない場合、以下の手順に沿って手動でセットアップしてください。</p>
 <p>まず、DIEを公式リポジトリからクローンします。 ここでは2022年1月17日現在で最新のコミットID<code>f1ab180c18ea4096d6c3336a7dc3e00af897549d</code>のDIEを使用しています。</p>
@@ -106,11 +106,11 @@ CLI上での使用方法</h1>
 </div><!-- fragment --><p>DIEはTypeScriptを利用しているため、次のコマンドを実行しJavaScriptにトランスパイルする必要があります。</p>
 <div class="fragment"><div class="line">node_module/.bin/tsc</div>
 </div><!-- fragment --><p>これでfuzzufでDIEを使う準備は完了です。</p>
-<h2><a class="anchor" id="autotoc_md128"></a>
+<h2><a class="anchor" id="autotoc_md77"></a>
 シードの用意</h2>
 <p>DIEはミューテーションに利用する初期シードを必要とします。 シードは拡張子が&lt;tt&gt;.jsで終わるファイル名のJavaScriptファイルで、必ず1つ以上のシードを用意してください。DIEのミューテーションの性質上、入力テストケースは過去に見つかったバグのPoCなどを用意することが望ましいです。 なお、DIEの論文で利用されているシードは<a href="https://github.com/sslab-gatech/DIE-corpus">GitHubで公開</a>されています。</p>
 <p>入力ディレクトリ中のJavaScriptファイルは、ファジングループ開始前に計装され、型情報が集められます。型情報は元のファイル名に拡張子&lt;tt&gt;.tが加えられた名前で保存され、このファイルが存在する場合、以降ファジングを再実行した際に、そのファイルの型情報収集はスキップされます。（そのため、入力ディレクトリ中のスクリプトのファイル名を同じまま中身を入れ替える場合は、拡張子&lt;tt&gt;.tのファイルも削除してください。）</p>
-<h2><a class="anchor" id="autotoc_md129"></a>
+<h2><a class="anchor" id="autotoc_md78"></a>
 DIEの実行</h2>
 <p>DIEは次のコマンド例の要領で実行できます。例では <code>./target/d8</code> をPUTとしてファジングキャンペーンを開始しています。</p>
 <div class="fragment"><div class="line">fuzzuf die --in_dir=input --out_dir=output -- ./target/d8 @@</div>
@@ -124,10 +124,10 @@ DIEの実行</h2>
 <li><code>--d8_flags</code>: <code>--d8</code>で指定したJSエンジンに渡すフラグ（デフォルト：空）</li>
 <li><code>--mut_cnt</code>: 1回のミューテーションで何個のスクリプトを生成するか（デフォルト：100）</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md130"></a>
+<h1><a class="anchor" id="autotoc_md79"></a>
 アルゴリズム概要</h1>
 <p>DIEのファジングループは、「シードの選択」、「ミューテーション」、「実行」、「カバレッジ情報の収集」のサイクルで表されます。 また、初期入力テストケースに対して計装・実行することで、スクリプト中の変数の型を動的に調べ、ミューテーションの際に利用します。</p>
-<h2><a class="anchor" id="autotoc_md131"></a>
+<h2><a class="anchor" id="autotoc_md80"></a>
 型情報の収集</h2>
 <p>DIEは1つ以上のJavaScriptファイルを入力として受け取り、それらに変更を加えていくmutationalなファザーです。 DIEでは、実行時エラーを減らすために入力テストケースの型情報を動的に収集しています。 例えば次のようなコードをミューテーションすることを考えます。</p>
 <div class="fragment"><div class="line">let s = &quot;Hello World&quot;;</div>
@@ -144,7 +144,7 @@ DIEの実行</h2>
 <div class="line">let v = s.split(&quot; &quot;);</div>
 <div class="line">console.log(&quot;2行目,vの型は&quot;+typeof(v));</div>
 </div><!-- fragment --><p>このように計装したコードを実行することでDIEは動的にスクリプト中の各変数の型情報を収集します。 なお、同じ名前の変数に対してもすべての箇所で型を調べているのは、JavaScriptが動的型付け言語だからです。</p>
-<h2><a class="anchor" id="autotoc_md132"></a>
+<h2><a class="anchor" id="autotoc_md81"></a>
 ミューテーション</h2>
 <p>DIEは事前に収集した型情報を用いて、なるべく同じ型の変数とのみミューテーションするように設計されています。 同じ箇所でも実行に応じて複数の型を持ち得る変数や、プロパティを持つオブジェクト型などにも対応しています。</p>
 <p>DIEのミューテーション戦略は、大きく分けて3つです。</p>
@@ -154,16 +154,16 @@ DIEの実行</h2>
 <li>新しい変数の作成</li>
 </ul>
 <p>いずれもスクリプトの構造を破壊しない形で実行されます。 ミューテーションの回数や新しい文の挿入の確率などは<code>DIE/fuzz/TS/esfuzz.ts</code>で定義されています。</p>
-<h2><a class="anchor" id="autotoc_md133"></a>
+<h2><a class="anchor" id="autotoc_md82"></a>
 カバレッジ</h2>
 <p>オリジナルのDIEの実装では、AFLと同様にカバレッジ情報を収集します。 AFLのコードカバレッジが各エッジに対して1バイトのヒットカウントを利用しています。しかし、DIEではヒットカウントを利用せず、各エッジに1ビットのデータを用意し、そこを通ったかどうかのみを記録します。 なぜなら、JavaScriptの場合、例えばループのカウンタを変更するだけでヒットカウントが増加し、そのような変化は意味がないからです。fuzzufではこのようなJaveScriptのファザー向けのカバレッジは今後実装される予定です。</p>
-<h2><a class="anchor" id="autotoc_md134"></a>
+<h2><a class="anchor" id="autotoc_md83"></a>
 スケジューリング</h2>
 <p>DIEではAFLと同じスケジューリングを利用しています。</p>
-<h2><a class="anchor" id="autotoc_md135"></a>
+<h2><a class="anchor" id="autotoc_md84"></a>
 分散ファジング</h2>
 <p>DIEではredisサーバーと通信することで、複数台のマシンで分散してファジングが実行できます。この際カバレッジの情報も共有されます。 ただし、この機能はfuzzufにおいては未実装です。</p>
-<h1><a class="anchor" id="autotoc_md136"></a>
+<h1><a class="anchor" id="autotoc_md85"></a>
 参考文献</h1>
 <p>[^die]: S. Park, W. Xu, I. Yun, D. Jang and T. Kim, "Fuzzing JavaScript Engines with Aspect-preserving Mutation," 2020 IEEE Symposium on Security and Privacy (SP), 2020, pp. 1629-1642, doi: 10.1109/SP40000.2020.00067. </p>
 </div></div><!-- contents -->

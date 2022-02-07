@@ -127,7 +127,7 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">/* Default values */</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="structDIEOptions.html">DIEOptions</a>() : die_dir   (<span class="stringliteral">&quot;tools/die/DIE&quot;</span>),</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                 d8_flags  (<span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                 typer_path(<span class="stringliteral">&quot;tools/die/die_typer.py&quot;</span>),</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                 typer_path(<span class="stringliteral">&quot;tools/die/typer.py&quot;</span>),</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                 mut_cnt   (100) {};</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
@@ -155,7 +155,7 @@ $(function() {
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    (<span class="stringliteral">&quot;d8_flags&quot;</span>, po::value&lt;std::string&gt;(&amp;die_options.d8_flags),</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;     <span class="stringliteral">&quot;Set command line options passed to d8 on instrumentation.&quot;</span>)</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    (<span class="stringliteral">&quot;typer&quot;</span>   , po::value&lt;std::string&gt;(&amp;die_options.typer_path),</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;     <span class="stringliteral">&quot;Set path to python script to collect type information.\nDefault: tools/die/die_typer.py&quot;</span>)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;     <span class="stringliteral">&quot;Set path to python script to collect type information.\nDefault: tools/die/typer.py&quot;</span>)</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    (<span class="stringliteral">&quot;mut_cnt&quot;</span> , po::value&lt;int&gt;(&amp;die_options.mut_cnt),</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;     <span class="stringliteral">&quot;Set number of scripts to generate per mutation.\nDefault: 100&quot;</span>)</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">//</span></div>
