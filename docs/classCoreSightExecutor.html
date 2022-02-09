@@ -145,19 +145,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveStopSignal</b>
 <tr class="memitem:a3e49e6711efc9b3c68d42b02405acbcf inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProxyExecutor.html#a3e49e6711efc9b3c68d42b02405acbcf">TerminateForkServer</a> ()</td></tr>
 <tr class="separator:a3e49e6711efc9b3c68d42b02405acbcf inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0a080954857fb2e9df80e0e559413f3 inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="af0a080954857fb2e9df80e0e559413f3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCArgvAndDecideInputMode</b> ()</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCArgvAndDecideInputMode</b> ()</td></tr>
 <tr class="separator:af0a080954857fb2e9df80e0e559413f3 inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a8f70797819f59c395c26b3c1b5cc51 inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a7a8f70797819f59c395c26b3c1b5cc51"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetupSharedMemories</b> ()</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SetupSharedMemories</b> ()</td></tr>
 <tr class="separator:a7a8f70797819f59c395c26b3c1b5cc51 inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a740e77209cb895f8fe317e40eb3ceb52 inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a740e77209cb895f8fe317e40eb3ceb52"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetSharedMemories</b> ()</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetSharedMemories</b> ()</td></tr>
 <tr class="separator:a740e77209cb895f8fe317e40eb3ceb52 inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad082b2cf62b4d1e5ff176e47f60ea14a inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ad082b2cf62b4d1e5ff176e47f60ea14a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>EraseSharedMemories</b> ()</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>EraseSharedMemories</b> ()</td></tr>
 <tr class="separator:ad082b2cf62b4d1e5ff176e47f60ea14a inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52538d74def4e877d069e503b9334f33 inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a52538d74def4e877d069e503b9334f33"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetupEnvironmentVariablesForTarget</b> ()</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SetupEnvironmentVariablesForTarget</b> ()</td></tr>
 <tr class="separator:a52538d74def4e877d069e503b9334f33 inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60cc9ee7b0b5e56fa0617a2b2fb5de7a inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a60cc9ee7b0b5e56fa0617a2b2fb5de7a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetupForkServer</b> ()</td></tr>
@@ -314,6 +314,13 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>has_setup_sigh
 <tr class="memitem:a39bd6bb57bd405e15123657e89f58838 inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a39bd6bb57bd405e15123657e89f58838"></a>
 static <a class="el" href="classProxyExecutor.html">ProxyExecutor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>active_instance</b> = nullptr</td></tr>
 <tr class="separator:a39bd6bb57bd405e15123657e89f58838 inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classProxyExecutor"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classProxyExecutor')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classProxyExecutor.html">ProxyExecutor</a></td></tr>
+<tr class="memitem:a955e7308efc989e06d7cdd8f2a6c983b inherit pro_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a955e7308efc989e06d7cdd8f2a6c983b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>record_stdout_and_err</b></td></tr>
+<tr class="separator:a955e7308efc989e06d7cdd8f2a6c983b inherit pro_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2c8842a4b1dda07816281a1ea9864f7 inherit pro_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ad2c8842a4b1dda07816281a1ea9864f7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>has_shared_memories</b></td></tr>
+<tr class="separator:ad2c8842a4b1dda07816281a1ea9864f7 inherit pro_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classExecutor"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classExecutor')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classExecutor.html">Executor</a></td></tr>
 <tr class="memitem:a0a95ac9246569bdeb177484b5df51382 inherit pro_attribs_classExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a0a95ac9246569bdeb177484b5df51382"></a>
 std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lock</b></td></tr>

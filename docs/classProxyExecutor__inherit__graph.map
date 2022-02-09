@@ -1,8 +1,9 @@
 <map id="ProxyExecutor" name="ProxyExecutor">
-<area shape="rect" id="node1" title=" " alt="" coords="257,80,372,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="339,80,453,107"/>
 <area shape="rect" id="node3" href="$classCoreSightExecutor.html" title=" " alt="" coords="5,155,147,181"/>
 <area shape="rect" id="node4" href="$classPinToolExecutor.html" title=" " alt="" coords="171,155,295,181"/>
 <area shape="rect" id="node5" href="$classPolyTrackerExecutor.html" title=" " alt="" coords="320,155,472,181"/>
-<area shape="rect" id="node6" href="$classQEMUExecutor.html" title=" " alt="" coords="497,155,615,181"/>
-<area shape="rect" id="node2" href="$classExecutor.html" title=" " alt="" coords="275,5,354,32"/>
+<area shape="rect" id="node6" href="$classPTExecutor.html" title=" " alt="" coords="497,155,591,181"/>
+<area shape="rect" id="node7" href="$classQEMUExecutor.html" title=" " alt="" coords="615,155,734,181"/>
+<area shape="rect" id="node2" href="$classExecutor.html" title=" " alt="" coords="357,5,435,32"/>
 </map>

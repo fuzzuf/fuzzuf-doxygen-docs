@@ -1,9 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classExecutor.html" title=" " alt="" coords="5,56,84,83"/>
-<area shape="rect" id="node2" href="$classNativeLinuxExecutor.html" title=" " alt="" coords="132,31,288,57"/>
-<area shape="rect" id="node3" href="$classProxyExecutor.html" title=" " alt="" coords="153,81,267,108"/>
+<area shape="rect" id="node1" href="$classExecutor.html" title=" " alt="" coords="5,81,84,108"/>
+<area shape="rect" id="node2" href="$classNativeLinuxExecutor.html" title=" " alt="" coords="132,56,288,83"/>
+<area shape="rect" id="node3" href="$classProxyExecutor.html" title=" " alt="" coords="153,107,267,133"/>
 <area shape="rect" id="node4" href="$classCoreSightExecutor.html" title=" " alt="" coords="341,5,483,32"/>
 <area shape="rect" id="node5" href="$classPinToolExecutor.html" title=" " alt="" coords="350,56,474,83"/>
 <area shape="rect" id="node6" href="$classPolyTrackerExecutor.html" title=" " alt="" coords="336,107,488,133"/>
-<area shape="rect" id="node7" href="$classQEMUExecutor.html" title=" " alt="" coords="353,157,471,184"/>
+<area shape="rect" id="node7" href="$classPTExecutor.html" title=" " alt="" coords="365,157,459,184"/>
+<area shape="rect" id="node8" href="$classQEMUExecutor.html" title=" " alt="" coords="353,208,471,235"/>
 </map>
