@@ -20,5 +20,6 @@ var searchData=
   ['byname_72',['ByName',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1ByName.html',1,'fuzzuf::algorithm::libfuzzer']]],
   ['byteflip1witheffmapbuildtemplate_73',['ByteFlip1WithEffMapBuildTemplate',['../structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1ByteFlip1WithEffMapBuildTemplate.html',1,'fuzzuf::algorithm::afl::routine::mutation']]],
   ['byteflipothertemplate_74',['ByteFlipOtherTemplate',['../structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1ByteFlipOtherTemplate.html',1,'fuzzuf::algorithm::afl::routine::mutation']]],
-  ['building_20vuzzer_75',['Building VUzzer',['../md_docs_algorithms_vuzzer_build_en.html',1,'']]]
+  ['building_20vuzzer_75',['Building VUzzer',['../md_docs_algorithms_vuzzer_build_en.html',1,'']]],
+  ['building_76',['Building',['../md_docs_building.html',1,'']]]
 ];
