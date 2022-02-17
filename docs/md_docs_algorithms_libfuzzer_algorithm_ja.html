@@ -65,7 +65,7 @@ $(function() {
 <div class="title">libFuzzer </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md89"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md99"></a>
 libFuzzerとは</h1>
 <p><a href="https://llvm.org/docs/LibFuzzer.html">https://llvm.org/docs/LibFuzzer.html</a></p>
 <p>libFuzzerはLLVMプロジェクトのcompiler-rtのライブラリの1つとして提供されているgreybox fuzzingの実装である。AFLと同じく広く使われており、現在のファジング研究のベースとなっていることからfuzzufでの再実装を行なった。</p>
@@ -93,10 +93,10 @@ libFuzzerとは</h1>
 <p>乱数生成器はLLVM 8まではmt19937が使われていて、LLVM 9以降はminstd_randが使われている</p>
 <p>このほかlibFuzzerには将来的に-fsanitize=dataflowを使って入力値のどの部分が分岐に寄与したかを調べる為の物と思われるコードが転がっているが、現状ここから得た情報は有効に活用されていない。</p>
 <p>libFuzzerはLLVM 4でllvm本体のlib以下に実装され、LLVM 5でcompiler-rtに移動された。</p>
-<h1><a class="anchor" id="autotoc_md90"></a>
+<h1><a class="anchor" id="autotoc_md100"></a>
 fuzzufにおける実装</h1>
 <p>移植の状況</p>
-<h1><a class="anchor" id="autotoc_md91"></a>
+<h1><a class="anchor" id="autotoc_md101"></a>
 libFuzzerの仕組み</h1>
 <p>libFuzzerは以下の疑似コードのような手順で動く。</p>
 <p>ここでinitial_inputは初期シード、targetはfuzzingを行う対象、total_countはターゲットを実行する回数、mutation_depthは同じ入力値に対してmutationを行う回数を表す。</p>
@@ -163,43 +163,43 @@ libFuzzerの仕組み</h1>
 <li>同じだけのfeatureが見つかるならより短時間で処理できる入力が優遇される</li>
 </ul>
 <p>ような動きをする</p>
-<h1><a class="anchor" id="autotoc_md92"></a>
+<h1><a class="anchor" id="autotoc_md102"></a>
 Mutatorノード</h1>
 <p>libFuzzerには13種類のmutatorが実装されており、新しい入力値を作る際にはそれらの中から1つを均等な確率で選んで実行する操作を100回繰り返す</p>
 <p>実装されているmutatorは以下の通り</p>
-<h2><a class="anchor" id="autotoc_md93"></a>
+<h2><a class="anchor" id="autotoc_md103"></a>
 EraseBytes</h2>
 <p>与えられたバイト列のランダムな位置からランダムな長さ(最大でバイト列の長さの半分)を削除する</p>
 <p>既にバイト列が1バイト「以下」だったら何もしない</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::erase_byteノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::erase_byteで処理される</p>
-<h2><a class="anchor" id="autotoc_md94"></a>
+<h2><a class="anchor" id="autotoc_md104"></a>
 InsertByte</h2>
 <p>与えられたバイト列のランダムな位置に128バイト以下かつ最大長を超えないランダムな長さの値を挿入する</p>
 <p>挿入される値は0x00か0xFFがランダムに選ばれる</p>
 <p>既にバイト列が最大長だったら何もしない</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::insert_byteノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::insert_byteで処理される</p>
-<h2><a class="anchor" id="autotoc_md95"></a>
+<h2><a class="anchor" id="autotoc_md105"></a>
 InsertRepeatedBytes</h2>
 <p>与えられたバイト列のランダムな位置に128バイト以下かつ最大長を超えないランダムな長さの値を挿入する</p>
 <p>挿入される値は0x00か0xFFがランダムに選ばれる</p>
 <p>既にバイト列が最大長だったら何もしない</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::insert_repeated_bytesノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::insert_repeated_bytesで処理される</p>
-<h2><a class="anchor" id="autotoc_md96"></a>
+<h2><a class="anchor" id="autotoc_md106"></a>
 ChangeByte</h2>
 <p>与えられたバイト列のランダムな位置の1バイトをランダムな値に書き換える</p>
 <p>バイト列が何故か最大長より長い場合は何もしない</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::change_byteノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::change_byteで処理される</p>
-<h2><a class="anchor" id="autotoc_md97"></a>
+<h2><a class="anchor" id="autotoc_md107"></a>
 ChangeBit</h2>
 <p>与えられたバイト列のランダムな位置のランダムな1bitを反転させる</p>
 <p>バイト列が何故か最大長より長い場合は何もしない</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::change_bitノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::change_bitで処理される</p>
-<h2><a class="anchor" id="autotoc_md98"></a>
+<h2><a class="anchor" id="autotoc_md108"></a>
 ShuffleBytes</h2>
 <p>与えられたバイト列のランダムな位置から残りのバイト数以下かつ8バイト以下のランダムなバイト数の範囲をstd::shuffleする</p>
 <p>バイト列が何故か最大長より長い場合およびバイト列が空の場合は何もしない</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::shuffle_bytesノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::shuffle_bytesで処理される</p>
-<h2><a class="anchor" id="autotoc_md99"></a>
+<h2><a class="anchor" id="autotoc_md109"></a>
 ChangeASCIIInt</h2>
 <p>バイト列が何故か最大長より長い場合およびバイト列が空の場合は何もしない</p>
 <p><a href="https://github.com/llvm/llvm-project/blob/main/compiler-rt/lib/fuzzer/FuzzerMutate.cpp#L109">https://github.com/llvm/llvm-project/blob/main/compiler-rt/lib/fuzzer/FuzzerMutate.cpp#L109</a></p>
@@ -216,7 +216,7 @@ ChangeASCIIInt</h2>
 <p>操作によって桁が増えてbeginからendの間に収まらない場合は上の桁を捨てる</p>
 <p>バイト列が何故か最大長より長い場合は何もしない</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::change_ascii_integerノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::change_ascii_integerで処理される</p>
-<h2><a class="anchor" id="autotoc_md100"></a>
+<h2><a class="anchor" id="autotoc_md110"></a>
 ChangeBinInt</h2>
 <p>uint8_t、uint16_t、uint32_t、uint64_tの4種類の型から1つTが均等な確率で選ばれる</p>
 <p>与えられたバイト列の先頭から終端-sizeof(T)の範囲のランダムな位置からsizeof(T)バイトをT型の整数と見做す</p>
@@ -224,133 +224,133 @@ ChangeBinInt</h2>
 <p>それ以外の場合はその位置の値に-10以上10以下の値を足す</p>
 <p>書き込み時には1/2の確率でエンディアンの変換が行われる</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::change_binary_integerノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::change_binary_integerで処理される</p>
-<h2><a class="anchor" id="autotoc_md101"></a>
+<h2><a class="anchor" id="autotoc_md111"></a>
 CopyPart</h2>
 <p>1/2の確率でCopyPartOfまたはInsertPartOfを行う</p>
-<h3><a class="anchor" id="autotoc_md102"></a>
+<h3><a class="anchor" id="autotoc_md112"></a>
 CopyPartOf</h3>
 <p>与えられたバイト列のランダムな位置から残りの長さ以下のサイズの領域をランダムな位置にコピーする</p>
 <p>コピーはmemmoveで行われ、コピー元とコピー先は重複する可能性がある</p>
-<h3><a class="anchor" id="autotoc_md103"></a>
+<h3><a class="anchor" id="autotoc_md113"></a>
 InsertPartOf</h3>
 <p>与えられたバイト列のランダムな位置から残りの長さ以下かつ最大サイズまでの残りサイズ以下のサイズの領域をランダムな位置に挿入する</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::copy_partノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::copy_partで処理される</p>
-<h2><a class="anchor" id="autotoc_md104"></a>
+<h2><a class="anchor" id="autotoc_md114"></a>
 CrossOver</h2>
 <p>1/3の確率でCrossOverWithの値と与えられたバイト列でCrossOver、CopyPartOf、InsertPartOfのいずれかを行う</p>
-<h3><a class="anchor" id="autotoc_md105"></a>
+<h3><a class="anchor" id="autotoc_md115"></a>
 CrossOver</h3>
 <p>バイト列Aとバイト列Bから交互に1バイトづつデータを取り出して並べた新しいバイト列を作る</p>
-<h2><a class="anchor" id="autotoc_md106"></a>
+<h2><a class="anchor" id="autotoc_md116"></a>
 CopyPartOf</h2>
 <p>バイト列Aのランダムな位置から残りの長さ以下かつ最大サイズまでの残りサイズ以下のサイズの領域をバイト列Bのランダムな位置からサイズ分の領域に書き込む</p>
-<h3><a class="anchor" id="autotoc_md107"></a>
+<h3><a class="anchor" id="autotoc_md117"></a>
 InsertPartOf</h3>
 <p>バイト列Aのランダムな位置から残りの長さ以下かつ最大サイズまでの残りサイズ以下のサイズの領域をバイト列Bのランダムな位置に挿入する</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::crossoverノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::crossoverで処理される</p>
-<h2><a class="anchor" id="autotoc_md108"></a>
+<h2><a class="anchor" id="autotoc_md118"></a>
 ManualDict</h2>
 <p>あらかじめ用意した辞書にあるバイト列のうち1つをランダムに選び、与えられたバイト列のランダムな位置に挿入する</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::static_dictionaryノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::dictionaryで処理される</p>
-<h2><a class="anchor" id="autotoc_md109"></a>
+<h2><a class="anchor" id="autotoc_md119"></a>
 PersAutoDict</h2>
 <p>新しいfeatureの発見に繋がった辞書の要素が自動的に追加されていく辞書にあるバイト列のうち1つをランダムに選び、与えられたバイト列のランダムな位置に挿入する</p>
 <p>fuzzufではfuzzuf::algorithm::libfuzzer::dynamic_dictionaryノードが担当し、fuzzuf::algorithm::libfuzzer::mutator::dictionaryで処理される static_dictionaryおよびdynamic_dictionaryがdict_entryに記録した辞書の利用記録をfuzzufではfuzzuf::algorithm::libfuzzer::update_dictionaryノードに渡すと、fuzzuf::algorithm::libfuzzer::mutator::update_dictionaryで辞書の要素の追加が行われる</p>
-<h2><a class="anchor" id="autotoc_md110"></a>
+<h2><a class="anchor" id="autotoc_md120"></a>
 CMP</h2>
 <p>オプションCMPが有効な場合に追加される</p>
 <p>この機能を使うにはまず-fsanitize-coverage=trace-cmpを使って比較演算で分岐した際に何と何を何の演算子で比較したかを記録する</p>
 <p>CMPは比較に使われた値と同じ値を入力から探し、それを条件分岐が異なる側に入るように書き換える</p>
 <p>入力に比較したのと同じ値が入っていたからと言って、それが必ずしも比較された値そのものとは限らないが、ある程度の確率で分岐方向を変えられる事を期待する</p>
 <p>fuzzufではこのmutatorは使えない</p>
-<h2><a class="anchor" id="autotoc_md111"></a>
+<h2><a class="anchor" id="autotoc_md121"></a>
 カスタムmutator</h2>
 <p>libFuzzerには独自のmutatorを追加する為にCustomMutatorとCustomCrossOverが用意されている。fuzzufでは特別なノードを用意するよりノードを自作して追加する方が簡単な為、これらのmutatorに対応するノードは用意していない</p>
-<h1><a class="anchor" id="autotoc_md112"></a>
+<h1><a class="anchor" id="autotoc_md122"></a>
 制御ノード</h1>
 <p>HierarFlow上でlibFuzzerを実現する為に必要な制御構文を実現する為に以下のノードを実装している</p>
-<h2><a class="anchor" id="autotoc_md113"></a>
+<h2><a class="anchor" id="autotoc_md123"></a>
 ForEach</h2>
 <p>rangeの要素を1つづつ指定された引数にセットして、後続のノードを実行する。後続のノードはrangeの要素数と同じ回数実行される。</p>
 <p>fuzzuf::algorithm::libfuzzer::static_for_eachはノードにrangeを持ち、fuzzuf::algorithm::libfuzzer::dynamic_for_eachは指定された引数からrangeを得る。</p>
-<h2><a class="anchor" id="autotoc_md114"></a>
+<h2><a class="anchor" id="autotoc_md124"></a>
 IfNewCoverage</h2>
 <p>指定された引数に含まれている実行結果がadd_to_corpusで1回以上corpusに追加されている物だった場合後続のノードの要素を全て実行する。そうでなかった場合後続のノードの最後の要素だけを実行する。</p>
 <p>fuzzuf::algorithm::libfuzzer::if_new_coverageノードが担当する。</p>
-<h2><a class="anchor" id="autotoc_md115"></a>
+<h2><a class="anchor" id="autotoc_md125"></a>
 RandomCall</h2>
 <p>後続のノードの要素のうち最後の要素を除く1つをランダムに選んで実行し、その後最後の要素を実行する。</p>
 <p>fuzzuf::algorithm::libfuzzer::random_callノードが担当する</p>
-<h2><a class="anchor" id="autotoc_md116"></a>
+<h2><a class="anchor" id="autotoc_md126"></a>
 Repeat</h2>
 <p>後続のノードのうち最後の要素を除く要素を指定された回数繰り返し実行し、その後最後の要素を実行する。</p>
 <p>fuzzuf::algorithm::libfuzzer::static_repeatはノードがカウンタと繰り返し回数を持ち、後続のノードを実行する度にこのノードがカウンタをインクリメントさせる。</p>
 <p>fuzzuf::algorithm::libfuzzer::partially_dynmic_repeatはノードが繰り返し回数だけを持ち、引数で指定されたカウンタの値が繰り返し回数に達しない限り後続のノードを実行する。カウンタは別途Appendノードなどを使ってインクリメントしなければならない。</p>
 <p>fuzzuf::algorithm::libfuzzer::dynmic_repeatはノードが一切の情報を持たず、引数で指定されたカウンタの値が引数で指定された繰り返し回数に達しない限り後続のノードを実行する。カウンタは別途Appendノードなどを使ってインクリメントしなければならない 。</p>
-<h2><a class="anchor" id="autotoc_md117"></a>
+<h2><a class="anchor" id="autotoc_md127"></a>
 RepeatUntilNewCoverage</h2>
 <p>指定された引数に含まれている実行結果がadd_to_corpusで1回以上corpusに追加されている物だった場合後続のノードの最後の要素を実行して処理を完了させる。それ以外の場合corpusに追加されるまで後続のノードの最後の要素以外を実行する。</p>
 <p>fuzzuf::algorithm::libfuzzer::repeat_until_new_coverageノードが担当する</p>
-<h2><a class="anchor" id="autotoc_md118"></a>
+<h2><a class="anchor" id="autotoc_md128"></a>
 Nop</h2>
 <p>これ自体は何もしないで後続のノードを実行する。</p>
 <p>主にnop &gt;&gt;より前の||で結合されたノードとnop &gt;&gt;より後の||で結合されたノードを明示的に異なるグループにする為に用いる。</p>
 <p>fuzzuf::algorithm::libfuzzer::nopノードが担当する</p>
-<h2><a class="anchor" id="autotoc_md119"></a>
+<h2><a class="anchor" id="autotoc_md129"></a>
 Assign</h2>
 <p>指定された引数に指定された値を代入する。</p>
 <p>fuzzuf::algorithm::libfuzzer::static_assignは指定された引数にノードが持っている値を代入する。</p>
 <p>fuzzuf::algorithm::libfuzzer::dynamic_assignは指定された引数に、指定された引数の値を代入する。</p>
-<h2><a class="anchor" id="autotoc_md120"></a>
+<h2><a class="anchor" id="autotoc_md130"></a>
 Append</h2>
 <p>指定された引数に指定された値を追加する。</p>
 <p>fuzzuf::algorithm::libfuzzer::static_assignは指定された引数にノードが持っている値を追加する。</p>
 <p>fuzzuf::algorithm::libfuzzer::dynamic_assignは指定された引数に、指定された引数の値を追加する。</p>
-<h1><a class="anchor" id="autotoc_md121"></a>
+<h1><a class="anchor" id="autotoc_md131"></a>
 Executeノード</h1>
-<h2><a class="anchor" id="autotoc_md122"></a>
+<h2><a class="anchor" id="autotoc_md132"></a>
 Execute</h2>
 <p>fuzzufのExecutorを持ち、引数で受け取った入力値を使ってfuzzingの対象を実行し、カバレッジと標準出力と実行結果を引数で指定された場所に出力する</p>
 <p>fuzzuf::algorithm::libfuzzer::executeノードが担当し、fuzzuf::algorithm::libfuzzer::executor::executeが実際にexecutorをRunする。</p>
-<h1><a class="anchor" id="autotoc_md123"></a>
+<h1><a class="anchor" id="autotoc_md133"></a>
 Feedbackノード</h1>
 <p>これらのノードは実行結果をcorpusに追加するかどうかの判断と実際に追加する処理を含む</p>
-<h2><a class="anchor" id="autotoc_md124"></a>
+<h2><a class="anchor" id="autotoc_md134"></a>
 CollectFeatures</h2>
 <p>引数で受け取ったカバレッジと実行結果からfeatureを求めて引数で指定された場所に出力する。</p>
 <p>fuzzuf::algorithm::libfuzzer::collect_featuresノードが担当し、fuzzuf::algorithm::libfuzzer::executor::collect_featuresが実際の計算を行う。</p>
-<h2><a class="anchor" id="autotoc_md125"></a>
+<h2><a class="anchor" id="autotoc_md135"></a>
 AddToCorpus</h2>
 <p>引数で受け取ったfeatureに未発見のものが含まれていた場合、またはforce_add_to_corpusがtrueの場合引数で指定されたcorpusに引数で指定された実行結果と入力値を追加する。</p>
 <p>corpusに追加された実行結果はadded_to_corpusがtrueになる。これはIfNewCoverageノード、RepeatUntilNewCoverageノード、AddToSolutionsノードの振る舞いに影響する。</p>
 <p>fuzzuf::algorithm::libfuzzer::add_to_corpusノードが担当し、fuzzuf::algorithm::libfuzzer::executor::add_to_corpusが実際の追加を行う。</p>
-<h2><a class="anchor" id="autotoc_md126"></a>
+<h2><a class="anchor" id="autotoc_md136"></a>
 AddToSolutions</h2>
 <p>引数で受け取った実行結果のadd_to_corpusがtrueの場合引数で指定されたcorpusに実行結果と入力値を追加する。</p>
 <p>crashed_onlyがtrueの場合実行結果が正常終了以外の場合のみcorpusに実行結果と入力値を追加する。</p>
 <p>AddToCorpusと異なり出力先のディレクトリを指定する事ができ、入力値を永続化する事ができる。</p>
 <p>fuzzuf::algorithm::libfuzzer::add_to_solutionsノードが担当し、fuzzuf::algorithm::libfuzzer::executor::add_to_solutionsが実際の追加を行う。</p>
-<h2><a class="anchor" id="autotoc_md127"></a>
+<h2><a class="anchor" id="autotoc_md137"></a>
 UpdateDistribution</h2>
 <p>引数で受け取ったcorpusの状態に基づいてcorpusの各要素がRandomChoiceノードで選ばれる確率を計算し直す。</p>
 <p>fuzzuf::algorithm::libfuzzer::update_distributionノードが担当し、fuzzuf::algorithm::libfuzzer::select_seed::update_distributionが実際の計算を行う。</p>
-<h2><a class="anchor" id="autotoc_md128"></a>
+<h2><a class="anchor" id="autotoc_md138"></a>
 RandomChoice</h2>
 <p>引数で受け取ったcorpusのなかからランダムな1つを指定された引数にコピーする。</p>
 <p>個々の実行結果が選ばれる確率はUpdateDistributionノードで決定される(このノードが先に実行されていなければならない)。</p>
 <p>fuzzuf::algorithm::libfuzzer::random_choiceノードが担当し、fuzzuf::algorithm::libfuzzer::select_seed::select_seedが実際の選択を行う。</p>
-<h1><a class="anchor" id="autotoc_md129"></a>
+<h1><a class="anchor" id="autotoc_md139"></a>
 デバッグノード</h1>
 <p>主にデバッグの為にfuzzingの途中で引数の値をダンプしたりするノード</p>
-<h2><a class="anchor" id="autotoc_md130"></a>
+<h2><a class="anchor" id="autotoc_md140"></a>
 Dump</h2>
 <p>指定された引数の内容をto_stringを使ってシリアライズし、ノードが持つコールバックを使って出力する。</p>
 <p>fuzzuf::algorithm::libfuzzer::static_dumpが担当する。</p>
-<h2><a class="anchor" id="autotoc_md131"></a>
+<h2><a class="anchor" id="autotoc_md141"></a>
 PrintSttusForNewUnit</h2>
 <p>引数で受け取った実行結果の内容をlibFuzzerのFuzzer::PrintStatusForNewUnitと同じ形式でノードが持つコールバックを使って出力する。</p>
 <p>fuzzuf::algorithm::libfuzzer::print_status_for_new_unitが担当する。</p>
-<h1><a class="anchor" id="autotoc_md132"></a>
+<h1><a class="anchor" id="autotoc_md142"></a>
 標準的なlibFuzzerの組み方</h1>
 <p>test/algorithms/libfuzzer/execute.cpp の中で組み立てているものがオリジナルのlibFuzzerのFuzzer::Loop()に近い処理になっている </p>
 </div></div><!-- contents -->

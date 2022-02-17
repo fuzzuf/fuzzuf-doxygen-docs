@@ -1,0 +1,6 @@
+<map id="include/fuzzuf/utils/random.hpp" name="include/fuzzuf/utils/random.hpp">
+<area shape="rect" id="node1" title="Generate random numbers." alt="" coords="183,5,328,47"/>
+<area shape="rect" id="node2" href="$afl__util_8cpp_source.html" title=" " alt="" coords="5,95,137,136"/>
+<area shape="rect" id="node3" href="$vuzzer__mutator_8cpp_source.html" title=" " alt="" coords="162,95,349,136"/>
+<area shape="rect" id="node4" href="$random_8cpp_source.html" title=" " alt="" coords="373,102,527,129"/>
+</map>

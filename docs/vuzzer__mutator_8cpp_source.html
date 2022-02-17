@@ -91,7 +91,7 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/common.hpp&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/random.hpp&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_2random_8hpp.html">fuzzuf/utils/random.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/mutator/mutator.hpp&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/exec_input/exec_input.hpp&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/vuzzer/vuzzer_util.hpp&quot;</span></div>
@@ -169,15 +169,15 @@ $(function() {
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
 <div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1981f1939fe529f45636a031e258e170">  113</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1981f1939fe529f45636a031e258e170">VUzzerMutator::EliminateRandom</a>() {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    u32 cut_size = std::max(1, fuzzuf::utils::random::RandInt(1, std::max(1U, (len / denominator))));</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    u32 cut_size = std::max(1U, fuzzuf::utils::random::Random&lt;u32&gt;(1U, std::max(1U, (len / denominator))));</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    u32 cut_pos = GetCutPos(len - cut_size);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    DEBUG(<span class="stringliteral">&quot;EliminateRandom [%u, %u]&quot;</span>, cut_pos, cut_pos + cut_size -1);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    Mutator::Delete(cut_pos, cut_size);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
 <div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a862bd1e85f5d796de5d25bf331fbe923">  123</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a862bd1e85f5d796de5d25bf331fbe923">VUzzerMutator::EliminateRandomEnd</a>() {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    u32 cut_size = std::max(1, fuzzuf::utils::random::RandInt(1, std::max(1U, (len / denominator))));</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    u32 cut_pos = fuzzuf::utils::random::RandInt(len/2, len - cut_size);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    u32 cut_size = std::max(1U, fuzzuf::utils::random::Random&lt;u32&gt;(1U, std::max(1U, (len / denominator))));</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    u32 cut_pos = fuzzuf::utils::random::Random&lt;u32&gt;(len/2, len - cut_size);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    DEBUG(<span class="stringliteral">&quot;EliminateRandomEnd [%u, %u]&quot;</span>, cut_pos, cut_pos + cut_size -1);</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    Mutator::Delete(cut_pos, cut_size);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
@@ -189,7 +189,7 @@ $(function() {
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
 <div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a2a08232a7ec3c8e6d6cc5ec557868826">  145</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a2a08232a7ec3c8e6d6cc5ec557868826">VUzzerMutator::AddRandom</a>() {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    u32 add_size = std::max(1, fuzzuf::utils::random::RandInt(1, std::max(1U, (len / denominator))));</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    u32 add_size = std::max(1U, fuzzuf::utils::random::Random&lt;u32&gt;(1U, std::max(1U, (len / denominator))));</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    u32 add_pos = GetCutPos(len - add_size);</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keyword">auto</span> rand_bytes = vuzzer::util::GenerateRandomBytesFromDict(add_size, state.all_dicts);</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    DEBUG(<span class="stringliteral">&quot;AddRandom [%u, %u]&quot;</span>, add_pos, add_pos + add_size - 1);</div>
@@ -198,7 +198,7 @@ $(function() {
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
 <div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a8b9d75a2432725db849e634b61067174">  158</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a8b9d75a2432725db849e634b61067174">VUzzerMutator::ChangeRandom</a>() {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    u32 change_size = std::max(1, fuzzuf::utils::random::RandInt(1, std::max(1U, (len / denominator))));</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    u32 change_size = std::max(1U, fuzzuf::utils::random::Random&lt;u32&gt;(1U, std::max(1U, (len / denominator))));</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    u32 change_pos = GetCutPos(len - change_size);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keyword">auto</span> rand_bytes = vuzzer::util::GenerateRandomBytesFromDict(change_size, state.all_dicts);</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    DEBUG(<span class="stringliteral">&quot;ChangeRandom [%u, %u]&quot;</span>, change_pos, change_pos + change_size - 1);</div>
@@ -246,7 +246,7 @@ $(function() {
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
 <div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa1a42fd224b38f95ae363927137c29a1">  216</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa1a42fd224b38f95ae363927137c29a1">VUzzerMutator::ChangeRandomFull</a>() {</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    u32 change_size = std::max(1, fuzzuf::utils::random::RandInt(1, std::max(1U, (len / denominator))));</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    u32 change_size = std::max(1U, fuzzuf::utils::random::Random&lt;u32&gt;(1U, std::max(1U, (len / denominator))));</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    u32 change_pos = GetCutPos(len - change_size);</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">if</span> (state.full_bytes_dict.size() &gt; 1) {</div>
@@ -279,34 +279,34 @@ $(function() {
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;}</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
 <div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a4a2dd276bf2fcc8e44d7c739982cfff1">  252</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a4a2dd276bf2fcc8e44d7c739982cfff1">VUzzerMutator::SingleChangeRandom</a>() {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordtype">int</span> change_cnt = fuzzuf::utils::random::RandInt(1, 100);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordtype">int</span> change_cnt = fuzzuf::utils::random::Random&lt;int&gt;(1, 100);</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    DEBUG(<span class="stringliteral">&quot;SingleChangeRandom %u&quot;</span>, change_cnt);</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; change_cnt; i++) {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        u32 change_pos = fuzzuf::utils::random::RandInt(0, len - 1);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        outbuf[change_pos] = fuzzuf::utils::random::RandInt(1, 255);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        u32 change_pos = fuzzuf::utils::random::Random&lt;u32&gt;(0, len - 1);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        outbuf[change_pos] = fuzzuf::utils::random::Random&lt;u8&gt;(1, 255);</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
 <div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac62a3c38b34a576515f1c0cc674129cd">  264</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac62a3c38b34a576515f1c0cc674129cd">VUzzerMutator::LowerSingleRandom</a>() {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordtype">int</span> change_cnt = fuzzuf::utils::random::RandInt(1, 100);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordtype">int</span> change_cnt = fuzzuf::utils::random::Random&lt;int&gt;(1, 100);</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    DEBUG(<span class="stringliteral">&quot;LowerSingleRandom %u&quot;</span>, change_cnt);</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; change_cnt; i++) {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        u32 change_pos = fuzzuf::utils::random::RandInt(0, len - 1);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        u32 change_pos = fuzzuf::utils::random::Random&lt;u32&gt;(0, len - 1);</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        outbuf[change_pos] = std::max(0, outbuf[change_pos] - 1);</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    }</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
 <div class="line"><a name="l00276"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ad9f8fe3d1871502a49b216036028373b">  276</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ad9f8fe3d1871502a49b216036028373b">VUzzerMutator::RaiseSingleRandom</a>() {</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordtype">int</span> change_cnt = fuzzuf::utils::random::RandInt(1, 100);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordtype">int</span> change_cnt = fuzzuf::utils::random::Random&lt;int&gt;(1, 100);</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    DEBUG(<span class="stringliteral">&quot;RaiseSingleRandom %u&quot;</span>, change_cnt);</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; change_cnt; i++) {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        u32 change_pos = fuzzuf::utils::random::RandInt(0, len - 1);        </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        u32 change_pos = fuzzuf::utils::random::Random&lt;u32&gt;(0, len - 1);        </div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        outbuf[change_pos] = std::min(255, outbuf[change_pos] + 1);</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;}</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
 <div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa697282dc538986f3d203c4bef5f3477">  288</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa697282dc538986f3d203c4bef5f3477">VUzzerMutator::EliminateNull</a>() {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">int</span> start_pos = fuzzuf::utils::random::RandInt(0, len);    </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">int</span> start_pos = fuzzuf::utils::random::Random&lt;int&gt;(0, len);    </div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordtype">int</span> cut_pos = std::distance(outbuf, std::find(outbuf + start_pos, outbuf + len, <span class="charliteral">&#39;\0&#39;</span>));</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    DEBUG(<span class="stringliteral">&quot;EliminateNull %d (found \\0 at %d)&quot;</span>, start_pos, cut_pos);</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    u8 replacement[] = {<span class="charliteral">&#39;A&#39;</span>}; <span class="comment">//TODO: Specify it by argument</span></div>
@@ -316,7 +316,7 @@ $(function() {
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
 <div class="line"><a name="l00301"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac125bc1cc25125de6a41cafbc058f16f">  301</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac125bc1cc25125de6a41cafbc058f16f">VUzzerMutator::EliminateDoubleNull</a>() {</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordtype">int</span> start_pos = fuzzuf::utils::random::RandInt(0, len - 1);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordtype">int</span> start_pos = fuzzuf::utils::random::Random&lt;int&gt;(0, len - 1);</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    u8 pattern[] = {<span class="charliteral">&#39;\0&#39;</span>, <span class="charliteral">&#39;\0&#39;</span>};</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    u8 replacement[] = <span class="stringliteral">&quot;AA&quot;</span>; <span class="comment">//TODO: Specify it by argument</span></div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keyword">auto</span> itr = outbuf + start_pos;</div>
@@ -339,7 +339,7 @@ $(function() {
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
 <div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a316fd52d5422f3a061a8699bda4743cc">  326</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a316fd52d5422f3a061a8699bda4743cc">VUzzerMutator::TotallyRandom</a>() {</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    DEBUG(<span class="stringliteral">&quot;TotallyRandom&quot;</span>);</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keyword">auto</span> rand_bytes = vuzzer::util::GenerateRandomBytesFromDict(fuzzuf::utils::random::RandInt(100, 1000), state.all_dicts);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keyword">auto</span> rand_bytes = vuzzer::util::GenerateRandomBytesFromDict(fuzzuf::utils::random::Random&lt;u32&gt;(100, 1000), state.all_dicts);</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keyword">auto</span> rand_bytes_ptr = rand_bytes.release(); <span class="comment">// XXX: We should not use raw ptr instead of unique_ptr.</span></div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keyword">delete</span>[] outbuf;    </div>
@@ -578,6 +578,7 @@ $(function() {
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a3b29e23b913269097c11dc26a993ac36"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a3b29e23b913269097c11dc26a993ac36">fuzzuf::algorithm::vuzzer::VUzzerMutator::GetCutPos</a></div><div class="ttdeci">u32 GetCutPos(u32)</div><div class="ttdoc">Determine the mutation offset of input buffer. The offset should be less than size.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00074">vuzzer_mutator.cpp:74</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_ad9f8fe3d1871502a49b216036028373b"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ad9f8fe3d1871502a49b216036028373b">fuzzuf::algorithm::vuzzer::VUzzerMutator::RaiseSingleRandom</a></div><div class="ttdeci">void RaiseSingleRandom()</div><div class="ttdoc">Increase each bytes at random offsets.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00276">vuzzer_mutator.cpp:276</a></div></div>
 <div class="ttc" id="aclassMutator_html"><div class="ttname"><a href="classMutator.html">Mutator</a></div><div class="ttdef"><b>Definition:</b> <a href="mutator_2mutator_8hpp_source.html#l00039">mutator.hpp:39</a></div></div>
+<div class="ttc" id="autils_2random_8hpp_html"><div class="ttname"><a href="utils_2random_8hpp.html">random.hpp</a></div><div class="ttdoc">Generate random numbers.</div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a488af77eec06a665557685005118d8b9"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a488af77eec06a665557685005118d8b9">fuzzuf::algorithm::vuzzer::VUzzerMutator::DoubleFullMutate</a></div><div class="ttdeci">void DoubleFullMutate()</div><div class="ttdoc">Run the ChangeRandomFull mutation twice.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00377">vuzzer_mutator.cpp:377</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a57699ab593d485d46f6b9d3f76b3257e"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a57699ab593d485d46f6b9d3f76b3257e">fuzzuf::algorithm::vuzzer::VUzzerMutator::CrossOver</a></div><div class="ttdeci">std::pair&lt; std::shared_ptr&lt; ExecInput &gt;, std::shared_ptr&lt; ExecInput &gt; &gt; CrossOver(const ExecInput &amp;target)</div><div class="ttdoc">Run crossover mutation methods randomly chosen.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00573">vuzzer_mutator.cpp:573</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_ac62a3c38b34a576515f1c0cc674129cd"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac62a3c38b34a576515f1c0cc674129cd">fuzzuf::algorithm::vuzzer::VUzzerMutator::LowerSingleRandom</a></div><div class="ttdeci">void LowerSingleRandom()</div><div class="ttdoc">Decrease each bytes at random offsets.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00264">vuzzer_mutator.cpp:264</a></div></div>

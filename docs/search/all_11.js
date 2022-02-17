@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['raisesinglerandom_677',['RaiseSingleRandom',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ad9f8fe3d1871502a49b216036028373b',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
-  ['random_2ecpp_678',['random.cpp',['../random_8cpp.html',1,'']]],
-  ['random_2ehpp_679',['random.hpp',['../algorithms_2libfuzzer_2random_8hpp.html',1,'']]],
+  ['raisesinglerandom_678',['RaiseSingleRandom',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ad9f8fe3d1871502a49b216036028373b',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
+  ['random_2ehpp_679',['random.hpp',['../algorithms_2libfuzzer_2random_8hpp.html',1,'(Global Namespace)'],['../utils_2random_8hpp.html',1,'(Global Namespace)']]],
   ['random_5fcall_2ehpp_680',['random_call.hpp',['../random__call_8hpp.html',1,'']]],
   ['random_5ftraits_2ehpp_681',['random_traits.hpp',['../random__traits_8hpp.html',1,'']]],
   ['random_5fvalue_682',['random_value',['../algorithms_2libfuzzer_2random_8hpp.html#a61a5952ebd034b0085809857fcd58290',1,'fuzzuf::algorithm::libfuzzer::detail::random_value()'],['../namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac2ceab672705d6acca0a5d40b643390f',1,'fuzzuf::algorithm::libfuzzer::random_value(RNG &amp;rng, V max) -&gt; std::enable_if_t&lt; std::is_integral_v&lt; V &gt;, V &gt;'],['../namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a10903973045cb9c57d70dc40c71c2210',1,'fuzzuf::algorithm::libfuzzer::random_value(RNG &amp;rng) -&gt; std::enable_if_t&lt; std::is_integral_v&lt; V &gt; &amp;&amp;std::is_same_v&lt; bool, V &gt;, V &gt;']]],
