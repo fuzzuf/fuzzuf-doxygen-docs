@@ -65,7 +65,7 @@ $(function() {
 <div class="title">How to use Nezha on fuzzuf </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md213"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md179"></a>
 Usage</h1>
 <div class="fragment"><div class="line">$ fuzzuf nezha -- [options]</div>
 </div><!-- fragment --><p>Nezha is a differential fuzzer that executes multiple targets with the same input, and finds input that causes a different result for each target.</p>
@@ -81,11 +81,11 @@ Usage</h1>
 <div class="fragment"><div class="line">$ fuzzuf nezha -- -target=/path/to/first_executable -target=/path/to/second_executable -runs=10000 -input=/path/to/first_inputs -input=/path/to/second_inputs</div>
 </div><!-- fragment --><p>Default output directory is /tmp/fuzzuf-out_dir/crash-&lt;process specific UUID&gt;. The output directory can be changed by -exact_artifact_path=&lt;path&gt;</p>
 <div class="fragment"><div class="line">$ fuzzuf nezha -- -target=/path/to/first_executable -target=/path/to/second_executable -runs=10000 -exact\_artifact\_path=/path/to/output</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md214"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md180"></a>
 Options</h1>
 <p>All options from libFuzzer are available in Nezha.</p>
 <p>Additionaly, the following option is provided.</p>
-<h2><a class="anchor" id="autotoc_md215"></a>
+<h2><a class="anchor" id="autotoc_md181"></a>
 -use_output arg</h2>
 <p>If 0, the exit status difference of each target are treated as differences of targets. Otherwise, the standard output difference of each target is treated as the difference of the targets. Default to 0. </p>
 </div></div><!-- contents -->
