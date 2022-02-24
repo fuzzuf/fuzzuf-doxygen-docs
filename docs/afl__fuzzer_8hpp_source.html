@@ -105,24 +105,23 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">   34</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">AFLFuzzerTemplate</a> : <span class="keyword">public</span> <a class="code" href="classFuzzer.html">Fuzzer</a> {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">AFLFuzzerTemplate</a>(std::unique_ptr&lt;State&gt;&amp;&amp; state);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ~<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">AFLFuzzerTemplate</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">AFLFuzzerTemplate</a>();</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> BuildFuzzFlow(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> OneLoop(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> ReceiveStopSignal(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">bool</span> ShouldEnd(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::unique_ptr&lt;State&gt; state;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classHierarFlowNode.html">HierarFlowNode</a>&lt;void(<span class="keywordtype">void</span>), void(<span class="keywordtype">void</span>)&gt; fuzz_loop;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">AFLFuzzer</a> = <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">AFLFuzzerTemplate&lt;AFLState&gt;</a>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::afl</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/templates/afl_fuzzer.hpp&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> BuildFuzzFlow(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> OneLoop(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> ReceiveStopSignal(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> ShouldEnd(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::unique_ptr&lt;State&gt; state;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classHierarFlowNode.html">HierarFlowNode</a>&lt;void(<span class="keywordtype">void</span>), void(<span class="keywordtype">void</span>)&gt; fuzz_loop;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">AFLFuzzer</a> = <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">AFLFuzzerTemplate&lt;AFLState&gt;</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::afl</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/templates/afl_fuzzer.hpp&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">fuzzuf::algorithm::afl::AFLFuzzerTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__fuzzer_8hpp_source.html#l00034">afl_fuzzer.hpp:34</a></div></div>
 <div class="ttc" id="aclassHierarFlowNode_html"><div class="ttname"><a href="classHierarFlowNode.html">HierarFlowNode</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__node_8hpp_source.html#l00053">hierarflow_node.hpp:53</a></div></div>

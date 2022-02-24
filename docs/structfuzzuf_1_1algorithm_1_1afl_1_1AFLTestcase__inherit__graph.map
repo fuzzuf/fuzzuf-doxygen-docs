@@ -1,5 +1,6 @@
 <map id="fuzzuf::algorithm::afl::AFLTestcase" name="fuzzuf::algorithm::afl::AFLTestcase">
-<area shape="rect" id="node1" title=" " alt="" coords="115,5,255,47"/>
-<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastTestcase.html" title=" " alt="" coords="5,95,183,136"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1die_1_1DIETestcase.html" title=" " alt="" coords="207,95,347,136"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,71,145,112"/>
+<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastTestcase.html" title=" " alt="" coords="193,5,371,47"/>
+<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1die_1_1DIETestcase.html" title=" " alt="" coords="212,71,352,112"/>
+<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1ijon_1_1IJONTestcase.html" title=" " alt="" coords="212,136,352,177"/>
 </map>

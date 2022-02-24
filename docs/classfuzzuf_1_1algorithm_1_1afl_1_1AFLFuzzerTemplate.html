@@ -67,7 +67,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">fuzzuf::algorithm::afl::AFLFuzzerTemplate&lt; State &gt; Class Template Reference</div>  </div>
@@ -99,20 +99,20 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>AFLFuzzerTemplate</b> (std::unique_ptr&lt; State &gt; &amp;&amp;state)</td></tr>
 <tr class="separator:a4de14aeae63f207b03b1f0d7f41f23c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a824d44b618b40a74875733f4275856a3"><td class="memItemLeft" align="right" valign="top"><a id="a824d44b618b40a74875733f4275856a3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildFuzzFlow</b> (void)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildFuzzFlow</b> (void)</td></tr>
 <tr class="separator:a824d44b618b40a74875733f4275856a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad01647b1aa0039f5d9caf7c53071b6b9"><td class="memItemLeft" align="right" valign="top"><a id="ad01647b1aa0039f5d9caf7c53071b6b9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>OneLoop</b> (void)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OneLoop</b> (void)</td></tr>
 <tr class="separator:ad01647b1aa0039f5d9caf7c53071b6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab4f9104d09185decef11358892bf8c9"><td class="memItemLeft" align="right" valign="top"><a id="aab4f9104d09185decef11358892bf8c9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveStopSignal</b> (void)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveStopSignal</b> (void)</td></tr>
 <tr class="separator:aab4f9104d09185decef11358892bf8c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd6988d7154f27847ba8feedcbf58ef0"><td class="memItemLeft" align="right" valign="top"><a id="abd6988d7154f27847ba8feedcbf58ef0"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ShouldEnd</b> (void)</td></tr>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>ShouldEnd</b> (void)</td></tr>
 <tr class="separator:abd6988d7154f27847ba8feedcbf58ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:a78b370183cf1cf8f05df954df6eb4637"><td class="memItemLeft" align="right" valign="top"><a id="a78b370183cf1cf8f05df954df6eb4637"></a>
 std::unique_ptr&lt; State &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
 <tr class="separator:a78b370183cf1cf8f05df954df6eb4637"><td class="memSeparator" colspan="2">&#160;</td></tr>

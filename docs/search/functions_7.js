@@ -1,12 +1,14 @@
 var searchData=
 [
-  ['last_1584',['last',['../classoption_1_1Option.html#afe2aff68191e55b59c53fac3dbbcd7c3',1,'option::Option']]],
-  ['length_1585',['length',['../classoption_1_1PrintUsageImplementation_1_1LinePartIterator.html#a557e521cb41e951a34df2737d25f9dce',1,'option::PrintUsageImplementation::LinePartIterator']]],
-  ['lflog_1586',['lflog',['../namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a6f83e85f0b133cfa923d59c89850b52d',1,'fuzzuf::algorithm::libfuzzer']]],
-  ['line_1587',['line',['../classoption_1_1PrintUsageImplementation_1_1LinePartIterator.html#a8ad1201d95bf0bd9453a731da8c15a10',1,'option::PrintUsageImplementation::LinePartIterator']]],
-  ['linewrapper_1588',['LineWrapper',['../classoption_1_1PrintUsageImplementation_1_1LineWrapper.html#a288f16b6e928e9f54f48e13ff6817e95',1,'option::PrintUsageImplementation::LineWrapper']]],
-  ['load_1589',['Load',['../algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc',1,'fuzzuf::algorithm::libfuzzer::dictionary::Load(const std::string &amp;filename_, StaticDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)'],['../algorithms_2libfuzzer_2dictionary_8cpp.html#a00b77a4b148fa7b2bd056e34ca6a2475',1,'fuzzuf::algorithm::libfuzzer::dictionary::Load(const std::string &amp;filename_, DynamicDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)'],['../algorithms_2libfuzzer_2dictionary_8cpp.html#a8dd0eea58ba311481482bc4e8eee3cfa',1,'fuzzuf::algorithm::libfuzzer::dictionary::Load(const std::vector&lt; fs::path &gt; &amp;paths, StaticDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)'],['../algorithms_2libfuzzer_2dictionary_8cpp.html#a7e4856f2e6929d9804c175a31508d415',1,'fuzzuf::algorithm::libfuzzer::dictionary::Load(const std::vector&lt; fs::path &gt; &amp;paths, DynamicDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)']]],
-  ['loaddictionary_1590',['LoadDictionary',['../test__utils_8cpp.html#ab9d123a7651ff6d1ee4c8051e0a277d0',1,'fuzzuf::algorithm::libfuzzer::test']]],
-  ['loadinputs_1591',['LoadInputs',['../load__inputs_8hpp.html#a004bebb00ca20a53d7fe80cde87213ab',1,'fuzzuf::utils']]],
-  ['lowersinglerandom_1592',['LowerSingleRandom',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac62a3c38b34a576515f1c0cc674129cd',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]]
+  ['ijonfuzzer_1611',['IJONFuzzer',['../classfuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer.html#a884976cfb73773baf523d7a6faf9f7c1',1,'fuzzuf::algorithm::ijon::IJONFuzzer']]],
+  ['ijonshouldschedule_1612',['IjonShouldSchedule',['../classfuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer.html#a57cf7f393fee170d7b7c2a7d10a4f386',1,'fuzzuf::algorithm::ijon::IJONFuzzer']]],
+  ['index_1613',['index',['../classoption_1_1Option.html#a847d12e8e76add769fbd01c703e48682',1,'option::Option']]],
+  ['initilize_1614',['Initilize',['../classProxyExecutor.html#abda7cc8cb84f3a5088437c22537efac2',1,'ProxyExecutor']]],
+  ['insertbyte_1615',['InsertByte',['../insert__byte_8hpp.html#a354f042272c94bd70328eecc3c951adc',1,'fuzzuf::algorithm::libfuzzer::mutator']]],
+  ['insertrepeatedbytes_1616',['InsertRepeatedBytes',['../insert__repeated__bytes_8hpp.html#a3001072cf150e48a226a26ef92cbe1e7',1,'fuzzuf::algorithm::libfuzzer::mutator']]],
+  ['insertwithonebyteoverwrite_1617',['InsertWithOnebyteOverwrite',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a03e3f0625957ce11b60085e57c499c2a',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
+  ['intslide_1618',['IntSlide',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1edc21b2e080fc25130479d2edc2a9ce',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
+  ['isfirst_1619',['isFirst',['../classoption_1_1Option.html#af51f53a553ef46110e36008a58466a2e',1,'option::Option']]],
+  ['islast_1620',['isLast',['../classoption_1_1Option.html#a36fa8fde6fce89462ded79ab56180ff7',1,'option::Option']]],
+  ['iswidechar_1621',['isWideChar',['../structoption_1_1PrintUsageImplementation.html#a41bfaabdf21e68877f3030d36acc0798',1,'option::PrintUsageImplementation']]]
 ];

@@ -546,51 +546,54 @@ $(function() {
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">HavocBaseTemplate</a>(State &amp;state);</div>
 <div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">HavocBaseTemplate</a>() {}</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="keywordtype">bool</span> DoHavoc(</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate&lt;State&gt;</a>&amp; mutator,</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <span class="keyword">const</span> std::string &amp;stage_name,</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        <span class="keyword">const</span> std::string &amp;stage_short,</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        u32 perf_score,</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        s32 stage_max_multiplier, </div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        <span class="keywordtype">int</span> stage_idx</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;    );</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160; </div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    <span class="keyword">virtual</span> AFLMutCalleeRef&lt;State&gt; operator()(<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate&lt;State&gt;</a>&amp; mutator) = 0;</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160; </div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    State &amp;state;</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;};</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;<span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">HavocBase</a> = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">HavocBaseTemplate&lt;AFLState&gt;</a>;</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
-<div class="line"><a name="l00496"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">  496</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">HavocTemplate</a> : <span class="keyword">public</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">HavocBaseTemplate</a>&lt;State&gt; {</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">HavocTemplate</a>(State &amp;state);</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; </div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    AFLMutCalleeRef&lt;State&gt; operator()(<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate&lt;State&gt;</a>&amp; mutator);</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;};</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CaseDistrib, <span class="keyword">typename</span> CustomCases&gt;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    <span class="keywordtype">bool</span> DoHavoc(</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate&lt;State&gt;</a>&amp; mutator,</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        CaseDistrib case_distrib,</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        CustomCases custom_cases,</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        <span class="keyword">const</span> std::string &amp;stage_name,</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        <span class="keyword">const</span> std::string &amp;stage_short,</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        u32 perf_score,</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        s32 stage_max_multiplier, </div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        <span class="keywordtype">int</span> stage_idx</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    );</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    <span class="keyword">virtual</span> AFLMutCalleeRef&lt;State&gt; operator()(<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate&lt;State&gt;</a>&amp; mutator) = 0;</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160; </div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    State &amp;state;</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;};</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160; </div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;<span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">HavocBase</a> = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">HavocBaseTemplate&lt;AFLState&gt;</a>;</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160; </div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00499"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">  499</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">HavocTemplate</a> : <span class="keyword">public</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">HavocBaseTemplate</a>&lt;State&gt; {</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">HavocTemplate</a>(State &amp;state);</div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160; </div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;<span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">Havoc</a> = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">HavocTemplate&lt;AFLState&gt;</a>;</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160; </div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
-<div class="line"><a name="l00506"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">  506</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">SplicingTemplate</a> : <span class="keyword">public</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">HavocBaseTemplate</a>&lt;State&gt; {</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">SplicingTemplate</a>(State &amp;state);</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160; </div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    AFLMutCalleeRef&lt;State&gt; operator()(<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate&lt;State&gt;</a>&amp; mutator);</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;};</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    AFLMutCalleeRef&lt;State&gt; operator()(<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate&lt;State&gt;</a>&amp; mutator);</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;};</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;<span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">Havoc</a> = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">HavocTemplate&lt;AFLState&gt;</a>;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160; </div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00509"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">  509</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">SplicingTemplate</a> : <span class="keyword">public</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">HavocBaseTemplate</a>&lt;State&gt; {</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">SplicingTemplate</a>(State &amp;state);</div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;<span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">Splicing</a> = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">SplicingTemplate&lt;AFLState&gt;</a>;</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160; </div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::afl::routine::mutation</span></div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160; </div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/templates/afl_mutation_hierarflow_routines.hpp&quot;</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    AFLMutCalleeRef&lt;State&gt; operator()(<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate&lt;State&gt;</a>&amp; mutator);</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;};</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;<span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">Splicing</a> = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">SplicingTemplate&lt;AFLState&gt;</a>;</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::afl::routine::mutation</span></div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/templates/afl_mutation_hierarflow_routines.hpp&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">fuzzuf::algorithm::afl::routine::mutation::HavocTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutation__hierarflow__routines_8hpp_source.html#l00496">afl_mutation_hierarflow_routines.hpp:496</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html">fuzzuf::algorithm::afl::routine::mutation::HavocTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutation__hierarflow__routines_8hpp_source.html#l00499">afl_mutation_hierarflow_routines.hpp:499</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1InterestTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1InterestTemplate.html">fuzzuf::algorithm::afl::routine::mutation::InterestTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutation__hierarflow__routines_8hpp_source.html#l00215">afl_mutation_hierarflow_routines.hpp:215</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">fuzzuf::algorithm::afl::AFLMutatorTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutator_8hpp_source.html#l00036">afl_mutator.hpp:36</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">fuzzuf::algorithm::afl::routine::mutation::SplicingTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutation__hierarflow__routines_8hpp_source.html#l00506">afl_mutation_hierarflow_routines.hpp:506</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html">fuzzuf::algorithm::afl::routine::mutation::SplicingTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutation__hierarflow__routines_8hpp_source.html#l00509">afl_mutation_hierarflow_routines.hpp:509</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1ByteFlipOtherTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1ByteFlipOtherTemplate.html">fuzzuf::algorithm::afl::routine::mutation::ByteFlipOtherTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutation__hierarflow__routines_8hpp_source.html#l00092">afl_mutation_hierarflow_routines.hpp:92</a></div></div>
 <div class="ttc" id="aclassHierarFlowRoutine_html"><div class="ttname"><a href="classHierarFlowRoutine.html">HierarFlowRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00031">hierarflow_callee.hpp:31</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1ArithTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1ArithTemplate.html">fuzzuf::algorithm::afl::routine::mutation::ArithTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutation__hierarflow__routines_8hpp_source.html#l00109">afl_mutation_hierarflow_routines.hpp:109</a></div></div>

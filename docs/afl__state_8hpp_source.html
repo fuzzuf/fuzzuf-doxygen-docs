@@ -109,7 +109,7 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// Responsibility:</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">//   - The lifetime for an instance of this class must be longer than that of HierarFlow</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// NOTE: we should consider to apply &quot;Type Erasure&quot; to this structure due to the following reason:</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// NOTE: we should consider applying &quot;Type Erasure&quot; to this structure due to the following reason:</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// Let&#39;s consider the situation where some variant of AFL uses</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// &quot;struct AFLDerivedState : public AFLStateTemplate&lt;AFLDerivedTestcase&gt;&quot;.</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">// Then, AFLState(=AFLStateTemplate&lt;AFLTestcase&gt;) cannot be not the base class of AFLDerivedState.</span></div>
@@ -118,18 +118,18 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">// in the point that many functions can be unnecessarily duplicated because of template.</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">   50</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate</a> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">struct </span>AFLStateTemplate {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// Sometimes it would be convenient</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// if we could lookup Testcase from AFLStateTemplate&lt;Testcase&gt;</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">using</span> OwnTestcase = Testcase;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">using</span> Tag = <span class="keyword">typename</span> Testcase::Tag;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// FIXME: how to support other executors?</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate</a>(std::shared_ptr&lt;const AFLSetting&gt; setting, std::shared_ptr&lt;NativeLinuxExecutor&gt; executor);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">explicit</span> AFLStateTemplate(std::shared_ptr&lt;const AFLSetting&gt; setting, std::shared_ptr&lt;NativeLinuxExecutor&gt; executor);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">virtual</span> ~AFLStateTemplate();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate</a>( <span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate</a>&amp; ) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate</a>&amp; operator=( <span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate</a>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    AFLStateTemplate( <span class="keyword">const</span> AFLStateTemplate&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    AFLStateTemplate&amp; operator=( <span class="keyword">const</span> AFLStateTemplate&amp; ) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> RunExecutorWithClassifyCounts(</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">const</span> u8* buf,</div>
@@ -381,7 +381,7 @@ $(function() {
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    std::vector&lt;NullableRef&lt;Testcase&gt;&gt; top_rated</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        = std::vector&lt;NullableRef&lt;Testcase&gt;&gt;(option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">afl::dictionary::AFLDictData</a>;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> = afl::dictionary::AFLDictData;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="comment">/* Extra tokens to fuzz with        */</span></div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    std::vector&lt;AFLDictData&gt; extras;</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
@@ -392,7 +392,7 @@ $(function() {
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordtype">bool</span> should_construct_auto_dict;</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;};</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLState</a> = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate&lt;AFLTestcase&gt;</a>;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="keyword">using</span> AFLState = AFLStateTemplate&lt;AFLTestcase&gt;;</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::afl</span></div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
@@ -402,7 +402,6 @@ $(function() {
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
 <div class="ttc" id="aclassInplaceMemoryFeedback_html"><div class="ttname"><a href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="inplace__memory__feedback_8hpp_source.html#l00028">inplace_memory_feedback.hpp:28</a></div></div>
 <div class="ttc" id="aclassExecInputSet_html"><div class="ttname"><a href="classExecInputSet.html">ExecInputSet</a></div><div class="ttdef"><b>Definition:</b> <a href="exec__input__set_8hpp_source.html#l00034">exec_input_set.hpp:34</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">fuzzuf::algorithm::afl::AFLStateTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__state_8hpp_source.html#l00050">afl_state.hpp:50</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">fuzzuf::algorithm::afl::dictionary::AFLDictData</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__dict__data_8hpp_source.html#l00027">afl_dict_data.hpp:27</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

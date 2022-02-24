@@ -168,14 +168,14 @@ $(function() {
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> constexpr (<span class="keyword">sizeof</span>(<span class="keywordtype">size_t</span>) == 8) {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        inp_feed.ModifyMemoryWithFunc(</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            [](u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                afl::util::ClassifyCounts&lt;u64&gt;((u64*)trace_bits, map_size);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            [](u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                afl::util::ClassifyCounts&lt;u64&gt;((u64*)trace_bits, option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        );</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        inp_feed.ModifyMemoryWithFunc(</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            [](u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                afl::util::ClassifyCounts&lt;u32&gt;((u32*)trace_bits, map_size);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            [](u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                afl::util::ClassifyCounts&lt;u32&gt;((u32*)trace_bits, option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        );</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
@@ -218,9 +218,9 @@ $(function() {
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    u8 new_bits = 0;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">if</span> (testcase.exec_cksum) {</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        inp_feed.ShowMemoryToFunc(</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            [<span class="keyword">this</span>, &amp;first_trace, &amp;hnb](<span class="keyword">const</span> u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                std::memcpy(first_trace.data(), trace_bits, map_size);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                hnb = HasNewBits(trace_bits, &amp;virgin_bits[0], map_size);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            [<span class="keyword">this</span>, &amp;first_trace, &amp;hnb](<span class="keyword">const</span> u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                std::memcpy(first_trace.data(), trace_bits, option::GetMapSize&lt;Tag&gt;());</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                hnb = HasNewBits(trace_bits, &amp;virgin_bits[0], option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            }</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        );</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
@@ -255,8 +255,8 @@ $(function() {
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">if</span> (testcase.exec_cksum != cksum) {</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            inp_feed.ShowMemoryToFunc(</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                [<span class="keyword">this</span>, &amp;hnb](<span class="keyword">const</span> u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    hnb = HasNewBits(trace_bits, &amp;virgin_bits[0], map_size);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                [<span class="keyword">this</span>, &amp;hnb](<span class="keyword">const</span> u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    hnb = HasNewBits(trace_bits, &amp;virgin_bits[0], option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                }</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            );</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
@@ -264,8 +264,8 @@ $(function() {
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">if</span> (testcase.exec_cksum) {</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                inp_feed.ShowMemoryToFunc(</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    [<span class="keyword">this</span>, &amp;first_trace](<span class="keyword">const</span> u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                        <span class="keywordflow">for</span> (u32 i=0; i &lt; map_size; i++) {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    [<span class="keyword">this</span>, &amp;first_trace](<span class="keyword">const</span> u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                        <span class="keywordflow">for</span> (u32 i=0; i &lt; option::GetMapSize&lt;Tag&gt;(); i++) {</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                            <span class="keywordflow">if</span> (!var_bytes[i] &amp;&amp; first_trace[i] != trace_bits[i]) {</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                var_bytes[i] = 1;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                                stage_max = option::GetCalCyclesLong(*<span class="keyword">this</span>);</div>
@@ -278,8 +278,8 @@ $(function() {
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                testcase.exec_cksum = cksum;</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                inp_feed.ShowMemoryToFunc(</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                    [&amp;first_trace](<span class="keyword">const</span> u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        std::memcpy(first_trace.data(), trace_bits, map_size);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                    [&amp;first_trace](<span class="keyword">const</span> u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        std::memcpy(first_trace.data(), trace_bits, option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    }</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                );</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            }</div>
@@ -420,8 +420,8 @@ $(function() {
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keyword">const</span> <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> &amp;inp_feed</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;) {</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    inp_feed.ShowMemoryToFunc(</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        [<span class="keyword">this</span>, &amp;testcase](<span class="keyword">const</span> u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            UpdateBitmapScoreWithRawTrace(testcase, trace_bits, map_size);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        [<span class="keyword">this</span>, &amp;testcase](<span class="keyword">const</span> u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            UpdateBitmapScoreWithRawTrace(testcase, trace_bits, option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        }</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    );</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;}</div>
@@ -444,8 +444,8 @@ $(function() {
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        u8 hnb;</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        inp_feed.ShowMemoryToFunc(</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            [<span class="keyword">this</span>, &amp;hnb](<span class="keyword">const</span> u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                hnb = HasNewBits(trace_bits, &amp;virgin_bits[0], map_size);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            [<span class="keyword">this</span>, &amp;hnb](<span class="keyword">const</span> u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                hnb = HasNewBits(trace_bits, &amp;virgin_bits[0], option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            }</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        );</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
@@ -511,22 +511,22 @@ $(function() {
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        <span class="keywordflow">if</span> (!setting-&gt;dumb_mode) {</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            <span class="keywordflow">if</span> constexpr (<span class="keyword">sizeof</span>(<span class="keywordtype">size_t</span>) == 8) {</div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                inp_feed.ModifyMemoryWithFunc(</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                    [](u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                        afl::util::SimplifyTrace&lt;u64&gt;((u64*)trace_bits, map_size);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                    [](u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                        afl::util::SimplifyTrace&lt;u64&gt;((u64*)trace_bits, option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                    }</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                );</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                inp_feed.ModifyMemoryWithFunc(</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                    [](u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                        afl::util::SimplifyTrace&lt;u32&gt;((u32*)trace_bits, map_size);</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                    [](u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                        afl::util::SimplifyTrace&lt;u32&gt;((u32*)trace_bits, option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                    }</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                );</div>
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            }</div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            u8 res;</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            inp_feed.ShowMemoryToFunc(</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                [<span class="keyword">this</span>, &amp;res](<span class="keyword">const</span> u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                    res = HasNewBits(trace_bits, &amp;virgin_tmout[0], map_size);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                [<span class="keyword">this</span>, &amp;res](<span class="keyword">const</span> u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                    res = HasNewBits(trace_bits, &amp;virgin_tmout[0], option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                }</div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            );</div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
@@ -596,22 +596,22 @@ $(function() {
 <div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        <span class="keywordflow">if</span> (!setting-&gt;dumb_mode) {</div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;            <span class="keywordflow">if</span> constexpr (<span class="keyword">sizeof</span>(<span class="keywordtype">size_t</span>) == 8) {</div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;                inp_feed.ModifyMemoryWithFunc(</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                    [](u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                        afl::util::SimplifyTrace&lt;u64&gt;((u64*)trace_bits, map_size);</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                    [](u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                        afl::util::SimplifyTrace&lt;u64&gt;((u64*)trace_bits, option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                    }</div>
 <div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                );</div>
 <div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                inp_feed.ModifyMemoryWithFunc(</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                    [](u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                        afl::util::SimplifyTrace&lt;u32&gt;((u32*)trace_bits, map_size);</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                    [](u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                        afl::util::SimplifyTrace&lt;u32&gt;((u32*)trace_bits, option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;                    }</div>
 <div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;                );</div>
 <div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;            }</div>
 <div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160; </div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;            u8 res;</div>
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;            inp_feed.ShowMemoryToFunc(</div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                [<span class="keyword">this</span>, &amp;res](<span class="keyword">const</span> u8* trace_bits, u32 map_size) {</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                    res = HasNewBits(trace_bits, &amp;virgin_crash[0], map_size);</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                [<span class="keyword">this</span>, &amp;res](<span class="keyword">const</span> u8* trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                    res = HasNewBits(trace_bits, &amp;virgin_crash[0], option::GetMapSize&lt;Tag&gt;());</div>
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                }</div>
 <div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            );</div>
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160; </div>
@@ -1275,9 +1275,9 @@ $(function() {
 <div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;    <span class="keywordflow">if</span> (inp_feed.CountNonZeroBytes() &lt; 100) return ;</div>
 <div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160; </div>
 <div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;    inp_feed.ShowMemoryToFunc(</div>
-<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;        [](<span class="keyword">const</span> u8 *trace_bits, u32 map_size) {</div>
+<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;        [](<span class="keyword">const</span> u8 *trace_bits, u32 <span class="comment">/* map_size */</span>) {</div>
 <div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;            u32 start = 1 &lt;&lt; (option::GetMapSizePow2&lt;Tag&gt;() - 1);</div>
-<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;            <span class="keywordflow">for</span> (u32 i = start; i &lt; map_size; i++) {</div>
+<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;            <span class="keywordflow">for</span> (u32 i = start; i &lt; option::GetMapSize&lt;Tag&gt;(); i++) {</div>
 <div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;                <span class="keywordflow">if</span> (trace_bits[i]) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;            }</div>
 <div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160; </div>

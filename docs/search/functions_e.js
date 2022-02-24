@@ -1,16 +1,19 @@
 var searchData=
 [
-  ['screenlength_1646',['screenLength',['../classoption_1_1PrintUsageImplementation_1_1LinePartIterator.html#a03b6fedfe805d7fc73216da5cd33270e',1,'option::PrintUsageImplementation::LinePartIterator']]],
-  ['selectseed_1647',['SelectSeed',['../select__seed_8hpp.html#a7728d5d110ffea2ca8911c7a6f7f24fd',1,'fuzzuf::algorithm::libfuzzer::select_seed']]],
-  ['shufflebytes_1648',['ShuffleBytes',['../shuffle__bytes_8hpp.html#abcb7e8c7fb83bc84bb656153e1c28333',1,'fuzzuf::algorithm::libfuzzer::mutator']]],
-  ['singlechangerandom_1649',['SingleChangeRandom',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a4a2dd276bf2fcc8e44d7c739982cfff1',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
-  ['singlecrossover_1650',['SingleCrossOver',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a7bec09d387a50303e6b0a6341a982935',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
-  ['staticappend_1651',['StaticAppend',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1StaticAppend_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#abe701bb4201b6a795e221e7a1052ec8e',1,'fuzzuf::algorithm::libfuzzer::StaticAppend&lt; R(Args...), Path &gt;']]],
-  ['staticassign_1652',['StaticAssign',['../classfuzzuf_1_1algorithm_1_1libfuzzer_1_1StaticAssign_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a30af8a2966f8e0e2df5fb758a17b3a04',1,'fuzzuf::algorithm::libfuzzer::StaticAssign&lt; R(Args...), Path &gt;']]],
-  ['staticdict_1653',['StaticDict',['../classfuzzuf_1_1algorithm_1_1libfuzzer_1_1StaticDict_3_01R_07Args_8_8_8_08_00_01Dict_00_01Path_01_4.html#aa7967289f2583cadbb93d35c54e70be0',1,'fuzzuf::algorithm::libfuzzer::StaticDict&lt; R(Args...), Dict, Path &gt;']]],
-  ['staticdump_1654',['StaticDump',['../classfuzzuf_1_1algorithm_1_1libfuzzer_1_1StaticDump_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a5fdf185d126e1eb42ec28cb422314b97',1,'fuzzuf::algorithm::libfuzzer::StaticDump&lt; R(Args...), Path &gt;']]],
-  ['staticmask_1655',['StaticMask',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1StaticMask_3_01R_07Args_8_8_8_08_00_01Mask_00_01Path_01_4.html#a4fec0556879be4611f85f3484250be95',1,'fuzzuf::algorithm::libfuzzer::StaticMask&lt; R(Args...), Mask, Path &gt;']]],
-  ['staticrepeat_1656',['StaticRepeat',['../classfuzzuf_1_1algorithm_1_1libfuzzer_1_1StaticRepeat_3_01R_07Args_8_8_8_08_4.html#a9f2a273b96dd42cb40d96af60cea5262',1,'fuzzuf::algorithm::libfuzzer::StaticRepeat&lt; R(Args...)&gt;']]],
-  ['stats_1657',['Stats',['../structoption_1_1Stats.html#a8660722c76e65d9328313fb360bdd282',1,'option::Stats::Stats()'],['../structoption_1_1Stats.html#a71373ec2b28842f45593e4405f7bc8ec',1,'option::Stats::Stats(bool gnu, const Descriptor usage[], int argc, const char **argv, int min_abbr_len=0, bool single_minus_longopt=false)']]],
-  ['storeoptionaction_1658',['StoreOptionAction',['../classoption_1_1Parser_1_1StoreOptionAction.html#aaa638cdd712202e3e10471d4299f7f9d',1,'option::Parser::StoreOptionAction']]]
+  ['raisesinglerandom_1668',['RaiseSingleRandom',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ad9f8fe3d1871502a49b216036028373b',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
+  ['random_5fvalue_1669',['random_value',['../algorithms_2libfuzzer_2random_8hpp.html#a61a5952ebd034b0085809857fcd58290',1,'fuzzuf::algorithm::libfuzzer::detail::random_value()'],['../namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac2ceab672705d6acca0a5d40b643390f',1,'fuzzuf::algorithm::libfuzzer::random_value(RNG &amp;rng, V max) -&gt; std::enable_if_t&lt; std::is_integral_v&lt; V &gt;, V &gt;'],['../namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a10903973045cb9c57d70dc40c71c2210',1,'fuzzuf::algorithm::libfuzzer::random_value(RNG &amp;rng) -&gt; std::enable_if_t&lt; std::is_integral_v&lt; V &gt; &amp;&amp;std::is_same_v&lt; bool, V &gt;, V &gt;']]],
+  ['readtestcases_1670',['ReadTestcases',['../structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a67da668a8bacdafb2172c7e1f96830b3',1,'fuzzuf::algorithm::vuzzer::VUzzerState']]],
+  ['repeatuntilmutated_1671',['RepeatUntilMutated',['../classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a65156f82eb6374100bf973455c536d26',1,'fuzzuf::algorithm::libfuzzer::RepeatUntilMutated&lt; R(Args...), Path &gt;']]],
+  ['repeatuntilnewcoverage_1672',['RepeatUntilNewCoverage',['../classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilNewCoverage_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a668e2b89238e6aa9e894f0f5e4426ab4',1,'fuzzuf::algorithm::libfuzzer::RepeatUntilNewCoverage&lt; R(Args...), Path &gt;']]],
+  ['replacecorpus_1673',['replaceCorpus',['../replace__corpus_8hpp.html#aff7bba9218e527a0372a97b6cf085319',1,'fuzzuf::algorithm::libfuzzer::corpus']]],
+  ['restartrow_1674',['restartRow',['../classoption_1_1PrintUsageImplementation_1_1LinePartIterator.html#a96c448939f33a811174ea7b5addb312e',1,'option::PrintUsageImplementation::LinePartIterator']]],
+  ['restarttable_1675',['restartTable',['../classoption_1_1PrintUsageImplementation_1_1LinePartIterator.html#a0cbe8ed79ab4958a70b957598dd76fa6',1,'option::PrintUsageImplementation::LinePartIterator']]],
+  ['run_1676',['Run',['../classNativeLinuxExecutor.html#a9c80c00d7726e17f23bfc52d47820d67',1,'NativeLinuxExecutor::Run()'],['../classProxyExecutor.html#af89350b46d097ceb6c0b9140684ee05b',1,'ProxyExecutor::Run()']]],
+  ['run_5fdirect_1677',['run_direct',['../libfuzzer_2test__utils_8hpp.html#a612a6f1cbaef188c71f0ac1694cb7356',1,'fuzzuf::algorithm::libfuzzer::test']]],
+  ['run_5fdirect_5ftwice_1678',['run_direct_twice',['../libfuzzer_2test__utils_8hpp.html#abf0b636f1d8fff0dabe99f60cc2d4126',1,'fuzzuf::algorithm::libfuzzer::test']]],
+  ['run_5fhierarflow_1679',['run_hierarflow',['../libfuzzer_2test__utils_8hpp.html#a0df39865e4201ac161f769f5ac5fc63a',1,'fuzzuf::algorithm::libfuzzer::test']]],
+  ['run_5fhierarflow_5flogical_5for_1680',['run_hierarflow_logical_or',['../libfuzzer_2test__utils_8hpp.html#ae3bfc1e76dd7a5d56b58e80b3c351f1a',1,'fuzzuf::algorithm::libfuzzer::test']]],
+  ['run_5fhierarflow_5fshift_5fleft_1681',['run_hierarflow_shift_left',['../libfuzzer_2test__utils_8hpp.html#a2a8471f6881819e0fc1e34e7c917af76',1,'fuzzuf::algorithm::libfuzzer::test']]],
+  ['runexecutor_1682',['RunExecutor',['../structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#abffce8ee0cbd024c812d1362cb14603a',1,'fuzzuf::algorithm::vuzzer::VUzzerState']]],
+  ['runtaintexecutor_1683',['RunTaintExecutor',['../structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a08e506f733f0c50fad02401901bdb77b',1,'fuzzuf::algorithm::vuzzer::VUzzerState']]]
 ];
