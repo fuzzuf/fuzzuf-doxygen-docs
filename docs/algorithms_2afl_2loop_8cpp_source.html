@@ -133,7 +133,7 @@ $(function() {
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      {<span class="stringliteral">&quot;../../put_binaries/libjpeg/libjpeg_turbo_fuzzer&quot;</span>, <span class="stringliteral">&quot;@@&quot;</span>},</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      input_dir.native(), output_dir.native(), option::GetExecTimeout&lt;AFLTag&gt;(),</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      option::GetMemLimit&lt;AFLTag&gt;(), forksrv, <span class="keyword">false</span>, <span class="comment">/* dumb_mode*/</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      NativeLinuxExecutor::CPUID_BIND_WHICHEVER));</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      Util::CPUID_BIND_WHICHEVER));</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">// NativeLinuxExecutor needs the directory specified by &quot;out_dir&quot; to be</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// already set up so we need to create the directory first, and then</span></div>
@@ -145,8 +145,8 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      setting-&gt;argv, setting-&gt;exec_timelimit_ms, setting-&gt;exec_memlimit,</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      setting-&gt;forksrv, setting-&gt;out_dir / option::GetDefaultOutfile&lt;AFLTag&gt;(),</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      option::GetMapSize&lt;AFLTag&gt;(), <span class="comment">// afl_shm_size</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      0,                            <span class="comment">//  bb_shm_size</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      setting-&gt;cpuid_to_bind);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      0                             <span class="comment">// bb_shm_size</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      );</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="comment">// Create AFLState</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keyword">auto</span> state = std::make_unique&lt;AFLState&gt;(setting, executor);</div>

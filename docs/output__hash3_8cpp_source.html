@@ -178,12 +178,12 @@ $(function() {
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv_small&quot;</span>, output_file_path.string()},</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        create_info.exec_timelimit_ms, create_info.exec_memlimit,</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        create_info.forksrv, path_to_write_seed, create_info.afl_shm_size,</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        create_info.bb_shm_size, create_info.cpuid_to_bind, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        create_info.bb_shm_size, <span class="keyword">true</span>));</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    std::unique_ptr&lt;NativeLinuxExecutor&gt; executor2(<span class="keyword">new</span> <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>(</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv&quot;</span>, output_file_path.string()},</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        create_info.exec_timelimit_ms, create_info.exec_memlimit,</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        create_info.forksrv, path_to_write_seed, create_info.afl_shm_size,</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        create_info.bb_shm_size, create_info.cpuid_to_bind, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        create_info.bb_shm_size, <span class="keyword">true</span>));</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::size_t solution_count = 0u;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    ne::known_outputs_t known;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;filename :</div>

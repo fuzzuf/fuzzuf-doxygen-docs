@@ -374,29 +374,35 @@ $(function() {
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    u64 total_bitmap_size = 0;              <span class="comment">/* Total bit count for all bitmaps  */</span></div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    u64 total_bitmap_entries = 0;           <span class="comment">/* Number of bitmaps counted        */</span></div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="comment">/* Fuzzing queue (vector)           */</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    std::vector&lt;std::shared_ptr&lt;Testcase&gt;&gt; case_queue;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="comment">/* CPU core count                   */</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordtype">int</span> cpu_core_count;</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="comment">/* Top entries for bitmap bytes     */</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    std::vector&lt;NullableRef&lt;Testcase&gt;&gt; top_rated</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        = std::vector&lt;NullableRef&lt;Testcase&gt;&gt;(option::GetMapSize&lt;Tag&gt;());</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> = afl::dictionary::AFLDictData;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="comment">/* Extra tokens to fuzz with        */</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    std::vector&lt;AFLDictData&gt; extras;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="comment">/* Automatically selected extras    */</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    std::vector&lt;AFLDictData&gt; a_extras;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordtype">bool</span> should_construct_auto_dict;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;};</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="keyword">using</span> AFLState = AFLStateTemplate&lt;AFLTestcase&gt;;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="comment">/* Selected CPU core                */</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordtype">int</span> cpu_aff;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="comment">/* Fuzzing queue (vector)           */</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    std::vector&lt;std::shared_ptr&lt;Testcase&gt;&gt; case_queue;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="comment">/* Top entries for bitmap bytes     */</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    std::vector&lt;NullableRef&lt;Testcase&gt;&gt; top_rated</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        = std::vector&lt;NullableRef&lt;Testcase&gt;&gt;(option::GetMapSize&lt;Tag&gt;());</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> = afl::dictionary::AFLDictData;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="comment">/* Extra tokens to fuzz with        */</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    std::vector&lt;AFLDictData&gt; extras;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="comment">/* Automatically selected extras    */</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    std::vector&lt;AFLDictData&gt; a_extras;</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::afl</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/templates/afl_state.hpp&quot;</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordtype">bool</span> should_construct_auto_dict;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;};</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="keyword">using</span> AFLState = AFLStateTemplate&lt;AFLTestcase&gt;;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::afl</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/templates/afl_state.hpp&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassExitStatusFeedback_html"><div class="ttname"><a href="classExitStatusFeedback.html">ExitStatusFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="exit__status__feedback_8hpp_source.html#l00025">exit_status_feedback.hpp:25</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>

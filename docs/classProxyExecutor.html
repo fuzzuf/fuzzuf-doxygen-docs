@@ -99,9 +99,9 @@ Collaboration diagram for ProxyExecutor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa65478b7301c5dd2a0d72cf1a0fc735c"><td class="memItemLeft" align="right" valign="top"><a id="aa65478b7301c5dd2a0d72cf1a0fc735c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ProxyExecutor</b> (const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;pargv, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, int cpuid_to_bind, bool record_stdout_and_err=false)</td></tr>
-<tr class="separator:aa65478b7301c5dd2a0d72cf1a0fc735c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc035dc2cdac04e9b5b62fcb20aa1ecc"><td class="memItemLeft" align="right" valign="top"><a id="afc035dc2cdac04e9b5b62fcb20aa1ecc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ProxyExecutor</b> (const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;pargv, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, bool record_stdout_and_err=false)</td></tr>
+<tr class="separator:afc035dc2cdac04e9b5b62fcb20aa1ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14e1326370420bc7107274e621f4cad0"><td class="memItemLeft" align="right" valign="top"><a id="a14e1326370420bc7107274e621f4cad0"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ProxyExecutor</b> (const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;pargv, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, const fs::path &amp;path_to_write_input)</td></tr>
 <tr class="separator:a14e1326370420bc7107274e621f4cad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,18 +222,9 @@ const u32&#160;</td><td class="memItemRight" valign="bottom"><b>afl_shm_size</b>
 <tr class="memitem:a1158478c34909f39ad81adbe4ed9ddd6"><td class="memItemLeft" align="right" valign="top"><a id="a1158478c34909f39ad81adbe4ed9ddd6"></a>
 const u32&#160;</td><td class="memItemRight" valign="bottom"><b>bb_shm_size</b></td></tr>
 <tr class="separator:a1158478c34909f39ad81adbe4ed9ddd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff00b960dae1e5566dba393b47711779"><td class="memItemLeft" align="right" valign="top"><a id="aff00b960dae1e5566dba393b47711779"></a>
-std::optional&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>binded_cpuid</b></td></tr>
-<tr class="separator:aff00b960dae1e5566dba393b47711779"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6c0376f353a64b55892a7d9ca11878b"><td class="memItemLeft" align="right" valign="top"><a id="ac6c0376f353a64b55892a7d9ca11878b"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>cpuid_to_bind</b></td></tr>
-<tr class="separator:ac6c0376f353a64b55892a7d9ca11878b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e0e9fbd47901a4170062918008ef2dc"><td class="memItemLeft" align="right" valign="top"><a id="a1e0e9fbd47901a4170062918008ef2dc"></a>
 const bool&#160;</td><td class="memItemRight" valign="bottom"><b>uses_asan</b> = false</td></tr>
 <tr class="separator:a1e0e9fbd47901a4170062918008ef2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94967cda42ae810b82f3008a489f14e6"><td class="memItemLeft" align="right" valign="top"><a id="a94967cda42ae810b82f3008a489f14e6"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>cpu_core_count</b></td></tr>
-<tr class="separator:a94967cda42ae810b82f3008a489f14e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8f09760be751ccbf5562d31bf595902"><td class="memItemLeft" align="right" valign="top"><a id="ae8f09760be751ccbf5562d31bf595902"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>bb_shmid</b></td></tr>
 <tr class="separator:ae8f09760be751ccbf5562d31bf595902"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -298,12 +289,6 @@ static constexpr u32&#160;</td><td class="memItemRight" valign="bottom"><b>MSAN_
 <tr class="memitem:a1d73d3e3dcfa5ef9a06fbc96c86397fb"><td class="memItemLeft" align="right" valign="top"><a id="a1d73d3e3dcfa5ef9a06fbc96c86397fb"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>INVALID_SHMID</b> = -1</td></tr>
 <tr class="separator:a1d73d3e3dcfa5ef9a06fbc96c86397fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc3baa18b7b021bfe572123bf99ed012"><td class="memItemLeft" align="right" valign="top"><a id="adc3baa18b7b021bfe572123bf99ed012"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>CPUID_DO_NOT_BIND</b> = -2</td></tr>
-<tr class="separator:adc3baa18b7b021bfe572123bf99ed012"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b2047eb7334db6814241a1abd0f87a5"><td class="memItemLeft" align="right" valign="top"><a id="a5b2047eb7334db6814241a1abd0f87a5"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>CPUID_BIND_WHICHEVER</b> = -1</td></tr>
-<tr class="separator:a5b2047eb7334db6814241a1abd0f87a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae65a85bd5ce50bcb264c11848ed4809b"><td class="memItemLeft" align="right" valign="top"><a id="ae65a85bd5ce50bcb264c11848ed4809b"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>FORKSRV_FD_READ</b> = 198</td></tr>
 <tr class="separator:ae65a85bd5ce50bcb264c11848ed4809b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -396,7 +381,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 <li>Temporary purpose: If actve_instance which signal handlers refer has a pointer to self value, assign nullptr to it and invalidate. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00220">220</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00161">161</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -435,7 +420,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00341">341</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00282">282</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -455,28 +440,6 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 </div><div class="memdoc">
 <p>Postcondition:</p><ul>
 <li>Run process below in order, with initializing members<ul>
-<li>Depending on the args, CPU cores to run both this process and the descendant processes need to be specified. There are three method to specify:<ol type="1">
-<li>Pass ProxyExecutor::CPUID_DO_NOT_BIND to cpu_to_bind to specify nothing.</li>
-<li>Pass integer value in [0, cpu core count) to cpu_to_bind to specify core number.</li>
-<li>Pass ProxyExecutor::CPUID BIND_WHICHEVER then this class looks for free cores and select it.</li>
-</ol>
-<ul>
-<li>Note1 (definition) :<ul>
-<li>Binding process P (and thats descendant) to core a means that process p (and thats descendant) is warran ied running on core a and other FUZZUF related processes never run on core a.</li>
-<li>Currently, it is just a functionality depending on sched_setaffinity on Linux, and in precise word, it i a functionality that limit core which has permission to run to just one using sched_setaffinity. Refer man pages and Util::GetFreeCpu if you wonder that works properly as described in definition.</li>
-<li>Therefore, this procedure is executed only on Linux</li>
-</ul>
-</li>
-<li>Note2 (The reason <a class="el" href="classExecutor.html">Executor</a> having this functionality)<ul>
-<li>Limiting CPU cores is <a class="el" href="classProxy.html" title="Do nothing but invoke all child nodes Since the node is not actually &quot;no operation&quot;,...">Proxy</a> specific operation that algorithms should not care.</li>
-<li>Therefore this <a class="el" href="classExecutor.html">Executor</a> should handle it.</li>
-<li>On the other hand, this procedure affects whole the process. In simple word, it requires only 1 executor existing in 1 process.</li>
-<li>As the future work, the class managing CPU cores and executors should be introduced for solving this limitation.</li>
-<li>For the time being, 3 options which cover all situation are provided.</li>
-</ul>
-</li>
-</ul>
-</li>
 <li>Configure signal handlers (Temporary workaround for non fork server mode. This will be removed in future.)</li>
 <li>Parsing and preprocessing of commandline arguments of PUT.</li>
 <li>Generate a file for sending input to PUT.</li>
@@ -488,12 +451,13 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 </ul>
 </li>
 <li>Configure environment variables for PUT</li>
-<li>If fork server mode, launch fork server. </li>
+<li>If fork server mode, launch fork server.</li>
+<li>NOTE: <a class="el" href="classExecutor.html">Executor</a> does not take care about binding a CPU core. The owner fuzzing algorithm is responsible to it. </li>
 </ul>
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00145">145</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00124">124</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -555,7 +519,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 
 <p>Implements <a class="el" href="classExecutor.html">Executor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00448">448</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00389">389</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -587,7 +551,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00294">294</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00235">235</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
 
 </div>
 </div>

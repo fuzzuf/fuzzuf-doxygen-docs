@@ -65,24 +65,24 @@ $(function() {
 <div class="title">VUzzer </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md183"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md231"></a>
 What is VUzzer</h1>
 <p><a href="https://github.com/vusec/vuzzer64">https://github.com/vusec/vuzzer64</a></p>
 <p>VUzzer[^ndss17] is a mutation-based fuzzer proposed at NDSS 2017 that attempt to discover unknown execution paths by modifying one or more seeds selected from the queue.</p>
 <p>The main feature of VUzzer is that it tries to estimate data structures from the PUT control flow and the data flow to find the execution paths efficiently without any knowledge of the source code or input formats. It has been a pioneer in application-aware fuzzer without prior knowledge. However, the original VUzzer implementation had problems running in modern environments, so we reimplemented it in fuzzuf.</p>
-<h1><a class="anchor" id="autotoc_md184"></a>
+<h1><a class="anchor" id="autotoc_md232"></a>
 Prerequisite</h1>
 <p>VUzzer PUT requires static analysis with IDAPython and instrumentation with PolyTracker before fuzzing. Install fuzzuf, Intel Pin, and PolyTracker as described in build_en.md, and follow the instruction below.</p>
-<h2><a class="anchor" id="autotoc_md185"></a>
+<h2><a class="anchor" id="autotoc_md233"></a>
 Disable ASLR</h2>
 <p>VUzzer uses the passed basic block addresses for coverage, so we must disable ASLR before running.</p>
 <div class="fragment"><div class="line">sudo sysctl -w kernel.randomize_va_space=0</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md186"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md234"></a>
 Mount tmpfs</h2>
 <p>PolyTracker writes propagated taint information to the database on taint analysis. We highly recommend using tmpfs for the database location because it is an I/O-intensive workload.</p>
 <div class="fragment"><div class="line">sudo mkdir -p /mnt/polytracker</div>
 <div class="line">sudo mount -t tmpfs -o size=100m tmpfs /mnt/polytracker</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md187"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md235"></a>
 Instrumentation with PolyTracker</h2>
 <div class="fragment"><div class="line">cd build</div>
 <div class="line">mkdir vuzzer_test</div>
@@ -90,7 +90,7 @@ Instrumentation with PolyTracker</h2>
 <div class="line">cd vuzzer_test</div>
 <div class="line">polybuild --instrument-target -g -o instrumented.bin calc.c</div>
 </div><!-- fragment --><p>The <code>instrumented.bin</code> is a <code>calc</code> binary with taint analysis operations instrumented by <code>polybuild</code>.</p>
-<h1><a class="anchor" id="autotoc_md188"></a>
+<h1><a class="anchor" id="autotoc_md236"></a>
 Static Analysis with IDAPython</h1>
 <div class="fragment"><div class="line">gcc -o calc calc.c</div>
 <div class="line">/path/to/idat64 -A -S../../tools/bbweight/bb-weight-ida.py calc</div>
@@ -105,7 +105,7 @@ Static Analysis with IDAPython</h1>
 <div class="line">instrumented_instrumented.o</div>
 <div class="line">unique.dict</div>
 <div class="line">weight</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md189"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md237"></a>
 Usage on CLI</h1>
 <p>Run the following command in <code>vuzzer_test</code> directory:</p>
 <div class="fragment"><div class="line">../fuzzuf vuzzer --in_dir=../test/put_binaries/calc/seeds -- ./calc @@</div>
@@ -159,7 +159,7 @@ Usage on CLI</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md190"></a>
+<h1><a class="anchor" id="autotoc_md238"></a>
 Algorithm Overview</h1>
 <p>VUzzer's fuzzing loop can be summarized as follows:</p><ol type="1">
 <li>For each initial seed given by the user, VUzzer collects the feedback (code coverage and exit status code) gathered from the program execution with the seed and adds it to the <code>seed_queue</code> as a new seed. All basic blocks contained in the code coverage are recorded as <code>Good_BB</code>. <br  />
@@ -178,7 +178,7 @@ Algorithm Overview</h1>
 </ol>
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md191"></a>
+<h1><a class="anchor" id="autotoc_md239"></a>
 References</h1>
 <p>[^ndss17]: Sanjay Rawat, Vivek Jain, Ashish Kumar, Lucian Cojocar, Cristiano Giuffrida, and Herbert Bos. 2017. VUzzer: Application-aware Evolutionary Fuzzing. In the Network and Distribution System Security (NDSS’17). </p>
 </div></div><!-- contents -->

@@ -98,9 +98,9 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCArgvAndDecideInputMode</b> ()</td></tr>
 <tr class="separator:a7a01cff4bceb93e7e37618d587730070"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classProxyExecutor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classProxyExecutor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classProxyExecutor.html">ProxyExecutor</a></td></tr>
-<tr class="memitem:aa65478b7301c5dd2a0d72cf1a0fc735c inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="aa65478b7301c5dd2a0d72cf1a0fc735c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ProxyExecutor</b> (const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;pargv, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, int cpuid_to_bind, bool record_stdout_and_err=false)</td></tr>
-<tr class="separator:aa65478b7301c5dd2a0d72cf1a0fc735c inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc035dc2cdac04e9b5b62fcb20aa1ecc inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="afc035dc2cdac04e9b5b62fcb20aa1ecc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ProxyExecutor</b> (const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;pargv, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, bool record_stdout_and_err=false)</td></tr>
+<tr class="separator:afc035dc2cdac04e9b5b62fcb20aa1ecc inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14e1326370420bc7107274e621f4cad0 inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a14e1326370420bc7107274e621f4cad0"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ProxyExecutor</b> (const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;pargv, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, const fs::path &amp;path_to_write_input)</td></tr>
 <tr class="separator:a14e1326370420bc7107274e621f4cad0 inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,18 +217,9 @@ const u32&#160;</td><td class="memItemRight" valign="bottom"><b>afl_shm_size</b>
 <tr class="memitem:a1158478c34909f39ad81adbe4ed9ddd6 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a1158478c34909f39ad81adbe4ed9ddd6"></a>
 const u32&#160;</td><td class="memItemRight" valign="bottom"><b>bb_shm_size</b></td></tr>
 <tr class="separator:a1158478c34909f39ad81adbe4ed9ddd6 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff00b960dae1e5566dba393b47711779 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="aff00b960dae1e5566dba393b47711779"></a>
-std::optional&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>binded_cpuid</b></td></tr>
-<tr class="separator:aff00b960dae1e5566dba393b47711779 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6c0376f353a64b55892a7d9ca11878b inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ac6c0376f353a64b55892a7d9ca11878b"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>cpuid_to_bind</b></td></tr>
-<tr class="separator:ac6c0376f353a64b55892a7d9ca11878b inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e0e9fbd47901a4170062918008ef2dc inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a1e0e9fbd47901a4170062918008ef2dc"></a>
 const bool&#160;</td><td class="memItemRight" valign="bottom"><b>uses_asan</b> = false</td></tr>
 <tr class="separator:a1e0e9fbd47901a4170062918008ef2dc inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94967cda42ae810b82f3008a489f14e6 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a94967cda42ae810b82f3008a489f14e6"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>cpu_core_count</b></td></tr>
-<tr class="separator:a94967cda42ae810b82f3008a489f14e6 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8f09760be751ccbf5562d31bf595902 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ae8f09760be751ccbf5562d31bf595902"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>bb_shmid</b></td></tr>
 <tr class="separator:ae8f09760be751ccbf5562d31bf595902 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -291,12 +282,6 @@ static constexpr u32&#160;</td><td class="memItemRight" valign="bottom"><b>MSAN_
 <tr class="memitem:a1d73d3e3dcfa5ef9a06fbc96c86397fb inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a1d73d3e3dcfa5ef9a06fbc96c86397fb"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>INVALID_SHMID</b> = -1</td></tr>
 <tr class="separator:a1d73d3e3dcfa5ef9a06fbc96c86397fb inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc3baa18b7b021bfe572123bf99ed012 inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="adc3baa18b7b021bfe572123bf99ed012"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>CPUID_DO_NOT_BIND</b> = -2</td></tr>
-<tr class="separator:adc3baa18b7b021bfe572123bf99ed012 inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b2047eb7334db6814241a1abd0f87a5 inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a5b2047eb7334db6814241a1abd0f87a5"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>CPUID_BIND_WHICHEVER</b> = -1</td></tr>
-<tr class="separator:a5b2047eb7334db6814241a1abd0f87a5 inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae65a85bd5ce50bcb264c11848ed4809b inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ae65a85bd5ce50bcb264c11848ed4809b"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>FORKSRV_FD_READ</b> = 198</td></tr>
 <tr class="separator:ae65a85bd5ce50bcb264c11848ed4809b inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>

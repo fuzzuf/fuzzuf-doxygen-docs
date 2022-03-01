@@ -117,8 +117,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a1c6211507a4b8a7010a91fddccf23a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afefb0620d92f61ee6ae1ff3e1b7d92cc"><td class="memItemLeft" align="right" valign="top">std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#afefb0620d92f61ee6ae1ff3e1b7d92cc">bb_shm_size</a> = 65536u</td></tr>
 <tr class="separator:afefb0620d92f61ee6ae1ff3e1b7d92cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb54b34f9caac76175e3e75804081094"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#adb54b34f9caac76175e3e75804081094">cpuid_to_bind</a> = NativeLinuxExecutor::CPUID_DO_NOT_BIND</td></tr>
+<tr class="memitem:adb54b34f9caac76175e3e75804081094"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#adb54b34f9caac76175e3e75804081094">cpuid_to_bind</a> = Util::CPUID_DO_NOT_BIND</td></tr>
 <tr class="separator:adb54b34f9caac76175e3e75804081094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8a463addcf7e819177f9e86036df026"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#af8a463addcf7e819177f9e86036df026">cpu_core_count</a> = 0</td></tr>
+<tr class="separator:af8a463addcf7e819177f9e86036df026"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ca25aa13077441f058c12ba985a3db4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a0ca25aa13077441f058c12ba985a3db4">cpu_aff</a> = Util::CPUID_DO_NOT_BIND</td></tr>
+<tr class="separator:a0ca25aa13077441f058c12ba985a3db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1699e1dfde80c48460352b10d9425bf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ac1699e1dfde80c48460352b10d9425bf">use_afl_coverage</a> = true</td></tr>
 <tr class="separator:ac1699e1dfde80c48460352b10d9425bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab9fba1e024e794e9fe1a03462f8cd96"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#aab9fba1e024e794e9fe1a03462f8cd96">sparse_energy_updates</a> = 100u</td></tr>
@@ -221,7 +225,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Size of AFL compatible coverage </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00272">272</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00280">280</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -238,7 +242,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Size of basic block coverage </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00277">277</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00285">285</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -255,7 +259,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>true: ignore input files with diffrent name of sha1 hash of file contents false: accept all input files </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00397">397</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00415">415</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -272,7 +276,41 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Parameters to modify behaviour of libFuzzer </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00207">207</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00215">215</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0ca25aa13077441f058c12ba985a3db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ca25aa13077441f058c12ba985a3db4">&#9670;&nbsp;</a></span>cpu_aff</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::cpu_aff = Util::CPUID_DO_NOT_BIND</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Selected CPU core </p>
+
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00300">300</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af8a463addcf7e819177f9e86036df026"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8a463addcf7e819177f9e86036df026">&#9670;&nbsp;</a></span>cpu_core_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::cpu_core_count = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>CPU core count </p>
+
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00295">295</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -283,13 +321,13 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::cpuid_to_bind = NativeLinuxExecutor::CPUID_DO_NOT_BIND</td>
+          <td class="memname">int fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::cpuid_to_bind = Util::CPUID_DO_NOT_BIND</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>cpuid restriction to execute the target </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00282">282</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00290">290</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -306,7 +344,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>If true, only crashed execution is recorded to solutions. Otherwise, all execution results added to corupus are recorded to solutions. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00299">299</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00317">317</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -323,7 +361,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>true: each corpus elements can be selected as crossover with the same probability false: each corpus elements can be selected as crossover with the distribution used to select seed </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00376">376</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00394">394</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -340,7 +378,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Load these dictionaries as manual dict. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00202">202</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00210">210</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -357,7 +395,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Use crossover mutator </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00232">232</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00240">240</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -374,7 +412,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Max size of memory the target can use </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00261">261</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00269">269</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -391,7 +429,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Target that doesn't exit in the following time are terminated and treated as timeout. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00256">256</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00264">264</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -408,7 +446,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>If true, the target is executed using fork server mode. Otherwise, the target is executed using non fork server mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00267">267</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00275">275</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -425,7 +463,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Load initial inputs from this directory </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00192">192</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00200">200</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -442,7 +480,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>If zero, input value length is constant during fuzzing. Otherwise, input value length starts at 10 and increase for each specified cycles until it exceeds max_input_length </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00318">318</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00336">336</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -459,7 +497,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Maximum length of the test input. If 0, the appropriate length is automatically selected using initial inputs. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00306">306</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00324">324</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -476,7 +514,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Maximum number of applied mutations for one input value that is not stored in corpus. Note that this value doesn't limit actual local loop count, but just used to detect over mutated input value. Typically, this value need to be equal or higher than max_mutation_retry_count. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00227">227</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00235">235</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -493,7 +531,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Max local loop count libFuzzer applies mutate-execute-feedback flow multiple times until new feature is detected or loop count exceeds this value. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00220">220</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00228">228</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -510,7 +548,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>The threshold length of mutation history to display when verbosity == 1 </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00245">245</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00253">253</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -527,7 +565,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>The threshold length of input value to display </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00250">250</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00258">258</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -544,7 +582,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>merge all initial inputs into first input directory </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00335">335</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00353">353</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -562,7 +600,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 <p>Max mutation retry count</p>
 <p>Since mutation may fail for exceeding max length, empty dictionary or other reasons, libFuzzer try to retry mutation until the input is actually mutated or retry count exceeds this value. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00214">214</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00222">222</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -579,7 +617,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>true: limit mutated input values in range of ASCII character. false: mutation can produce non ASCII bytes. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00357">357</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00375">375</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -596,7 +634,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Store solutions to this directory </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00197">197</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00205">205</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -613,7 +651,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>true: execute inittial inputs in smallmost to largemost false: execute initial inputs in order </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00391">391</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00409">409</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -630,7 +668,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>true: shuffle initial inputs before execute them false: execute initial inputs in order </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00385">385</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00403">403</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -647,7 +685,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>On entropic mode, even if distribution updating is not required, it is updated with a probability of 1/n. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00293">293</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00311">311</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -664,7 +702,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Number of individual test runs. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00311">311</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00329">329</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -681,7 +719,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>If true, feature is calculated using AFL compatible coverage Otherwise, feature is calculated using basic block coverage </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00288">288</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00306">306</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -698,7 +736,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><div class="memdoc">
 <p>Verbosity of message. 0 : Don't display details. 1 : Display limited range of details. 2 : Display complete details. </p>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00240">240</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2config_8hpp_source.html#l00248">248</a> of file <a class="el" href="libfuzzer_2config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>

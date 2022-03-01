@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['removecvrt_1815',['RemoveCvrT',['../remove__cvr_8hpp.html#a3c48a14e39899353a39a7fd9bd086b41',1,'fuzzuf::utils::type_traits']]]
+  ['partialcorpus_1965',['PartialCorpus',['../namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a3a40550db83af1fcbaf15d705b53624a',1,'fuzzuf::algorithm::libfuzzer']]]
 ];

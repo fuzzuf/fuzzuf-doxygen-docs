@@ -194,7 +194,7 @@ $(function() {
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-brainf_ck&quot;</span>, output_file_path.string()},</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        create_info.exec_timelimit_ms, create_info.exec_memlimit,</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        create_info.forksrv, path_to_write_seed, create_info.afl_shm_size,</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        create_info.bb_shm_size, create_info.cpuid_to_bind));</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        create_info.bb_shm_size));</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    std::size_t solution_count = 0u;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;filename :</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;         fs::directory_iterator{create_info.output_dir}) {</div>

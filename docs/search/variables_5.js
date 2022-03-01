@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['feature_5fdebug_1745',['feature_debug',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a5d07a5faef40b94168702e4de716504a',1,'fuzzuf::algorithm::libfuzzer::Config']]],
-  ['feature_5ffrequency_5fthreshold_1746',['feature_frequency_threshold',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html#ae86dfe37761694b152348d1e7c832e48',1,'fuzzuf::algorithm::libfuzzer::EntropicConfig']]],
-  ['features_5fcount_1747',['features_count',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a4f1e10fbf661fe66f0f9abaafcd401b6',1,'fuzzuf::algorithm::libfuzzer::InputInfo']]],
-  ['forksrv_1748',['forksrv',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a09df4307b722b9512936c790375ccd5d',1,'fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo']]],
-  ['found_5funique_5ffeatures_1749',['found_unique_features',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a5485b04a6ee31074298d9a23035e8eac',1,'fuzzuf::algorithm::libfuzzer::InputInfo']]]
+  ['feature_5fdebug_1894',['feature_debug',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a5d07a5faef40b94168702e4de716504a',1,'fuzzuf::algorithm::libfuzzer::Config']]],
+  ['feature_5ffrequency_5fthreshold_1895',['feature_frequency_threshold',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html#ae86dfe37761694b152348d1e7c832e48',1,'fuzzuf::algorithm::libfuzzer::EntropicConfig']]],
+  ['features_5fcount_1896',['features_count',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a4f1e10fbf661fe66f0f9abaafcd401b6',1,'fuzzuf::algorithm::libfuzzer::InputInfo']]],
+  ['forksrv_1897',['forksrv',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a09df4307b722b9512936c790375ccd5d',1,'fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo']]],
+  ['found_5funique_5ffeatures_1898',['found_unique_features',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a5485b04a6ee31074298d9a23035e8eac',1,'fuzzuf::algorithm::libfuzzer::InputInfo']]]
 ];

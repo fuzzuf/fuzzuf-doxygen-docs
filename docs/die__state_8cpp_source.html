@@ -895,16 +895,16 @@ $(function() {
 <div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160; </div>
 <div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;  <span class="comment">/* Provide some CPU utilization stats. */</span></div>
 <div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160; </div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;  <span class="keywordflow">if</span> (executor-&gt;cpu_core_count) {</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;  <span class="keywordflow">if</span> (cpu_core_count) {</div>
 <div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;    <span class="keywordtype">double</span> cur_runnable = GetRunnableProcesses(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    u32 cur_utilization = cur_runnable * 100 / executor-&gt;cpu_core_count;</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    u32 cur_utilization = cur_runnable * 100 / cpu_core_count;</div>
 <div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160; </div>
 <div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    std::string cpu_color = cCYA;</div>
 <div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160; </div>
 <div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    <span class="comment">/* If we could still run one or more processes, use green. */</span></div>
 <div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160; </div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    <span class="keywordflow">if</span> (executor-&gt;cpu_core_count &gt; 1 &amp;&amp;</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;        cur_runnable + 1 &lt;= executor-&gt;cpu_core_count)</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    <span class="keywordflow">if</span> (cpu_core_count &gt; 1 &amp;&amp;</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;        cur_runnable + 1 &lt;= cpu_core_count)</div>
 <div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;      cpu_color = cLGN;</div>
 <div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160; </div>
 <div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    <span class="comment">/* If we&#39;re clearly oversubscribed, use red. */</span></div>
@@ -913,9 +913,9 @@ $(function() {
 <div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160; </div>
 <div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;<span class="preprocessor">#ifdef HAVE_AFFINITY</span></div>
 <div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160; </div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    <span class="keywordflow">if</span> (executor-&gt;binded_cpuid.has_value()) {</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    <span class="keywordflow">if</span> (cpu_aff &gt;= 0) {</div>
 <div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;      MSG(SP20 SP20 SP20 SP5 cGRA <span class="stringliteral">&quot;[cpu%03d:%s%3u%%&quot;</span> cGRA <span class="stringliteral">&quot;]\r&quot;</span> cRST,</div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;          std::min(executor-&gt;binded_cpuid.value(), 999),</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;          std::min(cpu_aff, 999),</div>
 <div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;          cpu_color.c_str(), std::min(cur_utilization, 999u));</div>
 <div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;      MSG(SP20 SP20 SP20 SP5 cGRA <span class="stringliteral">&quot;   [cpu:%s%3u%%&quot;</span> cGRA <span class="stringliteral">&quot;]\r&quot;</span> cRST,</div>

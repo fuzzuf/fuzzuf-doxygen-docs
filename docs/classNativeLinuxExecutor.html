@@ -93,8 +93,8 @@ Collaboration diagram for NativeLinuxExecutor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac9940dc1ad9be5b1c604a54781c857ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNativeLinuxExecutor.html#ac9940dc1ad9be5b1c604a54781c857ca">NativeLinuxExecutor</a> (const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, int cpuid_to_bind, bool record_stdout_and_err=false)</td></tr>
-<tr class="separator:ac9940dc1ad9be5b1c604a54781c857ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4411886aea7d4a80ec24fc481a172e4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNativeLinuxExecutor.html#a4411886aea7d4a80ec24fc481a172e4a">NativeLinuxExecutor</a> (const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, bool record_stdout_and_err=false)</td></tr>
+<tr class="separator:a4411886aea7d4a80ec24fc481a172e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d5317cb9b88ceff6f28634f8027efae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNativeLinuxExecutor.html#a3d5317cb9b88ceff6f28634f8027efae">~NativeLinuxExecutor</a> ()</td></tr>
 <tr class="separator:a3d5317cb9b88ceff6f28634f8027efae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9ffe817c88053fde62b648649579b9d"><td class="memItemLeft" align="right" valign="top"><a id="af9ffe817c88053fde62b648649579b9d"></a>
@@ -198,15 +198,9 @@ const u32&#160;</td><td class="memItemRight" valign="bottom"><b>afl_shm_size</b>
 <tr class="memitem:aeaa3270562cca71ea8088e1b0b88072a"><td class="memItemLeft" align="right" valign="top"><a id="aeaa3270562cca71ea8088e1b0b88072a"></a>
 const u32&#160;</td><td class="memItemRight" valign="bottom"><b>bb_shm_size</b></td></tr>
 <tr class="separator:aeaa3270562cca71ea8088e1b0b88072a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a461ef0eab4f86ffb42c26ae7f4b38bc7"><td class="memItemLeft" align="right" valign="top"><a id="a461ef0eab4f86ffb42c26ae7f4b38bc7"></a>
-std::optional&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>binded_cpuid</b></td></tr>
-<tr class="separator:a461ef0eab4f86ffb42c26ae7f4b38bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abac66f9c592948aacb31bb3c910329af"><td class="memItemLeft" align="right" valign="top"><a id="abac66f9c592948aacb31bb3c910329af"></a>
 const bool&#160;</td><td class="memItemRight" valign="bottom"><b>uses_asan</b> = false</td></tr>
 <tr class="separator:abac66f9c592948aacb31bb3c910329af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41033fbcb4abef369c6a58459be2babb"><td class="memItemLeft" align="right" valign="top"><a id="a41033fbcb4abef369c6a58459be2babb"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>cpu_core_count</b></td></tr>
-<tr class="separator:a41033fbcb4abef369c6a58459be2babb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf774af2876ba3e6ced321f50d383b9d"><td class="memItemLeft" align="right" valign="top"><a id="abf774af2876ba3e6ced321f50d383b9d"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>bb_shmid</b></td></tr>
 <tr class="separator:abf774af2876ba3e6ced321f50d383b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -271,12 +265,6 @@ static constexpr u32&#160;</td><td class="memItemRight" valign="bottom"><b>MSAN_
 <tr class="memitem:ad0673b9ba8dc7f8f2cdf7486851908b8"><td class="memItemLeft" align="right" valign="top"><a id="ad0673b9ba8dc7f8f2cdf7486851908b8"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>INVALID_SHMID</b> = -1</td></tr>
 <tr class="separator:ad0673b9ba8dc7f8f2cdf7486851908b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9fa940687ac9a5f4a450d005ac8c184"><td class="memItemLeft" align="right" valign="top"><a id="ad9fa940687ac9a5f4a450d005ac8c184"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>CPUID_DO_NOT_BIND</b> = -2</td></tr>
-<tr class="separator:ad9fa940687ac9a5f4a450d005ac8c184"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54fe47828d3eaaae9f70e915a45da6c6"><td class="memItemLeft" align="right" valign="top"><a id="a54fe47828d3eaaae9f70e915a45da6c6"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>CPUID_BIND_WHICHEVER</b> = -1</td></tr>
-<tr class="separator:a54fe47828d3eaaae9f70e915a45da6c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d5dfe2fbd6cbfd09f0b7407960c89fe"><td class="memItemLeft" align="right" valign="top"><a id="a5d5dfe2fbd6cbfd09f0b7407960c89fe"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>FORKSRV_FD_READ</b> = 198</td></tr>
 <tr class="separator:a5d5dfe2fbd6cbfd09f0b7407960c89fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -343,8 +331,8 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="native__linux__executor_8hpp_source.html#l00041">41</a> of file <a class="el" href="native__linux__executor_8hpp_source.html">native_linux_executor.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac9940dc1ad9be5b1c604a54781c857ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9940dc1ad9be5b1c604a54781c857ca">&#9670;&nbsp;</a></span>NativeLinuxExecutor()</h2>
+<a id="a4411886aea7d4a80ec24fc481a172e4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4411886aea7d4a80ec24fc481a172e4a">&#9670;&nbsp;</a></span>NativeLinuxExecutor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -394,12 +382,6 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>cpuid_to_bind</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>record_stdout_and_err</em> = <code>false</code>&#160;</td>
         </tr>
@@ -413,28 +395,6 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <p>Precondition:</p><ul>
 <li>A file can be created at path path_str_to_write_input. Postcondition:<ul>
 <li>Run process below in order, with initializing members<ul>
-<li>Depending on the args, CPU cores to run both this process and the descendant processes need to be specified. There are three method to specify:<ol type="1">
-<li>Pass NativeLinuxExecutor::CPUID_DO_NOT_BIND to cpu_to_bind to specify nothing.</li>
-<li>Pass integer value in [0, cpu core count) to cpu_to_bind to specify core number.</li>
-<li>Pass NativeLinuxExecutor::CPUID BIND_WHICHEVER then this class looks for free cores and select it.</li>
-</ol>
-<ul>
-<li>Note1 (definition) :<ul>
-<li>Binding process P (and thats descendant) to core a means that process p (and thats descendant) is warrantied running on core a and other FUZZUF related processes never run on core a.</li>
-<li>Currently, it is just a functionality depending on sched_setaffinity on Linux, and in precise word, it is a functionality that limit core which has permission to run to just one using sched_setaffinity. Refer man pages and Util::GetFreeCpu if you wonder that works properly as described in definition.</li>
-<li>Therefore, this procedure is executed only on Linux</li>
-</ul>
-</li>
-<li>Note2 (The reason <a class="el" href="classExecutor.html">Executor</a> having this functionality)<ul>
-<li>Limiting CPU cores is <a class="el" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a> specific operation that algorithms should not care.</li>
-<li>Therefore this <a class="el" href="classExecutor.html">Executor</a> should handle it.</li>
-<li>On the other hand, this procedure affects whole the process. In simple word, it requires only 1 executor existing in 1 process.</li>
-<li>As the future work, the class managing CPU cores and executors should be introduced for solving this limitation.</li>
-<li>For the time being, 3 options which cover all situation are provided.</li>
-</ul>
-</li>
-</ul>
-</li>
 <li>Configure signal handlers (Temporary workaround for non fork server mode. This will be removed in future.)</li>
 <li>Parsing and preprocessing of commandline arguments of PUT.</li>
 <li>Generate a file for sending input to PUT.</li>
@@ -446,14 +406,15 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </ul>
 </li>
 <li>Configure environment variables for PUT</li>
-<li>If fork server mode, launch fork server. </li>
+<li>If fork server mode, launch fork server.</li>
+<li>NOTE: <a class="el" href="classExecutor.html">Executor</a> does not take care about binding a CPU core. The owner fuzzing algorithm is responsible to it. </li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00077">77</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00062">62</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -480,7 +441,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <li>Temporary purpose: If actve_instance which signal handlers refer has a pointer to self value, assign nullptr to it and invalidate. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00175">175</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00118">118</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -519,7 +480,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00274">274</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00217">217</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -581,7 +542,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 
 <p>Implements <a class="el" href="classExecutor.html">Executor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00380">380</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00323">323</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -613,7 +574,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00228">228</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00171">171</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>

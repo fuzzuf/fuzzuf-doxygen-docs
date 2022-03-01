@@ -88,7 +88,7 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/executor/coresight_executor.hpp&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classCoreSightExecutor.html#a4e139ec2f0457a8f702355b7c5dd1e53">   24</a></span>&#160;<a class="code" href="classCoreSightExecutor.html#a4e139ec2f0457a8f702355b7c5dd1e53">CoreSightExecutor::CoreSightExecutor</a>(</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classCoreSightExecutor.html#abfe1b809a7188cd53237ccc230515a4f">   24</a></span>&#160;<a class="code" href="classCoreSightExecutor.html#abfe1b809a7188cd53237ccc230515a4f">CoreSightExecutor::CoreSightExecutor</a>(</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">const</span> fs::path &amp;proxy_path,</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;argv,</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    u32 exec_timelimit_ms,</div>
@@ -96,18 +96,17 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">bool</span> forksrv,</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">const</span> fs::path &amp;path_to_write_input,</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    u32 afl_shm_size,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">int</span> cpuid_to_bind,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">bool</span> record_stdout_and_err</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;) : <a class="code" href="classProxyExecutor.html">ProxyExecutor</a> ( proxy_path, std::vector&lt;std::string&gt;(), argv, exec_timelimit_ms, exec_memlimit, forksrv,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    path_to_write_input, afl_shm_size, 0, cpuid_to_bind, record_stdout_and_err )</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ProxyExecutor::SetCArgvAndDecideInputMode();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classProxyExecutor.html#abda7cc8cb84f3a5088437c22537efac2">ProxyExecutor::Initilize</a>();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">bool</span> record_stdout_and_err</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;) : <a class="code" href="classProxyExecutor.html">ProxyExecutor</a> ( proxy_path, std::vector&lt;std::string&gt;(), argv, exec_timelimit_ms, exec_memlimit, forksrv,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    path_to_write_input, afl_shm_size, 0, record_stdout_and_err )</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    ProxyExecutor::SetCArgvAndDecideInputMode();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classProxyExecutor.html#abda7cc8cb84f3a5088437c22537efac2">ProxyExecutor::Initilize</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassCoreSightExecutor_html_a4e139ec2f0457a8f702355b7c5dd1e53"><div class="ttname"><a href="classCoreSightExecutor.html#a4e139ec2f0457a8f702355b7c5dd1e53">CoreSightExecutor::CoreSightExecutor</a></div><div class="ttdeci">CoreSightExecutor(const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, int cpuid_to_bind, bool record_stdout_and_err)</div><div class="ttdef"><b>Definition:</b> <a href="coresight__executor_8cpp_source.html#l00024">coresight_executor.cpp:24</a></div></div>
 <div class="ttc" id="aclassProxyExecutor_html"><div class="ttname"><a href="classProxyExecutor.html">ProxyExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="proxy__executor_8hpp_source.html#l00044">proxy_executor.hpp:44</a></div></div>
-<div class="ttc" id="aclassProxyExecutor_html_abda7cc8cb84f3a5088437c22537efac2"><div class="ttname"><a href="classProxyExecutor.html#abda7cc8cb84f3a5088437c22537efac2">ProxyExecutor::Initilize</a></div><div class="ttdeci">void Initilize()</div><div class="ttdef"><b>Definition:</b> <a href="proxy__executor_8cpp_source.html#l00145">proxy_executor.cpp:145</a></div></div>
+<div class="ttc" id="aclassCoreSightExecutor_html_abfe1b809a7188cd53237ccc230515a4f"><div class="ttname"><a href="classCoreSightExecutor.html#abfe1b809a7188cd53237ccc230515a4f">CoreSightExecutor::CoreSightExecutor</a></div><div class="ttdeci">CoreSightExecutor(const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, bool record_stdout_and_err)</div><div class="ttdef"><b>Definition:</b> <a href="coresight__executor_8cpp_source.html#l00024">coresight_executor.cpp:24</a></div></div>
+<div class="ttc" id="aclassProxyExecutor_html_abda7cc8cb84f3a5088437c22537efac2"><div class="ttname"><a href="classProxyExecutor.html#abda7cc8cb84f3a5088437c22537efac2">ProxyExecutor::Initilize</a></div><div class="ttdeci">void Initilize()</div><div class="ttdef"><b>Definition:</b> <a href="proxy__executor_8cpp_source.html#l00124">proxy_executor.cpp:124</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

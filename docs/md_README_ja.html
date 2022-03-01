@@ -68,10 +68,10 @@ $(function() {
 <div class="textblock"><p><img src="/docs/resources/img/fuzzuf-afl-exifutil.png" alt="fuzzuf-afl-exifutil" class="inline"/></p>
 <p>**fuzzuf**（**fuzz**ing **u**nification **f**ramework）は、DSLによるファジングループ（fuzzing loop）の柔軟な設定と拡張性を兼ね備えた、ファジングツール（ファザー）記述のためのフレームワークです。</p>
 <p>fuzzufのビルド方法とチュートリアルは、build.mdとtutorial_ja.mdを参照してください。</p>
-<h1><a class="anchor" id="autotoc_md278"></a>
+<h1><a class="anchor" id="autotoc_md328"></a>
 fuzzufの目的 (Why use fuzzuf?)</h1>
 <p>fuzzufは、数あるファザー内で定義されるファジングループを、DSLによる記法でブロックを組み合わせるように表現することで、既存のアルゴリズムに対する拡張性を保ちながら、ファジングループ内の挙動を柔軟に定義可能にするためのフレームワークです。 マルチプラットフォームに対応可能な、AFL、VUzzer、libFuzzerを含む複数のファザーが定義済みで、ユーザーによるさらなる拡張を可能としています。</p>
-<h1><a class="anchor" id="autotoc_md279"></a>
+<h1><a class="anchor" id="autotoc_md329"></a>
 fuzzufの利点（Benefits of using fuzzuf）</h1>
 <p>fuzzuf上でファザーを記述することには、大きくわけて4つの利点があります。</p>
 <ul>
@@ -87,14 +87,14 @@ fuzzufの利点（Benefits of using fuzzuf）</h1>
  さらに、DSLの差分を見ることで、その派生物がオリジナルに対しどのような変更を加えたのか、ということがひと目でわかるようになります（これはレビュアー、あるいは他のファジング研究者にとっても大きい利点と言えるでしょう）。</li>
 <li>AFL派生ファザー実装のためのテンプレート fuzzufでは、AFLがファザーの（C++）テンプレートとしても利用可能です。これは、既存および新しいAFL派生ファザーを、fuzzuf上で実装・レビューするためのコストが大幅に下げられていることを意味します。 例として、fuzzufのAFLFastは、このテンプレートをもとに実装されています。元のAFLとの差分は、二つのルーティンとの実装と、ファザーの状態を記録する構造体にとどまっており、テンプレートが提供するフロー定義は変更せず、そのまま利用しています。</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md280"></a>
+<h1><a class="anchor" id="autotoc_md330"></a>
 fuzzufの強み（HierarFlow）</h1>
 <p>fuzzufではファジングループ記述に、**HierarFlow**という独自のDSLを用います。C++言語の上で実装されており、木構造を模した文法を用いて、ファジングループをビルディングブロックのように組み合わせて記述できるのが特長です。 これにより、ファジングループの構造が明確に示せるため、既存、および新しいファザーを読みやすく書くことができます。 例として、fuzzufに実装済みであるAFLファザーは、入力のミューテーター（決定的およびランダム）、PUT実行、クラッシュを起こす入力を保存する機能などに細分化されます。fuzzufでは、それぞれの細分化されたプリミティブを、C++コードのルーティンとして記述し、HierarFlow演算子で適切につなげることで、ファジングループを構成しています。 また、ルーティン内の挙動を自由に記述可能なため、ルーティン（実際には木構造におけるノード）をどのようにして連鎖させるかを意識して書くことで、ファジングループの拡張性は非常に高いものとなります。</p>
 <p>HierarFlowのドキュメントは、近日中に追加される予定です。</p>
-<h1><a class="anchor" id="autotoc_md281"></a>
+<h1><a class="anchor" id="autotoc_md331"></a>
 実装済みファザー一覧</h1>
 <p>現在、fuzzufでは、以下のファザーがデフォルトで実装されています。 ファザーの説明・fuzzufのCLIを通した使い方については、それぞれのドキュメントを参照ください。 また、CLIからfuzzufを使う場合、fuzzuf全体で共通のグローバルオプションと各ファザー固有のローカルオプションは、<code>--</code>で区切られることに留意してください。</p>
-<h2><a class="anchor" id="autotoc_md282"></a>
+<h2><a class="anchor" id="autotoc_md332"></a>
 AFL</h2>
 <p>CGF（Coverage-guided Greybox Fuzzer）を代表する汎用ファザーの、fuzzufにおける再実装です。 fuzzufではAFLが、単体のファザーとしてだけでなく、派生ファザー実装のためのテンプレートとしても提供されています。 このAFLの実装は<a href="https://github.com/fuzzuf/fuzzuf-afl-artifact">fuzzuf/fuzzuf-afl-artifact</a>で示しているようにオリジナルのAFLを可能な限り再現しており、かつ同等以上実行速度を実現しています。</p><ul>
 <li>紹介とCLIの使い方</li>
@@ -102,7 +102,7 @@ AFL</h2>
 <li><a href="/docs/algorithms/afl/algorithm_ja.md##hashed-edge-coverage">アルゴリズム詳細</a></li>
 <li>fuzzufでの実装</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md283"></a>
+<h2><a class="anchor" id="autotoc_md333"></a>
 AFLFast</h2>
 <p>上記のAFLテンプレートを利用した、AFLFastの実装です。パワースケジューリングの調整により、オリジナルのAFLからパフォーマンスの向上を図っています。</p><ul>
 <li>紹介とCLIの使い方</li>
@@ -110,7 +110,7 @@ AFLFast</h2>
 <li><a href="/docs/algorithms/aflfast/algorithm_ja.md#パワースケジュールについて">アルゴリズム詳細</a></li>
 <li>fuzzufでの実装</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md284"></a>
+<h2><a class="anchor" id="autotoc_md334"></a>
 VUzzer</h2>
 <p>PUTのコントロールフローやデータフローを解析することでプログラムの構造を推測する、ミューテーションベースドファザーです。 オリジナルのVUzzerではlibdft64を用いてデータフロー解析を行なっていましたが、モダンな環境では動作しないという問題がありました。そこで、fuzzufでは改造された<a href="https://github.com/fuzzuf/polytracker">PolyTracker</a>を使用し、モダンな環境でもVUzzerを動作可能としています。</p><ul>
 <li>紹介とCLIの使い方</li>
@@ -118,7 +118,7 @@ VUzzer</h2>
 <li>アルゴリズム詳細</li>
 <li>fuzzufでの実装</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md285"></a>
+<h2><a class="anchor" id="autotoc_md335"></a>
 libFuzzer</h2>
 <p>LLVMプロジェクトの、compiler-rtのライブラリのひとつとして提供されている、CGFです。</p><ul>
 <li>紹介とCLIの使い方 (英語)</li>
@@ -126,7 +126,7 @@ libFuzzer</h2>
 <li><a href="/docs/algorithms/libfuzzer/algorithm_ja.md#libfuzzerの仕組み">アルゴリズム詳細</a></li>
 <li><a href="/docs/algorithms/libfuzzer/algorithm_ja.md#fuzzufにおける実装">fuzzufでの実装</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md286"></a>
+<h2><a class="anchor" id="autotoc_md336"></a>
 Nezha</h2>
 <p>ひとつの入力値を用いて、複数の異なる実装を持つPUTに対する実行結果の差分から、プログラムの不具合の発見を試みる、libFuzzerを元としたファザーです。 fuzzufにおいて、差分によるファジング（differential fuzzing）のアルゴリズムが実装可能であることを示しています。</p>
 <ul>
@@ -135,10 +135,24 @@ Nezha</h2>
 <li><a href="/docs/algorithms/nezha/algorithm_ja.md#nezha固有のノード">アルゴリズム詳細</a></li>
 <li><a href="/docs/algorithms/nezha/algorithm_ja.md#fuzzufにおける実装">fuzzufでの実装</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md287"></a>
+<h2><a class="anchor" id="autotoc_md337"></a>
+DIE</h2>
+<p>DIEは、JavaScriptエンジンに対する文法ベースファザーです。 JavaScriptの文法的に正しい入力を生成するだけでなく、aspect-preservingと呼ばれる、入力コーパスの持つスクリプトの特徴（aspect）を保持したままミューテーションすることで、過去に発見されたバグと似た種類のバグを見つけることを目的としています。</p>
+<ul>
+<li>紹介とCLIの使い方</li>
+<li><a href="/docs/algorithms/die/algorithm_ja.md#アルゴリズム概要">アルゴリズム概要</a></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md338"></a>
+Nautilus</h2>
+<p>Nautilusは、ユーザーが定義した文法に従って入力を生成・ミューテーションする文法ベースファザーです。 文法をユーザーができるため、インタプリタやファイルパーサのように特定の文法・ファイル構造に従った入力のみを受理するプログラムのファジングに有効なだけでなく、文法定義を一部のルール絞ることで、検査したい機能を重点的に調べるようなファジングも可能となります。</p>
+<ul>
+<li>紹介とCLIの使い方</li>
+<li><a href="/docs/algorithms/nautilus/algorithm_ja.md#3-アルゴリズム概要">アルゴリズム概要</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md339"></a>
 ライセンス</h1>
 <p>fuzzufはAGPL v3.0 (GNU Affero General Public License v3.0) で提供されます。いくつかの外部のプロジェクトに由来するコードは派生元のライセンスで提供されます。詳しくは<a href="/LICENSE">LICENSE</a>を参照してください。</p>
-<h1><a class="anchor" id="autotoc_md288"></a>
+<h1><a class="anchor" id="autotoc_md340"></a>
 謝辞</h1>
 <p>本プロジェクトは、防衛装備庁が実施する、令和二年度安全保障技術研究推進制度JPJ004596による支援を受けて進められたものです。 </p>
 </div></div><!-- contents -->
