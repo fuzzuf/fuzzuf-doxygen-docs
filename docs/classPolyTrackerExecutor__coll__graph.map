@@ -1,5 +1,8 @@
 <map id="PolyTrackerExecutor" name="PolyTrackerExecutor">
-<area shape="rect" id="node1" title=" " alt="" coords="5,157,157,184"/>
-<area shape="rect" id="node2" href="$classProxyExecutor.html" title=" " alt="" coords="24,81,139,108"/>
-<area shape="rect" id="node3" href="$classExecutor.html" title=" " alt="" coords="42,5,121,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="114,247,266,273"/>
+<area shape="rect" id="node2" href="$classProxyExecutor.html" title=" " alt="" coords="133,171,247,197"/>
+<area shape="rect" id="node3" href="$classExecutor.html" title=" " alt="" coords="5,81,84,108"/>
+<area shape="rect" id="node4" href="$classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="109,81,271,108"/>
+<area shape="rect" id="node5" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="217,5,347,32"/>
+<area shape="rect" id="node6" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="296,81,455,108"/>
 </map>

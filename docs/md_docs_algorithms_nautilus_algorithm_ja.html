@@ -66,7 +66,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>このドキュメントではfuzzufのNautilusモードについてと、その使い方を説明します。</p>
-<h1><a class="anchor" id="autotoc_md193"></a>
+<h1><a class="anchor" id="autotoc_md216"></a>
 1. Nautilusについて</h1>
 <p>Nautilus[^1]は2019年に発表された<a href="https://github.com/nautilus-fuzz/nautilus/">オープンソース</a>の文法ベースファザーです。Nautilusは、入力テストケースの代わりに文法の定義を入力として与えることで、その文法に従ったテストケースを自動的に生成できる生成的なファザーに分類されます。また、Nautilusは検査対象のカバレッジを指標にテストケースを生成します。</p>
 <p>AFLなどの一般的なファザーは、テストケースをバイトやビット単位でミューテーションします。したがって、プログラミング言語のインタプリタなどの特定の文法に従った正しい入力のみを受け付けるプログラムのファジングでは、文法的に誤ったテストケースを大量に生成してしまい、テストケースあたりに探索できるカバレッジが大幅に下がります。</p>
@@ -78,13 +78,13 @@ $(function() {
 <li>フィードバックのカバレッジを利用</li>
 </ul>
 <p>ユーザーが文法を定義できるため、文法中の不要な部分を削除することで、検査したい機能に絞ったファジングも可能です。</p>
-<h1><a class="anchor" id="autotoc_md194"></a>
+<h1><a class="anchor" id="autotoc_md217"></a>
 2. CLIでの使用方法</h1>
 <p>Nautilusモードを利用するには、fuzzuf本体をビルドする必要があります。fuzzufのビルド方法については../../building.md "こちらのドキュメント"を参照してください。</p>
-<h2><a class="anchor" id="autotoc_md195"></a>
+<h2><a class="anchor" id="autotoc_md218"></a>
 2-1. 文法ファイルの用意</h2>
 <p>Nautilusはユーザーが定義した文法に従ったテストケースを生成します。 文法は<a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%83%E3%82%AB%E3%82%B9%E3%83%BB%E3%83%8A%E3%82%A6%E3%82%A2%E8%A8%98%E6%B3%95">BNF記法</a>で記述する必要があります。</p>
-<h3><a class="anchor" id="autotoc_md196"></a>
+<h3><a class="anchor" id="autotoc_md219"></a>
 2-1-a. 基本的な書き方</h3>
 <p>例えば例として整数の算術演算をBNF記法で表してみましょう。 </p><div class="fragment"><div class="line">&lt;EXPRESSION&gt; ::= &lt;TERM&gt;</div>
 <div class="line">                 | &lt;EXPRESSION&gt; + &lt;EXPRESSION&gt;</div>
@@ -128,7 +128,7 @@ $(function() {
 <div class="line">    [&quot;BLOCK&quot;, &quot;\\{ {STATEMENT} \\}&quot;],</div>
 <div class="line">    ...</div>
 <div class="line">]</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md197"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md220"></a>
 2-1-b. 複数ルールの統合</h3>
 <p>先の例ではBNF記法における<code>|</code>（「または」を表す記号）を複数のルールに分割しました。しかし、これではルールが煩雑になってしまうため、fuzzufのNautilusモードでは次のような記法にも対応しています。 </p><div class="fragment"><div class="line">[&quot;DIGITS&quot;, [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;]]</div>
 </div><!-- fragment --><p>これは非終端記号を右辺に含む場合でも利用できます。 </p><div class="fragment"><div class="line">[&quot;EXPRESSION&quot;, [</div>
@@ -136,7 +136,7 @@ $(function() {
 <div class="line">  &quot;{EXPRESSION}+{EXPRESSION}&quot;,</div>
 <div class="line">  &quot;{EXPRESSION}-{EXPRESSION}&quot;</div>
 <div class="line">]]</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md198"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md221"></a>
 2-1-c. バイナリデータ</h3>
 <p>Nautilusモードは電卓やインタプリタといった人間が読める形式の入力だけでなく、PDFのような決まった形式を持つバイナリファイルの生成にも利用できます。このようなときASCII文字以外のバイナリデータを文法に含める必要がありますが、JSON形式はバイナリデータをサポートしていません。 そこで、fuzzufのNautilusモードでは次のように、配列形式でバイナリデータの終端記号を表記できます。 </p><div class="fragment"><div class="line">[&quot;NULL&quot;, [0]]</div>
 </div><!-- fragment --><p>次のようにバイナリデータ列も表せます。（残念ながらJSONは10進数表記しかサポートしていません。） </p><div class="fragment"><div class="line">[&quot;DEADBEEF&quot;, [239, 190, 173, 222]]</div>
@@ -147,7 +147,7 @@ $(function() {
 <div class="line">[&quot;A&quot;, [0]],</div>
 <div class="line">[&quot;A&quot;, [&quot;bye&quot;, 128]]</div>
 </div><!-- fragment --><p>と等価です。</p>
-<h2><a class="anchor" id="autotoc_md199"></a>
+<h2><a class="anchor" id="autotoc_md222"></a>
 2-2. 文法ファイルのテスト</h2>
 <p>文法が複雑になると、定義した文法が正しいか確認したくなるでしょう。 <code>tools/nautilus/generator</code>に、文法ファイルからランダムなテストケースを生成できるプログラムがあります。例えば先程のファイルを与えると、文法が正しい場合は次のようにランダムな文字列が生成されます。 </p><div class="fragment"><div class="line">$ tools/nautilus/generator -g ./calc_grammar.json -t 100</div>
 <div class="line">4/(((4)+1+7+7+5*4+1)-2-6+2-48-9*+5+52-6)</div>
@@ -184,7 +184,7 @@ $(function() {
 <li><code>Could not interpret Nonterminal {...}. Nonterminal Descriptions need to match start with a capital letter and can only contain [a-zA-Z_-0-9]</code>: 非終端記号が大文字で始まっていない。あるいは使えない記号が含まれている。</li>
 </ul>
 <p>また、次のように非終端記号の括弧を忘れても終端記号として認識されてエラーは発生しないため注意してください。（しかし、ジェネレータで生成されたテストケースを見ればすぐに気づくでしょう。） </p><div class="fragment"><div class="line">[&quot;EXPRESSION&quot;, &quot;{EXPRESSION}+{EXPRESSION&quot;]</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md200"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md223"></a>
 2-3. ファジング</h2>
 <p>これまで使ってきた文法を使って電卓プログラムをファジングしてみましょう。 <code>test/put_binaries/nautilus/calc</code>にafl-gccで計装された電卓プログラムがあります。この電卓は算術演算を計算して結果を出力してくれますが、計算結果が0でない314の倍数になったときにクラッシュを発生してしまいます。 </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> res = express();</div>
 <div class="line"><span class="keywordflow">if</span> (res != 0 &amp;&amp; res % 314 == 0) crash();</div>
@@ -210,10 +210,10 @@ $(function() {
 <li><code>Grammar does not exist!</code>: <code>--grammar</code>で指定された文法ファイルが存在しない。</li>
 <li>&lsquo;Unknown grammar type (&rsquo;.json' expected)<code>: 文法ファイルの拡張子が".json"でない。 -</code>Cannot parse grammar file`: 文法ファイルの内容が誤っている。（2-2節のジェネレータを利用して文法ファイルを確認してください。）</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md201"></a>
+<h1><a class="anchor" id="autotoc_md224"></a>
 3. アルゴリズム概要</h1>
 <p>文法ベースファザーは一般的に、特定の文法に従って構文木を生成したり、また構文木の一部をミューテーションしたりといった手法でテストケースを作成します。Nautilusもファジングの過程ではテストケースを木構造として保持しており、それに対してミューテーションなどを実行します。 この節では、テストケースの生成やミューテーションに関するNautilusの設計について説明します。</p>
-<h2><a class="anchor" id="autotoc_md202"></a>
+<h2><a class="anchor" id="autotoc_md225"></a>
 3-1. テストケースの生成</h2>
 <p>１つの非終端記号が複数のルールを持つ場合があるため、どのルールを使うかを決めるアルゴリズムが必要になります。Nautilusでは、一様生成（uniform generation）というアルゴリズムを利用しています。 例えば次の文法を例に考えましょう。 </p><div class="fragment"><div class="line">&lt;PROG&gt; := &lt;STMT&gt;</div>
 <div class="line">&lt;PROG&gt; := &lt;STMT&gt;; &lt;PROG&gt;</div>
@@ -225,13 +225,13 @@ $(function() {
 <div class="line">&lt;NUMBER&gt; := 1</div>
 <div class="line">&lt;NUMBER&gt; := 2</div>
 </div><!-- fragment --><p>例えば<code>&lt;STMT&gt;</code>に対しては<code>return 1</code>あるいは<code>&lt;VAR&gt; = &lt;EXPR&gt;</code>の2種類のルールがあります。もし各非終端記号に対してどのルールを選ぶかを単純なランダムで選択した場合、50の確率で終端の<code>return 1</code>が選ばれます。一方、<code>&lt;VAR&gt; = &lt;EXPR&gt;</code>が選ばれた場合はさらに<code>&lt;EXPR&gt;</code>で複数のルールが登場します。<code>&lt;EXPR&gt;</code>に対しては<code>&lt;NUMBER&gt;</code>と<code>&lt;EXPR&gt; + &lt;EXPR&gt;</code>の2つのルールがありますが、<code>&lt;STMT&gt;</code>から見た時、それぞれが選ばれる確率は25になります。 このように、単純なランダムでは木の深い部分ほど選ばれる確率が下がってしまい、結果として同じようなテストケースばかりを生成してしまいます。そこで、NautilusではMcKenzie[^2]により提案されたアルゴリズムを用いて、文法のすべてのルールが一様な確率で選ばれるように設計しています。</p>
-<h2><a class="anchor" id="autotoc_md203"></a>
+<h2><a class="anchor" id="autotoc_md226"></a>
 3-2. 最小化</h2>
 <p>興味のある入力が見つかったら、Nautilusはその入力と同じカバレッジを得られるより小さい入力を生成しようとします。この最小化によりテストケースを小さくすることで、実行時間が短くなったり、ミューテーションで選択できるノードの幅が狭まったりという利点があります。Nautilusでは新しいパスに到達したテストケースを最小化するために2つの手法を用いています。</p>
-<h3><a class="anchor" id="autotoc_md204"></a>
+<h3><a class="anchor" id="autotoc_md227"></a>
 3-2-a. 部分木最小化</h3>
 <p>部分木最小化(<b>Subtree Minimization</b>)は、構文木の部分木をなるべく短くする処理です。 まず、各非終端記号に対して最も小さい部分木を生成します。そして、各ノードの部分木を順番に置き換え、元の木と同じカバレッジが得られるかを確認します。もし同じカバレッジが得られれば置換後の木が採用され、そうでなければ変更は破棄されます。</p>
-<h3><a class="anchor" id="autotoc_md205"></a>
+<h3><a class="anchor" id="autotoc_md228"></a>
 3-2-b. 再帰的最小化</h3>
 <p>再帰的最小化(<b>Recursive Minimization</b>)は部分木最小化の後に実行されます。 この処理では構文木中のネストした部分を置き換えます。次のように<code>a = 1 + 2</code>という文が、例えば<code>a = 1</code>に置換されます。 </p><div class="fragment"><div class="line">   PROG                  PROG</div>
 <div class="line">    |                     |</div>
@@ -244,31 +244,31 @@ $(function() {
 <div class="line">   NUM    NUM                1</div>
 <div class="line">    |      |</div>
 <div class="line">    1      2</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md206"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md229"></a>
 3-3. ミューテーション</h2>
 <p>テストケースの最小化が終わったら、構文木のミューテーションを開始します。Nautilusでは複数のミューテーション手法が使われます。</p>
-<h3><a class="anchor" id="autotoc_md207"></a>
+<h3><a class="anchor" id="autotoc_md230"></a>
 3-3-a. ランダムミューテーション</h3>
 <p>ランダムミューテーション(<b>Random Mutation</b>)では、構文木中のノードをランダムに1つ選択し、その非終端記号をルートとして新たに生成したランダムな部分木で置き換えます。この際生成される部分木のサイズはランダムですが、最大値は<code>--max-tree-size</code>で設定できる値に依存します。</p>
-<h3><a class="anchor" id="autotoc_md208"></a>
+<h3><a class="anchor" id="autotoc_md231"></a>
 3-3-b. ルールミューテーション</h3>
 <p>ルールミューテーション(<b>Rules Mutation</b>)では、構文木中の各ノードについて、その非終端記号から生成できる他のルールを利用して作った部分木に置き換えます。使われていないルールで置き換えることにより、これまで現れなかった文法を利用するためカバレッジの向上が見込めます。</p>
-<h3><a class="anchor" id="autotoc_md209"></a>
+<h3><a class="anchor" id="autotoc_md232"></a>
 3-3-c. ランダム再帰ミューテーション</h3>
 <p>ランダム再帰ミューテーション(<b>Random Recursive Mutation</b>)では、ネストした部分木をランダムに選び、そのネストを2のn乗回(1≦n≦15)回繰り返します。これにより、高次数のネストを持つ構文木が生成できます。 論文ではnの最大値は1≦n≦15となっていますが、オリジナルのNautilusの実装では1≦n≦10となっているため、fuzzufでも後者の実装を採用しています。</p>
-<h3><a class="anchor" id="autotoc_md210"></a>
+<h3><a class="anchor" id="autotoc_md233"></a>
 3-3-d. スプライスミューテーション</h3>
 <p>スプライスミューテーション(<b>Splicing Mutation</b>)では、テストケースの部分木を、異なるパスを発見した別のテストケースの部分木で置き換えます。つまり、2つのテストケースを組み合わせるミューテーションになります。</p>
-<h1><a class="anchor" id="autotoc_md211"></a>
+<h1><a class="anchor" id="autotoc_md234"></a>
 4. オリジナル実装との差分</h1>
 <p>この節では、fuzzufのNautilusモードと、オリジナルのNautilusの実装における違いについて説明します。</p>
-<h2><a class="anchor" id="autotoc_md212"></a>
+<h2><a class="anchor" id="autotoc_md235"></a>
 4-1. ScriptRuleとRegexpRule</h2>
 <p>オリジナルのNautilusの実装では、単純なJSONだけでなく、Pythonと正規表現を使って文法を定義できます。これらの機能は文法を定義するのに必ずしも必要ではなく、一方で外部依存を増やしてしまうため、Nautilusモードの最初のリリースではサポートしていません。</p>
-<h2><a class="anchor" id="autotoc_md213"></a>
+<h2><a class="anchor" id="autotoc_md236"></a>
 4-2. ASAN</h2>
 <p>アドレスサニタイザ(ASAN)を付けてコンパイルされたアプリケーションは脆弱性を検知した際にシグナルを発生しません。Nautilusはサニタイザからのフィードバックも確認しており、ASANによる脆弱性検知も補足できます。 しかし、現在のfuzzufのNautilusモードはASANで計装されたプログラムをサポートしていません。これは、我々が現在Executorなどの機能を改良しているためです。将来のリリースでサニタイザもサポートされる予定です。</p>
-<h2><a class="anchor" id="autotoc_md214"></a>
+<h2><a class="anchor" id="autotoc_md237"></a>
 4-3. AFL Mutations</h2>
 <p>このドキュメントで説明したミューテーション手法の他に、元論文では**AFL Mutations**というミューテーション手法が説明されています。しかし、このミューテーション手法はオリジナルのNautilusでも実装されていません。そのため、現在のfuzzufのNautilusモードでもこの機能は実装していません。</p>
 <hr  />

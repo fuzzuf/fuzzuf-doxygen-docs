@@ -1,4 +1,7 @@
 <map id="NativeLinuxExecutor" name="NativeLinuxExecutor">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,161,108"/>
-<area shape="rect" id="node2" href="$classExecutor.html" title=" " alt="" coords="44,5,123,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="112,171,268,197"/>
+<area shape="rect" id="node2" href="$classExecutor.html" title=" " alt="" coords="5,81,84,108"/>
+<area shape="rect" id="node3" href="$classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="109,81,271,108"/>
+<area shape="rect" id="node4" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="217,5,347,32"/>
+<area shape="rect" id="node5" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="296,81,455,108"/>
 </map>

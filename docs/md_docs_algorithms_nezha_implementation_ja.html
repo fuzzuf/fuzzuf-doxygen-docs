@@ -66,7 +66,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>ここではfuzzufでのNezhaの実装について解説する。</p>
-<h1><a class="anchor" id="autotoc_md219"></a>
+<h1><a class="anchor" id="autotoc_md251"></a>
 実装方針</h1>
 <p>Nezhaの<a href="https://github.com/nezha-dt/nezha/tree/master/Fuzzer">オリジナルの実装</a>は汎用的に任意のソフトウェアに適用できるものというよりはproof of conceptと言った方が良い作りになっている。</p>
 <p>Nezhaは複数のターゲットの「実行結果の違い」を見てsolutionsに追加する要素を決定するが、オリジナルの実装では実行結果は単一の32bit整数で表せる事になっている。</p>
@@ -78,14 +78,14 @@ $(function() {
 </ul>
 <p>結果としてオリジナルのNezhaをできるだけ忠実にfuzzufに移植しようとすると実行結果の違いを取るというよりは、クラッシュするかしないかだけを取る、という論文で説明されている手法からは離れた物が出来上がる。</p>
 <p>そこでfuzzufではオリジナルの実装に近い終了ステータスに基づくバージョンと、論文の説明の近い結果を得るための標準出力のハッシュを比較するバージョンの2種類をHierarFlowの組み替えで実現できることを示す。</p>
-<h1><a class="anchor" id="autotoc_md220"></a>
+<h1><a class="anchor" id="autotoc_md252"></a>
 標準的なNezhaの組み方</h1>
 <p>オリジナルのNezhaの<code>Fuzzer::Loop()</code>に相当するファザーは<a href="/include/fuzzuf/algorithms/nezha/create.hpp">include/fuzzuf/algorithms/nezha/create.hpp</a>の<code><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a82fd8119ac5d70a0ea83b57effd67a1e">createRunone()</a></code>として実装されている。標準的なNezhaとして使う場合にはこの関数を利用することでfuzzufでのNezha実装が利用できる。</p>
-<h1><a class="anchor" id="autotoc_md221"></a>
+<h1><a class="anchor" id="autotoc_md253"></a>
 NezhaがlibFuzzerから分岐した位置について</h1>
 <p>GitHubのNezhaのリポジトリではlibFuzzerのコードの追加および新しいバージョンへの追従とNezhaの実装が混ざって1つのcommitになっているため、NezhaがLLVMのどの時点からforkしたのかは明らかではない。</p>
 <p>ただし、様々な時点のlibFuzzerのソースとNezhaのソースでdiffをとって差分の量を比較した結果、現在のNezhaのmasterはLLVM 4.xブランチがLLVMのmasterから分かれた後、LLVM 5.0.0-rc1が作られるより前のmasterのどこかからforkしたとすると最も差分が小さくなる。付録として<a href="/docs/algorithms/nezha/nezha-5.0.0-rc1.diff">docs/algorithms/nezha/nezha-5.0.0-rc1.diff</a>にNezhaのmasterとLLVM 5.0.0-rc1時点のlibFuzzerのdiffを添付しておく。</p>
-<h1><a class="anchor" id="autotoc_md222"></a>
+<h1><a class="anchor" id="autotoc_md254"></a>
 Nezhaを構成するHierarFlowノード</h1>
 <p>HierarFlowでNezhaを表現するために以下のようなNezha固有のノードを実装している。それぞれのノードについての詳細はソースコードのコメントやDoxygenで生成されたドキュメントを参照してもらいたい。</p>
 <ul>
@@ -93,13 +93,13 @@ Nezhaを構成するHierarFlowノード</h1>
 <li><a href="/include/fuzzuf/algorithms/nezha/hierarflow/add_to_solution.hpp">AddToSolution</a></li>
 <li><a href="/include/fuzzuf/algorithms/nezha/hierarflow/gather.hpp">GatherOutput</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md223"></a>
+<h1><a class="anchor" id="autotoc_md255"></a>
 未実装部分</h1>
 <p>いくつかのNezhaの機能はfuzzufでは実装されていない:</p>
-<h2><a class="anchor" id="autotoc_md224"></a>
+<h2><a class="anchor" id="autotoc_md256"></a>
 blackbox fuzzing</h2>
 <p>Nezhaの論文では実行結果をカバレッジの代わりに使ってcorpusに要素を追加することでblackbox fuzzingにも出来ることが述べられているが、カバレッジ以外の物からlibFuzzerのfeatureを計算する方法は自明ではない。オリジナルのNezhaの実装を見る限りblackbox fuzzingのための実装は見当たらないため、blackbox fuzzing版は公開されているコードに含まれていないのではないか、と見ている。 このためfuzzufではNezhaのblackbox fuzzing版を実装していない。</p>
-<h2><a class="anchor" id="autotoc_md225"></a>
+<h2><a class="anchor" id="autotoc_md257"></a>
 δ-diversityについて</h2>
 <p>Nezhaの論文ではカバレッジのタプルからδ-diversityを求めて実行結果をcorpusに追加するかどうかを決定することが述べられているが、実際にはNezhaに実装されたコードの中にこのような計算を行っている箇所はない。</p>
 <p>実際に行われているのは各ターゲットを実行するたびにlibFuzzerの本来の手順に従ってその実行結果をcorpusに追加するというもので、個々のターゲットのedgeのindexが重複しないようにオフセットされている限り、これは論文で説明されているようなδ-diversityを求めて実行結果をcorpusに追加するのと等価な振る舞いをする。つまりδ-diversityは実装されたのではなく、libFuzzerを雑に改造したらそのような振る舞いをしたものに対して後付けで説明をつけたものなのではないかと思われる。 fuzzufのNezhaはfuzzufのlibFuzzer互換のためのノードを流用して組まれているため、オリジナルの実装と同じくδ-diversityを計算する処理は陽には現れない。 </p>

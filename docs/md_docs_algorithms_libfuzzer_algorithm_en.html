@@ -88,7 +88,71 @@ What is libFuzzer?</h1>
 <li>When the sanitizer reports a problem, it needs to distinguish whether it is reported by the fuzzing target or by the fuzzer itself.</li>
 </ol>
 <p>To support 1., libFuzzer will link the target built with <code>-fsanitize-coverage=edge</code> and the libFuzzer library built without <code>-fsanitize-coverage=edge</code>. It is carefully implemented so that inline functions in libFuzzer are not compiled during the build of the fuzzing target. On the other hand, it does not care that it counts the harness coverage.</p>
-<p>To achieve 2., libFuzzer rewrites the information held by the sanitizer before and after executing the harness, if necessary. The implementation of LLVM's sanitizer is not an API that guarantees to be compatible in the future. Since libFuzzer itself is part of LLVM, it is implemented to be coupled with the corresponding version of LLVM's sanitizer. </p>
+<p>To achieve 2., libFuzzer rewrites the information held by the sanitizer before and after executing the harness, if necessary. The implementation of LLVM's sanitizer is not an API that guarantees to be compatible in the future. Since libFuzzer itself is part of LLVM, it is implemented to be coupled with the corresponding version of LLVM's sanitizer.</p>
+<p>As mentioned in the previous section on feature behavior, the original libFuzzer has some minor differences in behavior depending on the version. For example, up to LLVM 8, mt19937 is used as the random number generator, and after LLVM 9, minstd_rand is used.</p>
+<h1><a class="anchor" id="autotoc_md98"></a>
+How libFuzzer works</h1>
+<p>libFuzzer performs the process shown in the following pseudo-code.</p>
+<p>Where <code>initial_input</code> is the initial seed, <code>target</code> is the fuzzing target, <code>total_count</code> is the number of times to execute the target, and <code>mutation_depth</code> is the number of times to perform mutation on the same input value.</p>
+<div class="fragment"><div class="line">count = 0;</div>
+<div class="line"><span class="comment">// Array of IDs of &quot;unique&quot; features that have appeared more than once but less frequently.</span></div>
+<div class="line">unique_feature_set = {}</div>
+<div class="line"><span class="comment">// A map holding the number of times a feature has appeared.</span></div>
+<div class="line">global_feature_freqs = {}</div>
+<div class="line">corpus = {}</div>
+<div class="line"><span class="comment">// For all initial seeds:</span></div>
+<div class="line"><span class="keywordflow">for</span>( input in initial_inputs ) {</div>
+<div class="line">  <span class="comment">// Execute the target once.</span></div>
+<div class="line">  exec_result = execute( target, input );</div>
+<div class="line">  <span class="comment">// Add the execution result to the corpus.</span></div>
+<div class="line">  add_to_corpus( corpus, exec_result, input );</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// Update the distribution of the probability of selecting the input value.</span></div>
+<div class="line">dist = update_distribution( corpus );</div>
+<div class="line"><span class="comment">// Until the number of attempts reaches total_count:</span></div>
+<div class="line"><span class="keywordflow">while</span>( count &lt; total_count ) {</div>
+<div class="line">  <span class="comment">// Until `i` reaches mutation_depth (default to 5 in libFuzzer):</span></div>
+<div class="line">  <span class="keywordflow">for</span>( i = 0; i &lt; mutation_depth; ++i ) {</div>
+<div class="line">    <span class="comment">// Select a input value from corpus.</span></div>
+<div class="line">    [old_exec_result,input] = corpus.select_seed();</div>
+<div class="line">    <span class="comment">// Perform mutation on the input value.</span></div>
+<div class="line">    mut_input = mutate( dist, input );</div>
+<div class="line">    <span class="comment">// Execute the target.</span></div>
+<div class="line">    exec_result = execute( target, mut_input );</div>
+<div class="line">    <span class="comment">// Collect the features from the execution result.</span></div>
+<div class="line">    features = collect_features( old_exec_result, exec_result, unique_feature_set, global_feature_freqs );</div>
+<div class="line">    <span class="comment">// If a new feature has been discovered:</span></div>
+<div class="line">    <span class="keywordflow">if</span>( is_interesting( features ) ) {</div>
+<div class="line">      <span class="comment">// Add the execution result and the input value to corpus.</span></div>
+<div class="line">      corpus.add( exec_result, mut_input );</div>
+<div class="line">      <span class="comment">// Update the distribution of the probability of selecting the input value.</span></div>
+<div class="line">      dist = update_distribution( corpus );</div>
+<div class="line">      <span class="comment">// Increment the attempt counter.</span></div>
+<div class="line">      ++count;</div>
+<div class="line">      <span class="comment">// Exit the loop if the execution result is added to corpus, even if `i` does not reach mutation_depth.</span></div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span> {</div>
+<div class="line">      <span class="comment">// Increment the attempt counter.</span></div>
+<div class="line">      ++count;</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>libFuzzer treats "features of interest" in the target execution results and gives them IDs. Features are the index of the edge in the edge coverage and the number of hits on the edge.</p>
+<p>In the pseudo code above, <code>collect_features()</code> collects features from <code>exec_result</code> of the current seed execution. <code>collect_features()</code> updates <code>unique_feature_set</code> and <code>global_feature_freqs</code> each time a feature is found.</p>
+<p>If there is a new feature in <code>features</code> collected by <code>collect_features()</code>, <code>corpus.add()</code> will add its execution result <code>exec_result</code> and the mutated input value <code>mut_input</code> to corpus. <code>is_interesting()</code> checks if <code>features</code> contains at least one "rare" feature from <code>unique_feature_set</code>. Finally, the probability <code>dist</code> of choosing the next input value is updated with <code>update_distribution()</code>.</p>
+<p>There are two types of behavior of <code>update_distribution()</code>, vanilla scheduling and entropic scheduling, and the libFuzzer implementation of fuzzuf uses the former by default. In vanilla scheduling, libFuzzer uses a simple "select more recently found items with higher probability" policy. On the other hand, entropic scheduling evaluates the results of the seed runs and updates the probability distribution <code>dist</code> so that the results with higher evaluation are more likely to be selected in the next <code>select_seed()</code>. The evaluation value of the result of this seed run used in entropic scheduling is called energy, and the fuzzer calculates it while collecting features with <code>collect_features()</code> in the following terms:</p>
+<ul>
+<li>The number of "rare" features found.</li>
+<li>The number of mutations performed from the initial seed to this input value.</li>
+<li>How deviated from the average execution time is.</li>
+</ul>
+<p>In entropic scheduling, libFuzzer selects the seed according to the following policy by using energy:</p>
+<ul>
+<li>Focus on the input that produced the rarest features</li>
+<li>Select inputs that have repeatedly found new features with each mutation.</li>
+<li>Select inputs that run more quickly if the same number of features are found. </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

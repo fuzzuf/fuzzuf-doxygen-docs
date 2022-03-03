@@ -66,13 +66,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>ここではfuzzufでのlibFuzzerの実装について解説する。</p>
-<h1><a class="anchor" id="autotoc_md102"></a>
+<h1><a class="anchor" id="autotoc_md125"></a>
 標準的なlibFuzzerの組み方</h1>
 <p>オリジナルのlibFuzzerの<code>Fuzzer::Loop()</code>に相当するファザーは<a href="/include/fuzzuf/algorithms/libfuzzer/create.hpp">include/fuzzuf/algorithms/libfuzzer/create.hpp</a>の<code><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a82fd8119ac5d70a0ea83b57effd67a1e">createRunone()</a></code>として実装されている。標準的なlibFuzzerとして使う場合にはこの関数を利用することでfuzzufでのlibFuzzer実装が利用できる。</p>
-<h1><a class="anchor" id="autotoc_md103"></a>
+<h1><a class="anchor" id="autotoc_md126"></a>
 libFuzzerを構成するHierarFlowノード</h1>
 <p>HierarFlowでlibFuzzerを表現するために以下のようなノードを実装している。それぞれのノードについての詳細についてはソースコードのコメントやDoxygenで生成されたドキュメントを参照してもらいたい。</p>
-<h2><a class="anchor" id="autotoc_md104"></a>
+<h2><a class="anchor" id="autotoc_md127"></a>
 Mutatorノード</h2>
 <ul>
 <li><a href="/include/fuzzuf/algorithms/libfuzzer/mutation/erase_bytes.hpp">EraseBytes</a></li>
@@ -100,7 +100,7 @@ Mutatorノード</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md105"></a>
+<h2><a class="anchor" id="autotoc_md128"></a>
 制御ノード</h2>
 <p>制御ノードはHierarFlowでlibFuzzerを構成するために必要な制御を行うノードである。</p>
 <ul>
@@ -114,13 +114,13 @@ Mutatorノード</h2>
 <li><a href="/include/fuzzuf/algorithms/libfuzzer/hierarflow/assign.hpp">Assign</a></li>
 <li><a href="/include/fuzzuf/algorithms/libfuzzer/hierarflow/append.hpp">Append</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md106"></a>
+<h2><a class="anchor" id="autotoc_md129"></a>
 Executeノード</h2>
 <p>ExecuteノードはfuzzufのExecutorを持ち、ターゲットを入力値を使って実行し、カバレッジと標準出力、実行結果を取得するノードである。</p>
 <ul>
 <li><a href="/include/fuzzuf/algorithms/libfuzzer/hierarflow/execute.hpp">Execute</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md107"></a>
+<h2><a class="anchor" id="autotoc_md130"></a>
 Feedbackノード</h2>
 <p>Feedbackノードは実行結果をcorpusに追加するかどうかの判断するノードを実際に追加するノードから構成される。</p>
 <ul>
@@ -130,49 +130,49 @@ Feedbackノード</h2>
 <li><a href="/include/fuzzuf/algorithms/libfuzzer/hierarflow/add_to_solution.hpp">UpdateDistribution</a></li>
 <li><a href="/include/fuzzuf/algorithms/libfuzzer/hierarflow/choose_random_seed.hpp">ChooseRandomSeed</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md108"></a>
+<h2><a class="anchor" id="autotoc_md131"></a>
 デバッグノード</h2>
 <p>デバッグノードはHierarFlowで構成したファザーのデバッグのために利用可能なノードである。</p>
 <ul>
 <li><a href="/include/fuzzuf/algorithms/libfuzzer/hierarflow/dump.hpp">Dump</a></li>
 <li><a href="/include/fuzzuf/algorithms/libfuzzer/hierarflow/print_status_for_new_unit.hpp">PrintStatusForNewUnit</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md109"></a>
+<h1><a class="anchor" id="autotoc_md132"></a>
 未実装部分</h1>
 <p>いくつかのlibFuzzerの機能はfuzzufでは実装されていない:</p>
-<h2><a class="anchor" id="autotoc_md110"></a>
+<h2><a class="anchor" id="autotoc_md133"></a>
 Mutator</h2>
-<h3><a class="anchor" id="autotoc_md111"></a>
+<h3><a class="anchor" id="autotoc_md134"></a>
 Mutate_AddWordFromTORC (CMP)</h3>
 <p>オプションCMPが有効な場合に追加されるmutatorであり、比較演算で分岐したときの情報を記録してmutationを行う。この機能を使うにはまず<code>-fsanitize-coverage=trace-cmp</code>を使って比較演算で分岐した際に何と何を何の演算子で比較したかを記録する。CMPは比較に使われた値と同じ値を入力から探し、それを条件分岐が異なる側に入るように書き換える。入力に比較したのと同じ値が入っていたからと言って、それが必ずしも比較された値そのものとは限らないが、ある程度の確率で分岐方向を変えられる事を期待する。 fuzzufでは<code>trace-cmp</code>で得られる比較演算の情報が取得できないためこのmutatorは使えない。</p>
-<h2><a class="anchor" id="autotoc_md112"></a>
+<h2><a class="anchor" id="autotoc_md135"></a>
 Mutate_AddWordFromPersistentAutoDictionary</h2>
 <p>過去に<code>Mutate_AddWordFromManualDictionary</code>と<code>Mutate_AddWordFromTORC</code>で挿入した値のうち、新しいカバレッジの発見に繋がった物が蓄積される辞書の実装であるが、fuzzufではCMPが実装されていないため、<code>Mutate_AddWordFromManualDictionary</code>のみから入力を拾う実装になっている。</p>
-<h3><a class="anchor" id="autotoc_md113"></a>
+<h3><a class="anchor" id="autotoc_md136"></a>
 カスタムmutator</h3>
 <p>libFuzzerには独自のmutatorを追加する為にCustomMutatorとCustomCrossOverが用意されている。fuzzufでは特別なノードを用意するよりノードを自作して追加する方が簡単な為、これらのmutatorに対応するノードは用意していない。</p>
-<h2><a class="anchor" id="autotoc_md114"></a>
+<h2><a class="anchor" id="autotoc_md137"></a>
 Corpus</h2>
 <p>libFuzzerはCorpusの完全な状態を永続化し、途中からfuzzingを再開する事ができるが、fuzzufの実装では入力値のみを永続化するため、永続化された情報から再開したとしても以前の状態を完全に復元する事はできない。</p>
-<h2><a class="anchor" id="autotoc_md115"></a>
+<h2><a class="anchor" id="autotoc_md138"></a>
 Feature</h2>
-<h3><a class="anchor" id="autotoc_md116"></a>
+<h3><a class="anchor" id="autotoc_md139"></a>
 Data Flow Trace</h3>
 <p>Data Flow TraceではLLVMのDataFlowSanitizerを使って得られるデータの移動の記録を使って入力値のどの部分が分岐に影響するかを特定する。この結果に基づいてmutationを行う範囲にマスクをかける事で、特定の分岐を抜ける入力を集中的に探すと考えられる。しかし、オリジナルのlibFuzzerの実装ではマスクの生成には繋がっておらず、この情報は有効に活用されていない。fuzzufではCMPが未実装である理由と同様に、DataFlowSanitizerに相当する情報を得る手段がないため未実装となっている。</p>
-<h2><a class="anchor" id="autotoc_md117"></a>
+<h2><a class="anchor" id="autotoc_md140"></a>
 Executor</h2>
-<h3><a class="anchor" id="autotoc_md118"></a>
+<h3><a class="anchor" id="autotoc_md141"></a>
 子プロセス作成の回避</h3>
 <p>libFuzzerはfuzzingの対象とfuzzerを同じバイナリにリンクする事で子プロセス生成のコストを回避するが、これに相当するexecutorは現状fuzzufにない為、fuzzufの実装では子プロセスが作られる。</p>
-<h3><a class="anchor" id="autotoc_md119"></a>
+<h3><a class="anchor" id="autotoc_md142"></a>
 共有ライブラリのサポート</h3>
 <p>libFuzzerは実行可能バイナリのedge coverageだけでなく、そこにリンクされる共有ライブラリのedge coverageも回収して結合する仕組みを持っている。fuzzufは共有ライブラリからカバレッジを取る手段がないため未実装となっている。</p>
-<h2><a class="anchor" id="autotoc_md120"></a>
+<h2><a class="anchor" id="autotoc_md143"></a>
 Feedback</h2>
-<h3><a class="anchor" id="autotoc_md121"></a>
+<h3><a class="anchor" id="autotoc_md144"></a>
 Leak Sanitizer</h3>
 <p>オリジナルのlibFuzzerはターゲットの実行を開始してから確保され、終了するまでに解放されなかったメモリを検知している。一方、fuzzufではLeak Sanitizer付きでターゲットがコンパイルされていればこのケースを失敗扱いにすることはできるが、失敗理由はabortになるため、メモリリークだったかどうか判別できないため、未解放のメモリ検知の情報を活用できない。</p>
-<h3><a class="anchor" id="autotoc_md122"></a>
+<h3><a class="anchor" id="autotoc_md145"></a>
 Stack Depth Tracing</h3>
 <p>オリジナルのlibFuzzerではLLVMのSanitizerCoverageのstack-depthを使ってターゲットがスタックをどこまで使ったかを取得するが、fuzzufでは使われたスタックの深さを取る手段がないため、未実装となっている。 </p>
 </div></div><!-- contents -->

@@ -83,9 +83,12 @@ Collaboration diagram for CoreSightExecutor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCoreSightExecutor__coll__graph.png" border="0" usemap="#CoreSightExecutor_coll__map" alt="Collaboration graph"/></div>
 <map name="CoreSightExecutor_coll__map" id="CoreSightExecutor_coll__map">
-<area shape="rect" title=" " alt="" coords="5,157,147,184"/>
-<area shape="rect" href="classProxyExecutor.html" title=" " alt="" coords="19,81,133,108"/>
-<area shape="rect" href="classExecutor.html" title=" " alt="" coords="37,5,115,32"/>
+<area shape="rect" title=" " alt="" coords="119,247,261,273"/>
+<area shape="rect" href="classProxyExecutor.html" title=" " alt="" coords="133,171,247,197"/>
+<area shape="rect" href="classExecutor.html" title=" " alt="" coords="5,81,84,108"/>
+<area shape="rect" href="classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="109,81,271,108"/>
+<area shape="rect" href="classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="217,5,347,32"/>
+<area shape="rect" href="classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="296,81,455,108"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -124,6 +127,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a40f6f6692c8ab9898ec2d01c6819b763 inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a40f6f6692c8ab9898ec2d01c6819b763"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveStopSignal</b> (void)</td></tr>
 <tr class="separator:a40f6f6692c8ab9898ec2d01c6819b763 inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a0688110f4cd138c7569180846364bb inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a5a0688110f4cd138c7569180846364bb"></a>
+u32&#160;</td><td class="memItemRight" valign="bottom"><b>GetAFLMapSize</b> ()</td></tr>
+<tr class="separator:a5a0688110f4cd138c7569180846364bb inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedaa88336e50300a8ca1e5f670c51e4b inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="aedaa88336e50300a8ca1e5f670c51e4b"></a>
+u32&#160;</td><td class="memItemRight" valign="bottom"><b>GetBBMapSize</b> ()</td></tr>
+<tr class="separator:aedaa88336e50300a8ca1e5f670c51e4b inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a059759b73c46cc099e0c17472a6f9553 inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a059759b73c46cc099e0c17472a6f9553"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetAFLShmID</b> ()</td></tr>
+<tr class="separator:a059759b73c46cc099e0c17472a6f9553 inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaac2e8861e6c0f26654beea5b5719ced inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="aaac2e8861e6c0f26654beea5b5719ced"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetBBShmID</b> ()</td></tr>
+<tr class="separator:aaac2e8861e6c0f26654beea5b5719ced inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7254e25ec6b4c9e2be6b6bd83d0d89dc inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a7254e25ec6b4c9e2be6b6bd83d0d89dc"></a>
 <a class="el" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetAFLFeedback</b> ()</td></tr>
 <tr class="separator:a7254e25ec6b4c9e2be6b6bd83d0d89dc inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,6 +157,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveStopSignal</b>
 <tr class="memitem:ab5257c4957d61660be93945d912f864a inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ab5257c4957d61660be93945d912f864a"></a>
 <a class="el" href="classExitStatusFeedback.html">ExitStatusFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetExitStatusFeedback</b> ()</td></tr>
 <tr class="separator:ab5257c4957d61660be93945d912f864a inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7cf4c86db63796da56b99673ffd9967 inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="aa7cf4c86db63796da56b99673ffd9967"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsFeedbackLocked</b> ()</td></tr>
+<tr class="separator:aa7cf4c86db63796da56b99673ffd9967 inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e49e6711efc9b3c68d42b02405acbcf inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProxyExecutor.html#a3e49e6711efc9b3c68d42b02405acbcf">TerminateForkServer</a> ()</td></tr>
 <tr class="separator:a3e49e6711efc9b3c68d42b02405acbcf inherit pub_methods_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0a080954857fb2e9df80e0e559413f3 inherit pub_methods_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="af0a080954857fb2e9df80e0e559413f3"></a>
@@ -210,21 +228,15 @@ const std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign
 <tr class="memitem:ae7a1435c60d5f1da80c4415948c42582 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ae7a1435c60d5f1da80c4415948c42582"></a>
 const bool&#160;</td><td class="memItemRight" valign="bottom"><b>forksrv</b></td></tr>
 <tr class="separator:ae7a1435c60d5f1da80c4415948c42582 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8274c38464a3af7c6e63be8c766cff1e inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a8274c38464a3af7c6e63be8c766cff1e"></a>
-const u32&#160;</td><td class="memItemRight" valign="bottom"><b>afl_shm_size</b></td></tr>
-<tr class="separator:a8274c38464a3af7c6e63be8c766cff1e inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1158478c34909f39ad81adbe4ed9ddd6 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a1158478c34909f39ad81adbe4ed9ddd6"></a>
-const u32&#160;</td><td class="memItemRight" valign="bottom"><b>bb_shm_size</b></td></tr>
-<tr class="separator:a1158478c34909f39ad81adbe4ed9ddd6 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e0e9fbd47901a4170062918008ef2dc inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a1e0e9fbd47901a4170062918008ef2dc"></a>
 const bool&#160;</td><td class="memItemRight" valign="bottom"><b>uses_asan</b> = false</td></tr>
 <tr class="separator:a1e0e9fbd47901a4170062918008ef2dc inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8f09760be751ccbf5562d31bf595902 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ae8f09760be751ccbf5562d31bf595902"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>bb_shmid</b></td></tr>
-<tr class="separator:ae8f09760be751ccbf5562d31bf595902 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc22451d416954b95c5d5c3feed38255 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="abc22451d416954b95c5d5c3feed38255"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>afl_shmid</b></td></tr>
-<tr class="separator:abc22451d416954b95c5d5c3feed38255 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a357f5a5917a0b05c4fad95acf1a176f2 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a357f5a5917a0b05c4fad95acf1a176f2"></a>
+<a class="el" href="classAFLEdgeCovAttacher.html">AFLEdgeCovAttacher</a>&#160;</td><td class="memItemRight" valign="bottom"><b>afl_edge_coverage</b></td></tr>
+<tr class="separator:a357f5a5917a0b05c4fad95acf1a176f2 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04dc7b9b8c01521d5ff5a86c3d123fab inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a04dc7b9b8c01521d5ff5a86c3d123fab"></a>
+<a class="el" href="classFuzzufBBCovAttacher.html">FuzzufBBCovAttacher</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fuzzuf_bb_coverage</b></td></tr>
+<tr class="separator:a04dc7b9b8c01521d5ff5a86c3d123fab inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a619bd9be1c5c801f05b6e3b452cc4408 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a619bd9be1c5c801f05b6e3b452cc4408"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>forksrv_pid</b></td></tr>
 <tr class="separator:a619bd9be1c5c801f05b6e3b452cc4408 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -234,12 +246,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>forksrv_read_fd</b></t
 <tr class="memitem:a6b87bbdb526e1391d05d785b3cde0c6c inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a6b87bbdb526e1391d05d785b3cde0c6c"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>forksrv_write_fd</b></td></tr>
 <tr class="separator:a6b87bbdb526e1391d05d785b3cde0c6c inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef4b4d43c79416182c0c76e0dc49f513 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="aef4b4d43c79416182c0c76e0dc49f513"></a>
-u8 *&#160;</td><td class="memItemRight" valign="bottom"><b>bb_trace_bits</b></td></tr>
-<tr class="separator:aef4b4d43c79416182c0c76e0dc49f513 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2b171e42f2212702dd49b34b7a18654 inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ae2b171e42f2212702dd49b34b7a18654"></a>
-u8 *&#160;</td><td class="memItemRight" valign="bottom"><b>afl_trace_bits</b></td></tr>
-<tr class="separator:ae2b171e42f2212702dd49b34b7a18654 inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c160956e1e06560a447dd8eeb60f07b inherit pub_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a1c160956e1e06560a447dd8eeb60f07b"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>child_timed_out</b></td></tr>
 <tr class="separator:a1c160956e1e06560a447dd8eeb60f07b inherit pub_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -278,21 +284,12 @@ static constexpr u32&#160;</td><td class="memItemRight" valign="bottom"><b>EXEC_
 <tr class="memitem:a8852153b65005f21d0f51551ba5aae70 inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a8852153b65005f21d0f51551ba5aae70"></a>
 static constexpr u32&#160;</td><td class="memItemRight" valign="bottom"><b>MSAN_ERROR</b> = 86</td></tr>
 <tr class="separator:a8852153b65005f21d0f51551ba5aae70 inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d73d3e3dcfa5ef9a06fbc96c86397fb inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a1d73d3e3dcfa5ef9a06fbc96c86397fb"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>INVALID_SHMID</b> = -1</td></tr>
-<tr class="separator:a1d73d3e3dcfa5ef9a06fbc96c86397fb inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae65a85bd5ce50bcb264c11848ed4809b inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ae65a85bd5ce50bcb264c11848ed4809b"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>FORKSRV_FD_READ</b> = 198</td></tr>
 <tr class="separator:ae65a85bd5ce50bcb264c11848ed4809b inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f8861a4961457ecf2a70a3785df6567 inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a2f8861a4961457ecf2a70a3785df6567"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>FORKSRV_FD_WRITE</b> = 199</td></tr>
 <tr class="separator:a2f8861a4961457ecf2a70a3785df6567 inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca4095bfe82d8a122342e5efb6eedcf1 inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="aca4095bfe82d8a122342e5efb6eedcf1"></a>
-static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>AFL_SHM_ENV_VAR</b> = &quot;__AFL_SHM_ID&quot;</td></tr>
-<tr class="separator:aca4095bfe82d8a122342e5efb6eedcf1 inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad87db9e032193249a92742abeb542377 inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="ad87db9e032193249a92742abeb542377"></a>
-static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>FUZZUF_SHM_ENV_VAR</b> = &quot;__WYVERN_SHM_ID&quot;</td></tr>
-<tr class="separator:ad87db9e032193249a92742abeb542377 inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ce1f74c4cc5cdb470983932468d4376 inherit pub_static_attribs_classProxyExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a7ce1f74c4cc5cdb470983932468d4376"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>has_setup_sighandlers</b> = false</td></tr>
 <tr class="separator:a7ce1f74c4cc5cdb470983932468d4376 inherit pub_static_attribs_classProxyExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>

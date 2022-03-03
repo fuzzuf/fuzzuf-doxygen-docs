@@ -1,6 +1,9 @@
 <map id="fuzzuf::bindings::python::routine::PyExecutePUT" name="fuzzuf::bindings::python::routine::PyExecutePUT">
-<area shape="rect" id="node1" title=" " alt="" coords="50,200,227,241"/>
-<area shape="rect" id="node2" href="$classHierarFlowRoutine.html" title=" " alt="" coords="5,81,229,137"/>
-<area shape="rect" id="node3" href="$classNativeLinuxExecutor.html" title=" " alt="" coords="254,96,410,123"/>
-<area shape="rect" id="node4" href="$classExecutor.html" title=" " alt="" coords="293,5,371,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="50,289,227,331"/>
+<area shape="rect" id="node2" href="$classHierarFlowRoutine.html" title=" " alt="" coords="5,171,229,227"/>
+<area shape="rect" id="node3" href="$classNativeLinuxExecutor.html" title=" " alt="" coords="254,185,410,212"/>
+<area shape="rect" id="node4" href="$classExecutor.html" title=" " alt="" coords="147,81,226,108"/>
+<area shape="rect" id="node5" href="$classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="251,81,413,108"/>
+<area shape="rect" id="node6" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="359,5,489,32"/>
+<area shape="rect" id="node7" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="438,81,597,108"/>
 </map>

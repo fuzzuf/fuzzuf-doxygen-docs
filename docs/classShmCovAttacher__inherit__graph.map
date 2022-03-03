@@ -1,0 +1,7 @@
+<map id="ShmCovAttacher" name="ShmCovAttacher">
+<area shape="rect" id="node1" title="Base class that attaches coverage stored in shared memory." alt="" coords="305,5,435,32"/>
+<area shape="rect" id="node2" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="5,80,164,107"/>
+<area shape="rect" id="node3" href="$classAFLPTPathCovAttacher.html" title="Intel PT based PTrix&#45;specific path sensitive bitmap attacher." alt="" coords="189,80,359,107"/>
+<area shape="rect" id="node4" href="$classAFLPTPathFavAttacher.html" title="Intel PT&#45;based PTrix&#45;specific bitmap attacher used for calculating favorite seeds." alt="" coords="384,80,551,107"/>
+<area shape="rect" id="node5" href="$classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="575,80,738,107"/>
+</map>

@@ -66,7 +66,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This document covers how to use fuzzuf as a collection of fuzzers in a step-by-step manner. Please refer to other documents if you want to use fuzzuf as a framework for building a new fuzzer.</p>
-<h1><a class="anchor" id="autotoc_md287"></a>
+<h1><a class="anchor" id="autotoc_md319"></a>
 Building fuzzuf</h1>
 <p>We recommend to use Ubuntu 20.04 (or 18.04) as the operating system to build fuzzuf.</p>
 <p>For Ubuntu 20.04, follow the below instruction to build fuzzuf.</p>
@@ -90,7 +90,7 @@ Building fuzzuf</h1>
 <div class="line">$ cmake ../ -DCMAKE_BUILD_TYPE=Release # Need to use a legacy CMake command as apt installs old one</div>
 <div class="line">$ make -j$(nproc)</div>
 </div><!-- fragment --><p>Refer to the building.md for more detailed build instruction.</p>
-<h1><a class="anchor" id="autotoc_md288"></a>
+<h1><a class="anchor" id="autotoc_md320"></a>
 Fuzzing with fuzzuf</h1>
 <p>This section shows how to run fuzzing with fuzzuf. We use a JPEG Exif parser <code>exifutil</code> as a PUT (Program Under Test). The source code is located in <a href="/docs/resources/exifutil">docs/resources/exifutil</a>. To perform fuzzing, we have to instrument programs. To do this, install <code>afl++-clang</code> (or <code>afl-clang</code>) package for the compiler wrapper.</p>
 <p>Hit the following commands to install the compiler wrapper, and build <code>exifutil</code> with instrumentations.</p>
@@ -112,7 +112,7 @@ Fuzzing with fuzzuf</h1>
 <p>If the above command is executed successfully, the following user interface is shown on the terminal, and the fuzzing begins.</p>
 <p><img src="/docs/resources/img/fuzzuf-afl-exifutil.png" alt="fuzzuf-afl-exifutil" class="inline"/></p>
 <p>During fuzzing, PUT is executed repeatedly with various mutated inputs. If the execution crashes or hangs, the fuzzer will save the input. Specifically, suppose the fuzzer found a unique input that crashes the PUT. In that case, it will save the input to the <code>/tmp/out.afl/crashes</code> directory and increment the <code>unique crashes</code> counter in the upper-right of the UI. To stop fuzzing, hit <code>Ctrl-C</code> to send <code>SIGINT</code> to the <code>fuzzuf</code> process. Check the inputs triggered crashes and hangs to analyze the root causes.</p>
-<h1><a class="anchor" id="autotoc_md289"></a>
+<h1><a class="anchor" id="autotoc_md321"></a>
 Changing Fuzzer</h1>
 <p>fuzzuf provides various fuzzers other than AFL. Next, we are going to use AFLFast to fuzz the same executable. Please read AFLFast document to know the characteristics of the AFLFast fuzzer. To change the fuzzer used, we only have to modify the command line argument (and local options).</p>
 <div class="fragment"><div class="line">$ ./fuzzuf aflfast --in_dir=/tmp/input \</div>

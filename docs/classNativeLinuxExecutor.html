@@ -86,8 +86,11 @@ Collaboration diagram for NativeLinuxExecutor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classNativeLinuxExecutor__coll__graph.png" border="0" usemap="#NativeLinuxExecutor_coll__map" alt="Collaboration graph"/></div>
 <map name="NativeLinuxExecutor_coll__map" id="NativeLinuxExecutor_coll__map">
-<area shape="rect" title=" " alt="" coords="5,81,161,108"/>
-<area shape="rect" href="classExecutor.html" title=" " alt="" coords="44,5,123,32"/>
+<area shape="rect" title=" " alt="" coords="112,171,268,197"/>
+<area shape="rect" href="classExecutor.html" title=" " alt="" coords="5,81,84,108"/>
+<area shape="rect" href="classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="109,81,271,108"/>
+<area shape="rect" href="classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="217,5,347,32"/>
+<area shape="rect" href="classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="296,81,455,108"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -114,6 +117,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1cab9ccead693441831fb4045a0616aa"><td class="memItemLeft" align="right" valign="top"><a id="a1cab9ccead693441831fb4045a0616aa"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveStopSignal</b> (void)</td></tr>
 <tr class="separator:a1cab9ccead693441831fb4045a0616aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3386a6fae524fb1d03e357db7f827c39"><td class="memItemLeft" align="right" valign="top"><a id="a3386a6fae524fb1d03e357db7f827c39"></a>
+u32&#160;</td><td class="memItemRight" valign="bottom"><b>GetAFLMapSize</b> ()</td></tr>
+<tr class="separator:a3386a6fae524fb1d03e357db7f827c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a926ee025a55212e15fc3a0d88aa2e85f"><td class="memItemLeft" align="right" valign="top"><a id="a926ee025a55212e15fc3a0d88aa2e85f"></a>
+u32&#160;</td><td class="memItemRight" valign="bottom"><b>GetBBMapSize</b> ()</td></tr>
+<tr class="separator:a926ee025a55212e15fc3a0d88aa2e85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc711b2eae3989bf3ea7ac69ea223e0b"><td class="memItemLeft" align="right" valign="top"><a id="acc711b2eae3989bf3ea7ac69ea223e0b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetAFLShmID</b> ()</td></tr>
+<tr class="separator:acc711b2eae3989bf3ea7ac69ea223e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad64db884f17c850758fab5dd08b94931"><td class="memItemLeft" align="right" valign="top"><a id="ad64db884f17c850758fab5dd08b94931"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetBBShmID</b> ()</td></tr>
+<tr class="separator:ad64db884f17c850758fab5dd08b94931"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d541a7b4fcf2b8e33d280881bd6df34"><td class="memItemLeft" align="right" valign="top"><a id="a6d541a7b4fcf2b8e33d280881bd6df34"></a>
 <a class="el" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetAFLFeedback</b> ()</td></tr>
 <tr class="separator:a6d541a7b4fcf2b8e33d280881bd6df34"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,6 +144,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveStopSignal</b>
 <tr class="memitem:aed64bb689f59f222ec5c0747379aa1a0"><td class="memItemLeft" align="right" valign="top"><a id="aed64bb689f59f222ec5c0747379aa1a0"></a>
 <a class="el" href="classExitStatusFeedback.html">ExitStatusFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetExitStatusFeedback</b> ()</td></tr>
 <tr class="separator:aed64bb689f59f222ec5c0747379aa1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e699cf4f1b68be7dc70035df6603a0e"><td class="memItemLeft" align="right" valign="top"><a id="a3e699cf4f1b68be7dc70035df6603a0e"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsFeedbackLocked</b> ()</td></tr>
+<tr class="separator:a3e699cf4f1b68be7dc70035df6603a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1d5fbf00a1362b16483c846c35c9afc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNativeLinuxExecutor.html#aa1d5fbf00a1362b16483c846c35c9afc">TerminateForkServer</a> ()</td></tr>
 <tr class="separator:aa1d5fbf00a1362b16483c846c35c9afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93df1c284eccac27d165cc01500f538e"><td class="memItemLeft" align="right" valign="top"><a id="a93df1c284eccac27d165cc01500f538e"></a>
@@ -192,21 +210,15 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a9b48227ebbda5d2d073ec556c446b8b8"><td class="memItemLeft" align="right" valign="top"><a id="a9b48227ebbda5d2d073ec556c446b8b8"></a>
 const bool&#160;</td><td class="memItemRight" valign="bottom"><b>forksrv</b></td></tr>
 <tr class="separator:a9b48227ebbda5d2d073ec556c446b8b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6555353be875e41b7ec544cd6558651"><td class="memItemLeft" align="right" valign="top"><a id="ad6555353be875e41b7ec544cd6558651"></a>
-const u32&#160;</td><td class="memItemRight" valign="bottom"><b>afl_shm_size</b></td></tr>
-<tr class="separator:ad6555353be875e41b7ec544cd6558651"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaa3270562cca71ea8088e1b0b88072a"><td class="memItemLeft" align="right" valign="top"><a id="aeaa3270562cca71ea8088e1b0b88072a"></a>
-const u32&#160;</td><td class="memItemRight" valign="bottom"><b>bb_shm_size</b></td></tr>
-<tr class="separator:aeaa3270562cca71ea8088e1b0b88072a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abac66f9c592948aacb31bb3c910329af"><td class="memItemLeft" align="right" valign="top"><a id="abac66f9c592948aacb31bb3c910329af"></a>
 const bool&#160;</td><td class="memItemRight" valign="bottom"><b>uses_asan</b> = false</td></tr>
 <tr class="separator:abac66f9c592948aacb31bb3c910329af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf774af2876ba3e6ced321f50d383b9d"><td class="memItemLeft" align="right" valign="top"><a id="abf774af2876ba3e6ced321f50d383b9d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>bb_shmid</b></td></tr>
-<tr class="separator:abf774af2876ba3e6ced321f50d383b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b454981fae306ea5024a00773677db9"><td class="memItemLeft" align="right" valign="top"><a id="a1b454981fae306ea5024a00773677db9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>afl_shmid</b></td></tr>
-<tr class="separator:a1b454981fae306ea5024a00773677db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a851ef3815e4aeda8c88991bddd6a25df"><td class="memItemLeft" align="right" valign="top"><a id="a851ef3815e4aeda8c88991bddd6a25df"></a>
+<a class="el" href="classAFLEdgeCovAttacher.html">AFLEdgeCovAttacher</a>&#160;</td><td class="memItemRight" valign="bottom"><b>afl_edge_coverage</b></td></tr>
+<tr class="separator:a851ef3815e4aeda8c88991bddd6a25df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3c61134d654f7e273bfc838a07c69f7"><td class="memItemLeft" align="right" valign="top"><a id="ad3c61134d654f7e273bfc838a07c69f7"></a>
+<a class="el" href="classFuzzufBBCovAttacher.html">FuzzufBBCovAttacher</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fuzzuf_bb_coverage</b></td></tr>
+<tr class="separator:ad3c61134d654f7e273bfc838a07c69f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e134811a5bbfba0fd6fa72769d5dd87"><td class="memItemLeft" align="right" valign="top"><a id="a9e134811a5bbfba0fd6fa72769d5dd87"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>forksrv_pid</b></td></tr>
 <tr class="separator:a9e134811a5bbfba0fd6fa72769d5dd87"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,12 +228,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>forksrv_read_fd</b></t
 <tr class="memitem:a3494b6a8de208b26f0bfa7b4db9c69ca"><td class="memItemLeft" align="right" valign="top"><a id="a3494b6a8de208b26f0bfa7b4db9c69ca"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>forksrv_write_fd</b></td></tr>
 <tr class="separator:a3494b6a8de208b26f0bfa7b4db9c69ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab77b27643bce4b4ce9fe263cb67aacc4"><td class="memItemLeft" align="right" valign="top"><a id="ab77b27643bce4b4ce9fe263cb67aacc4"></a>
-u8 *&#160;</td><td class="memItemRight" valign="bottom"><b>bb_trace_bits</b></td></tr>
-<tr class="separator:ab77b27643bce4b4ce9fe263cb67aacc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f508224fcc8cc5d1d5e5f268fd3ce38"><td class="memItemLeft" align="right" valign="top"><a id="a7f508224fcc8cc5d1d5e5f268fd3ce38"></a>
-u8 *&#160;</td><td class="memItemRight" valign="bottom"><b>afl_trace_bits</b></td></tr>
-<tr class="separator:a7f508224fcc8cc5d1d5e5f268fd3ce38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebc9f6dd5378ffb4e48b7cff3d866250"><td class="memItemLeft" align="right" valign="top"><a id="aebc9f6dd5378ffb4e48b7cff3d866250"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>child_timed_out</b></td></tr>
 <tr class="separator:aebc9f6dd5378ffb4e48b7cff3d866250"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -262,21 +268,12 @@ static constexpr u32&#160;</td><td class="memItemRight" valign="bottom"><b>EXEC_
 <tr class="memitem:a02d52ec67cb3b8447e06318083b644b7"><td class="memItemLeft" align="right" valign="top"><a id="a02d52ec67cb3b8447e06318083b644b7"></a>
 static constexpr u32&#160;</td><td class="memItemRight" valign="bottom"><b>MSAN_ERROR</b> = 86</td></tr>
 <tr class="separator:a02d52ec67cb3b8447e06318083b644b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0673b9ba8dc7f8f2cdf7486851908b8"><td class="memItemLeft" align="right" valign="top"><a id="ad0673b9ba8dc7f8f2cdf7486851908b8"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>INVALID_SHMID</b> = -1</td></tr>
-<tr class="separator:ad0673b9ba8dc7f8f2cdf7486851908b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d5dfe2fbd6cbfd09f0b7407960c89fe"><td class="memItemLeft" align="right" valign="top"><a id="a5d5dfe2fbd6cbfd09f0b7407960c89fe"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>FORKSRV_FD_READ</b> = 198</td></tr>
 <tr class="separator:a5d5dfe2fbd6cbfd09f0b7407960c89fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d4a232ed9e89b4a77273ccf98010fd1"><td class="memItemLeft" align="right" valign="top"><a id="a9d4a232ed9e89b4a77273ccf98010fd1"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>FORKSRV_FD_WRITE</b> = 199</td></tr>
 <tr class="separator:a9d4a232ed9e89b4a77273ccf98010fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42f975abc248f8c7130a4aed326c8019"><td class="memItemLeft" align="right" valign="top"><a id="a42f975abc248f8c7130a4aed326c8019"></a>
-static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>AFL_SHM_ENV_VAR</b> = &quot;__AFL_SHM_ID&quot;</td></tr>
-<tr class="separator:a42f975abc248f8c7130a4aed326c8019"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ac0cd9f21956b21dfff5b31b1deefef"><td class="memItemLeft" align="right" valign="top"><a id="a0ac0cd9f21956b21dfff5b31b1deefef"></a>
-static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>FUZZUF_SHM_ENV_VAR</b> = &quot;__WYVERN_SHM_ID&quot;</td></tr>
-<tr class="separator:a0ac0cd9f21956b21dfff5b31b1deefef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9871e659554ca46d3bfe427fcd6a8a97"><td class="memItemLeft" align="right" valign="top"><a id="a9871e659554ca46d3bfe427fcd6a8a97"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>has_setup_sighandlers</b> = false</td></tr>
 <tr class="separator:a9871e659554ca46d3bfe427fcd6a8a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -329,7 +326,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8hpp_source.html#l00041">41</a> of file <a class="el" href="native__linux__executor_8hpp_source.html">native_linux_executor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8hpp_source.html#l00043">43</a> of file <a class="el" href="native__linux__executor_8hpp_source.html">native_linux_executor.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4411886aea7d4a80ec24fc481a172e4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4411886aea7d4a80ec24fc481a172e4a">&#9670;&nbsp;</a></span>NativeLinuxExecutor()</h2>
@@ -441,7 +438,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <li>Temporary purpose: If actve_instance which signal handlers refer has a pointer to self value, assign nullptr to it and invalidate. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00118">118</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00114">114</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -480,7 +477,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00217">217</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00213">213</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -542,7 +539,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 
 <p>Implements <a class="el" href="classExecutor.html">Executor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00323">323</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00319">319</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -574,7 +571,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00171">171</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00167">167</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>

@@ -65,7 +65,7 @@ $(function() {
 <div class="title">libFuzzer </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md99"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md100"></a>
 libFuzzerとは</h1>
 <p><a href="https://llvm.org/docs/LibFuzzer.html">https://llvm.org/docs/LibFuzzer.html</a></p>
 <p>libFuzzerはLLVMプロジェクトのcompiler-rtのライブラリの1つとして提供されているgreybox fuzzingの実装である。AFLと同じく広く使われており、現在のファジング研究のベースとなっていることからfuzzufでの再実装を行なった。</p>
@@ -91,7 +91,7 @@ libFuzzerとは</h1>
 <p>libFuzzerは前者を達成するために<code>-fsanitize-coverage=edge</code>を付けてビルドされたfuzzingの対象と<code>-fsanitize-coverage=edge</code>を付けずにビルドされたlibFuzzerのライブラリをリンクする。このとき、libFuzzer側のインライン関数がfuzzingの対象のビルド時にコンパイルされる事が無いように注意深く実装されている。ハーネスのカバレッジが記録される点は気にしない。</p>
 <p>後者を達成する為にlibFuzzerはハーネスの実行前と実行後にサニタイザが抱えている情報を漁り、必要に応じて書き換えている。LLVMのサニタイザの実装は将来に渡って互換性が保たれるAPIではない(し、実際時々変わっている)が、libFuzzer自体がLLVMの一部でLLVMと一緒にバージョンアップしている為、対応するバージョンのLLVMのサニタイザと組み合わせられれば良い、というスタンスでお構いなしに中身を漁っている。</p>
 <p>前述のfeatureの動作で見たように、オリジナルのlibFuzzerではバージョンによって細かな動きの違いがある。例えば、乱数生成器はLLVM 8まではmt19937が使われていて、LLVM 9以降はminstd_randが使われている。</p>
-<h1><a class="anchor" id="autotoc_md100"></a>
+<h1><a class="anchor" id="autotoc_md101"></a>
 libFuzzerの仕組み</h1>
 <p>libFuzzerは以下の擬似コードで示す操作を行う。</p>
 <p>ここで<code>initial_input</code>は初期シード、<code>target</code>はfuzzingを行う対象、<code>total_count</code>はターゲットを実行する回数、<code>mutation_depth</code>は同じ入力値に対してmutationを行う回数を表す。</p>
