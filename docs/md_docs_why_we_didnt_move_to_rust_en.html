@@ -66,14 +66,14 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This document explains how and why we abandoned our plan to migrate fuzzuf from C++ to Rust.</p>
-<h1><a class="anchor" id="autotoc_md327"></a>
+<h1><a class="anchor" id="autotoc_md348"></a>
 Summary</h1>
 <p>As the title says, we have abandoned our plans to move to Rust at this time. The reasons are as follows:</p>
 <ul>
 <li>The concept of HierarFlow, invented in developing fuzzers, is not compatible with Rust, and we believe that HierarFlow is the most reasonable design concept for fuzzuf's goal of becoming a general-purpose framework that can implement any fuzzing algorithm. Therefore, we conclude it is more important for fuzzuf to use HierarFlow than Rust.</li>
 <li>While the features of Rust and its powerful package manager and build tools are attractive, it is not reasonable to abandon all of the accumulated C++ code for the transition. Also, we cannot ignore the ease of porting existing fuzzing algorithms that C++ has.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md328"></a>
+<h1><a class="anchor" id="autotoc_md349"></a>
 Why we started using C\+\+?</h1>
 <p>When we started developing fuzzuf, we chose C++ as our development language.</p>
 <p>The purpose of fuzzuf is to make it easy to implement and modify any fuzzing algorithm on this framework, and to improve the commonality and reusability of the code base in the entire research field of fuzzing algorithms.</p>
@@ -83,19 +83,19 @@ Why we started using C\+\+?</h1>
 <p>Here, we have chosen C++ instead of C simply because C++ has better language features. Complex algorithms may require complicated data structure with dynamic memory management or elaborate mathematical calculations, which would be difficult to implement in C.</p>
 <p>Furthermore, just as AFL-based algorithms are forced to continue to be written in C, which may increase the cost of implementation, algorithms implemented on fuzzuf will continue to be developed in the language of fuzzuf's choice. With this in mind, we have decided to use C++17, which is the most recent version with all the features implemented.</p>
 <p>Writing fuzzers in C++(17) means a reduction in portability compared to writing them in C, so perhaps this is not a good decision for commercial applications of fuzzing. However, since fuzzuf's primary interest is in the study of pure fuzzing algorithms, the convenience of the language takes precedence over portability.</p>
-<h1><a class="anchor" id="autotoc_md329"></a>
+<h1><a class="anchor" id="autotoc_md350"></a>
 The attraction of Rust</h1>
 <p>While we opted for C++, it looks like fuzzers written in Rust have slowly started to appear in recent years. In the first place, there is definitely a movement to shift the development language from C or C++ to the safer Rust, not only for fuzzers but for software development in general. We don't think there is any <b>fuzzing-field-specific</b> motivation for moving from C or C++ to Rust, but it is natural, considering that developing in Rust reduces not only vulnerabilities but also bugs in fuzzers.</p>
 <p>Another advantage of Rust is that it has Cargo's excellent ecosystem, which significantly reduces the effort of building and maintaining your own build environment and build scripts compared to C++.</p>
 <p>Furthermore, since fuzzuf uses C++17, it is probably more difficult to utilize it in the embedded field or in layers below the kernel than fuzzers written in pure C. Moving to Rust is attractive as it could solve this problem, as seen in initiatives such as Rust for Linux.</p>
-<h1><a class="anchor" id="autotoc_md330"></a>
+<h1><a class="anchor" id="autotoc_md351"></a>
 When we started considering the move to Rust</h1>
 <p>It is important to note that we started to seriously consider moving to Rust after AFL and libFuzzer were implemented in fuzzuf. The earliest attempt by fuzzuf was to recreate AFL in the first place. As mentioned earlier, porting AFL was a top priority since many of the existing fuzzing algorithms to be implemented are derived from AFL.</p>
 <p>In fact, fuzzuf implements AFL in several patterns in order to answer the question, "What design should a framework have in order to be the most versatile to implement arbitrary fuzzing algorithms?". In this process, the concept of HierarFlow was created. After that, HierarFlow was brushed up based on libFuzzer and VUzzer, which were the second implementations.</p>
 <p>Since we decided to move to Rust later, we had to consider whether we could implement HierarFlow on Rust's language features and whether HierarFlow could maintain its convenience without violating Rust's language design philosophy.</p>
 <p>Of course, if we could find an alternative concept to HierarFlow that was more suitable for Rust and could achieve the goals of fuzzuf, we would adopt it. In some cases we should even consider abandoning Hierarflow and alternative concepts and moving to Rust without them.</p>
 <p>Also, the fact that AFL is already implemented would simply mean that AFL would need to be re-implemented in Rust if we were to migrate, and the focus was on whether the migration would be worth the cost.</p>
-<h1><a class="anchor" id="autotoc_md331"></a>
+<h1><a class="anchor" id="autotoc_md352"></a>
 Importance of HierarFlow</h1>
 <p>The biggest barrier to migrating to Rust was definitely whether or not it would adopt HierarFlow. To answer this, we need to think a bit about why fuzzuf introduced HierarFlow in the first place: if HierarFlow is a more important concept than Rust, and has features that are at odds with Rust's language design, then we would have to abort the move to Rust (and indeed, we did). On the other hand, if HierarFlow is a concept that is compatible with Rust or is so unimportant that it can be discarded, then the migration to Rust should be a priority.</p>
 <p>Therefore, we will describe here what the designers of HierarFlow were trying to solve with HierarFlow, although there may be some overlap with other documents. In doing so, we will make clear why we needed HierarFlow.</p>
@@ -316,15 +316,15 @@ Importance of HierarFlow</h1>
 <div class="line">  ... // update algo_state in some way</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>The advantage of HierarFlow is that it addresses these issues. On the other hand, if you are not motivated to <em>keep all algorithms and make reusability as high as possible</em>, you can just refactor periodically and you won't need this unique concept.</p>
-<h1><a class="anchor" id="autotoc_md332"></a>
+<h1><a class="anchor" id="autotoc_md353"></a>
 Problems in implementing HierarFlow in Rust</h1>
 <p>There is only one major problem with implementing HierarFlow in Rust: Rust cannot have multiple mutable references. This makes it difficult for each routine to have a reference to a value as a member variable that does not need to be passed as an argument, and thus type signatures can contain such a value.</p>
 <p>There are two things to consider here: the first one is *"is it so bad to have values in arguments that do not need to be passed as arguments?"*. I think this is very controversial, but as I have explained, the answer is "we think it is better if they are not included". In fact, in the above example, it would be very tedious to refactor and design if there appear later more different values other than <code>algo_state</code> that need to be passed to all called functions.</p>
 <p>The other question is whether there is really no way to achieve the goal of "not using values that should not be arguments as arguments". Actually, we have considered two different solutions. However, both of them had disadvantages and could not be adopted. The following is a record of what exactly the solutions are.</p>
-<h3><a class="anchor" id="autotoc_md333"></a>
+<h3><a class="anchor" id="autotoc_md354"></a>
 a. Rc&lt;RefCell&lt;T&gt;&gt;</h3>
 <p>If you want to use mutable references in multiple places in Rust, one known option would be to use <code>Rc&lt;RefCell&lt;T&gt;&gt;</code>. However, it is simply painful to have to use <code>borrow</code> and <code>borrow_mut</code> every time you use a value that is not in arguments. Also, the parent routine must always destroy borrowed references before calling <code>call_successors</code>. This is because a child routine called via <code>call_successors</code> may call <code>borrow</code> or <code>borrow_mut</code> while the parent routine is calling <code>borrow_mut</code>. This rule is very easy to forget and may lead to runtime errors. The advantage of Rust, that it is easy to notice borrowing errors at compile time, is lost.</p>
-<h3><a class="anchor" id="autotoc_md334"></a>
+<h3><a class="anchor" id="autotoc_md355"></a>
 b. Hiding with macros</h3>
 <p>As a basic premise, if we do not use global variables and do not use <code>Rc&lt;RefCell&lt;T&gt;&gt;</code>, mutable references have to be passed via arguments. In other words, in Rust, even when implemented using HierarFlow, the pseudo-code is not as described above, but as follows:</p>
 <div class="fragment"><div class="line">// Define the routines.</div>
@@ -385,11 +385,11 @@ b. Hiding with macros</h3>
 <div class="line">}</div>
 </div><!-- fragment --><p>and we can assign the concrete type to the generics <code>T</code> only when the routine is used. Thus, we can remove the use of <code>AlgoState</code> from the appearance of the code and the actual definition. This way, if you want to use <code>DerivedAlgoState</code> instead of <code>AlgoState</code>, you can reuse the existing code with little thought.</p>
 <p>However, it is clearly not healthy to use macros to hide processing and keep the internal implementation a black box. If the macros made implementation easier without worrying about the internals at all, we would have been a bit more willing to adopt them. In fact, we would not have adopted this solution, as it would not have prevented users from noticing compile or runtime errors caused by these macros, which could have hindered usability.</p>
-<h3><a class="anchor" id="autotoc_md335"></a>
+<h3><a class="anchor" id="autotoc_md356"></a>
 :information_source: Room for discussion</h3>
 <p>Maybe some readers who have read this far have come up with a better solution for implementing HierarFlow than the one we have discussed so far. Or perhaps some of you have come up with better concepts and practices than HierarFlow in the first place. In the short term, we have made the decision not to move to Rust, but in the medium to long term, we should revisit the idea.</p>
 <p>If anyone has any good ideas, please let us know about them on GitHub issues.</p>
-<h1><a class="anchor" id="autotoc_md336"></a>
+<h1><a class="anchor" id="autotoc_md357"></a>
 Problems with HierarFlow as implemented in C\+\+.</h1>
 <p>As a side note, one of the problems with HierarFlow in C++ is that the definitions of nodes and flows tend to get far apart. The more nodes you have, the more disconnected the constructs of the <a class="el" href="classHierarFlowNode.html">HierarFlowNode</a> instances are from the actual flow definitions that connect the HierarFlowNodes in the code. For example, the definition of HierarFlow in AFL may give you an example. There are also other algorithms where the two definitions are located much farther apart. This makes browsing through the definitions of flows a bit tedious.</p>
 <p>The fascinating thing is that in Rust, this can be solved by using macros (which we didn't end up doing).</p>
@@ -421,7 +421,7 @@ Problems with HierarFlow as implemented in C\+\+.</h1>
 <div class="line">  ]</div>
 <div class="line">]</div>
 </div><!-- fragment --><p>In the future, we may change the notation and design of HierarFlow even in C++ to allow constructing nodes and defining flows at the same time, but there are some issues with the current specification that make it difficult at this point.</p>
-<h1><a class="anchor" id="autotoc_md337"></a>
+<h1><a class="anchor" id="autotoc_md358"></a>
 References</h1>
 <p>[^afl]: Michal Zalewski. "american fuzzy lop" <a href="https://lcamtuf.coredump.cx/afl/">https://lcamtuf.coredump.cx/afl/</a></p>
 <p>[^libfuzzer]: "libFuzzer – a library for coverage-guided fuzz testing." <a href="https://llvm.org/docs/LibFuzzer.html">https://llvm.org/docs/LibFuzzer.html</a></p>

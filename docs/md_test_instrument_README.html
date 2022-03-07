@@ -66,7 +66,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>このディレクトリは主にwyvern-clangとWyvernの結合させるテストの置き場になっている。 zerooneと呼ばれるPUTを用いてテストを行っている。</p>
-<h2><a class="anchor" id="autotoc_md377"></a>
+<h2><a class="anchor" id="autotoc_md398"></a>
 PUT: zeroone</h2>
 <p>zerooneのソースコードはこのディレクトリにあるzeroone.cpp。</p>
 <p>PUTの内容は、変数をa, b, ..., hの8個用意し、8文字の01文字列を受け付け、</p>
@@ -94,7 +94,7 @@ PUT: zeroone</h2>
 <div class="line">IFBRANCH(buf, 6, g);</div>
 <div class="line">IFBRANCH(buf, 7, h);</div>
 </div><!-- fragment --><p>という形で8回使っている。 これは、bufの1文字目から8文字目までの比較によるif分岐を8つユニークに作りたいという意図で記述している。 これによって、入力00000000, ..., 11111111の256通りに対して、256通りの異なるカバレッジが記録されるはず。これをテストする。 わざわざマクロを定義して手で8回記述しているのは、最適化などでBasic Blockがまとめられないようにするため。 同様の意図で<code>-O0</code>オプションなども加えている。</p>
-<h2><a class="anchor" id="autotoc_md378"></a>
+<h2><a class="anchor" id="autotoc_md399"></a>
 テストでやっていること</h2>
 <p>まず、入力00000000で通るcoverageを記録する。 次に、10000000, 010000000, ..., 00000001の8つの入力で通るcoverageを記録する。 PUTは上記のような挙動をしているので、 例えば00000000と10000000のcoverageの差分というのは、 「0番目の文字によって、通るか通らないかが変化する箇所」のはず。</p>
 <p>より具体的には、上記のPUTのコードでいうところの<code>IFBRANCH(buf, 0, a);</code>で生成される、 if分岐中の<code>a = 0;</code>の部分と<code>a = 1;</code>の部分が、それらに相当する。</p>
@@ -104,7 +104,7 @@ PUT: zeroone</h2>
 <p>逆に、確実に通らないBasic Blockも存在している。 例えば、「入力10000000が通って、入力00000000が通らないBasic Block」は、入力01010000のcoverageにおいて通っているはずがないし（1文字目が0なので）、 「入力00000000が通って、入力01000000が通らないBasic Block」も通るはずがない （「入力01000000が通って、入力00000000が通らないBasic Block」を通っているため）。</p>
 <p>これらについてすべてassertを掛けているのがテストコードの内容。 <code>struct <a class="el" href="structDiffInfo.html">DiffInfo</a></code>内に、前述の記録を追加していく。 メンバpassedには例えば「入力01000000が通って、入力00000000が通らないBasic Block」が入る。 メンバignoredには例えば「入力00000000が通って、入力01000000が通らないBasic Block」が入る。 これを10000000, 01000000, ..., 00000001の8つに対してやる。</p>
 <p>あとは、passedとignoredを元に、256通りの入力に対してcoverageが通るべきBasic Blockを通っており、通らないべきBasic Blockを通っていないことを確認している。</p>
-<h2><a class="anchor" id="autotoc_md379"></a>
+<h2><a class="anchor" id="autotoc_md400"></a>
 テストが通らなかったとき</h2>
 <p>AFL covの方のテストのみが失敗するときは、まずAFLが各Basic Block（ひいてはedge）に割り当てるハッシュが衝突していないかを気にしてほしい。 </p>
 </div></div><!-- contents -->

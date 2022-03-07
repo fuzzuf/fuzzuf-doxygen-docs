@@ -65,7 +65,7 @@ $(function() {
 <div class="title">libFuzzer </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md97"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md118"></a>
 What is libFuzzer?</h1>
 <p><a href="https://llvm.org/docs/LibFuzzer.html">https://llvm.org/docs/LibFuzzer.html</a></p>
 <p>libFuzzer is a greybox fuzzer provided as a part of the compiler-rt libraries of the LLVM project. We reimplemented it in fuzzuf because it is widely used and is the base of the current fuzzing research.</p>
@@ -90,7 +90,7 @@ What is libFuzzer?</h1>
 <p>To support 1., libFuzzer will link the target built with <code>-fsanitize-coverage=edge</code> and the libFuzzer library built without <code>-fsanitize-coverage=edge</code>. It is carefully implemented so that inline functions in libFuzzer are not compiled during the build of the fuzzing target. On the other hand, it does not care that it counts the harness coverage.</p>
 <p>To achieve 2., libFuzzer rewrites the information held by the sanitizer before and after executing the harness, if necessary. The implementation of LLVM's sanitizer is not an API that guarantees to be compatible in the future. Since libFuzzer itself is part of LLVM, it is implemented to be coupled with the corresponding version of LLVM's sanitizer.</p>
 <p>As mentioned in the previous section on feature behavior, the original libFuzzer has some minor differences in behavior depending on the version. For example, up to LLVM 8, mt19937 is used as the random number generator, and after LLVM 9, minstd_rand is used.</p>
-<h1><a class="anchor" id="autotoc_md98"></a>
+<h1><a class="anchor" id="autotoc_md119"></a>
 How libFuzzer works</h1>
 <p>libFuzzer performs the process shown in the following pseudo-code.</p>
 <p>Where <code>initial_input</code> is the initial seed, <code>target</code> is the fuzzing target, <code>total_count</code> is the number of times to execute the target, and <code>mutation_depth</code> is the number of times to perform mutation on the same input value.</p>

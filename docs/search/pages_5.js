@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['implementation_20of_20nezha_20in_20fuzzuf_2022',['Implementation of Nezha in fuzzuf',['../md_docs_algorithms_nezha_implementation_en.html',1,'']]],
-  ['implementation_20of_20hierarflow_2023',['Implementation of HierarFlow',['../md_docs_hierarflow_en.html',1,'']]]
+  ['ijon_2027',['IJON',['../md_docs_algorithms_ijon_algorithm_en.html',1,'']]],
+  ['ijon_2028',['IJON',['../md_docs_algorithms_ijon_algorithm_ja.html',1,'']]],
+  ['ijon_20implementation_20in_20fuzzuf_2029',['IJON implementation in fuzzuf',['../md_docs_algorithms_ijon_implementation_en.html',1,'']]],
+  ['implementation_20of_20nezha_20in_20fuzzuf_2030',['Implementation of Nezha in fuzzuf',['../md_docs_algorithms_nezha_implementation_en.html',1,'']]],
+  ['implementation_20of_20hierarflow_2031',['Implementation of HierarFlow',['../md_docs_hierarflow_en.html',1,'']]]
 ];
