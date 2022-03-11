@@ -101,7 +101,7 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1die_1_1DIEState.html">   35</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1die_1_1DIEState.html">DIEState</a> : <span class="keyword">public</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">afl::AFLStateTemplate</a>&lt;DIETestcase&gt; {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1die_1_1DIEState.html">DIEState</a>(</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::shared_ptr&lt;const DIESetting&gt; setting,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::shared_ptr&lt;NativeLinuxExecutor&gt; executor</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::shared_ptr&lt;executor::AFLExecutorInterface&gt; executor</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  ) : AFLStateTemplate&lt;DIETestcase&gt;(setting, executor),</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      setting(setting) {};</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>

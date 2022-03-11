@@ -95,7 +95,7 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/common.hpp&quot;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="filesystem_8hpp.html">fuzzuf/utils/filesystem.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/exec_input/exec_input_set.hpp&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/executor/native_linux_executor.hpp&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="afl__executor__interface_8hpp.html">fuzzuf/executor/afl_executor_interface.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/feedback/inplace_memory_feedback.hpp&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/feedback/exit_status_feedback.hpp&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/afl_option.hpp&quot;</span></div>
@@ -125,7 +125,7 @@ $(function() {
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">using</span> Tag = <span class="keyword">typename</span> Testcase::Tag;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// FIXME: how to support other executors?</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">explicit</span> AFLStateTemplate(std::shared_ptr&lt;const AFLSetting&gt; setting, std::shared_ptr&lt;NativeLinuxExecutor&gt; executor);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">explicit</span> AFLStateTemplate(std::shared_ptr&lt;const AFLSetting&gt; setting, std::shared_ptr&lt;executor::AFLExecutorInterface&gt; executor);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">virtual</span> ~AFLStateTemplate();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    AFLStateTemplate( <span class="keyword">const</span> AFLStateTemplate&amp; ) = <span class="keyword">delete</span>;</div>
@@ -200,7 +200,7 @@ $(function() {
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">void</span> SetShouldConstructAutoDict(<span class="keywordtype">bool</span> v);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    std::shared_ptr&lt;const AFLSetting&gt; setting;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    std::shared_ptr&lt;NativeLinuxExecutor&gt; executor;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    std::shared_ptr&lt;executor::AFLExecutorInterface&gt; executor;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="classExecInputSet.html">ExecInputSet</a> input_set;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// TODO: what if this product works on environments other than *NIX?</span></div>
@@ -405,6 +405,7 @@ $(function() {
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/templates/afl_state.hpp&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassExitStatusFeedback_html"><div class="ttname"><a href="classExitStatusFeedback.html">ExitStatusFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="exit__status__feedback_8hpp_source.html#l00025">exit_status_feedback.hpp:25</a></div></div>
+<div class="ttc" id="aafl__executor__interface_8hpp_html"><div class="ttname"><a href="afl__executor__interface_8hpp.html">afl_executor_interface.hpp</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
 <div class="ttc" id="aclassInplaceMemoryFeedback_html"><div class="ttname"><a href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="inplace__memory__feedback_8hpp_source.html#l00028">inplace_memory_feedback.hpp:28</a></div></div>
 <div class="ttc" id="aclassExecInputSet_html"><div class="ttname"><a href="classExecInputSet.html">ExecInputSet</a></div><div class="ttdef"><b>Definition:</b> <a href="exec__input__set_8hpp_source.html#l00034">exec_input_set.hpp:34</a></div></div>

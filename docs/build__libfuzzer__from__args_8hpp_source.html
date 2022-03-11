@@ -97,7 +97,7 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span>po = boost::program_options;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// Used only for CLI</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> TFuzzer, <span class="keyword">class</span> TLibFuzzer&gt;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> TFuzzer, <span class="keyword">class</span> TLibFuzzer, <span class="keyword">class</span> TExecutor&gt;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;std::unique_ptr&lt;TFuzzer&gt; BuildLibFuzzerFromArgs(</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="structFuzzerArgs.html">FuzzerArgs</a> &amp;fuzzer_args, </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> &amp;global_options</div>

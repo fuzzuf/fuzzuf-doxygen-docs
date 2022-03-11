@@ -91,145 +91,149 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="algorithms_2nezha_2cli__compat_2fuzzer_8hpp.html">fuzzuf/algorithms/nezha/cli_compat/fuzzer.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="libfuzzer_2executor_2execute_8hpp.html">fuzzuf/algorithms/libfuzzer/executor/execute.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/cli/global_fuzzer_options.hpp&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="filesystem_8hpp.html">fuzzuf/utils/filesystem.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="map__file_8hpp.html">fuzzuf/utils/map_file.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sha1_8hpp.html">fuzzuf/utils/sha1.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="which_8hpp.html">fuzzuf/utils/which.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;boost/scope_exit.hpp&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;config.h&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;BOOST_AUTO_TEST_CASE(HierarFlowExecute) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// Setup root directory</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  std::string root_dir_template(<span class="stringliteral">&quot;/tmp/fuzzuf_test.XXXXXX&quot;</span>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">auto</span> *<span class="keyword">const</span> raw_dirname = mkdtemp(root_dir_template.data());</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  BOOST_CHECK(raw_dirname != <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">auto</span> root_dir = fs::path(raw_dirname);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">auto</span> input_dir = root_dir / <span class="stringliteral">&quot;input&quot;</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">auto</span> output_dir = root_dir / <span class="stringliteral">&quot;output&quot;</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// Create input/output dirctory</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  BOOST_CHECK_EQUAL(fs::create_directory(input_dir), <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  BOOST_CHECK_EQUAL(fs::create_directory(output_dir), <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// NOLINTBEGIN(cppcoreguidelines-pro-type-cstyle-cast,cppcoreguidelines-pro-type-member-init,cppcoreguidelines-special-member-functions,hicpp-explicit-conversions)</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  BOOST_SCOPE_EXIT(&amp;root_dir) { fs::remove_all(root_dir); }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  BOOST_SCOPE_EXIT_END</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="comment">// NOLINTEND(cppcoreguidelines-pro-type-cstyle-cast,cppcoreguidelines-pro-type-member-init,cppcoreguidelines-special-member-functions,hicpp-explicit-conversions)</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">namespace </span>ne = fuzzuf::algorithm::nezha;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;before init state&quot;</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/executor/native_linux_executor.hpp&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="filesystem_8hpp.html">fuzzuf/utils/filesystem.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="map__file_8hpp.html">fuzzuf/utils/map_file.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sha1_8hpp.html">fuzzuf/utils/sha1.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="which_8hpp.html">fuzzuf/utils/which.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;boost/scope_exit.hpp&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;config.h&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;BOOST_AUTO_TEST_CASE(HierarFlowExecute) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="comment">// Setup root directory</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  std::string root_dir_template(<span class="stringliteral">&quot;/tmp/fuzzuf_test.XXXXXX&quot;</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">auto</span> *<span class="keyword">const</span> raw_dirname = mkdtemp(root_dir_template.data());</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  BOOST_CHECK(raw_dirname != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">auto</span> root_dir = fs::path(raw_dirname);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">auto</span> input_dir = root_dir / <span class="stringliteral">&quot;input&quot;</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">auto</span> output_dir = root_dir / <span class="stringliteral">&quot;output&quot;</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// Create input/output dirctory</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  BOOST_CHECK_EQUAL(fs::create_directory(input_dir), <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  BOOST_CHECK_EQUAL(fs::create_directory(output_dir), <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// NOLINTBEGIN(cppcoreguidelines-pro-type-cstyle-cast,cppcoreguidelines-pro-type-member-init,cppcoreguidelines-special-member-functions,hicpp-explicit-conversions)</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  BOOST_SCOPE_EXIT(&amp;root_dir) { fs::remove_all(root_dir); }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  BOOST_SCOPE_EXIT_END</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">// NOLINTEND(cppcoreguidelines-pro-type-cstyle-cast,cppcoreguidelines-pro-type-member-init,cppcoreguidelines-special-member-functions,hicpp-explicit-conversions)</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keyword">namespace </span>ne = fuzzuf::algorithm::nezha;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">fuzzuf::executor::LibFuzzerExecutorInterface</a>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::vector&lt;std::uint8_t&gt; initial_input{<span class="charliteral">&#39;1&#39;</span>};</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">auto</span> initial_input_name = <a class="code" href="sha1_8hpp.html#a417a805483c2db7a1d40f28a7022c3a5">fuzzuf::utils::ToSerializedSha1</a>(initial_input);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::fstream fd((input_dir / initial_input_name).c_str(), std::ios::out);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::copy(initial_input.begin(), initial_input.end(),</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;              std::ostreambuf_iterator&lt;char&gt;(fd));</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  std::vector&lt;std::string&gt; args{</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <span class="stringliteral">&quot;foo&quot;</span>,</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="stringliteral">&quot;-target=&quot;</span> FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv_small&quot;</span>,</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="stringliteral">&quot;-target=&quot;</span> FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv_small&quot;</span>,</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="stringliteral">&quot;-target=&quot;</span> FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv&quot;</span>,</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="stringliteral">&quot;-seed=1&quot;</span>,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="stringliteral">&quot;-verbosity=2&quot;</span>,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="stringliteral">&quot;-runs=250&quot;</span>,</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="stringliteral">&quot;-timeout=1&quot;</span>,</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="stringliteral">&quot;-dict=&quot;</span> TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/csv.dict&quot;</span>,</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="stringliteral">&quot;-exact_artifact_path=&quot;</span> + output_dir.string(),</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="stringliteral">&quot;-print_pcs=1&quot;</span>,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="stringliteral">&quot;-print_final_stats=1&quot;</span>,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="stringliteral">&quot;-entropic=1&quot;</span>,</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <span class="stringliteral">&quot;-use_output=1&quot;</span>,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="stringliteral">&quot;-len_control=10&quot;</span>,</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      input_dir.string()};</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  std::vector&lt;const char *&gt; cargs;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  cargs.reserve(args.size());</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  std::transform(args.begin(), args.end(), std::back_inserter(cargs),</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                 [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;v) { return v.c_str(); });</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <a class="code" href="structFuzzerArgs.html">FuzzerArgs</a> wrapped_args;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  wrapped_args.argc = int(cargs.size()) - 1;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  wrapped_args.argv = std::next(cargs.data());</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  ne::NezhaFuzzer fuzzer(wrapped_args, <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a>(),</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                         [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">while</span> (!fuzzer.ShouldEnd()) {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    fuzzer.OneLoop();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;after execution&quot;</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;create_info = fuzzer.get_create_info();</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">namespace </span>tt = boost::test_tools;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> output_file_path = create_info.output_dir / <span class="stringliteral">&quot;result&quot;</span>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> path_to_write_seed = create_info.output_dir / <span class="stringliteral">&quot;cur_input&quot;</span>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    std::unique_ptr&lt;NativeLinuxExecutor&gt; executor1(<span class="keyword">new</span> <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>(</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv_small&quot;</span>, output_file_path.string()},</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        create_info.exec_timelimit_ms, create_info.exec_memlimit,</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        create_info.forksrv, path_to_write_seed, create_info.afl_shm_size,</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        create_info.bb_shm_size, <span class="keyword">true</span>));</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    std::unique_ptr&lt;NativeLinuxExecutor&gt; executor2(<span class="keyword">new</span> <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>(</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv&quot;</span>, output_file_path.string()},</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        create_info.exec_timelimit_ms, create_info.exec_memlimit,</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        create_info.forksrv, path_to_write_seed, create_info.afl_shm_size,</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        create_info.bb_shm_size, <span class="keyword">true</span>));</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::size_t solution_count = 0u;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    ne::known_outputs_t known;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;filename :</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;         fs::directory_iterator{create_info.output_dir}) {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="keywordflow">if</span> (fs::is_regular_file(filename.status())) {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keyword">auto</span> mapped =</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <a class="code" href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">fuzzuf::utils::map_file</a>(filename.path().string(), O_RDONLY, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        std::vector&lt;std::uint8_t&gt; input(mapped.begin(), mapped.end());</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> leaf = filename.path().filename().string();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">auto</span> expected_prefix = std::string(<span class="stringliteral">&quot;diff_&quot;</span>);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">if</span> (leaf.size() &gt;= expected_prefix.size() &amp;&amp;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            std::equal(leaf.begin(),</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                       std::next(leaf.begin(), expected_prefix.size()),</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                       expected_prefix.begin(), expected_prefix.end())) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;          ne::outputs_t hash;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;          {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            lf::InputInfo input_info;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            std::vector&lt;std::uint8_t&gt; output;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            std::vector&lt;std::uint8_t&gt; coverage;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            lf::executor::Execute(input, output, coverage, input_info,</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                  *executor1, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            hash.push_back(ne::output_hash()(output));</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;          }</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;          {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            lf::InputInfo input_info;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            std::vector&lt;std::uint8_t&gt; output;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            std::vector&lt;std::uint8_t&gt; coverage;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            lf::executor::Execute(input, output, coverage, input_info,</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                  *executor2, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            hash.push_back(ne::output_hash()(output));</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;          }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;          <span class="comment">// each targets output different message to stdout</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;          <span class="keywordtype">bool</span> is_unique = known.insert(std::move(hash)).second;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;          BOOST_CHECK(is_unique);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;          ++solution_count;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;The fuzzer detected &quot;</span> &lt;&lt; solution_count &lt;&lt; <span class="stringliteral">&quot; solutions.&quot;</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;              &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="comment">// at least one solution was found</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    BOOST_CHECK_NE(solution_count, 0u);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  }</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;done&quot;</span>);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;before init state&quot;</span>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::vector&lt;std::uint8_t&gt; initial_input{<span class="charliteral">&#39;1&#39;</span>};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">auto</span> initial_input_name = <a class="code" href="sha1_8hpp.html#a417a805483c2db7a1d40f28a7022c3a5">fuzzuf::utils::ToSerializedSha1</a>(initial_input);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::fstream fd((input_dir / initial_input_name).c_str(), std::ios::out);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::copy(initial_input.begin(), initial_input.end(),</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;              std::ostreambuf_iterator&lt;char&gt;(fd));</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::vector&lt;std::string&gt; args{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="stringliteral">&quot;foo&quot;</span>,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="stringliteral">&quot;-target=&quot;</span> FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv_small&quot;</span>,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="stringliteral">&quot;-target=&quot;</span> FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv_small&quot;</span>,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="stringliteral">&quot;-target=&quot;</span> FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv&quot;</span>,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="stringliteral">&quot;-seed=1&quot;</span>,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="stringliteral">&quot;-verbosity=2&quot;</span>,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="stringliteral">&quot;-runs=250&quot;</span>,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="stringliteral">&quot;-timeout=1&quot;</span>,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="stringliteral">&quot;-dict=&quot;</span> TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/csv.dict&quot;</span>,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="stringliteral">&quot;-exact_artifact_path=&quot;</span> + output_dir.string(),</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="stringliteral">&quot;-print_pcs=1&quot;</span>,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <span class="stringliteral">&quot;-print_final_stats=1&quot;</span>,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="stringliteral">&quot;-entropic=1&quot;</span>,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="stringliteral">&quot;-use_output=1&quot;</span>,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="stringliteral">&quot;-len_control=10&quot;</span>,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      input_dir.string()};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  std::vector&lt;const char *&gt; cargs;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  cargs.reserve(args.size());</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  std::transform(args.begin(), args.end(), std::back_inserter(cargs),</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                 [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;v) { return v.c_str(); });</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="structFuzzerArgs.html">FuzzerArgs</a> wrapped_args;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  wrapped_args.argc = int(cargs.size()) - 1;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  wrapped_args.argv = std::next(cargs.data());</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  ne::NezhaFuzzer fuzzer(wrapped_args, <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a>(),</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                         [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordflow">while</span> (!fuzzer.ShouldEnd()) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    fuzzer.OneLoop();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;after execution&quot;</span>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;create_info = fuzzer.get_create_info();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keyword">namespace </span>tt = boost::test_tools;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> output_file_path = create_info.output_dir / <span class="stringliteral">&quot;result&quot;</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> path_to_write_seed = create_info.output_dir / <span class="stringliteral">&quot;cur_input&quot;</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    std::shared_ptr&lt;NativeLinuxExecutor&gt; nle1(<span class="keyword">new</span> <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>(</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        {FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv_small&quot;</span>, output_file_path.string()},</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        create_info.exec_timelimit_ms, create_info.exec_memlimit,</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        create_info.forksrv, path_to_write_seed, create_info.afl_shm_size,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        create_info.bb_shm_size, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keyword">auto</span> executor1 = std::make_unique&lt;LibFuzzerExecutorInterface&gt;(std::move(nle1));</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    std::shared_ptr&lt;NativeLinuxExecutor&gt; nle2(<span class="keyword">new</span> <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>(</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {FUZZUF_FUZZTOYS_DIR <span class="stringliteral">&quot;/fuzz_toys-csv&quot;</span>, output_file_path.string()},</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        create_info.exec_timelimit_ms, create_info.exec_memlimit,</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        create_info.forksrv, path_to_write_seed, create_info.afl_shm_size,</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        create_info.bb_shm_size, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">auto</span> executor2 = std::make_unique&lt;LibFuzzerExecutorInterface&gt;(std::move(nle2));</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    std::size_t solution_count = 0u;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    ne::known_outputs_t known;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;filename :</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;         fs::directory_iterator{create_info.output_dir}) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="keywordflow">if</span> (fs::is_regular_file(filename.status())) {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keyword">auto</span> mapped =</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <a class="code" href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">fuzzuf::utils::map_file</a>(filename.path().string(), O_RDONLY, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        std::vector&lt;std::uint8_t&gt; input(mapped.begin(), mapped.end());</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> leaf = filename.path().filename().string();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">auto</span> expected_prefix = std::string(<span class="stringliteral">&quot;diff_&quot;</span>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">if</span> (leaf.size() &gt;= expected_prefix.size() &amp;&amp;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            std::equal(leaf.begin(),</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                       std::next(leaf.begin(), expected_prefix.size()),</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                       expected_prefix.begin(), expected_prefix.end())) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;          ne::outputs_t hash;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;          {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            lf::InputInfo input_info;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            std::vector&lt;std::uint8_t&gt; output;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            std::vector&lt;std::uint8_t&gt; coverage;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            lf::executor::Execute(input, output, coverage, input_info,</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                                  *executor1, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            hash.push_back(ne::output_hash()(output));</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;          }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;          {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            lf::InputInfo input_info;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            std::vector&lt;std::uint8_t&gt; output;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            std::vector&lt;std::uint8_t&gt; coverage;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            lf::executor::Execute(input, output, coverage, input_info,</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                  *executor2, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            hash.push_back(ne::output_hash()(output));</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;          }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;          <span class="comment">// each targets output different message to stdout</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;          <span class="keywordtype">bool</span> is_unique = known.insert(std::move(hash)).second;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;          BOOST_CHECK(is_unique);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;          ++solution_count;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;The fuzzer detected &quot;</span> &lt;&lt; solution_count &lt;&lt; <span class="stringliteral">&quot; solutions.&quot;</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;              &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="comment">// at least one solution was found</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    BOOST_CHECK_NE(solution_count, 0u);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;done&quot;</span>);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="alibfuzzer_2executor_2execute_8hpp_html"><div class="ttname"><a href="libfuzzer_2executor_2execute_8hpp.html">execute.hpp</a></div></div>
 <div class="ttc" id="aclassNativeLinuxExecutor_html"><div class="ttname"><a href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8hpp_source.html#l00043">native_linux_executor.hpp:43</a></div></div>
@@ -238,6 +242,7 @@ $(function() {
 <div class="ttc" id="asha1_8hpp_html"><div class="ttname"><a href="sha1_8hpp.html">sha1.hpp</a></div></div>
 <div class="ttc" id="astructFuzzerArgs_html"><div class="ttname"><a href="structFuzzerArgs.html">FuzzerArgs</a></div><div class="ttdef"><b>Definition:</b> <a href="fuzzer__args_8hpp_source.html#l00023">fuzzer_args.hpp:23</a></div></div>
 <div class="ttc" id="anamespacefuzzuf_1_1algorithm_1_1libfuzzer_html"><div class="ttname"><a href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a></div><div class="ttdef"><b>Definition:</b> <a href="config_8cpp_source.html#l00025">config.cpp:25</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface_html"><div class="ttname"><a href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">fuzzuf::executor::LibFuzzerExecutorInterface</a></div><div class="ttdoc">Represents minimal requirements for a libFuzzer-capable executor.</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer__executor__interface_8hpp_source.html#l00053">libfuzzer_executor_interface.hpp:53</a></div></div>
 <div class="ttc" id="awhich_8hpp_html"><div class="ttname"><a href="which_8hpp.html">which.hpp</a></div></div>
 <div class="ttc" id="asha1_8hpp_html_a417a805483c2db7a1d40f28a7022c3a5"><div class="ttname"><a href="sha1_8hpp.html#a417a805483c2db7a1d40f28a7022c3a5">fuzzuf::utils::ToSerializedSha1</a></div><div class="ttdeci">auto ToSerializedSha1(const Range &amp;range) -&gt; std::enable_if_t&lt;!std::is_same_v&lt; utils::type_traits::RemoveCvrT&lt; Range &gt;, std::vector&lt; std::uint8_t &gt;&gt;, std::string &gt;</div><div class="ttdef"><b>Definition:</b> <a href="sha1_8hpp_source.html#l00046">sha1.hpp:46</a></div></div>
 <div class="ttc" id="aalgorithms_2nezha_2cli__compat_2fuzzer_8hpp_html"><div class="ttname"><a href="algorithms_2nezha_2cli__compat_2fuzzer_8hpp.html">fuzzer.hpp</a></div></div>

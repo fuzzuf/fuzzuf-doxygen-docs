@@ -76,6 +76,7 @@ $(function() {
 <code>#include &lt;iomanip&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &quot;fuzzuf/algorithms/nautilus/fuzzer/state.hpp&quot;</code><br />
+<code>#include &quot;fuzzuf/exceptions.hpp&quot;</code><br />
 <code>#include &quot;fuzzuf/feedback/inplace_memory_feedback.hpp&quot;</code><br />
 <code>#include &quot;fuzzuf/feedback/persistent_memory_feedback.hpp&quot;</code><br />
 <code>#include &quot;fuzzuf/feedback/put_exit_reason_type.hpp&quot;</code><br />
@@ -85,56 +86,56 @@ Include dependency graph for state.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="nautilus_2fuzzer_2state_8cpp__incl.png" border="0" usemap="#algorithms_2nautilus_2fuzzer_2state_8cpp" alt=""/></div>
 <map name="algorithms_2nautilus_2fuzzer_2state_8cpp" id="algorithms_2nautilus_2fuzzer_2state_8cpp">
-<area shape="rect" title="Global state used during hieraflow loop." alt="" coords="1827,5,1975,47"/>
-<area shape="rect" title=" " alt="" coords="1405,102,1463,129"/>
-<area shape="rect" title=" " alt="" coords="1487,102,1562,129"/>
-<area shape="rect" title=" " alt="" coords="2781,459,2855,486"/>
-<area shape="rect" href="nautilus_2fuzzer_2state_8hpp_source.html" title=" " alt="" coords="2735,95,2927,136"/>
-<area shape="rect" href="put__exit__reason__type_8hpp_source.html" title=" " alt="" coords="3755,452,3924,493"/>
-<area shape="rect" href="common_8hpp_source.html" title=" " alt="" coords="1524,459,1707,486"/>
-<area shape="rect" href="inplace__memory__feedback_8hpp_source.html" title=" " alt="" coords="1714,273,1893,315"/>
-<area shape="rect" href="persistent__memory__feedback_8hpp_source.html" title=" " alt="" coords="1839,363,2034,404"/>
-<area shape="rect" title=" " alt="" coords="2306,191,2373,218"/>
-<area shape="rect" title=" " alt="" coords="2397,191,2460,218"/>
-<area shape="rect" title=" " alt="" coords="2567,541,2645,568"/>
-<area shape="rect" title=" " alt="" coords="3199,541,3258,568"/>
-<area shape="rect" title=" " alt="" coords="2677,541,2801,568"/>
-<area shape="rect" title=" " alt="" coords="3301,370,3415,397"/>
-<area shape="rect" title=" " alt="" coords="3059,541,3121,568"/>
-<area shape="rect" href="queue_8hpp.html" title="Corpus queue of Nautilus." alt="" coords="3490,273,3682,315"/>
-<area shape="rect" href="tree_8hpp.html" title="Tree for context&#45;free grammar." alt="" coords="2831,363,3023,404"/>
-<area shape="rect" href="context_8hpp.html" title="Context class for context&#45;free grammar." alt="" coords="3133,452,3325,493"/>
-<area shape="rect" href="setting_8hpp.html" title="Setting of nautilus." alt="" coords="2362,363,2554,404"/>
-<area shape="rect" href="chunkstore_8hpp.html" title="Disk storage to save (sub)trees." alt="" coords="3057,273,3267,315"/>
-<area shape="rect" href="algorithms_2nautilus_2grammartec_2mutator_8hpp.html" title="Tree mutation engine." alt="" coords="2869,184,3061,225"/>
-<area shape="rect" href="native__linux__executor_8hpp_source.html" title=" " alt="" coords="2013,184,2180,225"/>
-<area shape="rect" title=" " alt="" coords="2906,541,2981,568"/>
-<area shape="rect" title=" " alt="" coords="3801,541,3877,568"/>
-<area shape="rect" href="status_8hpp.html" title=" " alt="" coords="5,541,172,568"/>
-<area shape="rect" title=" " alt="" coords="109,616,189,643"/>
-<area shape="rect" title=" " alt="" coords="247,541,333,568"/>
-<area shape="rect" title=" " alt="" coords="357,541,413,568"/>
-<area shape="rect" title=" " alt="" coords="2362,541,2431,568"/>
-<area shape="rect" title=" " alt="" coords="437,541,508,568"/>
-<area shape="rect" title=" " alt="" coords="533,541,599,568"/>
-<area shape="rect" title=" " alt="" coords="623,541,685,568"/>
-<area shape="rect" title=" " alt="" coords="709,541,775,568"/>
-<area shape="rect" title=" " alt="" coords="799,541,866,568"/>
-<area shape="rect" title=" " alt="" coords="891,541,961,568"/>
-<area shape="rect" title=" " alt="" coords="986,541,1058,568"/>
-<area shape="rect" title=" " alt="" coords="1083,541,1169,568"/>
-<area shape="rect" title=" " alt="" coords="1193,541,1256,568"/>
-<area shape="rect" title=" " alt="" coords="1280,541,1353,568"/>
-<area shape="rect" title=" " alt="" coords="2456,541,2543,568"/>
-<area shape="rect" title=" " alt="" coords="1377,541,1448,568"/>
-<area shape="rect" title=" " alt="" coords="1473,541,1523,568"/>
-<area shape="rect" title=" " alt="" coords="1547,541,1694,568"/>
-<area shape="rect" title=" " alt="" coords="1719,541,1781,568"/>
-<area shape="rect" title=" " alt="" coords="1806,541,1849,568"/>
-<area shape="rect" title=" " alt="" coords="1873,541,1976,568"/>
-<area shape="rect" title=" " alt="" coords="2000,541,2116,568"/>
-<area shape="rect" title=" " alt="" coords="2141,541,2229,568"/>
-<area shape="rect" title=" " alt="" coords="2253,541,2338,568"/>
+<area shape="rect" title="Global state used during hieraflow loop." alt="" coords="1195,5,1343,47"/>
+<area shape="rect" title=" " alt="" coords="517,102,575,129"/>
+<area shape="rect" title=" " alt="" coords="599,102,674,129"/>
+<area shape="rect" title=" " alt="" coords="1306,459,1381,486"/>
+<area shape="rect" href="nautilus_2fuzzer_2state_8hpp_source.html" title=" " alt="" coords="2147,95,2339,136"/>
+<area shape="rect" href="put__exit__reason__type_8hpp_source.html" title=" " alt="" coords="2967,452,3136,493"/>
+<area shape="rect" href="common_8hpp_source.html" title=" " alt="" coords="1456,459,1639,486"/>
+<area shape="rect" href="inplace__memory__feedback_8hpp_source.html" title=" " alt="" coords="850,273,1029,315"/>
+<area shape="rect" href="persistent__memory__feedback_8hpp_source.html" title=" " alt="" coords="1403,363,1598,404"/>
+<area shape="rect" href="exceptions_8hpp_source.html" title=" " alt="" coords="3215,102,3381,129"/>
+<area shape="rect" title=" " alt="" coords="2331,191,2398,218"/>
+<area shape="rect" title=" " alt="" coords="2423,191,2485,218"/>
+<area shape="rect" title=" " alt="" coords="117,541,194,568"/>
+<area shape="rect" title=" " alt="" coords="2823,541,2882,568"/>
+<area shape="rect" title=" " alt="" coords="2447,541,2571,568"/>
+<area shape="rect" title=" " alt="" coords="2257,370,2371,397"/>
+<area shape="rect" title=" " alt="" coords="2695,541,2757,568"/>
+<area shape="rect" href="queue_8hpp.html" title="Corpus queue of Nautilus." alt="" coords="2281,273,2473,315"/>
+<area shape="rect" href="tree_8hpp.html" title="Tree for context&#45;free grammar." alt="" coords="1939,363,2131,404"/>
+<area shape="rect" href="context_8hpp.html" title="Context class for context&#45;free grammar." alt="" coords="2345,452,2537,493"/>
+<area shape="rect" href="setting_8hpp.html" title="Setting of nautilus." alt="" coords="2649,363,2841,404"/>
+<area shape="rect" href="chunkstore_8hpp.html" title="Disk storage to save (sub)trees." alt="" coords="1945,273,2155,315"/>
+<area shape="rect" href="algorithms_2nautilus_2grammartec_2mutator_8hpp.html" title="Tree mutation engine." alt="" coords="1954,184,2146,225"/>
+<area shape="rect" href="afl__executor__interface_8hpp.html" title=" " alt="" coords="1002,184,1181,225"/>
+<area shape="rect" title=" " alt="" coords="2595,541,2670,568"/>
+<area shape="rect" title=" " alt="" coords="3013,541,3089,568"/>
+<area shape="rect" href="status_8hpp.html" title=" " alt="" coords="1877,541,2044,568"/>
+<area shape="rect" title=" " alt="" coords="1859,616,1939,643"/>
+<area shape="rect" title=" " alt="" coords="2069,541,2154,568"/>
+<area shape="rect" title=" " alt="" coords="2178,541,2234,568"/>
+<area shape="rect" title=" " alt="" coords="2258,541,2327,568"/>
+<area shape="rect" title=" " alt="" coords="2352,541,2423,568"/>
+<area shape="rect" title=" " alt="" coords="218,541,285,568"/>
+<area shape="rect" title=" " alt="" coords="309,541,370,568"/>
+<area shape="rect" title=" " alt="" coords="395,541,460,568"/>
+<area shape="rect" title=" " alt="" coords="485,541,551,568"/>
+<area shape="rect" title=" " alt="" coords="576,541,647,568"/>
+<area shape="rect" title=" " alt="" coords="671,541,743,568"/>
+<area shape="rect" title=" " alt="" coords="768,541,855,568"/>
+<area shape="rect" title=" " alt="" coords="879,541,941,568"/>
+<area shape="rect" title=" " alt="" coords="965,541,1039,568"/>
+<area shape="rect" title=" " alt="" coords="5,541,92,568"/>
+<area shape="rect" title=" " alt="" coords="1063,541,1133,568"/>
+<area shape="rect" title=" " alt="" coords="1158,541,1209,568"/>
+<area shape="rect" title=" " alt="" coords="1233,541,1379,568"/>
+<area shape="rect" title=" " alt="" coords="1404,541,1467,568"/>
+<area shape="rect" title=" " alt="" coords="1491,541,1534,568"/>
+<area shape="rect" title=" " alt="" coords="1559,541,1661,568"/>
+<area shape="rect" title=" " alt="" coords="1685,541,1801,568"/>
+<area shape="rect" title=" " alt="" coords="3255,191,3341,218"/>
 </map>
 </div>
 </div>

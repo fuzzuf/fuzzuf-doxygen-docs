@@ -155,76 +155,85 @@ $(function() {
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment">// In the future, we should generalize this flag so that we can arbitrarily specify </span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">// which fd should be recorded. For example, by passing std::vector&lt;int&gt;{1, 2} to this class,</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">// we would tell that we would like to record stdout and stderr.</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">bool</span> record_stdout_and_err = <span class="keyword">false</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    );</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html#a3d5317cb9b88ceff6f28634f8027efae">~NativeLinuxExecutor</a>();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>( <span class="keyword">const</span> <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>&amp; ) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>( <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>&amp;&amp; ) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a> &amp;operator=( <span class="keyword">const</span> <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>&amp; ) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a> &amp;operator=( <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>&amp;&amp; ) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>() = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">// Common methods among children on Executor classes</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Declare in the base class and define in each derivative, if possible (how to achieve?)</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNativeLinuxExecutor.html#a9c80c00d7726e17f23bfc52d47820d67">Run</a>(<span class="keyword">const</span> u8 *buf, u32 len, u32 timeout_ms=0);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span> ReceiveStopSignal(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// Environment-specific methods</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    u32 GetAFLMapSize();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    u32 GetBBMapSize();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">int</span> GetAFLShmID();</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">int</span> GetBBShmID();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> GetAFLFeedback();</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> GetBBFeedback();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> GetStdOut();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> GetStdErr();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="classExitStatusFeedback.html">ExitStatusFeedback</a> GetExitStatusFeedback();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> IsFeedbackLocked();</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNativeLinuxExecutor.html#aa1d5fbf00a1362b16483c846c35c9afc">TerminateForkServer</a>();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> SetCArgvAndDecideInputMode();    </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">void</span> SetupSharedMemories();</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">void</span> ResetSharedMemories();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> EraseSharedMemories();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> SetupEnvironmentVariablesForTarget();</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> SetupForkServer();    </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> SetupSignalHandlers();</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classNativeLinuxExecutor.html#a4641ba48b4ecac90553adca6b69969ac">AlarmHandler</a>(<span class="keywordtype">int</span> signum);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// InplaceMemoryFeedback made of GetStdOut before calling this function becomes invalid after Run()</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    fuzzuf::executor::output_t MoveStdOut();</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">// InplaceMemoryFeedback made of GetStdErr before calling this function becomes invalid after Run()</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    fuzzuf::executor::output_t MoveStdErr();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">private</span>:    </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    PUTExitReasonType last_exit_reason;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    u8 last_signal;    </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    fuzzuf::executor::output_t stdout_buffer;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    fuzzuf::executor::output_t stderr_buffer;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">int</span> fork_server_stdout_fd = -1;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">int</span> fork_server_stderr_fd = -1;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">int</span> fork_server_epoll_fd = -1;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    epoll_event fork_server_stdout_event;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    epoll_event fork_server_stderr_event;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    epoll_event fork_server_read_event;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordtype">bool</span> record_stdout_and_err;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;};</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">bool</span> record_stdout_and_err = <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::vector&lt; std::string &gt; &amp;&amp;environment_variables_ = {}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    );</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html#a3d5317cb9b88ceff6f28634f8027efae">~NativeLinuxExecutor</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>( <span class="keyword">const</span> <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>( <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>&amp;&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a> &amp;operator=( <span class="keyword">const</span> <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a> &amp;operator=( <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>&amp;&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Common methods among children on Executor classes</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// Declare in the base class and define in each derivative, if possible (how to achieve?)</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNativeLinuxExecutor.html#a9c80c00d7726e17f23bfc52d47820d67">Run</a>(<span class="keyword">const</span> u8 *buf, u32 len, u32 timeout_ms=0);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> ReceiveStopSignal(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">// Environment-specific methods</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    u32 GetAFLMapSize();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    u32 GetBBMapSize();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">int</span> GetAFLShmID();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">int</span> GetBBShmID();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> GetAFLFeedback();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> GetBBFeedback();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> GetStdOut();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> GetStdErr();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="classExitStatusFeedback.html">ExitStatusFeedback</a> GetExitStatusFeedback();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> IsFeedbackLocked();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNativeLinuxExecutor.html#aa1d5fbf00a1362b16483c846c35c9afc">TerminateForkServer</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">void</span> SetCArgvAndDecideInputMode();    </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">void</span> SetupSharedMemories();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> ResetSharedMemories();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> EraseSharedMemories();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> SetupEnvironmentVariablesForTarget();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">void</span> SetupForkServer();    </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> SetupSignalHandlers();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classNativeLinuxExecutor.html#a4641ba48b4ecac90553adca6b69969ac">AlarmHandler</a>(<span class="keywordtype">int</span> signum);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="comment">// InplaceMemoryFeedback made of GetStdOut before calling this function becomes invalid after Run()</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    fuzzuf::executor::output_t MoveStdOut();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="comment">// InplaceMemoryFeedback made of GetStdErr before calling this function becomes invalid after Run()</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    fuzzuf::executor::output_t MoveStdErr();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNativeLinuxExecutor.html#a4eaf57240e5a9737cc83f40731a58af8">CreateJoinedEnvironmentVariables</a>( std::vector&lt; std::string &gt; &amp;&amp;extra );</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    PUTExitReasonType last_exit_reason;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    u8 last_signal;    </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    fuzzuf::executor::output_t stdout_buffer;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    fuzzuf::executor::output_t stderr_buffer;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordtype">int</span> fork_server_stdout_fd = -1;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">int</span> fork_server_stderr_fd = -1;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">int</span> fork_server_epoll_fd = -1;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    epoll_event fork_server_stdout_event;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    epoll_event fork_server_stderr_event;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    epoll_event fork_server_read_event;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordtype">bool</span> record_stdout_and_err;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="classNativeLinuxExecutor.html#a6e06c5246db02f0fe87227828ce826ab">  160</a></span>&#160;    std::vector&lt; std::string &gt; <a class="code" href="classNativeLinuxExecutor.html#a6e06c5246db02f0fe87227828ce826ab">environment_variables</a>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="classNativeLinuxExecutor.html#addee4cb3dc5edf75f5859aca70effb32">  167</a></span>&#160;    std::vector&lt; const char* &gt; <a class="code" href="classNativeLinuxExecutor.html#addee4cb3dc5edf75f5859aca70effb32">raw_environment_variables</a>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassNativeLinuxExecutor_html_a4641ba48b4ecac90553adca6b69969ac"><div class="ttname"><a href="classNativeLinuxExecutor.html#a4641ba48b4ecac90553adca6b69969ac">NativeLinuxExecutor::AlarmHandler</a></div><div class="ttdeci">static void AlarmHandler(int signum)</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8cpp_source.html#l00213">native_linux_executor.cpp:213</a></div></div>
+<div class="ttc" id="aclassNativeLinuxExecutor_html_a4641ba48b4ecac90553adca6b69969ac"><div class="ttname"><a href="classNativeLinuxExecutor.html#a4641ba48b4ecac90553adca6b69969ac">NativeLinuxExecutor::AlarmHandler</a></div><div class="ttdeci">static void AlarmHandler(int signum)</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8cpp_source.html#l00215">native_linux_executor.cpp:215</a></div></div>
 <div class="ttc" id="aclassExitStatusFeedback_html"><div class="ttname"><a href="classExitStatusFeedback.html">ExitStatusFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="exit__status__feedback_8hpp_source.html#l00025">exit_status_feedback.hpp:25</a></div></div>
+<div class="ttc" id="aclassNativeLinuxExecutor_html_a6e06c5246db02f0fe87227828ce826ab"><div class="ttname"><a href="classNativeLinuxExecutor.html#a6e06c5246db02f0fe87227828ce826ab">NativeLinuxExecutor::environment_variables</a></div><div class="ttdeci">std::vector&lt; std::string &gt; environment_variables</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8hpp_source.html#l00160">native_linux_executor.hpp:160</a></div></div>
 <div class="ttc" id="aclassNativeLinuxExecutor_html"><div class="ttname"><a href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8hpp_source.html#l00043">native_linux_executor.hpp:43</a></div></div>
-<div class="ttc" id="aclassNativeLinuxExecutor_html_a3d5317cb9b88ceff6f28634f8027efae"><div class="ttname"><a href="classNativeLinuxExecutor.html#a3d5317cb9b88ceff6f28634f8027efae">NativeLinuxExecutor::~NativeLinuxExecutor</a></div><div class="ttdeci">~NativeLinuxExecutor()</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8cpp_source.html#l00114">native_linux_executor.cpp:114</a></div></div>
-<div class="ttc" id="aclassNativeLinuxExecutor_html_a9c80c00d7726e17f23bfc52d47820d67"><div class="ttname"><a href="classNativeLinuxExecutor.html#a9c80c00d7726e17f23bfc52d47820d67">NativeLinuxExecutor::Run</a></div><div class="ttdeci">void Run(const u8 *buf, u32 len, u32 timeout_ms=0)</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8cpp_source.html#l00319">native_linux_executor.cpp:319</a></div></div>
+<div class="ttc" id="aclassNativeLinuxExecutor_html_a3d5317cb9b88ceff6f28634f8027efae"><div class="ttname"><a href="classNativeLinuxExecutor.html#a3d5317cb9b88ceff6f28634f8027efae">NativeLinuxExecutor::~NativeLinuxExecutor</a></div><div class="ttdeci">~NativeLinuxExecutor()</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8cpp_source.html#l00116">native_linux_executor.cpp:116</a></div></div>
+<div class="ttc" id="aclassNativeLinuxExecutor_html_addee4cb3dc5edf75f5859aca70effb32"><div class="ttname"><a href="classNativeLinuxExecutor.html#addee4cb3dc5edf75f5859aca70effb32">NativeLinuxExecutor::raw_environment_variables</a></div><div class="ttdeci">std::vector&lt; const char * &gt; raw_environment_variables</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8hpp_source.html#l00167">native_linux_executor.hpp:167</a></div></div>
+<div class="ttc" id="aclassNativeLinuxExecutor_html_a9c80c00d7726e17f23bfc52d47820d67"><div class="ttname"><a href="classNativeLinuxExecutor.html#a9c80c00d7726e17f23bfc52d47820d67">NativeLinuxExecutor::Run</a></div><div class="ttdeci">void Run(const u8 *buf, u32 len, u32 timeout_ms=0)</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8cpp_source.html#l00321">native_linux_executor.cpp:321</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
 <div class="ttc" id="aclassInplaceMemoryFeedback_html"><div class="ttname"><a href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="inplace__memory__feedback_8hpp_source.html#l00028">inplace_memory_feedback.hpp:28</a></div></div>
 <div class="ttc" id="afuzzuf__bb__cov__attacher_8hpp_html"><div class="ttname"><a href="fuzzuf__bb__cov__attacher_8hpp.html">fuzzuf_bb_cov_attacher.hpp</a></div></div>
 <div class="ttc" id="aclassFuzzufBBCovAttacher_html"><div class="ttname"><a href="classFuzzufBBCovAttacher.html">FuzzufBBCovAttacher</a></div><div class="ttdoc">fuzzuf-specific basic block coverage attacher.</div><div class="ttdef"><b>Definition:</b> <a href="fuzzuf__bb__cov__attacher_8hpp_source.html#l00033">fuzzuf_bb_cov_attacher.hpp:33</a></div></div>
 <div class="ttc" id="aclassExecutor_html"><div class="ttname"><a href="classExecutor.html">Executor</a></div><div class="ttdef"><b>Definition:</b> <a href="executor_8hpp_source.html#l00043">executor.hpp:43</a></div></div>
-<div class="ttc" id="aclassNativeLinuxExecutor_html_aa1d5fbf00a1362b16483c846c35c9afc"><div class="ttname"><a href="classNativeLinuxExecutor.html#aa1d5fbf00a1362b16483c846c35c9afc">NativeLinuxExecutor::TerminateForkServer</a></div><div class="ttdeci">void TerminateForkServer()</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8cpp_source.html#l00167">native_linux_executor.cpp:167</a></div></div>
+<div class="ttc" id="aclassNativeLinuxExecutor_html_a4eaf57240e5a9737cc83f40731a58af8"><div class="ttname"><a href="classNativeLinuxExecutor.html#a4eaf57240e5a9737cc83f40731a58af8">NativeLinuxExecutor::CreateJoinedEnvironmentVariables</a></div><div class="ttdeci">void CreateJoinedEnvironmentVariables(std::vector&lt; std::string &gt; &amp;&amp;extra)</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8cpp_source.html#l00825">native_linux_executor.cpp:825</a></div></div>
+<div class="ttc" id="aclassNativeLinuxExecutor_html_aa1d5fbf00a1362b16483c846c35c9afc"><div class="ttname"><a href="classNativeLinuxExecutor.html#aa1d5fbf00a1362b16483c846c35c9afc">NativeLinuxExecutor::TerminateForkServer</a></div><div class="ttdeci">void TerminateForkServer()</div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8cpp_source.html#l00169">native_linux_executor.cpp:169</a></div></div>
 <div class="ttc" id="aclassAFLEdgeCovAttacher_html"><div class="ttname"><a href="classAFLEdgeCovAttacher.html">AFLEdgeCovAttacher</a></div><div class="ttdoc">AFL-compatible hashed edge coverage attacher.</div><div class="ttdef"><b>Definition:</b> <a href="afl__edge__cov__attacher_8hpp_source.html#l00033">afl_edge_cov_attacher.hpp:33</a></div></div>
 <div class="ttc" id="aafl__edge__cov__attacher_8hpp_html"><div class="ttname"><a href="afl__edge__cov__attacher_8hpp.html">afl_edge_cov_attacher.hpp</a></div></div>
 <!-- start footer part -->

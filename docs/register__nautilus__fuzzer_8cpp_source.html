@@ -89,12 +89,18 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="algorithms_2nautilus_2fuzzer_2fuzzer_8hpp.html">fuzzuf/algorithms/nautilus/fuzzer/fuzzer.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/cli/fuzzer_builder_register.hpp&quot;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="build__nautilus__fuzzer__from__args_8hpp.html">fuzzuf/cli/fuzzer/nautilus/build_nautilus_fuzzer_from_args.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">static</span> <a class="code" href="classFuzzerBuilderRegister.html">FuzzerBuilderRegister</a> global_nautilus_register(</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="stringliteral">&quot;nautilus&quot;</span>,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  BuildNautilusFuzzerFromArgs&lt;Fuzzer, NautilusFuzzer&gt;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="afl__executor__interface_8hpp.html">fuzzuf/executor/afl_executor_interface.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>fuzzuf::cli::fuzzer::nautilus {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">static</span> <a class="code" href="classFuzzerBuilderRegister.html">FuzzerBuilderRegister</a> global_nautilus_register(</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="stringliteral">&quot;nautilus&quot;</span>,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  BuildNautilusFuzzerFromArgs&lt;Fuzzer, NautilusFuzzer, executor::AFLExecutorInterface&gt;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;} <span class="comment">// namespace fuzzuf::cli::fuzzer::nautilus</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aafl__executor__interface_8hpp_html"><div class="ttname"><a href="afl__executor__interface_8hpp.html">afl_executor_interface.hpp</a></div></div>
 <div class="ttc" id="aalgorithms_2nautilus_2fuzzer_2fuzzer_8hpp_html"><div class="ttname"><a href="algorithms_2nautilus_2fuzzer_2fuzzer_8hpp.html">fuzzer.hpp</a></div><div class="ttdoc">Fuzzing loop of Nautilus.</div></div>
 <div class="ttc" id="abuild__nautilus__fuzzer__from__args_8hpp_html"><div class="ttname"><a href="build__nautilus__fuzzer__from__args_8hpp.html">build_nautilus_fuzzer_from_args.hpp</a></div><div class="ttdoc">Register CLI option for Nautilus.</div></div>
 <div class="ttc" id="aclassFuzzerBuilderRegister_html"><div class="ttname"><a href="classFuzzerBuilderRegister.html">FuzzerBuilderRegister</a></div><div class="ttdef"><b>Definition:</b> <a href="fuzzer__builder__register_8hpp_source.html#l00027">fuzzer_builder_register.hpp:27</a></div></div>

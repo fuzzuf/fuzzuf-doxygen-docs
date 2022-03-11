@@ -125,7 +125,7 @@ $(function() {
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// Used only for CLI</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> TFuzzer, <span class="keyword">class</span> TAFLFuzzer&gt;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> TFuzzer, <span class="keyword">class</span> TAFLFuzzer, <span class="keyword">class</span> TExecutor&gt;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;std::unique_ptr&lt;TFuzzer&gt; BuildAFLFastFuzzerFromArgs(</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="structFuzzerArgs.html">FuzzerArgs</a> &amp;fuzzer_args, </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> &amp;global_options</div>
@@ -227,28 +227,29 @@ $(function() {
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keyword">using</span> fuzzuf::algorithm::afl::option::GetMapSize;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">// Create NativeLinuxExecutor</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">// TODO: support more types of executors</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keyword">auto</span> executor = std::make_shared&lt;NativeLinuxExecutor&gt;(</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                        setting-&gt;argv,</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                        setting-&gt;exec_timelimit_ms,</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        setting-&gt;exec_memlimit,</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        setting-&gt;forksrv,</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                        setting-&gt;out_dir / GetDefaultOutfile&lt;AFLFastTag&gt;(),</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                        GetMapSize&lt;AFLFastTag&gt;(), <span class="comment">// afl_shm_size</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                           0      <span class="comment">//  bb_shm_size</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    );</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="comment">// Create AFLFastState</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastState.html">fuzzuf::algorithm::aflfast::AFLFastState</a>;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keyword">auto</span> state = std::make_unique&lt;AFLFastState&gt;(setting, executor);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">return</span> std::unique_ptr&lt;TFuzzer&gt;(</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keyword">dynamic_cast&lt;</span>TFuzzer *<span class="keyword">&gt;</span>(</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    <span class="keyword">new</span> TAFLFuzzer(std::move(state))</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                )</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            );</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keyword">auto</span> nle = std::make_shared&lt;NativeLinuxExecutor&gt;(</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        setting-&gt;argv,</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                        setting-&gt;exec_timelimit_ms,</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                        setting-&gt;exec_memlimit,</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                        setting-&gt;forksrv,</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        setting-&gt;out_dir / GetDefaultOutfile&lt;AFLFastTag&gt;(),</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        GetMapSize&lt;AFLFastTag&gt;(), <span class="comment">// afl_shm_size</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                                           0      <span class="comment">//  bb_shm_size</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                    );</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="comment">// TODO: support more types of executors</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keyword">auto</span> executor = std::make_shared&lt;TExecutor&gt;(std::move(nle));</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment">// Create AFLFastState</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastState.html">fuzzuf::algorithm::aflfast::AFLFastState</a>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">auto</span> state = std::make_unique&lt;AFLFastState&gt;(setting, executor);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">return</span> std::unique_ptr&lt;TFuzzer&gt;(</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keyword">dynamic_cast&lt;</span>TFuzzer *<span class="keyword">&gt;</span>(</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    <span class="keyword">new</span> TAFLFuzzer(std::move(state))</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                )</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            );</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructPutArgs_html"><div class="ttname"><a href="structPutArgs.html">PutArgs</a></div><div class="ttdef"><b>Definition:</b> <a href="put__args_8hpp_source.html#l00022">put_args.hpp:22</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastSetting_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastSetting.html">fuzzuf::algorithm::aflfast::AFLFastSetting</a></div><div class="ttdef"><b>Definition:</b> <a href="aflfast__setting_8hpp_source.html#l00025">aflfast_setting.hpp:25</a></div></div>

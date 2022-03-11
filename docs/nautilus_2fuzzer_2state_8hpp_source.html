@@ -102,7 +102,7 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="context_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/context.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="algorithms_2nautilus_2grammartec_2mutator_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/mutator.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tree_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/tree.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/executor/native_linux_executor.hpp&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="afl__executor__interface_8hpp.html">fuzzuf/executor/afl_executor_interface.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::nautilus::fuzzer {</div>
@@ -117,7 +117,7 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">   51</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a> {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>(</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::shared_ptr&lt;const NautilusSetting&gt; setting,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::shared_ptr&lt;NativeLinuxExecutor&gt; executor</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::shared_ptr&lt;executor::AFLExecutorInterface&gt; executor</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  );</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">bool</span> RunOnWithDedup(<span class="keyword">const</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1TreeLike.html">TreeLike</a>&amp; tree,</div>
@@ -147,7 +147,7 @@ $(function() {
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                 <span class="keywordtype">size_t</span> end_index);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  std::shared_ptr&lt;const NautilusSetting&gt; setting;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  std::shared_ptr&lt;NativeLinuxExecutor&gt; executor;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  std::shared_ptr&lt;executor::AFLExecutorInterface&gt; executor;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="comment">/* Local state */</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context.html">Context</a> ctx;</div>
@@ -195,6 +195,7 @@ $(function() {
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="achunkstore_8hpp_html"><div class="ttname"><a href="chunkstore_8hpp.html">chunkstore.hpp</a></div><div class="ttdoc">Disk storage to save (sub)trees.</div></div>
+<div class="ttc" id="aafl__executor__interface_8hpp_html"><div class="ttname"><a href="afl__executor__interface_8hpp.html">afl_executor_interface.hpp</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context.html">fuzzuf::algorithm::nautilus::grammartec::Context</a></div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00039">context.hpp:39</a></div></div>
 <div class="ttc" id="acontext_8hpp_html"><div class="ttname"><a href="context_8hpp.html">context.hpp</a></div><div class="ttdoc">Context class for context-free grammar.</div></div>
 <div class="ttc" id="aalgorithms_2nautilus_2grammartec_2mutator_8hpp_html"><div class="ttname"><a href="algorithms_2nautilus_2grammartec_2mutator_8hpp.html">mutator.hpp</a></div><div class="ttdoc">Tree mutation engine.</div></div>

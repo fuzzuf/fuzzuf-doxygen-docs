@@ -66,6 +66,7 @@ $(function() {
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classNativeLinuxExecutor-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -96,8 +97,8 @@ Collaboration diagram for NativeLinuxExecutor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4411886aea7d4a80ec24fc481a172e4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNativeLinuxExecutor.html#a4411886aea7d4a80ec24fc481a172e4a">NativeLinuxExecutor</a> (const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, bool record_stdout_and_err=false)</td></tr>
-<tr class="separator:a4411886aea7d4a80ec24fc481a172e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6203f74560a27f6c7759c9eb146ad1b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNativeLinuxExecutor.html#a6203f74560a27f6c7759c9eb146ad1b2">NativeLinuxExecutor</a> (const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, bool record_stdout_and_err=false, std::vector&lt; std::string &gt; &amp;&amp;environment_variables_={})</td></tr>
+<tr class="separator:a6203f74560a27f6c7759c9eb146ad1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d5317cb9b88ceff6f28634f8027efae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNativeLinuxExecutor.html#a3d5317cb9b88ceff6f28634f8027efae">~NativeLinuxExecutor</a> ()</td></tr>
 <tr class="separator:a3d5317cb9b88ceff6f28634f8027efae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9ffe817c88053fde62b648649579b9d"><td class="memItemLeft" align="right" valign="top"><a id="af9ffe817c88053fde62b648649579b9d"></a>
@@ -281,6 +282,11 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>has_setup_sigh
 static <a class="el" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>active_instance</b> = nullptr</td></tr>
 <tr class="separator:af736ffa048f5d15245961d4ca334dc39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a4eaf57240e5a9737cc83f40731a58af8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNativeLinuxExecutor.html#a4eaf57240e5a9737cc83f40731a58af8">CreateJoinedEnvironmentVariables</a> (std::vector&lt; std::string &gt; &amp;&amp;extra)</td></tr>
+<tr class="separator:a4eaf57240e5a9737cc83f40731a58af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a64fe524af83fde8372751f9df998829c"><td class="memItemLeft" align="right" valign="top"><a id="a64fe524af83fde8372751f9df998829c"></a>
@@ -316,6 +322,10 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 <tr class="memitem:a0309439a955511b061e60e502b16caa4"><td class="memItemLeft" align="right" valign="top"><a id="a0309439a955511b061e60e502b16caa4"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>record_stdout_and_err</b></td></tr>
 <tr class="separator:a0309439a955511b061e60e502b16caa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e06c5246db02f0fe87227828ce826ab"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNativeLinuxExecutor.html#a6e06c5246db02f0fe87227828ce826ab">environment_variables</a></td></tr>
+<tr class="separator:a6e06c5246db02f0fe87227828ce826ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addee4cb3dc5edf75f5859aca70effb32"><td class="memItemLeft" align="right" valign="top">std::vector&lt; const char * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNativeLinuxExecutor.html#addee4cb3dc5edf75f5859aca70effb32">raw_environment_variables</a></td></tr>
+<tr class="separator:addee4cb3dc5edf75f5859aca70effb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -328,8 +338,8 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="native__linux__executor_8hpp_source.html#l00043">43</a> of file <a class="el" href="native__linux__executor_8hpp_source.html">native_linux_executor.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4411886aea7d4a80ec24fc481a172e4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4411886aea7d4a80ec24fc481a172e4a">&#9670;&nbsp;</a></span>NativeLinuxExecutor()</h2>
+<a id="a6203f74560a27f6c7759c9eb146ad1b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6203f74560a27f6c7759c9eb146ad1b2">&#9670;&nbsp;</a></span>NativeLinuxExecutor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -380,7 +390,13 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>record_stdout_and_err</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>record_stdout_and_err</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>environment_variables_</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -438,7 +454,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <li>Temporary purpose: If actve_instance which signal handlers refer has a pointer to self value, assign nullptr to it and invalidate. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00114">114</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00116">116</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -477,7 +493,41 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00213">213</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00215">215</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4eaf57240e5a9737cc83f40731a58af8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4eaf57240e5a9737cc83f40731a58af8">&#9670;&nbsp;</a></span>CreateJoinedEnvironmentVariables()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NativeLinuxExecutor::CreateJoinedEnvironmentVariables </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>extra</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Take snapshot of environment variables. This updates both environment_variables and raw_environment_variables. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">extra</td><td><a class="el" href="classExecutor.html">Executor</a> specific environment variables those are set only on the child process of this executor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00825">825</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -539,7 +589,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 
 <p>Implements <a class="el" href="classExecutor.html">Executor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00319">319</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00321">321</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -571,7 +621,61 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00167">167</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8cpp_source.html#l00169">169</a> of file <a class="el" href="native__linux__executor_8cpp_source.html">native_linux_executor.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6e06c5246db02f0fe87227828ce826ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e06c5246db02f0fe87227828ce826ab">&#9670;&nbsp;</a></span>environment_variables</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; NativeLinuxExecutor::environment_variables</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Snapshot of environment variables. This contains following values.</p><ul>
+<li>All global environment variables available whien the constructor is executed.</li>
+<li><a class="el" href="classExecutor.html">Executor</a> specific environment variables specified on the constructor argument. The child process invoked by this executor will take these values as environment variables. (This means the executor created prior to modification of environment variables will take old environment variables) </li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8hpp_source.html#l00160">160</a> of file <a class="el" href="native__linux__executor_8hpp_source.html">native_linux_executor.hpp</a>.</p>
+
+</div>
+</div>
+<a id="addee4cb3dc5edf75f5859aca70effb32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addee4cb3dc5edf75f5859aca70effb32">&#9670;&nbsp;</a></span>raw_environment_variables</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; const char* &gt; NativeLinuxExecutor::raw_environment_variables</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Since some C APIs require environment variables in null terminated array of C-string, environment_variables is transformed into that form. Each element of raw_environment_variables points value of environment_variables except last value that points nullptr. raw_environment_variables should be rebuilt if environment_variables is modified. </p>
+
+<p class="definition">Definition at line <a class="el" href="native__linux__executor_8hpp_source.html#l00167">167</a> of file <a class="el" href="native__linux__executor_8hpp_source.html">native_linux_executor.hpp</a>.</p>
 
 </div>
 </div>

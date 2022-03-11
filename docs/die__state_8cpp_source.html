@@ -885,7 +885,7 @@ $(function() {
 <div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;  tmp = DescribeInteger(total_tmouts) + <span class="stringliteral">&quot; (&quot;</span> +</div>
 <div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    DescribeInteger(unique_tmouts);</div>
 <div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;  <span class="keywordflow">if</span> (unique_hangs &gt;= GetKeepUniqueHang(*<span class="keyword">this</span>)) tmp += <span class="charliteral">&#39;+&#39;</span>;</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;  tmp += <span class="charliteral">&#39;)&#39;</span>;</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;  tmp += <span class="stringliteral">&quot; unique)&quot;</span>;</div>
 <div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160; </div>
 <div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;  MSG (bSTG bV bSTOP <span class="stringliteral">&quot;  total tmouts : &quot;</span> cRST <span class="stringliteral">&quot;%-22s &quot;</span> bSTG bV <span class="stringliteral">&quot;\n&quot;</span>, tmp.c_str());</div>
 <div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160; </div>
