@@ -62,9 +62,7 @@ var searchData=
   ['arithtemplate_60',['ArithTemplate',['../structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1ArithTemplate.html',1,'fuzzuf::algorithm::afl::routine::mutation']]],
   ['assign_2ehpp_61',['assign.hpp',['../assign_8hpp.html',1,'']]],
   ['american_20fuzzy_20lop_62',['American Fuzzy Lop',['../md_docs_algorithms_afl_algorithm_en.html',1,'']]],
-  ['american_20fuzzy_20lop_63',['American Fuzzy Lop',['../md_docs_algorithms_afl_algorithm_ja.html',1,'']]],
-  ['afl_20implementation_20in_20fuzzuf_64',['AFL Implementation in fuzzuf',['../md_docs_algorithms_afl_implementation_en.html',1,'']]],
-  ['aflfast_65',['AFLFast',['../md_docs_algorithms_aflfast_algorithm_en.html',1,'']]],
-  ['aflfast_66',['AFLFast',['../md_docs_algorithms_aflfast_algorithm_ja.html',1,'']]],
-  ['aflfast_20implementation_20on_20fuzzuf_67',['AFLFast Implementation on fuzzuf',['../md_docs_algorithms_aflfast_implementation_en.html',1,'']]]
+  ['afl_20implementation_20in_20fuzzuf_63',['AFL Implementation in fuzzuf',['../md_docs_algorithms_afl_implementation_en.html',1,'']]],
+  ['aflfast_64',['AFLFast',['../md_docs_algorithms_aflfast_algorithm_en.html',1,'']]],
+  ['aflfast_20implementation_20on_20fuzzuf_65',['AFLFast Implementation on fuzzuf',['../md_docs_algorithms_aflfast_implementation_en.html',1,'']]]
 ];

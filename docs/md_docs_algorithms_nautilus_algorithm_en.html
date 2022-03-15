@@ -66,7 +66,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This document explains about Nautilus mode of fuzzuf and its usage.</p>
-<h1><a class="anchor" id="autotoc_md213"></a>
+<h1><a class="anchor" id="autotoc_md125"></a>
 1. About Nautilus</h1>
 <p>Nautilus[^1] is an <a href="https://github.com/nautilus-fuzz/nautilus/">open-sourced</a> grammar-based fuzzer published in 2019. Nautilus requires the definition of grammar as input instead of some seed test cases and can automatically generate test cases according to the grammar. This kind of fuzzer is classified to a generative fuzzer. In addition, Nautilus is a coverage guided fuzzer, which uses the coverage of the inspection target as an indicator to generate test cases.</p>
 <p>Some common fuzzers, such as AFL, mutate test cases by units of bytes or bits. These fuzzers struggle with fuzzing programs that accepts only grammatically-correct inputs such as interpreters of programming languages because the common fuzzers generate tons of grammatically-wrong test cases and most of them result in waste.</p>
@@ -78,13 +78,13 @@ $(function() {
 <li>Takes advantage of coverage feedback</li>
 </ul>
 <p>The user can define the grammar, which enables to fuzz a specific function of the application, e.g., by removing uninteresting parts of the grammar.</p>
-<h1><a class="anchor" id="autotoc_md214"></a>
+<h1><a class="anchor" id="autotoc_md126"></a>
 2. Usage on CLI</h1>
 <p>You have to build fuzzuf before using Nautilus mode. Please refer to ../../building.md "this document" for how to build fuzzuf.</p>
-<h2><a class="anchor" id="autotoc_md215"></a>
+<h2><a class="anchor" id="autotoc_md127"></a>
 2-1. Preparing Grammar File</h2>
 <p>Nautilus can generate test cases according to a grammar defined by the user. You must write the grammar in <a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">BNF form</a>.</p>
-<h3><a class="anchor" id="autotoc_md216"></a>
+<h3><a class="anchor" id="autotoc_md128"></a>
 2-1-a. Basic Notation</h3>
 <p>Let's write a BNF of the arithmetic calculation of integer. </p><div class="fragment"><div class="line">&lt;EXPRESSION&gt; ::= &lt;TERM&gt;</div>
 <div class="line">                 | &lt;EXPRESSION&gt; + &lt;EXPRESSION&gt;</div>
@@ -128,7 +128,7 @@ $(function() {
 <div class="line">    [&quot;BLOCK&quot;, &quot;\\{ {STATEMENT} \\}&quot;],</div>
 <div class="line">    ...</div>
 <div class="line">]</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md217"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md129"></a>
 2-1-b. Merging Multiple Rules</h3>
 <p>We split the rules with <code>|</code> (a symbol meaning "or") in the BNF format into multiple rules in the previous example. However, this makes the rule look complicated so the Nautilus mode of fuzzuf also supports the following notation: </p><div class="fragment"><div class="line">[&quot;DIGITS&quot;, [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;]]</div>
 </div><!-- fragment --><p>You can use this notation even if the right-hand side expression contains non-terminal symbols. </p><div class="fragment"><div class="line">[&quot;EXPRESSION&quot;, [</div>
@@ -136,7 +136,7 @@ $(function() {
 <div class="line">  &quot;{EXPRESSION}+{EXPRESSION}&quot;,</div>
 <div class="line">  &quot;{EXPRESSION}-{EXPRESSION}&quot;</div>
 <div class="line">]]</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md218"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md130"></a>
 2-1-c. Binary Data</h3>
 <p>The Nautilus mode of fuzzuf is useful not only for generating human-readable inputs for programs such as a calculator or an interpreter but also for generating structured binary files like PDFs. To do so, you need to include some binary data other than ASCII characters in the grammar, but the JSON format doesn't support them. You can write the binary data in the array format like the following in the Nautilus mode of fuzzuf. </p><div class="fragment"><div class="line">[&quot;NULL&quot;, [0]]</div>
 </div><!-- fragment --><p>You can also write a sequence of binary data. (Although JSON only supports decimal values, unfortunately.) </p><div class="fragment"><div class="line">[&quot;DEADBEEF&quot;, [239, 190, 173, 222]]</div>
@@ -147,7 +147,7 @@ $(function() {
 <div class="line">[&quot;A&quot;, [0]],</div>
 <div class="line">[&quot;A&quot;, [&quot;bye&quot;, 128]]</div>
 </div><!-- fragment --><p>are equivalent.</p>
-<h2><a class="anchor" id="autotoc_md219"></a>
+<h2><a class="anchor" id="autotoc_md131"></a>
 2-2. Testing Grammar Files</h2>
 <p>You may want to check if your grammar is correct when it gets complicated. <code>tools/nautilus/generator</code> is the program to generate some random test cases according to the grammar you define. If you give it the grammar we defined previously, a random string will be generated like the following if the grammar is correct. </p><div class="fragment"><div class="line">$ tools/nautilus/generator -g ./calc_grammar.json -t 100</div>
 <div class="line">4/(((4)+1+7+7+5*4+1)-2-6+2-48-9*+5+52-6)</div>
@@ -184,7 +184,7 @@ $(function() {
 <li><code>Could not interpret Nonterminal {...}. Nonterminal Descriptions need to match start with a capital letter and can only contain [a-zA-Z_-0-9]</code>: A non-terminal identifier does not start with a capital letter, or contains invalid characters.</li>
 </ul>
 <p>Also, be careful that no error will happen if you forget to write brace for a non-terminal because it can be recognized as terminal characters. (Although, you will be able to find the error immediately by checking the test cases generated.) </p><div class="fragment"><div class="line">[&quot;EXPRESSION&quot;, &quot;{EXPRESSION}+{EXPRESSION&quot;]</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md220"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md132"></a>
 2-3. Fuzzing</h2>
 <p>Let's fuzz a calculator using the grammar we have written so far. At <code>test/put_binaries/nautilus/calc</code>, there exists a calculator instrumented by afl-gcc. This calculator prints the result of arithmetic calculation but it causes a crash when the result becomes a multiple of 314 except zero. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> res = express();</div>
 <div class="line"><span class="keywordflow">if</span> (res != 0 &amp;&amp; res % 314 == 0) crash();</div>
@@ -210,10 +210,10 @@ $(function() {
 <li><code>Grammar does not exist!</code>: Grammar file specified by <code>--grammar</code> does not exist.</li>
 <li>&lsquo;Unknown grammar type (&rsquo;.json' expected)<code>: The extension of grammar file is not ".json" -</code>Cannot parse grammar file`: The content of grammar file is wrong. (Check your grammar file as explained in section 2-2.)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md221"></a>
+<h1><a class="anchor" id="autotoc_md133"></a>
 3. Algorithm</h1>
 <p>Generally, grammar-based fuzzers generate AST (abstract syntax tree) according to a specific grammar and mutate a part of the AST to create testcases. Nautilus internally only uses the tree representation and mutates the tree. In this section, we explain the design of how Nautilus generates and mutates the testcases.</p>
-<h2><a class="anchor" id="autotoc_md222"></a>
+<h2><a class="anchor" id="autotoc_md134"></a>
 3-1. Generation</h2>
 <p>Since a non-terminal may have multiple rules, we need an algorithm to decide which rule to pick up. Nautilus uses a uniform generation algorithm. Let's consider the following grammar: </p><div class="fragment"><div class="line">&lt;PROG&gt; := &lt;STMT&gt;</div>
 <div class="line">&lt;PROG&gt; := &lt;STMT&gt;; &lt;PROG&gt;</div>
@@ -225,13 +225,13 @@ $(function() {
 <div class="line">&lt;NUMBER&gt; := 1</div>
 <div class="line">&lt;NUMBER&gt; := 2</div>
 </div><!-- fragment --><p>For example, <code>&lt;STMT&gt;</code> has 2 rules: <code>return 1</code> or <code>&lt;VAR&gt; = &lt;EXPR&gt;</code>. If we choose a rule for each non-terminal by naive randomness, <code>return 1</code> is chosen with 50% probability. On the other hand, if we choose <code>&lt;VAR&gt; = &lt;EXPR&gt;</code>, <code>&lt;EXPR&gt;</code> has another 2 rules: <code>&lt;NUMBER&gt;</code> and <code>&lt;EXPR&gt; + &lt;EXPR&gt;</code>. The probability that one of them is chosen is 25% from <code>&lt;STMT&gt;</code>. The deeper part of the tree is selected with less probability with naive randomness like this, which results in generating similar testcases. Nautilus, on the other hand, uses an algorithm by McKenzie[^2] so that it can select every rule in the grammar with the same probability.</p>
-<h2><a class="anchor" id="autotoc_md223"></a>
+<h2><a class="anchor" id="autotoc_md135"></a>
 3-2. Minimization</h2>
 <p>Nautilus attempts to create a smaller testcase that triggers the same new coverage after it found an interesting input. Minimized inputs can make the execution time shorter and the number of set of potential mutations smaller. Nautilus uses two approaches to minimize the testcase that found new paths.</p>
-<h3><a class="anchor" id="autotoc_md224"></a>
+<h3><a class="anchor" id="autotoc_md136"></a>
 3-2-a. Subtree Minimization</h3>
 <p><b>Subtree Minimization</b> is a process to make the subtree of AST as short as possible. We generate the smallest possible subtree for each non-terminal. Then, we replace the subtree of each node sequentially and check if we get the same coverage as that of the original tree. If we get the same coverage, the replaced tree is taken and otherwise, the change is discarded.</p>
-<h3><a class="anchor" id="autotoc_md225"></a>
+<h3><a class="anchor" id="autotoc_md137"></a>
 3-2-b. Recursive Minimization</h3>
 <p><b>Recursive Minimization</b> is a process executed after the subtree minimization. This minimization replaces the nested part of AST. In the following figure, the statement <code>a = 1 + 2</code> is, for example, replaced into <code>a = 1</code>. </p><div class="fragment"><div class="line">   PROG                  PROG</div>
 <div class="line">    |                     |</div>
@@ -244,31 +244,31 @@ $(function() {
 <div class="line">   NUM    NUM                1</div>
 <div class="line">    |      |</div>
 <div class="line">    1      2</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md226"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md138"></a>
 3-3. Mutation</h2>
 <p>After the minimization phase, Nautilus mutates the AST. Nautilus uses multiple mutation methods explained below.</p>
-<h3><a class="anchor" id="autotoc_md227"></a>
+<h3><a class="anchor" id="autotoc_md139"></a>
 3-3-a. Random Mutation</h3>
 <p><b>Random Mutation</b> picks a random node from AST and replaces it with a randomly-generated new subtree whose root node shares the same non-terminal as the original one. The size of the subtree to be generated is also random but the maximum value is configured by <code>--max-tree-size</code> option.</p>
-<h3><a class="anchor" id="autotoc_md228"></a>
+<h3><a class="anchor" id="autotoc_md140"></a>
 3-3-b. Rules Mutation</h3>
 <p><b>Rules Mutation</b> sequentially replaces each node of the AST with a new subtree generated by all other possible rules of the non-terminal. By replacing a node with a new rule, improvement of the coverage is expected as it uses a new grammar.</p>
-<h3><a class="anchor" id="autotoc_md229"></a>
+<h3><a class="anchor" id="autotoc_md141"></a>
 3-3-c. Random Recursive Mutation</h3>
 <p><b>Random Recursive Mutation</b> randomly selects a recursive subtree and repeats it 2^n times (1≦n≦15). This mutation can create trees with higher degrees of nesting. The paper mentions 1≦n≦15 but the original Nautilus implementation uses 1≦n≦10 as the limit, so the fuzzuf also implements it with the latter bound.</p>
-<h3><a class="anchor" id="autotoc_md230"></a>
+<h3><a class="anchor" id="autotoc_md142"></a>
 3-3-d. Splicing Mutation</h3>
 <p><b>Splicing Mutation</b> replaces a subtree of the testcase with a subtree taken from another testcase that found different paths. That is, splicing mutation combined two testcases.</p>
-<h1><a class="anchor" id="autotoc_md231"></a>
+<h1><a class="anchor" id="autotoc_md143"></a>
 4. Difference From the Original Implementation</h1>
 <p>In this section, we explain some differences of the implementation between the Nautilus mode of fuzzuf and the original Nautilus.</p>
-<h2><a class="anchor" id="autotoc_md232"></a>
+<h2><a class="anchor" id="autotoc_md144"></a>
 4-1. ScriptRule and RegexpRule</h2>
 <p>The original Nautilus implementation makes it possible to use Python and regular expressions in addition to JSON in order to write a grammar. Since those features are not necessarily required to define a grammar but require some external dependencies, we decided not to support those features in the first release of Nautilus mode.</p>
-<h2><a class="anchor" id="autotoc_md233"></a>
+<h2><a class="anchor" id="autotoc_md145"></a>
 4-2. ASAN</h2>
 <p>The application does not send a signal on vulnerability detection when it is compiled with address sanitizers. Nautilus also checks the feedback of the sanitizers to catch the vulnerabilities detected by ASAN. However, the current Nautilus mode of fuzzuf does not support ASAN-instrumented program. This is because we're currently working on the revision of the Executors and so on. We will likely support sanitizers in the future releases.</p>
-<h2><a class="anchor" id="autotoc_md234"></a>
+<h2><a class="anchor" id="autotoc_md146"></a>
 4-3. AFL Mutations</h2>
 <p>In addition to the mutation methods mentioned in this documentation, the original paper explains a mutation method named <b>AFL Mutations</b>. However, this mutation method is not implemented even in the original Nautilus. Therefore, the current Nautilus mode of fuzzuf also does not support this feature.</p>
 <hr  />
