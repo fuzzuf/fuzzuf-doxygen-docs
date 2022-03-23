@@ -54,5 +54,6 @@ var searchData=
   ['executetaintput_296',['ExecuteTaintPUT',['../structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1other_1_1ExecuteTaintPUT.html',1,'fuzzuf::algorithm::vuzzer::routine::other']]],
   ['executor_297',['Executor',['../classExecutor.html',1,'']]],
   ['executor_2ecpp_298',['executor.cpp',['../executor_8cpp.html',1,'']]],
-  ['exitstatusfeedback_299',['ExitStatusFeedback',['../classExitStatusFeedback.html',1,'']]]
+  ['executorkind_299',['ExecutorKind',['../classfuzzuf_1_1cli_1_1ExecutorKind.html',1,'fuzzuf::cli']]],
+  ['exitstatusfeedback_300',['ExitStatusFeedback',['../classExitStatusFeedback.html',1,'']]]
 ];

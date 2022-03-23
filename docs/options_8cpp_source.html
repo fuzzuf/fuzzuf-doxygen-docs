@@ -323,101 +323,105 @@ $(function() {
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  }</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;v : dest.raw_targets) {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    DEBUG(<span class="stringliteral">&quot;[*] dest.raw_targets[] = %s&quot;</span>, v.c_str());</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keywordflow">if</span> (global.executor != fuzzuf::cli::ExecutorKind::NATIVE) {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    EXIT(<span class="stringliteral">&quot;Unsupported executor: `%s`&quot;</span>, global.executor.c_str());</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.verbosity &gt;= 1U) {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    dest.create_info.config.debug = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;v : dest.raw_targets) {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    DEBUG(<span class="stringliteral">&quot;[*] dest.raw_targets[] = %s&quot;</span>, v.c_str());</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="keywordflow">if</span> (dest.entropic != 0U) {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    dest.create_info.config.set_entropic(EntropicConfig()</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                                             .set_enabled(<span class="keyword">true</span>)</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                                             .set_number_of_rarest_features(10)</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                             .set_feature_frequency_threshold(3)</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                             .set_scale_per_exec_time(<span class="keyword">false</span>));</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  }</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="keywordflow">if</span> (dest.input_dir.empty()) {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    dest.input_dir.push_back(global.in_dir);</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  }</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  dest.create_info.input_dir = dest.input_dir[0];</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  fs::create_directories(dest.create_info.input_dir);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  <span class="keywordflow">if</span> (dest.exact_output_dir.empty()) {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keyword">auto</span> uuid = to_string(boost::uuids::random_generator()());</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keyword">auto</span> exact_path = fs::path(dest.output_dir) / fs::path(<span class="stringliteral">&quot;crash-&quot;</span> + uuid);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    fs::create_directories(exact_path);</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    dest.create_info.output_dir = exact_path;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    fs::create_directories(dest.exact_output_dir);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    dest.create_info.output_dir = dest.exact_output_dir;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  }</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  std::cout &lt;&lt; dest.create_info.output_dir &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> kilo = 1000ULL;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> kilo_in_binary = 1024ULL;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  <span class="keywordflow">if</span> (dest.exec_timelimit_s != 0U) {</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    dest.create_info.exec_timelimit_ms = dest.exec_timelimit_s * kilo;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (global.exec_timelimit_ms) {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    dest.create_info.exec_timelimit_ms = *global.exec_timelimit_ms;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  <span class="keywordflow">if</span> (dest.exec_memlimit_mb != 0U) {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    dest.create_info.exec_memlimit =</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        dest.exec_memlimit_mb * kilo_in_binary * kilo_in_binary;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (global.exec_memlimit) {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    dest.create_info.exec_memlimit = *global.exec_memlimit;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  }</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  std::copy(dest.raw_targets.begin(), dest.raw_targets.end(),</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            std::back_inserter(dest.targets));</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  std::copy(dest.dicts.begin(), dest.dicts.end(),</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            std::back_inserter(dest.create_info.dictionaries));</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.seed != 0) {</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    dest.rng.seed(dest.create_info.seed);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    dest.rng.seed(std::random_device()());</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  }</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;}</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment">// NOLINTEND(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="keyword">auto</span> loadInitialInputs(Options &amp;dest, std::minstd_rand &amp;rng) -&gt; <a class="code" href="classExecInputSet.html">ExecInputSet</a> {</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <a class="code" href="classExecInputSet.html">ExecInputSet</a> initial_inputs;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  std::size_t input_count = 0U;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  std::vector&lt;utils::mapped_file_t&gt; temp;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;d : dest.input_dir) {</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;data :</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;         fuzzuf::utils::LoadInputs(d, dest.create_info.check_input_sha1)) {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      temp.push_back(data);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    }</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  }</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.shuffle) {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    std::shuffle(temp.begin(), temp.end(), rng);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.prefer_small) {</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    std::stable_sort(</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        temp.begin(), temp.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;l, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) {</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;          return utils::range::rangeSize(l) &lt; utils::range::rangeSize(r);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        });</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  }</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;data : temp) {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    corpus::addToInitialExecInputSet(initial_inputs, data);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    ++input_count;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.verbosity &gt;= 1U) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    dest.create_info.config.debug = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="keywordflow">if</span> (dest.entropic != 0U) {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    dest.create_info.config.set_entropic(EntropicConfig()</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                             .set_enabled(<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                             .set_number_of_rarest_features(10)</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                             .set_feature_frequency_threshold(3)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                             .set_scale_per_exec_time(<span class="keyword">false</span>));</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  <span class="keywordflow">if</span> (dest.input_dir.empty()) {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    dest.input_dir.push_back(global.in_dir);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  dest.create_info.input_dir = dest.input_dir[0];</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  fs::create_directories(dest.create_info.input_dir);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  <span class="keywordflow">if</span> (dest.exact_output_dir.empty()) {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keyword">auto</span> uuid = to_string(boost::uuids::random_generator()());</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keyword">auto</span> exact_path = fs::path(dest.output_dir) / fs::path(<span class="stringliteral">&quot;crash-&quot;</span> + uuid);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    fs::create_directories(exact_path);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    dest.create_info.output_dir = exact_path;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    fs::create_directories(dest.exact_output_dir);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    dest.create_info.output_dir = dest.exact_output_dir;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  std::cout &lt;&lt; dest.create_info.output_dir &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> kilo = 1000ULL;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> kilo_in_binary = 1024ULL;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="keywordflow">if</span> (dest.exec_timelimit_s != 0U) {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    dest.create_info.exec_timelimit_ms = dest.exec_timelimit_s * kilo;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (global.exec_timelimit_ms) {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    dest.create_info.exec_timelimit_ms = *global.exec_timelimit_ms;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="keywordflow">if</span> (dest.exec_memlimit_mb != 0U) {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    dest.create_info.exec_memlimit =</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        dest.exec_memlimit_mb * kilo_in_binary * kilo_in_binary;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (global.exec_memlimit) {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    dest.create_info.exec_memlimit = *global.exec_memlimit;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  }</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  std::copy(dest.raw_targets.begin(), dest.raw_targets.end(),</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            std::back_inserter(dest.targets));</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  std::copy(dest.dicts.begin(), dest.dicts.end(),</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            std::back_inserter(dest.create_info.dictionaries));</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.seed != 0) {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    dest.rng.seed(dest.create_info.seed);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    dest.rng.seed(std::random_device()());</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;}</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment">// NOLINTEND(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="keyword">auto</span> loadInitialInputs(Options &amp;dest, std::minstd_rand &amp;rng) -&gt; <a class="code" href="classExecInputSet.html">ExecInputSet</a> {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <a class="code" href="classExecInputSet.html">ExecInputSet</a> initial_inputs;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  std::size_t input_count = 0U;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  std::vector&lt;utils::mapped_file_t&gt; temp;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;d : dest.input_dir) {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;data :</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;         fuzzuf::utils::LoadInputs(d, dest.create_info.check_input_sha1)) {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      temp.push_back(data);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.shuffle) {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    std::shuffle(temp.begin(), temp.end(), rng);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.prefer_small) {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    std::stable_sort(</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        temp.begin(), temp.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;l, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) {</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;          return utils::range::rangeSize(l) &lt; utils::range::rangeSize(r);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        });</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="keywordflow">if</span> (input_count == 0) {</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    corpus::addToInitialExecInputSet(initial_inputs,</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                                     std::vector&lt;std::uint8_t&gt;{<span class="charliteral">&#39;+&#39;</span>});</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;data : temp) {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    corpus::addToInitialExecInputSet(initial_inputs, data);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    ++input_count;</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  }</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.max_input_length == 0U) {</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    dest.create_info.max_input_length = CalcMaxLength(</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        initial_inputs |</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        adaptor::exec_input_set_range&lt;true, ExecInputSetRangeInsertMode::NONE&gt;);</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  }</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  <span class="keywordflow">return</span> initial_inputs;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  <span class="keywordflow">if</span> (input_count == 0) {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    corpus::addToInitialExecInputSet(initial_inputs,</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                                     std::vector&lt;std::uint8_t&gt;{<span class="charliteral">&#39;+&#39;</span>});</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  }</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.max_input_length == 0U) {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    dest.create_info.max_input_length = CalcMaxLength(</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        initial_inputs |</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        adaptor::exec_input_set_range&lt;true, ExecInputSetRangeInsertMode::NONE&gt;);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <span class="keywordflow">return</span> initial_inputs;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;}</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aadd__to__initial__exec__input__set_8hpp_html"><div class="ttname"><a href="add__to__initial__exec__input__set_8hpp.html">add_to_initial_exec_input_set.hpp</a></div></div>
 <div class="ttc" id="aexec__input__set__range_8hpp_html"><div class="ttname"><a href="exec__input__set__range_8hpp.html">exec_input_set_range.hpp</a></div></div>
@@ -427,7 +431,7 @@ $(function() {
 <div class="ttc" id="arange__traits_8hpp_html"><div class="ttname"><a href="range__traits_8hpp.html">range_traits.hpp</a></div></div>
 <div class="ttc" id="aoptions_8hpp_html"><div class="ttname"><a href="options_8hpp.html">options.hpp</a></div></div>
 <div class="ttc" id="anamespacefuzzuf_1_1algorithm_1_1libfuzzer_html"><div class="ttname"><a href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a></div><div class="ttdef"><b>Definition:</b> <a href="config_8cpp_source.html#l00025">config.cpp:25</a></div></div>
-<div class="ttc" id="astructGlobalFuzzerOptions_html"><div class="ttname"><a href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a></div><div class="ttdef"><b>Definition:</b> <a href="global__fuzzer__options_8hpp_source.html#l00026">global_fuzzer_options.hpp:26</a></div></div>
+<div class="ttc" id="astructGlobalFuzzerOptions_html"><div class="ttname"><a href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a></div><div class="ttdef"><b>Definition:</b> <a href="global__fuzzer__options_8hpp_source.html#l00070">global_fuzzer_options.hpp:70</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

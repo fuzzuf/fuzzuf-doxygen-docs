@@ -92,19 +92,18 @@ Collaboration diagram for ProxyExecutor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classProxyExecutor__coll__graph.png" border="0" usemap="#ProxyExecutor_coll__map" alt="Collaboration graph"/></div>
 <map name="ProxyExecutor_coll__map" id="ProxyExecutor_coll__map">
-<area shape="rect" title=" " alt="" coords="133,171,247,197"/>
+<area shape="rect" title=" " alt="" coords="34,171,149,197"/>
 <area shape="rect" href="classExecutor.html" title=" " alt="" coords="5,81,84,108"/>
-<area shape="rect" href="classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="109,81,271,108"/>
-<area shape="rect" href="classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="217,5,347,32"/>
-<area shape="rect" href="classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="296,81,455,108"/>
+<area shape="rect" href="classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="108,81,267,108"/>
+<area shape="rect" href="classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="122,5,253,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afc035dc2cdac04e9b5b62fcb20aa1ecc"><td class="memItemLeft" align="right" valign="top"><a id="afc035dc2cdac04e9b5b62fcb20aa1ecc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ProxyExecutor</b> (const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;pargv, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, bool record_stdout_and_err=false)</td></tr>
-<tr class="separator:afc035dc2cdac04e9b5b62fcb20aa1ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c5777344cf60de141ac528ffd1a03a0"><td class="memItemLeft" align="right" valign="top"><a id="a4c5777344cf60de141ac528ffd1a03a0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ProxyExecutor</b> (const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;pargv, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, bool record_stdout_and_err=false)</td></tr>
+<tr class="separator:a4c5777344cf60de141ac528ffd1a03a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14e1326370420bc7107274e621f4cad0"><td class="memItemLeft" align="right" valign="top"><a id="a14e1326370420bc7107274e621f4cad0"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ProxyExecutor</b> (const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;pargv, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, const fs::path &amp;path_to_write_input)</td></tr>
 <tr class="separator:a14e1326370420bc7107274e621f4cad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,21 +134,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveStopSignal</b>
 <tr class="memitem:a5a0688110f4cd138c7569180846364bb"><td class="memItemLeft" align="right" valign="top"><a id="a5a0688110f4cd138c7569180846364bb"></a>
 u32&#160;</td><td class="memItemRight" valign="bottom"><b>GetAFLMapSize</b> ()</td></tr>
 <tr class="separator:a5a0688110f4cd138c7569180846364bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedaa88336e50300a8ca1e5f670c51e4b"><td class="memItemLeft" align="right" valign="top"><a id="aedaa88336e50300a8ca1e5f670c51e4b"></a>
-u32&#160;</td><td class="memItemRight" valign="bottom"><b>GetBBMapSize</b> ()</td></tr>
-<tr class="separator:aedaa88336e50300a8ca1e5f670c51e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a059759b73c46cc099e0c17472a6f9553"><td class="memItemLeft" align="right" valign="top"><a id="a059759b73c46cc099e0c17472a6f9553"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>GetAFLShmID</b> ()</td></tr>
 <tr class="separator:a059759b73c46cc099e0c17472a6f9553"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaac2e8861e6c0f26654beea5b5719ced"><td class="memItemLeft" align="right" valign="top"><a id="aaac2e8861e6c0f26654beea5b5719ced"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetBBShmID</b> ()</td></tr>
-<tr class="separator:aaac2e8861e6c0f26654beea5b5719ced"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7254e25ec6b4c9e2be6b6bd83d0d89dc"><td class="memItemLeft" align="right" valign="top"><a id="a7254e25ec6b4c9e2be6b6bd83d0d89dc"></a>
 <a class="el" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetAFLFeedback</b> ()</td></tr>
 <tr class="separator:a7254e25ec6b4c9e2be6b6bd83d0d89dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88b6d17713841cd5d58b5e0bca4a9d8b"><td class="memItemLeft" align="right" valign="top"><a id="a88b6d17713841cd5d58b5e0bca4a9d8b"></a>
-<a class="el" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetBBFeedback</b> ()</td></tr>
-<tr class="separator:a88b6d17713841cd5d58b5e0bca4a9d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae57459ff5dd4965bff30fe5e4c35205f"><td class="memItemLeft" align="right" valign="top"><a id="ae57459ff5dd4965bff30fe5e4c35205f"></a>
 <a class="el" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetStdOut</b> ()</td></tr>
 <tr class="separator:ae57459ff5dd4965bff30fe5e4c35205f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -240,9 +230,6 @@ const bool&#160;</td><td class="memItemRight" valign="bottom"><b>uses_asan</b> =
 <tr class="memitem:a357f5a5917a0b05c4fad95acf1a176f2"><td class="memItemLeft" align="right" valign="top"><a id="a357f5a5917a0b05c4fad95acf1a176f2"></a>
 <a class="el" href="classAFLEdgeCovAttacher.html">AFLEdgeCovAttacher</a>&#160;</td><td class="memItemRight" valign="bottom"><b>afl_edge_coverage</b></td></tr>
 <tr class="separator:a357f5a5917a0b05c4fad95acf1a176f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04dc7b9b8c01521d5ff5a86c3d123fab"><td class="memItemLeft" align="right" valign="top"><a id="a04dc7b9b8c01521d5ff5a86c3d123fab"></a>
-<a class="el" href="classFuzzufBBCovAttacher.html">FuzzufBBCovAttacher</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fuzzuf_bb_coverage</b></td></tr>
-<tr class="separator:a04dc7b9b8c01521d5ff5a86c3d123fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a619bd9be1c5c801f05b6e3b452cc4408"><td class="memItemLeft" align="right" valign="top"><a id="a619bd9be1c5c801f05b6e3b452cc4408"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>forksrv_pid</b></td></tr>
 <tr class="separator:a619bd9be1c5c801f05b6e3b452cc4408"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -353,7 +340,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8hpp_source.html#l00046">46</a> of file <a class="el" href="proxy__executor_8hpp_source.html">proxy_executor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8hpp_source.html#l00045">45</a> of file <a class="el" href="proxy__executor_8hpp_source.html">proxy_executor.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aefb5b09e5d43cc23ea1e4015f4942dd6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aefb5b09e5d43cc23ea1e4015f4942dd6">&#9670;&nbsp;</a></span>~ProxyExecutor()</h2>
@@ -378,7 +365,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 <li>Temporary purpose: If actve_instance which signal handlers refer has a pointer to self value, assign nullptr to it and invalidate. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00157">157</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00154">154</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -417,7 +404,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00278">278</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00275">275</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -442,8 +429,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 <li>Generate a file for sending input to PUT.</li>
 <li>Configure shared memory<ul>
 <li>afl_shm_size should indicate the size of shared memory which PUT built using AFL style cc uses.</li>
-<li>bb_shm_size should indicate the size of shared memory that is used to record Basic Block Coverage by PUT built using fuzzuf-cc.</li>
-<li>If both parameters are set to zero, it is considered as unused, and never allocate.</li>
+<li>If afl_shm_size sets to zero, it is considered as unused, and never allocate.</li>
 <li>In kernel, Both parameters are round up to multiple of PAGE_SIZE, then memory is allocated.</li>
 </ul>
 </li>
@@ -454,7 +440,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00120">120</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00117">117</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -516,7 +502,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 
 <p>Implements <a class="el" href="classExecutor.html">Executor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00385">385</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00382">382</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -548,7 +534,7 @@ epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_re
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00231">231</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="proxy__executor_8cpp_source.html#l00228">228</a> of file <a class="el" href="proxy__executor_8cpp_source.html">proxy_executor.cpp</a>.</p>
 
 </div>
 </div>

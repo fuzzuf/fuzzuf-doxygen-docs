@@ -133,7 +133,7 @@ $(function() {
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment">// cannot be empty, we supply output_file_path as a place holder.</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="classProxyExecutor.html">ProxyExecutor</a> executor(fs::path(TEST_BINARY_DIR <span class="stringliteral">&quot;/put_binaries/zeroone&quot;</span>), {},</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                         {output_file_path.native()}, 1000, 10000, <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                         path_to_write_seed, (1U &lt;&lt; 16), 0, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                         path_to_write_seed, (1U &lt;&lt; 16), <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment">// Initialize executor instance</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">// We have to run below initialization because ProxyExecutor is considered</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// as a base class and it expects initialization in the derived class constructors.</span></div>
@@ -230,7 +230,7 @@ $(function() {
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      fs::path(TEST_BINARY_DIR <span class="stringliteral">&quot;/put_binaries/command_wrapper&quot;</span>),</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      {TEST_BINARY_DIR <span class="stringliteral">&quot;/executor/too_much_output&quot;</span>},</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      {TEST_BINARY_DIR <span class="stringliteral">&quot;/executor/too_much_output&quot;</span>}, 1000, 10000, <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      path_to_write_seed, PAGE_SIZE, PAGE_SIZE,</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      path_to_write_seed, PAGE_SIZE,</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      <span class="keyword">true</span> <span class="comment">/* record_stdout_and_err */</span></div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  );</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="comment">// Initialize executor instance</span></div>
@@ -249,7 +249,7 @@ $(function() {
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
-<div class="ttc" id="aclassProxyExecutor_html"><div class="ttname"><a href="classProxyExecutor.html">ProxyExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="proxy__executor_8hpp_source.html#l00046">proxy_executor.hpp:46</a></div></div>
+<div class="ttc" id="aclassProxyExecutor_html"><div class="ttname"><a href="classProxyExecutor.html">ProxyExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="proxy__executor_8hpp_source.html#l00045">proxy_executor.hpp:45</a></div></div>
 <div class="ttc" id="awhich_8hpp_html"><div class="ttname"><a href="which_8hpp.html">which.hpp</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
