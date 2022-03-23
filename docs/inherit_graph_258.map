@@ -1,6 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classHierarFlowRoutine.html" title=" " alt="" coords="5,107,247,163"/>
-<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1update_1_1ConstructAutoDictTemplate.html" title=" " alt="" coords="295,5,503,76"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1update_1_1ConstructEffMapTemplate.html" title=" " alt="" coords="300,100,497,171"/>
-<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1update_1_1NormalUpdateTemplate.html" title=" " alt="" coords="306,195,491,265"/>
+<area shape="rect" id="node1" href="$classHierarFlowRoutine.html" title=" " alt="" coords="5,5,220,61"/>
+<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html" title=" " alt="" coords="268,5,523,61"/>
+<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html" title=" " alt="" coords="571,5,737,61"/>
 </map>

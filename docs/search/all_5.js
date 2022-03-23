@@ -13,7 +13,7 @@ var searchData=
   ['entropic_255',['entropic',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a8a910f165de17dd9f214487acac347ef',1,'fuzzuf::algorithm::libfuzzer::Config']]],
   ['entropicconfig_256',['EntropicConfig',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html',1,'fuzzuf::algorithm::libfuzzer']]],
   ['enum_5fcast_2ehpp_257',['enum_cast.hpp',['../enum__cast_8hpp.html',1,'']]],
-  ['environment_5fvariables_258',['environment_variables',['../classNativeLinuxExecutor.html#a6e06c5246db02f0fe87227828ce826ab',1,'NativeLinuxExecutor']]],
+  ['environment_5fvariables_258',['environment_variables',['../classLinuxForkServerExecutor.html#ac1f4430c63a269e36d1f7c0b75767f82',1,'LinuxForkServerExecutor::environment_variables()'],['../classNativeLinuxExecutor.html#a6e06c5246db02f0fe87227828ce826ab',1,'NativeLinuxExecutor::environment_variables()']]],
   ['equality_5fcomparable_2ehpp_259',['equality_comparable.hpp',['../equality__comparable_8hpp.html',1,'']]],
   ['erase_5fbytes_2ehpp_260',['erase_bytes.hpp',['../erase__bytes_8hpp.html',1,'']]],
   ['erase_5fnth_261',['erase_nth',['../structfuzzuf_1_1utils_1_1type__traits_1_1detail_1_1erase__nth.html',1,'fuzzuf::utils::type_traits::detail::erase_nth&lt; i, Prev, Next, Enable &gt;'],['../structfuzzuf_1_1utils_1_1type__traits_1_1erase__nth.html',1,'fuzzuf::utils::type_traits::erase_nth&lt; i, U &gt;']]],
@@ -50,10 +50,11 @@ var searchData=
   ['execute_3c_20r_28args_2e_2e_2e_29_2c_20executor_2c_20path_20_3e_292',['Execute&lt; R(Args...), Executor, Path &gt;',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Execute_3_01R_07Args_8_8_8_08_00_01Executor_00_01Path_01_4.html',1,'fuzzuf::algorithm::libfuzzer']]],
   ['executed_5fmutations_5fcount_293',['executed_mutations_count',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a0b3bd77c0cc31314235a090fb810d7e9',1,'fuzzuf::algorithm::libfuzzer::InputInfo']]],
   ['executeput_294',['ExecutePUT',['../structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1other_1_1ExecutePUT.html',1,'fuzzuf::algorithm::vuzzer::routine::other']]],
-  ['executeputtemplate_295',['ExecutePUTTemplate',['../structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1other_1_1ExecutePUTTemplate.html',1,'fuzzuf::algorithm::afl::routine::other']]],
-  ['executetaintput_296',['ExecuteTaintPUT',['../structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1other_1_1ExecuteTaintPUT.html',1,'fuzzuf::algorithm::vuzzer::routine::other']]],
-  ['executor_297',['Executor',['../classExecutor.html',1,'']]],
-  ['executor_2ecpp_298',['executor.cpp',['../executor_8cpp.html',1,'']]],
-  ['executorkind_299',['ExecutorKind',['../classfuzzuf_1_1cli_1_1ExecutorKind.html',1,'fuzzuf::cli']]],
-  ['exitstatusfeedback_300',['ExitStatusFeedback',['../classExitStatusFeedback.html',1,'']]]
+  ['executeputapiresponse_295',['ExecutePUTAPIResponse',['../structExecutePUTAPIResponse.html',1,'']]],
+  ['executeputtemplate_296',['ExecutePUTTemplate',['../structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1other_1_1ExecutePUTTemplate.html',1,'fuzzuf::algorithm::afl::routine::other']]],
+  ['executetaintput_297',['ExecuteTaintPUT',['../structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1other_1_1ExecuteTaintPUT.html',1,'fuzzuf::algorithm::vuzzer::routine::other']]],
+  ['executor_298',['Executor',['../classExecutor.html',1,'']]],
+  ['executor_2ecpp_299',['executor.cpp',['../executor_8cpp.html',1,'']]],
+  ['executorkind_300',['ExecutorKind',['../classfuzzuf_1_1cli_1_1ExecutorKind.html',1,'fuzzuf::cli']]],
+  ['exitstatusfeedback_301',['ExitStatusFeedback',['../classExitStatusFeedback.html',1,'']]]
 ];

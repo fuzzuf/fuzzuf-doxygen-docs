@@ -93,77 +93,81 @@ $(function() {
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/common.hpp&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/logger/logger.hpp&quot;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="filesystem_8hpp.html">fuzzuf/utils/filesystem.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span>fuzzuf::cli {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">ExecutorKind</a> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">enum</span> Kind {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        UNKNOWN = 0, <span class="comment">// Unknown Executor Type</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        NATIVE, <span class="comment">// Native Executor (e.g. NativeLinuxExecutor)</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        QEMU, <span class="comment">// QEMU Executor</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        CORESIGHT <span class="comment">// CoreSight Executor</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    };</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">ExecutorKind</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/executor/linux_fork_server_executor.hpp&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>fuzzuf::cli {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">ExecutorKind</a> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">enum</span> Kind {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        UNKNOWN = 0, <span class="comment">// Unknown Executor Type</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        NATIVE, <span class="comment">// Native Executor (e.g. NativeLinuxExecutor)</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        FORKSERVER, <span class="comment">// Use fuzzuf&#39;s forkserver</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        QEMU, <span class="comment">// QEMU Executor</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        CORESIGHT <span class="comment">// CoreSight Executor</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    constexpr <a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">ExecutorKind</a>(Kind kind) : kind(kind) {}</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// Allow switch case.</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    constexpr <span class="keyword">operator</span> Kind()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> kind; }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// Prevent if (executor_kind) usage.</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">explicit</span> <span class="keyword">operator</span> bool() = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *c_str()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">switch</span> (kind) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">case</span> Kind::NATIVE:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;native&quot;</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">case</span> Kind::QEMU:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;qemu&quot;</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">case</span> Kind::CORESIGHT:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;coresight&quot;</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;unknown&quot;</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    Kind kind;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">ExecutorKind</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    constexpr <a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">ExecutorKind</a>(Kind kind) : kind(kind) {}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// Allow switch case.</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    constexpr <span class="keyword">operator</span> Kind()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> kind; }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// Prevent if (executor_kind) usage.</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">explicit</span> <span class="keyword">operator</span> bool() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *c_str()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">switch</span> (kind) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">case</span> Kind::NATIVE:</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;native&quot;</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">case</span> Kind::FORKSERVER:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;forkserver&quot;</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">case</span> Kind::QEMU:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;qemu&quot;</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">case</span> Kind::CORESIGHT:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;coresight&quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;unknown&quot;</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;std::istream&amp; operator&gt;&gt;(std::istream&amp; in, <a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">ExecutorKind</a>&amp; executor);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <span class="comment">// namespace fuzzuf::cli</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    Kind kind;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structGlobalFuzzerOptions.html">   70</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span> help;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::string fuzzer;                     <span class="comment">// Required</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::string in_dir;                     <span class="comment">// Required; TODO: fs::path might be better</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::string out_dir;                    <span class="comment">// Required</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">fuzzuf::cli::ExecutorKind</a> executor;     <span class="comment">// Optional</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::optional&lt;fs::path&gt; proxy_path;     <span class="comment">// Optional</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::optional&lt;u32&gt; exec_timelimit_ms;   <span class="comment">// Optional</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::optional&lt;u32&gt; exec_memlimit;       <span class="comment">// Optional</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    Logger logger;                          <span class="comment">// Required</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    std::optional&lt;fs::path&gt; log_file;       <span class="comment">// Optional</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// Default values</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a>() : </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        help(<span class="keyword">false</span>),</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        fuzzer(<span class="stringliteral">&quot;afl&quot;</span>), </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        in_dir(<span class="stringliteral">&quot;./seeds&quot;</span>), <span class="comment">// FIXME: Assuming Linux</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        out_dir(<span class="stringliteral">&quot;/tmp/fuzzuf-out_dir&quot;</span>), <span class="comment">// FIXME: Assuming Linux</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        executor(fuzzuf::cli::ExecutorKind::NATIVE),</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        proxy_path(std::nullopt),</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        exec_timelimit_ms(std::nullopt), <span class="comment">// Specify no limits</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        exec_memlimit(std::nullopt),</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        logger(Logger::Stdout),</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        log_file(std::nullopt)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {};</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;std::istream&amp; operator&gt;&gt;(std::istream&amp; in, <a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">ExecutorKind</a>&amp; executor);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;} <span class="comment">// namespace fuzzuf::cli</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="structGlobalFuzzerOptions.html">   74</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">bool</span> help;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::string fuzzer;                     <span class="comment">// Required</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::string in_dir;                     <span class="comment">// Required; TODO: fs::path might be better</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::string out_dir;                    <span class="comment">// Required</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">fuzzuf::cli::ExecutorKind</a> executor;     <span class="comment">// Optional</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    std::optional&lt;fs::path&gt; proxy_path;     <span class="comment">// Optional</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    std::optional&lt;u32&gt; exec_timelimit_ms;   <span class="comment">// Optional</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::optional&lt;u32&gt; exec_memlimit;       <span class="comment">// Optional</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    Logger logger;                          <span class="comment">// Required</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::optional&lt;fs::path&gt; log_file;       <span class="comment">// Optional</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// Default values</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a>() : </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        help(<span class="keyword">false</span>),</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        fuzzer(<span class="stringliteral">&quot;afl&quot;</span>), </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        in_dir(<span class="stringliteral">&quot;./seeds&quot;</span>), <span class="comment">// FIXME: Assuming Linux</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        out_dir(<span class="stringliteral">&quot;/tmp/fuzzuf-out_dir&quot;</span>), <span class="comment">// FIXME: Assuming Linux</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        executor(fuzzuf::cli::ExecutorKind::NATIVE),</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        proxy_path(std::nullopt),</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        exec_timelimit_ms(std::nullopt), <span class="comment">// Specify no limits</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        exec_memlimit(std::nullopt),</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        logger(Logger::Stdout),</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        log_file(std::nullopt)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassfuzzuf_1_1cli_1_1ExecutorKind_html"><div class="ttname"><a href="classfuzzuf_1_1cli_1_1ExecutorKind.html">fuzzuf::cli::ExecutorKind</a></div><div class="ttdoc">Represents an executor type for CLI.</div><div class="ttdef"><b>Definition:</b> <a href="global__fuzzer__options_8hpp_source.html#l00032">global_fuzzer_options.hpp:32</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1cli_1_1ExecutorKind_html"><div class="ttname"><a href="classfuzzuf_1_1cli_1_1ExecutorKind.html">fuzzuf::cli::ExecutorKind</a></div><div class="ttdoc">Represents an executor type for CLI.</div><div class="ttdef"><b>Definition:</b> <a href="global__fuzzer__options_8hpp_source.html#l00033">global_fuzzer_options.hpp:33</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
-<div class="ttc" id="astructGlobalFuzzerOptions_html"><div class="ttname"><a href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a></div><div class="ttdef"><b>Definition:</b> <a href="global__fuzzer__options_8hpp_source.html#l00070">global_fuzzer_options.hpp:70</a></div></div>
+<div class="ttc" id="astructGlobalFuzzerOptions_html"><div class="ttname"><a href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a></div><div class="ttdef"><b>Definition:</b> <a href="global__fuzzer__options_8hpp_source.html#l00074">global_fuzzer_options.hpp:74</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
