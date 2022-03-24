@@ -1,9 +1,11 @@
 <map id="fuzzuf::bindings::python::routine::PyExecutePUT" name="fuzzuf::bindings::python::routine::PyExecutePUT">
-<area shape="rect" id="node1" title=" " alt="" coords="50,289,227,331"/>
-<area shape="rect" id="node2" href="$classHierarFlowRoutine.html" title=" " alt="" coords="5,171,229,227"/>
-<area shape="rect" id="node3" href="$classNativeLinuxExecutor.html" title=" " alt="" coords="254,185,410,212"/>
-<area shape="rect" id="node4" href="$classExecutor.html" title=" " alt="" coords="147,81,226,108"/>
-<area shape="rect" id="node5" href="$classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="251,81,413,108"/>
-<area shape="rect" id="node6" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="359,5,489,32"/>
-<area shape="rect" id="node7" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="438,81,597,108"/>
+<area shape="rect" id="node1" title=" " alt="" coords="50,304,227,345"/>
+<area shape="rect" id="node2" href="$classHierarFlowRoutine.html" title=" " alt="" coords="5,185,229,241"/>
+<area shape="rect" id="node3" href="$classNativeLinuxExecutor.html" title=" " alt="" coords="254,200,410,227"/>
+<area shape="rect" id="node4" href="$classExecutor.html" title=" " alt="" coords="79,89,158,115"/>
+<area shape="rect" id="node5" href="$classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html" title="Virtual filesystem implementation that interface to local filesystem. This is a wrapper to the standa..." alt="" coords="182,81,317,123"/>
+<area shape="rect" id="node6" href="$classfuzzuf_1_1utils_1_1vfs_1_1VFS.html" title="Base class of virtual filesystem. This class provides basic path conversion and path range check." alt="" coords="171,5,328,32"/>
+<area shape="rect" id="node7" href="$classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="341,89,504,115"/>
+<area shape="rect" id="node8" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="449,5,580,32"/>
+<area shape="rect" id="node9" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="529,89,687,115"/>
 </map>

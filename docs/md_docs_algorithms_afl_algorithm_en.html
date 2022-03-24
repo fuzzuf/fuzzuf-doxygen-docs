@@ -82,6 +82,14 @@ How to use fuzzuf's AFL CLI</h1>
 <li>Specifies a path to the directory, where all the outputs from fuzzers go, such as crash seeds. The default path <code>/tmp/fuzzuf-out_dir</code> is used if not specified.</li>
 </ul>
 </li>
+<li><code>--executor=native|qemu|coresight</code><ul>
+<li>Specifies an executor type for the PUT. The default value is <code>native</code>.</li>
+</ul>
+</li>
+<li><code>--proxy_path=path/to/proxy/application</code><ul>
+<li>Specifies a path to the executor proxy application (e.g. <code>afl-qemu-trace</code>). This option is required when an executor other than <code>native</code> is specified.</li>
+</ul>
+</li>
 <li><code>--exec_timelimit_ms=1234</code><ul>
 <li>Specifies a time limit per PUT execution in milliseconds. The default time limit is 1 second (i.e. 1000 ms).</li>
 </ul>
