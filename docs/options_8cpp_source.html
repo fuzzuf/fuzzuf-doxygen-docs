@@ -72,7 +72,7 @@ $(function() {
 <a href="options_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -107,321 +107,338 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="stringliteral">&quot;target&quot;</span>,</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      po::value&lt;std::vector&lt;std::string&gt;&gt;(&amp;dest.raw_targets)-&gt;multitoken(),</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="stringliteral">&quot;Mandatory option. Path to the target executable.&quot;</span>)(</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="stringliteral">&quot;input&quot;</span>,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      po::value&lt;std::vector&lt;std::string&gt;&gt;(&amp;dest.input_dir)-&gt;multitoken(),</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="stringliteral">&quot;Provide a dictionary of input keywords; see Dictionaries.&quot;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <span class="stringliteral">&quot;(Note: fuzzuf&#39;s implementation loads input from directory. Each files &quot;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <span class="stringliteral">&quot;in the directory contains one input.)&quot;</span>)(</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="stringliteral">&quot;verbosity&quot;</span>, po::value&lt;unsigned int&gt;(&amp;dest.create_info.verbosity),</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <span class="stringliteral">&quot;Verbosity level, default 1.&quot;</span>)(<span class="stringliteral">&quot;entropic&quot;</span>,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                     po::value&lt;unsigned int&gt;(&amp;dest.entropic),</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                     <span class="stringliteral">&quot;Use entropic mode, default 0.&quot;</span>)(</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="stringliteral">&quot;reduce_depth&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.config.reduce_depth),</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="stringliteral">&quot;Experimental/internal. &quot;</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="stringliteral">&quot;Reduce depth if mutations lose unique features. Default to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="stringliteral">&quot;shrink&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.config.shrink),</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="stringliteral">&quot;Replace values on corpus by shorter input with same coverage, default &quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="stringliteral">&quot;0.&quot;</span>)(<span class="stringliteral">&quot;seed&quot;</span>, po::value&lt;int&gt;(&amp;dest.create_info.seed),</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="stringliteral">&quot;Random seed. If 0, seed is generated. Default to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="stringliteral">&quot;runs&quot;</span>, po::value&lt;signed long long&gt;(&amp;dest.total_cycles),</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <span class="stringliteral">&quot;Number of individual test runs (-1 for infinite runs).&quot;</span>)(</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="stringliteral">&quot;max_len&quot;</span>, po::value&lt;std::size_t&gt;(&amp;dest.create_info.max_input_length),</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="stringliteral">&quot;Maximum length of the test input. &quot;</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="stringliteral">&quot;If 0, libFuzzer tries to guess a good value based on the corpus &quot;</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="stringliteral">&quot;and reports it. Default to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <span class="stringliteral">&quot;len_control&quot;</span>, po::value&lt;std::size_t&gt;(&amp;dest.create_info.len_control),</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="stringliteral">&quot;Try generating small inputs first, &quot;</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="stringliteral">&quot;then try larger inputs over time.  Specifies the rate at which the &quot;</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="stringliteral">&quot;length &quot;</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="stringliteral">&quot;limit is increased (smaller == faster).  If 0, immediately try inputs &quot;</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="stringliteral">&quot;with &quot;</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="stringliteral">&quot;size up to max_len. Default value is 0, if LLVMFuzzerCustomMutator is &quot;</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="stringliteral">&quot;used.&quot;</span>)(<span class="stringliteral">&quot;timeout&quot;</span>, po::value&lt;std::uint32_t&gt;(&amp;dest.exec_timelimit_s),</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;               <span class="stringliteral">&quot;Timeout in seconds (if positive). &quot;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;               <span class="stringliteral">&quot;If one unit runs more than this number of seconds the process &quot;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;               <span class="stringliteral">&quot;will abort. Default to 50 milliseconds.&quot;</span>)(</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="stringliteral">&quot;rss_limit_mb&quot;</span>, po::value&lt;std::uint64_t&gt;(&amp;dest.exec_memlimit_mb),</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="stringliteral">&quot;If non-zero, the fuzzer will exit upon&quot;</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="stringliteral">&quot;reaching this limit of RSS memory usage.&quot;</span>)(</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="stringliteral">&quot;malloc_limit_mb, Default to 2GiB.&quot;</span>,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      po::value&lt;std::size_t&gt;(&amp;dest.create_info.malloc_limit_mb),</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="stringliteral">&quot;If non-zero, the fuzzer will exit &quot;</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="stringliteral">&quot;if the target tries to allocate this number of Mb with one malloc call. &quot;</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="stringliteral">&quot;If zero (default) same limit as rss_limit_mb is applied. Default to 0.&quot;</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="stringliteral">&quot;timeout_exitcode&quot;</span>, po::value&lt;int&gt;(&amp;dest.create_info.timeout_exitcode),</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="stringliteral">&quot;When libFuzzer reports a timeout &quot;</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="stringliteral">&quot;this exit code will be used. Default to 77.&quot;</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="stringliteral">&quot;error_exitcode&quot;</span>, po::value&lt;int&gt;(&amp;dest.create_info.error_exit_code),</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="stringliteral">&quot;When libFuzzer itself reports a bug &quot;</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="stringliteral">&quot;this exit code will be used. Default to 77.&quot;</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="stringliteral">&quot;max_total_time&quot;</span>,</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      po::value&lt;std::uint64_t&gt;(&amp;dest.create_info.max_total_time),</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <span class="stringliteral">&quot;If positive, indicates the maximal total &quot;</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="stringliteral">&quot;time in seconds to run the fuzzer. Default to 0.&quot;</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      <span class="stringliteral">&quot;merge&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.merge),</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="stringliteral">&quot;If 1, the 2-nd, 3-rd, etc corpora will be &quot;</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      <span class="stringliteral">&quot;merged into the 1-st corpus. Only interesting units will be taken. &quot;</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="stringliteral">&quot;This flag can be used to minimize a corpus. Default to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <span class="stringliteral">&quot;merge_control_file&quot;</span>,</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      po::value&lt;std::string&gt;(&amp;dest.create_info.merge_control_file),</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="stringliteral">&quot;Specify a control file used for the merge process. &quot;</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      <span class="stringliteral">&quot;If a merge process gets killed it tries to leave this file &quot;</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="stringliteral">&quot;in a state suitable for resuming the merge. &quot;</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="stringliteral">&quot;By default a temporary file will be used.&quot;</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <span class="stringliteral">&quot;The same file can be used for multistep merge process.&quot;</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="stringliteral">&quot;minimize_crash&quot;</span>,</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      po::value&lt;std::size_t&gt;(&amp;dest.create_info.minimize_crash),</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <span class="stringliteral">&quot;If 1, minimizes the provided&quot;</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <span class="stringliteral">&quot; crash input. Use with -runs=N or -max_total_time=N to limit &quot;</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      <span class="stringliteral">&quot;the number attempts.&quot;</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <span class="stringliteral">&quot; Use with -exact_artifact_path to specify the output.&quot;</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="stringliteral">&quot; Combine with ASAN_OPTIONS=dedup_token_length=3 (or similar) to ensure &quot;</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="stringliteral">&quot;that&quot;</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="stringliteral">&quot; the minimized input triggers the same crash. Default to 0.&quot;</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="stringliteral">&quot;reload&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.reload),</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="stringliteral">&quot;Reload the main corpus every &lt;N&gt; seconds to get new units&quot;</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="stringliteral">&quot; discovered by other processes. If 0, disabled. Default to 0.&quot;</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="stringliteral">&quot;jobs&quot;</span>, po::value&lt;std::size_t&gt;(&amp;dest.create_info.jobs),</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="stringliteral">&quot;Number of jobs to run. If jobs &gt;= 1 we spawn&quot;</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="stringliteral">&quot; this number of jobs in separate worker processes&quot;</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="stringliteral">&quot; with stdout/stderr redirected to fuzz-JOB.log. Default to 0&quot;</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="stringliteral">&quot;workers&quot;</span>, po::value&lt;std::size_t&gt;(&amp;dest.create_info.workers),</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="stringliteral">&quot;Number of simultaneous worker processes to run the jobs.&quot;</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <span class="stringliteral">&quot; If zero, \&quot;min(jobs,NumberOfCpuCores()/2)\&quot; is used. Default to 0.&quot;</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;      <span class="stringliteral">&quot;dict&quot;</span>, po::value&lt;std::vector&lt;std::string&gt;&gt;(&amp;dest.dicts)-&gt;multitoken(),</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      <span class="stringliteral">&quot;Experimental. Use the dictionary file. Default to no dictionaries.&quot;</span>)(</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;      <span class="stringliteral">&quot;use_counters&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.config.use_counters),</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      <span class="stringliteral">&quot;If non-zero, use coverage counters. Default to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      <span class="stringliteral">&quot;reduce_inputs&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.config.reduce_inputs),</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      <span class="stringliteral">&quot;If non-zero, try to reduce the size of inputs while preserving their &quot;</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      <span class="stringliteral">&quot;full feature &quot;</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      <span class="stringliteral">&quot;sets. Default to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      <span class="stringliteral">&quot;use_value_profile&quot;</span>,</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      po::value&lt;bool&gt;(&amp;dest.create_info.config.use_value_profile_mask),</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      <span class="stringliteral">&quot;Experimental. If non-zero, use value profile to guide fuzzing. Default &quot;</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="stringliteral">&quot;to 0.&quot;</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      <span class="stringliteral">&quot;only_ascii&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.only_ascii),</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      <span class="stringliteral">&quot;If 1, generate only ASCII (isprint+isspace) inputs. Default to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      <span class="stringliteral">&quot;artifact_prefix&quot;</span>, po::value&lt;std::string&gt;(&amp;dest.output_dir),</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      <span class="stringliteral">&quot;Write fuzzing artifacts (crash, &quot;</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      <span class="stringliteral">&quot;timeout, or slow inputs) as &quot;</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <span class="stringliteral">&quot;$(artifact_prefix)file.&quot;</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      <span class="stringliteral">&quot;(Note: fuzzuf&#39;s implementation stores artifacts into the directory. &quot;</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      <span class="stringliteral">&quot;Default is /tmp/fuzzuf-out_dir/.&quot;</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      <span class="stringliteral">&quot;Each outputs are stored in different files in the directory.)&quot;</span>)(</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      <span class="stringliteral">&quot;exact_artifact_path&quot;</span>, po::value&lt;std::string&gt;(&amp;dest.exact_output_dir),</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      <span class="stringliteral">&quot;Write the single artifact on failure (crash, timeout) &quot;</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      <span class="stringliteral">&quot;as $(exact_artifact_path). This overrides -artifact_prefix &quot;</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      <span class="stringliteral">&quot;and will not use checksum in the file name. Do not &quot;</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <span class="stringliteral">&quot;use the same path for several parallel processes.&quot;</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="stringliteral">&quot;(Note: fuzzuf&#39;s implementation stores artifacts into the directory. &quot;</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      <span class="stringliteral">&quot;Each outputs are stored in different files in the directory.)&quot;</span>)(</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      <span class="stringliteral">&quot;print_pcs&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.print_pcs),</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      <span class="stringliteral">&quot;If 1, print out newly covered PCs. Default to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      <span class="stringliteral">&quot;print_final_stats&quot;</span>, po::value&lt;bool&gt;(&amp;dest.print_final_stats),</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      <span class="stringliteral">&quot;If 1, print statistics at exit. Default to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      <span class="stringliteral">&quot;detect_leaks&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.detect_leaks),</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      <span class="stringliteral">&quot;If 1, and if LeakSanitizer is enabled &quot;</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      <span class="stringliteral">&quot;try to detect memory leaks during fuzzing (i.e. not only at shut down). &quot;</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <span class="stringliteral">&quot;Default to 0.&quot;</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      <span class="stringliteral">&quot;close_fd_mask&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.close_fd_mask),</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      <span class="stringliteral">&quot;If 1, close stdout at startup; &quot;</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      <span class="stringliteral">&quot;if 2, close stderr; if 3, close both. &quot;</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      <span class="stringliteral">&quot;Be careful, this will also close e.g. stderr of asan. Default to 0.&quot;</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      <span class="stringliteral">&quot;seed_inputs&quot;</span>,</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      po::value&lt;std::vector&lt;std::string&gt;&gt;(&amp;dest.create_info.seed_inputs)</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;          -&gt;multitoken(),</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      <span class="stringliteral">&quot;A comma-separated list of input files &quot;</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;      <span class="stringliteral">&quot;to use as an additional seed corpus. Alternatively, an \&quot;@\&quot; followed &quot;</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      <span class="stringliteral">&quot;by &quot;</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      <span class="stringliteral">&quot;the name of a file containing the comma-separated list. (not &quot;</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <span class="stringliteral">&quot;implemented yet)&quot;</span>)(</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      <span class="stringliteral">&quot;keep_seed&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.config.keep_seed),</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="stringliteral">&quot;If 1, keep seed inputs in the corpus even if &quot;</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      <span class="stringliteral">&quot;they do not produce new coverage. When used with |reduce_inputs==1|, &quot;</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="stringliteral">&quot;the &quot;</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      <span class="stringliteral">&quot;seed inputs will never be reduced. This option can be useful when seeds &quot;</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="stringliteral">&quot;are&quot;</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="stringliteral">&quot;not properly formed for the fuzz target but still have useful snippets. &quot;</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      <span class="stringliteral">&quot;Default to 0.&quot;</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(<span class="stringliteral">&quot;cross_over&quot;</span>,</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                               po::value&lt;bool&gt;(&amp;dest.create_info.do_crossover),</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                               <span class="stringliteral">&quot;If 1, cross over inputs. Default to 1&quot;</span>)(</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      <span class="stringliteral">&quot;cross_over_uniform_dist&quot;</span>,</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      po::value&lt;bool&gt;(&amp;dest.create_info.crossover_uniform_dist),</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      <span class="stringliteral">&quot;Experimental. If 1, use a &quot;</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      <span class="stringliteral">&quot;uniform probability distribution when choosing inputs to cross over &quot;</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      <span class="stringliteral">&quot;with. &quot;</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;      <span class="stringliteral">&quot;Some of the inputs in the corpus may never get chosen for mutation &quot;</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      <span class="stringliteral">&quot;depending on the input mutation scheduling policy. With this flag, all &quot;</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      <span class="stringliteral">&quot;inputs, regardless of the input mutation scheduling policy, can be &quot;</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      <span class="stringliteral">&quot;chosen &quot;</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      <span class="stringliteral">&quot;as an input to cross over with. This can be particularly useful with &quot;</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      <span class="stringliteral">&quot;|keep_seed==1|; all the initial seed inputs, even though they do not &quot;</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;      <span class="stringliteral">&quot;increase coverage because they are not properly formed, will still be &quot;</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;      <span class="stringliteral">&quot;chosen as an input to cross over with. Default to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      <span class="stringliteral">&quot;mutate_depth&quot;</span>, po::value&lt;unsigned int&gt;(&amp;dest.create_info.mutation_depth),</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      <span class="stringliteral">&quot;Apply this number of consecutive mutations to each input. Default to &quot;</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      <span class="stringliteral">&quot;5.&quot;</span>)(<span class="stringliteral">&quot;shuffle&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.shuffle),</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="stringliteral">&quot;Shuffle inputs at startup. Default to 1.&quot;</span>)(</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      <span class="stringliteral">&quot;prefer_small&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.prefer_small),</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      <span class="stringliteral">&quot;If 1, always prefer smaller inputs during the corpus shuffle. Default &quot;</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      <span class="stringliteral">&quot;to 0.&quot;</span>)(</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      <span class="stringliteral">&quot;check_input_sha1&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.check_input_sha1),</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      <span class="stringliteral">&quot;If 1, files located under the input directories but the filename &quot;</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      <span class="stringliteral">&quot;doesn&#39;t match to sha1 hash of file contents are ignroed. Otherwise, all &quot;</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      <span class="stringliteral">&quot;files under the input directories are loaded. Default to 0.&quot;</span>);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  po::positional_options_description pd;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  pd.add(<span class="stringliteral">&quot;input&quot;</span>, -1);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="keywordflow">return</span> std::make_tuple(desc, pd);</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;}</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">// NOLINTBEGIN(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="keyword">auto</span> postProcess(</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keyword">const</span> boost::program_options::options_description &amp;desc,</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keyword">const</span> boost::program_options::positional_options_description &amp;pd, <span class="keywordtype">int</span> argc,</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[], <span class="keyword">const</span> <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> &amp;global,</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    std::function&lt;<span class="keywordtype">void</span>(std::string &amp;&amp;)&gt; &amp;&amp;sink, Options &amp;dest) -&gt; <span class="keywordtype">bool</span> {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="keyword">namespace </span>po = boost::program_options;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  po::variables_map vm;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  po::store(po::command_line_parser(argc, argv)</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                .options(desc)</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                .positional(pd)</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                .style(po::command_line_style::default_style |</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                       po::command_line_style::allow_long_disguise)</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                .run(),</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            vm);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  po::notify(vm);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="keywordflow">if</span> (global.logger != Logger::Stdout &amp;&amp; global.log_file) {</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    std::shared_ptr&lt;std::fstream&gt; fd(<span class="keyword">new</span> std::fstream(</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        global.log_file-&gt;string(), std::ios::out | std::ios::binary));</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    dest.sink = [fd = std::move(fd)](std::string &amp;&amp;m) {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      *fd &lt;&lt; m &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    };</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    dest.sink = std::move(sink);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  }</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <span class="keywordflow">if</span> (global.help == 1) {</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    std::ostringstream out;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;Usage : &quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;  $ fuzzuf [libfuzzer|nezha] -- [options]\n&quot;</span>;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    out &lt;&lt; desc &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    dest.sink(std::string(out.str()));</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  }</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keywordflow">if</span> (global.executor != fuzzuf::cli::ExecutorKind::NATIVE) {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    EXIT(<span class="stringliteral">&quot;Unsupported executor: `%s`&quot;</span>, global.executor.c_str());</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;v : dest.raw_targets) {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    DEBUG(<span class="stringliteral">&quot;[*] dest.raw_targets[] = %s&quot;</span>, v.c_str());</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.verbosity &gt;= 1U) {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    dest.create_info.config.debug = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  }</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="keywordflow">if</span> (dest.entropic != 0U) {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    dest.create_info.config.set_entropic(EntropicConfig()</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                             .set_enabled(<span class="keyword">true</span>)</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                             .set_number_of_rarest_features(10)</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                             .set_feature_frequency_threshold(3)</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                             .set_scale_per_exec_time(<span class="keyword">false</span>));</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  <span class="keywordflow">if</span> (dest.input_dir.empty()) {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    dest.input_dir.push_back(global.in_dir);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="stringliteral">&quot;symcc_target&quot;</span>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      po::value&lt;std::vector&lt;std::string&gt;&gt;(&amp;dest.raw_symcc_targets)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;          -&gt;multitoken(),</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <span class="stringliteral">&quot;Path to the target executable compiled by SymCC.&quot;</span>)(</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <span class="stringliteral">&quot;symcc_freq&quot;</span>,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      po::value&lt;unsigned int&gt;(&amp;dest.create_info.symcc_freq),</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <span class="stringliteral">&quot;SymCC execution frequency.&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <span class="stringliteral">&quot;If 0, SymCC is never executed.&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <span class="stringliteral">&quot;Otherwise, SymCC is executed if recent n local loop blocks didn&#39;t change the corpus.&quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="stringliteral">&quot;Default 1.&quot;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      )(</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="stringliteral">&quot;input&quot;</span>,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      po::value&lt;std::vector&lt;std::string&gt;&gt;(&amp;dest.input_dir)-&gt;multitoken(),</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="stringliteral">&quot;Provide a dictionary of input keywords; see Dictionaries.&quot;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="stringliteral">&quot;(Note: fuzzuf&#39;s implementation loads input from directory. Each files &quot;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="stringliteral">&quot;in the directory contains one input.)&quot;</span>)(</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="stringliteral">&quot;verbosity&quot;</span>, po::value&lt;unsigned int&gt;(&amp;dest.create_info.verbosity),</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <span class="stringliteral">&quot;Verbosity level, default 1.&quot;</span>)(<span class="stringliteral">&quot;entropic&quot;</span>,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                     po::value&lt;unsigned int&gt;(&amp;dest.entropic),</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                     <span class="stringliteral">&quot;Use entropic mode, default 0.&quot;</span>)(</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="stringliteral">&quot;reduce_depth&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.config.reduce_depth),</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="stringliteral">&quot;Experimental/internal. &quot;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <span class="stringliteral">&quot;Reduce depth if mutations lose unique features. Default to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="stringliteral">&quot;shrink&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.config.shrink),</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="stringliteral">&quot;Replace values on corpus by shorter input with same coverage, default &quot;</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="stringliteral">&quot;0.&quot;</span>)(<span class="stringliteral">&quot;seed&quot;</span>, po::value&lt;int&gt;(&amp;dest.create_info.seed),</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="stringliteral">&quot;Random seed. If 0, seed is generated. Default to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="stringliteral">&quot;runs&quot;</span>, po::value&lt;signed long long&gt;(&amp;dest.total_cycles),</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="stringliteral">&quot;Number of individual test runs (-1 for infinite runs).&quot;</span>)(</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="stringliteral">&quot;max_len&quot;</span>, po::value&lt;std::size_t&gt;(&amp;dest.create_info.max_input_length),</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="stringliteral">&quot;Maximum length of the test input. &quot;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="stringliteral">&quot;If 0, libFuzzer tries to guess a good value based on the corpus &quot;</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <span class="stringliteral">&quot;and reports it. Default to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="stringliteral">&quot;len_control&quot;</span>, po::value&lt;std::size_t&gt;(&amp;dest.create_info.len_control),</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="stringliteral">&quot;Try generating small inputs first, &quot;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="stringliteral">&quot;then try larger inputs over time.  Specifies the rate at which the &quot;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="stringliteral">&quot;length &quot;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="stringliteral">&quot;limit is increased (smaller == faster).  If 0, immediately try inputs &quot;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="stringliteral">&quot;with &quot;</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="stringliteral">&quot;size up to max_len. Default value is 0, if LLVMFuzzerCustomMutator is &quot;</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="stringliteral">&quot;used.&quot;</span>)(<span class="stringliteral">&quot;timeout&quot;</span>, po::value&lt;std::uint32_t&gt;(&amp;dest.exec_timelimit_s),</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;               <span class="stringliteral">&quot;Timeout in seconds (if positive). &quot;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;               <span class="stringliteral">&quot;If one unit runs more than this number of seconds the process &quot;</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;               <span class="stringliteral">&quot;will abort. Default to 50 milliseconds.&quot;</span>)(</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="stringliteral">&quot;rss_limit_mb&quot;</span>, po::value&lt;std::uint64_t&gt;(&amp;dest.exec_memlimit_mb),</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <span class="stringliteral">&quot;If non-zero, the fuzzer will exit upon&quot;</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="stringliteral">&quot;reaching this limit of RSS memory usage.&quot;</span>)(</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="stringliteral">&quot;malloc_limit_mb, Default to 2GiB.&quot;</span>,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      po::value&lt;std::size_t&gt;(&amp;dest.create_info.malloc_limit_mb),</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="stringliteral">&quot;If non-zero, the fuzzer will exit &quot;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="stringliteral">&quot;if the target tries to allocate this number of Mb with one malloc call. &quot;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      <span class="stringliteral">&quot;If zero (default) same limit as rss_limit_mb is applied. Default to 0.&quot;</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="stringliteral">&quot;timeout_exitcode&quot;</span>, po::value&lt;int&gt;(&amp;dest.create_info.timeout_exitcode),</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="stringliteral">&quot;When libFuzzer reports a timeout &quot;</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      <span class="stringliteral">&quot;this exit code will be used. Default to 77.&quot;</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      <span class="stringliteral">&quot;error_exitcode&quot;</span>, po::value&lt;int&gt;(&amp;dest.create_info.error_exit_code),</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="stringliteral">&quot;When libFuzzer itself reports a bug &quot;</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <span class="stringliteral">&quot;this exit code will be used. Default to 77.&quot;</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="stringliteral">&quot;max_total_time&quot;</span>,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      po::value&lt;std::uint64_t&gt;(&amp;dest.create_info.max_total_time),</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="stringliteral">&quot;If positive, indicates the maximal total &quot;</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="stringliteral">&quot;time in seconds to run the fuzzer. Default to 0.&quot;</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <span class="stringliteral">&quot;merge&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.merge),</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="stringliteral">&quot;If 1, the 2-nd, 3-rd, etc corpora will be &quot;</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <span class="stringliteral">&quot;merged into the 1-st corpus. Only interesting units will be taken. &quot;</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <span class="stringliteral">&quot;This flag can be used to minimize a corpus. Default to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <span class="stringliteral">&quot;merge_control_file&quot;</span>,</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      po::value&lt;std::string&gt;(&amp;dest.create_info.merge_control_file),</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <span class="stringliteral">&quot;Specify a control file used for the merge process. &quot;</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="stringliteral">&quot;If a merge process gets killed it tries to leave this file &quot;</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="stringliteral">&quot;in a state suitable for resuming the merge. &quot;</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="stringliteral">&quot;By default a temporary file will be used.&quot;</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <span class="stringliteral">&quot;The same file can be used for multistep merge process.&quot;</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="stringliteral">&quot;minimize_crash&quot;</span>,</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      po::value&lt;std::size_t&gt;(&amp;dest.create_info.minimize_crash),</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="stringliteral">&quot;If 1, minimizes the provided&quot;</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="stringliteral">&quot; crash input. Use with -runs=N or -max_total_time=N to limit &quot;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="stringliteral">&quot;the number attempts.&quot;</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="stringliteral">&quot; Use with -exact_artifact_path to specify the output.&quot;</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="stringliteral">&quot; Combine with ASAN_OPTIONS=dedup_token_length=3 (or similar) to ensure &quot;</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="stringliteral">&quot;that&quot;</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="stringliteral">&quot; the minimized input triggers the same crash. Default to 0.&quot;</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <span class="stringliteral">&quot;reload&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.reload),</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="stringliteral">&quot;Reload the main corpus every &lt;N&gt; seconds to get new units&quot;</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;      <span class="stringliteral">&quot; discovered by other processes. If 0, disabled. Default to 0.&quot;</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;      <span class="stringliteral">&quot;jobs&quot;</span>, po::value&lt;std::size_t&gt;(&amp;dest.create_info.jobs),</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      <span class="stringliteral">&quot;Number of jobs to run. If jobs &gt;= 1 we spawn&quot;</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      <span class="stringliteral">&quot; this number of jobs in separate worker processes&quot;</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      <span class="stringliteral">&quot; with stdout/stderr redirected to fuzz-JOB.log. Default to 0&quot;</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      <span class="stringliteral">&quot;workers&quot;</span>, po::value&lt;std::size_t&gt;(&amp;dest.create_info.workers),</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      <span class="stringliteral">&quot;Number of simultaneous worker processes to run the jobs.&quot;</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <span class="stringliteral">&quot; If zero, \&quot;min(jobs,NumberOfCpuCores()/2)\&quot; is used. Default to 0.&quot;</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="stringliteral">&quot;dict&quot;</span>, po::value&lt;std::vector&lt;std::string&gt;&gt;(&amp;dest.dicts)-&gt;multitoken(),</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <span class="stringliteral">&quot;Experimental. Use the dictionary file. Default to no dictionaries.&quot;</span>)(</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      <span class="stringliteral">&quot;use_counters&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.config.use_counters),</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      <span class="stringliteral">&quot;If non-zero, use coverage counters. Default to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      <span class="stringliteral">&quot;reduce_inputs&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.config.reduce_inputs),</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      <span class="stringliteral">&quot;If non-zero, try to reduce the size of inputs while preserving their &quot;</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      <span class="stringliteral">&quot;full feature &quot;</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <span class="stringliteral">&quot;sets. Default to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      <span class="stringliteral">&quot;use_value_profile&quot;</span>,</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      po::value&lt;bool&gt;(&amp;dest.create_info.config.use_value_profile_mask),</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      <span class="stringliteral">&quot;Experimental. If non-zero, use value profile to guide fuzzing. Default &quot;</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      <span class="stringliteral">&quot;to 0.&quot;</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      <span class="stringliteral">&quot;only_ascii&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.only_ascii),</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      <span class="stringliteral">&quot;If 1, generate only ASCII (isprint+isspace) inputs. Default to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <span class="stringliteral">&quot;artifact_prefix&quot;</span>, po::value&lt;std::string&gt;(&amp;dest.output_dir),</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="stringliteral">&quot;Write fuzzing artifacts (crash, &quot;</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      <span class="stringliteral">&quot;timeout, or slow inputs) as &quot;</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      <span class="stringliteral">&quot;$(artifact_prefix)file.&quot;</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      <span class="stringliteral">&quot;(Note: fuzzuf&#39;s implementation stores artifacts into the directory. &quot;</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      <span class="stringliteral">&quot;Default is /tmp/fuzzuf-out_dir/.&quot;</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      <span class="stringliteral">&quot;Each outputs are stored in different files in the directory.)&quot;</span>)(</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      <span class="stringliteral">&quot;exact_artifact_path&quot;</span>, po::value&lt;std::string&gt;(&amp;dest.exact_output_dir),</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      <span class="stringliteral">&quot;Write the single artifact on failure (crash, timeout) &quot;</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      <span class="stringliteral">&quot;as $(exact_artifact_path). This overrides -artifact_prefix &quot;</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <span class="stringliteral">&quot;and will not use checksum in the file name. Do not &quot;</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      <span class="stringliteral">&quot;use the same path for several parallel processes.&quot;</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      <span class="stringliteral">&quot;(Note: fuzzuf&#39;s implementation stores artifacts into the directory. &quot;</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      <span class="stringliteral">&quot;Each outputs are stored in different files in the directory.)&quot;</span>)(</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      <span class="stringliteral">&quot;print_pcs&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.print_pcs),</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      <span class="stringliteral">&quot;If 1, print out newly covered PCs. Default to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      <span class="stringliteral">&quot;print_final_stats&quot;</span>, po::value&lt;bool&gt;(&amp;dest.print_final_stats),</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      <span class="stringliteral">&quot;If 1, print statistics at exit. Default to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      <span class="stringliteral">&quot;detect_leaks&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.detect_leaks),</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;      <span class="stringliteral">&quot;If 1, and if LeakSanitizer is enabled &quot;</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      <span class="stringliteral">&quot;try to detect memory leaks during fuzzing (i.e. not only at shut down). &quot;</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;      <span class="stringliteral">&quot;Default to 0.&quot;</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      <span class="stringliteral">&quot;close_fd_mask&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.close_fd_mask),</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <span class="stringliteral">&quot;If 1, close stdout at startup; &quot;</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      <span class="stringliteral">&quot;if 2, close stderr; if 3, close both. &quot;</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="stringliteral">&quot;Be careful, this will also close e.g. stderr of asan. Default to 0.&quot;</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="stringliteral">&quot;seed_inputs&quot;</span>,</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      po::value&lt;std::vector&lt;std::string&gt;&gt;(&amp;dest.create_info.seed_inputs)</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;          -&gt;multitoken(),</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="stringliteral">&quot;A comma-separated list of input files &quot;</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      <span class="stringliteral">&quot;to use as an additional seed corpus. Alternatively, an \&quot;@\&quot; followed &quot;</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      <span class="stringliteral">&quot;by &quot;</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      <span class="stringliteral">&quot;the name of a file containing the comma-separated list. (not &quot;</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      <span class="stringliteral">&quot;implemented yet)&quot;</span>)(</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      <span class="stringliteral">&quot;keep_seed&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.config.keep_seed),</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      <span class="stringliteral">&quot;If 1, keep seed inputs in the corpus even if &quot;</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      <span class="stringliteral">&quot;they do not produce new coverage. When used with |reduce_inputs==1|, &quot;</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      <span class="stringliteral">&quot;the &quot;</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      <span class="stringliteral">&quot;seed inputs will never be reduced. This option can be useful when seeds &quot;</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;      <span class="stringliteral">&quot;are&quot;</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      <span class="stringliteral">&quot;not properly formed for the fuzz target but still have useful snippets. &quot;</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      <span class="stringliteral">&quot;Default to 0.&quot;</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      <span class="stringliteral">&quot;(not implemented yet)&quot;</span>)(<span class="stringliteral">&quot;cross_over&quot;</span>,</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                               po::value&lt;bool&gt;(&amp;dest.create_info.do_crossover),</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                               <span class="stringliteral">&quot;If 1, cross over inputs. Default to 1&quot;</span>)(</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;      <span class="stringliteral">&quot;cross_over_uniform_dist&quot;</span>,</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;      po::value&lt;bool&gt;(&amp;dest.create_info.crossover_uniform_dist),</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      <span class="stringliteral">&quot;Experimental. If 1, use a &quot;</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      <span class="stringliteral">&quot;uniform probability distribution when choosing inputs to cross over &quot;</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      <span class="stringliteral">&quot;with. &quot;</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      <span class="stringliteral">&quot;Some of the inputs in the corpus may never get chosen for mutation &quot;</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      <span class="stringliteral">&quot;depending on the input mutation scheduling policy. With this flag, all &quot;</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      <span class="stringliteral">&quot;inputs, regardless of the input mutation scheduling policy, can be &quot;</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      <span class="stringliteral">&quot;chosen &quot;</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      <span class="stringliteral">&quot;as an input to cross over with. This can be particularly useful with &quot;</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      <span class="stringliteral">&quot;|keep_seed==1|; all the initial seed inputs, even though they do not &quot;</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      <span class="stringliteral">&quot;increase coverage because they are not properly formed, will still be &quot;</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      <span class="stringliteral">&quot;chosen as an input to cross over with. Default to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      <span class="stringliteral">&quot;mutate_depth&quot;</span>, po::value&lt;unsigned int&gt;(&amp;dest.create_info.mutation_depth),</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      <span class="stringliteral">&quot;Apply this number of consecutive mutations to each input. Default to &quot;</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      <span class="stringliteral">&quot;5.&quot;</span>)(<span class="stringliteral">&quot;shuffle&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.shuffle),</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="stringliteral">&quot;Shuffle inputs at startup. Default to 1.&quot;</span>)(</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      <span class="stringliteral">&quot;prefer_small&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.prefer_small),</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;      <span class="stringliteral">&quot;If 1, always prefer smaller inputs during the corpus shuffle. Default &quot;</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      <span class="stringliteral">&quot;to 0.&quot;</span>)(</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;      <span class="stringliteral">&quot;check_input_sha1&quot;</span>, po::value&lt;bool&gt;(&amp;dest.create_info.check_input_sha1),</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      <span class="stringliteral">&quot;If 1, files located under the input directories but the filename &quot;</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;      <span class="stringliteral">&quot;doesn&#39;t match to sha1 hash of file contents are ignroed. Otherwise, all &quot;</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      <span class="stringliteral">&quot;files under the input directories are loaded. Default to 0.&quot;</span>);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  po::positional_options_description pd;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  pd.add(<span class="stringliteral">&quot;input&quot;</span>, -1);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="keywordflow">return</span> std::make_tuple(desc, pd);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;}</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">// NOLINTBEGIN(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keyword">auto</span> postProcess(</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keyword">const</span> boost::program_options::options_description &amp;desc,</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keyword">const</span> boost::program_options::positional_options_description &amp;pd, <span class="keywordtype">int</span> argc,</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[], <span class="keyword">const</span> <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> &amp;global,</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    std::function&lt;<span class="keywordtype">void</span>(std::string &amp;&amp;)&gt; &amp;&amp;sink, Options &amp;dest) -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="keyword">namespace </span>po = boost::program_options;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  po::variables_map vm;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  po::store(po::command_line_parser(argc, argv)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                .options(desc)</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                .positional(pd)</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                .style(po::command_line_style::default_style |</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                       po::command_line_style::allow_long_disguise)</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                .run(),</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            vm);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  po::notify(vm);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="keywordflow">if</span> (global.logger != Logger::Stdout &amp;&amp; global.log_file) {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    std::shared_ptr&lt;std::fstream&gt; fd(<span class="keyword">new</span> std::fstream(</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        global.log_file-&gt;string(), std::ios::out | std::ios::binary));</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    dest.sink = [fd = std::move(fd)](std::string &amp;&amp;m) {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      *fd &lt;&lt; m &lt;&lt; std::flush;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    };</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    dest.sink = std::move(sink);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keywordflow">if</span> (global.help == 1) {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    std::ostringstream out;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;Usage : &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;  $ fuzzuf [libfuzzer|nezha] -- [options]\n&quot;</span>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    out &lt;&lt; desc &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    dest.sink(std::string(out.str()));</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <span class="keywordflow">if</span> (global.executor != fuzzuf::cli::ExecutorKind::NATIVE) {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    EXIT(<span class="stringliteral">&quot;Unsupported executor: `%s`&quot;</span>, global.executor.c_str());</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;v : dest.raw_targets) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    DEBUG(<span class="stringliteral">&quot;[*] dest.raw_targets[] = %s&quot;</span>, v.c_str());</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.verbosity &gt;= 1U) {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    dest.create_info.config.debug = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  dest.create_info.input_dir = dest.input_dir[0];</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  fs::create_directories(dest.create_info.input_dir);</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  <span class="keywordflow">if</span> (dest.exact_output_dir.empty()) {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keyword">auto</span> uuid = to_string(boost::uuids::random_generator()());</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keyword">auto</span> exact_path = fs::path(dest.output_dir) / fs::path(<span class="stringliteral">&quot;crash-&quot;</span> + uuid);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    fs::create_directories(exact_path);</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    dest.create_info.output_dir = exact_path;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    fs::create_directories(dest.exact_output_dir);</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    dest.create_info.output_dir = dest.exact_output_dir;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  <span class="keywordflow">if</span> (dest.entropic != 0U) {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    dest.create_info.config.set_entropic(EntropicConfig()</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                                             .set_enabled(<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                             .set_number_of_rarest_features(10)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                                             .set_feature_frequency_threshold(3)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                                             .set_scale_per_exec_time(<span class="keyword">false</span>));</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <span class="keywordflow">if</span> (dest.input_dir.empty()) {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    dest.input_dir.push_back(global.in_dir);</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  std::cout &lt;&lt; dest.create_info.output_dir &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> kilo = 1000ULL;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> kilo_in_binary = 1024ULL;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="keywordflow">if</span> (dest.exec_timelimit_s != 0U) {</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    dest.create_info.exec_timelimit_ms = dest.exec_timelimit_s * kilo;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (global.exec_timelimit_ms) {</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    dest.create_info.exec_timelimit_ms = *global.exec_timelimit_ms;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  }</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="keywordflow">if</span> (dest.exec_memlimit_mb != 0U) {</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    dest.create_info.exec_memlimit =</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        dest.exec_memlimit_mb * kilo_in_binary * kilo_in_binary;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (global.exec_memlimit) {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    dest.create_info.exec_memlimit = *global.exec_memlimit;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  std::copy(dest.raw_targets.begin(), dest.raw_targets.end(),</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            std::back_inserter(dest.targets));</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  std::copy(dest.dicts.begin(), dest.dicts.end(),</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            std::back_inserter(dest.create_info.dictionaries));</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.seed != 0) {</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    dest.rng.seed(dest.create_info.seed);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    dest.rng.seed(std::random_device()());</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;}</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment">// NOLINTEND(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="keyword">auto</span> loadInitialInputs(Options &amp;dest, std::minstd_rand &amp;rng) -&gt; <a class="code" href="classExecInputSet.html">ExecInputSet</a> {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <a class="code" href="classExecInputSet.html">ExecInputSet</a> initial_inputs;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  std::size_t input_count = 0U;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  std::vector&lt;utils::mapped_file_t&gt; temp;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;d : dest.input_dir) {</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;data :</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;         fuzzuf::utils::LoadInputs(d, dest.create_info.check_input_sha1)) {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      temp.push_back(data);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  }</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.shuffle) {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    std::shuffle(temp.begin(), temp.end(), rng);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  }</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.prefer_small) {</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    std::stable_sort(</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        temp.begin(), temp.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;l, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;          return utils::range::rangeSize(l) &lt; utils::range::rangeSize(r);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        });</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;data : temp) {</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    corpus::addToInitialExecInputSet(initial_inputs, data);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    ++input_count;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  }</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  <span class="keywordflow">if</span> (input_count == 0) {</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    corpus::addToInitialExecInputSet(initial_inputs,</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                                     std::vector&lt;std::uint8_t&gt;{<span class="charliteral">&#39;+&#39;</span>});</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  dest.create_info.input_dir = dest.input_dir[0];</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  fs::create_directories(dest.create_info.input_dir);</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  <span class="keywordflow">if</span> (dest.exact_output_dir.empty()) {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keyword">auto</span> uuid = to_string(boost::uuids::random_generator()());</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keyword">auto</span> exact_path = fs::path(dest.output_dir) / fs::path(<span class="stringliteral">&quot;crash-&quot;</span> + uuid);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    fs::create_directories(exact_path);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    dest.create_info.output_dir = exact_path;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    fs::create_directories(dest.exact_output_dir);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    dest.create_info.output_dir = dest.exact_output_dir;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  std::cout &lt;&lt; dest.create_info.output_dir &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> kilo = 1000ULL;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> kilo_in_binary = 1024ULL;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  <span class="keywordflow">if</span> (dest.exec_timelimit_s != 0U) {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    dest.create_info.exec_timelimit_ms = dest.exec_timelimit_s * kilo;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (global.exec_timelimit_ms) {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    dest.create_info.exec_timelimit_ms = *global.exec_timelimit_ms;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  <span class="keywordflow">if</span> (dest.exec_memlimit_mb != 0U) {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    dest.create_info.exec_memlimit =</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        dest.exec_memlimit_mb * kilo_in_binary * kilo_in_binary;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (global.exec_memlimit) {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    dest.create_info.exec_memlimit = *global.exec_memlimit;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  }</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  std::copy(dest.raw_targets.begin(), dest.raw_targets.end(),</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            std::back_inserter(dest.targets));</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  std::copy(dest.raw_symcc_targets.begin(), dest.raw_symcc_targets.end(),</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            std::back_inserter(dest.targets));</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  dest.create_info.target_offset = 0u;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  dest.create_info.target_count = dest.raw_targets.size();</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  dest.create_info.symcc_target_offset = dest.raw_targets.size();</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  dest.create_info.symcc_target_count = dest.raw_symcc_targets.size();</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  std::copy(dest.dicts.begin(), dest.dicts.end(),</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            std::back_inserter(dest.create_info.dictionaries));</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.seed != 0) {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    dest.rng.seed(dest.create_info.seed);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    dest.rng.seed(std::random_device()());</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;}</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="comment">// NOLINTEND(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="keyword">auto</span> loadInitialInputs(Options &amp;dest, std::minstd_rand &amp;rng) -&gt; <a class="code" href="classExecInputSet.html">ExecInputSet</a> {</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  <a class="code" href="classExecInputSet.html">ExecInputSet</a> initial_inputs;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  std::size_t input_count = 0U;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  std::vector&lt;utils::mapped_file_t&gt; temp;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;d : dest.input_dir) {</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;data :</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;         fuzzuf::utils::LoadInputs(d, dest.create_info.check_input_sha1)) {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      temp.push_back(data);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    }</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  }</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.max_input_length == 0U) {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    dest.create_info.max_input_length = CalcMaxLength(</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        initial_inputs |</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        adaptor::exec_input_set_range&lt;true, ExecInputSetRangeInsertMode::NONE&gt;);</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  }</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <span class="keywordflow">return</span> initial_inputs;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;}</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.shuffle) {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    std::shuffle(temp.begin(), temp.end(), rng);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.prefer_small) {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    std::stable_sort(</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        temp.begin(), temp.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;l, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;          return utils::range::rangeSize(l) &lt; utils::range::rangeSize(r);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        });</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;data : temp) {</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    corpus::addToInitialExecInputSet(initial_inputs, data);</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    ++input_count;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  <span class="keywordflow">if</span> (input_count == 0) {</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    corpus::addToInitialExecInputSet(initial_inputs,</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                                     std::vector&lt;std::uint8_t&gt;{<span class="charliteral">&#39;+&#39;</span>});</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  }</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <span class="keywordflow">if</span> (dest.create_info.max_input_length == 0U) {</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    dest.create_info.max_input_length = CalcMaxLength(</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        initial_inputs |</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        adaptor::exec_input_set_range&lt;true, ExecInputSetRangeInsertMode::NONE&gt;);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  <span class="keywordflow">return</span> initial_inputs;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;}</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aadd__to__initial__exec__input__set_8hpp_html"><div class="ttname"><a href="add__to__initial__exec__input__set_8hpp.html">add_to_initial_exec_input_set.hpp</a></div></div>
 <div class="ttc" id="aexec__input__set__range_8hpp_html"><div class="ttname"><a href="exec__input__set__range_8hpp.html">exec_input_set_range.hpp</a></div></div>

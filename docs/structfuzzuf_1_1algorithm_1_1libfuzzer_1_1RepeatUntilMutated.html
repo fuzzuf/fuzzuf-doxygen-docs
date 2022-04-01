@@ -79,7 +79,7 @@ $(function() {
 class fuzzuf::algorithm::libfuzzer::RepeatUntilMutated&lt; F, Path &gt;</h3>
 
 <p>Invoke all child nodes until input is mutated n times or retry count exceeded m. n and m are defined at the node creation. Mutated count is retrived from mutation history. Since mutator fails to mutate in some cases(ex. the input length is max and trying to insert something) and mutation history is recorded only if mutation succeeded, total loop count can be larger than expected mutation count. This node modifies flow. The node takes 1 path for mutation history. </p>
-<p>Invoke all child nodes until execution result is marked as added to corpus or retry count exceeded m. m is defined at the node creation. If reduce_depth is enabled, the loop also breaks on no any unique features were detected. This node modifies flow. The node takes 2 paths for state( to retrive config.reduce_depth ) and execution result.</p>
+<p>Invoke all child nodes until execution result is marked as added to corpus or retry count exceeded m. m is defined at the node creation. <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> reduce_depth is enabled, the loop also breaks on no any unique features were detected. This node modifies flow. The node takes 2 paths for state( to retrive config.reduce_depth ) and execution result.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">F</td><td>Function type to define what arguments passes through this node. </td></tr>

@@ -65,7 +65,7 @@ $(function() {
 <div class="title">Building </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md177"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md182"></a>
 Building with a Development Container</h1>
 <p>We provide a container image to set up a development environment for fuzzuf quickly. Install Docker and run:</p>
 <div class="fragment"><div class="line">./scripts/dev_cli.sh build</div>
@@ -78,17 +78,17 @@ Building with a Development Container</h1>
 <div class="fragment"><div class="line">./scripts/dev_cli.sh shell</div>
 </div><!-- fragment --><p>See <code>help</code> for detailed usage:</p>
 <div class="fragment"><div class="line">./scripts/dev_cli.sh help</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md178"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md183"></a>
 Building Manually</h1>
-<h2><a class="anchor" id="autotoc_md179"></a>
+<h2><a class="anchor" id="autotoc_md184"></a>
 Recommended Environment</h2>
 <ul>
 <li>Ubuntu 20.04</li>
 <li>Ubuntu 18.04</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md180"></a>
+<h2><a class="anchor" id="autotoc_md185"></a>
 Dependencies</h2>
-<h3><a class="anchor" id="autotoc_md181"></a>
+<h3><a class="anchor" id="autotoc_md186"></a>
 Minimum Dependencies</h3>
 <p>The following dependencies must be met to build fuzzuf.</p>
 <ul>
@@ -107,13 +107,13 @@ Minimum Dependencies</h3>
 <li><a href="https://json.nlohmann.me/">Nlohmann JSON</a> 2.1.1 or higher</li>
 <li><a href="https://www.cryptopp.com/">Crypto++</a></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md182"></a>
+<h3><a class="anchor" id="autotoc_md187"></a>
 Dependencies for Instrumentation</h3>
 <p>The following dependencies are required for the instrumentation of the PUT.</p>
 <ul>
 <li><a href="https://github.com/AFLplusplus/AFLplusplus">AFL++ Clang</a></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md183"></a>
+<h3><a class="anchor" id="autotoc_md188"></a>
 Dependencies for Generating Documentation</h3>
 <p>The following additional dependencies are required to generate documentation using Doxygen.</p>
 <ul>
@@ -122,7 +122,7 @@ Dependencies for Generating Documentation</h3>
 <li><a href="https://www.mcternan.me.uk/mscgen/">Mscgen</a></li>
 <li><a href="https://sourceforge.net/projects/dia-installer/">Dia Diagram Editor</a></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md184"></a>
+<h3><a class="anchor" id="autotoc_md189"></a>
 Dependencies for VUzzer</h3>
 <p>The following additional dependencies are required to use VUzzer.</p>
 <ul>
@@ -130,7 +130,7 @@ Dependencies for VUzzer</h3>
 <li><a href="https://software.intel.com/content/www/us/en/develop/articles/pin-a-dynamic-binary-instrumentation-tool.html">Intel Pin</a> <a href="https://software.intel.com/sites/landingpage/pintool/downloads/pin-3.7-97619-g0d0c92f4f-gcc-linux.tar.gz">3.7</a></li>
 <li><a href="https://github.com/fuzzuf/polytracker">fuzzuf/polytracker</a></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md185"></a>
+<h3><a class="anchor" id="autotoc_md190"></a>
 Dependencies for DIE</h3>
 <p>The following additional dependencies are required to use DIE.</p>
 <ul>
@@ -141,9 +141,9 @@ Dependencies for DIE</h3>
 </li>
 <li>Python 3 (3.6 or later is recommended)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md186"></a>
+<h2><a class="anchor" id="autotoc_md191"></a>
 Manual Build</h2>
-<h3><a class="anchor" id="autotoc_md187"></a>
+<h3><a class="anchor" id="autotoc_md192"></a>
 On Ubuntu 20.04</h3>
 <p>To build a minimal fuzzuf on Ubuntu 20.04, install the dependencies as follows:</p>
 <div class="fragment"><div class="line">sudo apt update</div>
@@ -161,7 +161,7 @@ On Ubuntu 20.04</h3>
 <div class="line">cd fuzzuf</div>
 <div class="line">cmake -B build -DCMAKE_BUILD_TYPE=Debug</div>
 <div class="line">cmake --build build -j$(nproc)</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md188"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md193"></a>
 On Ubuntu 18.04</h3>
 <p>To build a minimal fuzzuf on Ubuntu 18.04, install the dependencies as follows:</p>
 <div class="fragment"><div class="line">sudo apt update</div>
@@ -180,18 +180,18 @@ On Ubuntu 18.04</h3>
 <div class="line">cd $_</div>
 <div class="line">cmake ../ -DCMAKE_BUILD_TYPE=Debug # Need to use a legacy CMake command as apt installs old one</div>
 <div class="line">make -j$(nproc)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md189"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md194"></a>
 Manual Build of VUzzer</h2>
 <p>Refer to the build instruction for manual build of VUzzer.</p>
-<h2><a class="anchor" id="autotoc_md190"></a>
+<h2><a class="anchor" id="autotoc_md195"></a>
 Manual Build of DIE</h2>
 <p>Refer to the build instruction for build build of DIE.</p>
-<h2><a class="anchor" id="autotoc_md191"></a>
+<h2><a class="anchor" id="autotoc_md196"></a>
 Run Unit Tests</h2>
 <p>Build the <code>test</code> target to run unit tests:</p>
 <div class="fragment"><div class="line">cmake --build build --target test</div>
 </div><!-- fragment --><p>Note that this command will run all tests by default, so some tests fail if dependencies are not met.</p>
-<h2><a class="anchor" id="autotoc_md192"></a>
+<h2><a class="anchor" id="autotoc_md197"></a>
 Generate Documentation</h2>
 <p>To generate documentation with Doxygen, build the <code>fuzzuf_doc</code> target with the dependencies satisfied. On Ubuntu 20.04, install the dependencies as follows:</p>
 <div class="fragment"><div class="line">sudo apt update</div>
@@ -203,12 +203,12 @@ Generate Documentation</h2>
 </div><!-- fragment --><p>Build <code>fuzzuf_doc</code> target after setting <code>ENABLE_DOXYGEN=1</code> as follows:</p>
 <div class="fragment"><div class="line">cmake -B build -DENABLE_DOXYGEN=1</div>
 <div class="line">cmake --build build --target fuzzuf_doc</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md193"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md198"></a>
 Note on Building on newer CPUs</h1>
 <p>Ubuntu 20.04 uses an older version of the compiler (gcc 9) by default. Therefore, as reported in <a href="https://github.com/fuzzuf/fuzzuf/issues/21">issue #21</a>, release builds on newer CPUs such as TigerLake may fail due to lack of native support for the architecture. This problem is a possible issue for both containerized build and manual build. You need to install a new compiler and specify it at build time as a workaround.</p>
 <p>For example, if you installed gcc 10, run:</p>
 <div class="fragment"><div class="line">cmake -B build -DCMAKE_BUILD_TYPE=Release -D CMAKE_C_COMPILER=gcc-10 -D CMAKE_CXX_COMPILER=g++-10</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md194"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md199"></a>
 Learn More</h1>
 <p>tutorial.md describes how to instrument PUTs and fuzz with AFL and AFLFast using a program with intentional bugs. For more information about each algorithm, please refer to the documentation in <a href="/docs/algorithms">docs/algorithms</a>. </p>
 </div></div><!-- contents -->

@@ -1,6 +1,7 @@
 <map id="include/fuzzuf/algorithms/libfuzzer/cli_compat/fuzzer.hpp" name="include/fuzzuf/algorithms/libfuzzer/cli_compat/fuzzer.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="150,5,378,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="249,5,477,47"/>
 <area shape="rect" id="node2" href="$libfuzzer_2fuzzer_8cpp.html" title=" " alt="" coords="5,95,157,136"/>
 <area shape="rect" id="node3" href="$register__libfuzzer_8cpp_source.html" title=" " alt="" coords="181,95,347,136"/>
 <area shape="rect" id="node4" href="$execute3_8cpp_source.html" title=" " alt="" coords="371,95,552,136"/>
+<area shape="rect" id="node5" href="$symcc_8cpp_source.html" title=" " alt="" coords="576,95,757,136"/>
 </map>

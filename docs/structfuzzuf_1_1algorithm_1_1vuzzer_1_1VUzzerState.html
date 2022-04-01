@@ -102,10 +102,10 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">VUzzerState</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">VUzzerState</a> &amp;)=delete</td></tr>
 <tr class="separator:ae58b094dd06a22d780ccc2fb474dee87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abffce8ee0cbd024c812d1362cb14603a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFileFeedback.html">FileFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#abffce8ee0cbd024c812d1362cb14603a">RunExecutor</a> (const u8 *buf, u32 len, <a class="el" href="classExitStatusFeedback.html">ExitStatusFeedback</a> &amp;exit_status, u32 tmout=0)</td></tr>
-<tr class="memdesc:abffce8ee0cbd024c812d1362cb14603a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a PUT with input from the buffer.  <a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#abffce8ee0cbd024c812d1362cb14603a">More...</a><br /></td></tr>
+<tr class="memdesc:abffce8ee0cbd024c812d1362cb14603a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classExecute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> a PUT with input from the buffer.  <a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#abffce8ee0cbd024c812d1362cb14603a">More...</a><br /></td></tr>
 <tr class="separator:abffce8ee0cbd024c812d1362cb14603a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08e506f733f0c50fad02401901bdb77b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFileFeedback.html">FileFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a08e506f733f0c50fad02401901bdb77b">RunTaintExecutor</a> (const u8 *buf, u32 len, <a class="el" href="classExitStatusFeedback.html">ExitStatusFeedback</a> &amp;exit_status, u32 tmout=0)</td></tr>
-<tr class="memdesc:a08e506f733f0c50fad02401901bdb77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a PUT by dynamic taint analysis technique with input from the buffer.  <a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a08e506f733f0c50fad02401901bdb77b">More...</a><br /></td></tr>
+<tr class="memdesc:a08e506f733f0c50fad02401901bdb77b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classExecute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> a PUT by dynamic taint analysis technique with input from the buffer.  <a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a08e506f733f0c50fad02401901bdb77b">More...</a><br /></td></tr>
 <tr class="separator:a08e506f733f0c50fad02401901bdb77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad151b5c88617941d16723c3c0244c9a8"><td class="memItemLeft" align="right" valign="top"><a id="ad151b5c88617941d16723c3c0244c9a8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveStopSignal</b> (void)</td></tr>
@@ -380,7 +380,7 @@ std::map&lt; u64, std::set&lt; u32 &gt; &gt;&#160;</td><td class="memItemRight" 
       </table>
 </div><div class="memdoc">
 
-<p>Execute a PUT with input from the buffer. </p>
+<p><a class="el" href="classExecute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> a PUT with input from the buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">(buf)</td><td>Input buffer </td></tr>
@@ -433,8 +433,8 @@ std::map&lt; u64, std::set&lt; u32 &gt; &gt;&#160;</td><td class="memItemRight" 
       </table>
 </div><div class="memdoc">
 
-<p>Execute a PUT by dynamic taint analysis technique with input from the buffer. </p>
-<p>Execute a PUT by dynamic taint analysis technique with input from the buffer. The input buffer is marked as taint tag. </p><dl class="params"><dt>Parameters</dt><dd>
+<p><a class="el" href="classExecute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> a PUT by dynamic taint analysis technique with input from the buffer. </p>
+<p><a class="el" href="classExecute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> a PUT by dynamic taint analysis technique with input from the buffer. The input buffer is marked as taint tag. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">(buf)</td><td>Input buffer </td></tr>
     <tr><td class="paramname">(len)</td><td>Length of the input buffer </td></tr>

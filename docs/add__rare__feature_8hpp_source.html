@@ -105,9 +105,9 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// and all features with a frequency below ConsideredRare.</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// Remove all other features.</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">while</span> (state.rare_features.size() &gt;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;             state.config.entropic.number_of_rarest_features &amp;&amp;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;             state.create_info.config.entropic.number_of_rarest_features &amp;&amp;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;         state.freq_of_most_abundant_rare_feature &gt;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;             state.config.entropic.feature_frequency_threshold) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;             state.create_info.config.entropic.feature_frequency_threshold) {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// Find most and second most abbundant feature.</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::array&lt;std::uint32_t, 2u&gt; most_abundant_rare_feature_indices{</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        state.rare_features[0], state.rare_features[0]};</div>

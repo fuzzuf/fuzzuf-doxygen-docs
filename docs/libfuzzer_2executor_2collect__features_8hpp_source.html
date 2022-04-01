@@ -117,13 +117,13 @@ $(function() {
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> size = utils::range::rangeSize(range);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  feature::CollectFeatures(state, cov, module_offset, [&amp;](<span class="keyword">auto</span> f) -&gt; <span class="keywordtype">void</span> {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span> (feature::AddFeature(state, corpus, f, <span class="keyword">static_cast&lt;</span>std::uint32_t<span class="keyword">&gt;</span>(size),</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                            state.config.shrink))</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                            state.create_info.config.shrink))</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      unique_feature_set_temp.push_back(f);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    if (state.config.entropic.enabled)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    if (state.create_info.config.entropic.enabled)</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      feature::UpdateFeatureFrequency(state, exec_result, f);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    if (state.config.reduce_inputs &amp;&amp; !exec_result.never_reduce)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    if (state.create_info.config.reduce_inputs &amp;&amp; !exec_result.never_reduce)</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      if (std::binary_search(exec_result.unique_feature_set.begin(),</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                             exec_result.unique_feature_set.end(), f))</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        ++found_unique_features_of_input_info;</div>

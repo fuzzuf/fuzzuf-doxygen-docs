@@ -77,13 +77,14 @@ Collaboration diagram for fuzzuf::algorithm::libfuzzer::test::Variables:</div>
 <div class="dyncontent">
 <div class="center"><img src="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Variables__coll__graph.png" border="0" usemap="#fuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Variables_coll__map" alt="Collaboration graph"/></div>
 <map name="fuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Variables_coll__map" id="fuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Variables_coll__map">
-<area shape="rect" title=" " alt="" coords="805,71,984,112"/>
-<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html" title="Struct to hold libFuzzer state." alt="" coords="531,5,671,47"/>
+<area shape="rect" title=" " alt="" coords="1125,71,1304,112"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html" title="Struct to hold libFuzzer state." alt="" coords="851,5,991,47"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html" title=" " alt="" coords="523,5,719,47"/>
 <area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html" title="libFuzzer parameters" alt="" coords="291,5,431,47"/>
 <area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html" title="libFuzzer parameters affecting on entropic mode" alt="" coords="5,5,185,47"/>
-<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html" title="execution result This class contains values retrived from executor and scratch values to calculate we..." alt="" coords="529,71,673,112"/>
-<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FullCorpus.html" title=" " alt="" coords="524,136,679,177"/>
-<area shape="rect" href="classExecInputSet.html" title=" " alt="" coords="307,143,414,170"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html" title="execution result This class contains values retrived from executor and scratch values to calculate we..." alt="" coords="849,71,993,112"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FullCorpus.html" title=" " alt="" coords="844,136,999,177"/>
+<area shape="rect" href="classExecInputSet.html" title=" " alt="" coords="567,143,674,170"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -128,6 +129,18 @@ ElapsedTimeClock&#160;</td><td class="memItemRight" valign="bottom"><b>begin_dat
 <tr class="memitem:ac1904b8a8de8708458ea4bb87c012ae8"><td class="memItemLeft" align="right" valign="top"><a id="ac1904b8a8de8708458ea4bb87c012ae8"></a>
 std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>last_corpus_update_run</b> = 0u</td></tr>
 <tr class="separator:ac1904b8a8de8708458ea4bb87c012ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0623245aec3b1c9ad0b35fd863408ff6"><td class="memItemLeft" align="right" valign="top"><a id="a0623245aec3b1c9ad0b35fd863408ff6"></a>
+std::vector&lt; <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">fuzzuf::executor::LibFuzzerExecutorInterface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>executor</b></td></tr>
+<tr class="separator:a0623245aec3b1c9ad0b35fd863408ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09d7dc74611bd69f149d24182337b3a"><td class="memItemLeft" align="right" valign="top"><a id="ad09d7dc74611bd69f149d24182337b3a"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>executor_index</b> = 0u</td></tr>
+<tr class="separator:ad09d7dc74611bd69f149d24182337b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8251e5843d00a81c266d97e7cd1a047"><td class="memItemLeft" align="right" valign="top"><a id="aa8251e5843d00a81c266d97e7cd1a047"></a>
+std::vector&lt; fuzzuf::utils::mapped_file_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>symcc_out</b></td></tr>
+<tr class="separator:aa8251e5843d00a81c266d97e7cd1a047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02050d11562b66844d33c25f7f7f26e2"><td class="memItemLeft" align="right" valign="top"><a id="a02050d11562b66844d33c25f7f7f26e2"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>stuck_count</b> = 0u</td></tr>
+<tr class="separator:a02050d11562b66844d33c25f7f7f26e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">

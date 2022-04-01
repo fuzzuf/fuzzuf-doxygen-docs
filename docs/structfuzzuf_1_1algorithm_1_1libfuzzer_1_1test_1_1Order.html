@@ -88,6 +88,9 @@ Public Types</h2></td></tr>
 <tr class="memitem:a202ff46f04de0e7dad319536aa441704"><td class="memItemLeft" align="right" valign="top"><a id="a202ff46f04de0e7dad319536aa441704"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>V</b> = <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Variables.html">Variables</a></td></tr>
 <tr class="separator:a202ff46f04de0e7dad319536aa441704"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2114af053d440b052bed58f000d3fb8"><td class="memItemLeft" align="right" valign="top"><a id="ac2114af053d440b052bed58f000d3fb8"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Executors</b> = std::vector&lt; <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">fuzzuf::executor::LibFuzzerExecutorInterface</a> &gt;</td></tr>
+<tr class="separator:ac2114af053d440b052bed58f000d3fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -97,6 +100,8 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>arg0
 <tr class="memitem:a192d59e187024bd00df11ffd81c0773b"><td class="memItemLeft" align="right" valign="top"><a id="a192d59e187024bd00df11ffd81c0773b"></a>
 constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>state</b> = arg0 / sp::mem&lt;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Variables.html">V</a>, <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html">State</a>, &amp;V::state&gt;</td></tr>
 <tr class="separator:a192d59e187024bd00df11ffd81c0773b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b66a4de50f4f6db04a84bafbb5f31c7"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>create_info</b></td></tr>
+<tr class="separator:a0b66a4de50f4f6db04a84bafbb5f31c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7dc6947a6aa4ed3e3f958e69eefb7e6"><td class="memItemLeft" align="right" valign="top"><a id="aa7dc6947a6aa4ed3e3f958e69eefb7e6"></a>
 constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>corpus</b> = arg0 / sp::mem&lt;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Variables.html">V</a>, <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FullCorpus.html">FullCorpus</a>, &amp;V::corpus&gt;</td></tr>
 <tr class="separator:aa7dc6947a6aa4ed3e3f958e69eefb7e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,11 +137,54 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <tr class="separator:a4270a918dd150c75000bbded51152778"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcc47fba0e7fc51c5e0ee95319274cb3"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>last_corpus_update_run</b></td></tr>
 <tr class="separator:adcc47fba0e7fc51c5e0ee95319274cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6afec0648e47220ecd650d44dc466a7e"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>use_afl_coverage</b></td></tr>
+<tr class="separator:a6afec0648e47220ecd650d44dc466a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4ff9cac78ec1f9dbcbf82a647c4a7f2"><td class="memItemLeft" align="right" valign="top"><a id="ab4ff9cac78ec1f9dbcbf82a647c4a7f2"></a>
+constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>executors</b> = arg0 / sp::mem&lt;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Variables.html">V</a>, Executors, &amp;V::executor&gt;</td></tr>
+<tr class="separator:ab4ff9cac78ec1f9dbcbf82a647c4a7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4174275dc452e0b34af88a2a04ea6f02"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>executor_index</b></td></tr>
+<tr class="separator:a4174275dc452e0b34af88a2a04ea6f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad748952d2d3f9e5c35da4a2aa3b2baf5"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>added_to_corpus</b></td></tr>
+<tr class="separator:ad748952d2d3f9e5c35da4a2aa3b2baf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10f049c78f04846ec92908f20d661b15"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>symcc_out</b></td></tr>
+<tr class="separator:a10f049c78f04846ec92908f20d661b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbe84be727fabb04a6958afe737b5851"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>symcc_target_offset</b></td></tr>
+<tr class="separator:acbe84be727fabb04a6958afe737b5851"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a083858a041723f2c1b303c3e5c57fe20"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>stuck_count</b></td></tr>
+<tr class="separator:a083858a041723f2c1b303c3e5c57fe20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7182d23293a9979af4f2172583fb281f"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>symcc_freq</b></td></tr>
+<tr class="separator:a7182d23293a9979af4f2172583fb281f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00087">87</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00091">91</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad748952d2d3f9e5c35da4a2aa3b2baf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad748952d2d3f9e5c35da4a2aa3b2baf5">&#9670;&nbsp;</a></span>added_to_corpus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto fuzzuf::algorithm::libfuzzer::test::Order::added_to_corpus</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      exec_result / sp::mem&lt;InputInfo, bool, &amp;InputInfo::added_to_corpus&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00129">129</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aebd22fc362b4745e6364cc2520bd3520"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aebd22fc362b4745e6364cc2520bd3520">&#9670;&nbsp;</a></span>begin_date</h2>
 
@@ -159,7 +207,33 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      arg0 / sp::mem&lt;V, ElapsedTimeClock, &amp;V::begin_date&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00110">110</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00117">117</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0b66a4de50f4f6db04a84bafbb5f31c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b66a4de50f4f6db04a84bafbb5f31c7">&#9670;&nbsp;</a></span>create_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto fuzzuf::algorithm::libfuzzer::test::Order::create_info</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      state / sp::mem&lt;State, FuzzerCreateInfo, &amp;State::create_info&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00096">96</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -185,7 +259,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      arg0 / sp::mem&lt;V, Ranges, &amp;V::input&gt; / sp::elem&lt;1u&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00099">99</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00106">106</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -211,7 +285,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      arg0 / sp::mem&lt;V, Dict, &amp;V::persistent_auto_dict&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00101">101</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00108">108</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -237,7 +311,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      arg0 / sp::mem&lt;V, DictHistory, &amp;V::dict_history&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00103">103</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00110">110</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -263,7 +337,33 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      arg0 / sp::mem&lt;V, InputInfo, &amp;V::exec_result&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00105">105</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00112">112</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4174275dc452e0b34af88a2a04ea6f02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4174275dc452e0b34af88a2a04ea6f02">&#9670;&nbsp;</a></span>executor_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto fuzzuf::algorithm::libfuzzer::test::Order::executor_index</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      arg0 / sp::mem&lt;V, std::size_t, &amp;V::executor_index&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00127">127</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -289,7 +389,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      arg0 / sp::mem&lt;V, Ranges, &amp;V::input&gt; / sp::elem&lt;0u&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00093">93</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00100">100</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -315,7 +415,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      arg0 / sp::mem&lt;V, std::size_t, &amp;V::last_corpus_update_run&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00114">114</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00121">121</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -341,7 +441,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      arg0 / sp::mem&lt;V, Ranges, &amp;V::input&gt; / sp::elem&lt;2u&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00112">112</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00119">119</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -367,7 +467,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      arg0 / sp::mem&lt;V, std::size_t, &amp;V::max_input_size&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00095">95</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00102">102</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -393,7 +493,141 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      arg0 / sp::mem&lt;V, MutationHistory, &amp;V::mutation_history&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00097">97</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00104">104</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a083858a041723f2c1b303c3e5c57fe20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a083858a041723f2c1b303c3e5c57fe20">&#9670;&nbsp;</a></span>stuck_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto fuzzuf::algorithm::libfuzzer::test::Order::stuck_count</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      arg0 / sp::mem&lt;V, unsigned int, &amp;V::stuck_count&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00137">137</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a7182d23293a9979af4f2172583fb281f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7182d23293a9979af4f2172583fb281f">&#9670;&nbsp;</a></span>symcc_freq</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto fuzzuf::algorithm::libfuzzer::test::Order::symcc_freq</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      create_info / sp::mem&lt;FuzzerCreateInfo, <span class="keywordtype">unsigned</span> int,</div>
+<div class="line">                            &amp;<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a1bbba8ccd20ebad544196fd431ba43f0">FuzzerCreateInfo::symcc_freq</a>&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00139">139</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a10f049c78f04846ec92908f20d661b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10f049c78f04846ec92908f20d661b15">&#9670;&nbsp;</a></span>symcc_out</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto fuzzuf::algorithm::libfuzzer::test::Order::symcc_out</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      arg0 /</div>
+<div class="line">      sp::mem&lt;V, std::vector&lt;fuzzuf::utils::mapped_file_t&gt;, &amp;V::symcc_out&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00131">131</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="acbe84be727fabb04a6958afe737b5851"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbe84be727fabb04a6958afe737b5851">&#9670;&nbsp;</a></span>symcc_target_offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto fuzzuf::algorithm::libfuzzer::test::Order::symcc_target_offset</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      create_info / sp::mem&lt;FuzzerCreateInfo, std::size_t,</div>
+<div class="line">                            &amp;FuzzerCreateInfo::symcc_target_offset&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00134">134</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6afec0648e47220ecd650d44dc466a7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6afec0648e47220ecd650d44dc466a7e">&#9670;&nbsp;</a></span>use_afl_coverage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto fuzzuf::algorithm::libfuzzer::test::Order::use_afl_coverage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      create_info /</div>
+<div class="line">      sp::mem&lt;FuzzerCreateInfo, bool, &amp;FuzzerCreateInfo::use_afl_coverage&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2test__utils_8hpp_source.html#l00123">123</a> of file <a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -401,6 +635,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <li>include/fuzzuf/algorithms/libfuzzer/<a class="el" href="libfuzzer_2test__utils_8hpp_source.html">test_utils.hpp</a></li>
 </ul>
 </div><!-- contents -->
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_a1bbba8ccd20ebad544196fd431ba43f0"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a1bbba8ccd20ebad544196fd431ba43f0">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::symcc_freq</a></div><div class="ttdeci">unsigned int symcc_freq</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00431">config.hpp:431</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

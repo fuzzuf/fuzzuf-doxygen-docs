@@ -72,7 +72,7 @@ $(function() {
 <a href="algorithms_2libfuzzer_2cli__compat_2fuzzer_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -123,22 +123,23 @@ $(function() {
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> ReceiveStopSignal(<span class="keywordtype">void</span>) {}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">bool</span> ShouldEnd()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> end_; }</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;get_create_info()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> create_info; }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> create_info;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Variables.html">Variables</a> vars;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">signed</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> total_cycles = 0u;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  std::size_t max_input_length = 0u;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">bool</span> print_final_stats = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">bool</span> end_ = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::function&lt;void()&gt; runone;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  std::function&lt;void(std::string &amp;&amp;)&gt; sink;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">utils::DumpTracer</a> node_tracer;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">utils::ElapsedTimeTracer</a> ett;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> &amp;GetVariables()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> vars; }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> create_info;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Variables.html">Variables</a> vars;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">signed</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> total_cycles = 0u;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  std::size_t max_input_length = 0u;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">bool</span> print_final_stats = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">bool</span> end_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  std::function&lt;void()&gt; runone;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  std::function&lt;void(std::string &amp;&amp;)&gt; sink;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">utils::DumpTracer</a> node_tracer;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">utils::ElapsedTimeTracer</a> ett;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anode__tracer_8hpp_html"><div class="ttname"><a href="node__tracer_8hpp.html">node_tracer.hpp</a></div></div>
 <div class="ttc" id="alibfuzzer_2state_2state_8hpp_html"><div class="ttname"><a href="libfuzzer_2state_2state_8hpp.html">state.hpp</a></div></div>

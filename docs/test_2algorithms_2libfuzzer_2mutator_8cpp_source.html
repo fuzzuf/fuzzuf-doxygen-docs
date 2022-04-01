@@ -72,7 +72,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -627,75 +627,129 @@ $(function() {
 <div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;  <span class="keyword">namespace </span>sp = fuzzuf::utils::struct_path;</div>
 <div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;  <span class="keyword">auto</span> repeat = hf::CreateNode&lt;lf::DynamicRepeat&lt;</div>
 <div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;      lf::test::Full,</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;      decltype(Ord::count &amp;&amp; sp::root / sp::int_&lt;std::size_t, 10U&gt;)&gt;&gt;();</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;  <span class="keyword">auto</span> <a class="code" href="range__traits_8hpp.html#a6bcd4a95c4862ec2f83d701d7308e44a">append</a> =</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;      hf::CreateNode&lt;lf::StaticAppend&lt;lf::test::Full, decltype(Ord::count)&gt;&gt;(</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;          1U);</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;  lf::test::Variables vars;</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;  vars.rng.seed(5U);</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">fuzzuf::utils::DumpTracer</a> tracer(</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;      [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">fuzzuf::utils::ElapsedTimeTracer</a> ett;</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;  repeat &lt;&lt; (<a class="code" href="range__traits_8hpp.html#a6bcd4a95c4862ec2f83d701d7308e44a">append</a>);</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;  fuzzuf::hierarflow::WrapToMakeHeadNode(repeat)(vars, tracer, ett);</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;  ett.dump([](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;}</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160; </div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;BOOST_AUTO_TEST_CASE(HierarFlowRandomCall0) {</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;  <span class="keyword">auto</span> data = lf::test::getSeed2();</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  <span class="keyword">using</span> Ord = lf::test::Order;</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;  <span class="keyword">auto</span> random =</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;      hf::CreateNode&lt;lf::standard_order::RandomCall&lt;lf::test::Full, Ord&gt;&gt;();</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;  FUZZUF_TEST_ALGORITHM_LIBFUZZER_HIERARFLOW_MUTATOR(EraseBytes, erase_bytes);</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;  FUZZUF_TEST_ALGORITHM_LIBFUZZER_HIERARFLOW_MUTATOR(InsertByte, insert_byte);</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  random &lt;&lt; (erase_bytes || insert_byte);</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;  lf::test::Variables vars;</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;  vars.rng.seed(9U);</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;  std::copy(data.begin(), data.end(), std::back_inserter(vars.input[0]));</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">fuzzuf::utils::DumpTracer</a> tracer(</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;      [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">fuzzuf::utils::ElapsedTimeTracer</a> ett;</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;  fuzzuf::hierarflow::WrapToMakeHeadNode(random)(vars, tracer, ett);</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;  data.clear();</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;  std::copy(vars.input[0].begin(), vars.input[0].end(),</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;            std::back_inserter(data));</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;  ett.dump([](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  <span class="keyword">const</span> std::vector&lt;std::uint8_t&gt; expected1{</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;      <span class="charliteral">&#39;j&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="charliteral">&#39;m&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;o&#39;</span>,   <span class="charliteral">&#39;v&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;r&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;t&#39;</span>,</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;      <span class="charliteral">&#39;h&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;l&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;z&#39;</span>, 0x8bU, <span class="charliteral">&#39;y&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="charliteral">&#39;g&#39;</span>};</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(data.begin(), data.end(), expected1.begin(),</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;                                expected1.end());</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;}</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160; </div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;BOOST_AUTO_TEST_CASE(HierarFlowRandomCall1) {</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;  <span class="keyword">auto</span> data = lf::test::getSeed2();</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;  <span class="keyword">using</span> Ord = lf::test::Order;</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;  <span class="keyword">auto</span> random =</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;      hf::CreateNode&lt;lf::standard_order::RandomCall&lt;lf::test::Full, Ord&gt;&gt;();</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;  FUZZUF_TEST_ALGORITHM_LIBFUZZER_HIERARFLOW_MUTATOR(EraseBytes, erase_bytes);</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;  FUZZUF_TEST_ALGORITHM_LIBFUZZER_HIERARFLOW_MUTATOR(InsertByte, insert_byte);</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;  random &lt;&lt; (erase_bytes || insert_byte);</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;  lf::test::Variables vars;</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  vars.rng.seed(2U);</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  std::copy(data.begin(), data.end(), std::back_inserter(vars.input[0]));</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">fuzzuf::utils::DumpTracer</a> tracer(</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;      [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">fuzzuf::utils::ElapsedTimeTracer</a> ett;</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;  fuzzuf::hierarflow::WrapToMakeHeadNode(random)(vars, tracer, ett);</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;  data.clear();</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;  std::copy(vars.input[0].begin(), vars.input[0].end(),</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;            std::back_inserter(data));</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;  ett.dump([](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;  <span class="keyword">const</span> std::vector&lt;std::uint8_t&gt; expected1{<span class="charliteral">&#39;j&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="charliteral">&#39;m&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="charliteral">&#39; &#39;</span>,</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;                                            <span class="charliteral">&#39;o&#39;</span>, <span class="charliteral">&#39;v&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;r&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;z&#39;</span>,</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;                                            <span class="charliteral">&#39;y&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="charliteral">&#39;g&#39;</span>};</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(data.begin(), data.end(), expected1.begin(),</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;                                expected1.end());</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;}</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;      decltype(sp::root / sp::ident&lt;std::less&lt;std::size_t&gt;&gt; &amp;&amp; Ord::count &amp;&amp;</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;               sp::root / sp::int_&lt;std::size_t, 10U&gt;)&gt;&gt;();</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;  <span class="keyword">auto</span> <a class="code" href="range__traits_8hpp.html#a6bcd4a95c4862ec2f83d701d7308e44a">append</a> =</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;      hf::CreateNode&lt;lf::StaticAppend&lt;lf::test::Full, decltype(Ord::count)&gt;&gt;(</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;          1U);</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;  lf::test::Variables vars;</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;  <span class="comment">// initial value is 0</span></div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;  vars.count = 0u;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;  vars.rng.seed(5U);</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;  <span class="comment">// increment 10 times</span></div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">fuzzuf::utils::DumpTracer</a> tracer(</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;      [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">fuzzuf::utils::ElapsedTimeTracer</a> ett;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;  repeat &lt;&lt; (<a class="code" href="range__traits_8hpp.html#a6bcd4a95c4862ec2f83d701d7308e44a">append</a>);</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  fuzzuf::hierarflow::WrapToMakeHeadNode(repeat)(vars, tracer, ett);</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;  ett.dump([](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;  <span class="comment">// the final value should be 10</span></div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;  BOOST_CHECK_EQUAL(vars.count, 10u);</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;}</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160; </div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;BOOST_AUTO_TEST_CASE(HierarFlowIf) {</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  <span class="keyword">using</span> Ord = lf::test::Order;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;  <span class="keyword">namespace </span>sp = fuzzuf::utils::struct_path;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;  <span class="keyword">auto</span> if_ = hf::CreateNode&lt;</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;      lf::If&lt;lf::test::Full,</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;             decltype(sp::root / sp::ident&lt;std::less&lt;std::size_t&gt;&gt; &amp;&amp;</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;                      Ord::count &amp;&amp; sp::root / sp::int_&lt;std::size_t, 2U&gt;)&gt;&gt;();</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;  <span class="keyword">auto</span> <a class="code" href="range__traits_8hpp.html#a6bcd4a95c4862ec2f83d701d7308e44a">append</a> =</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;      hf::CreateNode&lt;lf::StaticAppend&lt;lf::test::Full, decltype(Ord::count)&gt;&gt;(</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;          1U);</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;  <span class="comment">// increment until 2</span></div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;  if_ &lt;&lt; <a class="code" href="range__traits_8hpp.html#a6bcd4a95c4862ec2f83d701d7308e44a">append</a>;</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;  <span class="keyword">auto</span> wrapped = fuzzuf::hierarflow::WrapToMakeHeadNode(if_);</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  lf::test::Variables vars;</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  <span class="comment">// initial value is 0</span></div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;  vars.count = 0u;</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;  vars.rng.seed(5U);</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;  <span class="comment">// 0 -&gt; 1</span></div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;  {</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">fuzzuf::utils::DumpTracer</a> tracer(</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;        [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">fuzzuf::utils::ElapsedTimeTracer</a> ett;</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    wrapped(vars, tracer, ett);</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    ett.dump([](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    BOOST_CHECK_EQUAL(vars.count, 1u);</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;  }</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;  <span class="comment">// 1 -&gt; 2</span></div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;  {</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">fuzzuf::utils::DumpTracer</a> tracer(</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;        [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;    <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">fuzzuf::utils::ElapsedTimeTracer</a> ett;</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    wrapped(vars, tracer, ett);</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    ett.dump([](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    BOOST_CHECK_EQUAL(vars.count, 2u);</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  }</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  <span class="comment">// 2 -&gt; 2</span></div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;  {</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">fuzzuf::utils::DumpTracer</a> tracer(</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">fuzzuf::utils::ElapsedTimeTracer</a> ett;</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;    wrapped(vars, tracer, ett);</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    ett.dump([](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;    BOOST_CHECK_EQUAL(vars.count, 2u);</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;  }</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;}</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160; </div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;BOOST_AUTO_TEST_CASE(HierarFlowRandomCall0) {</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;  <span class="keyword">auto</span> data = lf::test::getSeed2();</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;  <span class="keyword">using</span> Ord = lf::test::Order;</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;  <span class="keyword">auto</span> random =</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;      hf::CreateNode&lt;lf::standard_order::RandomCall&lt;lf::test::Full, Ord&gt;&gt;();</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;  FUZZUF_TEST_ALGORITHM_LIBFUZZER_HIERARFLOW_MUTATOR(EraseBytes, erase_bytes);</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;  FUZZUF_TEST_ALGORITHM_LIBFUZZER_HIERARFLOW_MUTATOR(InsertByte, insert_byte);</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;  random &lt;&lt; (erase_bytes || insert_byte);</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;  lf::test::Variables vars;</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;  vars.rng.seed(9U);</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;  std::copy(data.begin(), data.end(), std::back_inserter(vars.input[0]));</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">fuzzuf::utils::DumpTracer</a> tracer(</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;      [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">fuzzuf::utils::ElapsedTimeTracer</a> ett;</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;  fuzzuf::hierarflow::WrapToMakeHeadNode(random)(vars, tracer, ett);</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;  data.clear();</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;  std::copy(vars.input[0].begin(), vars.input[0].end(),</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;            std::back_inserter(data));</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;  ett.dump([](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;  <span class="keyword">const</span> std::vector&lt;std::uint8_t&gt; expected1{</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;      <span class="charliteral">&#39;j&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="charliteral">&#39;m&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;o&#39;</span>,   <span class="charliteral">&#39;v&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;r&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;t&#39;</span>,</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;      <span class="charliteral">&#39;h&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;l&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;z&#39;</span>, 0x8bU, <span class="charliteral">&#39;y&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="charliteral">&#39;g&#39;</span>};</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(data.begin(), data.end(), expected1.begin(),</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                                expected1.end());</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;}</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160; </div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;BOOST_AUTO_TEST_CASE(HierarFlowRandomCall1) {</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;  <span class="keyword">auto</span> data = lf::test::getSeed2();</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  <span class="keyword">using</span> Ord = lf::test::Order;</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;  <span class="keyword">auto</span> random =</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;      hf::CreateNode&lt;lf::standard_order::RandomCall&lt;lf::test::Full, Ord&gt;&gt;();</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;  FUZZUF_TEST_ALGORITHM_LIBFUZZER_HIERARFLOW_MUTATOR(EraseBytes, erase_bytes);</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;  FUZZUF_TEST_ALGORITHM_LIBFUZZER_HIERARFLOW_MUTATOR(InsertByte, insert_byte);</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;  random &lt;&lt; (erase_bytes || insert_byte);</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;  lf::test::Variables vars;</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;  vars.rng.seed(2U);</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;  std::copy(data.begin(), data.end(), std::back_inserter(vars.input[0]));</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1DumpTracer.html">fuzzuf::utils::DumpTracer</a> tracer(</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;      [](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;  <a class="code" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">fuzzuf::utils::ElapsedTimeTracer</a> ett;</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;  fuzzuf::hierarflow::WrapToMakeHeadNode(random)(vars, tracer, ett);</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;  data.clear();</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;  std::copy(vars.input[0].begin(), vars.input[0].end(),</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;            std::back_inserter(data));</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;  ett.dump([](std::string &amp;&amp;m) { std::cout &lt;&lt; m &lt;&lt; std::flush; });</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;  <span class="keyword">const</span> std::vector&lt;std::uint8_t&gt; expected1{<span class="charliteral">&#39;j&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="charliteral">&#39;m&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="charliteral">&#39; &#39;</span>,</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                                            <span class="charliteral">&#39;o&#39;</span>, <span class="charliteral">&#39;v&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;r&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;z&#39;</span>,</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                                            <span class="charliteral">&#39;y&#39;</span>, <span class="charliteral">&#39; &#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="charliteral">&#39;g&#39;</span>};</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(data.begin(), data.end(), expected1.begin(),</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                                expected1.end());</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anot__random_8hpp_html"><div class="ttname"><a href="not__random_8hpp.html">not_random.hpp</a></div></div>
 <div class="ttc" id="anode__tracer_8hpp_html"><div class="ttname"><a href="node__tracer_8hpp.html">node_tracer.hpp</a></div></div>

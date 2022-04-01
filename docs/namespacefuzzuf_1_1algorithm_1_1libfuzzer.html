@@ -109,7 +109,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Clamp_3_01R_07Args_8_8_8_08_00_01Path_01_4.html">Clamp&lt; R(Args...), Path &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1CollectFeatures.html">CollectFeatures</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate features of specified execution result. "Feature" is a outstanding feature of the execution which has unique ID. In most case, entering a new edge that is not covered by previous executions is a feature. "Features" is a vector of feature. libFuzzer calculate weight of the execution result that affects by features. If <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1ChooseRandomSeed.html" title="Select one input from corpus randomly and copy it to the specified value. This Node use the corpus sp...">ChooseRandomSeed</a> is using non-uniform distribution, input of higher weighted execution result is selected more frequentry. The node takes 5 paths for state, corpus, input, execution result and coverage.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1CollectFeatures.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate features of specified execution result. "Feature" is a outstanding feature of the execution which has unique ID. In most case, entering a new edge that is not covered by previous executions is a feature. "Features" is a vector of feature. libFuzzer calculate weight of the execution result that affects by features. <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1ChooseRandomSeed.html" title="Select one input from corpus randomly and copy it to the specified value. This Node use the corpus sp...">ChooseRandomSeed</a> is using non-uniform distribution, input of higher weighted execution result is selected more frequentry. The node takes 5 paths for state, corpus, input, execution result and coverage.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1CollectFeatures.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1CollectFeatures_3_01R_07Args_8_8_8_08_00_01Path_01_4.html">CollectFeatures&lt; R(Args...), Path &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,11 +136,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1ExecInputSetRange.html">ExecInputSetRange</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Execute.html">Execute</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run target with input specified by the Path, and acquire coverage, outputs, execution result to the values specified by the Path. The node takes 4 path for input, output, coverage and execution result.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Execute.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Execute_3_01R_07Args_8_8_8_08_00_01Executor_00_01Path_01_4.html">Execute&lt; R(Args...), Executor, Path &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1ForEachDynamicData.html">ForEachDynamicData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This node invokes all child nodes for each values in the container specified by the Path. On each loop head, a value from the container is assigned to to value specified by the Path. This node modifies flow. The node takes 2 paths. 1 for container and the other for writing a value from container.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1ForEachDynamicData.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,10 +150,10 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1IfNewCoverage.html">IfNewCoverage</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoke all child nodes if the condition below are satisfied.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1IfNewCoverage.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html">If</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoke all child nodes if the callable returned true for the specified conditions. The node takes 1 path for callable and 0 or more paths for conditions.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1IfNewCoverage_3_01R_07Args_8_8_8_08_00_01Path_01_4.html">IfNewCoverage&lt; R(Args...), Path &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1If_3_01R_07Args_8_8_8_08_00_01Path_01_4.html">If&lt; R(Args...), Path &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html">InputInfo</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">execution result This class contains values retrived from executor and scratch values to calculate weight All values in Input Info of original implementation has been ported, yet some of them are not used due to some functionalities are not ported.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#details">More...</a><br /></td></tr>
@@ -183,7 +178,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1IsState.html">IsState</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Meta function to check if the type satisfies <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html" title="Struct to hold libFuzzer state.">State</a> concept.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1IsState.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1IsState_3_01T_00_01std_1_1enable__if__t_3_01std_1_1is_b885bc24361f3b70f3a10aa932e95479.html">IsState&lt; T, std::enable_if_t&lt; std::is_same_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().config)&gt;, Config &gt; &amp;&amp;is_std_distribution_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().corpus_distribution)&gt; &gt; &amp;&amp;std::is_convertible_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().distribution_needs_update)&gt;, bool &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().rare_features)&gt; &gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().freq_of_most_abundant_rare_feature)&gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().global_feature_freqs)&gt; &gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().executed_mutations_count)&gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().added_features_count)&gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().updated_features_count)&gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().input_sizes_per_feature)&gt; &gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().smallest_element_per_feature)&gt; &gt; &gt; &gt; &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1IsState_3_01T_00_01std_1_1enable__if__t_3_01std_1_1is_4239a342e13a899eeb85f52df4233ece.html">IsState&lt; T, std::enable_if_t&lt; std::is_same_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().create_info)&gt;, FuzzerCreateInfo &gt; &amp;&amp;is_std_distribution_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().corpus_distribution)&gt; &gt; &amp;&amp;std::is_convertible_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().distribution_needs_update)&gt;, bool &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().rare_features)&gt; &gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().freq_of_most_abundant_rare_feature)&gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().global_feature_freqs)&gt; &gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().executed_mutations_count)&gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().added_features_count)&gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().updated_features_count)&gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().input_sizes_per_feature)&gt; &gt; &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; utils::type_traits::RemoveCvrT&lt; decltype(std::declval&lt; T &amp; &gt;().smallest_element_per_feature)&gt; &gt; &gt; &gt; &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1LibFuzzer.html">LibFuzzer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,6 +188,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Marker_3_01R_07Args_8_8_8_08_00_01T_01_4.html">Marker&lt; R(Args...), T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1MutationHistoryEntry.html">MutationHistoryEntry</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1NewCoverage.html">NewCoverage</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1NoNewCoverage.html">NoNewCoverage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the execution result is not expected to add to corpus.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1NoNewCoverage.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Options.html">Options</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,7 +209,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1PrintStatusForNewUnit_3_01R_07Args_8_8_8_08_00_01Path_01_4.html">PrintStatusForNewUnit&lt; R(Args...), Path &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RandomCall.html">RandomCall</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoke randomly selected one of the child nodes. If the node doesn't have any child nodes, nothing are invoked. This node modifies flow. The node takes 1 path for RNG.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RandomCall.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoke randomly selected one of the child nodes. <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> the node doesn't have any child nodes, nothing are invoked. This node modifies flow. The node takes 1 path for RNG.  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RandomCall.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RandomCall_3_01R_07Args_8_8_8_08_00_01Path_01_4.html">RandomCall&lt; R(Args...), Path &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -291,6 +291,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>MutationHistory</b> 
 <tr class="separator:a3ec1e142725804d5df80cbf4165d1525"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade7012dc2ff9f9d198a91a9d8ca9d634"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ade7012dc2ff9f9d198a91a9d8ca9d634">output_t</a> = std::vector&lt; std::uint8_t &gt;</td></tr>
 <tr class="separator:ade7012dc2ff9f9d198a91a9d8ca9d634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08943db19326faff32f83c1d4429f665"><td class="memItemLeft" align="right" valign="top"><a id="a08943db19326faff32f83c1d4429f665"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>output_files_t</b> = std::vector&lt; fuzzuf::utils::mapped_file_t &gt;</td></tr>
+<tr class="separator:a08943db19326faff32f83c1d4429f665"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a40550db83af1fcbaf15d705b53624a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a3a40550db83af1fcbaf15d705b53624a">PartialCorpus</a> = boost::multi_index::multi_index_container&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html">InputInfo</a>, boost::multi_index::indexed_by&lt; boost::multi_index::sequenced&lt; boost::multi_index::tag&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Sequential.html">Sequential</a> &gt; &gt;, boost::multi_index::hashed_non_unique&lt; boost::multi_index::tag&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1ByName.html">ByName</a> &gt;, boost::multi_index::member&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html">InputInfo</a>, std::string, &amp;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a57d70de7d6b902de0e179349827b458a">InputInfo::name</a> &gt; &gt;, boost::multi_index::hashed_unique&lt; boost::multi_index::tag&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1ById.html">ById</a> &gt;, boost::multi_index::member&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html">InputInfo</a>, <a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ace18931d78fcca08efd871dbdb6d0629">testcase_id_t</a>, &amp;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#adde4ec71b3b21be500a27e1204d501a6">InputInfo::id</a> &gt; &gt;&gt; &gt;</td></tr>
 <tr class="separator:a3a40550db83af1fcbaf15d705b53624a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace18931d78fcca08efd871dbdb6d0629"><td class="memItemLeft" align="right" valign="top"><a id="ace18931d78fcca08efd871dbdb6d0629"></a>
@@ -348,18 +351,22 @@ template&lt;typename Range &gt; </td></tr>
 <tr class="memitem:a2a975012c8f7a64f01103be5d00239de"><td class="memTemplParams" colspan="2">template&lt;typename F , typename Ord &gt; </td></tr>
 <tr class="memitem:a2a975012c8f7a64f01103be5d00239de"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a2a975012c8f7a64f01103be5d00239de">createMutator</a> (const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info)</td></tr>
 <tr class="separator:a2a975012c8f7a64f01103be5d00239de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5ef996649b4680eb7941066c14baaf1"><td class="memTemplParams" colspan="2">template&lt;typename F , typename Ord , typename Sink &gt; </td></tr>
-<tr class="memitem:af5ef996649b4680eb7941066c14baaf1"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#af5ef996649b4680eb7941066c14baaf1">createExecuteAndFeedback</a> (const fs::path &amp;target_path, const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, bool force_add_to_corpus, bool may_delete_file, bool persistent, bool strict_match, const Sink &amp;sink)</td></tr>
-<tr class="separator:af5ef996649b4680eb7941066c14baaf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af42392d472fd2c2643f27907e8dc262c"><td class="memTemplParams" colspan="2">template&lt;typename F , typename Ord , typename Sink &gt; </td></tr>
-<tr class="memitem:af42392d472fd2c2643f27907e8dc262c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#af42392d472fd2c2643f27907e8dc262c">createInitialize</a> (const fs::path &amp;target_path, const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <a class="el" href="classExecInputSet.html">ExecInputSet</a> &amp;initial_inputs, bool strict_match, const Sink &amp;sink)</td></tr>
-<tr class="separator:af42392d472fd2c2643f27907e8dc262c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82fd8119ac5d70a0ea83b57effd67a1e"><td class="memTemplParams" colspan="2">template&lt;typename F , typename Ord , typename Sink &gt; </td></tr>
-<tr class="memitem:a82fd8119ac5d70a0ea83b57effd67a1e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a82fd8119ac5d70a0ea83b57effd67a1e">createRunone</a> (const fs::path &amp;target_path, const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <a class="el" href="classExecInputSet.html">ExecInputSet</a> &amp;, const Sink &amp;sink)</td></tr>
-<tr class="separator:a82fd8119ac5d70a0ea83b57effd67a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb8fe2715446bae7724b9b639f7e74fd"><td class="memTemplParams" colspan="2">template&lt;typename F , typename Ord , typename Sink &gt; </td></tr>
-<tr class="memitem:abb8fe2715446bae7724b9b639f7e74fd"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#abb8fe2715446bae7724b9b639f7e74fd">create</a> (const fs::path &amp;target_path, const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <a class="el" href="classExecInputSet.html">ExecInputSet</a> &amp;initial_inputs, const Sink &amp;sink)</td></tr>
-<tr class="separator:abb8fe2715446bae7724b9b639f7e74fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad008bc1d313e308d13faf109e0ad747a"><td class="memTemplParams" colspan="2">template&lt;typename F , typename Ord , typename Sink &gt; </td></tr>
+<tr class="memitem:ad008bc1d313e308d13faf109e0ad747a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ad008bc1d313e308d13faf109e0ad747a">createExecuteAndFeedback</a> (const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, bool force_add_to_corpus, bool may_delete_file, bool persistent, bool strict_match, const Sink &amp;sink)</td></tr>
+<tr class="separator:ad008bc1d313e308d13faf109e0ad747a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab94a397b391a40026cce5a4f7f76a4b4"><td class="memTemplParams" colspan="2"><a id="ab94a397b391a40026cce5a4f7f76a4b4"></a>
+template&lt;typename F , typename Ord , typename Sink &gt; </td></tr>
+<tr class="memitem:ab94a397b391a40026cce5a4f7f76a4b4"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>createSymCC</b> (const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, bool force_add_to_corpus, bool may_delete_file, bool persistent, bool strict_match, const Sink &amp;sink)</td></tr>
+<tr class="separator:ab94a397b391a40026cce5a4f7f76a4b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6c66dfddf825cff408da4961d6e549c"><td class="memTemplParams" colspan="2">template&lt;typename F , typename Ord , typename Sink &gt; </td></tr>
+<tr class="memitem:ac6c66dfddf825cff408da4961d6e549c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac6c66dfddf825cff408da4961d6e549c">createInitialize</a> (const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <a class="el" href="classExecInputSet.html">ExecInputSet</a> &amp;initial_inputs, bool strict_match, const Sink &amp;sink)</td></tr>
+<tr class="separator:ac6c66dfddf825cff408da4961d6e549c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac12a64fc8e6cf6f6daea9139593c9350"><td class="memTemplParams" colspan="2">template&lt;typename F , typename Ord , typename Sink &gt; </td></tr>
+<tr class="memitem:ac12a64fc8e6cf6f6daea9139593c9350"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac12a64fc8e6cf6f6daea9139593c9350">createRunone</a> (const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <a class="el" href="classExecInputSet.html">ExecInputSet</a> &amp;, const Sink &amp;sink)</td></tr>
+<tr class="separator:ac12a64fc8e6cf6f6daea9139593c9350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8be7f667f6af4e6af67fe83f16961fa7"><td class="memTemplParams" colspan="2">template&lt;typename F , typename Ord , typename Sink &gt; </td></tr>
+<tr class="memitem:a8be7f667f6af4e6af67fe83f16961fa7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a8be7f667f6af4e6af67fe83f16961fa7">create</a> (const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <a class="el" href="classExecInputSet.html">ExecInputSet</a> &amp;initial_inputs, const Sink &amp;sink)</td></tr>
+<tr class="separator:a8be7f667f6af4e6af67fe83f16961fa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bf76296037a5043d0a3b97111e63941"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
 <tr class="memitem:a6bf76296037a5043d0a3b97111e63941"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a6bf76296037a5043d0a3b97111e63941">DoNothing</a> (Args &amp;&amp;...)</td></tr>
 <tr class="separator:a6bf76296037a5043d0a3b97111e63941"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -369,6 +376,9 @@ template&lt;typename Range &gt; </td></tr>
 <tr class="memitem:a852c617a705900fa0aec4733dc74a981"><td class="memItemLeft" align="right" valign="top"><a id="a852c617a705900fa0aec4733dc74a981"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_SIMPLE_FUNCTION</b> (<a class="el" href="classUpdateDictionary.html">UpdateDictionary</a>, mutator::UpdateDictionary) namespace standard_order</td></tr>
 <tr class="separator:a852c617a705900fa0aec4733dc74a981"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12d330e4af71869d628e73916a5b463"><td class="memItemLeft" align="right" valign="top"><a id="ab12d330e4af71869d628e73916a5b463"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_SIMPLE_FUNCTION</b> (<a class="el" href="classExecute.html">Execute</a>, executor::Execute) namespace standard_order</td></tr>
+<tr class="separator:ab12d330e4af71869d628e73916a5b463"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39353d6c58848b9e468e290a1071f5c2"><td class="memItemLeft" align="right" valign="top"><a id="a39353d6c58848b9e468e290a1071f5c2"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_SIMPLE_FUNCTION</b> (EraseBytes, mutator::EraseBytes) FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_SIMPLE_FUNCTION(InsertByte</td></tr>
 <tr class="separator:a39353d6c58848b9e468e290a1071f5c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -445,7 +455,7 @@ template&lt;typename T &gt; </td></tr>
 <tr class="separator:a61322531275b28ecae67e8100ee0a626"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Decide max input value length using initial input values. If the longest initial input value is longer than ( 1 &lt;&lt; 20 ) bytes, the max input value length is ( 1 &lt;&lt; 20 ) If the longest initial input value is between 4096 bytes and ( 1 &lt;&lt; 20 ) bytes, the max input value length is the length of longest initial input value. If the longest initial input value is shorter or equal to 4096 bytes, the max input value length is 4096 This value is used as the default value of max input value length</p>
+<div class="textblock"><p>Decide max input value length using initial input values. <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> the longest initial input value is longer than ( 1 &lt;&lt; 20 ) bytes, the max input value length is ( 1 &lt;&lt; 20 ) <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> the longest initial input value is between 4096 bytes and ( 1 &lt;&lt; 20 ) bytes, the max input value length is the length of longest initial input value. <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> the longest initial input value is shorter or equal to 4096 bytes, the max input value length is 4096 This value is used as the default value of max input value length</p>
 <p>Corresponding code of original libFuzzer implementation <a href="https://github.com/llvm/llvm-project/blob/llvmorg-12.0.1/compiler-rt/lib/fuzzer/FuzzerLoop.cpp#L373">https://github.com/llvm/llvm-project/blob/llvmorg-12.0.1/compiler-rt/lib/fuzzer/FuzzerLoop.cpp#L373</a></p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -474,7 +484,7 @@ template&lt;typename T &gt; </td></tr>
 </div><div class="memdoc">
 <p>A container type that is available to store coverage </p>
 
-<p class="definition">Definition at line <a class="el" href="common__types_8hpp_source.html#l00032">32</a> of file <a class="el" href="common__types_8hpp_source.html">common_types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common__types_8hpp_source.html#l00033">33</a> of file <a class="el" href="common__types_8hpp_source.html">common_types.hpp</a>.</p>
 
 </div>
 </div>
@@ -491,7 +501,7 @@ template&lt;typename T &gt; </td></tr>
 </div><div class="memdoc">
 <p>A container type that is available to store standard output </p>
 
-<p class="definition">Definition at line <a class="el" href="common__types_8hpp_source.html#l00036">36</a> of file <a class="el" href="common__types_8hpp_source.html">common_types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common__types_8hpp_source.html#l00037">37</a> of file <a class="el" href="common__types_8hpp_source.html">common_types.hpp</a>.</p>
 
 </div>
 </div>
@@ -539,8 +549,8 @@ template&lt;typename T &gt; </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="abb8fe2715446bae7724b9b639f7e74fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb8fe2715446bae7724b9b639f7e74fd">&#9670;&nbsp;</a></span>create()</h2>
+<a id="a8be7f667f6af4e6af67fe83f16961fa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8be7f667f6af4e6af67fe83f16961fa7">&#9670;&nbsp;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -550,12 +560,6 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
         <tr>
           <td class="memname">auto fuzzuf::algorithm::libfuzzer::create </td>
           <td>(</td>
-          <td class="paramtype">const fs::path &amp;&#160;</td>
-          <td class="paramname"><em>target_path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;&#160;</td>
           <td class="paramname"><em>create_info</em>, </td>
         </tr>
@@ -597,12 +601,12 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>root node of the HierarFlow </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2create_8hpp_source.html#l00317">317</a> of file <a class="el" href="libfuzzer_2create_8hpp_source.html">create.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2create_8hpp_source.html#l00366">366</a> of file <a class="el" href="libfuzzer_2create_8hpp_source.html">create.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af5ef996649b4680eb7941066c14baaf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5ef996649b4680eb7941066c14baaf1">&#9670;&nbsp;</a></span>createExecuteAndFeedback()</h2>
+<a id="ad008bc1d313e308d13faf109e0ad747a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad008bc1d313e308d13faf109e0ad747a">&#9670;&nbsp;</a></span>createExecuteAndFeedback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -612,12 +616,6 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
         <tr>
           <td class="memname">auto fuzzuf::algorithm::libfuzzer::createExecuteAndFeedback </td>
           <td>(</td>
-          <td class="paramtype">const fs::path &amp;&#160;</td>
-          <td class="paramname"><em>target_path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;&#160;</td>
           <td class="paramname"><em>create_info</em>, </td>
         </tr>
@@ -659,7 +657,7 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
       </table>
 </div><div class="memdoc">
 <p>Build following flow using HierarFlow</p><ul>
-<li><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Execute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> target and retrive execution result</li>
+<li><a class="el" href="classExecute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> target and retrive execution result</li>
 <li>Calculate features using execution result</li>
 <li>Add to corpus if the execution result is valuable <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -671,12 +669,11 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">target_path</td><td>Path of the target executable </td></tr>
     <tr><td class="paramname">create_info</td><td>Parameters on building the fuzzer </td></tr>
-    <tr><td class="paramname">force_add_to_corpus</td><td>If true, the execution result is added to the corpus regardless of features. Otherwise, the execution result is added to the corpus if the execution found novel features. </td></tr>
+    <tr><td class="paramname">force_add_to_corpus</td><td><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> true, the execution result is added to the corpus regardless of features. Otherwise, the execution result is added to the corpus if the execution found novel features. </td></tr>
     <tr><td class="paramname">may_delete_file</td><td>Set may_delete_file attribute to the execution result ( This attribute is not used in current fuzzuf's implementation ). </td></tr>
-    <tr><td class="paramname">persistent</td><td>If true, the input is written to both memory and storage. Otherwise, the input is stored on the memory only. </td></tr>
-    <tr><td class="paramname">strict_match</td><td>If true, the execution result with completely same unique feature set to existing result causes REPLACE. </td></tr>
+    <tr><td class="paramname">persistent</td><td><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> true, the input is written to both memory and storage. Otherwise, the input is stored on the memory only. </td></tr>
+    <tr><td class="paramname">strict_match</td><td><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> true, the execution result with completely same unique feature set to existing result causes REPLACE. </td></tr>
     <tr><td class="paramname">sink</td><td>Callback function with one string argument to output messages. </td></tr>
   </table>
   </dd>
@@ -685,12 +682,12 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2create_8hpp_source.html#l00116">116</a> of file <a class="el" href="libfuzzer_2create_8hpp_source.html">create.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2create_8hpp_source.html#l00114">114</a> of file <a class="el" href="libfuzzer_2create_8hpp_source.html">create.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af42392d472fd2c2643f27907e8dc262c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af42392d472fd2c2643f27907e8dc262c">&#9670;&nbsp;</a></span>createInitialize()</h2>
+<a id="ac6c66dfddf825cff408da4961d6e549c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6c66dfddf825cff408da4961d6e549c">&#9670;&nbsp;</a></span>createInitialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -700,12 +697,6 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
         <tr>
           <td class="memname">auto fuzzuf::algorithm::libfuzzer::createInitialize </td>
           <td>(</td>
-          <td class="paramtype">const fs::path &amp;&#160;</td>
-          <td class="paramname"><em>target_path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;&#160;</td>
           <td class="paramname"><em>create_info</em>, </td>
         </tr>
@@ -735,7 +726,7 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
       </table>
 </div><div class="memdoc">
 <p>Build following flow using HierarFlow For each initial inputs</p><ul>
-<li><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Execute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> target and retrive execution result</li>
+<li><a class="el" href="classExecute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> target and retrive execution result</li>
 <li>Calculate features using execution result</li>
 <li>Add to corpus <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -747,10 +738,9 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">target_path</td><td>Path of the target executable </td></tr>
     <tr><td class="paramname">create_info</td><td>Parameters on building the fuzzer </td></tr>
     <tr><td class="paramname">initial_inputs</td><td><a class="el" href="classExecInputSet.html">ExecInputSet</a> that contains initial inputs </td></tr>
-    <tr><td class="paramname">strict_match</td><td>If true, the execution result with completely same unique feature set to existing result causes REPLACE. </td></tr>
+    <tr><td class="paramname">strict_match</td><td><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> true, the execution result with completely same unique feature set to existing result causes REPLACE. </td></tr>
     <tr><td class="paramname">sink</td><td>Callback function with one string argument to output messages. </td></tr>
   </table>
   </dd>
@@ -759,7 +749,7 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2create_8hpp_source.html#l00168">168</a> of file <a class="el" href="libfuzzer_2create_8hpp_source.html">create.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2create_8hpp_source.html#l00179">179</a> of file <a class="el" href="libfuzzer_2create_8hpp_source.html">create.hpp</a>.</p>
 
 </div>
 </div>
@@ -795,12 +785,12 @@ template&lt;typename F , typename Ord &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>root node of the HierarFlow </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2create_8hpp_source.html#l00040">40</a> of file <a class="el" href="libfuzzer_2create_8hpp_source.html">create.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2create_8hpp_source.html#l00041">41</a> of file <a class="el" href="libfuzzer_2create_8hpp_source.html">create.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a82fd8119ac5d70a0ea83b57effd67a1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82fd8119ac5d70a0ea83b57effd67a1e">&#9670;&nbsp;</a></span>createRunone()</h2>
+<a id="ac12a64fc8e6cf6f6daea9139593c9350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac12a64fc8e6cf6f6daea9139593c9350">&#9670;&nbsp;</a></span>createRunone()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -810,12 +800,6 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
         <tr>
           <td class="memname">auto fuzzuf::algorithm::libfuzzer::createRunone </td>
           <td>(</td>
-          <td class="paramtype">const fs::path &amp;&#160;</td>
-          <td class="paramname"><em>target_path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;&#160;</td>
           <td class="paramname"><em>create_info</em>, </td>
         </tr>
@@ -840,7 +824,7 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
 </div><div class="memdoc">
 <p>Build following flow using HierarFlow</p><ul>
 <li>Select one input ( or two if crossover is enabled) and mutate it</li>
-<li><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Execute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> target using generated input, calculate feature and add to corpus if valuable</li>
+<li><a class="el" href="classExecute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> target using generated input, calculate feature and add to corpus if valuable</li>
 <li>Write input to storage if the execution crashed and added to corpus <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">F</td><td>Input function type of HierarFlow node </td></tr>
@@ -862,7 +846,7 @@ template&lt;typename F , typename Ord , typename Sink &gt; </div>
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer_2create_8hpp_source.html#l00221">221</a> of file <a class="el" href="libfuzzer_2create_8hpp_source.html">create.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer_2create_8hpp_source.html#l00229">229</a> of file <a class="el" href="libfuzzer_2create_8hpp_source.html">create.hpp</a>.</p>
 
 </div>
 </div>

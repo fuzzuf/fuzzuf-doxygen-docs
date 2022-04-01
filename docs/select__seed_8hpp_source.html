@@ -146,7 +146,7 @@ $(function() {
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                std::vector&lt;double&gt; &amp;weights,</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                std::uint8_t max_mutation_factor)</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    -&gt; std::enable_if_t&lt;is_state_v&lt;State&gt; &amp;&amp; is_full_corpus_v&lt;Corpus&gt;, <span class="keywordtype">bool</span>&gt; {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">if</span> (!state.config.entropic.enabled)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">if</span> (!state.create_info.config.entropic.enabled)</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keyword">const</span> std::size_t corpus_size = corpus.corpus.size();</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  weights.reserve(corpus_size);</div>
@@ -163,7 +163,7 @@ $(function() {
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        if (input.needs_energy_update &amp;&amp; input.energy != 0.0) {</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;          input.needs_energy_update = false;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;          input.updateEnergy(state.rare_features.size(),</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                             state.config.entropic.scale_per_exec_time,</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                             state.create_info.config.entropic.scale_per_exec_time,</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                             average_unit_execution_time);</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      });</div>
@@ -198,7 +198,7 @@ $(function() {
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                            (llvm_version &gt;= <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#afe37ac6fb8da00a4de6e5fce94078a6f">MakeVersion</a>(11u, 0u, 0u)),</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                        <span class="keywordtype">bool</span>&gt; {</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <span class="keywordflow">if</span> (!state.distribution_needs_update &amp;&amp;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      (!state.config.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a8a910f165de17dd9f214487acac347ef">entropic</a>.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html#ae7a30130175f424917314e8f964c8c94">enabled</a> ||</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      (!state.create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a6ffa3ef1d1b15937101414f9070eda62">config</a>.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a8a910f165de17dd9f214487acac347ef">entropic</a>.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html#ae7a30130175f424917314e8f964c8c94">enabled</a> ||</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;       random_value(rng, sparse_energy_updates)))</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
@@ -210,14 +210,14 @@ $(function() {
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  std::vector&lt;double&gt; weights;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keywordtype">bool</span> vanilla_schedule = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <span class="keywordflow">if</span> (state.config.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a8a910f165de17dd9f214487acac347ef">entropic</a>.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html#ae7a30130175f424917314e8f964c8c94">enabled</a>)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <span class="keywordflow">if</span> (state.create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a6ffa3ef1d1b15937101414f9070eda62">config</a>.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a8a910f165de17dd9f214487acac347ef">entropic</a>.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html#ae7a30130175f424917314e8f964c8c94">enabled</a>)</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    vanilla_schedule = !<a class="code" href="select__seed_8hpp.html#a1769e91d0698edbf3c073bafc8346069">GenerateEntropicSchedule</a>(state, corpus, weights,</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                                   max_mutation_factor);</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="keywordflow">if</span> (vanilla_schedule)</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="select__seed_8hpp.html#a21f761cb2dd3a2b52f54cac41af8a993">GenerateVanillaSchedule</a>(corpus, weights);</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <span class="keywordflow">if</span> (state.config.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a04cca819c9bbc2f029432b1ee846c775">debug</a>)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <span class="keywordflow">if</span> (state.create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a6ffa3ef1d1b15937101414f9070eda62">config</a>.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a04cca819c9bbc2f029432b1ee846c775">debug</a>)</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <a class="code" href="select__seed_8hpp.html#a7e30f6a1e9e1feefcbb30735e68412f8">DumpDistribution</a>(corpus, weights, sink);</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keywordflow">if</span> (std::find_if(weights.begin(), weights.end(),</div>
@@ -242,7 +242,7 @@ $(function() {
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  std::iota(intervals.begin(), intervals.end(), 0);</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  std::vector&lt;double&gt; weights;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  GenerateVanillaSchedule(corpus, weights);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <span class="keywordflow">if</span> (state.config.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a04cca819c9bbc2f029432b1ee846c775">debug</a>) {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <span class="keywordflow">if</span> (state.create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a6ffa3ef1d1b15937101414f9070eda62">config</a>.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a04cca819c9bbc2f029432b1ee846c775">debug</a>) {</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    DumpDistribution(corpus, weights, sink);</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  }</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  state.corpus_distribution = std::piecewise_constant_distribution&lt;double&gt;(</div>
@@ -304,6 +304,7 @@ $(function() {
 <div class="ttc" id="aselect__seed_8hpp_html_a12b8ff14da5a74b2afe0c85eb5f20239"><div class="ttname"><a href="select__seed_8hpp.html#a12b8ff14da5a74b2afe0c85eb5f20239">fuzzuf::algorithm::libfuzzer::select_seed::GenerateIntervals</a></div><div class="ttdeci">auto GenerateIntervals(Corpus &amp;corpus, std::vector&lt; double &gt; &amp;intervals) -&gt; std::enable_if_t&lt; is_full_corpus_v&lt; Corpus &gt;&gt;</div><div class="ttdef"><b>Definition:</b> <a href="select__seed_8hpp_source.html#l00069">select_seed.hpp:69</a></div></div>
 <div class="ttc" id="afor__each__multi__index__values_8hpp_html"><div class="ttname"><a href="for__each__multi__index__values_8hpp.html">for_each_multi_index_values.hpp</a></div></div>
 <div class="ttc" id="aselect__seed_8hpp_html_a7e30f6a1e9e1feefcbb30735e68412f8"><div class="ttname"><a href="select__seed_8hpp.html#a7e30f6a1e9e1feefcbb30735e68412f8">fuzzuf::algorithm::libfuzzer::select_seed::DumpDistribution</a></div><div class="ttdeci">auto DumpDistribution(Corpus &amp;corpus, const std::vector&lt; double &gt; &amp;weights, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;sink) -&gt; std::enable_if_t&lt; is_full_corpus_v&lt; Corpus &gt;&gt;</div><div class="ttdef"><b>Definition:</b> <a href="select__seed_8hpp_source.html#l00044">select_seed.hpp:44</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_a6ffa3ef1d1b15937101414f9070eda62"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a6ffa3ef1d1b15937101414f9070eda62">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::config</a></div><div class="ttdeci">Config config</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00214">config.hpp:214</a></div></div>
 <div class="ttc" id="arange__traits_8hpp_html"><div class="ttname"><a href="range__traits_8hpp.html">range_traits.hpp</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config_html_a04cca819c9bbc2f029432b1ee846c775"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html#a04cca819c9bbc2f029432b1ee846c775">fuzzuf::algorithm::libfuzzer::Config::debug</a></div><div class="ttdeci">bool debug</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00095">config.hpp:95</a></div></div>
 <div class="ttc" id="aclassExecInput_html"><div class="ttname"><a href="classExecInput.html">ExecInput</a></div><div class="ttdef"><b>Definition:</b> <a href="exec__input_8hpp_source.html#l00024">exec_input.hpp:24</a></div></div>

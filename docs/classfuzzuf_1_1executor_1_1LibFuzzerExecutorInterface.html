@@ -100,15 +100,15 @@ template&lt;class T &gt; </td></tr>
 <tr class="memitem:a354817fb7fc4b840d6ff13425b60c0b3"><td class="memItemLeft" align="right" valign="top"><a id="a354817fb7fc4b840d6ff13425b60c0b3"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>LibFuzzerExecutorInterface</b> (const <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">LibFuzzerExecutorInterface</a> &amp;)=delete</td></tr>
 <tr class="separator:a354817fb7fc4b840d6ff13425b60c0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73871cae1067461ca703816e2e483b27"><td class="memItemLeft" align="right" valign="top"><a id="a73871cae1067461ca703816e2e483b27"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LibFuzzerExecutorInterface</b> (<a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">LibFuzzerExecutorInterface</a> &amp;&amp;)=delete</td></tr>
-<tr class="separator:a73871cae1067461ca703816e2e483b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2298cc60a93e4d01e2cd592a75ccd7b"><td class="memItemLeft" align="right" valign="top"><a id="aa2298cc60a93e4d01e2cd592a75ccd7b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>LibFuzzerExecutorInterface</b> (<a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">LibFuzzerExecutorInterface</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:aa2298cc60a93e4d01e2cd592a75ccd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb0be2a1123e25c7966127533bac2a56"><td class="memItemLeft" align="right" valign="top"><a id="afb0be2a1123e25c7966127533bac2a56"></a>
 <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">LibFuzzerExecutorInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">LibFuzzerExecutorInterface</a> &amp;)=delete</td></tr>
 <tr class="separator:afb0be2a1123e25c7966127533bac2a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2a16276b662b32692179d7c9ccd7188"><td class="memItemLeft" align="right" valign="top"><a id="ad2a16276b662b32692179d7c9ccd7188"></a>
-<a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">LibFuzzerExecutorInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">LibFuzzerExecutorInterface</a> &amp;&amp;)=delete</td></tr>
-<tr class="separator:ad2a16276b662b32692179d7c9ccd7188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5a0f1462b1699a9768449d8597b68c2"><td class="memItemLeft" align="right" valign="top"><a id="aa5a0f1462b1699a9768449d8597b68c2"></a>
+<a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">LibFuzzerExecutorInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">LibFuzzerExecutorInterface</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:aa5a0f1462b1699a9768449d8597b68c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae72a934134e3fdd645dcba9a613548cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html#ae72a934134e3fdd645dcba9a613548cd">Run</a> (const u8 *buf, u32 len, u32 timeout_ms=0)</td></tr>
 <tr class="memdesc:ae72a934134e3fdd645dcba9a613548cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the executor with given inputs.  <a href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html#ae72a934134e3fdd645dcba9a613548cd">More...</a><br /></td></tr>
 <tr class="separator:ae72a934134e3fdd645dcba9a613548cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,6 +127,9 @@ template&lt;class T &gt; </td></tr>
 <tr class="memitem:a505a6a32da48ab74e7582930c57e79be"><td class="memItemLeft" align="right" valign="top">fuzzuf::executor::output_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html#a505a6a32da48ab74e7582930c57e79be">MoveStdErr</a> ()</td></tr>
 <tr class="memdesc:a505a6a32da48ab74e7582930c57e79be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves captured stderr output during the execution.  <a href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html#a505a6a32da48ab74e7582930c57e79be">More...</a><br /></td></tr>
 <tr class="separator:a505a6a32da48ab74e7582930c57e79be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8c598b307c5d1f1d42c58fbc21a52f7"><td class="memItemLeft" align="right" valign="top"><a id="ac8c598b307c5d1f1d42c58fbc21a52f7"></a>
+<a class="el" href="classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html">fuzzuf::utils::vfs::LocalFilesystem</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Filesystem</b> () const</td></tr>
+<tr class="separator:ac8c598b307c5d1f1d42c58fbc21a52f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -147,7 +150,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExec
 </ul>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00053">53</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00054">54</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a31ce4863c4e47852bc5915ae635a30f2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a31ce4863c4e47852bc5915ae635a30f2">&#9670;&nbsp;</a></span>GetAFLFeedback()</h2>
@@ -175,7 +178,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExec
 <p>Gets AFL-compatible hashed edge coverage bitmap. </p>
 <dl class="section return"><dt>Returns</dt><dd>AFL-compatible hashed edge coverage bitmap. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00080">80</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00081">81</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -205,7 +208,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExec
 <p>Gets fuzzuf basic block coverage bitmap. </p>
 <dl class="section return"><dt>Returns</dt><dd>fuzzuf basic block coverage bitmap. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00086">86</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00087">87</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -235,7 +238,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExec
 <p>Gets an exit status of last execution. </p>
 <dl class="section return"><dt>Returns</dt><dd>An exit status of last execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00092">92</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00093">93</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -265,7 +268,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExec
 <p>Moves captured stderr output during the execution. </p>
 <dl class="section return"><dt>Returns</dt><dd>Captured stderr output during the execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00104">104</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00105">105</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -295,7 +298,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExec
 <p>Moves captured stdout output during the execution. </p>
 <dl class="section return"><dt>Returns</dt><dd>Captured stdout output during the execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00098">98</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00099">99</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -349,7 +352,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExec
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00074">74</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libfuzzer__executor__interface_8hpp_source.html#l00075">75</a> of file <a class="el" href="libfuzzer__executor__interface_8hpp_source.html">libfuzzer_executor_interface.hpp</a>.</p>
 
 </div>
 </div>

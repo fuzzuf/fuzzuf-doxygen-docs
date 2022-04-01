@@ -88,18 +88,18 @@ Collaboration diagram for fuzzuf::algorithm::libfuzzer::LibFuzzer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1LibFuzzer__coll__graph.png" border="0" usemap="#fuzzuf_1_1algorithm_1_1libfuzzer_1_1LibFuzzer_coll__map" alt="Collaboration graph"/></div>
 <map name="fuzzuf_1_1algorithm_1_1libfuzzer_1_1LibFuzzer_coll__map" id="fuzzuf_1_1algorithm_1_1libfuzzer_1_1LibFuzzer_coll__map">
-<area shape="rect" title=" " alt="" coords="1241,117,1388,158"/>
-<area shape="rect" href="classFuzzer.html" title=" " alt="" coords="985,5,1049,32"/>
-<area shape="rect" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html" title="Record time duration from Checkpoint::enter to Checkpoint::leave for each node names The tracer is in..." alt="" coords="923,57,1112,98"/>
-<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Variables.html" title=" " alt="" coords="944,186,1091,227"/>
-<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html" title="Struct to hold libFuzzer state." alt="" coords="531,142,671,183"/>
-<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html" title="libFuzzer parameters" alt="" coords="291,106,431,147"/>
-<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html" title=" " alt="" coords="703,97,899,138"/>
-<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html" title="libFuzzer parameters affecting on entropic mode" alt="" coords="5,106,185,147"/>
-<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html" title="execution result This class contains values retrived from executor and scratch values to calculate we..." alt="" coords="529,207,673,249"/>
-<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FullCorpus.html" title=" " alt="" coords="524,273,679,314"/>
-<area shape="rect" href="classExecInputSet.html" title=" " alt="" coords="307,280,414,307"/>
-<area shape="rect" href="classfuzzuf_1_1utils_1_1DumpTracer.html" title="Simply serialize incoming events, then output it using sink It is handy way to generate debug output ..." alt="" coords="926,252,1109,279"/>
+<area shape="rect" title=" " alt="" coords="1444,115,1591,157"/>
+<area shape="rect" href="classFuzzer.html" title=" " alt="" coords="1188,5,1252,32"/>
+<area shape="rect" href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html" title="Record time duration from Checkpoint::enter to Checkpoint::leave for each node names The tracer is in..." alt="" coords="1125,57,1315,98"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Variables.html" title=" " alt="" coords="1147,174,1293,215"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html" title="Struct to hold libFuzzer state." alt="" coords="851,174,991,215"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html" title=" " alt="" coords="523,133,719,174"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html" title="libFuzzer parameters" alt="" coords="291,133,431,174"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html" title="libFuzzer parameters affecting on entropic mode" alt="" coords="5,133,185,174"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html" title="execution result This class contains values retrived from executor and scratch values to calculate we..." alt="" coords="849,239,993,281"/>
+<area shape="rect" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FullCorpus.html" title=" " alt="" coords="844,305,999,346"/>
+<area shape="rect" href="classExecInputSet.html" title=" " alt="" coords="567,312,674,339"/>
+<area shape="rect" href="classfuzzuf_1_1utils_1_1DumpTracer.html" title="Simply serialize incoming events, then output it using sink It is handy way to generate debug output ..." alt="" coords="1129,240,1311,267"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -120,6 +120,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>ShouldEnd</b> () over
 <tr class="memitem:a50c3f87e7eda37bad1beb3dc0b6ac8e3"><td class="memItemLeft" align="right" valign="top"><a id="a50c3f87e7eda37bad1beb3dc0b6ac8e3"></a>
 const <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_create_info</b> () const</td></tr>
 <tr class="separator:a50c3f87e7eda37bad1beb3dc0b6ac8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee5f0584b84545f882e610bcb4f0497"><td class="memItemLeft" align="right" valign="top"><a id="a9ee5f0584b84545f882e610bcb4f0497"></a>
+const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetVariables</b> () const</td></tr>
+<tr class="separator:a9ee5f0584b84545f882e610bcb4f0497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classFuzzer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classFuzzer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classFuzzer.html">Fuzzer</a></td></tr>
 <tr class="memitem:a484d6ad822e83f64e0996e20e3b543ef inherit pub_methods_classFuzzer"><td class="memItemLeft" align="right" valign="top"><a id="a484d6ad822e83f64e0996e20e3b543ef"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildFuzzFlow</b> (void)</td></tr>

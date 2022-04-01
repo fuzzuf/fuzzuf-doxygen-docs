@@ -70,7 +70,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Invoke randomly selected one of the child nodes. If the node doesn't have any child nodes, nothing are invoked. This node modifies flow. The node takes 1 path for RNG.  
+<p>Invoke randomly selected one of the child nodes. <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> the node doesn't have any child nodes, nothing are invoked. This node modifies flow. The node takes 1 path for RNG.  
  <a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RandomCall.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="random__call_8hpp_source.html">random_call.hpp</a>&gt;</code></p>
@@ -78,7 +78,7 @@ $(function() {
 <div class="textblock"><h3>template&lt;typename F, typename Path&gt;<br />
 class fuzzuf::algorithm::libfuzzer::RandomCall&lt; F, Path &gt;</h3>
 
-<p>Invoke randomly selected one of the child nodes. If the node doesn't have any child nodes, nothing are invoked. This node modifies flow. The node takes 1 path for RNG. </p>
+<p>Invoke randomly selected one of the child nodes. <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> the node doesn't have any child nodes, nothing are invoked. This node modifies flow. The node takes 1 path for RNG. </p>
 <p>Since common random call implementation located in HierarFlow/Utility.hpp doesn't have ability to select RNG instance, this libFuzzer implementation cannot replace <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RandomCall.html" title="Invoke randomly selected one of the child nodes. If the node doesn&#39;t have any child nodes,...">RandomCall</a> to common version. In this implementation, RNG algoritm must be selectable, due to some tests require RNG that produce deterministic values.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">

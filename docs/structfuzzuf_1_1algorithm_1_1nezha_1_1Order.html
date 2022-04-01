@@ -113,6 +113,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>DictHistory</b> = di
 <tr class="memitem:ae12859a0a428ed3ee97a29674cc9f9ae inherit pub_types_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top"><a id="ae12859a0a428ed3ee97a29674cc9f9ae"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>ElapsedTimeClock</b> = std::chrono::system_clock::time_point</td></tr>
 <tr class="separator:ae12859a0a428ed3ee97a29674cc9f9ae inherit pub_types_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afac83bd9292fc66a6ba2633c64efcc74 inherit pub_types_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top"><a id="afac83bd9292fc66a6ba2633c64efcc74"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Executors</b> = std::vector&lt; <a class="el" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">fuzzuf::executor::LibFuzzerExecutorInterface</a> &gt;</td></tr>
+<tr class="separator:afac83bd9292fc66a6ba2633c64efcc74 inherit pub_types_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -148,6 +151,10 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>arg0
 <tr class="memitem:ab76e8c9686abffd96be454ace5393210 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top"><a id="ab76e8c9686abffd96be454ace5393210"></a>
 constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>state</b> = arg0 / sp::mem&lt;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Variables.html">V</a>, <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html">State</a>, &amp;V::state&gt;</td></tr>
 <tr class="separator:ab76e8c9686abffd96be454ace5393210 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e5f6dd2ef3b6a0dc38c425537dfcd9 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>create_info</b></td></tr>
+<tr class="separator:aa0e5f6dd2ef3b6a0dc38c425537dfcd9 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a259e43b4ea5af3879ff4561a25002b64 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>config</b></td></tr>
+<tr class="separator:a259e43b4ea5af3879ff4561a25002b64 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6496f6e06aa92a21009a057c5eec705f inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top"><a id="a6496f6e06aa92a21009a057c5eec705f"></a>
 constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>corpus</b> = arg0 / sp::mem&lt;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Variables.html">V</a>, <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FullCorpus.html">FullCorpus</a>, &amp;V::corpus&gt;</td></tr>
 <tr class="separator:a6496f6e06aa92a21009a057c5eec705f inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,6 +190,23 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>coun
 <tr class="separator:a3e21a090fa453215005be199dc0345ee inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32260c35d44ece9454caa7bbe38d5311 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>last_corpus_update_run</b></td></tr>
 <tr class="separator:a32260c35d44ece9454caa7bbe38d5311 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b3175eb2c25370e2882045d89322ff8 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>use_afl_coverage</b></td></tr>
+<tr class="separator:a3b3175eb2c25370e2882045d89322ff8 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1ae89ede6149bd7f2278d5fcb65cac5 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top"><a id="ae1ae89ede6149bd7f2278d5fcb65cac5"></a>
+constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>executors</b> = arg0 / sp::mem&lt;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Variables.html">V</a>, Executors, &amp;V::executors&gt;</td></tr>
+<tr class="separator:ae1ae89ede6149bd7f2278d5fcb65cac5 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b67650fb32cf484162b5bfb57840fb8 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>executor_index</b></td></tr>
+<tr class="separator:a9b67650fb32cf484162b5bfb57840fb8 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b682e89aad2589e85c14eca1b461398 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>added_to_corpus</b></td></tr>
+<tr class="separator:a3b682e89aad2589e85c14eca1b461398 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2ef9d737c986b117ef6d80f685f09a0 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>symcc_out</b></td></tr>
+<tr class="separator:ae2ef9d737c986b117ef6d80f685f09a0 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a375f65c4acf4c511d0ba1cef2bc34c3d inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>symcc_target_offset</b></td></tr>
+<tr class="separator:a375f65c4acf4c511d0ba1cef2bc34c3d inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac367ce6c531972921a4c94e992efaa06 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>stuck_count</b></td></tr>
+<tr class="separator:ac367ce6c531972921a4c94e992efaa06 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65f96cae56eb225f10b339a2adece425 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>symcc_freq</b></td></tr>
+<tr class="separator:a65f96cae56eb225f10b339a2adece425 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Order"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
