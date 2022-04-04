@@ -1,11 +1,12 @@
 <map id="Executor" name="Executor">
-<area shape="rect" id="node1" title=" " alt="" coords="251,5,329,32"/>
-<area shape="rect" id="node2" href="$classLinuxForkServerExecutor.html" title=" " alt="" coords="5,80,188,107"/>
-<area shape="rect" id="node3" href="$classNativeLinuxExecutor.html" title=" " alt="" coords="212,80,368,107"/>
-<area shape="rect" id="node4" href="$classProxyExecutor.html" title=" " alt="" coords="393,80,507,107"/>
-<area shape="rect" id="node5" href="$classCoreSightExecutor.html" title=" " alt="" coords="59,155,201,181"/>
-<area shape="rect" id="node6" href="$classPinToolExecutor.html" title=" " alt="" coords="225,155,349,181"/>
-<area shape="rect" id="node7" href="$classPolyTrackerExecutor.html" title=" " alt="" coords="374,155,526,181"/>
-<area shape="rect" id="node8" href="$classPTExecutor.html" title=" " alt="" coords="551,155,645,181"/>
-<area shape="rect" id="node9" href="$classQEMUExecutor.html" title=" " alt="" coords="669,155,788,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="459,5,537,32"/>
+<area shape="rect" id="node2" href="$classBaseProxyExecutor.html" title=" " alt="" coords="235,80,382,107"/>
+<area shape="rect" id="node9" href="$classLinuxForkServerExecutor.html" title=" " alt="" coords="407,80,589,107"/>
+<area shape="rect" id="node10" href="$classNativeLinuxExecutor.html" title=" " alt="" coords="613,80,769,107"/>
+<area shape="rect" id="node3" href="$classPinToolExecutor.html" title=" " alt="" coords="5,155,129,181"/>
+<area shape="rect" id="node4" href="$classPolyTrackerExecutor.html" title=" " alt="" coords="154,155,306,181"/>
+<area shape="rect" id="node5" href="$classProxyExecutor.html" title=" " alt="" coords="330,155,445,181"/>
+<area shape="rect" id="node8" href="$classPTExecutor.html" title=" " alt="" coords="469,155,564,181"/>
+<area shape="rect" id="node6" href="$classCoreSightExecutor.html" title=" " alt="" coords="239,229,381,256"/>
+<area shape="rect" id="node7" href="$classQEMUExecutor.html" title=" " alt="" coords="405,229,524,256"/>
 </map>

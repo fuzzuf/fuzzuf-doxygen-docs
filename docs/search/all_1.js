@@ -51,7 +51,7 @@ var searchData=
   ['aflstatetemplate_3c_20ijontestcase_20_3e_49',['AFLStateTemplate&lt; IJONTestcase &gt;',['../structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html',1,'fuzzuf::algorithm::afl']]],
   ['afltag_50',['AFLTag',['../structfuzzuf_1_1algorithm_1_1afl_1_1option_1_1AFLTag.html',1,'fuzzuf::algorithm::afl::option']]],
   ['afltestcase_51',['AFLTestcase',['../structfuzzuf_1_1algorithm_1_1afl_1_1AFLTestcase.html',1,'fuzzuf::algorithm::afl']]],
-  ['alarmhandler_52',['AlarmHandler',['../classNativeLinuxExecutor.html#a4641ba48b4ecac90553adca6b69969ac',1,'NativeLinuxExecutor::AlarmHandler()'],['../classProxyExecutor.html#ae000d9037100597e6b495eb6d2266d6d',1,'ProxyExecutor::AlarmHandler()']]],
+  ['alarmhandler_52',['AlarmHandler',['../classBaseProxyExecutor.html#a25f64732d007774f42515344e66da186',1,'BaseProxyExecutor::AlarmHandler()'],['../classNativeLinuxExecutor.html#a4641ba48b4ecac90553adca6b69969ac',1,'NativeLinuxExecutor::AlarmHandler()']]],
   ['append_53',['append',['../classoption_1_1Option.html#a59030822a1ec4e667e6c288d7e5ec961',1,'option::Option::append()'],['../range__traits_8hpp.html#a6bcd4a95c4862ec2f83d701d7308e44a',1,'fuzzuf::utils::range::append()']]],
   ['append_2ehpp_54',['append.hpp',['../append_8hpp.html',1,'']]],
   ['applydetmuts_55',['ApplyDetMuts',['../structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1mutation_1_1ApplyDetMuts.html',1,'fuzzuf::algorithm::nautilus::fuzzer::routine::mutation']]],

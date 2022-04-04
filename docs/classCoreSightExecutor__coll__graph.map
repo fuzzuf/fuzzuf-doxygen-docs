@@ -1,7 +1,8 @@
 <map id="CoreSightExecutor" name="CoreSightExecutor">
-<area shape="rect" id="node1" title=" " alt="" coords="21,247,162,273"/>
-<area shape="rect" id="node2" href="$classProxyExecutor.html" title=" " alt="" coords="34,171,149,197"/>
-<area shape="rect" id="node3" href="$classExecutor.html" title=" " alt="" coords="5,81,84,108"/>
-<area shape="rect" id="node4" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="108,81,267,108"/>
-<area shape="rect" id="node5" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="122,5,253,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="161,247,303,273"/>
+<area shape="rect" id="node2" href="$classProxyExecutor.html" title=" " alt="" coords="175,171,289,197"/>
+<area shape="rect" id="node3" href="$classBaseProxyExecutor.html" title=" " alt="" coords="5,81,152,108"/>
+<area shape="rect" id="node4" href="$classExecutor.html" title=" " alt="" coords="39,5,118,32"/>
+<area shape="rect" id="node5" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="307,81,466,108"/>
+<area shape="rect" id="node6" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="321,5,452,32"/>
 </map>

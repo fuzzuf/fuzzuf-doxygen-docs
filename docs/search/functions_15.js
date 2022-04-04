@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['_7elinuxforkserverexecutor_2012',['~LinuxForkServerExecutor',['../classLinuxForkServerExecutor.html#a5c2112104adb631358d38a86d44630e9',1,'LinuxForkServerExecutor']]],
-  ['_7enativelinuxexecutor_2013',['~NativeLinuxExecutor',['../classNativeLinuxExecutor.html#a3d5317cb9b88ceff6f28634f8027efae',1,'NativeLinuxExecutor']]],
-  ['_7eproxyexecutor_2014',['~ProxyExecutor',['../classProxyExecutor.html#aefb5b09e5d43cc23ea1e4015f4942dd6',1,'ProxyExecutor']]]
+  ['_7ebaseproxyexecutor_2014',['~BaseProxyExecutor',['../classBaseProxyExecutor.html#ac264c647fa9a04d7a6b6c9e1e7f5e781',1,'BaseProxyExecutor']]],
+  ['_7elinuxforkserverexecutor_2015',['~LinuxForkServerExecutor',['../classLinuxForkServerExecutor.html#a5c2112104adb631358d38a86d44630e9',1,'LinuxForkServerExecutor']]],
+  ['_7enativelinuxexecutor_2016',['~NativeLinuxExecutor',['../classNativeLinuxExecutor.html#a3d5317cb9b88ceff6f28634f8027efae',1,'NativeLinuxExecutor']]]
 ];

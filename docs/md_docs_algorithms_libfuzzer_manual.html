@@ -67,19 +67,19 @@ $(function() {
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md80"></a>
 Usage</h1>
-<div class="fragment"><div class="line">$ fuzzuf libfuzzer -- [options]</div>
+<div class="fragment"><div class="line">$ fuzzuf libfuzzer [options]</div>
 </div><!-- fragment --><p>libFuzzer is an AFL like fuzzing algorithm that discover inputs causing target crashes.</p>
 <p>The following command executes the target 10000 times.</p>
-<div class="fragment"><div class="line">$ fuzzuf libfuzzer -- -target=/usr/bin/foo -runs=10000</div>
+<div class="fragment"><div class="line">$ fuzzuf libfuzzer -target=/usr/bin/foo -runs=10000</div>
 </div><!-- fragment --><p>This command uses the default input strings as initial inputs.</p>
 <p>If initial inputs or dictionaries are available, specify the path by following options.</p>
-<div class="fragment"><div class="line">$ fuzzuf libfuzzer -- -target=/usr/bin/foo -runs=10000 -input=/path/to/inputs -dict=/path/to/dictionary</div>
+<div class="fragment"><div class="line">$ fuzzuf libfuzzer -target=/usr/bin/foo -runs=10000 -input=/path/to/inputs -dict=/path/to/dictionary</div>
 </div><!-- fragment --><p>One file in the input directory is loaded as one initial input data. The dictionary file must have AFL compatible dictionary format.</p>
 <p>See also <a href="https://github.com/google/afl/blob/master/dictionaries/README.dictionaries">AFL dictionary format description</a> and <a href="https://llvm.org/docs/LibFuzzer.html#dictionaries">LLVM's description on AFL dictionary format</a>.</p>
 <p>It is also possible to load inputs and dictionaries from multiple directories.</p>
-<div class="fragment"><div class="line">$ fuzzuf libfuzzer -- -target=/usr/bin/foo -runs=10000 -input=/path/to/first_inputs -input=/path/to/second_inputs</div>
+<div class="fragment"><div class="line">$ fuzzuf libfuzzer -target=/usr/bin/foo -runs=10000 -input=/path/to/first_inputs -input=/path/to/second_inputs</div>
 </div><!-- fragment --><p>Default output directory is /tmp/fuzzuf-out_dir/crash-&lt;process specific UUID&gt;. The output directory can be changed by -exact_artifact_path=&lt;path&gt;</p>
-<div class="fragment"><div class="line">$ fuzzuf libfuzzer -- -target=/usr/bin/foo -runs=10000 -exact\_artifact\_path=/path/to/output</div>
+<div class="fragment"><div class="line">$ fuzzuf libfuzzer -target=/usr/bin/foo -runs=10000 -exact\_artifact\_path=/path/to/output</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md81"></a>
 Options</h1>
 <h2><a class="anchor" id="autotoc_md82"></a>

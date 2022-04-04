@@ -1,9 +1,8 @@
 <map id="PTExecutor" name="PTExecutor">
-<area shape="rect" id="node1" title=" " alt="" coords="256,259,351,285"/>
-<area shape="rect" id="node2" href="$classProxyExecutor.html" title=" " alt="" coords="10,183,125,209"/>
-<area shape="rect" id="node3" href="$classExecutor.html" title=" " alt="" coords="5,81,84,108"/>
-<area shape="rect" id="node4" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="109,81,268,108"/>
-<area shape="rect" id="node5" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="242,5,373,32"/>
-<area shape="rect" id="node6" href="$classAFLPTPathCovAttacher.html" title="Intel PT based PTrix&#45;specific path sensitive bitmap attacher." alt="" coords="222,132,393,159"/>
-<area shape="rect" id="node7" href="$classAFLPTPathFavAttacher.html" title="Intel PT&#45;based PTrix&#45;specific bitmap attacher used for calculating favorite seeds." alt="" coords="408,132,575,159"/>
+<area shape="rect" id="node1" title=" " alt="" coords="345,171,439,197"/>
+<area shape="rect" id="node2" href="$classBaseProxyExecutor.html" title=" " alt="" coords="5,81,152,108"/>
+<area shape="rect" id="node3" href="$classExecutor.html" title=" " alt="" coords="39,5,118,32"/>
+<area shape="rect" id="node4" href="$classAFLPTPathCovAttacher.html" title="Intel PT based PTrix&#45;specific path sensitive bitmap attacher." alt="" coords="307,81,477,108"/>
+<area shape="rect" id="node5" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="424,5,555,32"/>
+<area shape="rect" id="node6" href="$classAFLPTPathFavAttacher.html" title="Intel PT&#45;based PTrix&#45;specific bitmap attacher used for calculating favorite seeds." alt="" coords="502,81,669,108"/>
 </map>
