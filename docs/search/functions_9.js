@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['make_5findent_1910',['make_indent',['../to__string_8hpp.html#a11e45741e14ce8d26cc34d38682b6485',1,'fuzzuf::utils']]],
-  ['make_5fnth_5frange_1911',['make_nth_range',['../nth__range_8hpp.html#a55f791acdca440ca6e981ac3722c2f4e',1,'fuzzuf::utils::range']]],
-  ['makeversion_1912',['MakeVersion',['../namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#afe37ac6fb8da00a4de6e5fce94078a6f',1,'fuzzuf::algorithm::libfuzzer']]],
-  ['map_5ffile_1913',['map_file',['../map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43',1,'fuzzuf::utils']]],
-  ['marker_1914',['Marker',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Marker_3_01R_07Args_8_8_8_08_00_01T_01_4.html#aefc9758597ae18179819d8de02bc8502',1,'fuzzuf::algorithm::libfuzzer::Marker&lt; R(Args...), T &gt;']]],
-  ['mask_1915',['Mask',['../mutation_2mask_8hpp.html#a57781c5b0dae52ed9870ab9b87cd7af5',1,'fuzzuf::algorithm::libfuzzer::mutator']]],
-  ['minimum_5frangesize_1916',['minimum_rangeSize',['../zip__range_8hpp.html#a73f3cb6f50c2151baf42b157ceb595e2',1,'fuzzuf::utils::range']]],
-  ['mmap_1917',['Mmap',['../classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html#a0faf4bdb78cadcd3b2865ab0a7a23209',1,'fuzzuf::utils::vfs::LocalFilesystem']]],
-  ['mmapall_1918',['MmapAll',['../classfuzzuf_1_1utils_1_1vfs_1_1adaptor_1_1ReadOnce_3_01Base_00_01std_1_1enable__if__t_3_01adaptaca0767d11fe638e0e74e7bfa8d988c9b.html#a32bc0f4108bee75cd3e1b42d6407caa6',1,'fuzzuf::utils::vfs::adaptor::ReadOnce&lt; Base, std::enable_if_t&lt; adaptable_to_read_once_v&lt; Base &gt; &gt; &gt;']]],
-  ['movestderr_1919',['MoveStdErr',['../classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html#a505a6a32da48ab74e7582930c57e79be',1,'fuzzuf::executor::LibFuzzerExecutorInterface']]],
-  ['movestdout_1920',['MoveStdOut',['../classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html#a52bf58e8f78fe72c62a0b5013dd99c31',1,'fuzzuf::executor::LibFuzzerExecutorInterface']]],
-  ['mutaterandom_1921',['MutateRandom',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#af0d52992a24c3bc17e54d1c0d44c785a',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]]
+  ['last_1916',['last',['../classoption_1_1Option.html#afe2aff68191e55b59c53fac3dbbcd7c3',1,'option::Option']]],
+  ['lastwritetime_1917',['LastWriteTime',['../classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html#a4aaa02a7c7b8bca8579f894f94a3190f',1,'fuzzuf::utils::vfs::LocalFilesystem']]],
+  ['length_1918',['length',['../classoption_1_1PrintUsageImplementation_1_1LinePartIterator.html#a557e521cb41e951a34df2737d25f9dce',1,'option::PrintUsageImplementation::LinePartIterator']]],
+  ['lflog_1919',['lflog',['../namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a6f83e85f0b133cfa923d59c89850b52d',1,'fuzzuf::algorithm::libfuzzer']]],
+  ['line_1920',['line',['../classoption_1_1PrintUsageImplementation_1_1LinePartIterator.html#a8ad1201d95bf0bd9453a731da8c15a10',1,'option::PrintUsageImplementation::LinePartIterator']]],
+  ['linewrapper_1921',['LineWrapper',['../classoption_1_1PrintUsageImplementation_1_1LineWrapper.html#a288f16b6e928e9f54f48e13ff6817e95',1,'option::PrintUsageImplementation::LineWrapper']]],
+  ['linuxforkserverexecutor_1922',['LinuxForkServerExecutor',['../classLinuxForkServerExecutor.html#ae8d678395a74e0d302df33732a26c3eb',1,'LinuxForkServerExecutor']]],
+  ['load_1923',['Load',['../algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc',1,'fuzzuf::algorithm::libfuzzer::dictionary::Load(const std::string &amp;filename_, StaticDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)'],['../algorithms_2libfuzzer_2dictionary_8cpp.html#a00b77a4b148fa7b2bd056e34ca6a2475',1,'fuzzuf::algorithm::libfuzzer::dictionary::Load(const std::string &amp;filename_, DynamicDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)'],['../algorithms_2libfuzzer_2dictionary_8cpp.html#a8dd0eea58ba311481482bc4e8eee3cfa',1,'fuzzuf::algorithm::libfuzzer::dictionary::Load(const std::vector&lt; fs::path &gt; &amp;paths, StaticDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)'],['../algorithms_2libfuzzer_2dictionary_8cpp.html#a7e4856f2e6929d9804c175a31508d415',1,'fuzzuf::algorithm::libfuzzer::dictionary::Load(const std::vector&lt; fs::path &gt; &amp;paths, DynamicDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)']]],
+  ['loaddictionary_1924',['LoadDictionary',['../test__utils_8cpp.html#ab9d123a7651ff6d1ee4c8051e0a277d0',1,'fuzzuf::algorithm::libfuzzer::test']]],
+  ['loadinputs_1925',['LoadInputs',['../load__inputs_8hpp.html#a004bebb00ca20a53d7fe80cde87213ab',1,'fuzzuf::utils']]],
+  ['localfilesystem_1926',['LocalFilesystem',['../classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html#a8a9ed75b0552b398d8ec284793b8d895',1,'fuzzuf::utils::vfs::LocalFilesystem::LocalFilesystem(std::vector&lt; fs::path &gt; &amp;&amp;allowed_path_, bool create=true)'],['../classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html#a36acdc226c38c3d036c532af82e4bb40',1,'fuzzuf::utils::vfs::LocalFilesystem::LocalFilesystem(const LocalFilesystem &amp;)=default']]],
+  ['lowersinglerandom_1927',['LowerSingleRandom',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac62a3c38b34a576515f1c0cc674129cd',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]]
 ];

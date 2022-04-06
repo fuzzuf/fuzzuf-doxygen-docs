@@ -577,7 +577,7 @@ $(function() {
 <div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160;  <span class="keywordflow">while</span> (usage[i].shortopt != <span class="keyword">nullptr</span>) {</div>
 <div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160;    <span class="keywordflow">if</span> (usage[i].index + 1 &gt;= <a class="code" href="structoption_1_1Stats.html#a8121787feb1c7db84fca3ccb012b0473">options_max</a>) {</div>
 <div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;      <a class="code" href="structoption_1_1Stats.html#a8121787feb1c7db84fca3ccb012b0473">options_max</a> =</div>
-<div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;          (usage[i].<a class="code" href="structoption_1_1Descriptor.html#a1fee8ac44f529c99ac2b1149b4c391b1">index</a> + 1) + 1; <span class="comment">// 1 more than necessary as sentinel</span></div>
+<div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;          (usage[i].index + 1) + 1; <span class="comment">// 1 more than necessary as sentinel</span></div>
 <div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;    }</div>
 <div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160;    ++i;</div>
 <div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160;  }</div>
@@ -726,7 +726,7 @@ $(function() {
 <div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160;        <span class="keywordflow">while</span> (usage[idx].shortopt != <span class="keyword">nullptr</span> &amp;&amp;</div>
 <div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;               (usage[idx].shortopt[0] != 0 || usage[idx].longopt[0] != 0))</div>
 <div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;          ++idx;</div>
-<div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;        descriptor = (usage[idx].<a class="code" href="structoption_1_1Descriptor.html#a0dba4ccca59c19d6ed4081391fca5adb">shortopt</a> == <span class="keyword">nullptr</span> ? nullptr : &amp;usage[idx]);</div>
+<div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;        descriptor = (usage[idx].shortopt == <span class="keyword">nullptr</span> ? nullptr : &amp;usage[idx]);</div>
 <div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160;      }</div>
 <div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160; </div>
 <div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;      <span class="keywordflow">if</span> (descriptor != <span class="keyword">nullptr</span>) {</div>
