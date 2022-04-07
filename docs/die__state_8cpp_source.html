@@ -682,7 +682,7 @@ $(function() {
 <div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;  <span class="comment">/* Now, for the visuals... */</span></div>
 <div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;  <span class="keywordtype">bool</span> term_too_small = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;  <span class="keywordflow">if</span> (clear_screen) {</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    MSG(TERM_CLEAR CURSOR_HIDE);</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    MSG(TERM_CLEAR);</div>
 <div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    clear_screen = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160; </div>
 <div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    term_too_small = afl::CheckTermSize();</div>
