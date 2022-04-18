@@ -74,6 +74,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:aa2841d5c850c84dee97d88ebf96ae33a"><td class="memItemLeft" align="right" valign="top"><a id="aa2841d5c850c84dee97d88ebf96ae33a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetPUTExecutionTimeout</b> (uint64_t timeout_us)</td></tr>
+<tr class="separator:aa2841d5c850c84dee97d88ebf96ae33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab899ee757cd9fe4dfa3a2fda73fbf2b8"><td class="memItemLeft" align="right" valign="top"><a id="ab899ee757cd9fe4dfa3a2fda73fbf2b8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ReadStdin</b> ()</td></tr>
+<tr class="separator:ab899ee757cd9fe4dfa3a2fda73fbf2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b6396f3a988417936dc60ce69913d6"><td class="memItemLeft" align="right" valign="top"><a id="a25b6396f3a988417936dc60ce69913d6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SaveStdoutStderr</b> ()</td></tr>
+<tr class="separator:a25b6396f3a988417936dc60ce69913d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9ac8f2ccde559905f9fe78b2e6adfff"><td class="memItemLeft" align="right" valign="top"><a id="ad9ac8f2ccde559905f9fe78b2e6adfff"></a>
 <a class="el" href="structExecutePUTAPIResponse.html">ExecutePUTAPIResponse</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ExecutePUT</b> ()</td></tr>
 <tr class="separator:ad9ac8f2ccde559905f9fe78b2e6adfff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -91,9 +100,15 @@ ssize_t&#160;</td><td class="memItemRight" valign="bottom"><b>Send</b> (void *bu
 <tr class="memitem:aa045ca423e746665de7ffc77aaa25f59"><td class="memItemLeft" align="right" valign="top"><a id="aa045ca423e746665de7ffc77aaa25f59"></a>
 ssize_t&#160;</td><td class="memItemRight" valign="bottom"><b>Recv</b> (void *buf, size_t size, const char *comment=&quot;&quot;)</td></tr>
 <tr class="separator:aa045ca423e746665de7ffc77aaa25f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac69ec084f65b4797b460b84a831c99c5"><td class="memItemLeft" align="right" valign="top"><a id="ac69ec084f65b4797b460b84a831c99c5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AttachToServer</b> (uint64_t executor_id)</td></tr>
+<tr class="separator:ac69ec084f65b4797b460b84a831c99c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3123e9878286e84631c827849cd9bfe4"><td class="memItemLeft" align="right" valign="top"><a id="a3123e9878286e84631c827849cd9bfe4"></a>
 std::optional&lt; pid_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>WaitForkServerStart</b> ()</td></tr>
 <tr class="separator:a3123e9878286e84631c827849cd9bfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e03a27462c294868ec87af5a0a0b729"><td class="memItemLeft" align="right" valign="top"><a id="a3e03a27462c294868ec87af5a0a0b729"></a>
+std::optional&lt; pid_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>DoHandShake</b> (uint64_t executor_id)</td></tr>
+<tr class="separator:a3e03a27462c294868ec87af5a0a0b729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -148,7 +163,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>FORKSRV_F
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="fd__channel_8cpp_source.html#l00179">179</a> of file <a class="el" href="fd__channel_8cpp_source.html">fd_channel.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="fd__channel_8cpp_source.html#l00217">217</a> of file <a class="el" href="fd__channel_8cpp_source.html">fd_channel.cpp</a>.</p>
 
 </div>
 </div>

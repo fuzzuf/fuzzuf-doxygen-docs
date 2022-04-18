@@ -88,34 +88,39 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="load__inputs_8hpp.html">fuzzuf/utils/load_inputs.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sha1_8hpp.html">fuzzuf/utils/sha1.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;fcntl.h&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>fuzzuf::utils {</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="load__inputs_8hpp.html#a004bebb00ca20a53d7fe80cde87213ab">   28</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="load__inputs_8hpp.html#a004bebb00ca20a53d7fe80cde87213ab">LoadInputs</a>(<span class="keyword">const</span> fs::path &amp;dir, <span class="keywordtype">bool</span> check_sha1)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    -&gt; std::vector&lt;utils::mapped_file_t&gt; {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  std::vector&lt;utils::mapped_file_t&gt; inputs;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : fs::recursive_directory_iterator(dir)) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span> (fs::is_regular_file(p)) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      <span class="keywordflow">if</span> (check_sha1) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">auto</span> mapped = <a class="code" href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">map_file</a>(p.path().string(), O_RDONLY, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">auto</span> sha1 = <a class="code" href="sha1_8hpp.html#a417a805483c2db7a1d40f28a7022c3a5">ToSerializedSha1</a>(mapped);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">if</span> (sha1 == p.path().filename().string()) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;          inputs.push_back(std::move(mapped));</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        inputs.push_back(<a class="code" href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">map_file</a>(p.path().string(), O_RDONLY, <span class="keyword">true</span>));</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">return</span> inputs;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <span class="comment">// namespace fuzzuf::utils</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/logger/logger.hpp&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;fcntl.h&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>fuzzuf::utils {</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="load__inputs_8hpp.html#a004bebb00ca20a53d7fe80cde87213ab">   29</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="load__inputs_8hpp.html#a004bebb00ca20a53d7fe80cde87213ab">LoadInputs</a>(<span class="keyword">const</span> fs::path &amp;dir, <span class="keywordtype">bool</span> check_sha1)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    -&gt; std::vector&lt;utils::mapped_file_t&gt; {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordflow">if</span> (!fs::is_directory(dir)) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ERROR(<span class="stringliteral">&quot;LoadInputs: Path is not directory: dir=%s&quot;</span>, dir.c_str());</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  std::vector&lt;utils::mapped_file_t&gt; inputs;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : fs::recursive_directory_iterator(dir)) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span> (fs::is_regular_file(p)) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <span class="keywordflow">if</span> (check_sha1) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">auto</span> mapped = <a class="code" href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">map_file</a>(p.path().string(), O_RDONLY, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">auto</span> sha1 = <a class="code" href="sha1_8hpp.html#a417a805483c2db7a1d40f28a7022c3a5">ToSerializedSha1</a>(mapped);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span> (sha1 == p.path().filename().string()) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;          inputs.push_back(std::move(mapped));</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        inputs.push_back(<a class="code" href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">map_file</a>(p.path().string(), O_RDONLY, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">return</span> inputs;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} <span class="comment">// namespace fuzzuf::utils</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="amap__file_8hpp_html_a708389fa3e099bba04eeab4c70035e43"><div class="ttname"><a href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">fuzzuf::utils::map_file</a></div><div class="ttdeci">auto map_file(const std::string &amp;filename, unsigned int flags, bool populate) -&gt; mapped_file_t</div><div class="ttdef"><b>Definition:</b> <a href="map__file_8cpp_source.html#l00035">map_file.cpp:35</a></div></div>
 <div class="ttc" id="aload__inputs_8hpp_html"><div class="ttname"><a href="load__inputs_8hpp.html">load_inputs.hpp</a></div></div>
 <div class="ttc" id="asha1_8hpp_html"><div class="ttname"><a href="sha1_8hpp.html">sha1.hpp</a></div></div>
-<div class="ttc" id="aload__inputs_8hpp_html_a004bebb00ca20a53d7fe80cde87213ab"><div class="ttname"><a href="load__inputs_8hpp.html#a004bebb00ca20a53d7fe80cde87213ab">fuzzuf::utils::LoadInputs</a></div><div class="ttdeci">auto LoadInputs(const fs::path &amp;dir, bool check_sha1) -&gt; std::vector&lt; utils::mapped_file_t &gt;</div><div class="ttdef"><b>Definition:</b> <a href="load__inputs_8cpp_source.html#l00028">load_inputs.cpp:28</a></div></div>
+<div class="ttc" id="aload__inputs_8hpp_html_a004bebb00ca20a53d7fe80cde87213ab"><div class="ttname"><a href="load__inputs_8hpp.html#a004bebb00ca20a53d7fe80cde87213ab">fuzzuf::utils::LoadInputs</a></div><div class="ttdeci">auto LoadInputs(const fs::path &amp;dir, bool check_sha1) -&gt; std::vector&lt; utils::mapped_file_t &gt;</div><div class="ttdef"><b>Definition:</b> <a href="load__inputs_8cpp_source.html#l00029">load_inputs.cpp:29</a></div></div>
 <div class="ttc" id="asha1_8hpp_html_a417a805483c2db7a1d40f28a7022c3a5"><div class="ttname"><a href="sha1_8hpp.html#a417a805483c2db7a1d40f28a7022c3a5">fuzzuf::utils::ToSerializedSha1</a></div><div class="ttdeci">auto ToSerializedSha1(const Range &amp;range) -&gt; std::enable_if_t&lt;!std::is_same_v&lt; utils::type_traits::RemoveCvrT&lt; Range &gt;, std::vector&lt; std::uint8_t &gt;&gt;, std::string &gt;</div><div class="ttdef"><b>Definition:</b> <a href="sha1_8hpp_source.html#l00046">sha1.hpp:46</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

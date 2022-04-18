@@ -87,19 +87,21 @@ Collaboration diagram for LinuxForkServerExecutor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLinuxForkServerExecutor__coll__graph.png" border="0" usemap="#LinuxForkServerExecutor_coll__map" alt="Collaboration graph"/></div>
 <map name="LinuxForkServerExecutor_coll__map" id="LinuxForkServerExecutor_coll__map">
-<area shape="rect" title=" " alt="" coords="128,171,311,197"/>
-<area shape="rect" href="classExecutor.html" title=" " alt="" coords="5,81,84,108"/>
-<area shape="rect" href="classFdChannel.html" title=" " alt="" coords="109,81,199,108"/>
-<area shape="rect" href="classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="223,81,386,108"/>
-<area shape="rect" href="classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="331,5,462,32"/>
-<area shape="rect" href="classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="411,81,569,108"/>
+<area shape="rect" title=" " alt="" coords="557,123,740,149"/>
+<area shape="rect" href="classExecutor.html" title=" " alt="" coords="254,5,333,32"/>
+<area shape="rect" href="classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html" title="Virtual filesystem implementation that interface to local filesystem. This is a wrapper to the standa..." alt="" coords="226,57,361,98"/>
+<area shape="rect" href="classfuzzuf_1_1utils_1_1vfs_1_1VFS.html" title="Base class of virtual filesystem. This class provides basic path conversion and path range check." alt="" coords="5,64,163,91"/>
+<area shape="rect" href="classFdChannel.html" title=" " alt="" coords="248,123,339,149"/>
+<area shape="rect" href="classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="212,173,375,200"/>
+<area shape="rect" href="classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="19,200,149,227"/>
+<area shape="rect" href="classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="214,224,373,251"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae8d678395a74e0d302df33732a26c3eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#ae8d678395a74e0d302df33732a26c3eb">LinuxForkServerExecutor</a> (const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, bool record_stdout_and_err=false, std::vector&lt; std::string &gt; &amp;&amp;environment_variables_={})</td></tr>
-<tr class="separator:ae8d678395a74e0d302df33732a26c3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d25997af88d7ba4a54ac0704d8be213"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#a2d25997af88d7ba4a54ac0704d8be213">LinuxForkServerExecutor</a> (const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, bool record_stdout_and_err=false, std::vector&lt; std::string &gt; &amp;&amp;environment_variables_={}, std::vector&lt; fs::path &gt; &amp;&amp;allowed_path_={})</td></tr>
+<tr class="separator:a2d25997af88d7ba4a54ac0704d8be213"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c2112104adb631358d38a86d44630e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#a5c2112104adb631358d38a86d44630e9">~LinuxForkServerExecutor</a> ()</td></tr>
 <tr class="separator:a5c2112104adb631358d38a86d44630e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dc3b0b02552b5454c5708e656b0bf73"><td class="memItemLeft" align="right" valign="top"><a id="a8dc3b0b02552b5454c5708e656b0bf73"></a>
@@ -173,6 +175,9 @@ fuzzuf::executor::output_t&#160;</td><td class="memItemRight" valign="bottom"><b
 <tr class="memitem:afbbb6b0fa4afde19f0e0d69a16f4f387"><td class="memItemLeft" align="right" valign="top"><a id="afbbb6b0fa4afde19f0e0d69a16f4f387"></a>
 fuzzuf::executor::output_t&#160;</td><td class="memItemRight" valign="bottom"><b>MoveStdErr</b> ()</td></tr>
 <tr class="separator:afbbb6b0fa4afde19f0e0d69a16f4f387"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab0b6ac5e913f8721f2bd7cfb10eb89f"><td class="memItemLeft" align="right" valign="top"><a id="aab0b6ac5e913f8721f2bd7cfb10eb89f"></a>
+<a class="el" href="classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html">fuzzuf::utils::vfs::LocalFilesystem</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Filesystem</b> ()</td></tr>
+<tr class="separator:aab0b6ac5e913f8721f2bd7cfb10eb89f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classExecutor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classExecutor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classExecutor.html">Executor</a></td></tr>
 <tr class="memitem:a31fdc7d87572cd8d2929c5cd5c959578 inherit pub_methods_classExecutor"><td class="memItemLeft" align="right" valign="top"><a id="a31fdc7d87572cd8d2929c5cd5c959578"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Executor</b> (const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, const std::string path_str_to_write_input)</td></tr>
@@ -259,6 +264,9 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a8835f394cdb5da5b6fd77357bb9b389b"><td class="memItemLeft" align="right" valign="top"><a id="a8835f394cdb5da5b6fd77357bb9b389b"></a>
+u32&#160;</td><td class="memItemRight" valign="bottom"><b>last_timeout_ms</b></td></tr>
+<tr class="separator:a8835f394cdb5da5b6fd77357bb9b389b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75971794e5383f8d55a25209b1aa7aee"><td class="memItemLeft" align="right" valign="top"><a id="a75971794e5383f8d55a25209b1aa7aee"></a>
 PUTExitReasonType&#160;</td><td class="memItemRight" valign="bottom"><b>last_exit_reason</b></td></tr>
 <tr class="separator:a75971794e5383f8d55a25209b1aa7aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -271,24 +279,6 @@ fuzzuf::executor::output_t&#160;</td><td class="memItemRight" valign="bottom"><b
 <tr class="memitem:a50b03e1b437c6472ba47757d538e98e0"><td class="memItemLeft" align="right" valign="top"><a id="a50b03e1b437c6472ba47757d538e98e0"></a>
 fuzzuf::executor::output_t&#160;</td><td class="memItemRight" valign="bottom"><b>stderr_buffer</b></td></tr>
 <tr class="separator:a50b03e1b437c6472ba47757d538e98e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad394405fc4619bfa494fcccb97db4c3d"><td class="memItemLeft" align="right" valign="top"><a id="ad394405fc4619bfa494fcccb97db4c3d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_stdout_fd</b> = -1</td></tr>
-<tr class="separator:ad394405fc4619bfa494fcccb97db4c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb9ce0cccb9ae7f53a85cb4cbc1604f4"><td class="memItemLeft" align="right" valign="top"><a id="afb9ce0cccb9ae7f53a85cb4cbc1604f4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_stderr_fd</b> = -1</td></tr>
-<tr class="separator:afb9ce0cccb9ae7f53a85cb4cbc1604f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1af23acffc5532e4f2a95d215216d101"><td class="memItemLeft" align="right" valign="top"><a id="a1af23acffc5532e4f2a95d215216d101"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_epoll_fd</b> = -1</td></tr>
-<tr class="separator:a1af23acffc5532e4f2a95d215216d101"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b4bfee5cde8d65596779b70e0f78fcd"><td class="memItemLeft" align="right" valign="top"><a id="a5b4bfee5cde8d65596779b70e0f78fcd"></a>
-epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_stdout_event</b></td></tr>
-<tr class="separator:a5b4bfee5cde8d65596779b70e0f78fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a645720f035b51b6437cf9e10bd6e0518"><td class="memItemLeft" align="right" valign="top"><a id="a645720f035b51b6437cf9e10bd6e0518"></a>
-epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_stderr_event</b></td></tr>
-<tr class="separator:a645720f035b51b6437cf9e10bd6e0518"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16e497451cfcd855075d05520f7b7808"><td class="memItemLeft" align="right" valign="top"><a id="a16e497451cfcd855075d05520f7b7808"></a>
-epoll_event&#160;</td><td class="memItemRight" valign="bottom"><b>fork_server_read_event</b></td></tr>
-<tr class="separator:a16e497451cfcd855075d05520f7b7808"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a403641644f2b6d522a509b6ef242a443"><td class="memItemLeft" align="right" valign="top"><a id="a403641644f2b6d522a509b6ef242a443"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>record_stdout_and_err</b></td></tr>
 <tr class="separator:a403641644f2b6d522a509b6ef242a443"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -296,6 +286,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>record_stdout_and_err
 <tr class="separator:ac1f4430c63a269e36d1f7c0b75767f82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7eaa5d9afdb2f1e9f1a6c06f089a0ed"><td class="memItemLeft" align="right" valign="top">std::vector&lt; const char * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#ae7eaa5d9afdb2f1e9f1a6c06f089a0ed">raw_environment_variables</a></td></tr>
 <tr class="separator:ae7eaa5d9afdb2f1e9f1a6c06f089a0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a984b28eeb51510667aa3045bef17e"><td class="memItemLeft" align="right" valign="top"><a id="a92a984b28eeb51510667aa3045bef17e"></a>
+<a class="el" href="classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html">fuzzuf::utils::vfs::LocalFilesystem</a>&#160;</td><td class="memItemRight" valign="bottom"><b>filesystem</b></td></tr>
+<tr class="separator:a92a984b28eeb51510667aa3045bef17e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c54981ab04a1a5c5ce05c5b1cad9b12"><td class="memItemLeft" align="right" valign="top"><a id="a3c54981ab04a1a5c5ce05c5b1cad9b12"></a>
 <a class="el" href="classFdChannel.html">FdChannel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>put_channel</b></td></tr>
 <tr class="separator:a3c54981ab04a1a5c5ce05c5b1cad9b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -309,10 +302,10 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00044">44</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00046">46</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ae8d678395a74e0d302df33732a26c3eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8d678395a74e0d302df33732a26c3eb">&#9670;&nbsp;</a></span>LinuxForkServerExecutor()</h2>
+<a id="a2d25997af88d7ba4a54ac0704d8be213"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d25997af88d7ba4a54ac0704d8be213">&#9670;&nbsp;</a></span>LinuxForkServerExecutor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -363,7 +356,13 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::vector&lt; std::string &gt; &amp;&amp;&#160;</td>
-          <td class="paramname"><em>environment_variables_</em> = <code>{}</code>&#160;</td>
+          <td class="paramname"><em>environment_variables_</em> = <code>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; fs::path &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>allowed_path_</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -394,7 +393,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00058">58</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00059">59</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -421,7 +420,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <li>Temporary purpose: If actve_instance which signal handlers refer has a pointer to self value, assign nullptr to it and invalidate. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00095">95</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00115">115</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -456,7 +455,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00395">395</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00388">388</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -517,7 +516,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 
 <p>Implements <a class="el" href="classExecutor.html">Executor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00176">176</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00166">166</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -546,7 +545,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <li><a class="el" href="classExecutor.html">Executor</a> specific environment variables specified on the constructor argument. The child process invoked by this executor will take these values as environment variables. (This means the executor created prior to modification of environment variables will take old environment variables) </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00140">140</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00144">144</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
 
 </div>
 </div>
@@ -571,7 +570,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </div><div class="memdoc">
 <p>Since some C APIs require environment variables in null terminated array of C-string, environment_variables is transformed into that form. Each element of raw_environment_variables points value of environment_variables except last value that points nullptr. raw_environment_variables should be rebuilt if environment_variables is modified. </p>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00147">147</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00151">151</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
 
 </div>
 </div>

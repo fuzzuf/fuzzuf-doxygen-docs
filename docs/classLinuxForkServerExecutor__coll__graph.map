@@ -1,8 +1,10 @@
 <map id="LinuxForkServerExecutor" name="LinuxForkServerExecutor">
-<area shape="rect" id="node1" title=" " alt="" coords="128,171,311,197"/>
-<area shape="rect" id="node2" href="$classExecutor.html" title=" " alt="" coords="5,81,84,108"/>
-<area shape="rect" id="node3" href="$classFdChannel.html" title=" " alt="" coords="109,81,199,108"/>
-<area shape="rect" id="node4" href="$classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="223,81,386,108"/>
-<area shape="rect" id="node5" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="331,5,462,32"/>
-<area shape="rect" id="node6" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="411,81,569,108"/>
+<area shape="rect" id="node1" title=" " alt="" coords="557,123,740,149"/>
+<area shape="rect" id="node2" href="$classExecutor.html" title=" " alt="" coords="254,5,333,32"/>
+<area shape="rect" id="node3" href="$classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html" title="Virtual filesystem implementation that interface to local filesystem. This is a wrapper to the standa..." alt="" coords="226,57,361,98"/>
+<area shape="rect" id="node4" href="$classfuzzuf_1_1utils_1_1vfs_1_1VFS.html" title="Base class of virtual filesystem. This class provides basic path conversion and path range check." alt="" coords="5,64,163,91"/>
+<area shape="rect" id="node5" href="$classFdChannel.html" title=" " alt="" coords="248,123,339,149"/>
+<area shape="rect" id="node6" href="$classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="212,173,375,200"/>
+<area shape="rect" id="node7" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="19,200,149,227"/>
+<area shape="rect" id="node8" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="214,224,373,251"/>
 </map>
