@@ -99,10 +99,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab340ee7e67d2d4ec20346171c66e4e74"><td class="memItemLeft" align="right" valign="top"><a id="ab340ee7e67d2d4ec20346171c66e4e74"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>HavocBaseTemplate</b> (State &amp;state)</td></tr>
 <tr class="separator:ab340ee7e67d2d4ec20346171c66e4e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a726f232eb9a4545cdfc8c58195850c4d"><td class="memTemplParams" colspan="2"><a id="a726f232eb9a4545cdfc8c58195850c4d"></a>
-template&lt;typename CaseDistrib , typename CustomCases &gt; </td></tr>
-<tr class="memitem:a726f232eb9a4545cdfc8c58195850c4d"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>DoHavoc</b> (<a class="el" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate</a>&lt; State &gt; &amp;mutator, CaseDistrib case_distrib, CustomCases custom_cases, const std::string &amp;stage_name, const std::string &amp;stage_short, u32 perf_score, s32 stage_max_multiplier, int stage_idx)</td></tr>
-<tr class="separator:a726f232eb9a4545cdfc8c58195850c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51b905aac00ce161bbde96f7936eca40"><td class="memTemplParams" colspan="2"><a id="a51b905aac00ce161bbde96f7936eca40"></a>
+template&lt;typename CustomCases &gt; </td></tr>
+<tr class="memitem:a51b905aac00ce161bbde96f7936eca40"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>DoHavoc</b> (<a class="el" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate</a>&lt; State &gt; &amp;mutator, <a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">optimizer::Optimizer</a>&lt; u32 &gt; &amp;mutop_optimizer, CustomCases custom_cases, const std::string &amp;stage_name, const std::string &amp;stage_short, u32 perf_score, s32 stage_max_multiplier, int stage_idx)</td></tr>
+<tr class="separator:a51b905aac00ce161bbde96f7936eca40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a291c38662ed007748712f2053bb66416"><td class="memItemLeft" align="right" valign="top"><a id="a291c38662ed007748712f2053bb66416"></a>
 virtual AFLMutCalleeRef&lt; State &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (<a class="el" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">AFLMutatorTemplate</a>&lt; State &gt; &amp;mutator)=0</td></tr>
 <tr class="separator:a291c38662ed007748712f2053bb66416"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,7 +118,7 @@ State &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td>
 struct fuzzuf::algorithm::afl::routine::mutation::HavocBaseTemplate&lt; State &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="afl__mutation__hierarflow__routines_8hpp_source.html#l00468">468</a> of file <a class="el" href="afl__mutation__hierarflow__routines_8hpp_source.html">afl_mutation_hierarflow_routines.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="afl__mutation__hierarflow__routines_8hpp_source.html#l00470">470</a> of file <a class="el" href="afl__mutation__hierarflow__routines_8hpp_source.html">afl_mutation_hierarflow_routines.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/fuzzuf/algorithms/afl/<a class="el" href="afl__mutation__hierarflow__routines_8hpp_source.html">afl_mutation_hierarflow_routines.hpp</a></li>
 </ul>

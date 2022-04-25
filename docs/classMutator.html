@@ -148,9 +148,9 @@ template&lt;typename T &gt; </td></tr>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aaa8f001ae7e1454fb12aff4a2bd1328d"><td class="memTemplItemLeft" align="right" valign="top">u32&#160;</td><td class="memTemplItemRight" valign="bottom"><b>InterestN</b> (int pos, int idx, int be)</td></tr>
 <tr class="separator:aaa8f001ae7e1454fb12aff4a2bd1328d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7dc6569e4602bbecc4244dbc99112f2"><td class="memTemplParams" colspan="2">template&lt;typename CaseDistrib , typename CustomCases &gt; </td></tr>
-<tr class="memitem:ae7dc6569e4602bbecc4244dbc99112f2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMutator.html#ae7dc6569e4602bbecc4244dbc99112f2">Havoc</a> (u32 stacking, const std::vector&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> &gt; &amp;extras, const std::vector&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> &gt; &amp;a_extras, CaseDistrib case_distrib, CustomCases custom_cases)</td></tr>
-<tr class="separator:ae7dc6569e4602bbecc4244dbc99112f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ae6b2f762e3e0a916fe48cd3f4d116c"><td class="memTemplParams" colspan="2">template&lt;typename CustomCases &gt; </td></tr>
+<tr class="memitem:a1ae6b2f762e3e0a916fe48cd3f4d116c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMutator.html#a1ae6b2f762e3e0a916fe48cd3f4d116c">Havoc</a> (u32 stacking, const std::vector&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> &gt; &amp;extras, const std::vector&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> &gt; &amp;a_extras, <a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">fuzzuf::optimizer::Optimizer</a>&lt; u32 &gt; &amp;mutop_optimizer, CustomCases custom_cases)</td></tr>
+<tr class="separator:a1ae6b2f762e3e0a916fe48cd3f4d116c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adae4693b229d67d746f8a7f13127a1b2"><td class="memItemLeft" align="right" valign="top"><a id="adae4693b229d67d746f8a7f13127a1b2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>RestoreHavoc</b> (void)</td></tr>
 <tr class="separator:adae4693b229d67d746f8a7f13127a1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,17 +209,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rand_fd</b></td></tr>
 class Mutator&lt; Tag &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00039">39</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00044">44</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae7dc6569e4602bbecc4244dbc99112f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7dc6569e4602bbecc4244dbc99112f2">&#9670;&nbsp;</a></span>Havoc()</h2>
+<a id="a1ae6b2f762e3e0a916fe48cd3f4d116c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ae6b2f762e3e0a916fe48cd3f4d116c">&#9670;&nbsp;</a></span>Havoc()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class Tag &gt; </div>
 <div class="memtemplate">
-template&lt;typename CaseDistrib , typename CustomCases &gt; </div>
+template&lt;typename CustomCases &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="classMutator.html">Mutator</a>&lt; Tag &gt;::Havoc </td>
@@ -242,8 +242,8 @@ template&lt;typename CaseDistrib , typename CustomCases &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">CaseDistrib&#160;</td>
-          <td class="paramname"><em>case_distrib</em>, </td>
+          <td class="paramtype"><a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">fuzzuf::optimizer::Optimizer</a>&lt; u32 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mutop_optimizer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -260,7 +260,6 @@ template&lt;typename CaseDistrib , typename CustomCases &gt; </div>
 </div><div class="memdoc">
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">CaseDistrib</td><td>the type of the probability distribution of selecting mutation operators. It should be <code>u32(const std::vector&lt;AFLDictData&gt;&amp;, const std::vector&lt;AFLDictData&gt;&amp;)</code> . </td></tr>
     <tr><td class="paramname">CustomCases</td><td>the type of the function that represents custom cases in havoc. It should be <code>void(u32, u8*&amp;, u32&amp;, const std::vector&lt;AFLDictData&gt;&amp;, const std::vector&lt;AFLDictData&gt;&amp;)</code>. </td></tr>
   </table>
   </dd>
@@ -270,14 +269,15 @@ template&lt;typename CaseDistrib , typename CustomCases &gt; </div>
     <tr><td class="paramname">stacking</td><td>the number of times mutation operators are applied. </td></tr>
     <tr><td class="paramname">extras</td><td>the vector of extras (constant strings) that works as a dictionary. </td></tr>
     <tr><td class="paramname">a_extras</td><td>the vector of auto extras (automatically generated constant strings). </td></tr>
+    <tr><td class="paramname">mutop_optimizer</td><td>(the reference of) the optimizer that selects mutation operators to be applied. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>About CaseDistrib and CustomCases. To allow users to customize Havoc, two callable objects are provided.</dd></dl>
-<p>CaseDistrib should be a callable object that receives extras and a_extras as its arguments, and should return a constant defined in HavocCase. This works as a probability distribution with which Havoc decides which mutation(switch case) to be used. Note that CaseDistrib MUST NOT return OVERWRITE_WITH_EXTRA and INSERT_EXTRA if the argument <code>extras</code> is empty. If it does, Havoc can cause access violations. The same is true for OVERWRITE_WITH_AEXTRA and INSERT_AEXTRA.</p>
+<dl class="section note"><dt>Note</dt><dd>About mutop_optimizer and CustomCases. To allow users to customize Havoc, two callable objects are provided.</dd></dl>
+<p>mutop_optimizer should be an instance of <code><a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">fuzzuf::optimizer::Optimizer</a>&lt;u32&gt;</code>, and should return integers that describe switch cases of havoc(i.e., a constant defined in HavocCase). This works as a probability distribution with which Havoc decides which mutation(switch case) to be used. mutop_optimizer is provided with two dictionaries via <code><a class="el" href="classfuzzuf_1_1optimizer_1_1Store.html" title="Key-value store that bridges between fuzzers and optimizers.">fuzzuf::optimizer::Store</a></code>: extras and a_extras. They can be accessed with the keys <code>optimizer::keys::Extras</code> and <code>optimizer::keys::AutoExtras</code>. If these dictionaries are available and non-empty, mutop_optimizer can select the mutation operators of placing keywords picked from the dictionaries. Note that, conversely, mutop_optimizer MUST NOT return OVERWRITE_WITH_EXTRA and INSERT_EXTRA if the value extras is empty. If it does, Havoc can cause access violations. The same is true for OVERWRITE_WITH_AEXTRA and INSERT_AEXTRA.</p>
 <p>CustomCases is a callable object used to execute your own cases instead of preset cases. It should receive as its arguments a number representing which case should be executed, the references of outbuf and len, extras and a_extras. Note that, in order to select custom cases in Havoc, CaseDistrib should return numbers more than or equal to HavocCase::NUM_CASE. For example, if CaseDistrib returns HavocCase::NUM_CASE+1, then CustomCases receives HavocCase::NUM_CASE+1 as one of its arguments. </p>
 
-<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00231">231</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00238">238</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
 
 </div>
 </div>
@@ -306,7 +306,7 @@ template&lt;class Tag &gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line">{ INTERESTING_8,</div>
 <div class="line">                                                      INTERESTING_16 }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00056">56</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00061">61</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
 
 </div>
 </div>
@@ -335,7 +335,7 @@ template&lt;class Tag &gt; </div>
 <div class="line">                                                      INTERESTING_16,</div>
 <div class="line">                                                      INTERESTING_32 }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00057">57</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00062">62</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
 
 </div>
 </div>

@@ -339,160 +339,166 @@ $(function() {
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keyword">using</span> AFLState = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">fuzzuf::algorithm::afl::AFLState</a>;</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html">fuzzuf::executor::AFLExecutorInterface</a>;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="comment">// Parse global options and PUT, and build fuzzer</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keyword">auto</span> fuzzer_args = ParseGlobalOptionsForFuzzer(args, options);</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keyword">auto</span> fuzzer = BuildAFLFuzzerFromArgs&lt;AFLFuzzerStub&lt;AFLState&gt;, <a class="code" href="classAFLFuzzerStub.html">AFLFuzzerStub&lt;AFLState&gt;</a>, AFLExecutorInterface&gt;(</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            fuzzer_args, options</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        );</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    BOOST_CHECK_EQUAL(options.in_dir, <span class="stringliteral">&quot;gS53LCfbAhunlziS&quot;</span>);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keyword">auto</span>&amp; state = *fuzzer-&gt;state;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv.size(), 2);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[0], <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>);</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[1], <span class="stringliteral">&quot;Jpx1kB6oh8N9wUe0&quot;</span>);</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;}</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;BOOST_AUTO_TEST_CASE(BuildAFLByParsingGlobalOptionAndFuzzerOptionAndPUT) {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> options;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="preprocessor">    #pragma GCC diagnostic ignored &quot;-Wwrite-strings&quot;</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[] = {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="stringliteral">&quot;fuzzuf&quot;</span>,</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="stringliteral">&quot;afl&quot;</span>,</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="comment">// Global options</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="stringliteral">&quot;--in_dir=u4I8Vq8mMTaCE5CH&quot;</span>, </div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="stringliteral">&quot;--forksrv=false&quot;</span>,</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="comment">// Fuzzer options</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="stringliteral">&quot;--dict_file=&quot;</span> TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict&quot;</span>,</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="comment">// PUT options. </span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="comment">// Because NativeLinuxExecutor throws error,</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="comment">// we can&#39;t use a random value here.</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>, <span class="comment">// PUT</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="stringliteral">&quot;f996ko6rvPgSajvm&quot;</span> <span class="comment">// arguments</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        };</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <a class="code" href="structCommandLineArgs.html">GlobalArgs</a> args = {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        .argc = Argc(argv),</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        .argv = argv,</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    };</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keyword">using</span> AFLState = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">fuzzuf::algorithm::afl::AFLState</a>;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html">fuzzuf::executor::AFLExecutorInterface</a>;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="comment">// Parse global options and PUT, and build fuzzer</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keyword">auto</span> fuzzer_args = ParseGlobalOptionsForFuzzer(args, options);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keyword">auto</span> fuzzer = BuildAFLFuzzerFromArgs&lt;AFLFuzzerStub&lt;AFLState&gt;, <a class="code" href="classAFLFuzzerStub.html">AFLFuzzerStub&lt;AFLState&gt;</a>, AFLExecutorInterface&gt;(</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            fuzzer_args, options</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        );</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="comment">// Check if global option is captured correctly</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    BOOST_CHECK_EQUAL(options.in_dir, <span class="stringliteral">&quot;u4I8Vq8mMTaCE5CH&quot;</span>);</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keyword">auto</span>&amp; state = *fuzzer-&gt;state;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keyword">using</span> fuzzuf::cli::fuzzer::afl::BuildAFLFuzzerFromArgs;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="comment">// Parse global options and PUT, and build fuzzer</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keyword">auto</span> fuzzer_args = ParseGlobalOptionsForFuzzer(args, options);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keyword">auto</span> fuzzer = BuildAFLFuzzerFromArgs&lt;AFLFuzzerStub&lt;AFLState&gt;, <a class="code" href="classAFLFuzzerStub.html">AFLFuzzerStub&lt;AFLState&gt;</a>, AFLExecutorInterface&gt;(</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            fuzzer_args, options</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        );</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    BOOST_CHECK_EQUAL(options.in_dir, <span class="stringliteral">&quot;gS53LCfbAhunlziS&quot;</span>);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keyword">auto</span>&amp; state = *fuzzer-&gt;state;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv.size(), 2);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[0], <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[1], <span class="stringliteral">&quot;Jpx1kB6oh8N9wUe0&quot;</span>);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;BOOST_AUTO_TEST_CASE(BuildAFLByParsingGlobalOptionAndFuzzerOptionAndPUT) {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> options;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="preprocessor">    #pragma GCC diagnostic ignored &quot;-Wwrite-strings&quot;</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[] = {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="stringliteral">&quot;fuzzuf&quot;</span>,</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="stringliteral">&quot;afl&quot;</span>,</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="comment">// Global options</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="stringliteral">&quot;--in_dir=u4I8Vq8mMTaCE5CH&quot;</span>, </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="stringliteral">&quot;--forksrv=false&quot;</span>,</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="comment">// Fuzzer options</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="stringliteral">&quot;--dict_file=&quot;</span> TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict&quot;</span>,</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="comment">// PUT options. </span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="comment">// Because NativeLinuxExecutor throws error,</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="comment">// we can&#39;t use a random value here.</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>, <span class="comment">// PUT</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="stringliteral">&quot;f996ko6rvPgSajvm&quot;</span> <span class="comment">// arguments</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        };</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <a class="code" href="structCommandLineArgs.html">GlobalArgs</a> args = {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        .argc = Argc(argv),</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        .argv = argv,</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    };</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">using</span> AFLState = <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">fuzzuf::algorithm::afl::AFLState</a>;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html">fuzzuf::executor::AFLExecutorInterface</a>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keyword">using</span> fuzzuf::cli::fuzzer::afl::BuildAFLFuzzerFromArgs;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="comment">// Parse global options and PUT, and build fuzzer</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keyword">auto</span> fuzzer_args = ParseGlobalOptionsForFuzzer(args, options);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keyword">auto</span> fuzzer = BuildAFLFuzzerFromArgs&lt;AFLFuzzerStub&lt;AFLState&gt;, <a class="code" href="classAFLFuzzerStub.html">AFLFuzzerStub&lt;AFLState&gt;</a>, AFLExecutorInterface&gt;(</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            fuzzer_args, options</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        );</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="comment">// Check if global option is captured correctly</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    BOOST_CHECK_EQUAL(options.in_dir, <span class="stringliteral">&quot;u4I8Vq8mMTaCE5CH&quot;</span>);</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="comment">// Check if fuzzer option (dict_file) is captured correctly, and dict file has been loaded</span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    BOOST_CHECK_EQUAL(state.extras.size(), 3);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="comment">// Check if PUT args are captured correctly</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv.size(), 2);</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[0], <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>);</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[1], <span class="stringliteral">&quot;f996ko6rvPgSajvm&quot;</span>);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;BOOST_AUTO_TEST_CASE(BuildAFLFastByParsingGlobalOptionAndPUT) {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keyword">using</span> AFLFastState = <a class="code" href="structfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastState.html">fuzzuf::algorithm::aflfast::AFLFastState</a>;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html">fuzzuf::executor::AFLExecutorInterface</a>;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> options;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="preprocessor">    #pragma GCC diagnostic ignored &quot;-Wwrite-strings&quot;</span></div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="comment">// 本来はschedule用のオプションもテストされるべきだが、CLI側の改修が必要なので一旦放置</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[] = {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        <span class="stringliteral">&quot;fuzzuf&quot;</span>,</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="stringliteral">&quot;aflfast&quot;</span>,</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="comment">// Global options</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="stringliteral">&quot;--in_dir=chahz3ea4deRah4o&quot;</span>, </div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="stringliteral">&quot;--forksrv=false&quot;</span>,</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="comment">// PUT options. </span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="comment">// Because NativeLinuxExecutor throws error,</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="comment">// we can&#39;t use a random value here.</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>, <span class="comment">// PUT</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="stringliteral">&quot;oung6UgoQue1eiYu&quot;</span> <span class="comment">// arguments</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        };</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <a class="code" href="structCommandLineArgs.html">GlobalArgs</a> args = {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        .argc = Argc(argv),</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        .argv = argv,</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    };</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="comment">// Parse global options and PUT, and build fuzzer</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keyword">auto</span> fuzzer_args = ParseGlobalOptionsForFuzzer(args, options);</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keyword">auto</span> fuzzer = BuildAFLFastFuzzerFromArgs&lt;AFLFuzzerStub&lt;AFLFastState&gt;, <a class="code" href="classAFLFuzzerStub.html">AFLFuzzerStub&lt;AFLFastState&gt;</a>, AFLExecutorInterface&gt;(</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            fuzzer_args, options</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        );</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    BOOST_CHECK_EQUAL(options.in_dir, <span class="stringliteral">&quot;chahz3ea4deRah4o&quot;</span>);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keyword">auto</span>&amp; state = *fuzzer-&gt;state;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv.size(), 2);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[0], <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[1], <span class="stringliteral">&quot;oung6UgoQue1eiYu&quot;</span>);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;}</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">// NOTE: もしAFL向けのオプションを追加したら、それの正常動作を確認するテストケースを追加してくださいね</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;BOOST_AUTO_TEST_CASE(BuildVUzzerByParsingGlobalOptionAndPUT) {</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="keyword">using</span> VUzzerState = <a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">fuzzuf::algorithm::vuzzer::VUzzerState</a>;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> options;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="preprocessor">    #pragma GCC diagnostic ignored &quot;-Wwrite-strings&quot;</span></div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[] = {</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <span class="stringliteral">&quot;fuzzuf&quot;</span>,</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="stringliteral">&quot;vuzzer&quot;</span>,</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="comment">// Global options</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <span class="stringliteral">&quot;--in_dir=1yGosmSge1Fb4pNA&quot;</span>, </div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="stringliteral">&quot;--weight=db05iKsZORKkxela&quot;</span>,</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <span class="stringliteral">&quot;--full_dict=SNqUXXzGJqyE78SC&quot;</span>,</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <span class="stringliteral">&quot;--unique_dict=lz025YtrYx3hLoYO&quot;</span>,</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="stringliteral">&quot;--inst_bin=BSAGFocvr8wPERXK&quot;</span>,</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="stringliteral">&quot;--taint_db=dKiBtlnutZAUczkS&quot;</span>,</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <span class="stringliteral">&quot;--taint_out=a85cZxCSaxkpewYb&quot;</span>,</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <span class="stringliteral">&quot;--&quot;</span>,</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="comment">// PUT options. </span></div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="comment">// Because NativeLinuxExecutor throws error,</span></div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="comment">// we can&#39;t use a random value here.</span></div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>, <span class="comment">// PUT</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="stringliteral">&quot;HQ5lspLelPJPEC35&quot;</span> <span class="comment">// arguments</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        };</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <a class="code" href="structCommandLineArgs.html">GlobalArgs</a> args = {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        .argc = Argc(argv),</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        .argv = argv,</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    };</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="comment">// Parse global options and PUT, and build fuzzer</span></div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="keyword">auto</span> fuzzer_args = ParseGlobalOptionsForFuzzer(args, options);</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keyword">auto</span> fuzzer = BuildVUzzerFromArgs&lt;VUzzerStub&lt;VUzzerState&gt;, <a class="code" href="classVUzzerStub.html">VUzzerStub&lt;VUzzerState&gt;</a>&gt;(</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            fuzzer_args, options</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        );</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    BOOST_CHECK_EQUAL(options.in_dir, <span class="stringliteral">&quot;1yGosmSge1Fb4pNA&quot;</span>);</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keyword">auto</span>&amp; state = *fuzzer-&gt;state;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_weight_file, <span class="stringliteral">&quot;db05iKsZORKkxela&quot;</span>);</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_full_dict, <span class="stringliteral">&quot;SNqUXXzGJqyE78SC&quot;</span>);</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_unique_dict, <span class="stringliteral">&quot;lz025YtrYx3hLoYO&quot;</span>);</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_inst_bin, <span class="stringliteral">&quot;BSAGFocvr8wPERXK&quot;</span>);</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_taint_db, <span class="stringliteral">&quot;dKiBtlnutZAUczkS&quot;</span>);</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_taint_file, <span class="stringliteral">&quot;a85cZxCSaxkpewYb&quot;</span>);</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv.size(), 2);</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[0], fs::absolute(<span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>).native()); <span class="comment">// VUzzer converts PUTs path to abs path.</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[1], <span class="stringliteral">&quot;HQ5lspLelPJPEC35&quot;</span>);</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;}</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keyword">auto</span>&amp; state = *fuzzer-&gt;state;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="comment">// Check if fuzzer option (dict_file) is captured correctly, and dict file has been loaded</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    BOOST_CHECK_EQUAL(state.extras.size(), 3);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="comment">// Check if PUT args are captured correctly</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv.size(), 2);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[0], <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[1], <span class="stringliteral">&quot;f996ko6rvPgSajvm&quot;</span>);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;BOOST_AUTO_TEST_CASE(BuildAFLFastByParsingGlobalOptionAndPUT) {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keyword">using</span> AFLFastState = <a class="code" href="structfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastState.html">fuzzuf::algorithm::aflfast::AFLFastState</a>;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html">fuzzuf::executor::AFLExecutorInterface</a>;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> options;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="preprocessor">    #pragma GCC diagnostic ignored &quot;-Wwrite-strings&quot;</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="comment">// 本来はschedule用のオプションもテストされるべきだが、CLI側の改修が必要なので一旦放置</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[] = {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="stringliteral">&quot;fuzzuf&quot;</span>,</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="stringliteral">&quot;aflfast&quot;</span>,</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="comment">// Global options</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="stringliteral">&quot;--in_dir=chahz3ea4deRah4o&quot;</span>, </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="stringliteral">&quot;--forksrv=false&quot;</span>,</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="comment">// PUT options. </span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <span class="comment">// Because NativeLinuxExecutor throws error,</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="comment">// we can&#39;t use a random value here.</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>, <span class="comment">// PUT</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="stringliteral">&quot;oung6UgoQue1eiYu&quot;</span> <span class="comment">// arguments</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        };</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <a class="code" href="structCommandLineArgs.html">GlobalArgs</a> args = {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        .argc = Argc(argv),</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        .argv = argv,</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    };</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="comment">// Parse global options and PUT, and build fuzzer</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keyword">using</span> fuzzuf::cli::fuzzer::aflfast::BuildAFLFastFuzzerFromArgs;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keyword">auto</span> fuzzer_args = ParseGlobalOptionsForFuzzer(args, options);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keyword">auto</span> fuzzer = BuildAFLFastFuzzerFromArgs&lt;AFLFuzzerStub&lt;AFLFastState&gt;, <a class="code" href="classAFLFuzzerStub.html">AFLFuzzerStub&lt;AFLFastState&gt;</a>, AFLExecutorInterface&gt;(</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            fuzzer_args, options</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        );</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    BOOST_CHECK_EQUAL(options.in_dir, <span class="stringliteral">&quot;chahz3ea4deRah4o&quot;</span>);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keyword">auto</span>&amp; state = *fuzzer-&gt;state;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv.size(), 2);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[0], <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[1], <span class="stringliteral">&quot;oung6UgoQue1eiYu&quot;</span>);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;}</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">// NOTE: もしAFL向けのオプションを追加したら、それの正常動作を確認するテストケースを追加してくださいね</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;BOOST_AUTO_TEST_CASE(BuildVUzzerByParsingGlobalOptionAndPUT) {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keyword">using</span> VUzzerState = <a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">fuzzuf::algorithm::vuzzer::VUzzerState</a>;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <a class="code" href="structGlobalFuzzerOptions.html">GlobalFuzzerOptions</a> options;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="preprocessor">    #pragma GCC diagnostic ignored &quot;-Wwrite-strings&quot;</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    </div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[] = {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="stringliteral">&quot;fuzzuf&quot;</span>,</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <span class="stringliteral">&quot;vuzzer&quot;</span>,</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <span class="comment">// Global options</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="stringliteral">&quot;--in_dir=1yGosmSge1Fb4pNA&quot;</span>, </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="stringliteral">&quot;--weight=db05iKsZORKkxela&quot;</span>,</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <span class="stringliteral">&quot;--full_dict=SNqUXXzGJqyE78SC&quot;</span>,</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <span class="stringliteral">&quot;--unique_dict=lz025YtrYx3hLoYO&quot;</span>,</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="stringliteral">&quot;--inst_bin=BSAGFocvr8wPERXK&quot;</span>,</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="stringliteral">&quot;--taint_db=dKiBtlnutZAUczkS&quot;</span>,</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="stringliteral">&quot;--taint_out=a85cZxCSaxkpewYb&quot;</span>,</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <span class="stringliteral">&quot;--&quot;</span>,</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="comment">// PUT options. </span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="comment">// Because NativeLinuxExecutor throws error,</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <span class="comment">// we can&#39;t use a random value here.</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        <span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>, <span class="comment">// PUT</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="stringliteral">&quot;HQ5lspLelPJPEC35&quot;</span> <span class="comment">// arguments</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        };</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <a class="code" href="structCommandLineArgs.html">GlobalArgs</a> args = {</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        .argc = Argc(argv),</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        .argv = argv,</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    };</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <span class="comment">// Parse global options and PUT, and build fuzzer</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="keyword">using</span> fuzzuf::cli::fuzzer::vuzzer::BuildVUzzerFromArgs;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <span class="keyword">auto</span> fuzzer_args = ParseGlobalOptionsForFuzzer(args, options);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keyword">auto</span> fuzzer = BuildVUzzerFromArgs&lt;VUzzerStub&lt;VUzzerState&gt;, <a class="code" href="classVUzzerStub.html">VUzzerStub&lt;VUzzerState&gt;</a>&gt;(</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            fuzzer_args, options</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        );</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    BOOST_CHECK_EQUAL(options.in_dir, <span class="stringliteral">&quot;1yGosmSge1Fb4pNA&quot;</span>);</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="keyword">auto</span>&amp; state = *fuzzer-&gt;state;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_weight_file, <span class="stringliteral">&quot;db05iKsZORKkxela&quot;</span>);</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_full_dict, <span class="stringliteral">&quot;SNqUXXzGJqyE78SC&quot;</span>);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_unique_dict, <span class="stringliteral">&quot;lz025YtrYx3hLoYO&quot;</span>);</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_inst_bin, <span class="stringliteral">&quot;BSAGFocvr8wPERXK&quot;</span>);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_taint_db, <span class="stringliteral">&quot;dKiBtlnutZAUczkS&quot;</span>);</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;path_to_taint_file, <span class="stringliteral">&quot;a85cZxCSaxkpewYb&quot;</span>);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv.size(), 2);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[0], fs::absolute(<span class="stringliteral">&quot;../put_binaries/command_wrapper&quot;</span>).native()); <span class="comment">// VUzzer converts PUTs path to abs path.</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    BOOST_CHECK_EQUAL(state.setting-&gt;argv[1], <span class="stringliteral">&quot;HQ5lspLelPJPEC35&quot;</span>);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassfuzzuf_1_1executor_1_1AFLExecutorInterface_html"><div class="ttname"><a href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html">fuzzuf::executor::AFLExecutorInterface</a></div><div class="ttdoc">Represents minimal requirements for an AFL-capable executor.</div><div class="ttdef"><b>Definition:</b> <a href="afl__executor__interface_8hpp_source.html#l00050">afl_executor_interface.hpp:50</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">fuzzuf::algorithm::vuzzer::VUzzerState</a></div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__state_8hpp_source.html#l00049">vuzzer_state.hpp:49</a></div></div>
 <div class="ttc" id="aclassVUzzerStub_html"><div class="ttname"><a href="classVUzzerStub.html">VUzzerStub</a></div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__stub_8hpp_source.html#l00028">vuzzer_stub.hpp:28</a></div></div>
 <div class="ttc" id="astructFuzzerArgs_html"><div class="ttname"><a href="structFuzzerArgs.html">FuzzerArgs</a></div><div class="ttdef"><b>Definition:</b> <a href="fuzzer__args_8hpp_source.html#l00023">fuzzer_args.hpp:23</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastState_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastState.html">fuzzuf::algorithm::aflfast::AFLFastState</a></div><div class="ttdef"><b>Definition:</b> <a href="aflfast__state_8hpp_source.html#l00028">aflfast_state.hpp:28</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastState_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastState.html">fuzzuf::algorithm::aflfast::AFLFastState</a></div><div class="ttdef"><b>Definition:</b> <a href="aflfast__state_8hpp_source.html#l00032">aflfast_state.hpp:32</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">fuzzuf::algorithm::afl::AFLStateTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__option_8hpp_source.html#l00024">afl_option.hpp:24</a></div></div>
 <div class="ttc" id="astructCommandLineArgs_html"><div class="ttname"><a href="structCommandLineArgs.html">CommandLineArgs</a></div><div class="ttdef"><b>Definition:</b> <a href="command__line__args_8hpp_source.html#l00027">command_line_args.hpp:27</a></div></div>
 <div class="ttc" id="aclassAFLFuzzerStub_html"><div class="ttname"><a href="classAFLFuzzerStub.html">AFLFuzzerStub</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__fuzzer__stub_8hpp_source.html#l00028">afl_fuzzer_stub.hpp:28</a></div></div>

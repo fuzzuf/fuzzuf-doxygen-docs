@@ -140,7 +140,7 @@ $(function() {
 <div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html#a57013d38c309c8b4fbafdc3b77a24c7e">   81</a></span>&#160;IJONMutCalleeRef MaxHavoc::operator()(<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">IJONMutator</a>&amp; mutator) {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span> (DoHavoc(</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;              mutator,</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;              havoc::IJONHavocCaseDistrib,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;              *state.mutop_optimizer,</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;              havoc::IJONCustomCases,</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;              <span class="stringliteral">&quot;ijon-max&quot;</span>, <span class="stringliteral">&quot;ijon-max&quot;</span>,</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;              state.orig_perf,</div>
@@ -240,7 +240,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassExitStatusFeedback_html"><div class="ttname"><a href="classExitStatusFeedback.html">ExitStatusFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="exit__status__feedback_8hpp_source.html#l00025">exit_status_feedback.hpp:25</a></div></div>
 <div class="ttc" id="aclassHierarFlowCallee_html"><div class="ttname"><a href="classHierarFlowCallee.html">HierarFlowCallee</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00039">hierarflow_callee.hpp:39</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1IJONState_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">fuzzuf::algorithm::ijon::IJONState</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__state_8hpp_source.html#l00040">ijon_state.hpp:40</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1IJONState_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">fuzzuf::algorithm::ijon::IJONState</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__state_8hpp_source.html#l00041">ijon_state.hpp:41</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">fuzzuf::algorithm::afl::AFLMutatorTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutator_8hpp_source.html#l00036">afl_mutator.hpp:36</a></div></div>
 <div class="ttc" id="aclassInplaceMemoryFeedback_html"><div class="ttname"><a href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="inplace__memory__feedback_8hpp_source.html#l00028">inplace_memory_feedback.hpp:28</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">fuzzuf::algorithm::afl::routine::mutation::HavocBaseTemplate&lt; IJONState &gt;</a></div></div>
