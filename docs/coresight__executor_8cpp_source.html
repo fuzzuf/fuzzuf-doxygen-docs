@@ -72,7 +72,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -88,25 +88,28 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/executor/coresight_executor.hpp&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classCoreSightExecutor.html#abfe1b809a7188cd53237ccc230515a4f">   24</a></span>&#160;<a class="code" href="classCoreSightExecutor.html#abfe1b809a7188cd53237ccc230515a4f">CoreSightExecutor::CoreSightExecutor</a>(</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">const</span> fs::path &amp;proxy_path,</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;argv,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    u32 exec_timelimit_ms,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    u64 exec_memlimit,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">bool</span> forksrv,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">const</span> fs::path &amp;path_to_write_input,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    u32 afl_shm_size,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">bool</span> record_stdout_and_err</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;) : <a class="code" href="classProxyExecutor.html">ProxyExecutor</a> ( proxy_path, std::vector&lt;std::string&gt;(), argv, exec_timelimit_ms, exec_memlimit, forksrv,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    path_to_write_input, afl_shm_size, record_stdout_and_err )</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    ProxyExecutor::SetCArgvAndDecideInputMode();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classBaseProxyExecutor.html#aa45a23ec50dd305baa9792289984307b">ProxyExecutor::Initilize</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="check__crash__handling_8hpp.html">fuzzuf/utils/check_crash_handling.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classCoreSightExecutor.html#abfe1b809a7188cd53237ccc230515a4f">   26</a></span>&#160;<a class="code" href="classCoreSightExecutor.html#abfe1b809a7188cd53237ccc230515a4f">CoreSightExecutor::CoreSightExecutor</a>(<span class="keyword">const</span> fs::path &amp;proxy_path,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                                     <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;argv,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                     u32 exec_timelimit_ms, u64 exec_memlimit,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                                     <span class="keywordtype">bool</span> forksrv,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                     <span class="keyword">const</span> fs::path &amp;path_to_write_input,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                     u32 afl_shm_size,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                     <span class="keywordtype">bool</span> record_stdout_and_err)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    : <a class="code" href="classProxyExecutor.html">ProxyExecutor</a>(proxy_path, std::vector&lt;std::string&gt;(), argv,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    exec_timelimit_ms, exec_memlimit, forksrv,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    path_to_write_input, afl_shm_size, record_stdout_and_err) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  fuzzuf::utils::CheckCrashHandling();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  ProxyExecutor::SetCArgvAndDecideInputMode();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classBaseProxyExecutor.html#aa45a23ec50dd305baa9792289984307b">ProxyExecutor::Initilize</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassBaseProxyExecutor_html_aa45a23ec50dd305baa9792289984307b"><div class="ttname"><a href="classBaseProxyExecutor.html#aa45a23ec50dd305baa9792289984307b">BaseProxyExecutor::Initilize</a></div><div class="ttdeci">void Initilize()</div><div class="ttdef"><b>Definition:</b> <a href="base__proxy__executor_8cpp_source.html#l00112">base_proxy_executor.cpp:112</a></div></div>
+<div class="ttc" id="acheck__crash__handling_8hpp_html"><div class="ttname"><a href="check__crash__handling_8hpp.html">check_crash_handling.hpp</a></div></div>
 <div class="ttc" id="aclassProxyExecutor_html"><div class="ttname"><a href="classProxyExecutor.html">ProxyExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="proxy__executor_8hpp_source.html#l00033">proxy_executor.hpp:33</a></div></div>
-<div class="ttc" id="aclassCoreSightExecutor_html_abfe1b809a7188cd53237ccc230515a4f"><div class="ttname"><a href="classCoreSightExecutor.html#abfe1b809a7188cd53237ccc230515a4f">CoreSightExecutor::CoreSightExecutor</a></div><div class="ttdeci">CoreSightExecutor(const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, bool record_stdout_and_err)</div><div class="ttdef"><b>Definition:</b> <a href="coresight__executor_8cpp_source.html#l00024">coresight_executor.cpp:24</a></div></div>
+<div class="ttc" id="aclassCoreSightExecutor_html_abfe1b809a7188cd53237ccc230515a4f"><div class="ttname"><a href="classCoreSightExecutor.html#abfe1b809a7188cd53237ccc230515a4f">CoreSightExecutor::CoreSightExecutor</a></div><div class="ttdeci">CoreSightExecutor(const fs::path &amp;proxy_path, const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, bool forksrv, const fs::path &amp;path_to_write_input, u32 afl_shm_size, bool record_stdout_and_err)</div><div class="ttdef"><b>Definition:</b> <a href="coresight__executor_8cpp_source.html#l00026">coresight_executor.cpp:26</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
