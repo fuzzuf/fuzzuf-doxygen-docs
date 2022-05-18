@@ -110,15 +110,15 @@ $(function() {
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> DisposableFdFeedback::Read(<span class="keywordtype">void</span> *buf, u32 len) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    Util::ReadFile(fd, buf, len);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    fuzzuf::utils::ReadFile(fd, buf, len);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;u32 DisposableFdFeedback::ReadTimed(<span class="keywordtype">void</span> *buf, u32 len, u32 timeout_ms) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> Util::ReadFileTimed(fd, buf, len, timeout_ms);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> fuzzuf::utils::ReadFileTimed(fd, buf, len, timeout_ms);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> DisposableFdFeedback::Write(<span class="keywordtype">void</span> *buf, u32 len) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    Util::WriteFile(fd, buf, len);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    fuzzuf::utils::WriteFile(fd, buf, len);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassDisposableFdFeedback_html"><div class="ttname"><a href="classDisposableFdFeedback.html">DisposableFdFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="disposable__fd__feedback_8hpp_source.html#l00026">disposable_fd_feedback.hpp:26</a></div></div>

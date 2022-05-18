@@ -136,9 +136,9 @@ $(function() {
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">void</span> OnMemoryExecInput::SaveToFile(<span class="keyword">const</span> fs::path&amp; path) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> fd = Util::OpenFile(path.string(), O_WRONLY | O_CREAT, 0600);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    Util::WriteFile(fd, buf.get(), len);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    Util::CloseFile(fd);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(path.string(), O_WRONLY | O_CREAT, 0600);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    fuzzuf::utils::WriteFile(fd, buf.get(), len);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassOnMemoryExecInput_html"><div class="ttname"><a href="classOnMemoryExecInput.html">OnMemoryExecInput</a></div><div class="ttdef"><b>Definition:</b> <a href="on__memory__exec__input_8hpp_source.html#l00026">on_memory_exec_input.hpp:26</a></div></div>

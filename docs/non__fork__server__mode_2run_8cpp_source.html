@@ -151,17 +151,17 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="comment">// 標準入力と同じ内容がファイルに保存されたことを確認する</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  BOOST_CHECK(fs::exists(output_file_path));</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  BOOST_CHECK_EQUAL(fs::file_size(output_file_path), input.length());</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">int</span> output_file = Util::OpenFile(output_file_path.native(), O_RDONLY);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">int</span> output_file = fuzzuf::utils::OpenFile(output_file_path.native(), O_RDONLY);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  BOOST_CHECK_LE(input.length(), INPUT_LENGTH);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">char</span> output_file_buf[INPUT_LENGTH];</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  BOOST_CHECK_GT(output_file, -1);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  Util::ReadFile(output_file, <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span> *<span class="keyword">&gt;</span>(output_file_buf),</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  fuzzuf::utils::ReadFile(output_file, <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span> *<span class="keyword">&gt;</span>(output_file_buf),</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                 input.length());</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  BOOST_CHECK_EQUAL(strncmp(output_file_buf,</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                            <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(input.c_str()),</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                            input.length()),</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    0);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  Util::CloseFile(output_file);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  fuzzuf::utils::CloseFile(output_file);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">auto</span> stdout_buffer_feedback = executor.GetStdOut();</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  stdout_buffer_feedback.ShowMemoryToFunc([](<span class="keyword">const</span> u8 *ptr, u32 len) {</div>

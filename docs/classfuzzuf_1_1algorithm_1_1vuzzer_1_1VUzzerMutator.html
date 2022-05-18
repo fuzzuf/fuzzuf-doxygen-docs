@@ -66,6 +66,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-types">Private Types</a> &#124;
@@ -98,6 +99,16 @@ Collaboration diagram for fuzzuf::algorithm::vuzzer::VUzzerMutator:</div>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ae07f0dde6c2fc78e2eceef6d1fb73a7a"><td class="memItemLeft" align="right" valign="top"><a id="ae07f0dde6c2fc78e2eceef6d1fb73a7a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>MutFunc</b> = void(VUzzerMutator::*)()</td></tr>
+<tr class="separator:ae07f0dde6c2fc78e2eceef6d1fb73a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_classMutator"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classMutator')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classMutator.html">Mutator&lt; VUzzerState::Tag &gt;</a></td></tr>
+<tr class="memitem:a2c505c0800837c37e89471b0f07af950 inherit pub_types_classMutator"><td class="memItemLeft" align="right" valign="top"><a id="a2c505c0800837c37e89471b0f07af950"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>AFLDictData</b> = <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">fuzzuf::algorithm::afl::dictionary::AFLDictData</a></td></tr>
+<tr class="separator:a2c505c0800837c37e89471b0f07af950 inherit pub_types_classMutator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a46d7995665c39bc61e29b9eb4cb1b447"><td class="memItemLeft" align="right" valign="top"><a id="a46d7995665c39bc61e29b9eb4cb1b447"></a>
@@ -165,6 +176,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1edc21b2e080fc25130479d2edc2a9ce">IntSlide</a> ()</td></tr>
 <tr class="memdesc:a1edc21b2e080fc25130479d2edc2a9ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace four bytes of input buffer with a hard-coded magic number. <br /></td></tr>
 <tr class="separator:a1edc21b2e080fc25130479d2edc2a9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8da6e49e461f05b160404651cf485cb"><td class="memItemLeft" align="right" valign="top"><a id="ac8da6e49e461f05b160404651cf485cb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>OverwriteDictWord</b> ()</td></tr>
+<tr class="separator:ac8da6e49e461f05b160404651cf485cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3697140d2acb52f0ddf3ca48485ce81e"><td class="memItemLeft" align="right" valign="top"><a id="a3697140d2acb52f0ddf3ca48485ce81e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>InsertDictWord</b> ()</td></tr>
+<tr class="separator:a3697140d2acb52f0ddf3ca48485ce81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21fa48e3171749622cd44debaf1e682e"><td class="memItemLeft" align="right" valign="top"><a id="a21fa48e3171749622cd44debaf1e682e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a21fa48e3171749622cd44debaf1e682e">DoubleFuzz</a> ()</td></tr>
 <tr class="memdesc:a21fa48e3171749622cd44debaf1e682e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run mutation methods randomly chosen twice. <br /></td></tr>
@@ -298,9 +315,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rand_fd</b></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
-<tr class="memitem:aa6e66953dddc4efeb1daf6108daca306"><td class="memItemLeft" align="right" valign="top"><a id="aa6e66953dddc4efeb1daf6108daca306"></a>
-typedef void(VUzzerMutator::*&#160;</td><td class="memItemRight" valign="bottom"><b>MutFunc</b>) (void)</td></tr>
-<tr class="separator:aa6e66953dddc4efeb1daf6108daca306"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32a4f15f55adfe78ed0d1ba7aa8f4255"><td class="memItemLeft" align="right" valign="top"><a id="a32a4f15f55adfe78ed0d1ba7aa8f4255"></a>
 typedef std::pair&lt; std::shared_ptr&lt; <a class="el" href="classExecInput.html">ExecInput</a> &gt;, std::shared_ptr&lt; <a class="el" href="classExecInput.html">ExecInput</a> &gt; &gt;(VUzzerMutator::*&#160;</td><td class="memItemRight" valign="bottom"><b>MutCrossFunc</b>) (const <a class="el" href="classExecInput.html">ExecInput</a> &amp;)</td></tr>
 <tr class="separator:a32a4f15f55adfe78ed0d1ba7aa8f4255"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -319,17 +333,11 @@ u32&#160;</td><td class="memItemRight" valign="bottom"><b>slide_step</b> = 1</td
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a8ce6f0e4f24dab110ecffc7c4cb6cd83"><td class="memItemLeft" align="right" valign="top">static const MutFunc&#160;</td><td class="memItemRight" valign="bottom"><b>mutators</b> []</td></tr>
-<tr class="separator:a8ce6f0e4f24dab110ecffc7c4cb6cd83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac12c13600ffb5b5ed27be315730244ab"><td class="memItemLeft" align="right" valign="top">static const MutCrossFunc&#160;</td><td class="memItemRight" valign="bottom"><b>crossovers</b> []</td></tr>
 <tr class="separator:ac12c13600ffb5b5ed27be315730244ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_types_classMutator"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classMutator')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classMutator.html">Mutator&lt; VUzzerState::Tag &gt;</a></td></tr>
-<tr class="memitem:a2c505c0800837c37e89471b0f07af950 inherit pub_types_classMutator"><td class="memItemLeft" align="right" valign="top"><a id="a2c505c0800837c37e89471b0f07af950"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>AFLDictData</b> = <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">fuzzuf::algorithm::afl::dictionary::AFLDictData</a></td></tr>
-<tr class="separator:a2c505c0800837c37e89471b0f07af950 inherit pub_types_classMutator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_classMutator"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classMutator')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classMutator.html">Mutator&lt; VUzzerState::Tag &gt;</a></td></tr>
 <tr class="memitem:ad427c1ef43ec059ad07c1c349387a11c inherit pub_static_attribs_classMutator"><td class="memItemLeft" align="right" valign="top"><a id="ad427c1ef43ec059ad07c1c349387a11c"></a>
 static const std::vector&lt; s8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>interesting_8</b></td></tr>
@@ -363,7 +371,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
 <p>Insert random bytes at [pos: pos+size) range of input buffer. pos is determined by GetCutPos method. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a3b29e23b913269097c11dc26a993ac36" title="Determine the mutation offset of input buffer. The offset should be less than size.">GetCutPos</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00145">145</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00152">152</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -385,7 +393,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
 <p>Replace bytes at [pos: pos+size) range of input buffer with random bytes. pos is determined by GetCutPos method. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a3b29e23b913269097c11dc26a993ac36" title="Determine the mutation offset of input buffer. The offset should be less than size.">GetCutPos</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00158">158</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00165">165</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -405,7 +413,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
 </div><div class="memdoc">
 <p>When fuzzer has full_bytes_dict, then insert bytes chosen from it at the offset. If not but has unique_bytes_dict, then insert bytes chosen from it at the offsets. Otherwirse replace bytes at offsets with random bytes generated from all_dicts. The offsets are chosen from taint information. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a3b29e23b913269097c11dc26a993ac36" title="Determine the mutation offset of input buffer. The offset should be less than size.">GetCutPos</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00216">216</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00223">223</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -433,7 +441,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00573">573</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00609">609</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -461,7 +469,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00519">519</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00552">552</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -485,7 +493,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
 <dd>
 <a class="el" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1981f1939fe529f45636a031e258e170" title="Delete [pos: pos+size) range of input buffer. pos is determined by GetCutPos method.">EliminateRandom</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00135">135</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00142">142</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -507,7 +515,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
 <p>Run the ChangeRandomFull mutation twice. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa1a42fd224b38f95ae363927137c29a1">ChangeRandomFull</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00377">377</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00410">410</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -529,7 +537,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
 <p>Delete [pos: pos+size) range of input buffer. pos is determined by GetCutPos method. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a3b29e23b913269097c11dc26a993ac36" title="Determine the mutation offset of input buffer. The offset should be less than size.">GetCutPos</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00113">113</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00120">120</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -557,7 +565,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00074">74</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00081">81</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -585,7 +593,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00483">483</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00516">516</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -610,7 +618,7 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
 <p class="enddd">Consider worst case of time complexity. Currently it would call heavy memory operation, InsertWithOnebyteOverwrite, at every changes based on taint info. </p>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00410">410</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8cpp_source.html#l00443">443</a> of file <a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a>.</p>
 
 </div>
 </div>
@@ -642,70 +650,13 @@ static const std::vector&lt; s32 &gt;&#160;</td><td class="memItemRight" valign=
 
 </div>
 </div>
-<a id="a8ce6f0e4f24dab110ecffc7c4cb6cd83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ce6f0e4f24dab110ecffc7c4cb6cd83">&#9670;&nbsp;</a></span>mutators</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const VUzzerMutator::MutFunc fuzzuf::algorithm::vuzzer::VUzzerMutator::mutators</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {&amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1981f1939fe529f45636a031e258e170">VUzzerMutator::EliminateRandom</a>, </div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a7f341526a75c7a0d1d28103144b608de">VUzzerMutator::ChangeBytes</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a7f341526a75c7a0d1d28103144b608de">VUzzerMutator::ChangeBytes</a>,                                                          </div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a2a08232a7ec3c8e6d6cc5ec557868826">VUzzerMutator::AddRandom</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a2a08232a7ec3c8e6d6cc5ec557868826">VUzzerMutator::AddRandom</a>,                                                          </div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a8b9d75a2432725db849e634b61067174">VUzzerMutator::ChangeRandom</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a4a2dd276bf2fcc8e44d7c739982cfff1">VUzzerMutator::SingleChangeRandom</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac62a3c38b34a576515f1c0cc674129cd">VUzzerMutator::LowerSingleRandom</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ad9f8fe3d1871502a49b216036028373b">VUzzerMutator::RaiseSingleRandom</a>, </div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa697282dc538986f3d203c4bef5f3477">VUzzerMutator::EliminateNull</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac125bc1cc25125de6a41cafbc058f16f">VUzzerMutator::EliminateDoubleNull</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a316fd52d5422f3a061a8699bda4743cc">VUzzerMutator::TotallyRandom</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1edc21b2e080fc25130479d2edc2a9ce">VUzzerMutator::IntSlide</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a21fa48e3171749622cd44debaf1e682e">VUzzerMutator::DoubleFuzz</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa1a42fd224b38f95ae363927137c29a1">VUzzerMutator::ChangeRandomFull</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa1a42fd224b38f95ae363927137c29a1">VUzzerMutator::ChangeRandomFull</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1981f1939fe529f45636a031e258e170">VUzzerMutator::EliminateRandom</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a2a08232a7ec3c8e6d6cc5ec557868826">VUzzerMutator::AddRandom</a>,</div>
-<div class="line">                                                          &amp;<a class="code" href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a8b9d75a2432725db849e634b61067174">VUzzerMutator::ChangeRandom</a></div>
-<div class="line">                                                         }</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="vuzzer__mutator_8hpp_source.html#l00043">43</a> of file <a class="el" href="vuzzer__mutator_8hpp_source.html">vuzzer_mutator.hpp</a>.</p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/fuzzuf/algorithms/vuzzer/<a class="el" href="vuzzer__mutator_8hpp_source.html">vuzzer_mutator.hpp</a></li>
 <li>algorithms/vuzzer/<a class="el" href="vuzzer__mutator_8cpp_source.html">vuzzer_mutator.cpp</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a61e11ab6dd06c1ebbb2bf7e1efce14d0"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a61e11ab6dd06c1ebbb2bf7e1efce14d0">fuzzuf::algorithm::vuzzer::VUzzerMutator::DoubleCrossOver</a></div><div class="ttdeci">std::pair&lt; std::shared_ptr&lt; ExecInput &gt;, std::shared_ptr&lt; ExecInput &gt; &gt; DoubleCrossOver(const ExecInput &amp;target)</div><div class="ttdoc">Pick up subsets from two inputs and swap them.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00519">vuzzer_mutator.cpp:519</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a7f341526a75c7a0d1d28103144b608de"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a7f341526a75c7a0d1d28103144b608de">fuzzuf::algorithm::vuzzer::VUzzerMutator::ChangeBytes</a></div><div class="ttdeci">void ChangeBytes()</div><div class="ttdoc">Replace each bytes at offsets with random bytes. The offsets are chosen from taint information.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00170">vuzzer_mutator.cpp:170</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_ac125bc1cc25125de6a41cafbc058f16f"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac125bc1cc25125de6a41cafbc058f16f">fuzzuf::algorithm::vuzzer::VUzzerMutator::EliminateDoubleNull</a></div><div class="ttdeci">void EliminateDoubleNull()</div><div class="ttdoc">Replace &quot;\0\0&quot; bytes with specified two bytes.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00301">vuzzer_mutator.cpp:301</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a8b9d75a2432725db849e634b61067174"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a8b9d75a2432725db849e634b61067174">fuzzuf::algorithm::vuzzer::VUzzerMutator::ChangeRandom</a></div><div class="ttdeci">void ChangeRandom()</div><div class="ttdoc">Replace bytes at [pos: pos+size) range of input buffer with random bytes. pos is determined by GetCut...</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00158">vuzzer_mutator.cpp:158</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a2a08232a7ec3c8e6d6cc5ec557868826"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a2a08232a7ec3c8e6d6cc5ec557868826">fuzzuf::algorithm::vuzzer::VUzzerMutator::AddRandom</a></div><div class="ttdeci">void AddRandom()</div><div class="ttdoc">Insert random bytes at [pos: pos+size) range of input buffer. pos is determined by GetCutPos method.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00145">vuzzer_mutator.cpp:145</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a1edc21b2e080fc25130479d2edc2a9ce"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1edc21b2e080fc25130479d2edc2a9ce">fuzzuf::algorithm::vuzzer::VUzzerMutator::IntSlide</a></div><div class="ttdeci">void IntSlide()</div><div class="ttdoc">Replace four bytes of input buffer with a hard-coded magic number.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00338">vuzzer_mutator.cpp:338</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_aa697282dc538986f3d203c4bef5f3477"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa697282dc538986f3d203c4bef5f3477">fuzzuf::algorithm::vuzzer::VUzzerMutator::EliminateNull</a></div><div class="ttdeci">void EliminateNull()</div><div class="ttdoc">Replace a '\0' byte with a specified byte.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00288">vuzzer_mutator.cpp:288</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_aa1a42fd224b38f95ae363927137c29a1"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa1a42fd224b38f95ae363927137c29a1">fuzzuf::algorithm::vuzzer::VUzzerMutator::ChangeRandomFull</a></div><div class="ttdeci">void ChangeRandomFull()</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00216">vuzzer_mutator.cpp:216</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a21fa48e3171749622cd44debaf1e682e"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a21fa48e3171749622cd44debaf1e682e">fuzzuf::algorithm::vuzzer::VUzzerMutator::DoubleFuzz</a></div><div class="ttdeci">void DoubleFuzz()</div><div class="ttdoc">Run mutation methods randomly chosen twice.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00366">vuzzer_mutator.cpp:366</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a4a2dd276bf2fcc8e44d7c739982cfff1"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a4a2dd276bf2fcc8e44d7c739982cfff1">fuzzuf::algorithm::vuzzer::VUzzerMutator::SingleChangeRandom</a></div><div class="ttdeci">void SingleChangeRandom()</div><div class="ttdoc">Change each bytes at random offsets to random bytes.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00252">vuzzer_mutator.cpp:252</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a1981f1939fe529f45636a031e258e170"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1981f1939fe529f45636a031e258e170">fuzzuf::algorithm::vuzzer::VUzzerMutator::EliminateRandom</a></div><div class="ttdeci">void EliminateRandom()</div><div class="ttdoc">Delete [pos: pos+size) range of input buffer. pos is determined by GetCutPos method.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00113">vuzzer_mutator.cpp:113</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a316fd52d5422f3a061a8699bda4743cc"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a316fd52d5422f3a061a8699bda4743cc">fuzzuf::algorithm::vuzzer::VUzzerMutator::TotallyRandom</a></div><div class="ttdeci">void TotallyRandom()</div><div class="ttdoc">Replace entire input buffer with random bytes.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00326">vuzzer_mutator.cpp:326</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a7bec09d387a50303e6b0a6341a982935"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a7bec09d387a50303e6b0a6341a982935">fuzzuf::algorithm::vuzzer::VUzzerMutator::SingleCrossOver</a></div><div class="ttdeci">std::pair&lt; std::shared_ptr&lt; ExecInput &gt;, std::shared_ptr&lt; ExecInput &gt; &gt; SingleCrossOver(const ExecInput &amp;target)</div><div class="ttdoc">Cut the two inputs at each offsets and swap them.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00483">vuzzer_mutator.cpp:483</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_ad9f8fe3d1871502a49b216036028373b"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ad9f8fe3d1871502a49b216036028373b">fuzzuf::algorithm::vuzzer::VUzzerMutator::RaiseSingleRandom</a></div><div class="ttdeci">void RaiseSingleRandom()</div><div class="ttdoc">Increase each bytes at random offsets.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00276">vuzzer_mutator.cpp:276</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_ac62a3c38b34a576515f1c0cc674129cd"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac62a3c38b34a576515f1c0cc674129cd">fuzzuf::algorithm::vuzzer::VUzzerMutator::LowerSingleRandom</a></div><div class="ttdeci">void LowerSingleRandom()</div><div class="ttdoc">Decrease each bytes at random offsets.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00264">vuzzer_mutator.cpp:264</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a61e11ab6dd06c1ebbb2bf7e1efce14d0"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a61e11ab6dd06c1ebbb2bf7e1efce14d0">fuzzuf::algorithm::vuzzer::VUzzerMutator::DoubleCrossOver</a></div><div class="ttdeci">std::pair&lt; std::shared_ptr&lt; ExecInput &gt;, std::shared_ptr&lt; ExecInput &gt; &gt; DoubleCrossOver(const ExecInput &amp;target)</div><div class="ttdoc">Pick up subsets from two inputs and swap them.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00552">vuzzer_mutator.cpp:552</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator_html_a7bec09d387a50303e6b0a6341a982935"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a7bec09d387a50303e6b0a6341a982935">fuzzuf::algorithm::vuzzer::VUzzerMutator::SingleCrossOver</a></div><div class="ttdeci">std::pair&lt; std::shared_ptr&lt; ExecInput &gt;, std::shared_ptr&lt; ExecInput &gt; &gt; SingleCrossOver(const ExecInput &amp;target)</div><div class="ttdoc">Cut the two inputs at each offsets and swap them.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__mutator_8cpp_source.html#l00516">vuzzer_mutator.cpp:516</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

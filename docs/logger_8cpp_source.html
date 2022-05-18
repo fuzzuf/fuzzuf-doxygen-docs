@@ -98,7 +98,7 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">case</span> Logger::Flc:</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&quot;Flc&quot;</span>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">throw</span> exceptions::logger_error(Util::StrPrintf(<span class="stringliteral">&quot;Unknown Logger enum value: %d&quot;</span>, v), __FILE__, __LINE__);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">throw</span> exceptions::logger_error(fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;Unknown Logger enum value: %d&quot;</span>, v), __FILE__, __LINE__);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->

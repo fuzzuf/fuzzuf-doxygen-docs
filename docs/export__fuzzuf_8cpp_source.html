@@ -116,7 +116,7 @@ $(function() {
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      .def(<span class="stringliteral">&quot;get_buf&quot;</span>, &amp;PySeed::GetBuf)</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      .def(<span class="stringliteral">&quot;get_feedback&quot;</span>, &amp;PySeed::GetFeedback)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      .def(<span class="stringliteral">&quot;__repr__&quot;</span>, [](<span class="keyword">const</span> <a class="code" href="classPySeed.html">PySeed</a> &amp;<span class="keyword">self</span>) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> Util::StrPrintf(<span class="stringliteral">&quot;Seed(id=%ld, ...)&quot;</span>, <span class="keyword">self</span>.GetID());</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;Seed(id=%ld, ...)&quot;</span>, <span class="keyword">self</span>.GetID());</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      });</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// 後方互換性のためPython側の&quot;get_trace&quot;という古い名前はget_bb_traceにしない（一旦）</span></div>
@@ -150,9 +150,9 @@ $(function() {
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      .def(<span class="stringliteral">&quot;add_seed&quot;</span>, &amp;PythonFuzzer::AddSeed)</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      .def(<span class="stringliteral">&quot;get_seed_ids&quot;</span>, &amp;PythonFuzzer::GetSeedIDs)</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      .def(<span class="stringliteral">&quot;__repr__&quot;</span>, [](<span class="keyword">const</span> <a class="code" href="classPythonFuzzer.html">PythonFuzzer</a> &amp; <span class="comment">/*f*/</span>) { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Fuzzer()&quot;</span>; });</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  f.def(<span class="stringliteral">&quot;init_logger&quot;</span>, &amp;Util::init_logger);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  f.def(<span class="stringliteral">&quot;init_logger&quot;</span>, &amp;fuzzuf::utils::init_logger);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  f.def(<span class="stringliteral">&quot;log&quot;</span>, [](<span class="keyword">const</span> std::string &amp;tag, <span class="keyword">const</span> std::string &amp;data) -&gt; <span class="keywordtype">bool</span> {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> Util::log(std::string(tag), std::string(data)) ==</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> fuzzuf::utils::log(std::string(tag), std::string(data)) ==</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;           fuzzuf::status_t::OK;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  });</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#if !((PYBIND11_VERSION_MAJOR == 2 &amp;&amp; PYBIND11_VERSION_MINOR &gt;= 2) ||          \</span></div>

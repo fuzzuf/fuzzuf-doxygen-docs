@@ -91,10 +91,10 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;cryptopp/hex.h&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/get_hash.hpp&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;std::string GetSHA1HashFromFile(std::string path, u32 len) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> fd = Util::OpenFile(path, O_RDONLY);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(path, O_RDONLY);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    u8 *buf = <span class="keyword">new</span> u8[len];</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    Util::ReadFile(fd, buf, len);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    Util::CloseFile(fd);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    fuzzuf::utils::ReadFile(fd, buf, len);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    CryptoPP::SHA1 sha1;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::string hash = <span class="stringliteral">&quot;&quot;</span>;</div>

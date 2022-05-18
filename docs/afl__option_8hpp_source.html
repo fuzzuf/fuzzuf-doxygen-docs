@@ -406,8 +406,8 @@ $(function() {
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment">/* Maximum dictionary token size (-x), in bytes: */</span></div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;constexpr u32 GetMaxDictFile(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordflow">return</span> 128;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;constexpr u32 GetMaxDictFile( AFLStateTemplate&lt;Testcase&gt; &amp;state ) { </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordflow">return</span> state.extras.empty() ? 0u : u32( state.extras.back().data.size() );</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;}</div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment">/* Length limits for auto-detected dictionary tokens: */</span></div>

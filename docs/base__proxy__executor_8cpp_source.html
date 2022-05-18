@@ -203,12 +203,12 @@ $(function() {
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">if</span> (input_fd != -1) {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        Util::CloseFile(input_fd);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        fuzzuf::utils::CloseFile(input_fd);</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        input_fd = -1;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">if</span> (null_fd != -1) {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        Util::CloseFile(null_fd);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        fuzzuf::utils::CloseFile(null_fd);</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        null_fd = -1;</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
@@ -265,12 +265,12 @@ $(function() {
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">if</span> (forksrv_read_fd != -1) {</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        Util::CloseFile(forksrv_read_fd);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        fuzzuf::utils::CloseFile(forksrv_read_fd);</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        forksrv_read_fd = -1;</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    }</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordflow">if</span> (forksrv_write_fd != -1) {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        Util::CloseFile(forksrv_write_fd);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        fuzzuf::utils::CloseFile(forksrv_write_fd);</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        forksrv_write_fd = -1;</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    }</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
@@ -431,10 +431,10 @@ $(function() {
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        <span class="comment">// WriteFile, ReadFile throw exception if writing or reading couldn&#39;t consume specified bytes.</span></div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        <span class="keywordflow">try</span> {</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            <span class="comment">// FIXME: When persistent mode is implemented, this tmp must be set to the value that represent if the last execution failed for timeout.</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            Util::WriteFile(forksrv_write_fd, tmp, 4);</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            fuzzuf::utils::WriteFile(forksrv_write_fd, tmp, 4);</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            read_buffer.resize( 4u );</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            Util::ReadFile( forksrv_read_fd, read_buffer.data(), 4u, <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            fuzzuf::utils::ReadFile( forksrv_read_fd, read_buffer.data(), 4u, <span class="keyword">false</span> );</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160; </div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            epoll_event event;</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            <span class="keyword">auto</span> left_ms = timeout_ms;</div>
@@ -514,7 +514,7 @@ $(function() {
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            }</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        }</div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        child_pid = Util::Fork();</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        child_pid = fuzzuf::utils::Fork();</div>
 <div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        <span class="keywordflow">if</span> (child_pid &lt; 0) ERROR(<span class="stringliteral">&quot;fork() failed&quot;</span>);</div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;        <span class="keywordflow">if</span> (!child_pid) {</div>
@@ -577,7 +577,7 @@ $(function() {
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        <span class="keywordflow">if</span>( read_buffer.size() &lt; 8u ) {</div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            std::size_t cur_size = read_buffer.size();</div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            read_buffer.resize( read_size );</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            Util::ReadFile(</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            fuzzuf::utils::ReadFile(</div>
 <div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                    forksrv_read_fd,</div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;                    std::next( read_buffer.data(), cur_size ),</div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                    read_size - cur_size,</div>
@@ -826,7 +826,7 @@ $(function() {
 <div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;        0);</div>
 <div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160; </div>
 <div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;    setenv(<span class="stringliteral">&quot;MSAN_OPTIONS&quot;</span>,</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;        Util::StrPrintf(</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;        fuzzuf::utils::StrPrintf(</div>
 <div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;           <span class="stringliteral">&quot;exit_code=%d:&quot;</span></div>
 <div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;           <span class="stringliteral">&quot;symbolize=0:&quot;</span></div>
 <div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;           <span class="stringliteral">&quot;abort_on_error=1:&quot;</span></div>
@@ -1011,7 +1011,7 @@ $(function() {
 <div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;    <span class="comment">// The handshake is sent from remote on launched.</span></div>
 <div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;    u8 tmp[4];</div>
 <div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;    u32 time_limit = 10000;</div>
-<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;    u32 res = Util::ReadFileTimed(forksrv_read_fd, &amp;tmp, 4, time_limit);</div>
+<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;    u32 res = fuzzuf::utils::ReadFileTimed(forksrv_read_fd, &amp;tmp, 4, time_limit);</div>
 <div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160; </div>
 <div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;    <span class="comment">// FIXME: There are various reason to fail fork server, and as the responses varies and identifiable, it is more decent to classify them.</span></div>
 <div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160;    <span class="keywordflow">if</span> (res == 0 || res &gt; time_limit) { </div>

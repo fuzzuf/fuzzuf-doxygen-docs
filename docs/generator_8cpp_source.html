@@ -170,13 +170,13 @@ $(function() {
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span> (store) {</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="comment">/* Write to file */</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="keywordtype">int</span> fd = Util::OpenFile(</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        Util::StrPrintf(<span class="stringliteral">&quot;corpus/%ld&quot;</span>, i+1),</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;corpus/%ld&quot;</span>, i+1),</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        O_WRONLY | O_CREAT | O_TRUNC,</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        S_IWUSR | S_IRUSR <span class="comment">// 0600</span></div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      );</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      Util::WriteFile(fd, buffer.data(), buffer.size());</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      Util::CloseFile(fd);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      fuzzuf::utils::WriteFile(fd, buffer.data(), buffer.size());</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="comment">/* Write to stdout */</span></div>

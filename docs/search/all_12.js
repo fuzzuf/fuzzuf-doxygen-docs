@@ -13,7 +13,7 @@ var searchData=
   ['selectseedtemplate_890',['SelectSeedTemplate',['../structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1other_1_1SelectSeedTemplate.html',1,'fuzzuf::algorithm::afl::routine::other']]],
   ['sequential_891',['Sequential',['../structfuzzuf_1_1utils_1_1not__random_1_1Sequential.html',1,'fuzzuf::utils::not_random::Sequential&lt; T, Enable &gt;'],['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Sequential.html',1,'fuzzuf::algorithm::libfuzzer::Sequential']]],
   ['sequential_3c_20t_2c_20std_3a_3aenable_5fif_5ft_3c_20std_3a_3ais_5fintegral_5fv_3c_20t_20_3e_20_26_26std_3a_3ais_5funsigned_5fv_3c_20t_20_3e_20_3e_20_3e_892',['Sequential&lt; T, std::enable_if_t&lt; std::is_integral_v&lt; T &gt; &amp;&amp;std::is_unsigned_v&lt; T &gt; &gt; &gt;',['../classfuzzuf_1_1utils_1_1not__random_1_1Sequential_3_01T_00_01std_1_1enable__if__t_3_01std_1_1is_2236aaff2675b36aa4617d4bb81c459a.html',1,'fuzzuf::utils::not_random']]],
-  ['set_5fsegv_5fhandler_893',['set_segv_handler',['../classUtil_1_1set__segv__handler.html',1,'Util']]],
+  ['set_5fsegv_5fhandler_893',['set_segv_handler',['../classfuzzuf_1_1utils_1_1set__segv__handler.html',1,'fuzzuf::utils']]],
   ['setter_2ehpp_894',['setter.hpp',['../setter_8hpp.html',1,'']]],
   ['setting_2ehpp_895',['setting.hpp',['../setting_8hpp.html',1,'']]],
   ['setup_5fexecution_5fenvironment_2ehpp_896',['setup_execution_environment.hpp',['../setup__execution__environment_8hpp.html',1,'']]],

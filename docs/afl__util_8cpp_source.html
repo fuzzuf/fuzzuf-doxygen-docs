@@ -111,7 +111,7 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">static</span> u32 rand_cnt;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (rand_fd != -1 &amp;&amp; unlikely(!rand_cnt--)) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        u32 seed[2];</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        Util::ReadFile(rand_fd, &amp;seed, <span class="keyword">sizeof</span>(seed));</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        fuzzuf::utils::ReadFile(rand_fd, &amp;seed, <span class="keyword">sizeof</span>(seed));</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        srandom(seed[0]);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">using</span> option::AFLTag;</div>
@@ -126,7 +126,7 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;std::string DescribeInteger(u64 val) {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define CHK_FORMAT(_divisor, _limit_mult, _fmt, _cast) do { \</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">        if (val &lt; (_divisor) * (_limit_mult)) { \</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">            return Util::StrPrintf(_fmt, ((_cast)val) / (_divisor)); \</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">            return fuzzuf::utils::StrPrintf(_fmt, ((_cast)val) / (_divisor)); \</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">        } \</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">    } while (0)</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
@@ -172,11 +172,11 @@ $(function() {
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;std::string DescribeFloat(<span class="keywordtype">double</span> val) {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">if</span> (val &lt; 99.995) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">return</span> Util::StrPrintf(<span class="stringliteral">&quot;%0.02f&quot;</span>, val);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">return</span> fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%0.02f&quot;</span>, val);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (val &lt; 999.95) {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> Util::StrPrintf(<span class="stringliteral">&quot;%0.01f&quot;</span>, val);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%0.01f&quot;</span>, val);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">return</span> DescribeInteger((u64)val);</div>
@@ -238,7 +238,7 @@ $(function() {
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  t_m = (delta / 1000 / 60) % 60;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  t_s = (delta / 1000) % 60;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordflow">return</span> Util::StrPrintf(<span class="stringliteral">&quot;%s days, %u hrs, %u min, %u sec&quot;</span>, </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordflow">return</span> fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s days, %u hrs, %u min, %u sec&quot;</span>, </div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                            DescribeInteger(t_d).c_str(), t_h, t_m, t_s);</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>

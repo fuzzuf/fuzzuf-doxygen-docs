@@ -132,14 +132,14 @@ $(function() {
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    afl::util::DescribeInteger(mut_cnt), <span class="comment">// Number of mutation</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    afl::util::DescribeInteger(seed)     <span class="comment">// Seed</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  };</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  Util::ExecuteCommand(cmd);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  fuzzuf::utils::ExecuteCommand(cmd);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">/* Add generated files to queue */</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; mut_cnt; n++) {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    state.stage_cur++;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">/* Create path string of output js and type files */</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    fs::path path_js = Util::StrPrintf(<span class="stringliteral">&quot;%s/%d.js&quot;</span>,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    fs::path path_js = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/%d.js&quot;</span>,</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                       path_mutate.c_str(), n);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    fs::path path_type = path_js.string() + <span class="stringliteral">&quot;.t&quot;</span>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
@@ -156,22 +156,22 @@ $(function() {
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">/* Load JS file */</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    fd = Util::OpenFile(path_js.string(), O_RDONLY);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    fd = fuzzuf::utils::OpenFile(path_js.string(), O_RDONLY);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    buf_js = <span class="keyword">static_cast&lt;</span>u8*<span class="keyword">&gt;</span>(</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      mmap(<span class="keyword">nullptr</span>, len_js, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0)</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    );</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    Util::CloseFile(fd);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">if</span> (buf_js == MAP_FAILED) {</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      ERROR(<span class="stringliteral">&quot;Unable to mmap &#39;%s&#39; : %s&quot;</span>, path_js.c_str(), strerror(errno));</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      }</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">/* Load type file */</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    fd = Util::OpenFile(path_type.string(), O_RDONLY);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    fd = fuzzuf::utils::OpenFile(path_type.string(), O_RDONLY);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    buf_ty = <span class="keyword">static_cast&lt;</span>u8*<span class="keyword">&gt;</span>(</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      mmap(<span class="keyword">nullptr</span>, len_ty, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0)</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    );</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    Util::CloseFile(fd);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span> (buf_ty == MAP_FAILED) {</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      ERROR(<span class="stringliteral">&quot;Unable to mmap &#39;%s&#39; : %s&quot;</span>, path_type.c_str(), strerror(errno));</div>

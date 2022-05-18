@@ -269,7 +269,7 @@ $(function() {
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="stringliteral">  </span><span class="comment">// Splits {A:a} or {A} into A and maybe a</span></div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">if</span> (!std::regex_match(nonterm, m, SPLITTER)) {</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordflow">throw</span> exceptions::fuzzuf_runtime_error(</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;      Util::StrPrintf(<span class="stringliteral">&quot;Could not interpret Nonterminal %s. &quot;</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;      fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;Could not interpret Nonterminal %s. &quot;</span></div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                      <span class="stringliteral">&quot;Nonterminal Descriptions need to match &quot;</span></div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                      <span class="stringliteral">&quot;start with a capital letter and can only &quot;</span></div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                      <span class="stringliteral">&quot;contain [a-zA-Z_-0-9]&quot;</span>, nonterm.c_str()),</div>

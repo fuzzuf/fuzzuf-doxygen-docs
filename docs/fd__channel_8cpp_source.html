@@ -95,10 +95,10 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// Write exact `size` bytes</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;ssize_t FdChannel::Send(<span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> size, <span class="keyword">const</span> <span class="keywordtype">char</span>* comment) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    ssize_t nbytes = Util::write_n(forksrv_write_fd, buf, size);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    ssize_t nbytes = fuzzuf::utils::write_n(forksrv_write_fd, buf, size);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">if</span> (nbytes &lt; (ssize_t) size) {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">throw</span> fuzzuf::utils::errno_to_system_error(</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            errno, Util::StrPrintf(<span class="stringliteral">&quot;[FdChannel] Failed to send: %s (Requested %d bytes, Sent %d bytes)&quot;</span>, comment, size, nbytes));</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            errno, fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;[FdChannel] Failed to send: %s (Requested %d bytes, Sent %d bytes)&quot;</span>, comment, size, nbytes));</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> nbytes;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
@@ -106,10 +106,10 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// Read exact `size` bytes</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// Recieved data to be stored to user allocated pointer `buf`</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;ssize_t FdChannel::Recv(<span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> size, <span class="keyword">const</span> <span class="keywordtype">char</span>* comment) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    ssize_t nbytes = Util::read_n(forksrv_read_fd, buf, size, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    ssize_t nbytes = fuzzuf::utils::read_n(forksrv_read_fd, buf, size, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span> (nbytes &lt; (ssize_t) size) {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">throw</span> fuzzuf::utils::errno_to_system_error(</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            errno, Util::StrPrintf(<span class="stringliteral">&quot;[FdChannel] Failed to recieve: %s (Requested %d bytes, Recieved %d bytes)&quot;</span>, comment, size, nbytes));</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            errno, fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;[FdChannel] Failed to recieve: %s (Requested %d bytes, Recieved %d bytes)&quot;</span>, comment, size, nbytes));</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> nbytes;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
@@ -218,7 +218,7 @@ $(function() {
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        DEBUG(<span class="stringliteral">&quot;[*] [FdChannel] pargv[0]=\&quot;%s\&quot;: pid=%d\n&quot;</span>, pargv[0], getpid());</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="comment">// FIXME: 無条件で標準（エラ）出力をクローズ。標準入出力を記録する機能が死んでいるのはフェーズ3で直す</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordtype">int</span> null_fd = Util::OpenFile(<span class="stringliteral">&quot;/dev/null&quot;</span>, O_RDONLY | O_CLOEXEC);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordtype">int</span> null_fd = fuzzuf::utils::OpenFile(<span class="stringliteral">&quot;/dev/null&quot;</span>, O_RDONLY | O_CLOEXEC);</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordtype">int</span> stdout_fd = dup(STDOUT_FILENO);</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordtype">int</span> stderr_fd = dup(STDERR_FILENO);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        fcntl(stdout_fd, F_SETFD, O_CLOEXEC);</div>

@@ -120,11 +120,11 @@ $(function() {
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    : setting( setting ),</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      executor( executor ),</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      input_set(),</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      rand_fd( Util::OpenFile(<span class="stringliteral">&quot;/dev/urandom&quot;</span>, O_RDONLY | O_CLOEXEC) ),</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      rand_fd( fuzzuf::utils::OpenFile(<span class="stringliteral">&quot;/dev/urandom&quot;</span>, O_RDONLY | O_CLOEXEC) ),</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="comment">// This is a temporary implementation. Change the implementation properly if</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="comment">// the value need to be specified from user side.</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      cpu_core_count(Util::GetCpuCore()),</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      cpu_aff(Util::BindCpu(cpu_core_count, setting-&gt;cpuid_to_bind)),</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      cpu_core_count(fuzzuf::utils::GetCpuCore()),</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      cpu_aff(fuzzuf::utils::BindCpu(cpu_core_count, setting-&gt;cpuid_to_bind)),</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      mutop_optimizer(std::move(_mutop_optimizer)),</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      should_construct_auto_dict(false)</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
@@ -147,7 +147,7 @@ $(function() {
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;AFLStateTemplate&lt;Testcase&gt;::~AFLStateTemplate() {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">if</span> (rand_fd != -1) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        Util::CloseFile(rand_fd);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        fuzzuf::utils::CloseFile(rand_fd);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        rand_fd = -1;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
@@ -234,7 +234,7 @@ $(function() {
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">bool</span> var_detected = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    u64 start_us = Util::GetCurTimeUs();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    u64 start_us = fuzzuf::utils::GetCurTimeUs();</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    u64 stop_us;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">for</span> (stage_cur=0; stage_cur &lt; stage_max; stage_cur++) {</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
@@ -292,7 +292,7 @@ $(function() {
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        }</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    stop_us = Util::GetCurTimeUs();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    stop_us = fuzzuf::utils::GetCurTimeUs();</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    total_cal_us += stop_us - start_us;</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    total_cal_cycles += stage_max;</div>
@@ -328,7 +328,7 @@ $(function() {
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="comment">/* Mark variable paths. */</span></div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">if</span> (var_detected) {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        var_byte_count = Util::CountBytes(&amp;var_bytes[0], var_bytes.size());</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        var_byte_count = fuzzuf::utils::CountBytes(&amp;var_bytes[0], var_bytes.size());</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">if</span> (!testcase.var_behavior) {</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            MarkAsVariable(testcase);</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            queued_variable++;</div>
@@ -371,7 +371,7 @@ $(function() {
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    queued_paths++;</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    pending_not_fuzzed++;</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    cycles_wo_finds = 0;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    last_path_time = Util::GetCurTimeMs();</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    last_path_time = fuzzuf::utils::GetCurTimeMs();</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordflow">return</span> testcase;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;}</div>
@@ -463,13 +463,13 @@ $(function() {
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        }</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        <span class="keywordflow">if</span> (!setting-&gt;simple_files) {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            fn = Util::StrPrintf(<span class="stringliteral">&quot;%s/queue/id:%06u,%s&quot;</span>,</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            fn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/queue/id:%06u,%s&quot;</span>,</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                                    setting-&gt;out_dir.c_str(),</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                                    queued_paths,</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                                    routine::update::DescribeOp(*<span class="keyword">this</span>, hnb).c_str()</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                                );</div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            fn = Util::StrPrintf(<span class="stringliteral">&quot;%s/queue/id_%06u&quot;</span>,</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            fn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/queue/id_%06u&quot;</span>,</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                                    setting-&gt;out_dir.c_str(),</div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                                    queued_paths</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                                );</div>
@@ -569,20 +569,20 @@ $(function() {
 <div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        }</div>
 <div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; </div>
 <div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        <span class="keywordflow">if</span> (!setting-&gt;simple_files) {</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;            fn = Util::StrPrintf(<span class="stringliteral">&quot;%s/hangs/id:%06llu,%s&quot;</span>,</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;            fn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/hangs/id:%06llu,%s&quot;</span>,</div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;                                    setting-&gt;out_dir.c_str(),</div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                                    unique_hangs,</div>
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                                    routine::update::DescribeOp(*<span class="keyword">this</span>, 0).c_str()</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;                                );</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            fn = Util::StrPrintf(<span class="stringliteral">&quot;%s/hangs/id_%06llu&quot;</span>,</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            fn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/hangs/id_%06llu&quot;</span>,</div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;                                    setting-&gt;out_dir.c_str(),</div>
 <div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                                    unique_hangs</div>
 <div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                                );</div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        }</div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
 <div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        unique_hangs++;</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        last_hang_time = Util::GetCurTimeMs();</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        last_hang_time = fuzzuf::utils::GetCurTimeMs();</div>
 <div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160; </div>
 <div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    <span class="keywordflow">case</span> PUTExitReasonType::FAULT_CRASH:</div>
@@ -632,14 +632,14 @@ $(function() {
 <div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160; </div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        <span class="keywordflow">if</span> (!setting-&gt;simple_files) {</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            fn = Util::StrPrintf(<span class="stringliteral">&quot;%s/crashes/id:%06llu,sig:%02u,%s&quot;</span>,</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            fn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/crashes/id:%06llu,sig:%02u,%s&quot;</span>,</div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;                                    setting-&gt;out_dir.c_str(),</div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;                                    unique_crashes,</div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                                    exit_status.signal,</div>
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;                                    routine::update::DescribeOp(*<span class="keyword">this</span>, 0).c_str()</div>
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;                                );</div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            fn = Util::StrPrintf(<span class="stringliteral">&quot;%s/hangs/id_%06llu_%02u&quot;</span>,</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            fn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/hangs/id_%06llu_%02u&quot;</span>,</div>
 <div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                                    setting-&gt;out_dir.c_str(),</div>
 <div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                                    unique_crashes,</div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;                                    exit_status.signal</div>
@@ -648,7 +648,7 @@ $(function() {
 <div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160; </div>
 <div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        unique_crashes++;</div>
 <div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160; </div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        last_crash_time = Util::GetCurTimeMs();</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        last_crash_time = fuzzuf::utils::GetCurTimeMs();</div>
 <div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        last_crash_execs = total_execs;</div>
 <div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160; </div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        <span class="keywordflow">break</span>;</div>
@@ -663,9 +663,9 @@ $(function() {
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;    <span class="comment">/* If we&#39;re here, we apparently want to save the crash or hang</span></div>
 <div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;<span class="comment">       test case, too. */</span></div>
 <div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160; </div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    <span class="keywordtype">int</span> fd = Util::OpenFile(fn, O_WRONLY | O_CREAT | O_EXCL, 0600);</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    Util::WriteFile(fd, buf, len);</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    Util::CloseFile(fd);</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(fn, O_WRONLY | O_CREAT | O_EXCL, 0600);</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    fuzzuf::utils::WriteFile(fd, buf, len);</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160; </div>
 <div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    <span class="keywordflow">return</span> keeping;</div>
 <div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;}</div>
@@ -802,11 +802,11 @@ $(function() {
 <div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; input = *testcase.input;</div>
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160; </div>
 <div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;    std::string fn = input.GetPath().filename().string();</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;    fn = Util::StrPrintf(<span class="stringliteral">&quot;%s/queue/.state/deterministic_done/%s&quot;</span>,</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;    fn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/queue/.state/deterministic_done/%s&quot;</span>,</div>
 <div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;            setting-&gt;out_dir.c_str(), fn.c_str());</div>
 <div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160; </div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    <span class="keywordtype">int</span> fd = Util::OpenFile(fn, O_WRONLY | O_CREAT | O_EXCL, 0600);</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    Util::CloseFile(fd);</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(fn, O_WRONLY | O_CREAT | O_EXCL, 0600);</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160; </div>
 <div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    testcase.passed_det = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;}</div>
@@ -816,13 +816,13 @@ $(function() {
 <div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; input = *testcase.input;</div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160; </div>
 <div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;    std::string fn = input.GetPath().filename().string();</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    std::string ldest = Util::StrPrintf(<span class="stringliteral">&quot;../../%s&quot;</span>, fn.c_str());</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;    fn = Util::StrPrintf(<span class="stringliteral">&quot;%s/queue/.state/variable_behavior/%s&quot;</span>,</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    std::string ldest = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;../../%s&quot;</span>, fn.c_str());</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;    fn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/queue/.state/variable_behavior/%s&quot;</span>,</div>
 <div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;            setting-&gt;out_dir.c_str(), fn.c_str());</div>
 <div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160; </div>
 <div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    <span class="keywordflow">if</span> (symlink(ldest.c_str(), fn.c_str()) == -1) {</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;        <span class="keywordtype">int</span> fd = Util::OpenFile(fn, O_WRONLY | O_CREAT | O_EXCL, 0600);</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;        Util::CloseFile(fd);</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;        <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(fn, O_WRONLY | O_CREAT | O_EXCL, 0600);</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;        fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;    }</div>
 <div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160; </div>
 <div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;    testcase.var_behavior = <span class="keyword">true</span>;</div>
@@ -837,12 +837,12 @@ $(function() {
 <div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    testcase.fs_redundant = val;</div>
 <div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160; </div>
 <div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    std::string fn = input.GetPath().filename().string();</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    fn = Util::StrPrintf(<span class="stringliteral">&quot;%s/queue/.state/redundant_edges/%s&quot;</span>,</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    fn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/queue/.state/redundant_edges/%s&quot;</span>,</div>
 <div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;            setting-&gt;out_dir.c_str(), fn.c_str());</div>
 <div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160; </div>
 <div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    <span class="keywordflow">if</span> (val) {</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;        <span class="keywordtype">int</span> fd = Util::OpenFile(fn, O_WRONLY | O_CREAT | O_EXCL, 0600);</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;        Util::CloseFile(fd);</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;        <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(fn, O_WRONLY | O_CREAT | O_EXCL, 0600);</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;        fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;        <span class="keywordflow">if</span> (unlink(fn.c_str())) ERROR(<span class="stringliteral">&quot;Unable to remove &#39;%s&#39;&quot;</span>, fn.c_str());</div>
 <div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;    }</div>
@@ -899,7 +899,7 @@ $(function() {
 <div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
 <div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;<span class="keywordtype">void</span> AFLStateTemplate&lt;Testcase&gt;::WriteStatsFile(<span class="keywordtype">double</span> bitmap_cvg, <span class="keywordtype">double</span> stability, <span class="keywordtype">double</span> eps) {</div>
 <div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;    <span class="keyword">auto</span> fn = setting-&gt;out_dir / <span class="stringliteral">&quot;fuzzer_stats&quot;</span>;</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    <span class="keywordtype">int</span> fd = Util::OpenFile(fn.string(), O_WRONLY | O_CREAT | O_TRUNC, 0600);</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(fn.string(), O_WRONLY | O_CREAT | O_TRUNC, 0600);</div>
 <div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;    <span class="keywordflow">if</span> (fd &lt; 0) ERROR(<span class="stringliteral">&quot;Unable to create &#39;%s&#39;&quot;</span>, fn.c_str());</div>
 <div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160; </div>
 <div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;    FILE* f = fdopen(fd, <span class="stringliteral">&quot;w&quot;</span>);</div>
@@ -947,7 +947,7 @@ $(function() {
 <div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;               <span class="stringliteral">&quot;target_mode       : %s%s%s%s%s%s%s\n&quot;</span></div>
 <div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;               <span class="stringliteral">&quot;command_line      : %s\n&quot;</span></div>
 <div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;               <span class="stringliteral">&quot;slowest_exec_ms   : %llu\n&quot;</span>,</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;               start_time / 1000, Util::GetCurTimeMs() / 1000, getpid(),</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;               start_time / 1000, fuzzuf::utils::GetCurTimeMs() / 1000, getpid(),</div>
 <div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;               queue_cycle ? (queue_cycle - 1) : 0, total_execs, eps,</div>
 <div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;               queued_paths, queued_favored, queued_discovered, queued_imported,</div>
 <div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;               max_depth, current_entry, pending_favored, pending_not_fuzzed,</div>
@@ -995,13 +995,13 @@ $(function() {
 <div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;    <span class="keywordflow">for</span> (u32 i=0; i&lt;lim; i++) {</div>
 <div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;        <span class="keyword">auto</span> fn =   setting-&gt;out_dir</div>
 <div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;                  / <span class="stringliteral">&quot;queue/.state/auto_extras&quot;</span></div>
-<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;                  / Util::StrPrintf(<span class="stringliteral">&quot;auto_%06u&quot;</span>, i);</div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;                  / fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;auto_%06u&quot;</span>, i);</div>
 <div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160; </div>
-<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;        <span class="keywordtype">int</span> fd = Util::OpenFile(fn.string(), O_WRONLY | O_CREAT | O_TRUNC, 0600);</div>
+<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;        <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(fn.string(), O_WRONLY | O_CREAT | O_TRUNC, 0600);</div>
 <div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;        <span class="keywordflow">if</span> (fd &lt; 0) ERROR(<span class="stringliteral">&quot;Unable to create &#39;%s&#39;&quot;</span>, fn.c_str());</div>
 <div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160; </div>
-<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;        Util::WriteFile(fd, &amp;a_extras[i].data[0], a_extras[i].data.size());</div>
-<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;        Util::CloseFile(fd);</div>
+<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;        fuzzuf::utils::WriteFile(fd, &amp;a_extras[i].data[0], a_extras[i].data.size());</div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;        fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;    }</div>
 <div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;}</div>
 <div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160; </div>
@@ -1016,23 +1016,23 @@ $(function() {
 <div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160; </div>
 <div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;    <span class="keyword">auto</span> fn = setting-&gt;out_dir  / <span class="stringliteral">&quot;fuzz_bitmap&quot;</span>;</div>
 <div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160; </div>
-<div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;    <span class="keywordtype">int</span> fd = Util::OpenFile(fn.string(), O_WRONLY | O_CREAT | O_TRUNC, 0600);</div>
+<div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;    <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(fn.string(), O_WRONLY | O_CREAT | O_TRUNC, 0600);</div>
 <div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;    <span class="keywordflow">if</span> (fd &lt; 0) ERROR(<span class="stringliteral">&quot;Unable to create &#39;%s&#39;&quot;</span>, fn.c_str());</div>
 <div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160; </div>
-<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;    Util::WriteFile(fd, virgin_bits.data(), option::GetMapSize&lt;Tag&gt;());</div>
-<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;    Util::CloseFile(fd);</div>
+<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;    fuzzuf::utils::WriteFile(fd, virgin_bits.data(), option::GetMapSize&lt;Tag&gt;());</div>
+<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;    fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;}</div>
 <div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160; </div>
 <div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;<span class="comment">/* Read bitmap from file. This is for the -B option again. */</span></div>
 <div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160; </div>
 <div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
 <div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;<span class="keywordtype">void</span> AFLStateTemplate&lt;Testcase&gt;::ReadBitmap(fs::path fname) {</div>
-<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;    <span class="keywordtype">int</span> fd = Util::OpenFile(fname.string(), O_RDONLY);</div>
+<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;    <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(fname.string(), O_RDONLY);</div>
 <div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;    <span class="keywordflow">if</span> (fd &lt; 0) ERROR(<span class="stringliteral">&quot;Unable to open &#39;%s&#39;&quot;</span>, fname.c_str());</div>
 <div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160; </div>
 <div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;    virgin_bits.resize(option::GetMapSize&lt;Tag&gt;());</div>
-<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;    Util::ReadFile(fd, virgin_bits.data(), option::GetMapSize&lt;Tag&gt;());</div>
-<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;    Util::CloseFile(fd);</div>
+<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;    fuzzuf::utils::ReadFile(fd, virgin_bits.data(), option::GetMapSize&lt;Tag&gt;());</div>
+<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;    fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;}</div>
 <div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160; </div>
 <div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
@@ -1060,7 +1060,7 @@ $(function() {
 <div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160; </div>
 <div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;    fprintf(plot_file,</div>
 <div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160;            <span class="stringliteral">&quot;%llu, %llu, %u, %u, %u, %u, %0.02f%%, %llu, %llu, %u, %0.02f\n&quot;</span>,</div>
-<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;            Util::GetCurTimeMs() / 1000, queue_cycle - 1, current_entry, queued_paths,</div>
+<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;            fuzzuf::utils::GetCurTimeMs() / 1000, queue_cycle - 1, current_entry, queued_paths,</div>
 <div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;            pending_not_fuzzed, pending_favored, bitmap_cvg, unique_crashes,</div>
 <div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;            unique_hangs, max_depth, eps); <span class="comment">/* ignore errors */</span></div>
 <div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160; </div>
@@ -1133,7 +1133,7 @@ $(function() {
 <div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;<span class="comment">       the ordering  of test cases would vary somewhat randomly and would be</span></div>
 <div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;<span class="comment">       difficult to control. */</span></div>
 <div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160; </div>
-<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;    <span class="keywordtype">int</span> nl_cnt = Util::ScanDirAlpha(in_dir.string(), &amp;nl);</div>
+<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;    <span class="keywordtype">int</span> nl_cnt = fuzzuf::utils::ScanDirAlpha(in_dir.string(), &amp;nl);</div>
 <div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;    <span class="keywordflow">if</span> (nl_cnt &lt; 0) {</div>
 <div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160;        MSG(<span class="stringliteral">&quot;\n&quot;</span> cLRD <span class="stringliteral">&quot;[-] &quot;</span> cRST</div>
 <div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160;            <span class="stringliteral">&quot;The input directory does not seem to be valid - try again. The fuzzer needs\n&quot;</span></div>
@@ -1152,8 +1152,8 @@ $(function() {
 <div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i &lt; nl_cnt; i++) {</div>
 <div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;        <span class="keyword">struct </span>stat st;</div>
 <div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160; </div>
-<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;        std::string fn = Util::StrPrintf(<span class="stringliteral">&quot;%s/%s&quot;</span>, in_dir.c_str(), nl[i]-&gt;d_name);</div>
-<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;        std::string dfn = Util::StrPrintf(<span class="stringliteral">&quot;%s/.state/deterministic_done/%s&quot;</span>, in_dir.c_str(), nl[i]-&gt;d_name);</div>
+<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;        std::string fn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/%s&quot;</span>, in_dir.c_str(), nl[i]-&gt;d_name);</div>
+<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;        std::string dfn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/.state/deterministic_done/%s&quot;</span>, in_dir.c_str(), nl[i]-&gt;d_name);</div>
 <div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160; </div>
 <div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;        <span class="keywordtype">bool</span> passed_det = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;        free(nl[i]); <span class="comment">/* not tracked */</span></div>
@@ -1220,7 +1220,7 @@ $(function() {
 <div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;          &amp;&amp; sscanf(rsl.c_str()+3, <span class="stringliteral">&quot;%06u&quot;</span>, &amp;orig_id) == 1</div>
 <div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;          &amp;&amp; orig_id == <span class="keywordtype">id</span>) {</div>
 <div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;            resuming_fuzz = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;            nfn = Util::StrPrintf(<span class="stringliteral">&quot;%s/queue/%s&quot;</span>, setting-&gt;out_dir.c_str(), rsl.c_str());</div>
+<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;            nfn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/queue/%s&quot;</span>, setting-&gt;out_dir.c_str(), rsl.c_str());</div>
 <div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160; </div>
 <div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;            <span class="comment">/* Since we&#39;re at it, let&#39;s also try to find parent and figure out the</span></div>
 <div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;<span class="comment">               appropriate depth for this entry. */</span></div>
@@ -1248,12 +1248,12 @@ $(function() {
 <div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;                <span class="keywordflow">if</span> (pos != std::string::npos) pos += 6;</div>
 <div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;                <span class="keywordflow">else</span> pos = 0;</div>
 <div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160; </div>
-<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;                nfn = Util::StrPrintf(<span class="stringliteral">&quot;%s/queue/id:%06u,orig:%s&quot;</span>,</div>
+<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;                nfn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/queue/id:%06u,orig:%s&quot;</span>,</div>
 <div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;                                        setting-&gt;out_dir.c_str(),</div>
 <div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;                                        <span class="keywordtype">id</span>,</div>
 <div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;                                        rsl.c_str() + pos);</div>
 <div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;                nfn = Util::StrPrintf(<span class="stringliteral">&quot;%s/queue/id_%06u&quot;</span>,</div>
+<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;                nfn = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/queue/id_%06u&quot;</span>,</div>
 <div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;                                        setting-&gt;out_dir.c_str(), <span class="keywordtype">id</span>);</div>
 <div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;            }</div>
 <div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;        }</div>
@@ -1508,7 +1508,7 @@ $(function() {
 <div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160; </div>
 <div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;    <span class="keyword">const</span> u32 MAP_SIZE = GetMapSize&lt;Tag&gt;();</div>
 <div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160; </div>
-<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;    u64 cur_ms = Util::GetCurTimeMs();</div>
+<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;    u64 cur_ms = fuzzuf::utils::GetCurTimeMs();</div>
 <div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160; </div>
 <div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;    <span class="comment">/* If not enough time has passed since last UI update, bail out. */</span></div>
 <div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;    <span class="keywordflow">if</span> (cur_ms - last_ms &lt; 1000 / GetUiTargetHz(*<span class="keyword">this</span>)) <span class="keywordflow">return</span>;</div>
@@ -1540,7 +1540,7 @@ $(function() {
 <div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;    <span class="keywordflow">if</span> (!stats_update_freq) stats_update_freq = 1;</div>
 <div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160; </div>
 <div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;    <span class="comment">/* Do some bitmap stats. */</span></div>
-<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;    u32 t_bytes = Util::CountNon255Bytes(&amp;virgin_bits[0], virgin_bits.size());</div>
+<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;    u32 t_bytes = fuzzuf::utils::CountNon255Bytes(&amp;virgin_bits[0], virgin_bits.size());</div>
 <div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;    <span class="keywordtype">double</span> t_byte_ratio = ((double)t_bytes * 100) / MAP_SIZE;</div>
 <div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160; </div>
 <div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;    <span class="keywordtype">double</span> stab_ratio;</div>
@@ -1574,7 +1574,7 @@ $(function() {
 <div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160;    <span class="keywordflow">if</span> (not_on_tty) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160; </div>
 <div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;    <span class="comment">/* Compute some mildly useful bitmap stats. */</span></div>
-<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;    u32 t_bits = (MAP_SIZE &lt;&lt; 3) - Util::CountBits(&amp;virgin_bits[0], virgin_bits.size());</div>
+<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;    u32 t_bits = (MAP_SIZE &lt;&lt; 3) - fuzzuf::utils::CountBits(&amp;virgin_bits[0], virgin_bits.size());</div>
 <div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160; </div>
 <div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;    <span class="comment">/* Now, for the visuals... */</span></div>
 <div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;    <span class="keywordtype">bool</span> term_too_small = <span class="keyword">false</span>;</div>
@@ -1607,7 +1607,7 @@ $(function() {
 <div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;                        : cYEL <span class="stringliteral">&quot;fuzzuf american fuzzy lop&quot;</span>;</div>
 <div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160; </div>
 <div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;    std::string tmp(banner_pad, <span class="charliteral">&#39; &#39;</span>);</div>
-<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;    tmp += Util::StrPrintf(<span class="stringliteral">&quot;%s &quot;</span> cLCY <span class="stringliteral">&quot;%s&quot;</span> cLGN <span class="stringliteral">&quot; (%s)&quot;</span>,</div>
+<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;    tmp += fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s &quot;</span> cLCY <span class="stringliteral">&quot;%s&quot;</span> cLGN <span class="stringliteral">&quot; (%s)&quot;</span>,</div>
 <div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;                            fuzzer_name, GetVersion(*<span class="keyword">this</span>), use_banner.c_str());</div>
 <div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;    MSG(<span class="stringliteral">&quot;\n%s\n\n&quot;</span>, tmp.c_str());</div>
 <div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160; </div>
@@ -1703,22 +1703,22 @@ $(function() {
 <div class="line"><a name="l01632"></a><span class="lineno"> 1632</span>&#160; </div>
 <div class="line"><a name="l01633"></a><span class="lineno"> 1633</span>&#160;    tmp = DescribeInteger(current_entry);</div>
 <div class="line"><a name="l01634"></a><span class="lineno"> 1634</span>&#160;    <span class="keywordflow">if</span> (!queue_cur.favored) tmp += <span class="charliteral">&#39;*&#39;</span>;</div>
-<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;    tmp += Util::StrPrintf(<span class="stringliteral">&quot; (%0.02f%%)&quot;</span>, ((<span class="keywordtype">double</span>)current_entry * 100) / queued_paths);</div>
+<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;    tmp += fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot; (%0.02f%%)&quot;</span>, ((<span class="keywordtype">double</span>)current_entry * 100) / queued_paths);</div>
 <div class="line"><a name="l01636"></a><span class="lineno"> 1636</span>&#160; </div>
 <div class="line"><a name="l01637"></a><span class="lineno"> 1637</span>&#160;    MSG(bV bSTOP <span class="stringliteral">&quot;  now processing : &quot;</span> cRST <span class="stringliteral">&quot;%-17s &quot;</span> bSTG bV bSTOP, tmp.c_str());</div>
 <div class="line"><a name="l01638"></a><span class="lineno"> 1638</span>&#160; </div>
-<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;    tmp = Util::StrPrintf(<span class="stringliteral">&quot;%0.02f%% / %0.02f%%&quot;</span>,</div>
+<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;    tmp = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%0.02f%% / %0.02f%%&quot;</span>,</div>
 <div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160;                          ((<span class="keywordtype">double</span>)queue_cur.bitmap_size) * 100 / MAP_SIZE, t_byte_ratio);</div>
 <div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160; </div>
 <div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;    MSG(<span class="stringliteral">&quot;    map density : %s%-21s &quot;</span> bSTG bV <span class="stringliteral">&quot;\n&quot;</span>, t_byte_ratio &gt; 70 ? cLRD :</div>
 <div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;         ((t_bytes &lt; 200 &amp;&amp; !setting-&gt;dumb_mode) ? cPIN : cRST), tmp.c_str());</div>
 <div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160; </div>
 <div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160;    tmp = DescribeInteger(cur_skipped_paths);</div>
-<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;    tmp += Util::StrPrintf(<span class="stringliteral">&quot; (%0.02f%%)&quot;</span>, ((<span class="keywordtype">double</span>)cur_skipped_paths * 100) / queued_paths);</div>
+<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;    tmp += fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot; (%0.02f%%)&quot;</span>, ((<span class="keywordtype">double</span>)cur_skipped_paths * 100) / queued_paths);</div>
 <div class="line"><a name="l01647"></a><span class="lineno"> 1647</span>&#160; </div>
 <div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160;    MSG(bV bSTOP <span class="stringliteral">&quot; paths timed out : &quot;</span> cRST <span class="stringliteral">&quot;%-17s &quot;</span> bSTG bV, tmp.c_str());</div>
 <div class="line"><a name="l01649"></a><span class="lineno"> 1649</span>&#160; </div>
-<div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;    tmp = Util::StrPrintf(<span class="stringliteral">&quot;%0.02f bits/tuple&quot;</span>, t_bytes ? (((<span class="keywordtype">double</span>)t_bits) / t_bytes) : 0);</div>
+<div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;    tmp = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%0.02f bits/tuple&quot;</span>, t_bytes ? (((<span class="keywordtype">double</span>)t_bits) / t_bytes) : 0);</div>
 <div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160; </div>
 <div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;    MSG(bSTOP <span class="stringliteral">&quot; count coverage : &quot;</span> cRST <span class="stringliteral">&quot;%-21s &quot;</span> bSTG bV <span class="stringliteral">&quot;\n&quot;</span>, tmp.c_str());</div>
 <div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160; </div>
@@ -1726,7 +1726,7 @@ $(function() {
 <div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160;         <span class="stringliteral">&quot; findings in depth &quot;</span> bSTG bH20 bVL <span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160; </div>
 <div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;    tmp = DescribeInteger(queued_favored);</div>
-<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;    tmp += Util::StrPrintf(<span class="stringliteral">&quot; (%0.02f%%)&quot;</span>, ((<span class="keywordtype">double</span>)queued_favored) * 100 / queued_paths);</div>
+<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;    tmp += fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot; (%0.02f%%)&quot;</span>, ((<span class="keywordtype">double</span>)queued_favored) * 100 / queued_paths);</div>
 <div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160; </div>
 <div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160;    <span class="comment">/* Yeah... it&#39;s still going on... halp? */</span></div>
 <div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160; </div>
@@ -1737,13 +1737,13 @@ $(function() {
 <div class="line"><a name="l01666"></a><span class="lineno"> 1666</span>&#160;        tmp = DescribeInteger(stage_cur) + <span class="stringliteral">&quot;/-&quot;</span>;</div>
 <div class="line"><a name="l01667"></a><span class="lineno"> 1667</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l01668"></a><span class="lineno"> 1668</span>&#160;        tmp = DescribeInteger(stage_cur) + <span class="stringliteral">&quot;/&quot;</span> + DescribeInteger(stage_max);</div>
-<div class="line"><a name="l01669"></a><span class="lineno"> 1669</span>&#160;        tmp += Util::StrPrintf(<span class="stringliteral">&quot; (%0.02f%%)&quot;</span>, ((<span class="keywordtype">double</span>)stage_cur) * 100 / stage_max);</div>
+<div class="line"><a name="l01669"></a><span class="lineno"> 1669</span>&#160;        tmp += fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot; (%0.02f%%)&quot;</span>, ((<span class="keywordtype">double</span>)stage_cur) * 100 / stage_max);</div>
 <div class="line"><a name="l01670"></a><span class="lineno"> 1670</span>&#160;    }</div>
 <div class="line"><a name="l01671"></a><span class="lineno"> 1671</span>&#160; </div>
 <div class="line"><a name="l01672"></a><span class="lineno"> 1672</span>&#160;    MSG(bV bSTOP <span class="stringliteral">&quot; stage execs : &quot;</span> cRST <span class="stringliteral">&quot;%-21s &quot;</span> bSTG bV bSTOP, tmp.c_str());</div>
 <div class="line"><a name="l01673"></a><span class="lineno"> 1673</span>&#160; </div>
 <div class="line"><a name="l01674"></a><span class="lineno"> 1674</span>&#160;    tmp = DescribeInteger(queued_with_cov);</div>
-<div class="line"><a name="l01675"></a><span class="lineno"> 1675</span>&#160;    tmp += Util::StrPrintf(<span class="stringliteral">&quot; (%0.02f%%)&quot;</span>, ((<span class="keywordtype">double</span>)queued_with_cov) * 100 / queued_paths);</div>
+<div class="line"><a name="l01675"></a><span class="lineno"> 1675</span>&#160;    tmp += fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot; (%0.02f%%)&quot;</span>, ((<span class="keywordtype">double</span>)queued_with_cov) * 100 / queued_paths);</div>
 <div class="line"><a name="l01676"></a><span class="lineno"> 1676</span>&#160; </div>
 <div class="line"><a name="l01677"></a><span class="lineno"> 1677</span>&#160;    MSG(<span class="stringliteral">&quot;  new edges on : &quot;</span> cRST <span class="stringliteral">&quot;%-22s &quot;</span> bSTG bV <span class="stringliteral">&quot;\n&quot;</span>, tmp.c_str());</div>
 <div class="line"><a name="l01678"></a><span class="lineno"> 1678</span>&#160; </div>
@@ -1847,7 +1847,7 @@ $(function() {
 <div class="line"><a name="l01776"></a><span class="lineno"> 1776</span>&#160; </div>
 <div class="line"><a name="l01777"></a><span class="lineno"> 1777</span>&#160;    MSG(bV bSTOP <span class="stringliteral">&quot;       havoc : &quot;</span> cRST <span class="stringliteral">&quot;%-37s &quot;</span> bSTG bV bSTOP, tmp.c_str());</div>
 <div class="line"><a name="l01778"></a><span class="lineno"> 1778</span>&#160; </div>
-<div class="line"><a name="l01779"></a><span class="lineno"> 1779</span>&#160;    <span class="keywordflow">if</span> (t_bytes) tmp = Util::StrPrintf(<span class="stringliteral">&quot;%0.02f%%&quot;</span>, stab_ratio);</div>
+<div class="line"><a name="l01779"></a><span class="lineno"> 1779</span>&#160;    <span class="keywordflow">if</span> (t_bytes) tmp = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%0.02f%%&quot;</span>, stab_ratio);</div>
 <div class="line"><a name="l01780"></a><span class="lineno"> 1780</span>&#160;    <span class="keywordflow">else</span> tmp = <span class="stringliteral">&quot;n/a&quot;</span>;</div>
 <div class="line"><a name="l01781"></a><span class="lineno"> 1781</span>&#160; </div>
 <div class="line"><a name="l01782"></a><span class="lineno"> 1782</span>&#160;    MSG(<span class="stringliteral">&quot; stability : %s%-10s &quot;</span> bSTG bV <span class="stringliteral">&quot;\n&quot;</span>, (stab_ratio &lt; 85 &amp;&amp; var_byte_count &gt; 40)</div>
@@ -1857,7 +1857,7 @@ $(function() {
 <div class="line"><a name="l01786"></a><span class="lineno"> 1786</span>&#160;    <span class="keywordflow">if</span> (!bytes_trim_out) {</div>
 <div class="line"><a name="l01787"></a><span class="lineno"> 1787</span>&#160;        tmp = <span class="stringliteral">&quot;n/a, &quot;</span>;</div>
 <div class="line"><a name="l01788"></a><span class="lineno"> 1788</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01789"></a><span class="lineno"> 1789</span>&#160;        tmp = Util::StrPrintf(<span class="stringliteral">&quot;%0.02f%%&quot;</span>,</div>
+<div class="line"><a name="l01789"></a><span class="lineno"> 1789</span>&#160;        tmp = fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%0.02f%%&quot;</span>,</div>
 <div class="line"><a name="l01790"></a><span class="lineno"> 1790</span>&#160;                ((<span class="keywordtype">double</span>)(bytes_trim_in - bytes_trim_out)) * 100 / bytes_trim_in);</div>
 <div class="line"><a name="l01791"></a><span class="lineno"> 1791</span>&#160;        tmp += <span class="stringliteral">&quot;/&quot;</span> + DescribeInteger(trim_execs) + <span class="stringliteral">&quot;, &quot;</span>;</div>
 <div class="line"><a name="l01792"></a><span class="lineno"> 1792</span>&#160;    }</div>
@@ -1865,7 +1865,7 @@ $(function() {
 <div class="line"><a name="l01794"></a><span class="lineno"> 1794</span>&#160;    <span class="keywordflow">if</span> (!blocks_eff_total) {</div>
 <div class="line"><a name="l01795"></a><span class="lineno"> 1795</span>&#160;        tmp += <span class="stringliteral">&quot;n/a&quot;</span>;</div>
 <div class="line"><a name="l01796"></a><span class="lineno"> 1796</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01797"></a><span class="lineno"> 1797</span>&#160;        tmp += Util::StrPrintf(<span class="stringliteral">&quot;%0.02f%%&quot;</span>,</div>
+<div class="line"><a name="l01797"></a><span class="lineno"> 1797</span>&#160;        tmp += fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%0.02f%%&quot;</span>,</div>
 <div class="line"><a name="l01798"></a><span class="lineno"> 1798</span>&#160;                ((<span class="keywordtype">double</span>)(blocks_eff_total - blocks_eff_select)) * 100 / blocks_eff_total);</div>
 <div class="line"><a name="l01799"></a><span class="lineno"> 1799</span>&#160;    }</div>
 <div class="line"><a name="l01800"></a><span class="lineno"> 1800</span>&#160; </div>

@@ -129,21 +129,21 @@ $(function() {
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  tree.UnparseTo(ctx, buffer);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">/* Create file for entry */</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  std::string filepath = Util::StrPrintf(</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  std::string filepath = fuzzuf::utils::StrPrintf(</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="stringliteral">&quot;%s/queue/id:%09ld,er:%d&quot;</span>,</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    _work_dir.c_str(), _current_id, exit_reason</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  );</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">int</span> fd = Util::OpenFile(filepath,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(filepath,</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                          O_WRONLY | O_CREAT | O_TRUNC,</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                          S_IWUSR | S_IRUSR); <span class="comment">// 0600</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">if</span> (fd == -1) {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">throw</span> exceptions::unable_to_create_file(</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      Util::StrPrintf(<span class="stringliteral">&quot;Cannot save tree: %s&quot;</span>, filepath.c_str()),</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;Cannot save tree: %s&quot;</span>, filepath.c_str()),</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      __FILE__, __LINE__</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    );</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  Util::WriteFile(fd, buffer.data(), buffer.size());</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  Util::CloseFile(fd);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  fuzzuf::utils::WriteFile(fd, buffer.data(), buffer.size());</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  fuzzuf::utils::CloseFile(fd);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">/* Add entry to queue */</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keyword">auto</span> new_item = std::make_unique&lt;QueueItem&gt;(</div>
@@ -209,8 +209,8 @@ $(function() {
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  }</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">if</span> (all_zero) {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    Util::DeleteFileOrDirectory(</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      Util::StrPrintf(<span class="stringliteral">&quot;%s/outputs/queue/id:%09ld,er:%d&quot;</span>,</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    fuzzuf::utils::DeleteFileOrDirectory(</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;%s/outputs/queue/id:%09ld,er:%d&quot;</span>,</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                      _work_dir.c_str(), item-&gt;id, item-&gt;exit_reason)</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    );</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">return</span>;</div>

@@ -162,7 +162,7 @@ $(function() {
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        temp_len( 0 ),</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        splbuf( nullptr ),</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        spl_len( 0 ),</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        rand_fd( Util::OpenFile(<span class="stringliteral">&quot;/dev/urandom&quot;</span>, O_RDONLY | O_CLOEXEC) )</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        rand_fd( fuzzuf::utils::OpenFile(<span class="stringliteral">&quot;/dev/urandom&quot;</span>, O_RDONLY | O_CLOEXEC) )</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;{</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    std::memcpy(outbuf, input.GetBuf(), len);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
@@ -173,7 +173,7 @@ $(function() {
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span> (tmpbuf) <span class="keyword">delete</span>[] tmpbuf;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">if</span> (splbuf) <span class="keyword">delete</span>[] splbuf;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">if</span> (rand_fd != -1) {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      Util::CloseFile(rand_fd);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      fuzzuf::utils::CloseFile(rand_fd);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      rand_fd = -1;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
@@ -329,7 +329,7 @@ $(function() {
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Tag&gt;</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classMutator.html">Mutator&lt;Tag&gt;::Splice</a>(<span class="keyword">const</span> <a class="code" href="classExecInput.html">ExecInput</a>&amp; target) {</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keyword">auto</span> cmp_len = std::min(len, target.GetLen());</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keyword">auto</span> [f_diff, l_diff] = Util::LocateDiffs(outbuf, target.GetBuf(), cmp_len);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keyword">auto</span> [f_diff, l_diff] = fuzzuf::utils::LocateDiffs(outbuf, target.GetBuf(), cmp_len);</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">if</span> (f_diff &lt; 0 || l_diff &lt; 2 || f_diff == l_diff) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>

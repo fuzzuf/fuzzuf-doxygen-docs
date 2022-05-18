@@ -118,18 +118,18 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classExecutor.html#a7e627025178196bbf161df8f35ad41bf">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classExecutor.html#a7e627025178196bbf161df8f35ad41bf">Executor::OpenExecutorDependantFiles</a>() {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    input_fd = Util::OpenFile(path_str_to_write_input, O_RDWR | O_CREAT | O_CLOEXEC, 0600);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    null_fd = Util::OpenFile(<span class="stringliteral">&quot;/dev/null&quot;</span>, O_RDONLY | O_CLOEXEC);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    input_fd = fuzzuf::utils::OpenFile(path_str_to_write_input, O_RDWR | O_CREAT | O_CLOEXEC, 0600);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    null_fd = fuzzuf::utils::OpenFile(<span class="stringliteral">&quot;/dev/null&quot;</span>, O_RDONLY | O_CLOEXEC);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    assert(input_fd &gt; -1 &amp;&amp; null_fd &gt; -1);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classExecutor.html#a16383186c884a4b0f87620ac9308259b">   82</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classExecutor.html#a16383186c884a4b0f87620ac9308259b">Executor::WriteTestInputToFile</a>(<span class="keyword">const</span> u8 *buf, u32 len) {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    assert(input_fd &gt; -1);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    Util::SeekFile(input_fd, 0, SEEK_SET);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    Util::WriteFile(input_fd, buf, len);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">if</span> (Util::TruncateFile(input_fd, len)) ERROR(<span class="stringliteral">&quot;ftruncate() failed&quot;</span>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    Util::SeekFile(input_fd, 0, SEEK_SET);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    fuzzuf::utils::SeekFile(input_fd, 0, SEEK_SET);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    fuzzuf::utils::WriteFile(input_fd, buf, len);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">if</span> (fuzzuf::utils::TruncateFile(input_fd, len)) ERROR(<span class="stringliteral">&quot;ftruncate() failed&quot;</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    fuzzuf::utils::SeekFile(input_fd, 0, SEEK_SET);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/*</span></div>

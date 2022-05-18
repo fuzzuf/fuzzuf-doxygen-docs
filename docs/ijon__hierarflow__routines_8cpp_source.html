@@ -172,7 +172,7 @@ $(function() {
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    state.all_inputs[idx]-&gt;OverwriteThenUnload(data, len);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    fs::path copy_fn = </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;          state.max_dir / Util::StrPrintf(<span class="stringliteral">&quot;finding_%lu_%lu&quot;</span>, </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;          state.max_dir / fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;finding_%lu_%lu&quot;</span>, </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                            state.num_updates,</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                            time(NULL));</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
@@ -211,7 +211,7 @@ $(function() {
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                state.max_map[i] = shared-&gt;afl_max[i];</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                StdoutLogger::Println(</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    Util::StrPrintf(<span class="stringliteral">&quot;updated maxmap %d: %lx (len: %ld)&quot;</span>, </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;updated maxmap %d: %lx (len: %ld)&quot;</span>, </div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                                    i, state.max_map[i], len)</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                );</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (</div>
@@ -221,7 +221,7 @@ $(function() {
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            ) {</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                need_update = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                StdoutLogger::Println(</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    Util::StrPrintf(<span class="stringliteral">&quot;minimized maxmap %d: %lx (len: %ld)&quot;</span>, </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;minimized maxmap %d: %lx (len: %ld)&quot;</span>, </div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                    i, state.max_map[i], len)</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                );</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            }</div>
