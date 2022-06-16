@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['why_20we_20didn_27t_20move_20to_20rust_2195',['Why we didn&apos;t move to Rust',['../md_docs_why_we_didnt_move_to_rust_en.html',1,'']]],
-  ['wyvern_2dclangとの結合テスト_2196',['wyvern-clangとの結合テスト',['../md_test_instrument_README.html',1,'']]]
+  ['vuzzer_2207',['VUzzer',['../md_docs_algorithms_vuzzer_algorithm_en.html',1,'']]],
+  ['vuzzer_20implementation_20in_20fuzzuf_2208',['VUzzer Implementation in fuzzuf',['../md_docs_algorithms_vuzzer_implementation_en.html',1,'']]]
 ];

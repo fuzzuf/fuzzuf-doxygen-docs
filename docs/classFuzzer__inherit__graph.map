@@ -10,6 +10,6 @@
 <area shape="rect" id="node11" href="$classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzer.html" title=" " alt="" coords="181,509,321,550"/>
 <area shape="rect" id="node12" href="$classPythonFuzzer.html" title=" " alt="" coords="197,575,306,601"/>
 <area shape="rect" id="node13" href="$classVUzzerStub.html" title=" " alt="" coords="171,625,332,652"/>
-<area shape="rect" id="node4" href="$classfuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer.html" title=" " alt="" coords="474,63,614,105"/>
+<area shape="rect" id="node4" href="$classfuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer.html" title="CLI compatible interface for IJON." alt="" coords="474,63,614,105"/>
 <area shape="rect" id="node6" href="$structfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate.html" title="Wrapper to afl::AFLFuzzerTemplate. This class append two member functions required to run SymCC." alt="" coords="433,136,655,192"/>
 </map>

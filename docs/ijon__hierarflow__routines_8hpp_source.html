@@ -72,7 +72,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2022 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -92,17 +92,17 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/common.hpp&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/feedback/inplace_memory_feedback.hpp&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/feedback/exit_status_feedback.hpp&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_routine.hpp&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_node.hpp&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/afl_mutator.hpp&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/afl_mutation_hierarflow_routines.hpp&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/afl_update_hierarflow_routines.hpp&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/afl_other_hierarflow_routines.hpp&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/ijon/ijon_state.hpp&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/afl_mutation_hierarflow_routines.hpp&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/afl_mutator.hpp&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/afl_other_hierarflow_routines.hpp&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/afl_update_hierarflow_routines.hpp&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/ijon/ijon_state.hpp&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/feedback/exit_status_feedback.hpp&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/feedback/inplace_memory_feedback.hpp&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_node.hpp&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_routine.hpp&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/common.hpp&quot;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::ijon::routine {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
@@ -110,93 +110,86 @@ $(function() {
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">namespace </span>other {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html">   46</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html">SelectSeed</a> </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        void(void),</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        bool(IJONMutator&amp;)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      &gt; {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html">SelectSeed</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;state);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    NullableRef&lt;<a class="code" href="classHierarFlowCallee.html">HierarFlowCallee</a>&lt;void(<span class="keywordtype">void</span>)&gt;&gt; <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html#ac6123ccc828bacfd3775f13e0904f0c7">operator()</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html">   46</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html">SelectSeed</a> : <span class="keyword">public</span> <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;void(void), bool(IJONMutator &amp;)&gt; {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html">SelectSeed</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;state);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  NullableRef&lt;<a class="code" href="classHierarFlowCallee.html">HierarFlowCallee</a>&lt;void(<span class="keywordtype">void</span>)&gt;&gt; <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html#ac6123ccc828bacfd3775f13e0904f0c7">operator()</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;state;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;state;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">using</span> IJONMidCalleeRef = afl::routine::other::AFLMidCalleeRef&lt;IJONState&gt;;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">using</span> IJONMidInputType = afl::routine::other::AFLMidInputType&lt;IJONState&gt;;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html">   68</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html">PrintAflIsSelected</a></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        IJONMidInputType,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        void(void) <span class="comment">// has no successors</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      &gt; {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html">PrintAflIsSelected</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    IJONMidCalleeRef <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html#a1fdbd6a27eff63eb5ae26d4864c43dfd">operator()</a>(std::shared_ptr&lt;IJONTestcase&gt;);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">using</span> IJONMidCalleeRef = afl::routine::other::AFLMidCalleeRef&lt;IJONState&gt;;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">using</span> IJONMidInputType = afl::routine::other::AFLMidInputType&lt;IJONState&gt;;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html">   65</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html">PrintAflIsSelected</a></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;IJONMidInputType,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                               void(void)  <span class="comment">// has no successors</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                               &gt; {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html">PrintAflIsSelected</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  IJONMidCalleeRef <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html#a1fdbd6a27eff63eb5ae26d4864c43dfd">operator()</a>(std::shared_ptr&lt;IJONTestcase&gt;);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}  <span class="comment">// namespace other</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">namespace </span>mutation {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">// namespace other</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">namespace </span>mutation {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">using</span> IJONMidCalleeRef = afl::routine::other::AFLMidCalleeRef&lt;IJONState&gt;;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">using</span> IJONMidInputType = afl::routine::other::AFLMidInputType&lt;IJONState&gt;;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">using</span> IJONMutCalleeRef = afl::routine::mutation::AFLMutCalleeRef&lt;IJONState&gt;;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">using</span> IJONMidCalleeRef = afl::routine::other::AFLMidCalleeRef&lt;IJONState&gt;;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">using</span> IJONMidInputType = afl::routine::other::AFLMidInputType&lt;IJONState&gt;;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">using</span> IJONMutCalleeRef = afl::routine::mutation::AFLMutCalleeRef&lt;IJONState&gt;;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html">   91</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html">MaxHavoc</a> : <span class="keyword">public</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">afl::routine::mutation::HavocBaseTemplate</a>&lt;IJONState&gt; {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html">MaxHavoc</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;state);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    IJONMutCalleeRef <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html#a57013d38c309c8b4fbafdc3b77a24c7e">operator()</a>(<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">IJONMutator</a>&amp; mutator);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;};</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html">   87</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html">MaxHavoc</a> : <span class="keyword">public</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">afl::routine::mutation::HavocBaseTemplate</a>&lt;IJONState&gt; {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html">MaxHavoc</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;state);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  IJONMutCalleeRef <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html#a57013d38c309c8b4fbafdc3b77a24c7e">operator()</a>(<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">IJONMutator</a> &amp;mutator);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}  <span class="comment">// namespace mutation</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">namespace </span>update {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;} <span class="comment">// namespace mutation</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">namespace </span>update {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">using</span> IJONUpdCalleeRef = afl::routine::update::AFLUpdCalleeRef;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">using</span> IJONUpdInputType = afl::routine::update::AFLUpdInputType;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">using</span> IJONUpdOutputType = afl::routine::update::AFLUpdOutputType;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">using</span> IJONUpdCalleeRef = afl::routine::update::AFLUpdCalleeRef;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">using</span> IJONUpdInputType = afl::routine::update::AFLUpdInputType;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">using</span> IJONUpdOutputType = afl::routine::update::AFLUpdOutputType;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1UpdateMax.html">  110</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1UpdateMax.html">UpdateMax</a></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        IJONUpdInputType,</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        IJONUpdOutputType</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    &gt; {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1UpdateMax.html">UpdateMax</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;state);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    IJONUpdCalleeRef <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1UpdateMax.html#af1c4577ccac512dd66861e0de6ebda4d">operator()</a>(</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">const</span> u8*, u32, <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a>&amp;, <a class="code" href="classExitStatusFeedback.html">ExitStatusFeedback</a>&amp;);</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1IJONUpdate.html">  106</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1IJONUpdate.html">IJONUpdate</a></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;IJONUpdInputType, IJONUpdOutputType&gt; {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1IJONUpdate.html">IJONUpdate</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;state, std::size_t offset);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  IJONUpdCalleeRef <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1IJONUpdate.html#a3c0a3dfe1b5d1d63b7fca3eb7d91a53c">operator()</a>(<span class="keyword">const</span> u8 *, u32, <a class="code" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> &amp;,</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                              <a class="code" href="classExitStatusFeedback.html">ExitStatusFeedback</a> &amp;);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;state;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  std::size_t offset;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;};</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}  <span class="comment">// namespace update</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;state;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;};</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;} <span class="comment">// namespace update</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::ijon::routine</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::ijon::routine</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassExitStatusFeedback_html"><div class="ttname"><a href="classExitStatusFeedback.html">ExitStatusFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="exit__status__feedback_8hpp_source.html#l00025">exit_status_feedback.hpp:25</a></div></div>
 <div class="ttc" id="aclassHierarFlowCallee_html"><div class="ttname"><a href="classHierarFlowCallee.html">HierarFlowCallee</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00039">hierarflow_callee.hpp:39</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc_html_a57013d38c309c8b4fbafdc3b77a24c7e"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html#a57013d38c309c8b4fbafdc3b77a24c7e">fuzzuf::algorithm::ijon::routine::mutation::MaxHavoc::operator()</a></div><div class="ttdeci">IJONMutCalleeRef operator()(IJONMutator &amp;mutator)</div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8cpp_source.html#l00081">ijon_hierarflow_routines.cpp:81</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1IJONUpdate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1IJONUpdate.html">fuzzuf::algorithm::ijon::routine::update::IJONUpdate</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8hpp_source.html#l00106">ijon_hierarflow_routines.hpp:106</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc_html_a57013d38c309c8b4fbafdc3b77a24c7e"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html#a57013d38c309c8b4fbafdc3b77a24c7e">fuzzuf::algorithm::ijon::routine::mutation::MaxHavoc::operator()</a></div><div class="ttdeci">IJONMutCalleeRef operator()(IJONMutator &amp;mutator)</div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8cpp_source.html#l00080">ijon_hierarflow_routines.cpp:80</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html">fuzzuf::algorithm::ijon::routine::other::SelectSeed</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8hpp_source.html#l00046">ijon_hierarflow_routines.hpp:46</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1IJONState_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">fuzzuf::algorithm::ijon::IJONState</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__state_8hpp_source.html#l00041">ijon_state.hpp:41</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1IJONState_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">fuzzuf::algorithm::ijon::IJONState</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__state_8hpp_source.html#l00042">ijon_state.hpp:42</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLMutatorTemplate.html">fuzzuf::algorithm::afl::AFLMutatorTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutator_8hpp_source.html#l00036">afl_mutator.hpp:36</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed_html_ac6123ccc828bacfd3775f13e0904f0c7"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html#ac6123ccc828bacfd3775f13e0904f0c7">fuzzuf::algorithm::ijon::routine::other::SelectSeed::operator()</a></div><div class="ttdeci">NullableRef&lt; HierarFlowCallee&lt; void(void)&gt; &gt; operator()(void)</div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8cpp_source.html#l00036">ijon_hierarflow_routines.cpp:36</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1UpdateMax_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1UpdateMax.html">fuzzuf::algorithm::ijon::routine::update::UpdateMax</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8hpp_source.html#l00110">ijon_hierarflow_routines.hpp:110</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed_html_ac6123ccc828bacfd3775f13e0904f0c7"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1SelectSeed.html#ac6123ccc828bacfd3775f13e0904f0c7">fuzzuf::algorithm::ijon::routine::other::SelectSeed::operator()</a></div><div class="ttdeci">NullableRef&lt; HierarFlowCallee&lt; void(void)&gt; &gt; operator()(void)</div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8cpp_source.html#l00035">ijon_hierarflow_routines.cpp:35</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1IJONUpdate_html_a3c0a3dfe1b5d1d63b7fca3eb7d91a53c"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1IJONUpdate.html#a3c0a3dfe1b5d1d63b7fca3eb7d91a53c">fuzzuf::algorithm::ijon::routine::update::IJONUpdate::operator()</a></div><div class="ttdeci">IJONUpdCalleeRef operator()(const u8 *, u32, InplaceMemoryFeedback &amp;, ExitStatusFeedback &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8cpp_source.html#l00122">ijon_hierarflow_routines.cpp:122</a></div></div>
 <div class="ttc" id="aclassInplaceMemoryFeedback_html"><div class="ttname"><a href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="inplace__memory__feedback_8hpp_source.html#l00028">inplace_memory_feedback.hpp:28</a></div></div>
 <div class="ttc" id="aclassHierarFlowRoutine_html"><div class="ttname"><a href="classHierarFlowRoutine.html">HierarFlowRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00031">hierarflow_callee.hpp:31</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1UpdateMax_html_af1c4577ccac512dd66861e0de6ebda4d"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1update_1_1UpdateMax.html#af1c4577ccac512dd66861e0de6ebda4d">fuzzuf::algorithm::ijon::routine::update::UpdateMax::operator()</a></div><div class="ttdeci">IJONUpdCalleeRef operator()(const u8 *, u32, InplaceMemoryFeedback &amp;, ExitStatusFeedback &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8cpp_source.html#l00128">ijon_hierarflow_routines.cpp:128</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected_html_a1fdbd6a27eff63eb5ae26d4864c43dfd"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html#a1fdbd6a27eff63eb5ae26d4864c43dfd">fuzzuf::algorithm::ijon::routine::other::PrintAflIsSelected::operator()</a></div><div class="ttdeci">IJONMidCalleeRef operator()(std::shared_ptr&lt; IJONTestcase &gt;)</div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8cpp_source.html#l00063">ijon_hierarflow_routines.cpp:63</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html">fuzzuf::algorithm::ijon::routine::mutation::MaxHavoc</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8hpp_source.html#l00091">ijon_hierarflow_routines.hpp:91</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected_html_a1fdbd6a27eff63eb5ae26d4864c43dfd"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html#a1fdbd6a27eff63eb5ae26d4864c43dfd">fuzzuf::algorithm::ijon::routine::other::PrintAflIsSelected::operator()</a></div><div class="ttdeci">IJONMidCalleeRef operator()(std::shared_ptr&lt; IJONTestcase &gt;)</div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8cpp_source.html#l00062">ijon_hierarflow_routines.cpp:62</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1mutation_1_1MaxHavoc.html">fuzzuf::algorithm::ijon::routine::mutation::MaxHavoc</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8hpp_source.html#l00087">ijon_hierarflow_routines.hpp:87</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocBaseTemplate.html">fuzzuf::algorithm::afl::routine::mutation::HavocBaseTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__mutation__hierarflow__routines_8hpp_source.html#l00470">afl_mutation_hierarflow_routines.hpp:470</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html">fuzzuf::algorithm::ijon::routine::other::PrintAflIsSelected</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8hpp_source.html#l00068">ijon_hierarflow_routines.hpp:68</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1ijon_1_1routine_1_1other_1_1PrintAflIsSelected.html">fuzzuf::algorithm::ijon::routine::other::PrintAflIsSelected</a></div><div class="ttdef"><b>Definition:</b> <a href="ijon__hierarflow__routines_8hpp_source.html#l00065">ijon_hierarflow_routines.hpp:65</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

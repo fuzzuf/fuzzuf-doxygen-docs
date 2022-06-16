@@ -68,14 +68,14 @@ $(function() {
 <div class="textblock"><p><a href="https://jenkins.atla.ricsec.co.jp/view/fuzzuf/job/fuzzuf-branch_build/"><img src="https://jenkins.atla.ricsec.co.jp/buildStatus/icon?job=fuzzuf-branch_build" alt="Build Status" class="inline"/></a></p>
 <p><b>fuzzuf</b> (**fuzz**ing **u**nification **f**ramework) is a fuzzing framework with its own DSL to describe a fuzzing loop by constructing building blocks of fuzzing primitives.</p>
 <p>For build instructions and a tutorial, please follow building.md and tutorial.md.</p>
-<h1><a class="anchor" id="autotoc_md238"></a>
+<h1><a class="anchor" id="autotoc_md240"></a>
 Why use fuzzuf?</h1>
 <p>fuzzuf enables a flexible definition of a fuzzing loop defined in each fuzzer by describing it as combinations of building blocks with DSL notations while keeping extensibility for its original fuzzer. It already has various fuzzer implementations including AFL, VUzzer, and libFuzzer that can be further extended by users.</p>
-<h1><a class="anchor" id="autotoc_md239"></a>
+<h1><a class="anchor" id="autotoc_md241"></a>
 HierarFlow</h1>
 <p>fuzzuf utilizes its own DSL called <b>HierarFlow</b> for fuzzing loop statements. It is implemented on top of a C++ language with the grammar made to look like a tree structure to describe a fuzzing loop as a combination of building blocks.</p>
 <p>With HierarFlow, we can write both existing and new fuzzers in a neat and tidy way, as the structure of a fuzzing loop can clearly be shown. For instance, we can divide an AFL fuzzer (which has already been implemented on fuzzuf as a template!) into multiple fuzzing primitives that include <em>PUT executor</em>, <em>mutators</em> (both deterministic and random), <em>dictionary updater</em>, and so on. Users can implement each primitive in C++ code and connect them together with HierarFlow's operator to eventually construct a fuzzing loop of a fuzzer they want to achieve.</p>
-<h2><a class="anchor" id="autotoc_md240"></a>
+<h2><a class="anchor" id="autotoc_md242"></a>
 Example: AFL in HierarFlow</h2>
 <p><a href="/include/fuzzuf/algorithms/afl/templates/afl_fuzzer.hpp">The following short snippet</a> represents AFL in HierarFlow:</p>
 <div class="fragment"><div class="line">fuzz_loop &lt;&lt; (</div>
@@ -106,7 +106,7 @@ Example: AFL in HierarFlow</h2>
 <div class="line">   || abandon_node</div>
 <div class="line">);</div>
 </div><!-- fragment --><p>This simply shows how flexible and powerful HierarFlow is. Please refer to the document for more details.</p>
-<h1><a class="anchor" id="autotoc_md241"></a>
+<h1><a class="anchor" id="autotoc_md243"></a>
 Benefits of using fuzzuf</h1>
 <p>There are mainly four advantages of writing fuzzers on fuzzuf framework: <br  />
 </p>
@@ -120,7 +120,7 @@ Benefits of using fuzzuf</h1>
 <li>AFL fuzzer as a template <br  />
  On fuzzuf, AFL is available as a fuzzer (C++) template as well. This means that the cost to implement and review a new or existing AFL-based fuzzer has been lowered a lot by utilizing it. For example, fuzzuf's AFLFast is built upon this template. Only a few modifications in routines and a struct which records a fuzzer state are required to change, and it keeps its original's flow unchanged.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md242"></a>
+<h1><a class="anchor" id="autotoc_md244"></a>
 List of Currently Available Fuzzers</h1>
 <p>fuzzuf comes with the following fuzzers implemented by default. To see the overview and how to them from CLI, please follow the links provided below. <br  />
  Note, when using fuzzuf from CLI, you have to separate global options (options available for all fuzzers) and local options (fuzzer specific options) with <code>--</code>.</p>
@@ -134,16 +134,16 @@ List of Currently Available Fuzzers</h1>
 The algorithm tries to increase its performance by manipulating the power schedule. </td><td class="markdownTableBodyNone"><a href="/docs/algorithms/aflfast/algorithm_en.md#cli-usage">CLI Usage</a> </td><td class="markdownTableBodyNone"><a href="/docs/algorithms/aflfast/algorithm_en.md#algorithm-overview">Algorithm Overview</a> </td><td class="markdownTableBodyNone">:white_check_mark:  </td></tr>
 </table>
 <p>|IJON|Greybox|A fuzzer that can fuzz PUTs in an <em>internal-state-aware</em> manner with manual annotations to PUTs.|<a href="/docs/algorithms/ijon/algorithm_en.md#how-to-use-fuzzufs-ijon-cli">CLI Usage</a>|<a href="/docs/algorithms/ijon/algorithm_en.md#algorithm-overview">Algorithm Overview</a> |VUzzer|Greybox|A mutation-based fuzzer guess data structures by analyzing the PUT control flow and the data flow.|Read <a href="/docs/algorithms/vuzzer/algorithm_en.md#prerequisite">Prerequisite</a> first, then <a href="docs/algorithms/vuzzer/algorithm_en.md#usage-on-cli">Usage on CLI</a>|<a href="/docs/algorithms/vuzzer/algorithm_en.md#algorithm-overview">Algorithm Overview</a> |libFuzzer|Greybox|CGF included in the LLVM project's compiler-rt libraries.|<a href="/docs/algorithms/libfuzzer/manual.md#how-to-use-libfuzzer-on-fuzzuf">How to use libFuzzer on fuzzuf</a>|<a href="/docs/algorithms/libfuzzer/algorithm_en.md#what-is-libfuzzer">What is libFuzzer?</a> |Nezha|Greybox|A fuzzer originates from libFuzzer that tries to find defects in the program by executing programs having different implementations with the same input and compares its execution results (differential fuzzing).|<a href="/docs/algorithms/nezha/manual.md#how-to-use-nezha-on-fuzzuf">How to use Nezha on fuzzuf</a>|TBD |DIE|Greybox|A fuzzer for JavaScript engines preserving the aspect of the test cases through the mutation process|<a href="/docs/algorithms/die/algorithm_en.md#usage-on-cli">Usage on CLI</a>|<a href="/docs/algorithms/die/algorithm_en.md#overview-of-algorithm">Overview of Algorithm</a> |Nautilus|Greybox|A coverage-guided grammar-based fuzzer that generates test cases according to the user-defined grammar|<a href="/docs/algorithms/nautilus/algorithm_en.md#2-usage-on-cli">Usage on CLI</a>|<a href="/docs/algorithms/nautilus/algorithm_en.md#3-algorithm">Overview of Algorithm</a></p>
-<h1><a class="anchor" id="autotoc_md243"></a>
+<h1><a class="anchor" id="autotoc_md245"></a>
 Why not Rust?</h1>
 <p>We have considered migrating the framework from C++ to Rust because it is safer and has a neat ecosystem during development. However, despite the attempts and the discussions, we concluded that we would not switch the language. The reason why is explained in detail here.</p>
-<h1><a class="anchor" id="autotoc_md244"></a>
+<h1><a class="anchor" id="autotoc_md246"></a>
 API Reference</h1>
 <p>API reference generated by doxygen is available <a href="https://fuzzuf.github.io/fuzzuf-doxygen-docs/">here</a>.</p>
-<h1><a class="anchor" id="autotoc_md245"></a>
+<h1><a class="anchor" id="autotoc_md247"></a>
 License</h1>
 <p>fuzzuf is licensed under the GNU Affero General Public License v3.0. Some codes originate from external projects are licensed under their own licenses. Please refer to <a href="/LICENSE">LICENSE</a> for details.</p>
-<h1><a class="anchor" id="autotoc_md246"></a>
+<h1><a class="anchor" id="autotoc_md248"></a>
 Acknowledgements</h1>
 <p>This project has received funding from the Acquisition, Technology &amp; Logistics Agency (ATLA) under the Innovative Science and Technology Initiative for Security 2020 (JPJ004596). </p>
 </div></div><!-- contents -->

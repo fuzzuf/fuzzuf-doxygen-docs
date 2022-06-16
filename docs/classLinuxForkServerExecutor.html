@@ -100,8 +100,8 @@ Collaboration diagram for LinuxForkServerExecutor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2d25997af88d7ba4a54ac0704d8be213"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#a2d25997af88d7ba4a54ac0704d8be213">LinuxForkServerExecutor</a> (const std::vector&lt; std::string &gt; &amp;argv, u32 exec_timelimit_ms, u64 exec_memlimit, const fs::path &amp;path_to_write_input, u32 afl_shm_size, u32 bb_shm_size, bool record_stdout_and_err=false, std::vector&lt; std::string &gt; &amp;&amp;environment_variables_={}, std::vector&lt; fs::path &gt; &amp;&amp;allowed_path_={})</td></tr>
-<tr class="separator:a2d25997af88d7ba4a54ac0704d8be213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2545d36b836cf276833f6e366bc08b91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#a2545d36b836cf276833f6e366bc08b91">LinuxForkServerExecutor</a> (<a class="el" href="structLinuxForkServerExecutorParameters.html">LinuxForkServerExecutorParameters</a> &amp;&amp;args)</td></tr>
+<tr class="separator:a2545d36b836cf276833f6e366bc08b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c2112104adb631358d38a86d44630e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#a5c2112104adb631358d38a86d44630e9">~LinuxForkServerExecutor</a> ()</td></tr>
 <tr class="separator:a5c2112104adb631358d38a86d44630e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dc3b0b02552b5454c5708e656b0bf73"><td class="memItemLeft" align="right" valign="top"><a id="a8dc3b0b02552b5454c5708e656b0bf73"></a>
@@ -282,10 +282,10 @@ fuzzuf::executor::output_t&#160;</td><td class="memItemRight" valign="bottom"><b
 <tr class="memitem:a403641644f2b6d522a509b6ef242a443"><td class="memItemLeft" align="right" valign="top"><a id="a403641644f2b6d522a509b6ef242a443"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>record_stdout_and_err</b></td></tr>
 <tr class="separator:a403641644f2b6d522a509b6ef242a443"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1f4430c63a269e36d1f7c0b75767f82"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#ac1f4430c63a269e36d1f7c0b75767f82">environment_variables</a></td></tr>
-<tr class="separator:ac1f4430c63a269e36d1f7c0b75767f82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7eaa5d9afdb2f1e9f1a6c06f089a0ed"><td class="memItemLeft" align="right" valign="top">std::vector&lt; const char * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#ae7eaa5d9afdb2f1e9f1a6c06f089a0ed">raw_environment_variables</a></td></tr>
-<tr class="separator:ae7eaa5d9afdb2f1e9f1a6c06f089a0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5823885d83beef4a86f1548dfdb62692"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#a5823885d83beef4a86f1548dfdb62692">environment_variables</a></td></tr>
+<tr class="separator:a5823885d83beef4a86f1548dfdb62692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a783fb1a72224b78f5f10eb1873127841"><td class="memItemLeft" align="right" valign="top">std::vector&lt; const char * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxForkServerExecutor.html#a783fb1a72224b78f5f10eb1873127841">raw_environment_variables</a></td></tr>
+<tr class="separator:a783fb1a72224b78f5f10eb1873127841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92a984b28eeb51510667aa3045bef17e"><td class="memItemLeft" align="right" valign="top"><a id="a92a984b28eeb51510667aa3045bef17e"></a>
 <a class="el" href="classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html">fuzzuf::utils::vfs::LocalFilesystem</a>&#160;</td><td class="memItemRight" valign="bottom"><b>filesystem</b></td></tr>
 <tr class="separator:a92a984b28eeb51510667aa3045bef17e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -302,10 +302,10 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00046">46</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00138">138</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2d25997af88d7ba4a54ac0704d8be213"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d25997af88d7ba4a54ac0704d8be213">&#9670;&nbsp;</a></span>LinuxForkServerExecutor()</h2>
+<a id="a2545d36b836cf276833f6e366bc08b91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2545d36b836cf276833f6e366bc08b91">&#9670;&nbsp;</a></span>LinuxForkServerExecutor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -313,61 +313,9 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
         <tr>
           <td class="memname">LinuxForkServerExecutor::LinuxForkServerExecutor </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>argv</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="structLinuxForkServerExecutorParameters.html">LinuxForkServerExecutorParameters</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">u32&#160;</td>
-          <td class="paramname"><em>exec_timelimit_ms</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">u64&#160;</td>
-          <td class="paramname"><em>exec_memlimit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const fs::path &amp;&#160;</td>
-          <td class="paramname"><em>path_to_write_input</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">u32&#160;</td>
-          <td class="paramname"><em>afl_shm_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">u32&#160;</td>
-          <td class="paramname"><em>bb_shm_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>record_stdout_and_err</em> = <code>false</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&amp;&#160;</td>
-          <td class="paramname"><em>environment_variables_</em> = <code>{}</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; fs::path &gt; &amp;&amp;&#160;</td>
-          <td class="paramname"><em>allowed_path_</em> = <code>{}</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -420,7 +368,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <li>Temporary purpose: If actve_instance which signal handlers refer has a pointer to self value, assign nullptr to it and invalidate. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00130">130</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00129">129</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -455,7 +403,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00421">421</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00422">422</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
 
 </div>
 </div>
@@ -516,13 +464,13 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 
 <p>Implements <a class="el" href="classExecutor.html">Executor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00190">190</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8cpp_source.html#l00189">189</a> of file <a class="el" href="linux__fork__server__executor_8cpp_source.html">linux_fork_server_executor.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ac1f4430c63a269e36d1f7c0b75767f82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1f4430c63a269e36d1f7c0b75767f82">&#9670;&nbsp;</a></span>environment_variables</h2>
+<a id="a5823885d83beef4a86f1548dfdb62692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5823885d83beef4a86f1548dfdb62692">&#9670;&nbsp;</a></span>environment_variables</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -531,7 +479,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::string &gt; LinuxForkServerExecutor::environment_variables</td>
+          <td class="memname">std::vector&lt;std::string&gt; LinuxForkServerExecutor::environment_variables</td>
         </tr>
       </table>
   </td>
@@ -545,12 +493,12 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <li><a class="el" href="classExecutor.html">Executor</a> specific environment variables specified on the constructor argument. The child process invoked by this executor will take these values as environment variables. (This means the executor created prior to modification of environment variables will take old environment variables) </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00144">144</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00224">224</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ae7eaa5d9afdb2f1e9f1a6c06f089a0ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7eaa5d9afdb2f1e9f1a6c06f089a0ed">&#9670;&nbsp;</a></span>raw_environment_variables</h2>
+<a id="a783fb1a72224b78f5f10eb1873127841"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a783fb1a72224b78f5f10eb1873127841">&#9670;&nbsp;</a></span>raw_environment_variables</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -559,7 +507,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; const char* &gt; LinuxForkServerExecutor::raw_environment_variables</td>
+          <td class="memname">std::vector&lt;const char *&gt; LinuxForkServerExecutor::raw_environment_variables</td>
         </tr>
       </table>
   </td>
@@ -570,7 +518,7 @@ std::shared_ptr&lt; u8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </div><div class="memdoc">
 <p>Since some C APIs require environment variables in null terminated array of C-string, environment_variables is transformed into that form. Each element of raw_environment_variables points value of environment_variables except last value that points nullptr. raw_environment_variables should be rebuilt if environment_variables is modified. </p>
 
-<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00151">151</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linux__fork__server__executor_8hpp_source.html#l00233">233</a> of file <a class="el" href="linux__fork__server__executor_8hpp_source.html">linux_fork_server_executor.hpp</a>.</p>
 
 </div>
 </div>

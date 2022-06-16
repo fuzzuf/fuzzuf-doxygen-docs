@@ -95,9 +95,9 @@ Collaboration diagram for fuzzuf::algorithm::ijon::IJONState:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adeb295cbf0518f06b8b8e1f120d8b5ee"><td class="memItemLeft" align="right" valign="top"><a id="adeb295cbf0518f06b8b8e1f120d8b5ee"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>IJONState</b> (std::shared_ptr&lt; const <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLSetting.html">afl::AFLSetting</a> &gt; setting, std::shared_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html">executor::AFLExecutorInterface</a> &gt; executor, std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">optimizer::Optimizer</a>&lt; u32 &gt;&gt; &amp;&amp;mutop_optimizer)</td></tr>
-<tr class="separator:adeb295cbf0518f06b8b8e1f120d8b5ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac93c65576c8117dc137d9946caa8f062"><td class="memItemLeft" align="right" valign="top"><a id="ac93c65576c8117dc137d9946caa8f062"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>IJONState</b> (std::shared_ptr&lt; const <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLSetting.html">afl::AFLSetting</a> &gt; setting, std::shared_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1IJONExecutorInterface.html">executor::IJONExecutorInterface</a> &gt; executor, std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">optimizer::Optimizer</a>&lt; u32 &gt;&gt; &amp;&amp;mutop_optimizer)</td></tr>
+<tr class="separator:ac93c65576c8117dc137d9946caa8f062"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abddd798280bd015c35a7953824e720c8"><td class="memItemLeft" align="right" valign="top"><a id="abddd798280bd015c35a7953824e720c8"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>IJONState</b> (const <a class="el" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &amp;)=delete</td></tr>
 <tr class="separator:abddd798280bd015c35a7953824e720c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,6 +195,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetShouldConstructAut
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a03f97e74ecc081c263a00d642e5ca218"><td class="memItemLeft" align="right" valign="top"><a id="a03f97e74ecc081c263a00d642e5ca218"></a>
+std::shared_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1IJONExecutorInterface.html">executor::IJONExecutorInterface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ijon_executor</b></td></tr>
+<tr class="separator:a03f97e74ecc081c263a00d642e5ca218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a0a52668e10d5631133ebc3f97c1353"><td class="memItemLeft" align="right" valign="top"><a id="a2a0a52668e10d5631133ebc3f97c1353"></a>
 std::vector&lt; u64 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>max_map</b> = std::vector&lt;u64&gt;(option::GetMaxMapSize&lt;<a class="el" href="structfuzzuf_1_1algorithm_1_1ijon_1_1option_1_1IJONTag.html">option::IJONTag</a>&gt;())</td></tr>
 <tr class="separator:a2a0a52668e10d5631133ebc3f97c1353"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -608,7 +611,7 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>AFLDictData</b> = <a
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ijon__state_8hpp_source.html#l00041">41</a> of file <a class="el" href="ijon__state_8hpp_source.html">ijon_state.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ijon__state_8hpp_source.html#l00042">42</a> of file <a class="el" href="ijon__state_8hpp_source.html">ijon_state.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following files:<ul>
 <li>include/fuzzuf/algorithms/ijon/<a class="el" href="ijon__state_8hpp_source.html">ijon_state.hpp</a></li>
 <li>algorithms/ijon/<a class="el" href="ijon__state_8cpp_source.html">ijon_state.cpp</a></li>

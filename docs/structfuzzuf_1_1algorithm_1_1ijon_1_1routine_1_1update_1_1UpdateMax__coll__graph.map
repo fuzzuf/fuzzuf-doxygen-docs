@@ -1,7 +1,0 @@
-<map id="fuzzuf::algorithm::ijon::routine::update::UpdateMax" name="fuzzuf::algorithm::ijon::routine::update::UpdateMax">
-<area shape="rect" id="node1" title=" " alt="" coords="729,41,883,97"/>
-<area shape="rect" id="node2" href="$classHierarFlowRoutine.html" title=" " alt="" coords="439,5,644,61"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html" title=" " alt="" coords="471,86,611,127"/>
-<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html" title=" " alt="" coords="225,79,389,135"/>
-<area shape="rect" id="node5" href="$classExecInputSet.html" title=" " alt="" coords="5,93,112,120"/>
-</map>

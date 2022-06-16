@@ -1,8 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,415,140,441"/>
-<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth_3_01Cov_00_01std_1_1enable__ic0f3d217e437776a78894e8a48656737.html" title=" " alt="" coords="300,5,515,120"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth_3_01Cov_00_01std_1_1enable__ifcb916d9ae0259f1f4155ab480b1f8e4.html" title=" " alt="" coords="300,144,515,259"/>
-<area shape="rect" id="node4" href="$structfuzzuf_1_1utils_1_1type__traits_1_1detail_1_1is__weakly__equality__comparable__with_3_01T_f6b3ce4d3abd43bace4dbdc3134f50aa.html" title=" " alt="" coords="188,283,627,573"/>
-<area shape="rect" id="node5" href="$structfuzzuf_1_1utils_1_1type__traits_1_1GetNth_3_01i_00_01std_1_1integer__sequence_3_01T_00_01h95ad800fdb2137c965435163adba3294.html" title=" " alt="" coords="313,597,502,683"/>
-<area shape="rect" id="node6" href="$structfuzzuf_1_1utils_1_1type__traits_1_1is__equality__comparable__with.html" title=" " alt="" coords="309,707,506,763"/>
+<area shape="rect" id="node1" href="$structfuzzuf_1_1algorithm_1_1libfuzzer_1_1ForEachDynamicData.html" title="This node invokes all child nodes for each values in the container specified by the Path...." alt="" coords="5,5,232,61"/>
 </map>

@@ -69,17 +69,17 @@ $(function() {
 <p>このディレクトリにあるバイナリのうち、command_wrapperはAFL++で、 それ以外のものは 2021/4/19 16:33現在のfeature/fork-server-modeブランチのwyvern-clang++で <code>-O0 -g -static -flto</code> でビルドされている。</p>
 <p>理想的にはこれらのPUTもテストのビルド時に生成したいところだが、 そもそもwyvern-clangが使用できる環境でしかテストが実行できなくなる上、 依存するwyvern-clangのブランチ・バージョン等を統一または指定する簡便な手立てが 思いつかないので、当座の処置として直にファイルを配置することとしている。 当然、結果的にこれらのPUTを用いたテストは一般的なLinuxの環境でしか動かない。 PUTを更新する際は、このREADME中の上記の時刻・ブランチ等を編集した上で、すべてのPUTを漏れなく更新すること。</p>
 <p>以下、各バイナリの説明:</p>
-<h1><a class="anchor" id="autotoc_md255"></a>
+<h1><a class="anchor" id="autotoc_md257"></a>
 zeroone</h1>
 <p>test/instrument以下のREADMEに記載があるため、そちらを参照。</p>
-<h1><a class="anchor" id="autotoc_md256"></a>
+<h1><a class="anchor" id="autotoc_md258"></a>
 command_wrapper</h1>
 <p>これまで、test/fuzzer以下などでFuzzerインスタンスを生成したテストを行う際は、"/bin/cat"などを対象のPUTとしていた。 当然"/bin/cat"は、wyvern-clangによるinstrumentが挿入されていないが、これによって生じる不具合は「共有メモリにcoverageが書き込まれない」という1点のみで、fork&amp;execが正しく実行できているか、生成したシードをPUTに読み込めているか等の確認においては特別支障がなかった。 しかしながら、fork server modeが導入されたことにより、fork server modeで動作しているWyvernをテストする場合はinstrumentが必須となってしまった（PUT側にfork serverが存在することを暗黙の内に前提としているため）。 したがって、「instrumentを挿入したプログラムが、内部でexecv関数を利用して"/bin/cat"を呼び出す」という形のwrapperを噛ませることで対処することとした。 このwrapperに相当するのがcommand_wrapperである。 ソースコードはこのディレクトリのcommand_wrapper.cpp。</p>
-<h1><a class="anchor" id="autotoc_md257"></a>
+<h1><a class="anchor" id="autotoc_md259"></a>
 cat</h1>
 <p><a href="https://github.com/RICSecLab/fuzzuf-cc-private/tree/phase-3/put/cat">cat</a> is a sample PUT of fuzzuf-cc and built by fuzzuf-cc (<code>make CC=~/fuzzuf-gcc</code>). cat is used to check normallity of <a class="el" href="classLinuxForkServerExecutor.html">LinuxForkServerExecutor</a> (refined fork server mode).</p>
 <p>(TODO: fuzzuf-cc正式リリース後にリンク修正)</p>
-<h1><a class="anchor" id="autotoc_md258"></a>
+<h1><a class="anchor" id="autotoc_md260"></a>
 quickjs/qjs</h1>
 <p><a href="https://bellard.org/quickjs/">QuickJS</a> compiled by afl-gcc for testing JavaScript fuzzers such as DIE.</p>
 <p>The QuickJS we're using is the 2021-03-27 release, which has the commit ID <code>b5e62895c619d4ffc75c9d822c8d85f1ece77e5b</code> and is compiled by the following command: </p><div class="fragment"><div class="line">make CC=afl-gcc</div>
