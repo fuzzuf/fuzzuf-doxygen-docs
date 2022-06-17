@@ -142,29 +142,31 @@ $(function() {
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        output_dir.c_str(),</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        <span class="stringliteral">&quot;-e&quot;</span>,</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        <span class="stringliteral">&quot;forkserver&quot;</span>,</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        TEST_BINARY_DIR <span class="stringliteral">&quot;/put/ijon/ijon-test_put1&quot;</span>,</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        <span class="keyword">nullptr</span>};</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  constexpr <span class="keywordtype">int</span> argc = 9;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">auto</span> fuzzer = fuzzuf::cli::CreateFuzzerInstanceFromArgv(argc, argv);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;created fuzzer&quot;</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        <span class="stringliteral">&quot;--exec_timelimit_ms&quot;</span>,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        <span class="stringliteral">&quot;10000&quot;</span>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        TEST_BINARY_DIR <span class="stringliteral">&quot;/put/ijon/ijon-test_put1&quot;</span>,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        <span class="keyword">nullptr</span>};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  constexpr <span class="keywordtype">int</span> argc = 11;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keyword">auto</span> fuzzer = fuzzuf::cli::CreateFuzzerInstanceFromArgv(argc, argv);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  fuzzer-&gt;OneLoop();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;created fuzzer&quot;</span>);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  std::size_t crash_count = 0u;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e : fs::directory_iterator(output_dir / <span class="stringliteral">&quot;crashes&quot;</span>)) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#ifdef HAS_CXX_STD_FILESYSTEM</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    BOOST_CHECK(e.is_regular_file());</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    BOOST_CHECK(fs::is_regular_file(e.path()));</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    ++crash_count;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="comment">// At least one crash input is produced</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  BOOST_CHECK_GE(crash_count, 1);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;done&quot;</span>);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  fuzzer-&gt;OneLoop();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  std::size_t crash_count = 0u;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e : fs::directory_iterator(output_dir / <span class="stringliteral">&quot;crashes&quot;</span>)) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#ifdef HAS_CXX_STD_FILESYSTEM</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    BOOST_CHECK(e.is_regular_file());</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    BOOST_CHECK(fs::is_regular_file(e.path()));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    ++crash_count;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="comment">// At least one crash input is produced</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  BOOST_CHECK_GE(crash_count, 1);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;done&quot;</span>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
 <div class="ttc" id="asha1_8hpp_html"><div class="ttname"><a href="sha1_8hpp.html">sha1.hpp</a></div></div>
