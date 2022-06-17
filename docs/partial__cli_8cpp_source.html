@@ -103,52 +103,14 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>po = boost::program_options;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;BOOST_AUTO_TEST_CASE(ExecuteIJONFromCLI) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">// Setup root directory</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  std::string root_dir_template(<span class="stringliteral">&quot;/tmp/fuzzuf_test.XXXXXX&quot;</span>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">auto</span> *<span class="keyword">const</span> raw_dirname = mkdtemp(root_dir_template.data());</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  BOOST_CHECK(raw_dirname != <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">auto</span> root_dir = fs::path(raw_dirname);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">auto</span> input_dir = root_dir / <span class="stringliteral">&quot;input&quot;</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">auto</span> output_dir = root_dir / <span class="stringliteral">&quot;output&quot;</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// Create input/output dirctory</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  BOOST_CHECK_EQUAL(fs::create_directory(input_dir), <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  BOOST_CHECK_EQUAL(fs::create_directory(output_dir), <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// NOLINTBEGIN(cppcoreguidelines-pro-type-cstyle-cast,cppcoreguidelines-pro-type-member-init,cppcoreguidelines-special-member-functions,hicpp-explicit-conversions)</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_SCOPE_EXIT(&amp;root_dir) { fs::remove_all(root_dir); }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  BOOST_SCOPE_EXIT_END</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// NOLINTEND(cppcoreguidelines-pro-type-cstyle-cast,cppcoreguidelines-pro-type-member-init,cppcoreguidelines-special-member-functions,hicpp-explicit-conversions)</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;before init state&quot;</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// This input value is close to crash input so the crash input will be</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// discovered for small number of cycles</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::vector&lt;char&gt; input{17, 0, 0, 0, 3, 4, 1, 0};</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">auto</span> initial_input_name = <a class="code" href="sha1_8hpp.html#a417a805483c2db7a1d40f28a7022c3a5">fuzzuf::utils::ToSerializedSha1</a>(input);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::fstream fd((input_dir / initial_input_name).c_str(), std::ios::out);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::copy(input.begin(), input.end(), std::ostreambuf_iterator&lt;char&gt;(fd));</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;initialized dirs&quot;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[] = {<span class="stringliteral">&quot;fuzzuf&quot;</span>, <span class="stringliteral">&quot;afl&quot;</span>, <span class="stringliteral">&quot;-i&quot;</span>, input_dir.c_str(), <span class="stringliteral">&quot;-o&quot;</span>,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        output_dir.c_str(),</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        <span class="comment">/*                          &quot;-e&quot;,</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">                                                  &quot;forkserver&quot;,</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">                                                  &quot;--exec_timelimit_ms&quot;,</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">                                                  &quot;10000&quot;,*/</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        TEST_BINARY_DIR <span class="stringliteral">&quot;/put/afl/test-instr&quot;</span>, <span class="keyword">nullptr</span>};</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  constexpr <span class="keywordtype">int</span> argc = 11-4;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">auto</span> fuzzer = fuzzuf::cli::CreateFuzzerInstanceFromArgv(argc, argv);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;created fuzzer&quot;</span>);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[] = {<span class="stringliteral">&quot;fuzzuf&quot;</span>, <span class="stringliteral">&quot;afl&quot;</span>,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        TEST_BINARY_DIR <span class="stringliteral">&quot;/put/afl-gcc/afl-empty&quot;</span>, <span class="keyword">nullptr</span>};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  constexpr <span class="keywordtype">int</span> argc = 3;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keyword">auto</span> fuzzer = fuzzuf::cli::CreateFuzzerInstanceFromArgv(argc, argv);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
 <div class="ttc" id="asha1_8hpp_html"><div class="ttname"><a href="sha1_8hpp.html">sha1.hpp</a></div></div>
-<div class="ttc" id="asha1_8hpp_html_a417a805483c2db7a1d40f28a7022c3a5"><div class="ttname"><a href="sha1_8hpp.html#a417a805483c2db7a1d40f28a7022c3a5">fuzzuf::utils::ToSerializedSha1</a></div><div class="ttdeci">auto ToSerializedSha1(const Range &amp;range) -&gt; std::enable_if_t&lt;!std::is_same_v&lt; utils::type_traits::RemoveCvrT&lt; Range &gt;, std::vector&lt; std::uint8_t &gt;&gt;, std::string &gt;</div><div class="ttdef"><b>Definition:</b> <a href="sha1_8hpp_source.html#l00046">sha1.hpp:46</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
