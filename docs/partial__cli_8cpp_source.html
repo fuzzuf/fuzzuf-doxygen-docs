@@ -140,7 +140,7 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">                                                  &quot;--exec_timelimit_ms&quot;,</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">                                                  &quot;10000&quot;,*/</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        TEST_BINARY_DIR <span class="stringliteral">&quot;/put/afl/test-instr&quot;</span>, <span class="keyword">nullptr</span>};</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  constexpr <span class="keywordtype">int</span> argc = 11;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  constexpr <span class="keywordtype">int</span> argc = 11-4;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">auto</span> fuzzer = fuzzuf::cli::CreateFuzzerInstanceFromArgv(argc, argv);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;created fuzzer&quot;</span>);</div>
