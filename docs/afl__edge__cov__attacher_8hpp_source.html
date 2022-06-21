@@ -92,21 +92,25 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="shm__cov__attacher_8hpp.html">fuzzuf/coverage/shm_cov_attacher.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classAFLEdgeCovAttacher.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAFLEdgeCovAttacher.html">AFLEdgeCovAttacher</a> : <span class="keyword">public</span> <a class="code" href="classShmCovAttacher.html">ShmCovAttacher</a> {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* SHM_ENV_VAR = <span class="stringliteral">&quot;__AFL_SHM_ID&quot;</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classAFLEdgeCovAttacher.html">AFLEdgeCovAttacher</a>(u32 map_size) : <a class="code" href="classShmCovAttacher.html">ShmCovAttacher</a>(map_size) {}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordtype">void</span> SetupEnvironmentVariable(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ShmCovAttacher::SetupEnvironmentVariable(SHM_ENV_VAR);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif // FUZZUF_INCLUDE_COVERAGE_AFL_EDGE_COV_ATTACHER_HPP</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>fuzzuf::coverage {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1coverage_1_1AFLEdgeCovAttacher.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1coverage_1_1AFLEdgeCovAttacher.html">AFLEdgeCovAttacher</a> : <span class="keyword">public</span> <a class="code" href="classfuzzuf_1_1coverage_1_1ShmCovAttacher.html">ShmCovAttacher</a> {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* SHM_ENV_VAR = <span class="stringliteral">&quot;__AFL_SHM_ID&quot;</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classfuzzuf_1_1coverage_1_1AFLEdgeCovAttacher.html">AFLEdgeCovAttacher</a>(u32 map_size) : <a class="code" href="classfuzzuf_1_1coverage_1_1ShmCovAttacher.html">ShmCovAttacher</a>(map_size) {}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">void</span> SetupEnvironmentVariable(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    ShmCovAttacher::SetupEnvironmentVariable(SHM_ENV_VAR);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}  <span class="comment">// namespace fuzzuf::coverage</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif  // FUZZUF_INCLUDE_COVERAGE_AFL_EDGE_COV_ATTACHER_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassfuzzuf_1_1coverage_1_1ShmCovAttacher_html"><div class="ttname"><a href="classfuzzuf_1_1coverage_1_1ShmCovAttacher.html">fuzzuf::coverage::ShmCovAttacher</a></div><div class="ttdoc">Base class that attaches coverage stored in shared memory.</div><div class="ttdef"><b>Definition:</b> <a href="shm__cov__attacher_8hpp_source.html#l00037">shm_cov_attacher.hpp:37</a></div></div>
 <div class="ttc" id="ashm__cov__attacher_8hpp_html"><div class="ttname"><a href="shm__cov__attacher_8hpp.html">shm_cov_attacher.hpp</a></div></div>
-<div class="ttc" id="aclassShmCovAttacher_html"><div class="ttname"><a href="classShmCovAttacher.html">ShmCovAttacher</a></div><div class="ttdoc">Base class that attaches coverage stored in shared memory.</div><div class="ttdef"><b>Definition:</b> <a href="shm__cov__attacher_8hpp_source.html#l00035">shm_cov_attacher.hpp:35</a></div></div>
-<div class="ttc" id="aclassAFLEdgeCovAttacher_html"><div class="ttname"><a href="classAFLEdgeCovAttacher.html">AFLEdgeCovAttacher</a></div><div class="ttdoc">AFL-compatible hashed edge coverage attacher.</div><div class="ttdef"><b>Definition:</b> <a href="afl__edge__cov__attacher_8hpp_source.html#l00033">afl_edge_cov_attacher.hpp:33</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1coverage_1_1AFLEdgeCovAttacher_html"><div class="ttname"><a href="classfuzzuf_1_1coverage_1_1AFLEdgeCovAttacher.html">fuzzuf::coverage::AFLEdgeCovAttacher</a></div><div class="ttdoc">AFL-compatible hashed edge coverage attacher.</div><div class="ttdef"><b>Definition:</b> <a href="afl__edge__cov__attacher_8hpp_source.html#l00035">afl_edge_cov_attacher.hpp:35</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,9 +1,0 @@
-<map id="NativeLinuxExecutor" name="NativeLinuxExecutor">
-<area shape="rect" id="node1" title=" " alt="" coords="180,185,336,212"/>
-<area shape="rect" id="node2" href="$classExecutor.html" title=" " alt="" coords="5,89,84,115"/>
-<area shape="rect" id="node3" href="$classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html" title="Virtual filesystem implementation that interface to local filesystem. This is a wrapper to the standa..." alt="" coords="108,81,243,123"/>
-<area shape="rect" id="node4" href="$classfuzzuf_1_1utils_1_1vfs_1_1VFS.html" title="Base class of virtual filesystem. This class provides basic path conversion and path range check." alt="" coords="97,5,254,32"/>
-<area shape="rect" id="node5" href="$classFuzzufBBCovAttacher.html" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="267,89,430,115"/>
-<area shape="rect" id="node6" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="375,5,506,32"/>
-<area shape="rect" id="node7" href="$classAFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="455,89,613,115"/>
-</map>

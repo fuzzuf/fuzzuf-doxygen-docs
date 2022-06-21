@@ -86,7 +86,7 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * You should have received a copy of the GNU Affero General Public License</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * along with this program.  If not, see http://www.gnu.org/licenses/.</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE                                                      \</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE \</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">  native_linux_executor.fork_server_mode.environment_variables</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define BOOST_TEST_DYN_LINK</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
@@ -113,10 +113,10 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keyword">auto</span> path_to_write_seed = output_dir / <span class="stringliteral">&quot;cur_input&quot;</span>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="comment">// Create executor</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a> executor({TEST_BINARY_DIR <span class="stringliteral">&quot;/put_binaries/command_wrapper&quot;</span>,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                TEST_BINARY_DIR <span class="stringliteral">&quot;/executor/print_env&quot;</span>, <span class="stringliteral">&quot;@@&quot;</span>},</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                               1000, 10000, <span class="keyword">true</span>, path_to_write_seed, 0, 0,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                               <span class="keyword">true</span>, {<span class="stringliteral">&quot;FOO=World&quot;</span>});</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classfuzzuf_1_1executor_1_1NativeLinuxExecutor.html">fuzzuf::executor::NativeLinuxExecutor</a> executor(</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      {TEST_BINARY_DIR <span class="stringliteral">&quot;/put_binaries/command_wrapper&quot;</span>,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;       TEST_BINARY_DIR <span class="stringliteral">&quot;/executor/print_env&quot;</span>, <span class="stringliteral">&quot;@@&quot;</span>},</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      1000, 10000, <span class="keyword">true</span>, path_to_write_seed, 0, 0, <span class="keyword">true</span>, {<span class="stringliteral">&quot;FOO=World&quot;</span>});</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">// Run executor</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  executor.Run(<span class="keyword">nullptr</span>, 0);</div>
@@ -124,7 +124,7 @@ $(function() {
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">// The execution should success due to the required environment variable is</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="comment">// set</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    PUTExitReasonType::FAULT_NONE);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    fuzzuf::feedback::PUTExitReasonType::FAULT_NONE);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// Check if appropriate value is set on the environment variable</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> standard_output = executor.MoveStdOut();</div>
@@ -146,10 +146,10 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">auto</span> path_to_write_seed = output_dir / <span class="stringliteral">&quot;cur_input&quot;</span>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="comment">// Create executor</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a> executor({TEST_BINARY_DIR <span class="stringliteral">&quot;/put_binaries/command_wrapper&quot;</span>,</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                TEST_BINARY_DIR <span class="stringliteral">&quot;/executor/print_env&quot;</span>, <span class="stringliteral">&quot;@@&quot;</span>},</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                               1000, 10000, <span class="keyword">true</span>, path_to_write_seed, 0, 0,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                               <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <a class="code" href="classfuzzuf_1_1executor_1_1NativeLinuxExecutor.html">fuzzuf::executor::NativeLinuxExecutor</a> executor(</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      {TEST_BINARY_DIR <span class="stringliteral">&quot;/put_binaries/command_wrapper&quot;</span>,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;       TEST_BINARY_DIR <span class="stringliteral">&quot;/executor/print_env&quot;</span>, <span class="stringliteral">&quot;@@&quot;</span>},</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      1000, 10000, <span class="keyword">true</span>, path_to_write_seed, 0, 0, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">// Run executor</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  executor.Run(<span class="keyword">nullptr</span>, 0);</div>
@@ -157,11 +157,11 @@ $(function() {
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="comment">// The execution should fail due to the required environment variable is not</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="comment">// set</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    PUTExitReasonType::FAULT_CRASH);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    fuzzuf::feedback::PUTExitReasonType::FAULT_CRASH);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassNativeLinuxExecutor_html"><div class="ttname"><a href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8hpp_source.html#l00044">native_linux_executor.hpp:44</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1executor_1_1NativeLinuxExecutor_html"><div class="ttname"><a href="classfuzzuf_1_1executor_1_1NativeLinuxExecutor.html">fuzzuf::executor::NativeLinuxExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8hpp_source.html#l00050">native_linux_executor.hpp:50</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

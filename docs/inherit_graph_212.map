@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structfuzzuf_1_1utils_1_1struct__path_1_1PointedType_3_01R_07Args_8_8_8_08_00_01Path_3_01Node_8_8_8_01_4_01_4.html" title=" " alt="" coords="5,5,205,61"/>
+<area shape="rect" id="node1" href="$classfuzzuf_1_1mutator_1_1Mutator.html" title=" " alt="" coords="5,5,185,47"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html" title=" " alt="" coords="233,5,404,47"/>
 </map>

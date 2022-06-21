@@ -72,7 +72,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -88,189 +88,199 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/vuzzer/vuzzer_update_hierarflow_routines.hpp&quot;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_routine.hpp&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_node.hpp&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_routine.hpp&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::vuzzer::routine::update {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;UpdateFitness::UpdateFitness(VUzzerState &amp;state) : state(state) {}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateFitness.html#a820a58a65b84b372aac7f39337834dee">   39</a></span>&#160;VUzzerUpdCalleeRef UpdateFitness::operator()(</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt;&amp; testcase,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classFileFeedback.html">FileFeedback</a>&amp; inp_feed</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;) {    </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    DEBUG(<span class="stringliteral">&quot;UpdateFitness&quot;</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::map&lt;u64, u32&gt; bb_cov;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::set&lt;u64&gt; bb_without_ehb;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::vector&lt;u64&gt; diff;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::set&lt;u64&gt; ehb_all;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> ehb_cnt = 0;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">double</span> score = 0.0, ehb_score = 0.0;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    u32 input_len = testcase-&gt;input-&gt;GetLen();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    ehb_all = state.ehb;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    ehb_all.merge(state.ehb_inc);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">/* Parse a BB cov file taken during the execution */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    vuzzer::util::ParseBBCov(inp_feed, bb_cov);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">/* Collect BBs except EHB from bb_cov */</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;bb : bb_cov) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span> (ehb_all.find(bb.first) == ehb_all.end()) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            bb_without_ehb.insert(bb.first);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            ehb_cnt++; <span class="comment">// Count EHBs from BB coverage</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">/* The more EHBs PUT records the less score become. */</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (ehb_cnt) </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        ehb_score = -1 * (bb_cov.size() * state.setting-&gt;ehb_fitness_ratio / ehb_cnt);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    DEBUG(<span class="stringliteral">&quot;EHB score %lf (%zu) * %lf / %d&quot;</span>, ehb_score, bb_cov.size(), state.setting-&gt;ehb_fitness_ratio, ehb_cnt);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">/* Check wheter vuzzer has found a new BB coverage by comparing to previous BBs (state.seen_bbs) */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::set_difference(bb_without_ehb.begin(), bb_without_ehb.end(), state.seen_bbs.begin(), state.seen_bbs.end(), back_inserter(diff));</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (diff.size()) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">/* New BB coverage! */</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        DEBUG(<span class="stringliteral">&quot;New coverage&quot;</span>);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;bb : diff)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            DEBUG(<span class="stringliteral">&quot;0x%llx&quot;</span>, bb);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        state.has_new_cov = <span class="keyword">true</span>; <span class="comment">// XXX: Duplicate unncessary variable has_new_cov</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="comment">/* Add new seed to taint_queue. It&#39;ll be executed by taint executor. */</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        state.taint_queue.emplace_back(testcase);</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateFitness.html#a596f5c7d5a16c21937b24b120e9cf6eb">   39</a></span>&#160;VUzzerUpdCalleeRef UpdateFitness::operator()(</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt; &amp;testcase,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classfuzzuf_1_1feedback_1_1FileFeedback.html">feedback::FileFeedback</a> &amp;inp_feed) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  DEBUG(<span class="stringliteral">&quot;UpdateFitness&quot;</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  std::map&lt;u64, u32&gt; bb_cov;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  std::set&lt;u64&gt; bb_without_ehb;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  std::vector&lt;u64&gt; diff;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  std::set&lt;u64&gt; ehb_all;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordtype">int</span> ehb_cnt = 0;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordtype">double</span> score = 0.0, ehb_score = 0.0;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  u32 input_len = testcase-&gt;input-&gt;GetLen();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  ehb_all = state.ehb;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  ehb_all.merge(state.ehb_inc);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">/* Parse a BB cov file taken during the execution */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  vuzzer::util::ParseBBCov(inp_feed, bb_cov);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">/* Collect BBs except EHB from bb_cov */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;bb : bb_cov) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (ehb_all.find(bb.first) == ehb_all.end()) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      bb_without_ehb.insert(bb.first);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      ehb_cnt++;  <span class="comment">// Count EHBs from BB coverage</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">/* The more EHBs PUT records the less score become. */</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">if</span> (ehb_cnt)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    ehb_score =</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        -1 * (bb_cov.size() * state.setting-&gt;ehb_fitness_ratio / ehb_cnt);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  DEBUG(<span class="stringliteral">&quot;EHB score %lf (%zu) * %lf / %d&quot;</span>, ehb_score, bb_cov.size(),</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        state.setting-&gt;ehb_fitness_ratio, ehb_cnt);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="comment">/* Check wheter vuzzer has found a new BB coverage by comparing to previous</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">   * BBs (state.seen_bbs) */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::set_difference(bb_without_ehb.begin(), bb_without_ehb.end(),</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                      state.seen_bbs.begin(), state.seen_bbs.end(),</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                      back_inserter(diff));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">if</span> (diff.size()) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">/* New BB coverage! */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    DEBUG(<span class="stringliteral">&quot;New coverage&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;bb : diff) DEBUG(<span class="stringliteral">&quot;0x%llx&quot;</span>, bb);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    state.has_new_cov = <span class="keyword">true</span>;  <span class="comment">// XXX: Duplicate unncessary variable has_new_cov</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">/* Update seen_bbs */</span>        </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;bb : diff)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            state.seen_bbs.insert(bb);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="comment">/* Remove all seeds whose coverage is subset of the new seed */</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        CallSuccessors(testcase, bb_cov);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">/* Calculate fitness score from BB cov */</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;bb : bb_cov) { </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        u64 addr = bb.first;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        u32 cnt = bb.second;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span> (cnt &gt; state.setting-&gt;bb_cnt_max)</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            cnt = state.setting-&gt;bb_cnt_max;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">int</span> cnt_log =int(std::log2(cnt+1));</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (ehb_all.find(addr) != ehb_all.end()) {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="comment">/* EHB */</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            score = score + (cnt_log * ehb_score);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (state.bb_weights.find(addr) != state.bb_weights.end()) {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="comment">/* BB which has already been found by static analysis tool (BB-weight.py) */</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            score = score + (cnt_log * state.bb_weights[addr]);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="comment">/* Otherwise */</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            score = score + cnt_log;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> (input_len &gt; state.setting-&gt;input_len_max)</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        SetResponseValue((score * bb_without_ehb.size()) / <span class="keywordtype">int</span>(std::log2(input_len + 1)));</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        SetResponseValue(score * bb_without_ehb.size());</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> GoToDefaultNext();</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">/* Add new seed to taint_queue. It&#39;ll be executed by taint executor. */</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    state.taint_queue.emplace_back(testcase);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">/* Update seen_bbs */</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;bb : diff) state.seen_bbs.insert(bb);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">/* Remove all seeds whose coverage is subset of the new seed */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    CallSuccessors(testcase, bb_cov);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="comment">/* Calculate fitness score from BB cov */</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;bb : bb_cov) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    u64 addr = bb.first;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    u32 cnt = bb.second;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (cnt &gt; state.setting-&gt;bb_cnt_max) cnt = state.setting-&gt;bb_cnt_max;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">int</span> cnt_log = int(std::log2(cnt + 1));</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span> (ehb_all.find(addr) != ehb_all.end()) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="comment">/* EHB */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      score = score + (cnt_log * ehb_score);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (state.bb_weights.find(addr) != state.bb_weights.end()) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <span class="comment">/* BB which has already been found by static analysis tool (BB-weight.py)</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">       */</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      score = score + (cnt_log * state.bb_weights[addr]);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <span class="comment">/* Otherwise */</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      score = score + cnt_log;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordflow">if</span> (input_len &gt; state.setting-&gt;input_len_max)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    SetResponseValue((score * bb_without_ehb.size()) /</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                     <span class="keywordtype">int</span>(std::log2(input_len + 1)));</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    SetResponseValue(score * bb_without_ehb.size());</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;UpdateTaint::UpdateTaint(<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">VUzzerState</a> &amp;state) : state(state) {}</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateTaint.html#a01d5c2c6cd223a9239bf6be3d66e189e">  131</a></span>&#160;VUzzerUpdCalleeRef <a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateTaint.html#a01d5c2c6cd223a9239bf6be3d66e189e">UpdateTaint::operator()</a>(</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt;&amp; testcase,</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="classFileFeedback.html">FileFeedback</a>&amp; inp_feed</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    DEBUG(<span class="stringliteral">&quot;UpdateTaint&quot;</span>);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">/* Parse a taint file taken during the execution */</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    vuzzer::util::ParseTaintInfo(state, testcase, inp_feed);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    CallSuccessors();</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">return</span> GoToDefaultNext();</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;UpdateQueue::UpdateQueue(<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">VUzzerState</a> &amp;state) : state(state) {}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordflow">return</span> GoToDefaultNext();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;UpdateTaint::UpdateTaint(<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">VUzzerState</a> &amp;state) : state(state) {}</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateTaint.html#aa4cbdc9af7db26c42e081677d5d77cb0">  134</a></span>&#160;VUzzerUpdCalleeRef <a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateTaint.html#aa4cbdc9af7db26c42e081677d5d77cb0">UpdateTaint::operator()</a>(</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt; &amp;testcase,</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <a class="code" href="classfuzzuf_1_1feedback_1_1FileFeedback.html">feedback::FileFeedback</a> &amp;inp_feed) {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  DEBUG(<span class="stringliteral">&quot;UpdateTaint&quot;</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="comment">/* Parse a taint file taken during the execution */</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  vuzzer::util::ParseTaintInfo(state, testcase, inp_feed);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  CallSuccessors();</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <span class="keywordflow">return</span> GoToDefaultNext();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateQueue.html#a8272ed2769f9182bcd2b01ff471f5775">  148</a></span>&#160;NullableRef&lt;<a class="code" href="classHierarFlowCallee.html">HierarFlowCallee</a>&lt;void(<span class="keywordtype">void</span>)&gt;&gt; <a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateQueue.html#a8272ed2769f9182bcd2b01ff471f5775">UpdateQueue::operator()</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    DEBUG(<span class="stringliteral">&quot;UpdateQueue seed_queue(%zu)\n&quot;</span>, state.seed_queue.size());</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="comment">/* Sort seed_queue in order by fitness score */</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    std::sort(state.seed_queue.begin(), state.seed_queue.end(), [](<span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt; &amp;left, <span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt; &amp;right){</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        return left-&gt;fitness &gt; right-&gt;fitness;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    });</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">/* Delete seeds whose score is less than best score */</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keyword">auto</span> itr = state.seed_queue.begin();</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">for</span> (u32 i = 0; itr != state.seed_queue.end(); i++) {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        DEBUG(<span class="stringliteral">&quot;Seed %s (%lf)&quot;</span>, (*itr)-&gt;input-&gt;GetPath().c_str(), (*itr)-&gt;fitness);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">if</span> (i &gt;= state.setting-&gt;keep_num_of_seed_queue) {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            state.bb_covs.erase((*itr)-&gt;input-&gt;GetID()); <span class="comment">// Delete BB cov </span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            itr = state.<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a3ba4044c046789ebb19b8884b2c76061">DeleteFromQueue</a>(state.seed_queue, itr); <span class="comment">// Erase seed from queue</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            itr++;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;seed : state.seed_queue)</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        DEBUG(<span class="stringliteral">&quot;Seed %s (%lf)&quot;</span>, seed-&gt;input-&gt;GetPath().c_str(), seed-&gt;fitness);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    CallSuccessors();</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">return</span> GoToDefaultNext();</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;TrimQueue::TrimQueue(<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">VUzzerState</a> &amp;state) : state(state) {}</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1TrimQueue.html#a4f3ec66bb1c7a04b2091face3e91c127">  181</a></span>&#160;NullableRef&lt;<a class="code" href="classHierarFlowCallee.html">HierarFlowCallee</a>&lt;void(<span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt;&amp; testcase, std::map&lt;u64, u32&gt;&amp;)&gt;&gt; <a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1TrimQueue.html#a4f3ec66bb1c7a04b2091face3e91c127">TrimQueue::operator()</a>(</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt;&amp; testcase, </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    std::map&lt;u64, u32&gt;&amp; bb_cov</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;) {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    DEBUG(<span class="stringliteral">&quot;TrimeQueue queue size(%zu)&quot;</span>, state.seed_queue.size());</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    boost::dynamic_bitset&lt;&gt; bb_set;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="comment">/* Convert BB cov to bitset like: {0x4000100 : 10, 0x4000f00 : 1 ... } -&gt; 01000001....*/</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    vuzzer::util::DictToBitsWithKeys(bb_cov, state.seen_bbs_table_for_bits, bb_set);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">/* Find and delete the seeds from seed_queue. */</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keyword">auto</span> itr = state.seed_queue.begin();</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">while</span> (itr != state.seed_queue.end()) {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">if</span> (state.bb_covs.find((*itr)-&gt;input-&gt;GetID()) == state.bb_covs.end()) {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            itr++;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }        </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        boost::dynamic_bitset&lt;&gt;&amp; tmp = state.bb_covs[(*itr)-&gt;input-&gt;GetID()];</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="comment">/* We need make both bitsets same size */</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">if</span> (tmp.size() &lt; bb_set.size()) tmp.resize(bb_set.size());</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tmp.size() &gt; bb_set.size()) bb_set.resize(tmp.size());</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="comment">/* Check wheter trace is subset of the new seed. */</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">if</span> (tmp.is_subset_of(bb_set)) {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="comment">/* Delete the seed from seed_queue */</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            DEBUG(<span class="stringliteral">&quot;bb_covs[%s] &lt; bb_covs[%s]&quot;</span>, (*itr)-&gt;input-&gt;GetPath().c_str(),testcase-&gt;input-&gt;GetPath().c_str());</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            state.bb_covs.erase((*itr)-&gt;input-&gt;GetID());</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            itr = state.<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a3ba4044c046789ebb19b8884b2c76061">DeleteFromQueue</a>(state.seed_queue, itr);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">else</span> { </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            itr++;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="comment">/* Record BB cov bitset to state.bb_covs */</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    state.bb_covs[testcase-&gt;input-&gt;GetID()] = bb_set;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">return</span> GoToDefaultNext();</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;}</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::vuzzer::routine::update</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;UpdateQueue::UpdateQueue(<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">VUzzerState</a> &amp;state) : state(state) {}</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;utils::NullableRef&lt;<a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">hierarflow::HierarFlowCallee</a>&lt;void(<span class="keywordtype">void</span>)&gt;&gt;</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateQueue.html#a6735206fbc7eabd5abdfdc19c309a85d">  152</a></span>&#160;<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateQueue.html#a6735206fbc7eabd5abdfdc19c309a85d">UpdateQueue::operator()</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  DEBUG(<span class="stringliteral">&quot;UpdateQueue seed_queue(%zu)\n&quot;</span>, state.seed_queue.size());</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="comment">/* Sort seed_queue in order by fitness score */</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  std::sort(state.seed_queue.begin(), state.seed_queue.end(),</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            [](<span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt; &amp;left,</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;               <span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt; &amp;right) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;              return left-&gt;fitness &gt; right-&gt;fitness;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            });</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="comment">/* Delete seeds whose score is less than best score */</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keyword">auto</span> itr = state.seed_queue.begin();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordflow">for</span> (u32 i = 0; itr != state.seed_queue.end(); i++) {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    DEBUG(<span class="stringliteral">&quot;Seed %s (%lf)&quot;</span>, (*itr)-&gt;input-&gt;GetPath().c_str(), (*itr)-&gt;fitness);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">if</span> (i &gt;= state.setting-&gt;keep_num_of_seed_queue) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      state.bb_covs.erase((*itr)-&gt;input-&gt;GetID());  <span class="comment">// Delete BB cov</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      itr = state.<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a3ba4044c046789ebb19b8884b2c76061">DeleteFromQueue</a>(state.seed_queue,</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                  itr);  <span class="comment">// Erase seed from queue</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      itr++;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;seed : state.seed_queue)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    DEBUG(<span class="stringliteral">&quot;Seed %s (%lf)&quot;</span>, seed-&gt;input-&gt;GetPath().c_str(), seed-&gt;fitness);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  CallSuccessors();</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordflow">return</span> GoToDefaultNext();</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;TrimQueue::TrimQueue(<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">VUzzerState</a> &amp;state) : state(state) {}</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;utils::NullableRef&lt;<a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">hierarflow::HierarFlowCallee</a>&lt;void(</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt; &amp;testcase, std::map&lt;u64, u32&gt; &amp;)&gt;&gt;</div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1TrimQueue.html#a3da752787d133e8e9ea14726484a3e38">  191</a></span>&#160;<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1TrimQueue.html#a3da752787d133e8e9ea14726484a3e38">TrimQueue::operator()</a>(<span class="keyword">const</span> std::shared_ptr&lt;VUzzerTestcase&gt; &amp;testcase,</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                      std::map&lt;u64, u32&gt; &amp;bb_cov) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  DEBUG(<span class="stringliteral">&quot;TrimeQueue queue size(%zu)&quot;</span>, state.seed_queue.size());</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  boost::dynamic_bitset&lt;&gt; bb_set;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="comment">/* Convert BB cov to bitset like: {0x4000100 : 10, 0x4000f00 : 1 ... } -&gt;</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">   * 01000001....*/</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  vuzzer::util::DictToBitsWithKeys(bb_cov, state.seen_bbs_table_for_bits,</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                                   bb_set);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="comment">/* Find and delete the seeds from seed_queue. */</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keyword">auto</span> itr = state.seed_queue.begin();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <span class="keywordflow">while</span> (itr != state.seed_queue.end()) {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">if</span> (state.bb_covs.find((*itr)-&gt;input-&gt;GetID()) == state.bb_covs.end()) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      itr++;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    boost::dynamic_bitset&lt;&gt; &amp;tmp = state.bb_covs[(*itr)-&gt;input-&gt;GetID()];</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="comment">/* We need make both bitsets same size */</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">if</span> (tmp.size() &lt; bb_set.size())</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      tmp.resize(bb_set.size());</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tmp.size() &gt; bb_set.size())</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      bb_set.resize(tmp.size());</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="comment">/* Check wheter trace is subset of the new seed. */</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">if</span> (tmp.is_subset_of(bb_set)) {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      <span class="comment">/* Delete the seed from seed_queue */</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      DEBUG(<span class="stringliteral">&quot;bb_covs[%s] &lt; bb_covs[%s]&quot;</span>, (*itr)-&gt;input-&gt;GetPath().c_str(),</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            testcase-&gt;input-&gt;GetPath().c_str());</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      state.bb_covs.erase((*itr)-&gt;input-&gt;GetID());</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      itr = state.<a class="code" href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a3ba4044c046789ebb19b8884b2c76061">DeleteFromQueue</a>(state.seed_queue, itr);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      itr++;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  <span class="comment">/* Record BB cov bitset to state.bb_covs */</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  state.bb_covs[testcase-&gt;input-&gt;GetID()] = bb_set;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  <span class="keywordflow">return</span> GoToDefaultNext();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::vuzzer::routine::update</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState_html_a3ba4044c046789ebb19b8884b2c76061"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a3ba4044c046789ebb19b8884b2c76061">fuzzuf::algorithm::vuzzer::VUzzerState::DeleteFromQueue</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; VUzzerTestcase &gt; &gt;::iterator DeleteFromQueue(std::vector&lt; std::shared_ptr&lt; VUzzerTestcase &gt;&gt; &amp;queue, std::vector&lt; std::shared_ptr&lt; VUzzerTestcase &gt;&gt;::iterator &amp;itr)</div><div class="ttdoc">Delete the testcase from seed queue.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__state_8cpp_source.html#l00220">vuzzer_state.cpp:220</a></div></div>
-<div class="ttc" id="aclassHierarFlowCallee_html"><div class="ttname"><a href="classHierarFlowCallee.html">HierarFlowCallee</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00039">hierarflow_callee.hpp:39</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState_html_a3ba4044c046789ebb19b8884b2c76061"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html#a3ba4044c046789ebb19b8884b2c76061">fuzzuf::algorithm::vuzzer::VUzzerState::DeleteFromQueue</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; VUzzerTestcase &gt; &gt;::iterator DeleteFromQueue(std::vector&lt; std::shared_ptr&lt; VUzzerTestcase &gt;&gt; &amp;queue, std::vector&lt; std::shared_ptr&lt; VUzzerTestcase &gt;&gt;::iterator &amp;itr)</div><div class="ttdoc">Delete the testcase from seed queue.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__state_8cpp_source.html#l00223">vuzzer_state.cpp:223</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1hierarflow_1_1HierarFlowCallee_html"><div class="ttname"><a href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">fuzzuf::hierarflow::HierarFlowCallee</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00042">hierarflow_callee.hpp:42</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html">fuzzuf::algorithm::vuzzer::VUzzerState</a></div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__state_8hpp_source.html#l00049">vuzzer_state.hpp:49</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateTaint_html_a01d5c2c6cd223a9239bf6be3d66e189e"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateTaint.html#a01d5c2c6cd223a9239bf6be3d66e189e">fuzzuf::algorithm::vuzzer::routine::update::UpdateTaint::operator()</a></div><div class="ttdeci">VUzzerUpdCalleeRef operator()(const std::shared_ptr&lt; VUzzerTestcase &gt; &amp;, FileFeedback &amp;)</div><div class="ttdoc">Get taint information.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__update__hierarflow__routines_8cpp_source.html#l00131">vuzzer_update_hierarflow_routines.cpp:131</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1TrimQueue_html_a4f3ec66bb1c7a04b2091face3e91c127"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1TrimQueue.html#a4f3ec66bb1c7a04b2091face3e91c127">fuzzuf::algorithm::vuzzer::routine::update::TrimQueue::operator()</a></div><div class="ttdeci">NullableRef&lt; HierarFlowCallee&lt; void(const std::shared_ptr&lt; VUzzerTestcase &gt; &amp;, std::map&lt; u64, u32 &gt; &amp;)&gt; &gt; operator()(const std::shared_ptr&lt; VUzzerTestcase &gt; &amp;, std::map&lt; u64, u32 &gt; &amp;)</div><div class="ttdoc">Prune the seeds(if at all), whose trace is subset of the new seed just got executed.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__update__hierarflow__routines_8cpp_source.html#l00181">vuzzer_update_hierarflow_routines.cpp:181</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateQueue_html_a8272ed2769f9182bcd2b01ff471f5775"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateQueue.html#a8272ed2769f9182bcd2b01ff471f5775">fuzzuf::algorithm::vuzzer::routine::update::UpdateQueue::operator()</a></div><div class="ttdeci">NullableRef&lt; HierarFlowCallee&lt; void(void)&gt; &gt; operator()(void)</div><div class="ttdoc">Delete seeds from seed_queue whose score is not high.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__update__hierarflow__routines_8cpp_source.html#l00148">vuzzer_update_hierarflow_routines.cpp:148</a></div></div>
-<div class="ttc" id="aclassFileFeedback_html"><div class="ttname"><a href="classFileFeedback.html">FileFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="file__feedback_8hpp_source.html#l00028">file_feedback.hpp:28</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateQueue_html_a6735206fbc7eabd5abdfdc19c309a85d"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateQueue.html#a6735206fbc7eabd5abdfdc19c309a85d">fuzzuf::algorithm::vuzzer::routine::update::UpdateQueue::operator()</a></div><div class="ttdeci">utils::NullableRef&lt; hierarflow::HierarFlowCallee&lt; void(void)&gt; &gt; operator()(void)</div><div class="ttdoc">Delete seeds from seed_queue whose score is not high.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__update__hierarflow__routines_8cpp_source.html#l00152">vuzzer_update_hierarflow_routines.cpp:152</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1feedback_1_1FileFeedback_html"><div class="ttname"><a href="classfuzzuf_1_1feedback_1_1FileFeedback.html">fuzzuf::feedback::FileFeedback</a></div><div class="ttdef"><b>Definition:</b> <a href="file__feedback_8hpp_source.html#l00031">file_feedback.hpp:31</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1TrimQueue_html_a3da752787d133e8e9ea14726484a3e38"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1TrimQueue.html#a3da752787d133e8e9ea14726484a3e38">fuzzuf::algorithm::vuzzer::routine::update::TrimQueue::operator()</a></div><div class="ttdeci">utils::NullableRef&lt; hierarflow::HierarFlowCallee&lt; void(const std::shared_ptr&lt; VUzzerTestcase &gt; &amp;, std::map&lt; u64, u32 &gt; &amp;)&gt; &gt; operator()(const std::shared_ptr&lt; VUzzerTestcase &gt; &amp;, std::map&lt; u64, u32 &gt; &amp;)</div><div class="ttdoc">Prune the seeds(if at all), whose trace is subset of the new seed just got executed.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__update__hierarflow__routines_8cpp_source.html#l00191">vuzzer_update_hierarflow_routines.cpp:191</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateTaint_html_aa4cbdc9af7db26c42e081677d5d77cb0"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateTaint.html#aa4cbdc9af7db26c42e081677d5d77cb0">fuzzuf::algorithm::vuzzer::routine::update::UpdateTaint::operator()</a></div><div class="ttdeci">VUzzerUpdCalleeRef operator()(const std::shared_ptr&lt; VUzzerTestcase &gt; &amp;, feedback::FileFeedback &amp;)</div><div class="ttdoc">Get taint information.</div><div class="ttdef"><b>Definition:</b> <a href="vuzzer__update__hierarflow__routines_8cpp_source.html#l00134">vuzzer_update_hierarflow_routines.cpp:134</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

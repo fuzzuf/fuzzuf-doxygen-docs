@@ -1,0 +1,4 @@
+<map id="fuzzuf::coverage::AFLPTPathCovAttacher" name="fuzzuf::coverage::AFLPTPathCovAttacher">
+<area shape="rect" id="node1" title="Intel PT based PTrix&#45;specific path sensitive bitmap attacher." alt="" coords="5,95,211,136"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1coverage_1_1ShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="13,5,203,47"/>
+</map>

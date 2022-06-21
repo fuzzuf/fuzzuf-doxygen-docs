@@ -88,209 +88,210 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef FUZZUF_INCLUDE_ALGORITHMS_NEZHA_CREATE_HPP</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_ALGORITHMS_NEZHA_CREATE_HPP</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="libfuzzer_2create_8hpp.html">fuzzuf/algorithms/libfuzzer/create.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nezha_2config_8hpp.html">fuzzuf/algorithms/nezha/config.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nezha_2hierarflow_8hpp.html">fuzzuf/algorithms/nezha/hierarflow.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nezha_2state_8hpp.html">fuzzuf/algorithms/nezha/state.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;config.h&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::nezha {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Ord, <span class="keyword">typename</span> Sink&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="nezha_2create_8hpp.html#ae0f9abebac8bdd6a31c01b0424d75c2b">   61</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="nezha_2create_8hpp.html#ae0f9abebac8bdd6a31c01b0424d75c2b">CreateRunSingleTarget</a>(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <span class="keywordtype">bool</span> use_output,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                           <span class="keywordtype">bool</span> force_add_to_corpus, <span class="keywordtype">bool</span> may_delete_file,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                           <span class="keywordtype">bool</span> persistent, <span class="keywordtype">bool</span> strict_match, <span class="keywordtype">size_t</span> i,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                           <span class="keyword">const</span> Sink &amp;sink) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">fuzzuf::executor::LibFuzzerExecutorInterface</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keyword">auto</span> create_local_coverage =</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      hf::CreateNode&lt;lf::Clear&lt;F, decltype(Ord::coverage)&gt;&gt;();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">auto</span> execute = hf::CreateNode&lt;lf::standard_order::Execute&lt;F, Ord&gt;&gt;();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">auto</span> collect_features =</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      hf::CreateNode&lt;standard_order::CollectFeatures&lt;F, Ord&gt;&gt;(</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;          i * (create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ac1699e1dfde80c48460352b10d9425bf">use_afl_coverage</a> ? create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a1c6211507a4b8a7010a91fddccf23a69">afl_shm_size</a></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                            : create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#afefb0620d92f61ee6ae1ff3e1b7d92cc">bb_shm_size</a>));</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">auto</span> add_to_corpus = hf::CreateNode&lt;lf::standard_order::AddToCorpus&lt;F, Ord&gt;&gt;(</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      force_add_to_corpus, may_delete_file, persistent, strict_match,</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a127c376c87ded164742e8d78c25c01b5">output_dir</a>, Sink(sink));</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keyword">auto</span> new_cov = hf::CreateNode&lt;lf::standard_order::IfNewCoverage&lt;F, Ord&gt;&gt;();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">auto</span> update_dict =</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      hf::CreateNode&lt;lf::standard_order::UpdateDictionary&lt;F, Ord&gt;&gt;();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keyword">auto</span> print =</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a0d70d7e6f1a802b7962d104b5a924418">print_pcs</a></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;          ? hf::CreateNode&lt;lf::standard_order::PrintStatusForNewUnit&lt;F, Ord&gt;&gt;(</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#acdcc6c2c16224268886833c8b8948cc8">verbosity</a>, create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a18f85c7dd65ce8cb5d78bdd93699469e">max_mutations_to_print</a>,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ae7baf9aed3715f9362f3aab26bbbacef">max_unit_size_to_print</a>, sink)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;          : hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keyword">auto</span> nop1 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keyword">auto</span> nop2 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keyword">auto</span> gather_trace_ = hf::CreateNode&lt;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      lf::DynamicAppend&lt;F, decltype(Ord::added_to_corpus &amp;&amp; Ord::trace)&gt;&gt;();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keyword">auto</span> gather_output_ =</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      (use_output)</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;          ? hf::CreateNode&lt;standard_order::GatherOutput&lt;F, Ord&gt;&gt;()</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;          : hf::CreateNode&lt;lf::DynamicAppend&lt;F, decltype(Ord::single_status &amp;&amp;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                                         Ord::status)&gt;&gt;();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keyword">auto</span> assign_last_corpus_update_run = hf::CreateNode&lt;lf::DynamicAssign&lt;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      F, decltype(Ord::count &amp;&amp; Ord::last_corpus_update_run)&gt;&gt;();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keyword">auto</span> set_executor =</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      hf::CreateNode&lt;lf::StaticAssign&lt;F, decltype(Ord::executor_index)&gt;&gt;(i);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  nop1 &lt;&lt; (create_local_coverage &lt;&lt; set_executor &lt;&lt; execute &lt;&lt; collect_features</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                 &lt;&lt; add_to_corpus ||</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;           new_cov &lt;&lt; (update_dict || print || assign_last_corpus_update_run) ||</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;           gather_trace_ &lt;&lt; gather_output_);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">return</span> nop1;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Ord, <span class="keyword">typename</span> Sink&gt;</div>
-<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="nezha_2create_8hpp.html#a2642ba441150778eba2bbb79badd6815">  139</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="nezha_2create_8hpp.html#a2642ba441150778eba2bbb79badd6815">CreateRunTargets</a>(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <span class="keywordtype">bool</span> use_output,</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                      <span class="keywordtype">bool</span> force_add_to_corpus, <span class="keywordtype">bool</span> may_delete_file,</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                      <span class="keywordtype">bool</span> persistent, <span class="keywordtype">bool</span> strict_match, <span class="keyword">const</span> Sink &amp;sink) {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keyword">auto</span> nop1 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keyword">auto</span> run = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">for</span> (std::size_t i = create_info.target_offset;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;       i != create_info.target_offset + create_info.target_count; ++i) {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keyword">auto</span> single = CreateRunSingleTarget&lt;F, Ord&gt;(</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        create_info, use_output, force_add_to_corpus, may_delete_file,</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        persistent, strict_match, i, sink);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    run &lt;&lt; single;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordflow">return</span> run;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Ord, <span class="keyword">typename</span> Sink&gt;</div>
-<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="nezha_2create_8hpp.html#aefe859164a04792e29e01184e5f3473e">  175</a></span>&#160;<span class="keyword">auto</span> createRunone(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <span class="keywordtype">bool</span> use_output,</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                  <span class="keyword">const</span> Sink &amp;sink) {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <span class="keyword">auto</span> increment_counter =</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      hf::CreateNode&lt;lf::StaticAppend&lt;F, decltype(Ord::count)&gt;&gt;(1u);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="keyword">auto</span> local_loop =</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      hf::CreateNode&lt;lf::standard_order::RepeatUntilNewCoverage&lt;F, Ord&gt;&gt;(</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;          create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#afa8e6b1ef33a66fd6ccb03c6d52d7c46">max_mutation_retry_count</a>);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="keyword">auto</span> mutation_loop =</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      hf::CreateNode&lt;lf::standard_order::RepeatUntilMutated&lt;F, Ord&gt;&gt;(</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;          1, create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a564ac93a99529d410e586ad20493d376">mutation_depth</a>);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <span class="keyword">auto</span> select_input =</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      hf::CreateNode&lt;lf::standard_order::ChooseRandomSeed&lt;F, Ord&gt;&gt;(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="keyword">auto</span> select_crossover = hf::CreateNode&lt;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      lf::ChooseRandomSeed&lt;F, decltype(Ord::state &amp;&amp; Ord::corpus &amp;&amp; Ord::rng &amp;&amp;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                                       Ord::crossover &amp;&amp; Ord::exec_result)&gt;&gt;(</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#aa19a8ccb87a5ed7095ed0c14be132ac5">crossover_uniform_dist</a>);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keyword">auto</span> update_dict =</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      hf::CreateNode&lt;lf::standard_order::UpdateDictionary&lt;F, Ord&gt;&gt;();</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keyword">auto</span> increment_mutations_count =</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      hf::CreateNode&lt;lf::standard_order::IncrementMutationsCount&lt;F, Ord&gt;&gt;();</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <span class="keyword">auto</span> create_dict_entry =</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      hf::CreateNode&lt;lf::Clear&lt;F, decltype(Ord::dict_history)&gt;&gt;();</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="keyword">auto</span> create_history =</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;      hf::CreateNode&lt;lf::Clear&lt;F, decltype(Ord::mutation_history)&gt;&gt;();</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <span class="keyword">auto</span> nop1 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <span class="keyword">auto</span> nop2 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  <span class="keyword">auto</span> nop3 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <span class="keyword">auto</span> nop4 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="keyword">auto</span> nop5 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <span class="keyword">auto</span> add_to_solution =</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      use_output</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;          ? hf::CreateNode&lt;standard_order::AddToSolution&lt;F, Ord&gt;&gt;(</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a127c376c87ded164742e8d78c25c01b5">output_dir</a>)</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;          : hf::CreateNode&lt;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <a class="code" href="structfuzzuf_1_1algorithm_1_1nezha_1_1AddToSolution.html">AddToSolution</a>&lt;F, decltype(Ord::input &amp;&amp; Ord::exec_result &amp;&amp;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                                          Ord::trace &amp;&amp; Ord::known_traces &amp;&amp;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                          Ord::status &amp;&amp; Ord::known_status)&gt;&gt;(</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a127c376c87ded164742e8d78c25c01b5">output_dir</a>);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="keyword">auto</span> create_trace = hf::CreateNode&lt;lf::Clear&lt;F, decltype(Ord::trace)&gt;&gt;();</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keyword">auto</span> create_outputs = hf::CreateNode&lt;lf::Clear&lt;F, decltype(Ord::outputs)&gt;&gt;();</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="keyword">auto</span> update_distribution =</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      hf::CreateNode&lt;lf::standard_order::UpdateDistribution&lt;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;          F, <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#afe37ac6fb8da00a4de6e5fce94078a6f">lf::MakeVersion</a>(12u, 0u, 0u), Ord&gt;&gt;(</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;          create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#aab9fba1e024e794e9fe1a03462f8cd96">sparse_energy_updates</a>, create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a8eb18e03c95f163f03de7de761fd8589">max_mutation_factor</a>,</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;          sink);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keyword">auto</span> update_max_length =</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ae76c7c65f88d66fc2395a0566ae3a3e7">len_control</a></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;          ? hf::CreateNode&lt;lf::standard_order::UpdateMaxLength&lt;F, Ord&gt;&gt;(</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a50f64e82ed4666e263d70bbf4df23feb">max_input_length</a>, create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ae76c7c65f88d66fc2395a0566ae3a3e7">len_control</a>)</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;          : hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">   * Due to current clang-format rule, following graph definition is formatted</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">   * in unexpected form. The rule need to be changed to preserve indentation of</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">   * graph definition.</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  nop4 &lt;&lt; (select_crossover || select_input ||</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;           local_loop &lt;&lt; (create_history || create_dict_entry ||</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                          mutation_loop</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                              &lt;&lt; lf::createMutator&lt;F, Ord&gt;(create_info) ||</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                          increment_mutations_count || create_outputs ||</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                          create_trace ||</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                          CreateRunTargets&lt;F, Ord&gt;(create_info, use_output,</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                                                   <span class="keyword">false</span>, <span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                                   sink) ||</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                          add_to_solution) ||</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;           increment_counter || update_distribution || update_max_length);</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  <span class="keywordflow">return</span> nop4;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;}</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Ord, <span class="keyword">typename</span> Sink&gt;</div>
-<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="nezha_2create_8hpp.html#a714172ea0ee2b3aba8e76521d8c26c5c">  274</a></span>&#160;<span class="keyword">auto</span> create(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">libfuzzer::FuzzerCreateInfo</a> &amp;create_info, <span class="keywordtype">bool</span> use_output,</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <a class="code" href="classExecInputSet.html">ExecInputSet</a> &amp;initial_inputs, <span class="keyword">const</span> Sink &amp;sink) {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  <span class="keyword">auto</span> global_loop =</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      hf::CreateNode&lt;lf::PartiallyDynamicRepeat&lt;F, decltype(Ord::count)&gt;&gt;(</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;          create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#abf4482e6ca436f1c7928248dc96d3548">total_cycles</a>);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  <span class="keyword">auto</span> nop1 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <span class="keyword">auto</span> nop2 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  <span class="keyword">auto</span> dump_state =</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ae0919957019f6ed5e8108f320ce51bf6">print_final_stats</a></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;          ? hf::CreateNode&lt;lf::StaticDump&lt;F, decltype(Ord::state)&gt;&gt;(</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                <span class="stringliteral">&quot;state\n&quot;</span>, 1, <span class="stringliteral">&quot;  &quot;</span>, sink)</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;          : hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  nop1 &lt;&lt; (lf::createInitialize&lt;F, Ord&gt;(create_info, initial_inputs, <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                        sink) ||</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;           global_loop &lt;&lt; createRunone&lt;F, Ord&gt;(create_info, use_output, sink) ||</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;           dump_state);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  <span class="keywordflow">return</span> nop1;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::nezha</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;config.h&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="libfuzzer_2create_8hpp.html">fuzzuf/algorithms/libfuzzer/create.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nezha_2config_8hpp.html">fuzzuf/algorithms/nezha/config.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nezha_2hierarflow_8hpp.html">fuzzuf/algorithms/nezha/hierarflow.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nezha_2state_8hpp.html">fuzzuf/algorithms/nezha/state.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::nezha {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Ord, <span class="keyword">typename</span> Sink&gt;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="nezha_2create_8hpp.html#ae0f9abebac8bdd6a31c01b0424d75c2b">   62</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="nezha_2create_8hpp.html#ae0f9abebac8bdd6a31c01b0424d75c2b">CreateRunSingleTarget</a>(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <span class="keywordtype">bool</span> use_output,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                           <span class="keywordtype">bool</span> force_add_to_corpus, <span class="keywordtype">bool</span> may_delete_file,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                           <span class="keywordtype">bool</span> persistent, <span class="keywordtype">bool</span> strict_match, <span class="keywordtype">size_t</span> i,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                           <span class="keyword">const</span> Sink &amp;sink) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">fuzzuf::executor::LibFuzzerExecutorInterface</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keyword">auto</span> create_local_coverage =</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      hf::CreateNode&lt;lf::Clear&lt;F, decltype(Ord::coverage)&gt;&gt;();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">auto</span> execute = hf::CreateNode&lt;lf::standard_order::Execute&lt;F, Ord&gt;&gt;();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">auto</span> collect_features =</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      hf::CreateNode&lt;standard_order::CollectFeatures&lt;F, Ord&gt;&gt;(</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;          i * (create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ac1699e1dfde80c48460352b10d9425bf">use_afl_coverage</a> ? create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a1c6211507a4b8a7010a91fddccf23a69">afl_shm_size</a></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                            : create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#afefb0620d92f61ee6ae1ff3e1b7d92cc">bb_shm_size</a>));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">auto</span> add_to_corpus = hf::CreateNode&lt;lf::standard_order::AddToCorpus&lt;F, Ord&gt;&gt;(</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      force_add_to_corpus, may_delete_file, persistent, strict_match,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a127c376c87ded164742e8d78c25c01b5">output_dir</a>, Sink(sink));</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">auto</span> new_cov = hf::CreateNode&lt;lf::standard_order::IfNewCoverage&lt;F, Ord&gt;&gt;();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keyword">auto</span> update_dict =</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      hf::CreateNode&lt;lf::standard_order::UpdateDictionary&lt;F, Ord&gt;&gt;();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keyword">auto</span> print =</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a0d70d7e6f1a802b7962d104b5a924418">print_pcs</a></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;          ? hf::CreateNode&lt;lf::standard_order::PrintStatusForNewUnit&lt;F, Ord&gt;&gt;(</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#acdcc6c2c16224268886833c8b8948cc8">verbosity</a>, create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a18f85c7dd65ce8cb5d78bdd93699469e">max_mutations_to_print</a>,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ae7baf9aed3715f9362f3aab26bbbacef">max_unit_size_to_print</a>, sink)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;          : hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keyword">auto</span> nop1 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">auto</span> nop2 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keyword">auto</span> gather_trace_ = hf::CreateNode&lt;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      lf::DynamicAppend&lt;F, decltype(Ord::added_to_corpus &amp;&amp; Ord::trace)&gt;&gt;();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keyword">auto</span> gather_output_ =</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      (use_output)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;          ? hf::CreateNode&lt;standard_order::GatherOutput&lt;F, Ord&gt;&gt;()</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;          : hf::CreateNode&lt;lf::DynamicAppend&lt;F, decltype(Ord::single_status &amp;&amp;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                                         Ord::status)&gt;&gt;();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keyword">auto</span> assign_last_corpus_update_run = hf::CreateNode&lt;lf::DynamicAssign&lt;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      F, decltype(Ord::count &amp;&amp; Ord::last_corpus_update_run)&gt;&gt;();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keyword">auto</span> set_executor =</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      hf::CreateNode&lt;lf::StaticAssign&lt;F, decltype(Ord::executor_index)&gt;&gt;(i);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  nop1 &lt;&lt; (create_local_coverage &lt;&lt; set_executor &lt;&lt; execute &lt;&lt; collect_features</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                 &lt;&lt; add_to_corpus ||</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;           new_cov &lt;&lt; (update_dict || print || assign_last_corpus_update_run) ||</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;           gather_trace_ &lt;&lt; gather_output_);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordflow">return</span> nop1;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Ord, <span class="keyword">typename</span> Sink&gt;</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="nezha_2create_8hpp.html#a2642ba441150778eba2bbb79badd6815">  140</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="nezha_2create_8hpp.html#a2642ba441150778eba2bbb79badd6815">CreateRunTargets</a>(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <span class="keywordtype">bool</span> use_output,</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                      <span class="keywordtype">bool</span> force_add_to_corpus, <span class="keywordtype">bool</span> may_delete_file,</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                      <span class="keywordtype">bool</span> persistent, <span class="keywordtype">bool</span> strict_match, <span class="keyword">const</span> Sink &amp;sink) {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keyword">auto</span> nop1 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keyword">auto</span> run = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keywordflow">for</span> (std::size_t i = create_info.target_offset;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;       i != create_info.target_offset + create_info.target_count; ++i) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keyword">auto</span> single = CreateRunSingleTarget&lt;F, Ord&gt;(</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        create_info, use_output, force_add_to_corpus, may_delete_file,</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        persistent, strict_match, i, sink);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    run &lt;&lt; single;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordflow">return</span> run;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Ord, <span class="keyword">typename</span> Sink&gt;</div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="nezha_2create_8hpp.html#aefe859164a04792e29e01184e5f3473e">  176</a></span>&#160;<span class="keyword">auto</span> createRunone(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">FuzzerCreateInfo</a> &amp;create_info, <span class="keywordtype">bool</span> use_output,</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                  <span class="keyword">const</span> Sink &amp;sink) {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <span class="keyword">auto</span> increment_counter =</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      hf::CreateNode&lt;lf::StaticAppend&lt;F, decltype(Ord::count)&gt;&gt;(1u);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keyword">auto</span> local_loop =</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      hf::CreateNode&lt;lf::standard_order::RepeatUntilNewCoverage&lt;F, Ord&gt;&gt;(</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;          create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#afa8e6b1ef33a66fd6ccb03c6d52d7c46">max_mutation_retry_count</a>);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <span class="keyword">auto</span> mutation_loop =</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      hf::CreateNode&lt;lf::standard_order::RepeatUntilMutated&lt;F, Ord&gt;&gt;(</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;          1, create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a564ac93a99529d410e586ad20493d376">mutation_depth</a>);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="keyword">auto</span> select_input =</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      hf::CreateNode&lt;lf::standard_order::ChooseRandomSeed&lt;F, Ord&gt;&gt;(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keyword">auto</span> select_crossover = hf::CreateNode&lt;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      lf::ChooseRandomSeed&lt;F, decltype(Ord::state &amp;&amp; Ord::corpus &amp;&amp; Ord::rng &amp;&amp;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                                       Ord::crossover &amp;&amp; Ord::exec_result)&gt;&gt;(</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#aa19a8ccb87a5ed7095ed0c14be132ac5">crossover_uniform_dist</a>);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="keyword">auto</span> update_dict =</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      hf::CreateNode&lt;lf::standard_order::UpdateDictionary&lt;F, Ord&gt;&gt;();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keyword">auto</span> increment_mutations_count =</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      hf::CreateNode&lt;lf::standard_order::IncrementMutationsCount&lt;F, Ord&gt;&gt;();</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keyword">auto</span> create_dict_entry =</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      hf::CreateNode&lt;lf::Clear&lt;F, decltype(Ord::dict_history)&gt;&gt;();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="keyword">auto</span> create_history =</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      hf::CreateNode&lt;lf::Clear&lt;F, decltype(Ord::mutation_history)&gt;&gt;();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  <span class="keyword">auto</span> nop1 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keyword">auto</span> nop2 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <span class="keyword">auto</span> nop3 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  <span class="keyword">auto</span> nop4 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  <span class="keyword">auto</span> nop5 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <span class="keyword">auto</span> add_to_solution =</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      use_output</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;          ? hf::CreateNode&lt;standard_order::AddToSolution&lt;F, Ord&gt;&gt;(</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a127c376c87ded164742e8d78c25c01b5">output_dir</a>)</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;          : hf::CreateNode&lt;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                <a class="code" href="structfuzzuf_1_1algorithm_1_1nezha_1_1AddToSolution.html">AddToSolution</a>&lt;F, decltype(Ord::input &amp;&amp; Ord::exec_result &amp;&amp;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                          Ord::trace &amp;&amp; Ord::known_traces &amp;&amp;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                          Ord::status &amp;&amp; Ord::known_status)&gt;&gt;(</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a127c376c87ded164742e8d78c25c01b5">output_dir</a>);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keyword">auto</span> create_trace = hf::CreateNode&lt;lf::Clear&lt;F, decltype(Ord::trace)&gt;&gt;();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  <span class="keyword">auto</span> create_outputs = hf::CreateNode&lt;lf::Clear&lt;F, decltype(Ord::outputs)&gt;&gt;();</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="keyword">auto</span> update_distribution =</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      hf::CreateNode&lt;lf::standard_order::UpdateDistribution&lt;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;          F, <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#afe37ac6fb8da00a4de6e5fce94078a6f">lf::MakeVersion</a>(12u, 0u, 0u), Ord&gt;&gt;(</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;          create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#aab9fba1e024e794e9fe1a03462f8cd96">sparse_energy_updates</a>, create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a8eb18e03c95f163f03de7de761fd8589">max_mutation_factor</a>,</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;          sink);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <span class="keyword">auto</span> update_max_length =</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ae76c7c65f88d66fc2395a0566ae3a3e7">len_control</a></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;          ? hf::CreateNode&lt;lf::standard_order::UpdateMaxLength&lt;F, Ord&gt;&gt;(</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a50f64e82ed4666e263d70bbf4df23feb">max_input_length</a>, create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ae76c7c65f88d66fc2395a0566ae3a3e7">len_control</a>)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;          : hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">   * Due to current clang-format rule, following graph definition is formatted</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">   * in unexpected form. The rule need to be changed to preserve indentation of</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">   * graph definition.</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  nop4 &lt;&lt; (select_crossover || select_input ||</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;           local_loop &lt;&lt; (create_history || create_dict_entry ||</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                          mutation_loop</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                              &lt;&lt; lf::createMutator&lt;F, Ord&gt;(create_info) ||</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                          increment_mutations_count || create_outputs ||</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                          create_trace ||</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                          CreateRunTargets&lt;F, Ord&gt;(create_info, use_output,</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                                   <span class="keyword">false</span>, <span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                                   sink) ||</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                          add_to_solution) ||</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;           increment_counter || update_distribution || update_max_length);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keywordflow">return</span> nop4;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Ord, <span class="keyword">typename</span> Sink&gt;</div>
+<div class="line"><a name="l00275"></a><span class="lineno"><a class="line" href="nezha_2create_8hpp.html#aeb5a14e59dccb6e69382c39adc0fe64f">  275</a></span>&#160;<span class="keyword">auto</span> create(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html">libfuzzer::FuzzerCreateInfo</a> &amp;create_info, <span class="keywordtype">bool</span> use_output,</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <a class="code" href="classfuzzuf_1_1exec__input_1_1ExecInputSet.html">exec_input::ExecInputSet</a> &amp;initial_inputs, <span class="keyword">const</span> Sink &amp;sink) {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  <span class="keyword">namespace </span>lf = <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  <span class="keyword">namespace </span>hf = fuzzuf::hierarflow;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  <span class="keyword">auto</span> global_loop =</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      hf::CreateNode&lt;lf::PartiallyDynamicRepeat&lt;F, decltype(Ord::count)&gt;&gt;(</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;          create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#abf4482e6ca436f1c7928248dc96d3548">total_cycles</a>);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <span class="keyword">auto</span> nop1 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  <span class="keyword">auto</span> nop2 = hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  <span class="keyword">auto</span> dump_state =</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      create_info.<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ae0919957019f6ed5e8108f320ce51bf6">print_final_stats</a></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;          ? hf::CreateNode&lt;lf::StaticDump&lt;F, decltype(Ord::state)&gt;&gt;(</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                <span class="stringliteral">&quot;state\n&quot;</span>, 1, <span class="stringliteral">&quot;  &quot;</span>, sink)</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;          : hf::CreateNode&lt;lf::Proxy&lt;F&gt;&gt;();</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  nop1 &lt;&lt; (lf::createInitialize&lt;F, Ord&gt;(create_info, initial_inputs, <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                        sink) ||</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;           global_loop &lt;&lt; createRunone&lt;F, Ord&gt;(create_info, use_output, sink) ||</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;           dump_state);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <span class="keywordflow">return</span> nop1;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::nezha</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anezha_2create_8hpp_html_ae0f9abebac8bdd6a31c01b0424d75c2b"><div class="ttname"><a href="nezha_2create_8hpp.html#ae0f9abebac8bdd6a31c01b0424d75c2b">fuzzuf::algorithm::nezha::CreateRunSingleTarget</a></div><div class="ttdeci">auto CreateRunSingleTarget(const FuzzerCreateInfo &amp;create_info, bool use_output, bool force_add_to_corpus, bool may_delete_file, bool persistent, bool strict_match, size_t i, const Sink &amp;sink)</div><div class="ttdef"><b>Definition:</b> <a href="nezha_2create_8hpp_source.html#l00061">create.hpp:61</a></div></div>
+<div class="ttc" id="anezha_2create_8hpp_html_ae0f9abebac8bdd6a31c01b0424d75c2b"><div class="ttname"><a href="nezha_2create_8hpp.html#ae0f9abebac8bdd6a31c01b0424d75c2b">fuzzuf::algorithm::nezha::CreateRunSingleTarget</a></div><div class="ttdeci">auto CreateRunSingleTarget(const FuzzerCreateInfo &amp;create_info, bool use_output, bool force_add_to_corpus, bool may_delete_file, bool persistent, bool strict_match, size_t i, const Sink &amp;sink)</div><div class="ttdef"><b>Definition:</b> <a href="nezha_2create_8hpp_source.html#l00062">create.hpp:62</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_ae7baf9aed3715f9362f3aab26bbbacef"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ae7baf9aed3715f9362f3aab26bbbacef">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::max_unit_size_to_print</a></div><div class="ttdeci">std::size_t max_unit_size_to_print</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00261">config.hpp:261</a></div></div>
 <div class="ttc" id="anamespacefuzzuf_1_1algorithm_1_1libfuzzer_html_afe37ac6fb8da00a4de6e5fce94078a6f"><div class="ttname"><a href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#afe37ac6fb8da00a4de6e5fce94078a6f">fuzzuf::algorithm::libfuzzer::MakeVersion</a></div><div class="ttdeci">constexpr auto MakeVersion(T major, T minor, T patch) -&gt; std::enable_if_t&lt; std::is_convertible_v&lt; T, std::uint32_t &gt;, Version &gt;</div><div class="ttdoc">Convert LLVM version triple to 32bit integer value.</div><div class="ttdef"><b>Definition:</b> <a href="version_8hpp_source.html#l00032">version.hpp:32</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_a50f64e82ed4666e263d70bbf4df23feb"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a50f64e82ed4666e263d70bbf4df23feb">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::max_input_length</a></div><div class="ttdeci">std::size_t max_input_length</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00329">config.hpp:329</a></div></div>
@@ -301,10 +302,9 @@ $(function() {
 <div class="ttc" id="anezha_2hierarflow_8hpp_html"><div class="ttname"><a href="nezha_2hierarflow_8hpp.html">hierarflow.hpp</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_ae76c7c65f88d66fc2395a0566ae3a3e7"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ae76c7c65f88d66fc2395a0566ae3a3e7">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::len_control</a></div><div class="ttdeci">std::size_t len_control</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00341">config.hpp:341</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_aa19a8ccb87a5ed7095ed0c14be132ac5"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#aa19a8ccb87a5ed7095ed0c14be132ac5">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::crossover_uniform_dist</a></div><div class="ttdeci">bool crossover_uniform_dist</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00399">config.hpp:399</a></div></div>
-<div class="ttc" id="anezha_2create_8hpp_html_a2642ba441150778eba2bbb79badd6815"><div class="ttname"><a href="nezha_2create_8hpp.html#a2642ba441150778eba2bbb79badd6815">fuzzuf::algorithm::nezha::CreateRunTargets</a></div><div class="ttdeci">auto CreateRunTargets(const FuzzerCreateInfo &amp;create_info, bool use_output, bool force_add_to_corpus, bool may_delete_file, bool persistent, bool strict_match, const Sink &amp;sink)</div><div class="ttdef"><b>Definition:</b> <a href="nezha_2create_8hpp_source.html#l00139">create.hpp:139</a></div></div>
+<div class="ttc" id="anezha_2create_8hpp_html_a2642ba441150778eba2bbb79badd6815"><div class="ttname"><a href="nezha_2create_8hpp.html#a2642ba441150778eba2bbb79badd6815">fuzzuf::algorithm::nezha::CreateRunTargets</a></div><div class="ttdeci">auto CreateRunTargets(const FuzzerCreateInfo &amp;create_info, bool use_output, bool force_add_to_corpus, bool may_delete_file, bool persistent, bool strict_match, const Sink &amp;sink)</div><div class="ttdef"><b>Definition:</b> <a href="nezha_2create_8hpp_source.html#l00140">create.hpp:140</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_a1c6211507a4b8a7010a91fddccf23a69"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a1c6211507a4b8a7010a91fddccf23a69">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::afl_shm_size</a></div><div class="ttdeci">std::uint32_t afl_shm_size</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00283">config.hpp:283</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_afa8e6b1ef33a66fd6ccb03c6d52d7c46"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#afa8e6b1ef33a66fd6ccb03c6d52d7c46">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::max_mutation_retry_count</a></div><div class="ttdeci">unsigned int max_mutation_retry_count</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00230">config.hpp:230</a></div></div>
-<div class="ttc" id="aclassExecInputSet_html"><div class="ttname"><a href="classExecInputSet.html">ExecInputSet</a></div><div class="ttdef"><b>Definition:</b> <a href="exec__input__set_8hpp_source.html#l00034">exec_input_set.hpp:34</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_acdcc6c2c16224268886833c8b8948cc8"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#acdcc6c2c16224268886833c8b8948cc8">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::verbosity</a></div><div class="ttdeci">unsigned int verbosity</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00251">config.hpp:251</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_abf4482e6ca436f1c7928248dc96d3548"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#abf4482e6ca436f1c7928248dc96d3548">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::total_cycles</a></div><div class="ttdeci">signed long long total_cycles</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00334">config.hpp:334</a></div></div>
 <div class="ttc" id="anezha_2state_8hpp_html"><div class="ttname"><a href="nezha_2state_8hpp.html">state.hpp</a></div></div>
@@ -312,13 +312,14 @@ $(function() {
 <div class="ttc" id="anamespacefuzzuf_1_1algorithm_1_1libfuzzer_html"><div class="ttname"><a href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a></div><div class="ttdef"><b>Definition:</b> <a href="config_8cpp_source.html#l00025">config.cpp:25</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface_html"><div class="ttname"><a href="classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html">fuzzuf::executor::LibFuzzerExecutorInterface</a></div><div class="ttdoc">Represents minimal requirements for a libFuzzer-capable executor.</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer__executor__interface_8hpp_source.html#l00054">libfuzzer_executor_interface.hpp:54</a></div></div>
 <div class="ttc" id="anezha_2config_8hpp_html"><div class="ttname"><a href="nezha_2config_8hpp.html">config.hpp</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1exec__input_1_1ExecInputSet_html"><div class="ttname"><a href="classfuzzuf_1_1exec__input_1_1ExecInputSet.html">fuzzuf::exec_input::ExecInputSet</a></div><div class="ttdef"><b>Definition:</b> <a href="exec__input__set_8hpp_source.html#l00036">exec_input_set.hpp:36</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_ac1699e1dfde80c48460352b10d9425bf"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#ac1699e1dfde80c48460352b10d9425bf">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::use_afl_coverage</a></div><div class="ttdeci">bool use_afl_coverage</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00309">config.hpp:309</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_afefb0620d92f61ee6ae1ff3e1b7d92cc"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#afefb0620d92f61ee6ae1ff3e1b7d92cc">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::bb_shm_size</a></div><div class="ttdeci">std::uint32_t bb_shm_size</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00288">config.hpp:288</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_a127c376c87ded164742e8d78c25c01b5"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a127c376c87ded164742e8d78c25c01b5">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::output_dir</a></div><div class="ttdeci">fs::path output_dir</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00204">config.hpp:204</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_a8eb18e03c95f163f03de7de761fd8589"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a8eb18e03c95f163f03de7de761fd8589">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::max_mutation_factor</a></div><div class="ttdeci">std::uint8_t max_mutation_factor</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00238">config.hpp:238</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo_html_a18f85c7dd65ce8cb5d78bdd93699469e"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#a18f85c7dd65ce8cb5d78bdd93699469e">fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo::max_mutations_to_print</a></div><div class="ttdeci">std::size_t max_mutations_to_print</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2config_8hpp_source.html#l00256">config.hpp:256</a></div></div>
 <div class="ttc" id="alibfuzzer_2create_8hpp_html"><div class="ttname"><a href="libfuzzer_2create_8hpp.html">create.hpp</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nezha_1_1AddToSolution_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nezha_1_1AddToSolution.html">fuzzuf::algorithm::nezha::AddToSolution</a></div><div class="ttdoc">Insert execution result to solutions if the tuple of multipe execution results is unique....</div><div class="ttdef"><b>Definition:</b> <a href="nezha_2hierarflow_2add__to__solution_8hpp_source.html#l00042">add_to_solution.hpp:42</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nezha_1_1AddToSolution_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nezha_1_1AddToSolution.html">fuzzuf::algorithm::nezha::AddToSolution</a></div><div class="ttdoc">Insert execution result to solutions if the tuple of multipe execution results is unique....</div><div class="ttdef"><b>Definition:</b> <a href="nezha_2hierarflow_2add__to__solution_8hpp_source.html#l00045">add_to_solution.hpp:45</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

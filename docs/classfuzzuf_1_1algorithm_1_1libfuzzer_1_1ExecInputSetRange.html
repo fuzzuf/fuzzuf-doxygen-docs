@@ -81,8 +81,8 @@ Collaboration diagram for fuzzuf::algorithm::libfuzzer::ExecInputSetRange&lt; un
 <div class="dyncontent">
 <div class="center"><img src="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1ExecInputSetRange__coll__graph.png" border="0" usemap="#fuzzuf_1_1algorithm_1_1libfuzzer_1_1ExecInputSetRange_3_01unwrap_00_01mode_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="fuzzuf_1_1algorithm_1_1libfuzzer_1_1ExecInputSetRange_3_01unwrap_00_01mode_01_4_coll__map" id="fuzzuf_1_1algorithm_1_1libfuzzer_1_1ExecInputSetRange_3_01unwrap_00_01mode_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="5,95,216,151"/>
-<area shape="rect" href="classExecInputSet.html" title=" " alt="" coords="57,5,164,32"/>
+<area shape="rect" title=" " alt="" coords="5,109,216,165"/>
+<area shape="rect" href="classfuzzuf_1_1exec__input_1_1ExecInputSet.html" title=" " alt="" coords="41,5,180,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -112,9 +112,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>const_iterator</b> =
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4f4422825b5285aab3c9591f5ba1d309"><td class="memItemLeft" align="right" valign="top"><a id="a4f4422825b5285aab3c9591f5ba1d309"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ExecInputSetRange</b> (<a class="el" href="classExecInputSet.html">ExecInputSet</a> &amp;s)</td></tr>
-<tr class="separator:a4f4422825b5285aab3c9591f5ba1d309"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addfd3ac51588cb16cfbe5242496b19a2"><td class="memItemLeft" align="right" valign="top"><a id="addfd3ac51588cb16cfbe5242496b19a2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ExecInputSetRange</b> (<a class="el" href="classfuzzuf_1_1exec__input_1_1ExecInputSet.html">exec_input::ExecInputSet</a> &amp;s)</td></tr>
+<tr class="separator:addfd3ac51588cb16cfbe5242496b19a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd2c5d6b382c382bb07464e6c51781ff"><td class="memItemLeft" align="right" valign="top"><a id="acd2c5d6b382c382bb07464e6c51781ff"></a>
 <a class="el" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1BasicExecInputSetIterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
 <tr class="separator:acd2c5d6b382c382bb07464e6c51781ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,9 +164,9 @@ const_reference&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (in
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aeb5c6986f29fbade1493a51b48984c1e"><td class="memItemLeft" align="right" valign="top"><a id="aeb5c6986f29fbade1493a51b48984c1e"></a>
-<a class="el" href="classExecInputSet.html">ExecInputSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>set</b></td></tr>
-<tr class="separator:aeb5c6986f29fbade1493a51b48984c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe69da740e0c58d7a6cb291ec51312c4"><td class="memItemLeft" align="right" valign="top"><a id="abe69da740e0c58d7a6cb291ec51312c4"></a>
+<a class="el" href="classfuzzuf_1_1exec__input_1_1ExecInputSet.html">exec_input::ExecInputSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>set</b></td></tr>
+<tr class="separator:abe69da740e0c58d7a6cb291ec51312c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae9b8b8bc5eb0cfb1b77db6ae5992257"><td class="memItemLeft" align="right" valign="top"><a id="aae9b8b8bc5eb0cfb1b77db6ae5992257"></a>
 std::shared_ptr&lt; std::vector&lt; std::uint64_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ids</b></td></tr>
 <tr class="separator:aae9b8b8bc5eb0cfb1b77db6ae5992257"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,15 +175,15 @@ std::shared_ptr&lt; std::vector&lt; std::uint64_t &gt; &gt;&#160;</td><td class=
 <div class="textblock"><h3>template&lt;bool unwrap, ExecInputSetRangeInsertMode mode&gt;<br />
 class fuzzuf::algorithm::libfuzzer::ExecInputSetRange&lt; unwrap, mode &gt;</h3>
 
-<p>A range adaptor to make <a class="el" href="classExecInputSet.html">ExecInputSet</a> to C++ range compliant. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>A range adaptor to make ExecInputSet to C++ range compliant. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">unwrap</td><td><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> true, dereferenced value is range of std::uint8_t. Otherwise, dereferenced value is reference to <a class="el" href="classExecInput.html">ExecInput</a>. </td></tr>
+    <tr><td class="paramname">unwrap</td><td><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> true, dereferenced value is range of std::uint8_t. Otherwise, dereferenced value is reference to ExecInput. </td></tr>
     <tr><td class="paramname">mode</td><td>Specify how to insert value. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="exec__input__set__range_8hpp_source.html#l00173">173</a> of file <a class="el" href="exec__input__set__range_8hpp_source.html">exec_input_set_range.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exec__input__set__range_8hpp_source.html#l00178">178</a> of file <a class="el" href="exec__input__set__range_8hpp_source.html">exec_input_set_range.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/fuzzuf/algorithms/libfuzzer/<a class="el" href="exec__input__set__range_8hpp_source.html">exec_input_set_range.hpp</a></li>
 </ul>

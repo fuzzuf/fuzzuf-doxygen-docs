@@ -391,7 +391,7 @@ b. Hiding with macros</h3>
 <p>If anyone has any good ideas, please let us know about them on GitHub issues.</p>
 <h1><a class="anchor" id="autotoc_md237"></a>
 Problems with HierarFlow as implemented in C\+\+.</h1>
-<p>As a side note, one of the problems with HierarFlow in C++ is that the definitions of nodes and flows tend to get far apart. The more nodes you have, the more disconnected the constructs of the <a class="el" href="classHierarFlowNode.html">HierarFlowNode</a> instances are from the actual flow definitions that connect the HierarFlowNodes in the code. For example, the definition of HierarFlow in AFL may give you an example. There are also other algorithms where the two definitions are located much farther apart. This makes browsing through the definitions of flows a bit tedious.</p>
+<p>As a side note, one of the problems with HierarFlow in C++ is that the definitions of nodes and flows tend to get far apart. The more nodes you have, the more disconnected the constructs of the HierarFlowNode instances are from the actual flow definitions that connect the HierarFlowNodes in the code. For example, the definition of HierarFlow in AFL may give you an example. There are also other algorithms where the two definitions are located much farther apart. This makes browsing through the definitions of flows a bit tedious.</p>
 <p>The fascinating thing is that in Rust, this can be solved by using macros (which we didn't end up doing).</p>
 <p>For example, AFL's HierarFlow would have allowed you to write node constructs and flow definitions at the same time, in the following form:</p>
 <div class="fragment"><div class="line">build_hierarflow! [</div>
@@ -435,7 +435,7 @@ References</h1>
 <p>[^aflpp]: Andrea Fioraldi, Dominik Maier, Heiko Eißfeldt, and Marc Heuse. 2020. AFL++: Combining Incremental Steps of Fuzzing Research. In Proceedings of the 14th USENIX Workshop on Offensive Technologies (WOOT'20).</p>
 <p>[^redqueen]: Cornelius Aschermann, Sergej Schumilo, Tim Blazytko, Robert Gawlik, and Thorsten Holz. 2019. REDQUEEN: Fuzzing with Input-to-State Correspondence. In the Network and Distribution System Security (NDSS'19).</p>
 <p>[^aflsmart]: Van-Thuan Pham, Marcel Böhme, Andrew E. Santosa, Alexandru Răzvan Căciulescu, Abhik Roychoudhury. 2019. Smart Greybox Fuzzing. In IEEE Transactions on Software Engineering (TSE'1).</p>
-<p>[^entropic]: Marcel Böhme, Valentin J.M. Manès, and Sang K. Cha. 2020. Boosting <a class="el" href="classFuzzer.html">Fuzzer</a> Efficiency: An Information Theoretic Perspective. In Proceedings of the 28th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE'20).</p>
+<p>[^entropic]: Marcel Böhme, Valentin J.M. Manès, and Sang K. Cha. 2020. Boosting Fuzzer Efficiency: An Information Theoretic Perspective. In Proceedings of the 28th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE'20).</p>
 <p>[^fairfuzz]: Caroline Lemieux and Koushik Sen. 2018. FairFuzz: A Targeted Mutation Strategy for Increasing Greybox Fuzz Testing Coverage. In Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering (ASE'18).</p>
 <p>[^honggfuzz]: "honggfuzz" <a href="https://honggfuzz.dev/">https://honggfuzz.dev/</a> </p>
 </div></div><!-- contents -->

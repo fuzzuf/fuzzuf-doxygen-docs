@@ -72,7 +72,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -90,96 +90,99 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_HIERARFLOW_HIERARFLOW_CALLEE_HPP</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/common.hpp&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/logger/logger.hpp&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/exceptions.hpp&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Leave these as incomplete types.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> O&gt;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classHierarFlowCaller.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHierarFlowCaller.html">HierarFlowCaller</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> I, <span class="keyword">class</span> O&gt;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classHierarFlowRoutine.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/exceptions.hpp&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/logger/logger.hpp&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/common.hpp&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>fuzzuf::hierarflow {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// Leave these as incomplete types.</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> O&gt;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCaller.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCaller.html">HierarFlowCaller</a>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> CalleeIndex = u32;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// HierarFlowCallee represents objects that are called by their predecessors</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// with the arguments of type &quot;IArgs...&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> I, <span class="keyword">class</span> O&gt;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">   34</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">HierarFlowRoutine</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using</span> CalleeIndex = u32;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> I&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classHierarFlowCallee.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHierarFlowCallee.html">HierarFlowCallee</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// HierarFlowCallee represents objects that are called by their predecessors</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// with the arguments of type &quot;IArgs...&quot;</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class </span>IReturn, <span class="keyword">class</span>... IArgs&gt;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classHierarFlowCallee_3_01IReturn_07IArgs_8_8_8_08_4.html">   42</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHierarFlowCallee.html">HierarFlowCallee</a>&lt;IReturn(IArgs...)&gt; {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">using</span> I = IReturn(IArgs...);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> A, <span class="keyword">class</span> B&gt;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> I&gt;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">   42</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">HierarFlowCallee</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>IReturn, <span class="keyword">class</span>... IArgs&gt;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee_3_01IReturn_07IArgs_8_8_8_08_4.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">HierarFlowCallee</a>&lt;IReturn(IArgs...)&gt; {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">using</span> I = IReturn(IArgs...);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classHierarFlowCallee.html">HierarFlowCallee</a>() : parent(<span class="keyword">nullptr</span>) {}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> A, <span class="keyword">class</span> B&gt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">HierarFlowRoutine</a>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classHierarFlowCallee.html">HierarFlowCallee</a>(<a class="code" href="classHierarFlowCaller.html">HierarFlowCaller&lt;I&gt;</a> *parent) : parent(parent) {}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classHierarFlowCallee.html">HierarFlowCallee</a>() {}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">virtual</span> NullableRef&lt;HierarFlowCallee&lt;I&gt;&gt;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        operator()(IArgs... args) = 0;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">HierarFlowCallee</a>() : parent(<span class="keyword">nullptr</span>) {}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">HierarFlowCallee</a>(<a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCaller.html">HierarFlowCaller&lt;I&gt;</a>* parent) : parent(parent) {}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">HierarFlowCallee</a>() {}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">const</span> CalleeIndex&amp; GetCalleeIndexRef()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> idx; };</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">virtual</span> utils::NullableRef&lt;HierarFlowCallee&lt;I&gt;&gt; operator()(IArgs... args) = 0;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classHierarFlowCallee.html">HierarFlowCallee&lt;I&gt;</a>&amp; operator=(<a class="code" href="classHierarFlowCallee.html">HierarFlowCallee&lt;I&gt;</a>&amp;&amp; orig) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        idx = orig.idx;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        std::swap(parent, orig.parent);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> SetParentAndIndex(<a class="code" href="classHierarFlowCaller.html">HierarFlowCaller&lt;I&gt;</a>* caller, CalleeIndex num) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (parent) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">throw</span> exceptions::wrong_hierarflow_usage(</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="stringliteral">&quot;Node&#39;s parent can be set only once. &quot;</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="stringliteral">&quot;You are trying to use the same node mutiple times &quot;</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="stringliteral">&quot;in difference places.&quot;</span>,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                __FILE__, __LINE__</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            );</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        parent = caller;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        idx = num;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Some utilities wants to directly set parent-&gt;resp_val.</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// We use SFINAE to define this function only when IReturn is not void.</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> IReturn_=IReturn&gt;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">auto</span> SetParentResponseValue(<span class="keyword">const</span> IReturn_&amp; val)</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        -&gt; std::enable_if_t&lt; !std::is_same_v&lt;IReturn_, void&gt;, <span class="keywordtype">void</span> &gt; {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        static_assert( !std::is_same_v&lt;IReturn, void&gt;, <span class="stringliteral">&quot;You cannot use this function when IReturn is void.&quot;</span>);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        parent-&gt;resp_val = val;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> IReturn_=IReturn&gt;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">auto</span> SetParentResponseValue(IReturn_&amp;&amp; val)</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        -&gt; std::enable_if_t&lt; !std::is_same_v&lt;IReturn_, void&gt;, <span class="keywordtype">void</span> &gt; {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        static_assert( !std::is_same_v&lt;IReturn, void&gt;, <span class="stringliteral">&quot;You cannot use this function when IReturn is void.&quot;</span>);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        parent-&gt;resp_val = std::move(val);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    CalleeIndex idx;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// NOTE: we can&#39;t use std::reference_wrapper for incomplete types in C++17.</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">// Hence, we use a raw pointer instead of NullableRef&lt;HierarFlowCaller&lt;I&gt;&gt;.</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="classHierarFlowCaller.html">HierarFlowCaller&lt;I&gt;</a> *parent;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">const</span> CalleeIndex&amp; GetCalleeIndexRef()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> idx; };</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">HierarFlowCallee&lt;I&gt;</a>&amp; operator=(<a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">HierarFlowCallee&lt;I&gt;</a>&amp;&amp; orig) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    idx = orig.idx;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::swap(parent, orig.parent);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">void</span> SetParentAndIndex(<a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCaller.html">HierarFlowCaller&lt;I&gt;</a>* caller, CalleeIndex num) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (parent) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="keywordflow">throw</span> exceptions::wrong_hierarflow_usage(</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;          <span class="stringliteral">&quot;Node&#39;s parent can be set only once. &quot;</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;          <span class="stringliteral">&quot;You are trying to use the same node mutiple times &quot;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;          <span class="stringliteral">&quot;in difference places.&quot;</span>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;          __FILE__, __LINE__);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    parent = caller;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    idx = num;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="comment">// Some utilities wants to directly set parent-&gt;resp_val.</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">// We use SFINAE to define this function only when IReturn is not void.</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> IReturn_ = IReturn&gt;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">auto</span> SetParentResponseValue(<span class="keyword">const</span> IReturn_&amp; val)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      -&gt; std::enable_if_t&lt;!std::is_same_v&lt;IReturn_, void&gt;, <span class="keywordtype">void</span>&gt; {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    static_assert(!std::is_same_v&lt;IReturn, void&gt;,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                  <span class="stringliteral">&quot;You cannot use this function when IReturn is void.&quot;</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    parent-&gt;resp_val = val;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> IReturn_ = IReturn&gt;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keyword">auto</span> SetParentResponseValue(IReturn_&amp;&amp; val)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      -&gt; std::enable_if_t&lt;!std::is_same_v&lt;IReturn_, void&gt;, <span class="keywordtype">void</span>&gt; {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    static_assert(!std::is_same_v&lt;IReturn, void&gt;,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                  <span class="stringliteral">&quot;You cannot use this function when IReturn is void.&quot;</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    parent-&gt;resp_val = std::move(val);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  CalleeIndex idx;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="comment">// NOTE: we can&#39;t use std::reference_wrapper for incomplete types in C++17.</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="comment">// Hence, we use a raw pointer instead of NullableRef&lt;HierarFlowCaller&lt;I&gt;&gt;.</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCaller.html">HierarFlowCaller&lt;I&gt;</a>* parent;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}  <span class="comment">// namespace fuzzuf::hierarflow</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassHierarFlowCallee_html"><div class="ttname"><a href="classHierarFlowCallee.html">HierarFlowCallee</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00039">hierarflow_callee.hpp:39</a></div></div>
-<div class="ttc" id="aclassHierarFlowCaller_html"><div class="ttname"><a href="classHierarFlowCaller.html">HierarFlowCaller</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00028">hierarflow_callee.hpp:28</a></div></div>
-<div class="ttc" id="aclassHierarFlowRoutine_html"><div class="ttname"><a href="classHierarFlowRoutine.html">HierarFlowRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00031">hierarflow_callee.hpp:31</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1hierarflow_1_1HierarFlowCallee_html"><div class="ttname"><a href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">fuzzuf::hierarflow::HierarFlowCallee</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00042">hierarflow_callee.hpp:42</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1hierarflow_1_1HierarFlowCaller_html"><div class="ttname"><a href="classfuzzuf_1_1hierarflow_1_1HierarFlowCaller.html">fuzzuf::hierarflow::HierarFlowCaller</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00031">hierarflow_callee.hpp:31</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1hierarflow_1_1HierarFlowRoutine_html"><div class="ttname"><a href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">fuzzuf::hierarflow::HierarFlowRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00034">hierarflow_callee.hpp:34</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

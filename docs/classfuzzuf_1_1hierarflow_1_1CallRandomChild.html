@@ -79,12 +79,12 @@ $(function() {
 class fuzzuf::hierarflow::CallRandomChild&lt; I &gt;</h3>
 
 <p><a class="el" href="classfuzzuf_1_1hierarflow_1_1CallRandomChild.html" title="CallRandomChild is a irregular routine that randomly chooses and calls only one of its children when ...">CallRandomChild</a> is a irregular routine that randomly chooses and calls only one of its children when executed. </p>
-<p>It's sometimes convenient to have the routine that randomly picks one node from its children and executes that node. This can be used for random mutations or some other procedures that should have random behavior. </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd><p class="startdd">This should derive from HierarFlowIrregularRoutine instead of <a class="el" href="classHierarFlowRoutine.html">HierarFlowRoutine</a> after HierarFlowIrregularRoutine is implemented. </p>
+<p>It's sometimes convenient to have the routine that randomly picks one node from its children and executes that node. This can be used for random mutations or some other procedures that should have random behavior. </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd><p class="startdd">This should derive from HierarFlowIrregularRoutine instead of <a class="el" href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">HierarFlowRoutine</a> after HierarFlowIrregularRoutine is implemented. </p>
 <p class="interdd">Fuzzuf should unify its class designs of random number generators and distributions so that all the classes would not uncontrollably define its random number generator and distributions in their own way. After the unification, <a class="el" href="classfuzzuf_1_1hierarflow_1_1CallRandomChild.html" title="CallRandomChild is a irregular routine that randomly chooses and calls only one of its children when ...">CallRandomChild</a> should follow the sole design to define its distribution. Currently, we use std::default_random_engine with ordinary modulus. </p>
 <p class="enddd">This routine can be more useful if it can deal with other distributions than the uniform distribution. </p>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.html#l00132">132</a> of file <a class="el" href="utility_8hpp_source.html">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.html#l00141">141</a> of file <a class="el" href="utility_8hpp_source.html">utility.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/fuzzuf/hierarflow/<a class="el" href="utility_8hpp_source.html">utility.hpp</a></li>
 </ul>

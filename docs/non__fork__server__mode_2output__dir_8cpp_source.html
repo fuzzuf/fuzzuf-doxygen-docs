@@ -116,48 +116,52 @@ $(function() {
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">auto</span> output_files_dir = root_dir / <span class="stringliteral">&quot;output_files&quot;</span>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment">// Create executor</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a> executor(</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classfuzzuf_1_1executor_1_1NativeLinuxExecutor.html">fuzzuf::executor::NativeLinuxExecutor</a> executor(</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      {TEST_BINARY_DIR <span class="stringliteral">&quot;/executor/generate_outputs&quot;</span>}, 1000, 10000, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      path_to_write_seed, 0, 0, <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      {std::string(<span class="stringliteral">&quot;OUTPUT_DIR=&quot;</span>) + output_files_dir.string()}, {output_files_dir});</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">// Run executor</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  executor.Run(<span class="keyword">nullptr</span>, 0);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// The execution should success</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                    PUTExitReasonType::FAULT_NONE);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">// Check if retrived files have valid content</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">const</span> std::map&lt;fs::path, std::size_t&gt; expected_data{</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      {output_files_dir / <span class="stringliteral">&quot;foo&quot;</span>, std::hash&lt;std::string&gt;()(<span class="stringliteral">&quot;Hello, foo\n&quot;</span>)},</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      {output_files_dir / <span class="stringliteral">&quot;bar&quot;</span>, std::hash&lt;std::string&gt;()(<span class="stringliteral">&quot;Hello, bar\n&quot;</span>)},</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      {output_files_dir / <span class="stringliteral">&quot;moo&quot;</span>, std::hash&lt;std::string&gt;()(<span class="stringliteral">&quot;Hello, moo\n&quot;</span>)}};</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  std::map&lt;fs::path, std::size_t&gt; data;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> files = ( executor.Filesystem()|fuzzuf::utils::vfs::adaptor::read_once ).MmapAll();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::transform(files.begin(), files.end(), std::inserter(data, data.end()),</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                 [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;v) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                   return std::make_pair(</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                       v.first, std::hash&lt;std::string&gt;()(std::string(</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                    v.second.begin(), v.second.end())));</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                 });</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  BOOST_CHECK_EQUAL(data.size(), expected_data.size());</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  BOOST_CHECK(std::equal(data.begin(), data.end(), expected_data.begin(),</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                         expected_data.end()));</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="comment">// Check if RemoveAll removes unretrived files.</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  executor.Run(<span class="keyword">nullptr</span>, 0);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    PUTExitReasonType::FAULT_NONE);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  ( executor.Filesystem()|fuzzuf::utils::vfs::adaptor::read_once ).RemoveAll();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  executor.Run(<span class="keyword">nullptr</span>, 0);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">// Since generate_outputs aborts if output files exist, it can be checked using exit status.</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    PUTExitReasonType::FAULT_NONE);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      {std::string(<span class="stringliteral">&quot;OUTPUT_DIR=&quot;</span>) + output_files_dir.string()},</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      {output_files_dir});</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="comment">// Run executor</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  executor.Run(<span class="keyword">nullptr</span>, 0);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// The execution should success</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    fuzzuf::feedback::PUTExitReasonType::FAULT_NONE);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">// Check if retrived files have valid content</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">const</span> std::map&lt;fs::path, std::size_t&gt; expected_data{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      {output_files_dir / <span class="stringliteral">&quot;foo&quot;</span>, std::hash&lt;std::string&gt;()(<span class="stringliteral">&quot;Hello, foo\n&quot;</span>)},</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      {output_files_dir / <span class="stringliteral">&quot;bar&quot;</span>, std::hash&lt;std::string&gt;()(<span class="stringliteral">&quot;Hello, bar\n&quot;</span>)},</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      {output_files_dir / <span class="stringliteral">&quot;moo&quot;</span>, std::hash&lt;std::string&gt;()(<span class="stringliteral">&quot;Hello, moo\n&quot;</span>)}};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  std::map&lt;fs::path, std::size_t&gt; data;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> files =</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      (executor.Filesystem() | fuzzuf::utils::vfs::adaptor::read_once)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;          .MmapAll();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::transform(files.begin(), files.end(), std::inserter(data, data.end()),</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                 [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;v) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                   return std::make_pair(</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                       v.first, std::hash&lt;std::string&gt;()(std::string(</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                    v.second.begin(), v.second.end())));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                 });</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  BOOST_CHECK_EQUAL(data.size(), expected_data.size());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  BOOST_CHECK(std::equal(data.begin(), data.end(), expected_data.begin(),</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                         expected_data.end()));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="comment">// Check if RemoveAll removes unretrived files.</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  executor.Run(<span class="keyword">nullptr</span>, 0);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    fuzzuf::feedback::PUTExitReasonType::FAULT_NONE);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  (executor.Filesystem() | fuzzuf::utils::vfs::adaptor::read_once).RemoveAll();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  executor.Run(<span class="keyword">nullptr</span>, 0);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="comment">// Since generate_outputs aborts if output files exist, it can be checked</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="comment">// using exit status.</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    fuzzuf::feedback::PUTExitReasonType::FAULT_NONE);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassNativeLinuxExecutor_html"><div class="ttname"><a href="classNativeLinuxExecutor.html">NativeLinuxExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8hpp_source.html#l00044">native_linux_executor.hpp:44</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1executor_1_1NativeLinuxExecutor_html"><div class="ttname"><a href="classfuzzuf_1_1executor_1_1NativeLinuxExecutor.html">fuzzuf::executor::NativeLinuxExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="native__linux__executor_8hpp_source.html#l00050">native_linux_executor.hpp:50</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

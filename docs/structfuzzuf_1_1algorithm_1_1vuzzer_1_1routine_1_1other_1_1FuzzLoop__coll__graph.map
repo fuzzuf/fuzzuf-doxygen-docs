@@ -1,6 +1,6 @@
 <map id="fuzzuf::algorithm::vuzzer::routine::other::FuzzLoop" name="fuzzuf::algorithm::vuzzer::routine::other::FuzzLoop">
-<area shape="rect" id="node1" title=" " alt="" coords="492,30,653,86"/>
-<area shape="rect" id="node2" href="$classHierarFlowRoutine.html" title=" " alt="" coords="225,5,407,47"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html" title=" " alt="" coords="239,71,393,112"/>
-<area shape="rect" id="node4" href="$classExecInputSet.html" title=" " alt="" coords="5,78,112,105"/>
+<area shape="rect" id="node1" title=" " alt="" coords="531,41,692,97"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="257,5,445,61"/>
+<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html" title=" " alt="" coords="275,86,428,127"/>
+<area shape="rect" id="node4" href="$classfuzzuf_1_1exec__input_1_1ExecInputSet.html" title=" " alt="" coords="5,86,144,127"/>
 </map>

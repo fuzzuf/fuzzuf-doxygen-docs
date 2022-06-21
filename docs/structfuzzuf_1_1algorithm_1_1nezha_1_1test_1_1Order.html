@@ -127,11 +127,9 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>outp
 <tr class="separator:ae435fe802f206a4ca1c727ff6565ab12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a051991241021b68a6fdd96b329acc8d1"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>known_outputs</b></td></tr>
 <tr class="separator:a051991241021b68a6fdd96b329acc8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabc239981c1d69fd60f745dd06340706"><td class="memItemLeft" align="right" valign="top"><a id="aabc239981c1d69fd60f745dd06340706"></a>
-constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>single_status</b> = exec_result / sp::mem&lt;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html">libfuzzer::InputInfo</a>, PUTExitReasonType, &amp;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a81187e177e8518d76c1886b7cc823ed3">libfuzzer::InputInfo::status</a>&gt;</td></tr>
+<tr class="memitem:aabc239981c1d69fd60f745dd06340706"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>single_status</b></td></tr>
 <tr class="separator:aabc239981c1d69fd60f745dd06340706"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d448bd9e8334e29613d128bb743ba6d"><td class="memItemLeft" align="right" valign="top"><a id="a9d448bd9e8334e29613d128bb743ba6d"></a>
-constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>added_to_corpus</b> = exec_result / sp::mem&lt;<a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html">libfuzzer::InputInfo</a>, bool, &amp;libfuzzer::InputInfo::added_to_corpus&gt;</td></tr>
+<tr class="memitem:a9d448bd9e8334e29613d128bb743ba6d"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>added_to_corpus</b></td></tr>
 <tr class="separator:a9d448bd9e8334e29613d128bb743ba6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Order"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Order')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Order.html">fuzzuf::algorithm::libfuzzer::test::Order</a></td></tr>
 <tr class="memitem:aa5f879607fad53bec129f9f87545c9a3 inherit pub_static_attribs_structfuzzuf_1_1algorithm_1_1libfuzzer_1_1test_1_1Order"><td class="memItemLeft" align="right" valign="top"><a id="aa5f879607fad53bec129f9f87545c9a3"></a>
@@ -197,8 +195,35 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>exec
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00051">51</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00052">52</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a9d448bd9e8334e29613d128bb743ba6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d448bd9e8334e29613d128bb743ba6d">&#9670;&nbsp;</a></span>added_to_corpus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto fuzzuf::algorithm::nezha::test::Order::added_to_corpus</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      exec_result / sp::mem&lt;libfuzzer::InputInfo, bool,</div>
+<div class="line">                            &amp;<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a8129ed6a4ff324272cf8912434b0c4dc">libfuzzer::InputInfo::added_to_corpus</a>&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00069">69</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a051991241021b68a6fdd96b329acc8d1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a051991241021b68a6fdd96b329acc8d1">&#9670;&nbsp;</a></span>known_outputs</h2>
 
@@ -221,7 +246,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>exec
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      ne / sp::mem&lt;V, known_outputs_t, &amp;V::known_outputs&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00063">63</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00064">64</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -247,7 +272,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>exec
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      ne / sp::mem&lt;V, known_status_t, &amp;V::known_status&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00060">60</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00061">61</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -273,7 +298,7 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>exec
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      ne / sp::mem&lt;V, known_traces_t, &amp;V::known_traces&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00057">57</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00058">58</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -299,7 +324,34 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>exec
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      ne / sp::mem&lt;V, libfuzzer::output_t, &amp;V::output&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00054">54</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00055">55</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aabc239981c1d69fd60f745dd06340706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabc239981c1d69fd60f745dd06340706">&#9670;&nbsp;</a></span>single_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto fuzzuf::algorithm::nezha::test::Order::single_status</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      exec_result / sp::mem&lt;libfuzzer::InputInfo, feedback::PUTExitReasonType,</div>
+<div class="line">                            &amp;<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a39ee8688d4088a9613d6a1bae8d716d8">libfuzzer::InputInfo::status</a>&gt;</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="nezha_2test__utils_8hpp_source.html#l00066">66</a> of file <a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -307,6 +359,8 @@ constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><b>exec
 <li>include/fuzzuf/algorithms/nezha/<a class="el" href="nezha_2test__utils_8hpp_source.html">test_utils.hpp</a></li>
 </ul>
 </div><!-- contents -->
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo_html_a39ee8688d4088a9613d6a1bae8d716d8"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a39ee8688d4088a9613d6a1bae8d716d8">fuzzuf::algorithm::libfuzzer::InputInfo::status</a></div><div class="ttdeci">feedback::PUTExitReasonType status</div><div class="ttdef"><b>Definition:</b> <a href="input__info_8hpp_source.html#l00113">input_info.hpp:113</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo_html_a8129ed6a4ff324272cf8912434b0c4dc"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a8129ed6a4ff324272cf8912434b0c4dc">fuzzuf::algorithm::libfuzzer::InputInfo::added_to_corpus</a></div><div class="ttdeci">bool added_to_corpus</div><div class="ttdoc">If true, the execution result has added to corpus.</div><div class="ttdef"><b>Definition:</b> <a href="input__info_8hpp_source.html#l00123">input_info.hpp:123</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

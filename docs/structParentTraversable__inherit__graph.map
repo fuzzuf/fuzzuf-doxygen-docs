@@ -1,6 +1,0 @@
-<map id="ParentTraversable" name="ParentTraversable">
-<area shape="rect" id="node1" title="Auxiliary struct for HierarFlowNodeImpl::GuaranteeNoLoop." alt="" coords="141,5,279,32"/>
-<area shape="rect" id="node2" href="$classHierarFlowCaller_3_01OReturn_07OArgs_8_8_8_08_4.html" title=" " alt="" coords="5,80,204,121"/>
-<area shape="rect" id="node4" href="$classHierarFlowCaller_3_01void_07OArgs_8_8_8_08_4.html" title=" " alt="" coords="228,80,403,121"/>
-<area shape="rect" id="node3" href="$classHierarFlowNodeImpl_3_01IReturn_07IArgs_8_8_8_08_00_01OReturn_07OArgs_8_8_8_08_4.html" title=" " alt="" coords="27,169,183,225"/>
-</map>

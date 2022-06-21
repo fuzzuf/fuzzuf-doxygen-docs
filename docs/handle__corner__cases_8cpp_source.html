@@ -72,7 +72,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -88,89 +88,89 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE hierarflow.handle_corner_cases</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define BOOST_TEST_DYN_LINK</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;optional&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;boost/scope_exit.hpp&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;boost/scope_exit.hpp&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;optional&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_routine.hpp&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_node.hpp&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_routine.hpp&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// In this test, simple type and routine are enough.</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> VoidType = void(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// This routine just adds its name to a record when executed.</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// The record will be used to check the order of executed nodes.</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structVoidRoutine.html">   36</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structVoidRoutine.html">VoidRoutine</a> : <span class="keyword">public</span> <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;VoidType, VoidType&gt; {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="structVoidRoutine.html">VoidRoutine</a>(std::string name, std::vector&lt;std::string&gt;&amp; order_queue)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        : name(name),</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;          order_queue(order_queue) {}</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structVoidRoutine.html">   36</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structVoidRoutine.html">VoidRoutine</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">fuzzuf::hierarflow::HierarFlowRoutine</a>&lt;VoidType, VoidType&gt; {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="structVoidRoutine.html">VoidRoutine</a>(std::string name, std::vector&lt;std::string&gt;&amp; order_queue)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      : name(name), order_queue(order_queue) {}</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    NullableRef&lt;HierarFlowCallee&lt;VoidType&gt;&gt; operator()(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        order_queue.emplace_back(name);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        CallSuccessors();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> GoToDefaultNext();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::vector&lt;std::string&gt;&amp; order_queue;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">// The following testcase intentionally causes a memory leak.</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">// We need to disable AddressSanitizer&#39;s leak detection.</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* __asan_default_options() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;detect_leaks=0&quot;</span>; }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;BOOST_AUTO_TEST_CASE(CheckCornerCaseHandling, *boost::unit_test::timeout(5) ) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">using</span> fuzzuf::hierarflow::CreateNode;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">using</span> fuzzuf::hierarflow::CreateIrregularNode;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Case 1. &quot;auto a = CreateNode&lt;SomeRoutine&gt;(); a &lt;&lt; a.HardLink();&quot;</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Because HierarFlowRoutine and HierarFlowNode are separated, HierarFlowNode::operator() sets the reference of node</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// that is currently executed(that is, &quot;this&quot;) to a routine instance. Otherwise, the routine cannot know the</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// successors or the parent of th executed node.</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// This means HierarFlowNode::operator must save the reference of node that is previously set to the routine</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// before setting the new one if the same routine is used in different nodes. Otherwise, the routine forgets what</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// was set before and becomes unable to jump to the next node properly.</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::vector&lt;std::string&gt; order;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">auto</span> a = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;a&quot;</span>, order);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">auto</span> b = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;b&quot;</span>, order);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">auto</span> c = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;c&quot;</span>, order);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">auto</span> d = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;d&quot;</span>, order);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        a &lt;&lt; (a.HardLink() &lt;&lt; a.HardLink() &lt;&lt; (b || c)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;           || d</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        );</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        a();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        std::vector&lt;std::string&gt; expected {<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;b&quot;</span>, <span class="stringliteral">&quot;c&quot;</span>, <span class="stringliteral">&quot;d&quot;</span>};</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        BOOST_CHECK_EQUAL_COLLECTIONS(</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            order.begin(), order.end(),</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            expected.begin(), expected.end()</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        );</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  fuzzuf::utils::NullableRef&lt;fuzzuf::hierarflow::HierarFlowCallee&lt;VoidType&gt;&gt;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  operator()(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    order_queue.emplace_back(name);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    CallSuccessors();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> GoToDefaultNext();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  std::string name;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  std::vector&lt;std::string&gt;&amp; order_queue;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">// The following testcase intentionally causes a memory leak.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">// We need to disable AddressSanitizer&#39;s leak detection.</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* __asan_default_options() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;detect_leaks=0&quot;</span>; }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;BOOST_AUTO_TEST_CASE(CheckCornerCaseHandling, *boost::unit_test::timeout(5)) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">using</span> fuzzuf::hierarflow::CreateIrregularNode;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keyword">using</span> fuzzuf::hierarflow::CreateNode;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">// Case 1. &quot;auto a = CreateNode&lt;SomeRoutine&gt;(); a &lt;&lt; a.HardLink();&quot;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment">// Because HierarFlowRoutine and HierarFlowNode are separated,</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">// HierarFlowNode::operator() sets the reference of node that is currently</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// executed(that is, &quot;this&quot;) to a routine instance. Otherwise, the routine</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="comment">// cannot know the successors or the parent of th executed node. This means</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="comment">// HierarFlowNode::operator must save the reference of node that is previously</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="comment">// set to the routine before setting the new one if the same routine is used</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="comment">// in different nodes. Otherwise, the routine forgets what was set before and</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="comment">// becomes unable to jump to the next node properly.</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::vector&lt;std::string&gt; order;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">auto</span> a = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;a&quot;</span>, order);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">auto</span> b = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;b&quot;</span>, order);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">auto</span> c = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;c&quot;</span>, order);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">auto</span> d = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;d&quot;</span>, order);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    a &lt;&lt; (a.HardLink() &lt;&lt; a.HardLink() &lt;&lt; (b || c) || d);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    a();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::vector&lt;std::string&gt; expected{<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;b&quot;</span>, <span class="stringliteral">&quot;c&quot;</span>, <span class="stringliteral">&quot;d&quot;</span>};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    BOOST_CHECK_EQUAL_COLLECTIONS(order.begin(), order.end(), expected.begin(),</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                  expected.end());</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  }</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// Case 2. &quot;auto a = CreateNode&lt;Routine&lt;X, Y&gt;&gt;(); auto y = CreateNode&lt;Routine&lt;Y, X&gt;&gt;(); a &lt;&lt; b; b &lt;&lt; a;&quot;</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">// In the current specification, cycles are prohibited.</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">// Bad practice, but needed: this case creates a circular reference, which results in memory leak.</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="comment">// So let&#39;s tell boost to ignore the memory leak.</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">char</span> env[] = <span class="stringliteral">&quot;BOOST_TEST_DETECT_MEMORY_LEAK=0&quot;</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        putenv(env);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        std::vector&lt;std::string&gt; order;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">auto</span> a = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;a&quot;</span>, order);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">auto</span> b = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;b&quot;</span>, order);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        a &lt;&lt; b;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        BOOST_CHECK_THROW(b &lt;&lt; a, exceptions::wrong_hierarflow_usage);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="comment">// Case 2. &quot;auto a = CreateNode&lt;Routine&lt;X, Y&gt;&gt;(); auto y =</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="comment">// CreateNode&lt;Routine&lt;Y, X&gt;&gt;(); a &lt;&lt; b; b &lt;&lt; a;&quot; In the current specification,</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">// cycles are prohibited.</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">// Bad practice, but needed: this case creates a circular reference, which</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// results in memory leak. So let&#39;s tell boost to ignore the memory leak.</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">char</span> env[] = <span class="stringliteral">&quot;BOOST_TEST_DETECT_MEMORY_LEAK=0&quot;</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    putenv(env);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::vector&lt;std::string&gt; order;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">auto</span> a = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;a&quot;</span>, order);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">auto</span> b = CreateNode&lt;VoidRoutine&gt;(<span class="stringliteral">&quot;b&quot;</span>, order);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    a &lt;&lt; b;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    BOOST_CHECK_THROW(b &lt;&lt; a, fuzzuf::exceptions::wrong_hierarflow_usage);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassHierarFlowRoutine_html"><div class="ttname"><a href="classHierarFlowRoutine.html">HierarFlowRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00031">hierarflow_callee.hpp:31</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1hierarflow_1_1HierarFlowRoutine_html"><div class="ttname"><a href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">fuzzuf::hierarflow::HierarFlowRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00034">hierarflow_callee.hpp:34</a></div></div>
 <div class="ttc" id="astructVoidRoutine_html"><div class="ttname"><a href="structVoidRoutine.html">VoidRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="handle__corner__cases_8cpp_source.html#l00036">handle_corner_cases.cpp:36</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -84,7 +84,7 @@ Inheritance diagram for fuzzuf::algorithm::afl_symcc::AFLFuzzerTemplate&lt; Stat
 <map name="fuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate_3_01State_01_4_inherit__map" id="fuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate_3_01State_01_4_inherit__map">
 <area shape="rect" title="Wrapper to afl::AFLFuzzerTemplate. This class append two member functions required to run SymCC." alt="" coords="5,184,227,240"/>
 <area shape="rect" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="30,80,202,136"/>
-<area shape="rect" href="classFuzzer.html" title=" " alt="" coords="84,5,148,32"/>
+<area shape="rect" href="classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="37,5,195,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -92,10 +92,10 @@ Collaboration diagram for fuzzuf::algorithm::afl_symcc::AFLFuzzerTemplate&lt; St
 <div class="dyncontent">
 <div class="center"><img src="structfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate__coll__graph.png" border="0" usemap="#fuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate_3_01State_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="fuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate_3_01State_01_4_coll__map" id="fuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate_3_01State_01_4_coll__map">
-<area shape="rect" title="Wrapper to afl::AFLFuzzerTemplate. This class append two member functions required to run SymCC." alt="" coords="5,215,227,271"/>
-<area shape="rect" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="30,109,202,165"/>
-<area shape="rect" href="classFuzzer.html" title=" " alt="" coords="13,13,77,39"/>
-<area shape="rect" href="classHierarFlowNode.html" title=" " alt="" coords="101,5,272,47"/>
+<area shape="rect" title="Wrapper to afl::AFLFuzzerTemplate. This class append two member functions required to run SymCC." alt="" coords="520,24,741,80"/>
+<area shape="rect" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="299,24,471,80"/>
+<area shape="rect" href="classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="15,5,174,32"/>
+<area shape="rect" href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html" title=" " alt="" coords="5,56,184,112"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -128,9 +128,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a78b370183cf1cf8f05df954df6eb4637 inherit pro_attribs_classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate"><td class="memItemLeft" align="right" valign="top"><a id="a78b370183cf1cf8f05df954df6eb4637"></a>
 std::unique_ptr&lt; State &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
 <tr class="separator:a78b370183cf1cf8f05df954df6eb4637 inherit pro_attribs_classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39210f0ef69e099982a38bfa99e32db9 inherit pro_attribs_classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate"><td class="memItemLeft" align="right" valign="top"><a id="a39210f0ef69e099982a38bfa99e32db9"></a>
-<a class="el" href="classHierarFlowNode.html">HierarFlowNode</a>&lt; void(void), void(void)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fuzz_loop</b></td></tr>
-<tr class="separator:a39210f0ef69e099982a38bfa99e32db9 inherit pro_attribs_classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adca2be655bc530c52ca0d4837cce2ece inherit pro_attribs_classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate"><td class="memItemLeft" align="right" valign="top"><a id="adca2be655bc530c52ca0d4837cce2ece"></a>
+<a class="el" href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html">hierarflow::HierarFlowNode</a>&lt; void(void), void(void)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fuzz_loop</b></td></tr>
+<tr class="separator:adca2be655bc530c52ca0d4837cce2ece inherit pro_attribs_classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename State&gt;<br />
@@ -144,7 +144,7 @@ class fuzzuf::algorithm::afl_symcc::AFLFuzzerTemplate&lt; State &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00046">46</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00047">47</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8632370ea121348ae971f410933e9c24"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8632370ea121348ae971f410933e9c24">&#9670;&nbsp;</a></span>AddToQueue()</h2>
@@ -190,7 +190,7 @@ template&lt;typename State &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>inserted value in Testcase </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00058">58</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00059">59</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
 
 </div>
 </div>
@@ -220,7 +220,7 @@ template&lt;typename State &gt; </div>
 </div><div class="memdoc">
 <p>Get input value that AFL recently used. </p><dl class="section return"><dt>Returns</dt><dd>input value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00070">70</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00071">71</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
 
 </div>
 </div>

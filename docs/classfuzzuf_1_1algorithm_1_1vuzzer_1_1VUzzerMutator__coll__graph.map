@@ -1,7 +1,7 @@
 <map id="fuzzuf::algorithm::vuzzer::VUzzerMutator" name="fuzzuf::algorithm::vuzzer::VUzzerMutator">
-<area shape="rect" id="node1" title=" " alt="" coords="96,199,267,240"/>
-<area shape="rect" id="node2" href="$classMutator.html" title=" " alt="" coords="5,95,173,136"/>
-<area shape="rect" id="node3" href="$classExecInput.html" title=" " alt="" coords="47,5,132,32"/>
-<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html" title=" " alt="" coords="198,95,351,136"/>
-<area shape="rect" id="node5" href="$classExecInputSet.html" title=" " alt="" coords="221,5,328,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="523,39,693,80"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1mutator_1_1Mutator.html" title=" " alt="" coords="257,5,437,47"/>
+<area shape="rect" id="node3" href="$classfuzzuf_1_1exec__input_1_1ExecInput.html" title=" " alt="" coords="5,5,144,47"/>
+<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html" title=" " alt="" coords="271,71,424,112"/>
+<area shape="rect" id="node5" href="$classfuzzuf_1_1exec__input_1_1ExecInputSet.html" title=" " alt="" coords="5,71,144,112"/>
 </map>

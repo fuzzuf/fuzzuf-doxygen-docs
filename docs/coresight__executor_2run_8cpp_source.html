@@ -72,7 +72,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -107,65 +107,64 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">// Setup root directory</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  std::string root_dir_template(<span class="stringliteral">&quot;/tmp/fuzzuf_test.XXXXXX&quot;</span>);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> raw_dirname = mkdtemp(root_dir_template.data());</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">if</span> (!raw_dirname)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">throw</span> -1;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  BOOST_CHECK(raw_dirname != <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keyword">auto</span> root_dir = fs::path(raw_dirname);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  BOOST_SCOPE_EXIT(&amp;root_dir) { fs::remove_all(root_dir); }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  BOOST_SCOPE_EXIT_END</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="comment">// Create input/output dirctory</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">auto</span> input_dir = root_dir / <span class="stringliteral">&quot;input&quot;</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">auto</span> output_dir = root_dir / <span class="stringliteral">&quot;output&quot;</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_CHECK_EQUAL(fs::create_directory(input_dir), <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  BOOST_CHECK_EQUAL(fs::create_directory(output_dir), <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// Setup output file path</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">auto</span> output_file_path = output_dir / <span class="stringliteral">&quot;result&quot;</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;[*] output_file_path = &quot;</span> + output_file_path.native()</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">auto</span> path_to_write_seed = output_dir / <span class="stringliteral">&quot;cur_input&quot;</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="classCoreSightExecutor.html">CoreSightExecutor</a> executor(fs::path(FUZZUF_CS_PROXY_EXECUTABLE),</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                             {<span class="stringliteral">&quot;/usr/bin/tee&quot;</span>, output_file_path.native()}, 1000,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                             10000, <span class="keyword">true</span>, path_to_write_seed, (1U &lt;&lt; 16),</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                             <span class="keyword">true</span> <span class="comment">/* record_stdout_and_err */</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  );</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  BOOST_CHECK_EQUAL(executor.stdin_mode, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">// Invoke CoreSightExecutor::Run()</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  std::string input(<span class="stringliteral">&quot;abcd&quot;</span>);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  executor.Run(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>u8 *<span class="keyword">&gt;</span>(input.c_str()), input.size());</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="comment">// Check normality</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="comment">// (1) 正常実行されたこと → feedbackのexit_reason が</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="comment">// PUTExitReasonType::FAULT_NONE であることを確認する</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    PUTExitReasonType::FAULT_NONE);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="comment">// (2) 標準入力によってファズが受け渡されたこと →</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">// 標準入力と同じ内容がファイルに保存されたことを確認する</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">auto</span> stdout_buffer = executor.MoveStdOut();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  std::vector&lt;std::uint8_t&gt; expected_stdout{<span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="charliteral">&#39;d&#39;</span>};</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(stdout_buffer.begin(), stdout_buffer.end(),</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                expected_stdout.begin(), expected_stdout.end());</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">// Ignore stderr output for CoreSightExecutor because the tracer often outputs</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">// debug messages with memory map info.</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keyword">auto</span> stderr_buffer = executor.MoveStdErr();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  std::vector&lt; std::uint8_t &gt; expected_stderr{};</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    stderr_buffer.begin(),</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    stderr_buffer.end(),</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    expected_stderr.begin(),</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    expected_stderr.end()</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  );</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">if</span> (!raw_dirname) <span class="keywordflow">throw</span> -1;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  BOOST_CHECK(raw_dirname != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">auto</span> root_dir = fs::path(raw_dirname);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  BOOST_SCOPE_EXIT(&amp;root_dir) { fs::remove_all(root_dir); }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  BOOST_SCOPE_EXIT_END</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="comment">// Create input/output dirctory</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">auto</span> input_dir = root_dir / <span class="stringliteral">&quot;input&quot;</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">auto</span> output_dir = root_dir / <span class="stringliteral">&quot;output&quot;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  BOOST_CHECK_EQUAL(fs::create_directory(input_dir), <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_CHECK_EQUAL(fs::create_directory(output_dir), <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// Setup output file path</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">auto</span> output_file_path = output_dir / <span class="stringliteral">&quot;result&quot;</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;[*] output_file_path = &quot;</span> + output_file_path.native()</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">auto</span> path_to_write_seed = output_dir / <span class="stringliteral">&quot;cur_input&quot;</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="classfuzzuf_1_1executor_1_1CoreSightExecutor.html">fuzzuf::executor::CoreSightExecutor</a> executor(</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      fs::path(FUZZUF_CS_PROXY_EXECUTABLE),</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      {<span class="stringliteral">&quot;/usr/bin/tee&quot;</span>, output_file_path.native()}, 1000, 10000, <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      path_to_write_seed, (1U &lt;&lt; 16), <span class="keyword">true</span> <span class="comment">/* record_stdout_and_err */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  );</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  BOOST_CHECK_EQUAL(executor.stdin_mode, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="comment">// Invoke CoreSightExecutor::Run()</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  std::string input(<span class="stringliteral">&quot;abcd&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  executor.Run(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>u8 *<span class="keyword">&gt;</span>(input.c_str()), input.size());</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// Check normality</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="comment">// (1) 正常実行されたこと → feedbackのexit_reason が</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="comment">// feedback::PUTExitReasonType::FAULT_NONE であることを確認する</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    feedback::PUTExitReasonType::FAULT_NONE);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="comment">// (2) 標準入力によってファズが受け渡されたこと →</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="comment">// 標準入力と同じ内容がファイルに保存されたことを確認する</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">auto</span> stdout_buffer = executor.MoveStdOut();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  std::vector&lt;std::uint8_t&gt; expected_stdout{<span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="charliteral">&#39;d&#39;</span>};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(stdout_buffer.begin(), stdout_buffer.end(),</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                expected_stdout.begin(), expected_stdout.end());</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="comment">// Ignore stderr output for CoreSightExecutor because the tracer often outputs</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">// debug messages with memory map info.</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">auto</span> stderr_buffer = executor.MoveStdErr();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  std::vector&lt; std::uint8_t &gt; expected_stderr{};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    stderr_buffer.begin(),</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    stderr_buffer.end(),</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    expected_stderr.begin(),</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    expected_stderr.end()</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  );</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassCoreSightExecutor_html"><div class="ttname"><a href="classCoreSightExecutor.html">CoreSightExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="coresight__executor_8hpp_source.html#l00023">coresight_executor.hpp:23</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1executor_1_1CoreSightExecutor_html"><div class="ttname"><a href="classfuzzuf_1_1executor_1_1CoreSightExecutor.html">fuzzuf::executor::CoreSightExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="coresight__executor_8hpp_source.html#l00024">coresight_executor.hpp:24</a></div></div>
 <div class="ttc" id="awhich_8hpp_html"><div class="ttname"><a href="which_8hpp.html">which.hpp</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

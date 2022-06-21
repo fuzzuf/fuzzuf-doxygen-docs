@@ -151,7 +151,7 @@ How to Implement an AFL Derived Algorithm</h1>
 <h2><a class="anchor" id="autotoc_md20"></a>
 4. Specialize AFLState Member Functions and/or Add a HierarFlowRoutine</h2>
 <p>If the derived algorithm has the same algorithm flow as AFL but needs to be handled differently, use member function overrides or template class specialization.</p>
-<p>Alternatively, if the derived algorithm has a different algorithm flow from AFL, define a <a class="el" href="classHierarFlowRoutine.html">HierarFlowRoutine</a> that corresponds to the processing. In this case, define <code>AFLFuzzerTemplate&lt;AFLDerivedState&gt;::BuildFuzzFlow</code> and describe the algorithm flow. </p>
+<p>Alternatively, if the derived algorithm has a different algorithm flow from AFL, define a HierarFlowRoutine that corresponds to the processing. In this case, define <code>AFLFuzzerTemplate&lt;AFLDerivedState&gt;::BuildFuzzFlow</code> and describe the algorithm flow. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

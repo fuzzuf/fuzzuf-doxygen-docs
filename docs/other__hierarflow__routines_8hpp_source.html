@@ -72,7 +72,7 @@ $(function() {
 <a href="other__hierarflow__routines_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2022 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -90,13 +90,13 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_ALGORITHMS_NAUTILUS_FUZZER_OTHER_HIERARFLOW_ROUTINES_HPP</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/nautilus/fuzzer/mutation_hierarflow_routines.hpp&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/nautilus/fuzzer/state.hpp&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/nautilus/fuzzer/mutation_hierarflow_routines.hpp&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="queue_8hpp.html">fuzzuf/algorithms/nautilus/fuzzer/queue.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_node.hpp&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_routine.hpp&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/nautilus/fuzzer/state.hpp&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_node.hpp&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_routine.hpp&quot;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::nautilus::fuzzer::routine::other {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
@@ -106,92 +106,95 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">struct </span>GenerateInput;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/* fuzz_loop */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1FuzzLoop.html">   43</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1FuzzLoop.html">FuzzLoop</a> : <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;void(void), void(void)&gt; {</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1FuzzLoop.html">   43</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1FuzzLoop.html">FuzzLoop</a> : <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">hierarflow::HierarFlowRoutine</a>&lt;void(void), void(void)&gt; {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1FuzzLoop.html">FuzzLoop</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state) : state(state) {}</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  NullableRef&lt;<a class="code" href="classHierarFlowCallee.html">HierarFlowCallee</a>&lt;void(<span class="keywordtype">void</span>)&gt;&gt; operator()(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  utils::NullableRef&lt;<a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">hierarflow::HierarFlowCallee</a>&lt;void(<span class="keywordtype">void</span>)&gt;&gt; operator()(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">// FuzzLoop &lt;--&gt; SelectInput</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="other__hierarflow__routines_8hpp.html#a4f8edb0250cab70287bf0cbb7b8843d0">   56</a></span>&#160;<span class="keyword">using</span> <a class="code" href="other__hierarflow__routines_8hpp.html#a4f8edb0250cab70287bf0cbb7b8843d0">ISelectInput</a> = void(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">using</span> RSelectInput = NullableRef&lt;HierarFlowCallee&lt;ISelectInput&gt;&gt;;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// FuzzLoop &lt;--&gt; SelectInput</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="other__hierarflow__routines_8hpp.html#a4f8edb0250cab70287bf0cbb7b8843d0">   55</a></span>&#160;<span class="keyword">using</span> <a class="code" href="other__hierarflow__routines_8hpp.html#a4f8edb0250cab70287bf0cbb7b8843d0">ISelectInput</a> = void(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">using</span> RSelectInput =</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    utils::NullableRef&lt;hierarflow::HierarFlowCallee&lt;ISelectInput&gt;&gt;;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">// SelectInput &lt;--&gt; ProcessInput/GenerateInput</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">using</span> OSelectInput = void(std::unique_ptr&lt;QueueItem&gt;&amp;);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/* select_input_and_switch */</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1SelectInput.html">   62</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1SelectInput.html">SelectInput</a> : <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;ISelectInput, OSelectInput&gt; {</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1SelectInput.html">   62</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1SelectInput.html">SelectInput</a> : <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">hierarflow::HierarFlowRoutine</a>&lt;ISelectInput, OSelectInput&gt; {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1SelectInput.html">SelectInput</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;              <span class="keyword">const</span> CalleeIndex&amp; process_input_idx,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;              <span class="keyword">const</span> CalleeIndex&amp; generate_input_idx)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    : state (state),</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      _process_input_idx (process_input_idx),</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      _generate_input_idx (generate_input_idx) {}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;              <span class="keyword">const</span> hierarflow::CalleeIndex&amp; process_input_idx,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;              <span class="keyword">const</span> hierarflow::CalleeIndex&amp; generate_input_idx)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      : state(state),</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        _process_input_idx(process_input_idx),</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        _generate_input_idx(generate_input_idx) {}</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  RSelectInput operator()(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">const</span> CalleeIndex&amp; _process_input_idx;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keyword">const</span> CalleeIndex&amp; _generate_input_idx;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">const</span> hierarflow::CalleeIndex&amp; _process_input_idx;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keyword">const</span> hierarflow::CalleeIndex&amp; _generate_input_idx;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">// SelectInput &lt;--&gt; ProcessInput</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="other__hierarflow__routines_8hpp.html#a0159e0dd3df894bd087b3175c6380402">   82</a></span>&#160;<span class="keyword">using</span> <a class="code" href="other__hierarflow__routines_8hpp.html#a0159e0dd3df894bd087b3175c6380402">IProcessInput</a> = OSelectInput;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">using</span> RProcessInput = NullableRef&lt;HierarFlowCallee&lt;IProcessInput&gt;&gt;;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">// SelectInput &lt;--&gt; ProcessInput</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="other__hierarflow__routines_8hpp.html#a0159e0dd3df894bd087b3175c6380402">   81</a></span>&#160;<span class="keyword">using</span> <a class="code" href="other__hierarflow__routines_8hpp.html#a0159e0dd3df894bd087b3175c6380402">IProcessInput</a> = OSelectInput;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">using</span> RProcessInput =</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    utils::NullableRef&lt;hierarflow::HierarFlowCallee&lt;IProcessInput&gt;&gt;;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">// ProcessInput &lt;--&gt; Initialize/ApplyDetMuts/ApplyRandMuts</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">using</span> OProcessInput = void(<a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1QueueItem.html">QueueItem</a>&amp;);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">// SelectInput &lt;--&gt; GenerateInput</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">using</span> IGenerateInput = OSelectInput;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">using</span> RGenerateInput = NullableRef&lt;HierarFlowCallee&lt;IGenerateInput&gt;&gt;;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">// Generate &lt;--&gt; ...</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">using</span> OGenerateInput = void(<a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1QueueItem.html">QueueItem</a>&amp;);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/* process_next_input */</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1ProcessInput.html">   94</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1ProcessInput.html">ProcessInput</a> : <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;IProcessInput, OProcessInput&gt; {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1ProcessInput.html">ProcessInput</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state,</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;               <span class="keyword">const</span> CalleeIndex&amp;  initialize_state_idx,</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;               <span class="keyword">const</span> CalleeIndex&amp; apply_det_muts_idx,</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;               <span class="keyword">const</span> CalleeIndex&amp; apply_rand_muts_idx)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    : state (state),</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      _initialize_state_idx (initialize_state_idx),</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      _apply_det_muts_idx (apply_det_muts_idx),</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      _apply_rand_muts_idx (apply_rand_muts_idx) {}</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  RProcessInput operator()(std::unique_ptr&lt;QueueItem&gt;&amp;);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keyword">const</span> CalleeIndex&amp; _initialize_state_idx;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keyword">const</span> CalleeIndex&amp; _apply_det_muts_idx;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keyword">const</span> CalleeIndex&amp; _apply_rand_muts_idx;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;};</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/* generate_input */</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1GenerateInput.html">  113</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1GenerateInput.html">GenerateInput</a> : <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;IGenerateInput, OGenerateInput&gt; {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1GenerateInput.html">GenerateInput</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state) : state(state) {}</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  RGenerateInput operator()(std::unique_ptr&lt;QueueItem&gt;&amp;);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;};</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::nautilus::fuzzer::routine::other</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">using</span> RGenerateInput =</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    utils::NullableRef&lt;hierarflow::HierarFlowCallee&lt;IGenerateInput&gt;&gt;;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">// Generate &lt;--&gt; ...</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">using</span> OGenerateInput = void(<a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1QueueItem.html">QueueItem</a>&amp;);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/* process_next_input */</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1ProcessInput.html">   95</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1ProcessInput.html">ProcessInput</a></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    : <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">hierarflow::HierarFlowRoutine</a>&lt;IProcessInput, OProcessInput&gt; {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1ProcessInput.html">ProcessInput</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;               <span class="keyword">const</span> hierarflow::CalleeIndex&amp; initialize_state_idx,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;               <span class="keyword">const</span> hierarflow::CalleeIndex&amp; apply_det_muts_idx,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;               <span class="keyword">const</span> hierarflow::CalleeIndex&amp; apply_rand_muts_idx)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      : state(state),</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        _initialize_state_idx(initialize_state_idx),</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        _apply_det_muts_idx(apply_det_muts_idx),</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        _apply_rand_muts_idx(apply_rand_muts_idx) {}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  RProcessInput operator()(std::unique_ptr&lt;QueueItem&gt;&amp;);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keyword">const</span> hierarflow::CalleeIndex&amp; _initialize_state_idx;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keyword">const</span> hierarflow::CalleeIndex&amp; _apply_det_muts_idx;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keyword">const</span> hierarflow::CalleeIndex&amp; _apply_rand_muts_idx;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;};</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">/* generate_input */</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1GenerateInput.html">  115</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1GenerateInput.html">GenerateInput</a></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    : <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">hierarflow::HierarFlowRoutine</a>&lt;IGenerateInput, OGenerateInput&gt; {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1GenerateInput.html">GenerateInput</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state) : state(state) {}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  RGenerateInput operator()(std::unique_ptr&lt;QueueItem&gt;&amp;);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">NautilusState</a>&amp; state;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;};</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::nautilus::fuzzer::routine::other</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassHierarFlowCallee_html"><div class="ttname"><a href="classHierarFlowCallee.html">HierarFlowCallee</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00039">hierarflow_callee.hpp:39</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1hierarflow_1_1HierarFlowCallee_html"><div class="ttname"><a href="classfuzzuf_1_1hierarflow_1_1HierarFlowCallee.html">fuzzuf::hierarflow::HierarFlowCallee</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00042">hierarflow_callee.hpp:42</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1FuzzLoop_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1FuzzLoop.html">fuzzuf::algorithm::nautilus::fuzzer::routine::other::FuzzLoop</a></div><div class="ttdef"><b>Definition:</b> <a href="other__hierarflow__routines_8hpp_source.html#l00043">other_hierarflow_routines.hpp:43</a></div></div>
-<div class="ttc" id="aother__hierarflow__routines_8hpp_html_a0159e0dd3df894bd087b3175c6380402"><div class="ttname"><a href="other__hierarflow__routines_8hpp.html#a0159e0dd3df894bd087b3175c6380402">fuzzuf::algorithm::nautilus::fuzzer::routine::other::IProcessInput</a></div><div class="ttdeci">OSelectInput IProcessInput</div><div class="ttdef"><b>Definition:</b> <a href="other__hierarflow__routines_8hpp_source.html#l00082">other_hierarflow_routines.hpp:82</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1ProcessInput_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1ProcessInput.html">fuzzuf::algorithm::nautilus::fuzzer::routine::other::ProcessInput</a></div><div class="ttdef"><b>Definition:</b> <a href="other__hierarflow__routines_8hpp_source.html#l00094">other_hierarflow_routines.hpp:94</a></div></div>
-<div class="ttc" id="aclassHierarFlowRoutine_html"><div class="ttname"><a href="classHierarFlowRoutine.html">HierarFlowRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00031">hierarflow_callee.hpp:31</a></div></div>
+<div class="ttc" id="aother__hierarflow__routines_8hpp_html_a0159e0dd3df894bd087b3175c6380402"><div class="ttname"><a href="other__hierarflow__routines_8hpp.html#a0159e0dd3df894bd087b3175c6380402">fuzzuf::algorithm::nautilus::fuzzer::routine::other::IProcessInput</a></div><div class="ttdeci">OSelectInput IProcessInput</div><div class="ttdef"><b>Definition:</b> <a href="other__hierarflow__routines_8hpp_source.html#l00081">other_hierarflow_routines.hpp:81</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1ProcessInput_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1ProcessInput.html">fuzzuf::algorithm::nautilus::fuzzer::routine::other::ProcessInput</a></div><div class="ttdef"><b>Definition:</b> <a href="other__hierarflow__routines_8hpp_source.html#l00095">other_hierarflow_routines.hpp:95</a></div></div>
 <div class="ttc" id="aqueue_8hpp_html"><div class="ttname"><a href="queue_8hpp.html">queue.hpp</a></div><div class="ttdoc">Corpus queue of Nautilus.</div></div>
+<div class="ttc" id="aclassfuzzuf_1_1hierarflow_1_1HierarFlowRoutine_html"><div class="ttname"><a href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">fuzzuf::hierarflow::HierarFlowRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00034">hierarflow_callee.hpp:34</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1QueueItem_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1QueueItem.html">fuzzuf::algorithm::nautilus::fuzzer::QueueItem</a></div><div class="ttdef"><b>Definition:</b> <a href="queue_8hpp_source.html#l00046">queue.hpp:46</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1GenerateInput_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1GenerateInput.html">fuzzuf::algorithm::nautilus::fuzzer::routine::other::GenerateInput</a></div><div class="ttdef"><b>Definition:</b> <a href="other__hierarflow__routines_8hpp_source.html#l00113">other_hierarflow_routines.hpp:113</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1GenerateInput_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1GenerateInput.html">fuzzuf::algorithm::nautilus::fuzzer::routine::other::GenerateInput</a></div><div class="ttdef"><b>Definition:</b> <a href="other__hierarflow__routines_8hpp_source.html#l00115">other_hierarflow_routines.hpp:115</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusState.html">fuzzuf::algorithm::nautilus::fuzzer::NautilusState</a></div><div class="ttdef"><b>Definition:</b> <a href="nautilus_2fuzzer_2state_8hpp_source.html#l00051">state.hpp:51</a></div></div>
-<div class="ttc" id="aother__hierarflow__routines_8hpp_html_a4f8edb0250cab70287bf0cbb7b8843d0"><div class="ttname"><a href="other__hierarflow__routines_8hpp.html#a4f8edb0250cab70287bf0cbb7b8843d0">fuzzuf::algorithm::nautilus::fuzzer::routine::other::ISelectInput</a></div><div class="ttdeci">void(void) ISelectInput</div><div class="ttdef"><b>Definition:</b> <a href="other__hierarflow__routines_8hpp_source.html#l00056">other_hierarflow_routines.hpp:56</a></div></div>
+<div class="ttc" id="aother__hierarflow__routines_8hpp_html_a4f8edb0250cab70287bf0cbb7b8843d0"><div class="ttname"><a href="other__hierarflow__routines_8hpp.html#a4f8edb0250cab70287bf0cbb7b8843d0">fuzzuf::algorithm::nautilus::fuzzer::routine::other::ISelectInput</a></div><div class="ttdeci">void(void) ISelectInput</div><div class="ttdef"><b>Definition:</b> <a href="other__hierarflow__routines_8hpp_source.html#l00055">other_hierarflow_routines.hpp:55</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1SelectInput_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1SelectInput.html">fuzzuf::algorithm::nautilus::fuzzer::routine::other::SelectInput</a></div><div class="ttdef"><b>Definition:</b> <a href="other__hierarflow__routines_8hpp_source.html#l00062">other_hierarflow_routines.hpp:62</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

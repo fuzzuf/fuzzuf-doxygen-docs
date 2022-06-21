@@ -1,4 +1,0 @@
-<map id="AFLPTPathFavAttacher" name="AFLPTPathFavAttacher">
-<area shape="rect" id="node1" title="Intel PT&#45;based PTrix&#45;specific bitmap attacher used for calculating favorite seeds." alt="" coords="5,80,172,107"/>
-<area shape="rect" id="node2" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="23,5,154,32"/>
-</map>

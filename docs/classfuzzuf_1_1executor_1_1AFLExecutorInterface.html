@@ -121,12 +121,12 @@ template&lt;class T &gt; </td></tr>
 <tr class="memitem:a1d599b0695972450eb645866674865e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a1d599b0695972450eb645866674865e3">Run</a> (const u8 *buf, u32 len, u32 timeout_ms=0)</td></tr>
 <tr class="memdesc:a1d599b0695972450eb645866674865e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the executor with given inputs.  <a href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a1d599b0695972450eb645866674865e3">More...</a><br /></td></tr>
 <tr class="separator:a1d599b0695972450eb645866674865e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73c2b159f51cf86420a1b4420c115df1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a73c2b159f51cf86420a1b4420c115df1">GetAFLFeedback</a> ()</td></tr>
-<tr class="memdesc:a73c2b159f51cf86420a1b4420c115df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets AFL-compatible hashed edge coverage bitmap.  <a href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a73c2b159f51cf86420a1b4420c115df1">More...</a><br /></td></tr>
-<tr class="separator:a73c2b159f51cf86420a1b4420c115df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9512a761164a34c200aaa79173bda72b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classExitStatusFeedback.html">ExitStatusFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a9512a761164a34c200aaa79173bda72b">GetExitStatusFeedback</a> ()</td></tr>
-<tr class="memdesc:a9512a761164a34c200aaa79173bda72b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an exit status of last execution.  <a href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a9512a761164a34c200aaa79173bda72b">More...</a><br /></td></tr>
-<tr class="separator:a9512a761164a34c200aaa79173bda72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb1be910c1e42dd3b1ceb59adb2d6dc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfuzzuf_1_1feedback_1_1InplaceMemoryFeedback.html">feedback::InplaceMemoryFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#afb1be910c1e42dd3b1ceb59adb2d6dc2">GetAFLFeedback</a> ()</td></tr>
+<tr class="memdesc:afb1be910c1e42dd3b1ceb59adb2d6dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets AFL-compatible hashed edge coverage bitmap.  <a href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#afb1be910c1e42dd3b1ceb59adb2d6dc2">More...</a><br /></td></tr>
+<tr class="separator:afb1be910c1e42dd3b1ceb59adb2d6dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7383c71937d0a687d751f7e6624030ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfuzzuf_1_1feedback_1_1ExitStatusFeedback.html">feedback::ExitStatusFeedback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a7383c71937d0a687d751f7e6624030ad">GetExitStatusFeedback</a> ()</td></tr>
+<tr class="memdesc:a7383c71937d0a687d751f7e6624030ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an exit status of last execution.  <a href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a7383c71937d0a687d751f7e6624030ad">More...</a><br /></td></tr>
+<tr class="separator:a7383c71937d0a687d751f7e6624030ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a077b79769ad3e56cae1c83efb1e0b05b"><td class="memItemLeft" align="right" valign="top"><a id="a077b79769ad3e56cae1c83efb1e0b05b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a077b79769ad3e56cae1c83efb1e0b05b">ReceiveStopSignal</a> ()</td></tr>
 <tr class="memdesc:a077b79769ad3e56cae1c83efb1e0b05b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A callback function called when the fuzzer receives a stop signal. <br /></td></tr>
@@ -143,16 +143,16 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorIn
 <p>The executor for AFL must have the methods declared in this class. This class is to perform type erasure for the executor class to abstract the executor on the algortihms. We found that the boost's type_erasure does not meet our needs, so we implemented our own type erasure.</p>
 <dl class="section note"><dt>Note</dt><dd>An AFL-capable executor must have the following functions:<ul>
 <li>void <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a1d599b0695972450eb645866674865e3" title="Executes the executor with given inputs.">Run(const u8 *buf, u32 len, u32 timeout_ms)</a></li>
-<li><a class="el" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a73c2b159f51cf86420a1b4420c115df1" title="Gets AFL-compatible hashed edge coverage bitmap.">GetAFLFeedback()</a></li>
-<li><a class="el" href="classExitStatusFeedback.html">ExitStatusFeedback</a> <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a9512a761164a34c200aaa79173bda72b" title="Gets an exit status of last execution.">GetExitStatusFeedback()</a></li>
+<li>InplaceMemoryFeedback <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#afb1be910c1e42dd3b1ceb59adb2d6dc2" title="Gets AFL-compatible hashed edge coverage bitmap.">GetAFLFeedback()</a></li>
+<li>ExitStatusFeedback <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a7383c71937d0a687d751f7e6624030ad" title="Gets an exit status of last execution.">GetExitStatusFeedback()</a></li>
 <li>void <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorInterface.html#a077b79769ad3e56cae1c83efb1e0b05b" title="A callback function called when the fuzzer receives a stop signal.">ReceiveStopSignal()</a> </li>
 </ul>
 </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="afl__executor__interface_8hpp_source.html#l00050">50</a> of file <a class="el" href="afl__executor__interface_8hpp_source.html">afl_executor_interface.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a73c2b159f51cf86420a1b4420c115df1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73c2b159f51cf86420a1b4420c115df1">&#9670;&nbsp;</a></span>GetAFLFeedback()</h2>
+<a id="afb1be910c1e42dd3b1ceb59adb2d6dc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb1be910c1e42dd3b1ceb59adb2d6dc2">&#9670;&nbsp;</a></span>GetAFLFeedback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,7 +161,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorIn
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classInplaceMemoryFeedback.html">InplaceMemoryFeedback</a> fuzzuf::executor::AFLExecutorInterface::GetAFLFeedback </td>
+          <td class="memname"><a class="el" href="classfuzzuf_1_1feedback_1_1InplaceMemoryFeedback.html">feedback::InplaceMemoryFeedback</a> fuzzuf::executor::AFLExecutorInterface::GetAFLFeedback </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -177,12 +177,12 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorIn
 <p>Gets AFL-compatible hashed edge coverage bitmap. </p>
 <dl class="section return"><dt>Returns</dt><dd>AFL-compatible hashed edge coverage bitmap. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="afl__executor__interface_8hpp_source.html#l00077">77</a> of file <a class="el" href="afl__executor__interface_8hpp_source.html">afl_executor_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="afl__executor__interface_8hpp_source.html#l00076">76</a> of file <a class="el" href="afl__executor__interface_8hpp_source.html">afl_executor_interface.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a9512a761164a34c200aaa79173bda72b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9512a761164a34c200aaa79173bda72b">&#9670;&nbsp;</a></span>GetExitStatusFeedback()</h2>
+<a id="a7383c71937d0a687d751f7e6624030ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7383c71937d0a687d751f7e6624030ad">&#9670;&nbsp;</a></span>GetExitStatusFeedback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -191,7 +191,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorIn
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classExitStatusFeedback.html">ExitStatusFeedback</a> fuzzuf::executor::AFLExecutorInterface::GetExitStatusFeedback </td>
+          <td class="memname"><a class="el" href="classfuzzuf_1_1feedback_1_1ExitStatusFeedback.html">feedback::ExitStatusFeedback</a> fuzzuf::executor::AFLExecutorInterface::GetExitStatusFeedback </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -207,7 +207,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorIn
 <p>Gets an exit status of last execution. </p>
 <dl class="section return"><dt>Returns</dt><dd>An exit status of last execution. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="afl__executor__interface_8hpp_source.html#l00083">83</a> of file <a class="el" href="afl__executor__interface_8hpp_source.html">afl_executor_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="afl__executor__interface_8hpp_source.html#l00082">82</a> of file <a class="el" href="afl__executor__interface_8hpp_source.html">afl_executor_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -261,7 +261,7 @@ std::unique_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1AFLExecutorIn
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="afl__executor__interface_8hpp_source.html#l00071">71</a> of file <a class="el" href="afl__executor__interface_8hpp_source.html">afl_executor_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="afl__executor__interface_8hpp_source.html#l00070">70</a> of file <a class="el" href="afl__executor__interface_8hpp_source.html">afl_executor_interface.hpp</a>.</p>
 
 </div>
 </div>

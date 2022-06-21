@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classfuzzuf_1_1executor_1_1AFLSymCCExecutorInterface.html" title="Represents minimal requirements for a AFL_SymCC&#45;capable executor. SymCC requires only Run and access ..." alt="" coords="5,5,192,47"/>
+<area shape="rect" id="node1" href="$classfuzzuf_1_1executor_1_1AFLExecutorInterface.html" title="Represents minimal requirements for an AFL&#45;capable executor." alt="" coords="5,5,219,47"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1executor_1_1IJONExecutorInterface.html" title="Represents minimal requirements for an AFL&#45;capable executor." alt="" coords="267,5,484,47"/>
 </map>

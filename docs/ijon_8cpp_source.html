@@ -128,49 +128,54 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  BOOST_CHECK(val != -1);  <span class="comment">// Make sure sysconf succeeds</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">auto</span> path_to_write_seed = output_dir / <span class="stringliteral">&quot;cur_input&quot;</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">auto</span> params =</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <a class="code" href="structLinuxForkServerExecutorParameters.html">LinuxForkServerExecutorParameters</a>()</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;          .set_argv(std::vector&lt;std::string&gt;{</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;              TEST_BINARY_DIR</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;              <span class="stringliteral">&quot;/put/ijon/ijon-test_put1&quot;</span> })</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;          .set_exec_timelimit_ms(1000)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;          .set_exec_memlimit(10000)</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;          .set_path_to_write_input(path_to_write_seed)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;          .set_afl_shm_size(65536u)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;          .set_ijon_counter_shm_size(65536u)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;          .set_ijon_max_shm_size(65536u)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;          .set_record_stdout_and_err(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> ijon_counter_offset = params.GetIjonCounterOffset();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> ijon_max_offset = params.GetIjonMaxOffset();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classLinuxForkServerExecutor.html">LinuxForkServerExecutor</a> executor(params.move());</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">auto</span> params = <a class="code" href="structfuzzuf_1_1executor_1_1LinuxForkServerExecutorParameters.html">fuzzuf::executor::LinuxForkServerExecutorParameters</a>()</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    .set_argv(std::vector&lt;std::string&gt;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        TEST_BINARY_DIR <span class="stringliteral">&quot;/put/ijon/ijon-test_put1&quot;</span>})</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    .set_exec_timelimit_ms(1000)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    .set_exec_memlimit(10000)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    .set_path_to_write_input(path_to_write_seed)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    .set_afl_shm_size(65536u)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    .set_ijon_counter_shm_size(65536u)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    .set_ijon_max_shm_size(65536u)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    .set_record_stdout_and_err(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> ijon_counter_offset = params.GetIjonCounterOffset();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> ijon_max_offset = params.GetIjonMaxOffset();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="classfuzzuf_1_1executor_1_1LinuxForkServerExecutor.html">fuzzuf::executor::LinuxForkServerExecutor</a> executor(params.move());</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  BOOST_CHECK_EQUAL(executor.stdin_mode, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  BOOST_CHECK_EQUAL(executor.stdin_mode, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="comment">// Invoke NativeLinuxExecutor::Run()</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  std::string input(<span class="stringliteral">&quot;hogefuga&quot;</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  executor.Run(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>u8 *<span class="keyword">&gt;</span>(input.c_str()), input.size());</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">// Check normality</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">// (1) 正常実行されたこと → feedbackのexit_reason が</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="comment">// PUTExitReasonType::FAULT_NONE であることを確認する</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    PUTExitReasonType::FAULT_NONE);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  executor.GetAFLFeedback().ShowMemoryToFunc(</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      [ijon_counter_offset, ijon_max_offset](<span class="keyword">const</span> u8 *head, u32 size) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="comment">// Retrived range has enough size</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        BOOST_CHECK_GE( size, ijon_max_offset + 65536u );</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">// At least one IJON counter is incremented</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        BOOST_CHECK_EQUAL( std::size_t( std::count( std::next( head, ijon_counter_offset ), std::next( head, ijon_counter_offset + 65536u ), 0 ) ), 65536u - 2u );</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">// At least one IJON_MAX value is recorded</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        BOOST_CHECK_EQUAL( std::size_t( std::count( std::next( head, ijon_max_offset ), std::next( head, ijon_max_offset + 65536u ), 0 ) ), 65536u - 8u );</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      });</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">// Invoke NativeLinuxExecutor::Run()</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  std::string input(<span class="stringliteral">&quot;hogefuga&quot;</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  executor.Run(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>u8 *<span class="keyword">&gt;</span>(input.c_str()), input.size());</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="comment">// Check normality</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="comment">// (1) 正常実行されたこと → feedbackのexit_reason が</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">// PUTExitReasonType::FAULT_NONE であることを確認する</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  BOOST_CHECK_EQUAL(executor.GetExitStatusFeedback().exit_reason,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    fuzzuf::feedback::PUTExitReasonType::FAULT_NONE);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  executor.GetAFLFeedback().ShowMemoryToFunc([ijon_counter_offset,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                              ijon_max_offset](<span class="keyword">const</span> u8 *head,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                                               u32 size) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// Retrived range has enough size</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    BOOST_CHECK_GE(size, ijon_max_offset + 65536u);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// At least one IJON counter is incremented</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    BOOST_CHECK_EQUAL(std::size_t(std::count(</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                          std::next(head, ijon_counter_offset),</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                          std::next(head, ijon_counter_offset + 65536u), 0)),</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                      65536u - 2u);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// At least one IJON_MAX value is recorded</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    BOOST_CHECK_EQUAL(</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        std::size_t(std::count(std::next(head, ijon_max_offset),</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                               std::next(head, ijon_max_offset + 65536u), 0)),</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        65536u - 8u);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  });</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassfuzzuf_1_1executor_1_1LinuxForkServerExecutor_html"><div class="ttname"><a href="classfuzzuf_1_1executor_1_1LinuxForkServerExecutor.html">fuzzuf::executor::LinuxForkServerExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="linux__fork__server__executor_8hpp_source.html#l00139">linux_fork_server_executor.hpp:139</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
-<div class="ttc" id="aclassLinuxForkServerExecutor_html"><div class="ttname"><a href="classLinuxForkServerExecutor.html">LinuxForkServerExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="linux__fork__server__executor_8hpp_source.html#l00138">linux_fork_server_executor.hpp:138</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1executor_1_1LinuxForkServerExecutorParameters_html"><div class="ttname"><a href="structfuzzuf_1_1executor_1_1LinuxForkServerExecutorParameters.html">fuzzuf::executor::LinuxForkServerExecutorParameters</a></div><div class="ttdoc">Parameters required to create LinuxForkServerExecutor.</div><div class="ttdef"><b>Definition:</b> <a href="linux__fork__server__executor_8hpp_source.html#l00045">linux_fork_server_executor.hpp:45</a></div></div>
 <div class="ttc" id="awhich_8hpp_html"><div class="ttname"><a href="which_8hpp.html">which.hpp</a></div></div>
-<div class="ttc" id="astructLinuxForkServerExecutorParameters_html"><div class="ttname"><a href="structLinuxForkServerExecutorParameters.html">LinuxForkServerExecutorParameters</a></div><div class="ttdoc">Parameters required to create LinuxForkServerExecutor.</div><div class="ttdef"><b>Definition:</b> <a href="linux__fork__server__executor_8hpp_source.html#l00044">linux_fork_server_executor.hpp:44</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

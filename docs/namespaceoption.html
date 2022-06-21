@@ -236,11 +236,11 @@ template&lt;typename OStream &gt; </div>
 <p><b>Table formatting:</b></p>
 <p>Aside from plain strings which are simply line-wrapped, the usage may contain tables. Tables are used to align elements in the output.</p>
 <div class="fragment"><div class="line"><span class="comment">// Without a table. The explanatory texts are not aligned.</span></div>
-<div class="line">-c, --<a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a8be7f667f6af4e6af67fe83f16961fa7">create</a>  |Creates something.</div>
+<div class="line">-c, --<a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac16ece5b02ce384868745b4bd4e2d881">create</a>  |Creates something.</div>
 <div class="line">-k, --kill  |Destroys something.</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// With table formatting. The explanatory texts are aligned.</span></div>
-<div class="line">-c, --<a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a8be7f667f6af4e6af67fe83f16961fa7">create</a>  |Creates something.</div>
+<div class="line">-c, --<a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac16ece5b02ce384868745b4bd4e2d881">create</a>  |Creates something.</div>
 <div class="line">-k, --kill    |Destroys something.</div>
 </div><!-- fragment --><p>Table formatting removes the need to pad help texts manually with spaces to achieve alignment. To create a table, simply insert \t (tab) characters to separate the cells within a row.</p>
 <div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code" href="structoption_1_1Descriptor.html">option::Descriptor</a> usage[] = {</div>
@@ -255,7 +255,7 @@ template&lt;typename OStream &gt; </div>
 <div class="line"><span class="comment">// results in</span></div>
 <div class="line"> </div>
 <div class="line">-c,       Creates</div>
-<div class="line">--<a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a8be7f667f6af4e6af67fe83f16961fa7">create</a>  something.</div>
+<div class="line">--<a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac16ece5b02ce384868745b4bd4e2d881">create</a>  something.</div>
 <div class="line">-k,       Destroys</div>
 <div class="line">--kill    something.</div>
 </div><!-- fragment --><p>You can mix lines that do not use \t or \v with those that do. The plain lines will not mess up the table layout. Alignment of the table columns will be maintained even across these interjections.</p>
@@ -266,7 +266,7 @@ template&lt;typename OStream &gt; </div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// results in</span></div>
 <div class="line"> </div>
-<div class="line">-c, --<a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a8be7f667f6af4e6af67fe83f16961fa7">create</a>  Creates something.</div>
+<div class="line">-c, --<a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac16ece5b02ce384868745b4bd4e2d881">create</a>  Creates something.</div>
 <div class="line">----------------------------------</div>
 <div class="line">-k, --kill    Destroys something.</div>
 </div><!-- fragment --><p>You can have multiple tables within the same usage whose columns are aligned independently. Simply insert a dummy <a class="el" href="structoption_1_1Descriptor.html" title="Describes an option, its help text (usage) and how it should be parsed.">Descriptor</a> with <code>help==0</code>.</p>
@@ -372,8 +372,8 @@ template&lt;typename OStream &gt; </div>
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="anamespacefuzzuf_1_1algorithm_1_1libfuzzer_html_a8be7f667f6af4e6af67fe83f16961fa7"><div class="ttname"><a href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a8be7f667f6af4e6af67fe83f16961fa7">fuzzuf::algorithm::libfuzzer::create</a></div><div class="ttdeci">auto create(const FuzzerCreateInfo &amp;create_info, ExecInputSet &amp;initial_inputs, const Sink &amp;sink)</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2create_8hpp_source.html#l00366">create.hpp:366</a></div></div>
 <div class="ttc" id="anamespaceoption_html_aee8c76a07877335762631491e7a5a1a9"><div class="ttname"><a href="namespaceoption.html#aee8c76a07877335762631491e7a5a1a9">option::ArgStatus</a></div><div class="ttdeci">ArgStatus</div><div class="ttdoc">Possible results when checking if an argument is valid for a certain option.</div><div class="ttdef"><b>Definition:</b> <a href="optparser_8hpp_source.html#l00263">optparser.hpp:263</a></div></div>
+<div class="ttc" id="anamespacefuzzuf_1_1algorithm_1_1libfuzzer_html_ac16ece5b02ce384868745b4bd4e2d881"><div class="ttname"><a href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac16ece5b02ce384868745b4bd4e2d881">fuzzuf::algorithm::libfuzzer::create</a></div><div class="ttdeci">auto create(const FuzzerCreateInfo &amp;create_info, exec_input::ExecInputSet &amp;initial_inputs, const Sink &amp;sink)</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2create_8hpp_source.html#l00360">create.hpp:360</a></div></div>
 <div class="ttc" id="anamespaceoption_html_a4cdf403efae65e18bf850e2001b12a2a"><div class="ttname"><a href="namespaceoption.html#a4cdf403efae65e18bf850e2001b12a2a">option::CheckArg</a></div><div class="ttdeci">ArgStatus(* CheckArg)(const Option &amp;option, bool msg)</div><div class="ttdoc">Signature of functions that check if an argument is valid for a certain type of option.</div><div class="ttdef"><b>Definition:</b> <a href="optparser_8hpp_source.html#l00306">optparser.hpp:306</a></div></div>
 <div class="ttc" id="anamespaceoption_html"><div class="ttname"><a href="namespaceoption.html">option</a></div><div class="ttdoc">The namespace of The Lean Mean C++ Option Parser.</div><div class="ttdef"><b>Definition:</b> <a href="optparser_8hpp_source.html#l00241">optparser.hpp:241</a></div></div>
 <div class="ttc" id="astructoption_1_1Descriptor_html"><div class="ttname"><a href="structoption_1_1Descriptor.html">option::Descriptor</a></div><div class="ttdoc">Describes an option, its help text (usage) and how it should be parsed.</div><div class="ttdef"><b>Definition:</b> <a href="optparser_8hpp_source.html#l00332">optparser.hpp:332</a></div></div>

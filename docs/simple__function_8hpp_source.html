@@ -72,7 +72,7 @@ $(function() {
 <a href="simple__function_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -95,25 +95,25 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_routine.hpp&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="call__with__nth_8hpp.html">fuzzuf/utils/call_with_nth.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="simple__function_8hpp.html#a65662c3ee30adb47590ba39d60fc9247">   35</a></span>&#160;<span class="preprocessor">#define FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_SIMPLE_FUNCTION(name, func)      \</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">  template &lt;typename F, typename Path = utils::struct_path::Paths&lt;&gt;&gt;           \</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">  struct name {};                                                              \</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">  template &lt;typename R, typename... Args, typename Path&gt;                       \</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">  struct name&lt;R(Args...), Path&gt;                                                \</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">      : public HierarFlowRoutine&lt;R(Args...), R(Args...)&gt; {                     \</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_TYPEDEFS                    \</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">    callee_ref_t operator()(Args... args) {                                    \</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">      FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(#name, enter)           \</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">      Path()([](auto &amp;&amp;...sorted) { func(sorted...); },                        \</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">             std::forward&lt;Args&gt;(args)...);                                     \</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">      FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_END(name)                 \</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="simple__function_8hpp.html#a65662c3ee30adb47590ba39d60fc9247">   35</a></span>&#160;<span class="preprocessor">#define FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_SIMPLE_FUNCTION(name, func) \</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">  template &lt;typename F, typename Path = utils::struct_path::Paths&lt;&gt;&gt;      \</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">  struct name {};                                                         \</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">  template &lt;typename R, typename... Args, typename Path&gt;                  \</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">  struct name&lt;R(Args...), Path&gt;                                           \</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">      : public hierarflow::HierarFlowRoutine&lt;R(Args...), R(Args...)&gt; {    \</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_TYPEDEFS               \</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">    callee_ref_t operator()(Args... args) {                               \</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">      FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(#name, enter)      \</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">      Path()([](auto &amp;&amp;...sorted) { func(sorted...); },                   \</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">             std::forward&lt;Args&gt;(args)...);                                \</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">      FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_END(name)            \</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">    }                                                                     \</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">  };</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="simple__function_8hpp.html#afed396818d0f37f64eaff5542941b6e9">   53</a></span>&#160;<span class="preprocessor">#define FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_NOP(name)                        \</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">  callee_ref_t operator()(Args... args) {                                      \</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(#name, enter)             \</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_END(name)                   \</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="simple__function_8hpp.html#afed396818d0f37f64eaff5542941b6e9">   53</a></span>&#160;<span class="preprocessor">#define FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_NOP(name)            \</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">  callee_ref_t operator()(Args... args) {                          \</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(#name, enter) \</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_END(name)       \</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">  }</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span></div>

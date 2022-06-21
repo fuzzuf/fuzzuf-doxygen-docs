@@ -1,4 +1,0 @@
-<map id="FuzzufBBCovAttacher" name="FuzzufBBCovAttacher">
-<area shape="rect" id="node1" title="fuzzuf&#45;specific basic block coverage attacher." alt="" coords="5,80,168,107"/>
-<area shape="rect" id="node2" href="$classShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="21,5,152,32"/>
-</map>

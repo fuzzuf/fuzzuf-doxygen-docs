@@ -72,7 +72,7 @@ $(function() {
 <a href="repeat__until__mutated_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -95,71 +95,72 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a> {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated.html">   43</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Path&gt; <span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated.html">RepeatUntilMutated</a> {};</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span>... Args, <span class="keyword">typename</span> Path&gt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated.html">RepeatUntilMutated</a>&lt;R(Args...), Path&gt;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classHierarFlowRoutine.html">HierarFlowRoutine</a>&lt;R(Args...), R(Args...)&gt; {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="standard__typedef_8hpp.html#a0eef3d323b3ea53560caeee55fcc3f09">FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_TYPEDEFS</a></div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a65156f82eb6374100bf973455c536d26">   54</a></span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a65156f82eb6374100bf973455c536d26">RepeatUntilMutated</a>(std::size_t expected_, std::size_t max_)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      : expected(expected_), max(max_) {}</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a96ae53cac0dc498912de11b343f11fed">   61</a></span>&#160;  callee_ref_t <a class="code" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a96ae53cac0dc498912de11b343f11fed">operator()</a>(Args... args) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(<span class="stringliteral">&quot;RepeatUntilMutated&quot;</span>,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                                     enter)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::size_t initial_size = 0u;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    Path()(</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        [&amp;](<span class="keyword">auto</span> &amp;&amp;mutation_history) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;          initial_size = mutation_history.size();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        },</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">for</span> (std::size_t c = 0u; c != max; ++c) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordflow">if</span> (this-&gt;CallSuccessors(std::forward&lt;Args&gt;(args)...)) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        base_type::SetResponseValue(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(<span class="stringliteral">&quot;RepeatUntilMutated&quot;</span>,</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                                         abort)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> base_type::GoToParent();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="keywordtype">bool</span> break_ = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      Path()(</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;          [&amp;](<span class="keyword">auto</span> &amp;&amp;mutation_history) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (mutation_history.size() &gt;= initial_size + expected)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;              break_ = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;          },</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;          std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keywordflow">if</span> (break_) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(<span class="stringliteral">&quot;RepeatUntilMutated&quot;</span>,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                                         break_)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(<span class="stringliteral">&quot;RepeatUntilMutated&quot;</span>,</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                     leave)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> base_type::GoToDefaultNext();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  std::size_t expected;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  std::size_t max;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">namespace </span>standard_order {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">using</span> RepeatUntilMutatedStdArgOrderT = decltype(T::mutation_history);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Ord&gt;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">using</span> RepeatUntilMutated =</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated.html">libfuzzer::RepeatUntilMutated&lt;F, RepeatUntilMutatedStdArgOrderT&lt;Ord&gt;</a>&gt;;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;} <span class="comment">// namespace standard_order</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Path&gt;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated.html">   44</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated.html">RepeatUntilMutated</a> {};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span>... Args, <span class="keyword">typename</span> Path&gt;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated.html">RepeatUntilMutated</a>&lt;R(Args...), Path&gt;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">hierarflow::HierarFlowRoutine</a>&lt;R(Args...), R(Args...)&gt; {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="standard__typedef_8hpp.html#a0eef3d323b3ea53560caeee55fcc3f09">FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_TYPEDEFS</a></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a65156f82eb6374100bf973455c536d26">   55</a></span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a65156f82eb6374100bf973455c536d26">RepeatUntilMutated</a>(std::size_t expected_, std::size_t max_)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      : expected(expected_), max(max_) {}</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a96ae53cac0dc498912de11b343f11fed">   62</a></span>&#160;  callee_ref_t <a class="code" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a96ae53cac0dc498912de11b343f11fed">operator()</a>(Args... args) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(<span class="stringliteral">&quot;RepeatUntilMutated&quot;</span>,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                                     enter)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::size_t initial_size = 0u;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    Path()(</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        [&amp;](<span class="keyword">auto</span> &amp;&amp;mutation_history) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;          initial_size = mutation_history.size();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        },</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">for</span> (std::size_t c = 0u; c != max; ++c) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordflow">if</span> (this-&gt;CallSuccessors(std::forward&lt;Args&gt;(args)...)) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        base_type::SetResponseValue(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(<span class="stringliteral">&quot;RepeatUntilMutated&quot;</span>,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                                         abort)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> base_type::GoToParent();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="keywordtype">bool</span> break_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      Path()(</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;          [&amp;](<span class="keyword">auto</span> &amp;&amp;mutation_history) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">if</span> (mutation_history.size() &gt;= initial_size + expected)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;              break_ = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;          },</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;          std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keywordflow">if</span> (break_) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(<span class="stringliteral">&quot;RepeatUntilMutated&quot;</span>,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                                         break_)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(<span class="stringliteral">&quot;RepeatUntilMutated&quot;</span>,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                                     leave)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> base_type::GoToDefaultNext();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  std::size_t expected;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  std::size_t max;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">namespace </span>standard_order {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">using</span> RepeatUntilMutatedStdArgOrderT = decltype(T::mutation_history);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> Ord&gt;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">using</span> RepeatUntilMutated =</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated.html">libfuzzer::RepeatUntilMutated&lt;F, RepeatUntilMutatedStdArgOrderT&lt;Ord&gt;</a>&gt;;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}  <span class="comment">// namespace standard_order</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::libfuzzer</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="atrace_8hpp_html"><div class="ttname"><a href="trace_8hpp.html">trace.hpp</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4_html_a96ae53cac0dc498912de11b343f11fed"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a96ae53cac0dc498912de11b343f11fed">fuzzuf::algorithm::libfuzzer::RepeatUntilMutated&lt; R(Args...), Path &gt;::operator()</a></div><div class="ttdeci">callee_ref_t operator()(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="repeat__until__mutated_8hpp_source.html#l00061">repeat_until_mutated.hpp:61</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4_html_a96ae53cac0dc498912de11b343f11fed"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a96ae53cac0dc498912de11b343f11fed">fuzzuf::algorithm::libfuzzer::RepeatUntilMutated&lt; R(Args...), Path &gt;::operator()</a></div><div class="ttdeci">callee_ref_t operator()(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="repeat__until__mutated_8hpp_source.html#l00062">repeat_until_mutated.hpp:62</a></div></div>
 <div class="ttc" id="astandard__typedef_8hpp_html"><div class="ttname"><a href="standard__typedef_8hpp.html">standard_typedef.hpp</a></div></div>
-<div class="ttc" id="aclassHierarFlowRoutine_html"><div class="ttname"><a href="classHierarFlowRoutine.html">HierarFlowRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00031">hierarflow_callee.hpp:31</a></div></div>
-<div class="ttc" id="astandard__typedef_8hpp_html_a0eef3d323b3ea53560caeee55fcc3f09"><div class="ttname"><a href="standard__typedef_8hpp.html#a0eef3d323b3ea53560caeee55fcc3f09">FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_TYPEDEFS</a></div><div class="ttdeci">#define FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_TYPEDEFS</div><div class="ttdef"><b>Definition:</b> <a href="standard__typedef_8hpp_source.html#l00033">standard_typedef.hpp:33</a></div></div>
+<div class="ttc" id="astandard__typedef_8hpp_html_a0eef3d323b3ea53560caeee55fcc3f09"><div class="ttname"><a href="standard__typedef_8hpp.html#a0eef3d323b3ea53560caeee55fcc3f09">FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_TYPEDEFS</a></div><div class="ttdeci">#define FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_TYPEDEFS</div><div class="ttdef"><b>Definition:</b> <a href="standard__typedef_8hpp_source.html#l00034">standard_typedef.hpp:34</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1hierarflow_1_1HierarFlowRoutine_html"><div class="ttname"><a href="classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html">fuzzuf::hierarflow::HierarFlowRoutine</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__callee_8hpp_source.html#l00034">hierarflow_callee.hpp:34</a></div></div>
 <div class="ttc" id="anamespacefuzzuf_1_1algorithm_1_1libfuzzer_html"><div class="ttname"><a href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a></div><div class="ttdef"><b>Definition:</b> <a href="config_8cpp_source.html#l00025">config.cpp:25</a></div></div>
 <div class="ttc" id="asimple__function_8hpp_html"><div class="ttname"><a href="simple__function_8hpp.html">simple_function.hpp</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated.html">fuzzuf::algorithm::libfuzzer::RepeatUntilMutated</a></div><div class="ttdoc">Invoke all child nodes until input is mutated n times or retry count exceeded m. n and m are defined ...</div><div class="ttdef"><b>Definition:</b> <a href="repeat__until__mutated_8hpp_source.html#l00043">repeat_until_mutated.hpp:43</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4_html_a65156f82eb6374100bf973455c536d26"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a65156f82eb6374100bf973455c536d26">fuzzuf::algorithm::libfuzzer::RepeatUntilMutated&lt; R(Args...), Path &gt;::RepeatUntilMutated</a></div><div class="ttdeci">FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_TYPEDEFS RepeatUntilMutated(std::size_t expected_, std::size_t max_)</div><div class="ttdef"><b>Definition:</b> <a href="repeat__until__mutated_8hpp_source.html#l00054">repeat_until_mutated.hpp:54</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated.html">fuzzuf::algorithm::libfuzzer::RepeatUntilMutated</a></div><div class="ttdoc">Invoke all child nodes until input is mutated n times or retry count exceeded m. n and m are defined ...</div><div class="ttdef"><b>Definition:</b> <a href="repeat__until__mutated_8hpp_source.html#l00044">repeat_until_mutated.hpp:44</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4_html_a65156f82eb6374100bf973455c536d26"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1RepeatUntilMutated_3_01R_07Args_8_8_8_08_00_01Path_01_4.html#a65156f82eb6374100bf973455c536d26">fuzzuf::algorithm::libfuzzer::RepeatUntilMutated&lt; R(Args...), Path &gt;::RepeatUntilMutated</a></div><div class="ttdeci">FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_TYPEDEFS RepeatUntilMutated(std::size_t expected_, std::size_t max_)</div><div class="ttdef"><b>Definition:</b> <a href="repeat__until__mutated_8hpp_source.html#l00055">repeat_until_mutated.hpp:55</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

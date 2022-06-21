@@ -72,7 +72,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -86,19 +86,21 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * You should have received a copy of the GNU Affero General Public License</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * along with this program.  If not, see http://www.gnu.org/licenses/.</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="algorithms_2nezha_2cli__compat_2fuzzer_8hpp.html">fuzzuf/algorithms/nezha/cli_compat/fuzzer.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/cli/fuzzer_builder_register.hpp&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/cli/fuzzer/nezha/build_nezha_fuzzer_from_args.hpp&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="libfuzzer__executor__interface_8hpp.html">fuzzuf/executor/libfuzzer_executor_interface.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::nezha {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">static</span> <a class="code" href="classFuzzerBuilderRegister.html">FuzzerBuilderRegister</a> global_nezha_register(<span class="stringliteral">&quot;nezha&quot;</span>, BuildNezhaFuzzerFromArgs&lt;Fuzzer, fuzzuf::algorithm::nezha::NezhaFuzzer, executor::LibFuzzerExecutorInterface&gt;);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="algorithms_2nezha_2cli__compat_2fuzzer_8hpp.html">fuzzuf/algorithms/nezha/cli_compat/fuzzer.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/cli/fuzzer/nezha/build_nezha_fuzzer_from_args.hpp&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/cli/fuzzer_builder_register.hpp&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="libfuzzer__executor__interface_8hpp.html">fuzzuf/executor/libfuzzer_executor_interface.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::nezha {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">static</span> cli::FuzzerBuilderRegister global_nezha_register(</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="stringliteral">&quot;nezha&quot;</span>,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    cli::BuildNezhaFuzzerFromArgs&lt;fuzzer::Fuzzer, algorithm::nezha::NezhaFuzzer,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                                  executor::LibFuzzerExecutorInterface&gt;);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="alibfuzzer__executor__interface_8hpp_html"><div class="ttname"><a href="libfuzzer__executor__interface_8hpp.html">libfuzzer_executor_interface.hpp</a></div></div>
-<div class="ttc" id="aclassFuzzerBuilderRegister_html"><div class="ttname"><a href="classFuzzerBuilderRegister.html">FuzzerBuilderRegister</a></div><div class="ttdef"><b>Definition:</b> <a href="fuzzer__builder__register_8hpp_source.html#l00026">fuzzer_builder_register.hpp:26</a></div></div>
 <div class="ttc" id="aalgorithms_2nezha_2cli__compat_2fuzzer_8hpp_html"><div class="ttname"><a href="algorithms_2nezha_2cli__compat_2fuzzer_8hpp.html">fuzzer.hpp</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

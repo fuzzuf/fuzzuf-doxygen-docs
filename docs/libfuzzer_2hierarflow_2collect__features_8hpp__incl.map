@@ -1,52 +1,52 @@
 <map id="include/fuzzuf/algorithms/libfuzzer/hierarflow/collect_features.hpp" name="include/fuzzuf/algorithms/libfuzzer/hierarflow/collect_features.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="3415,5,3614,61"/>
-<area shape="rect" id="node2" href="$libfuzzer_2executor_2collect__features_8hpp.html" title=" " alt="" coords="1832,109,2051,151"/>
-<area shape="rect" id="node8" title=" " alt="" coords="949,764,1016,791"/>
-<area shape="rect" id="node41" href="$standard__end_8hpp.html" title=" " alt="" coords="3559,109,3769,151"/>
-<area shape="rect" id="node42" href="$trace_8hpp.html" title=" " alt="" coords="3499,489,3695,530"/>
-<area shape="rect" id="node46" href="$standard__typedef_8hpp.html" title=" " alt="" coords="3397,288,3633,329"/>
-<area shape="rect" id="node47" href="$hierarflow__routine_8hpp_source.html" title=" " alt="" coords="3980,385,4180,426"/>
-<area shape="rect" id="node50" href="$call__with__nth_8hpp.html" title=" " alt="" coords="2307,585,2463,627"/>
-<area shape="rect" id="node3" href="$add__feature_8hpp.html" title=" " alt="" coords="1599,199,1795,240"/>
-<area shape="rect" id="node5" href="$corpus_8hpp.html" title=" " alt="" coords="2541,385,2737,426"/>
-<area shape="rect" id="node6" href="$input__info_8hpp.html" title=" " alt="" coords="1843,489,2039,530"/>
-<area shape="rect" id="node11" title=" " alt="" coords="4515,764,4600,791"/>
-<area shape="rect" id="node19" href="$range__traits_8hpp.html" title=" " alt="" coords="1177,585,1311,627"/>
-<area shape="rect" id="node20" href="$remove__cvr_8hpp.html" title=" " alt="" coords="2301,675,2469,716"/>
-<area shape="rect" id="node21" title=" " alt="" coords="2211,764,2303,791"/>
-<area shape="rect" id="node31" href="$libfuzzer_2state_2state_8hpp.html" title=" " alt="" coords="2063,489,2259,530"/>
-<area shape="rect" id="node35" href="$libfuzzer_2feature_2collect__features_8hpp.html" title=" " alt="" coords="642,385,851,426"/>
-<area shape="rect" id="node40" href="$update__feature__frequency_8hpp.html" title=" " alt="" coords="1239,377,1435,433"/>
-<area shape="rect" id="node4" href="$delete__input_8hpp.html" title=" " alt="" coords="2669,288,2865,329"/>
-<area shape="rect" id="node12" title=" " alt="" coords="4369,764,4439,791"/>
-<area shape="rect" id="node14" title=" " alt="" coords="375,764,446,791"/>
-<area shape="rect" id="node23" title=" " alt="" coords="1314,682,1385,709"/>
-<area shape="rect" id="node33" href="$utils_8hpp.html" title=" " alt="" coords="1641,585,1837,627"/>
-<area shape="rect" id="node34" href="$add__rare__feature_8hpp.html" title=" " alt="" coords="1663,288,1879,329"/>
-<area shape="rect" id="node26" href="$exec__input__set_8hpp_source.html" title=" " alt="" coords="3821,489,3992,530"/>
-<area shape="rect" id="node16" title=" " alt="" coords="3863,764,3921,791"/>
-<area shape="rect" id="node18" title=" " alt="" coords="3182,764,3245,791"/>
-<area shape="rect" id="node27" title=" " alt="" coords="2543,489,2734,530"/>
-<area shape="rect" id="node28" title=" " alt="" coords="2758,496,2983,523"/>
-<area shape="rect" id="node29" title=" " alt="" coords="3008,489,3221,530"/>
-<area shape="rect" id="node30" title=" " alt="" coords="2284,496,2519,523"/>
-<area shape="rect" id="node7" href="$testcase__id_8hpp.html" title=" " alt="" coords="1409,675,1605,716"/>
-<area shape="rect" id="node9" href="$exit__status__feedback_8hpp_source.html" title=" " alt="" coords="3589,585,3753,627"/>
-<area shape="rect" id="node15" title=" " alt="" coords="3991,764,4065,791"/>
-<area shape="rect" id="node22" href="$void__t_8hpp.html" title=" " alt="" coords="1071,682,1238,709"/>
-<area shape="rect" id="node24" title=" " alt="" coords="2217,682,2277,709"/>
-<area shape="rect" id="node25" title=" " alt="" coords="3131,682,3197,709"/>
-<area shape="rect" id="node10" href="$common_8hpp_source.html" title=" " alt="" coords="3981,682,4163,709"/>
-<area shape="rect" id="node13" title=" " alt="" coords="3612,764,3692,791"/>
-<area shape="rect" id="node17" title=" " alt="" coords="4186,764,4241,791"/>
-<area shape="rect" id="node32" href="$libfuzzer_2config_8hpp.html" title=" " alt="" coords="3523,675,3719,716"/>
-<area shape="rect" id="node36" href="$counter__to__feature_8hpp.html" title=" " alt="" coords="297,489,525,530"/>
+<area shape="rect" id="node1" title=" " alt="" coords="3757,5,3955,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="725,764,792,791"/>
+<area shape="rect" id="node3" href="$libfuzzer_2executor_2collect__features_8hpp.html" title=" " alt="" coords="3041,109,3260,151"/>
+<area shape="rect" id="node41" href="$standard__end_8hpp.html" title=" " alt="" coords="4072,109,4283,151"/>
+<area shape="rect" id="node42" href="$trace_8hpp.html" title=" " alt="" coords="4061,489,4257,530"/>
+<area shape="rect" id="node46" href="$standard__typedef_8hpp.html" title=" " alt="" coords="3738,288,3974,329"/>
+<area shape="rect" id="node47" href="$hierarflow__routine_8hpp_source.html" title=" " alt="" coords="4220,385,4420,426"/>
+<area shape="rect" id="node50" href="$call__with__nth_8hpp.html" title=" " alt="" coords="3341,585,3497,627"/>
+<area shape="rect" id="node4" href="$add__feature_8hpp.html" title=" " alt="" coords="1553,199,1749,240"/>
+<area shape="rect" id="node6" href="$corpus_8hpp.html" title=" " alt="" coords="2342,385,2538,426"/>
+<area shape="rect" id="node14" href="$input__info_8hpp.html" title=" " alt="" coords="2917,489,3113,530"/>
+<area shape="rect" id="node17" title=" " alt="" coords="2986,764,3078,791"/>
+<area shape="rect" id="node22" title=" " alt="" coords="5073,764,5159,791"/>
+<area shape="rect" id="node27" href="$range__traits_8hpp.html" title=" " alt="" coords="1819,585,1954,627"/>
+<area shape="rect" id="node28" href="$remove__cvr_8hpp.html" title=" " alt="" coords="3335,675,3503,716"/>
+<area shape="rect" id="node31" href="$libfuzzer_2state_2state_8hpp.html" title=" " alt="" coords="1075,489,1271,530"/>
+<area shape="rect" id="node35" href="$libfuzzer_2feature_2collect__features_8hpp.html" title=" " alt="" coords="475,385,685,426"/>
+<area shape="rect" id="node40" href="$update__feature__frequency_8hpp.html" title=" " alt="" coords="1609,377,1805,433"/>
+<area shape="rect" id="node5" href="$delete__input_8hpp.html" title=" " alt="" coords="2866,288,3062,329"/>
+<area shape="rect" id="node11" title=" " alt="" coords="1651,682,1722,709"/>
+<area shape="rect" id="node23" title=" " alt="" coords="4820,764,4889,791"/>
+<area shape="rect" id="node25" title=" " alt="" coords="122,764,193,791"/>
+<area shape="rect" id="node33" href="$utils_8hpp.html" title=" " alt="" coords="1379,585,1575,627"/>
+<area shape="rect" id="node34" href="$add__rare__feature_8hpp.html" title=" " alt="" coords="1455,288,1671,329"/>
+<area shape="rect" id="node30" href="$exec__input__set_8hpp_source.html" title=" " alt="" coords="3289,489,3460,530"/>
+<area shape="rect" id="node7" title=" " alt="" coords="2113,489,2303,530"/>
+<area shape="rect" id="node8" title=" " alt="" coords="2327,496,2553,523"/>
+<area shape="rect" id="node9" title=" " alt="" coords="2577,489,2791,530"/>
+<area shape="rect" id="node10" title=" " alt="" coords="1853,496,2088,523"/>
+<area shape="rect" id="node12" title=" " alt="" coords="4041,764,4100,791"/>
+<area shape="rect" id="node13" title=" " alt="" coords="1481,764,1543,791"/>
+<area shape="rect" id="node15" title=" " alt="" coords="4220,682,4287,709"/>
+<area shape="rect" id="node16" title=" " alt="" coords="4476,764,4551,791"/>
+<area shape="rect" id="node18" title=" " alt="" coords="3002,682,3062,709"/>
+<area shape="rect" id="node19" href="$testcase__id_8hpp.html" title=" " alt="" coords="2190,675,2386,716"/>
+<area shape="rect" id="node20" href="$exit__status__feedback_8hpp_source.html" title=" " alt="" coords="4437,585,4601,627"/>
+<area shape="rect" id="node29" href="$void__t_8hpp.html" title=" " alt="" coords="1803,682,1970,709"/>
+<area shape="rect" id="node21" href="$common_8hpp_source.html" title=" " alt="" coords="4515,682,4698,709"/>
+<area shape="rect" id="node24" title=" " alt="" coords="3767,764,3847,791"/>
+<area shape="rect" id="node26" title=" " alt="" coords="4659,764,4714,791"/>
+<area shape="rect" id="node32" href="$libfuzzer_2config_8hpp.html" title=" " alt="" coords="923,675,1119,716"/>
+<area shape="rect" id="node36" href="$counter__to__feature_8hpp.html" title=" " alt="" coords="347,489,575,530"/>
 <area shape="rect" id="node37" href="$for__each__non__zero__byte_8hpp.html" title=" " alt="" coords="599,481,798,537"/>
-<area shape="rect" id="node38" title=" " alt="" coords="219,585,370,627"/>
-<area shape="rect" id="node39" title=" " alt="" coords="439,593,502,619"/>
-<area shape="rect" id="node43" href="$call__with__detected_8hpp.html" title=" " alt="" coords="2725,585,2881,627"/>
-<area shape="rect" id="node44" href="$node__tracer_8hpp.html" title=" " alt="" coords="3159,593,3361,619"/>
-<area shape="rect" id="node45" href="$config_8h_source.html" title=" " alt="" coords="3323,682,3397,709"/>
-<area shape="rect" id="node48" href="$hierarflow__callee_8hpp_source.html" title=" " alt="" coords="4031,585,4231,627"/>
-<area shape="rect" id="node49" href="$hierarflow__node__impl_8hpp_source.html" title=" " alt="" coords="4168,489,4368,530"/>
+<area shape="rect" id="node38" title=" " alt="" coords="333,585,483,627"/>
+<area shape="rect" id="node39" title=" " alt="" coords="246,593,309,619"/>
+<area shape="rect" id="node43" href="$call__with__detected_8hpp.html" title=" " alt="" coords="3725,585,3881,627"/>
+<area shape="rect" id="node44" href="$node__tracer_8hpp.html" title=" " alt="" coords="4057,593,4260,619"/>
+<area shape="rect" id="node45" href="$config_8h_source.html" title=" " alt="" coords="4386,682,4459,709"/>
+<area shape="rect" id="node48" href="$hierarflow__callee_8hpp_source.html" title=" " alt="" coords="4676,585,4876,627"/>
+<area shape="rect" id="node49" href="$hierarflow__node__impl_8hpp_source.html" title=" " alt="" coords="4676,489,4876,530"/>
 </map>

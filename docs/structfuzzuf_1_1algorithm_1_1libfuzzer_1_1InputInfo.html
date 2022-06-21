@@ -97,7 +97,7 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:adde4ec71b3b21be500a27e1204d501a6"><td class="memItemLeft" align="right" valign="top"><a id="adde4ec71b3b21be500a27e1204d501a6"></a>
 <a class="el" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ace18931d78fcca08efd871dbdb6d0629">testcase_id_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#adde4ec71b3b21be500a27e1204d501a6">id</a></td></tr>
-<tr class="memdesc:adde4ec71b3b21be500a27e1204d501a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID to bind an input value in <a class="el" href="classExecInputSet.html">ExecInputSet</a> to this execution result. <br /></td></tr>
+<tr class="memdesc:adde4ec71b3b21be500a27e1204d501a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID to bind an input value in ExecInputSet to this execution result. <br /></td></tr>
 <tr class="separator:adde4ec71b3b21be500a27e1204d501a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a885b58db9af939f816542a739c7efc1c"><td class="memItemLeft" align="right" valign="top"><a id="a885b58db9af939f816542a739c7efc1c"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a885b58db9af939f816542a739c7efc1c">enabled</a></td></tr>
@@ -127,9 +127,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a3b46fbf45fe49c0d842b3eb3fdf2ee16">reduced</a> = false</td></tr>
 <tr class="memdesc:a3b46fbf45fe49c0d842b3eb3fdf2ee16"><td class="mdescLeft">&#160;</td><td class="mdescRight">this execution result replaced existing one <br /></td></tr>
 <tr class="separator:a3b46fbf45fe49c0d842b3eb3fdf2ee16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e248f256505d1ef36cc8bbeb5725334"><td class="memItemLeft" align="right" valign="top"><a id="a0e248f256505d1ef36cc8bbeb5725334"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a0e248f256505d1ef36cc8bbeb5725334">needs_energy_update</a> = false</td></tr>
-<tr class="memdesc:a0e248f256505d1ef36cc8bbeb5725334"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> true, since values affecting to the energy has changed, energy need to be recalculated. <br /></td></tr>
+<tr class="memitem:a0e248f256505d1ef36cc8bbeb5725334"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a0e248f256505d1ef36cc8bbeb5725334">needs_energy_update</a> = false</td></tr>
 <tr class="separator:a0e248f256505d1ef36cc8bbeb5725334"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae021b2a3a08801bc72d4581e40987d7f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#ae021b2a3a08801bc72d4581e40987d7f">energy</a> = 0.0</td></tr>
 <tr class="separator:ae021b2a3a08801bc72d4581e40987d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,8 +140,8 @@ std::vector&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight" valign="bo
 <tr class="memitem:a526778b1ced922d5ae44d196e87ea89e"><td class="memItemLeft" align="right" valign="top"><a id="a526778b1ced922d5ae44d196e87ea89e"></a>
 std::vector&lt; std::pair&lt; std::uint32_t, std::uint16_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>feature_freqs</b></td></tr>
 <tr class="separator:a526778b1ced922d5ae44d196e87ea89e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81187e177e8518d76c1886b7cc823ed3"><td class="memItemLeft" align="right" valign="top">PUTExitReasonType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a81187e177e8518d76c1886b7cc823ed3">status</a> = PUTExitReasonType::FAULT_NONE</td></tr>
-<tr class="separator:a81187e177e8518d76c1886b7cc823ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39ee8688d4088a9613d6a1bae8d716d8"><td class="memItemLeft" align="right" valign="top">feedback::PUTExitReasonType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a39ee8688d4088a9613d6a1bae8d716d8">status</a> = feedback::PUTExitReasonType::FAULT_NONE</td></tr>
+<tr class="separator:a39ee8688d4088a9613d6a1bae8d716d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6449345cbeea30c5397adaab2a39aed9"><td class="memItemLeft" align="right" valign="top"><a id="a6449345cbeea30c5397adaab2a39aed9"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html#a6449345cbeea30c5397adaab2a39aed9">signal</a> = 0</td></tr>
 <tr class="memdesc:a6449345cbeea30c5397adaab2a39aed9"><td class="mdescLeft">&#160;</td><td class="mdescRight">signal number that caused the target to terminate <br /></td></tr>
@@ -175,7 +173,7 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <div class="textblock"><p>execution result This class contains values retrived from executor and scratch values to calculate weight All values in Input Info of original implementation has been ported, yet some of them are not used due to some functionalities are not ported. </p>
 <p>Corresponding code of original libFuzzer implementation <a href="https://github.com/llvm/llvm-project/blob/llvmorg-12.0.1/compiler-rt/lib/fuzzer/FuzzerCorpus.h#L28">https://github.com/llvm/llvm-project/blob/llvmorg-12.0.1/compiler-rt/lib/fuzzer/FuzzerCorpus.h#L28</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00048">48</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00051">51</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae7dc36a2d46c7c76e668be99c422145d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae7dc36a2d46c7c76e668be99c422145d">&#9670;&nbsp;</a></span>delete_feature_freq()</h2>
@@ -201,7 +199,7 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <p>Delete feature Idx and its frequency from FeatureFreqs.</p>
 <p>Corresponding code of original libFuzzer implementation <a href="https://github.com/llvm/llvm-project/blob/llvmorg-12.0.1/compiler-rt/lib/fuzzer/FuzzerCorpus.h#L51">https://github.com/llvm/llvm-project/blob/llvmorg-12.0.1/compiler-rt/lib/fuzzer/FuzzerCorpus.h#L51</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="input__info_8cpp_source.html#l00103">103</a> of file <a class="el" href="input__info_8cpp_source.html">input_info.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="input__info_8cpp_source.html#l00105">105</a> of file <a class="el" href="input__info_8cpp_source.html">input_info.cpp</a>.</p>
 
 </div>
 </div>
@@ -229,7 +227,7 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </div><div class="memdoc">
 <p>Return true if the <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html" title="execution result This class contains values retrived from executor and scratch values to calculate we...">InputInfo</a> contains active execution result. </p>
 
-<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00065">65</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00068">68</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
 
 </div>
 </div>
@@ -276,7 +274,7 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="input__info_8cpp_source.html#l00039">39</a> of file <a class="el" href="input__info_8cpp_source.html">input_info.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="input__info_8cpp_source.html#l00041">41</a> of file <a class="el" href="input__info_8cpp_source.html">input_info.cpp</a>.</p>
 
 </div>
 </div>
@@ -303,7 +301,7 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </dl>
 <p>Corresponding code of original libFuzzer implementation <a href="https://github.com/llvm/llvm-project/blob/llvmorg-12.0.1/compiler-rt/lib/fuzzer/FuzzerCorpus.h#L122">https://github.com/llvm/llvm-project/blob/llvmorg-12.0.1/compiler-rt/lib/fuzzer/FuzzerCorpus.h#L122</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="input__info_8cpp_source.html#l00126">126</a> of file <a class="el" href="input__info_8cpp_source.html">input_info.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="input__info_8cpp_source.html#l00128">128</a> of file <a class="el" href="input__info_8cpp_source.html">input_info.cpp</a>.</p>
 
 </div>
 </div>
@@ -321,7 +319,7 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </div><div class="memdoc">
 <p>Importance of this execution result. rare_features affects on this value. </p>
 
-<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00097">97</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00101">101</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
 
 </div>
 </div>
@@ -338,24 +336,41 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </div><div class="memdoc">
 <p>Name of the input value <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> the input value has name and requested to make persistent, the name is used as the filename. <a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> the input value doesn't have name but requested to make persistent, the sha1 is used as the filename. </p>
 
-<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00128">128</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00133">133</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a81187e177e8518d76c1886b7cc823ed3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81187e177e8518d76c1886b7cc823ed3">&#9670;&nbsp;</a></span>status</h2>
+<a id="a0e248f256505d1ef36cc8bbeb5725334"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e248f256505d1ef36cc8bbeb5725334">&#9670;&nbsp;</a></span>needs_energy_update</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PUTExitReasonType fuzzuf::algorithm::libfuzzer::InputInfo::status = PUTExitReasonType::FAULT_NONE</td>
+          <td class="memname">bool fuzzuf::algorithm::libfuzzer::InputInfo::needs_energy_update = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1If.html" title="Invoke all child nodes if the callable returned true for the specified conditions....">If</a> true, since values affecting to the energy has changed, energy need to be recalculated. </p>
+
+<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00096">96</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a39ee8688d4088a9613d6a1bae8d716d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39ee8688d4088a9613d6a1bae8d716d8">&#9670;&nbsp;</a></span>status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">feedback::PUTExitReasonType fuzzuf::algorithm::libfuzzer::InputInfo::status = feedback::PUTExitReasonType::FAULT_NONE</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>fuzzuf specific variables status code of the target execution </p>
 
-<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00109">109</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00113">113</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
 
 </div>
 </div>
@@ -372,7 +387,7 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </div><div class="memdoc">
 <p>Values ported from original implementation elapsed time of execution </p>
 
-<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00078">78</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="input__info_8hpp_source.html#l00081">81</a> of file <a class="el" href="input__info_8hpp_source.html">input_info.hpp</a>.</p>
 
 </div>
 </div>

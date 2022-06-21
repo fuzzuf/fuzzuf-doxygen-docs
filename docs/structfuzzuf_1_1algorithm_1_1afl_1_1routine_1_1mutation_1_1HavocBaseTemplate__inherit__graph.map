@@ -1,6 +1,6 @@
 <map id="fuzzuf::algorithm::afl::routine::mutation::HavocBaseTemplate&lt; State &gt;" name="fuzzuf::algorithm::afl::routine::mutation::HavocBaseTemplate&lt; State &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="240,45,467,101"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html" title=" " alt="" coords="520,5,715,61"/>
-<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html" title=" " alt="" coords="515,85,720,141"/>
-<area shape="rect" id="node2" href="$classHierarFlowRoutine.html" title=" " alt="" coords="5,45,192,101"/>
+<area shape="rect" id="node1" title=" " alt="" coords="252,45,479,101"/>
+<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html" title=" " alt="" coords="532,5,727,61"/>
+<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html" title=" " alt="" coords="527,85,732,141"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="5,38,204,109"/>
 </map>

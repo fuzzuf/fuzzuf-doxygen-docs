@@ -139,8 +139,8 @@ $(function() {
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">for</span> (u32 afl : checked_sizes) {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">for</span> (u32 bb : checked_sizes) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <a class="code" href="classLinuxForkServerExecutor.html">LinuxForkServerExecutor</a> executor(</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;          <a class="code" href="structLinuxForkServerExecutorParameters.html">LinuxForkServerExecutorParameters</a>()</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <a class="code" href="classfuzzuf_1_1executor_1_1LinuxForkServerExecutor.html">fuzzuf::executor::LinuxForkServerExecutor</a> executor(</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;          <a class="code" href="structfuzzuf_1_1executor_1_1LinuxForkServerExecutorParameters.html">fuzzuf::executor::LinuxForkServerExecutorParameters</a>()</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;              .set_argv(</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                  std::vector&lt;std::string&gt;{TEST_SOURCE_DIR <span class="stringliteral">&quot;/put_binaries/cat&quot;</span>})</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;              .set_exec_timelimit_ms(1000)</div>
@@ -175,7 +175,7 @@ $(function() {
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="comment">// (2) Check if coverage store is allocated as intended</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      <span class="keywordflow">if</span> (afl == 0) {</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        BOOST_CHECK_EQUAL(executor.GetAFLShmID(),</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                          ShmCovAttacher::INVALID_SHMID);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                          fuzzuf::coverage::ShmCovAttacher::INVALID_SHMID);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keyword">struct </span>shmid_ds info;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordtype">int</span> res = shmctl(executor.GetAFLShmID(), IPC_STAT, &amp;info);</div>
@@ -184,23 +184,24 @@ $(function() {
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <span class="keywordflow">if</span> (bb == 0) {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        BOOST_CHECK_EQUAL(executor.GetBBShmID(), ShmCovAttacher::INVALID_SHMID);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keyword">struct </span>shmid_ds info;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordtype">int</span> res = shmctl(executor.GetBBShmID(), IPC_STAT, &amp;info);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        BOOST_CHECK_EQUAL(res, 0);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        BOOST_CHECK_EQUAL(info.shm_segsz, bb);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="comment">// (3) Check if executor has collected coverage info</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="comment">// ビットマップが0でないことを確認する（ビットマップは未実装）</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  }</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        BOOST_CHECK_EQUAL(executor.GetBBShmID(),</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                          fuzzuf::coverage::ShmCovAttacher::INVALID_SHMID);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">struct </span>shmid_ds info;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">int</span> res = shmctl(executor.GetBBShmID(), IPC_STAT, &amp;info);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        BOOST_CHECK_EQUAL(res, 0);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        BOOST_CHECK_EQUAL(info.shm_segsz, bb);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="comment">// (3) Check if executor has collected coverage info</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="comment">// ビットマップが0でないことを確認する（ビットマップは未実装）</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassfuzzuf_1_1executor_1_1LinuxForkServerExecutor_html"><div class="ttname"><a href="classfuzzuf_1_1executor_1_1LinuxForkServerExecutor.html">fuzzuf::executor::LinuxForkServerExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="linux__fork__server__executor_8hpp_source.html#l00139">linux_fork_server_executor.hpp:139</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>
-<div class="ttc" id="aclassLinuxForkServerExecutor_html"><div class="ttname"><a href="classLinuxForkServerExecutor.html">LinuxForkServerExecutor</a></div><div class="ttdef"><b>Definition:</b> <a href="linux__fork__server__executor_8hpp_source.html#l00138">linux_fork_server_executor.hpp:138</a></div></div>
-<div class="ttc" id="astructLinuxForkServerExecutorParameters_html"><div class="ttname"><a href="structLinuxForkServerExecutorParameters.html">LinuxForkServerExecutorParameters</a></div><div class="ttdoc">Parameters required to create LinuxForkServerExecutor.</div><div class="ttdef"><b>Definition:</b> <a href="linux__fork__server__executor_8hpp_source.html#l00044">linux_fork_server_executor.hpp:44</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1executor_1_1LinuxForkServerExecutorParameters_html"><div class="ttname"><a href="structfuzzuf_1_1executor_1_1LinuxForkServerExecutorParameters.html">fuzzuf::executor::LinuxForkServerExecutorParameters</a></div><div class="ttdoc">Parameters required to create LinuxForkServerExecutor.</div><div class="ttdef"><b>Definition:</b> <a href="linux__fork__server__executor_8hpp_source.html#l00045">linux_fork_server_executor.hpp:45</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
