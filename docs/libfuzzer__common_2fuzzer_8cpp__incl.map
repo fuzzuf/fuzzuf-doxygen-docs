@@ -1,5 +1,5 @@
-<map id="algorithms/libfuzzer/fuzzer.cpp" name="algorithms/libfuzzer/fuzzer.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="2747,5,2899,47"/>
+<map id="algorithms/libfuzzer_common/fuzzer.cpp" name="algorithms/libfuzzer_common/fuzzer.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="2745,5,2901,47"/>
 <area shape="rect" id="node2" href="$algorithms_2libfuzzer_2cli__compat_2fuzzer_8hpp.html" title=" " alt="" coords="1366,95,1562,136"/>
 <area shape="rect" id="node16" title=" " alt="" coords="2981,631,3040,657"/>
 <area shape="rect" id="node21" title=" " alt="" coords="124,631,191,657"/>

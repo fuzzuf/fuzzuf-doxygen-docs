@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">fuzzuf
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
   </td>
  </tr>
@@ -141,7 +142,7 @@ $(function() {
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;after init data&quot;</span>);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  lf::dictionary::StaticDictionary persistent_auto_dictionary;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict&quot;</span>, persistent_auto_dictionary, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict&quot;</span>, persistent_auto_dictionary, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;       [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; });</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  BOOST_TEST_CHECKPOINT(<span class="stringliteral">&quot;after init dict&quot;</span>);</div>
@@ -262,10 +263,10 @@ $(function() {
 <div class="ttc" id="anot__random_8hpp_html"><div class="ttname"><a href="not__random_8hpp.html">not_random.hpp</a></div></div>
 <div class="ttc" id="anode__tracer_8hpp_html"><div class="ttname"><a href="node__tracer_8hpp.html">node_tracer.hpp</a></div></div>
 <div class="ttc" id="aexec__input__set__range_8hpp_html"><div class="ttname"><a href="exec__input__set__range_8hpp.html">exec_input_set_range.hpp</a></div></div>
-<div class="ttc" id="aalgorithms_2libfuzzer_2dictionary_8cpp_html_abec380708a10820a7f6215b4aa5a9cbc"><div class="ttname"><a href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">fuzzuf::algorithm::libfuzzer::dictionary::Load</a></div><div class="ttdeci">void Load(const std::string &amp;filename_, StaticDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)</div><div class="ttdef"><b>Definition:</b> <a href="algorithms_2libfuzzer_2dictionary_8cpp_source.html#l00036">dictionary.cpp:36</a></div></div>
 <div class="ttc" id="amutation_8hpp_html"><div class="ttname"><a href="mutation_8hpp.html">mutation.hpp</a></div></div>
+<div class="ttc" id="aalgorithms_2libfuzzer__common_2dictionary_8cpp_html_abec380708a10820a7f6215b4aa5a9cbc"><div class="ttname"><a href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">fuzzuf::algorithm::libfuzzer::dictionary::Load</a></div><div class="ttdeci">void Load(const std::string &amp;filename_, StaticDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)</div><div class="ttdef"><b>Definition:</b> <a href="algorithms_2libfuzzer__common_2dictionary_8cpp_source.html#l00039">dictionary.cpp:39</a></div></div>
 <div class="ttc" id="aselect__seed_8hpp_html"><div class="ttname"><a href="select__seed_8hpp.html">select_seed.hpp</a></div></div>
-<div class="ttc" id="anamespacefuzzuf_1_1algorithm_1_1libfuzzer_html"><div class="ttname"><a href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a></div><div class="ttdef"><b>Definition:</b> <a href="config_8cpp_source.html#l00025">config.cpp:25</a></div></div>
+<div class="ttc" id="anamespacefuzzuf_1_1algorithm_1_1libfuzzer_html"><div class="ttname"><a href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html">fuzzuf::algorithm::libfuzzer</a></div><div class="ttdef"><b>Definition:</b> <a href="config_8cpp_source.html#l00026">config.cpp:26</a></div></div>
 <div class="ttc" id="alibfuzzer_2hierarflow_8hpp_html"><div class="ttname"><a href="libfuzzer_2hierarflow_8hpp.html">hierarflow.hpp</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1utils_1_1DumpTracer_html"><div class="ttname"><a href="classfuzzuf_1_1utils_1_1DumpTracer.html">fuzzuf::utils::DumpTracer</a></div><div class="ttdoc">Simply serialize incoming events, then output it using sink It is handy way to generate debug output ...</div><div class="ttdef"><b>Definition:</b> <a href="node__tracer_8hpp_source.html#l00069">node_tracer.hpp:69</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1utils_1_1ElapsedTimeTracer_html"><div class="ttname"><a href="classfuzzuf_1_1utils_1_1ElapsedTimeTracer.html">fuzzuf::utils::ElapsedTimeTracer</a></div><div class="ttdoc">Record time duration from Checkpoint::enter to Checkpoint::leave for each node names The tracer is in...</div><div class="ttdef"><b>Definition:</b> <a href="node__tracer_8hpp_source.html#l00225">node_tracer.hpp:225</a></div></div>

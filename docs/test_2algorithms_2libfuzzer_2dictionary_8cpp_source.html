@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">fuzzuf
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
   </td>
  </tr>
@@ -107,7 +108,7 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// )</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;BOOST_AUTO_TEST_CASE(LoadDictionary) {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary dict;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;       [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; });</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary expected{</div>
@@ -127,7 +128,7 @@ $(function() {
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// )</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;BOOST_AUTO_TEST_CASE(LoadDictionaryAtLevel1) {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary dict;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict@1&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict@1&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;       [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; });</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary expected{</div>
@@ -147,7 +148,7 @@ $(function() {
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">// )</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;BOOST_AUTO_TEST_CASE(LoadDictionaryAtLeve2) {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary dict;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict@2&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict@2&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;       [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; });</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary expected{</div>
@@ -159,9 +160,9 @@ $(function() {
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">// 1つのStaticDictionary型の変数に対して辞書を複数読んだ場合に、読んだ順に全ての辞書の要素が並ぶ事を確認する</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;BOOST_AUTO_TEST_CASE(LoadMultipleDictionaries) {</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary dict;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict@2&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict@2&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;       [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; });</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict@1&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict@1&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;       [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; });</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary expected{</div>
@@ -197,7 +198,7 @@ $(function() {
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">// 存在しない辞書を読もうとした場合にstd::system_error例外が飛ぶ事を確認する</span></div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;BOOST_AUTO_TEST_CASE(DictionaryNotFound) {</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary dict;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/non_exists.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/non_exists.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                         [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; }),</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                    std::system_error);</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
@@ -206,37 +207,37 @@ $(function() {
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary dict;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="comment">// &quot;が閉じていない</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                         [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; }),</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                    fuzzuf::exceptions::invalid_file);</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="comment">// keyしかない</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted2.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted2.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                         [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; }),</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    fuzzuf::exceptions::invalid_file);</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="comment">// valueの後ろにコメント以外の文字がある</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted3.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted3.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                         [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; }),</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    fuzzuf::exceptions::invalid_file);</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="comment">// keyが空文字列</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted4.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted4.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                         [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; }),</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    fuzzuf::exceptions::invalid_file);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="comment">// エスケープシーケンスが途中で途切れている</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted5.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted5.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                         [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; }),</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    fuzzuf::exceptions::invalid_file);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="comment">// エスケープシーケンスが途中で途切れている</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted6.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted6.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                         [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; }),</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                    fuzzuf::exceptions::invalid_file);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="comment">// エスケープシーケンスが途中で途切れている</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted7.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/corrupted7.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                         [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; }),</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                    fuzzuf::exceptions::invalid_file);</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
@@ -244,7 +245,7 @@ $(function() {
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">// 空の辞書を読むと読み込みが成功し何も追加されない事を確認する</span></div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;BOOST_AUTO_TEST_CASE(EmptyDictionary) {</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary dict;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/empty.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/empty.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;       [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; });</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary expected;</div>
@@ -255,7 +256,7 @@ $(function() {
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">// テスト用の辞書(strict)がstrictモードで読めて、テスト用辞書(relaxed)がstrictモードで読めない事を確認する</span></div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;BOOST_AUTO_TEST_CASE(StrictMode) {</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary dict;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict&quot;</span>, dict, <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/test.dict&quot;</span>, dict, <span class="keyword">true</span>,</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;       [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; });</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  {</div>
@@ -269,11 +270,11 @@ $(function() {
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  }</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  dict.clear();</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/relaxed.dict&quot;</span>, dict, <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  BOOST_CHECK_THROW(<a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/relaxed.dict&quot;</span>, dict, <span class="keyword">true</span>,</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                         [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; }),</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                    fuzzuf::exceptions::invalid_file);</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <a class="code" href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/relaxed.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <a class="code" href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">Load</a>(TEST_DICTIONARY_DIR <span class="stringliteral">&quot;/relaxed.dict&quot;</span>, dict, <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;       [](std::string &amp;&amp;m) { std::cerr &lt;&lt; m &lt;&lt; std::endl; });</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  {</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    std::unique_ptr&lt;fuzzuf::algorithm::libfuzzer::dictionary::StaticDictionary&gt;</div>
@@ -287,8 +288,8 @@ $(function() {
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1libfuzzer_1_1dictionary_1_1BasicDictionaryEntry_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1dictionary_1_1BasicDictionaryEntry.html">fuzzuf::algorithm::libfuzzer::dictionary::BasicDictionaryEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="dictionary_8hpp_source.html#l00036">dictionary.hpp:36</a></div></div>
-<div class="ttc" id="aalgorithms_2libfuzzer_2dictionary_8cpp_html_abec380708a10820a7f6215b4aa5a9cbc"><div class="ttname"><a href="algorithms_2libfuzzer_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">fuzzuf::algorithm::libfuzzer::dictionary::Load</a></div><div class="ttdeci">void Load(const std::string &amp;filename_, StaticDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)</div><div class="ttdef"><b>Definition:</b> <a href="algorithms_2libfuzzer_2dictionary_8cpp_source.html#l00036">dictionary.cpp:36</a></div></div>
 <div class="ttc" id="adictionary_8hpp_html"><div class="ttname"><a href="dictionary_8hpp.html">dictionary.hpp</a></div></div>
+<div class="ttc" id="aalgorithms_2libfuzzer__common_2dictionary_8cpp_html_abec380708a10820a7f6215b4aa5a9cbc"><div class="ttname"><a href="algorithms_2libfuzzer__common_2dictionary_8cpp.html#abec380708a10820a7f6215b4aa5a9cbc">fuzzuf::algorithm::libfuzzer::dictionary::Load</a></div><div class="ttdeci">void Load(const std::string &amp;filename_, StaticDictionary &amp;dest, bool strict, const std::function&lt; void(std::string &amp;&amp;)&gt; &amp;eout)</div><div class="ttdef"><b>Definition:</b> <a href="algorithms_2libfuzzer__common_2dictionary_8cpp_source.html#l00039">dictionary.cpp:39</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
