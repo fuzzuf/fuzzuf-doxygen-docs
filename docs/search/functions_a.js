@@ -1,15 +1,11 @@
 var searchData=
 [
-  ['make_5findent_1953',['make_indent',['../to__string_8hpp.html#a11e45741e14ce8d26cc34d38682b6485',1,'fuzzuf::utils']]],
-  ['make_5fnth_5frange_1954',['make_nth_range',['../nth__range_8hpp.html#a55f791acdca440ca6e981ac3722c2f4e',1,'fuzzuf::utils::range']]],
-  ['makeversion_1955',['MakeVersion',['../namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#afe37ac6fb8da00a4de6e5fce94078a6f',1,'fuzzuf::algorithm::libfuzzer']]],
-  ['map_5ffile_1956',['map_file',['../map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43',1,'fuzzuf::utils']]],
-  ['marker_1957',['Marker',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Marker_3_01R_07Args_8_8_8_08_00_01T_01_4.html#aefc9758597ae18179819d8de02bc8502',1,'fuzzuf::algorithm::libfuzzer::Marker&lt; R(Args...), T &gt;']]],
-  ['mask_1958',['Mask',['../mutation_2mask_8hpp.html#a57781c5b0dae52ed9870ab9b87cd7af5',1,'fuzzuf::algorithm::libfuzzer::mutator']]],
-  ['minimum_5frangesize_1959',['minimum_rangeSize',['../zip__range_8hpp.html#a73f3cb6f50c2151baf42b157ceb595e2',1,'fuzzuf::utils::range']]],
-  ['mmap_1960',['Mmap',['../classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html#a0faf4bdb78cadcd3b2865ab0a7a23209',1,'fuzzuf::utils::vfs::LocalFilesystem']]],
-  ['mmapall_1961',['MmapAll',['../classfuzzuf_1_1utils_1_1vfs_1_1adaptor_1_1ReadOnce_3_01Base_00_01std_1_1enable__if__t_3_01adaptaca0767d11fe638e0e74e7bfa8d988c9b.html#a32bc0f4108bee75cd3e1b42d6407caa6',1,'fuzzuf::utils::vfs::adaptor::ReadOnce&lt; Base, std::enable_if_t&lt; adaptable_to_read_once_v&lt; Base &gt; &gt; &gt;']]],
-  ['movestderr_1962',['MoveStdErr',['../classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html#a505a6a32da48ab74e7582930c57e79be',1,'fuzzuf::executor::LibFuzzerExecutorInterface']]],
-  ['movestdout_1963',['MoveStdOut',['../classfuzzuf_1_1executor_1_1LibFuzzerExecutorInterface.html#a52bf58e8f78fe72c62a0b5013dd99c31',1,'fuzzuf::executor::LibFuzzerExecutorInterface']]],
-  ['mutaterandom_1964',['MutateRandom',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#af0d52992a24c3bc17e54d1c0d44c785a',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]]
+  ['nativelinuxexecutor_1976',['NativeLinuxExecutor',['../classfuzzuf_1_1executor_1_1NativeLinuxExecutor.html#ad63c9f66215f492b7e2a221ddd250612',1,'fuzzuf::executor::NativeLinuxExecutor']]],
+  ['next_1977',['next',['../classoption_1_1Option.html#a59ae9aed505f4d410633bb36478a32be',1,'option::Option::next()'],['../classoption_1_1Option.html#a5ffc96c24288bb1fa9330ebb62da7da6',1,'option::Option::next() const'],['../classoption_1_1PrintUsageImplementation_1_1LinePartIterator.html#a58b8743da57de2d108472eee60324df6',1,'option::PrintUsageImplementation::LinePartIterator::next()']]],
+  ['nextrow_1978',['nextRow',['../classoption_1_1PrintUsageImplementation_1_1LinePartIterator.html#a55d5c3e50f9c1d8cd48f518899a5a48c',1,'option::PrintUsageImplementation::LinePartIterator']]],
+  ['nexttable_1979',['nextTable',['../classoption_1_1PrintUsageImplementation_1_1LinePartIterator.html#afe43ca12d399ed3c871e4dc5bf63356e',1,'option::PrintUsageImplementation::LinePartIterator']]],
+  ['nextwrap_1980',['nextwrap',['../classoption_1_1Option.html#ae8d8c058af3c781cb1d444998df48fef',1,'option::Option']]],
+  ['nonoption_1981',['nonOption',['../classoption_1_1Parser.html#aeeafbf2892a5aca90b89803b2b1cb031',1,'option::Parser']]],
+  ['nonoptions_1982',['nonOptions',['../classoption_1_1Parser.html#a2c11b050f4248d71758dda52c5f9154d',1,'option::Parser']]],
+  ['nonoptionscount_1983',['nonOptionsCount',['../classoption_1_1Parser.html#aa64a6a7c196993a1b20d48e8ddd12a34',1,'option::Parser']]]
 ];

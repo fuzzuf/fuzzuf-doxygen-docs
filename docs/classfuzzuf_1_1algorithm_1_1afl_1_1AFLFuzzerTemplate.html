@@ -71,7 +71,7 @@ $(function() {
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">fuzzuf::algorithm::afl::AFLFuzzerTemplate&lt; State &gt; Class Template Reference</div>  </div>
+<div class="title">fuzzuf::algorithm::afl::AFLFuzzerTemplate&lt; State &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
@@ -89,9 +89,8 @@ Collaboration diagram for fuzzuf::algorithm::afl::AFLFuzzerTemplate&lt; State &g
 <div class="dyncontent">
 <div class="center"><img src="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate__coll__graph.png" border="0" usemap="#fuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate_3_01State_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="fuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate_3_01State_01_4_coll__map" id="fuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate_3_01State_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="299,24,471,80"/>
-<area shape="rect" href="classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="15,5,174,32"/>
-<area shape="rect" href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html" title=" " alt="" coords="5,56,184,112"/>
+<area shape="rect" title=" " alt="" coords="5,80,177,136"/>
+<area shape="rect" href="classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="12,5,171,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -100,12 +99,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4de14aeae63f207b03b1f0d7f41f23c3"><td class="memItemLeft" align="right" valign="top"><a id="a4de14aeae63f207b03b1f0d7f41f23c3"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>AFLFuzzerTemplate</b> (std::unique_ptr&lt; State &gt; &amp;&amp;state)</td></tr>
 <tr class="separator:a4de14aeae63f207b03b1f0d7f41f23c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a824d44b618b40a74875733f4275856a3"><td class="memItemLeft" align="right" valign="top"><a id="a824d44b618b40a74875733f4275856a3"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildFuzzFlow</b> (void)</td></tr>
-<tr class="separator:a824d44b618b40a74875733f4275856a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad01647b1aa0039f5d9caf7c53071b6b9"><td class="memItemLeft" align="right" valign="top"><a id="ad01647b1aa0039f5d9caf7c53071b6b9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OneLoop</b> (void)</td></tr>
-<tr class="separator:ad01647b1aa0039f5d9caf7c53071b6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23420a88e980a7375c33b47983bc6b9c"><td class="memItemLeft" align="right" valign="top"><a id="a23420a88e980a7375c33b47983bc6b9c"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OneLoop</b> (void)=0</td></tr>
+<tr class="separator:a23420a88e980a7375c33b47983bc6b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab4f9104d09185decef11358892bf8c9"><td class="memItemLeft" align="right" valign="top"><a id="aab4f9104d09185decef11358892bf8c9"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveStopSignal</b> (void)</td></tr>
 <tr class="separator:aab4f9104d09185decef11358892bf8c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,9 +114,6 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a78b370183cf1cf8f05df954df6eb4637"><td class="memItemLeft" align="right" valign="top"><a id="a78b370183cf1cf8f05df954df6eb4637"></a>
 std::unique_ptr&lt; State &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
 <tr class="separator:a78b370183cf1cf8f05df954df6eb4637"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adca2be655bc530c52ca0d4837cce2ece"><td class="memItemLeft" align="right" valign="top"><a id="adca2be655bc530c52ca0d4837cce2ece"></a>
-<a class="el" href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html">hierarflow::HierarFlowNode</a>&lt; void(void), void(void)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fuzz_loop</b></td></tr>
-<tr class="separator:adca2be655bc530c52ca0d4837cce2ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class State&gt;<br />
@@ -128,10 +121,8 @@ class fuzzuf::algorithm::afl::AFLFuzzerTemplate&lt; State &gt;</h3>
 
 
 <p class="definition">Definition at line <a class="el" href="afl__fuzzer_8hpp_source.html#l00031">31</a> of file <a class="el" href="afl__fuzzer_8hpp_source.html">afl_fuzzer.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/fuzzuf/algorithms/afl/<a class="el" href="afl__fuzzer_8hpp_source.html">afl_fuzzer.hpp</a></li>
-<li>algorithms/die/<a class="el" href="die__fuzzer_8cpp_source.html">die_fuzzer.cpp</a></li>
-<li>include/fuzzuf/algorithms/die/<a class="el" href="die__fuzzer_8hpp_source.html">die_fuzzer.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

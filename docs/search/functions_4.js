@@ -1,13 +1,14 @@
 var searchData=
 [
-  ['eliminatedoublenull_1890',['EliminateDoubleNull',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#ac125bc1cc25125de6a41cafbc058f16f',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
-  ['eliminatenull_1891',['EliminateNull',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#aa697282dc538986f3d203c4bef5f3477',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
-  ['eliminaterandom_1892',['EliminateRandom',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a1981f1939fe529f45636a031e258e170',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
-  ['eliminaterandomend_1893',['EliminateRandomEnd',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerMutator.html#a862bd1e85f5d796de5d25bf331fbe923',1,'fuzzuf::algorithm::vuzzer::VUzzerMutator']]],
-  ['emplaceword_1894',['EmplaceWord',['../namespacefuzzuf_1_1utils_1_1dictionary.html#a00e945b3c79f2b13d5dbc6f313964b6b',1,'fuzzuf::utils::dictionary']]],
-  ['equivalent_1895',['Equivalent',['../classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html#a464ef9303bd148765f85b97c49cf59ed',1,'fuzzuf::utils::vfs::LocalFilesystem']]],
-  ['erasebytes_1896',['EraseBytes',['../erase__bytes_8hpp.html#a2b7e3b710849d71133d7bc4558b831f0',1,'fuzzuf::algorithm::libfuzzer::mutator']]],
-  ['error_1897',['error',['../classoption_1_1Parser.html#a2caa149140067b4d13e4d7a104bb3090',1,'option::Parser']]],
-  ['execute_1898',['Execute',['../libfuzzer_2executor_2execute_8hpp.html#a8e69b33495b16aacaae063befbbf278c',1,'fuzzuf::algorithm::libfuzzer::executor::Execute(Range &amp;range, Output &amp;output, Cov &amp;cov, InputInfo &amp;exec_result, Executor &amp;executor, std::size_t executor_index, bool afl_coverage) -&gt; std::enable_if_t&lt; is_input_info_v&lt; InputInfo &gt; &amp;&amp;utils::range::is_range_of_v&lt; Range, std::uint8_t &gt; &amp;&amp;utils::range::has_data_v&lt; Range &gt; &amp;&amp;utils::range::is_range_of_v&lt; Output, std::uint8_t &gt; &amp;&amp;utils::range::is_range_of_v&lt; Cov, std::uint8_t &gt;&gt;'],['../libfuzzer_2executor_2execute_8hpp.html#a66a49ab63ae4d1ab880978386937f136',1,'fuzzuf::algorithm::libfuzzer::executor::Execute(Range &amp;range, Output &amp;output, output_files_t &amp;files, InputInfo &amp;exec_result, Executor &amp;executor, std::size_t executor_index) -&gt; std::enable_if_t&lt; is_input_info_v&lt; InputInfo &gt; &amp;&amp;utils::range::is_range_of_v&lt; Range, std::uint8_t &gt; &amp;&amp;utils::range::has_data_v&lt; Range &gt; &amp;&amp;utils::range::is_range_of_v&lt; Output, std::uint8_t &gt;&gt;']]],
-  ['exists_1899',['Exists',['../classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html#aa73e16f195a87e1ae1f8ed8ec2ac37ce',1,'fuzzuf::utils::vfs::LocalFilesystem']]]
+  ['filesize_1911',['FileSize',['../classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html#a04c85c40f067055ca1f0ed25a361a43a',1,'fuzzuf::utils::vfs::LocalFilesystem']]],
+  ['filesystem_1912',['Filesystem',['../classfuzzuf_1_1executor_1_1AFLSymCCExecutorInterface.html#ac555b8ef1f4265ecd032fb608547baae',1,'fuzzuf::executor::AFLSymCCExecutorInterface']]],
+  ['fillseeds_1913',['FillSeeds',['../classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzer.html#a1f140fa0b013a2f26f5e89e14d55c590',1,'fuzzuf::algorithm::vuzzer::VUzzer']]],
+  ['finished_1914',['finished',['../structoption_1_1Parser_1_1Action.html#a3ec558b51e34d33d116f14587289e032',1,'option::Parser::Action::finished()'],['../classoption_1_1Parser_1_1StoreOptionAction.html#a617f675ef50a72ae36ce91f065bc8441',1,'option::Parser::StoreOptionAction::finished()']]],
+  ['first_1915',['first',['../classoption_1_1Option.html#abb4e13cd7c90999c8a6b1f871cece283',1,'option::Option']]],
+  ['flush_1916',['flush',['../classoption_1_1PrintUsageImplementation_1_1LineWrapper.html#a9383db9fd3fb18ce091db63ce0b149fd',1,'option::PrintUsageImplementation::LineWrapper']]],
+  ['foreachmultiindexvalues_1917',['ForEachMultiIndexValues',['../for__each__multi__index__values_8hpp.html#aa1b7157f1f5152c4576f5e02b3fff7f7',1,'fuzzuf::utils']]],
+  ['foreachnonzerobyte_1918',['ForEachNonZeroByte',['../for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007',1,'fuzzuf::algorithm::libfuzzer::feature']]],
+  ['foreachstaticdata_1919',['ForEachStaticData',['../classfuzzuf_1_1algorithm_1_1libfuzzer_1_1ForEachStaticData_3_01R_07Args_8_8_8_08_00_01Data_00_01Path_01_4.html#afce867d37cfc64d2c28ebc9485629edd',1,'fuzzuf::algorithm::libfuzzer::ForEachStaticData&lt; R(Args...), Data, Path &gt;']]],
+  ['fuzzuf_5fcheck_5fcapability_1920',['FUZZUF_CHECK_CAPABILITY',['../namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ab3839395a03c170e4b9a8e3d14a1509c',1,'fuzzuf::algorithm::libfuzzer']]],
+  ['fuzzuf_5fenum_5fcast_5fbegin_1921',['FUZZUF_ENUM_CAST_BEGIN',['../status_8hpp.html#a4d1588315d27c888d7bfb9fed2144628',1,'fuzzuf::utils']]]
 ];

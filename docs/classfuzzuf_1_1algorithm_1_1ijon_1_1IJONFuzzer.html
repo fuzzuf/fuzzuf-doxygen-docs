@@ -72,7 +72,7 @@ $(function() {
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classfuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">fuzzuf::algorithm::ijon::IJONFuzzer Class Reference</div>  </div>
+<div class="title">fuzzuf::algorithm::ijon::IJONFuzzer Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -95,10 +95,10 @@ Collaboration diagram for fuzzuf::algorithm::ijon::IJONFuzzer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classfuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer__coll__graph.png" border="0" usemap="#fuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer_coll__map" alt="Collaboration graph"/></div>
 <map name="fuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer_coll__map" id="fuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer_coll__map">
-<area shape="rect" title="CLI compatible interface for IJON." alt="" coords="520,55,660,97"/>
-<area shape="rect" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="299,5,471,61"/>
-<area shape="rect" href="classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="15,8,174,35"/>
-<area shape="rect" href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html" title=" " alt="" coords="5,65,184,121"/>
+<area shape="rect" title="CLI compatible interface for IJON." alt="" coords="533,69,673,110"/>
+<area shape="rect" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="217,5,389,61"/>
+<area shape="rect" href="classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="5,20,164,47"/>
+<area shape="rect" href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html" title=" " alt="" coords="213,85,392,141"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -106,9 +106,6 @@ Collaboration diagram for fuzzuf::algorithm::ijon::IJONFuzzer:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abe43499a68e5ef69eee1d6c037dc16a8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer.html#abe43499a68e5ef69eee1d6c037dc16a8">IJONFuzzer</a> (std::unique_ptr&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1ijon_1_1IJONState.html">IJONState</a> &gt; &amp;&amp;state, u32 ijon_max_offset)</td></tr>
 <tr class="separator:abe43499a68e5ef69eee1d6c037dc16a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec5bf5461b9ccef439ea8c3b769d202f"><td class="memItemLeft" align="right" valign="top"><a id="aec5bf5461b9ccef439ea8c3b769d202f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildFuzzFlow</b> (void) override</td></tr>
-<tr class="separator:aec5bf5461b9ccef439ea8c3b769d202f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbbb941006af4392751ab4c63180fd4a"><td class="memItemLeft" align="right" valign="top"><a id="acbbb941006af4392751ab4c63180fd4a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>OneLoop</b> (void) override</td></tr>
 <tr class="separator:acbbb941006af4392751ab4c63180fd4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,11 +122,17 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>ShouldEnd</b>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a14e44c4dd690c8a3eeb84ff3878c72cd"><td class="memItemLeft" align="right" valign="top"><a id="a14e44c4dd690c8a3eeb84ff3878c72cd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildFuzzFlow</b> (void)</td></tr>
+<tr class="separator:a14e44c4dd690c8a3eeb84ff3878c72cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57cf7f393fee170d7b7c2a7d10a4f386"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer.html#a57cf7f393fee170d7b7c2a7d10a4f386">IjonShouldSchedule</a> (void)</td></tr>
 <tr class="separator:a57cf7f393fee170d7b7c2a7d10a4f386"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a8d074d4ac3145fad1f9be3376d4409ef"><td class="memItemLeft" align="right" valign="top"><a id="a8d074d4ac3145fad1f9be3376d4409ef"></a>
+<a class="el" href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html">hierarflow::HierarFlowNode</a>&lt; void(void), void(void)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fuzz_loop</b></td></tr>
+<tr class="separator:a8d074d4ac3145fad1f9be3376d4409ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ce8ab1bb51ecea566f58299d626bbb9"><td class="memItemLeft" align="right" valign="top"><a id="a2ce8ab1bb51ecea566f58299d626bbb9"></a>
 <a class="el" href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html">hierarflow::HierarFlowNode</a>&lt; void(void), void(void)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ijon_fuzz_loop</b></td></tr>
 <tr class="separator:a2ce8ab1bb51ecea566f58299d626bbb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,9 +146,6 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a78b370183cf1cf8f05df954df6eb4637 inherit pro_attribs_classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate"><td class="memItemLeft" align="right" valign="top"><a id="a78b370183cf1cf8f05df954df6eb4637"></a>
 std::unique_ptr&lt; IJONState &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
 <tr class="separator:a78b370183cf1cf8f05df954df6eb4637 inherit pro_attribs_classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adca2be655bc530c52ca0d4837cce2ece inherit pro_attribs_classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate"><td class="memItemLeft" align="right" valign="top"><a id="adca2be655bc530c52ca0d4837cce2ece"></a>
-<a class="el" href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html">hierarflow::HierarFlowNode</a>&lt; void(void), void(void)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fuzz_loop</b></td></tr>
-<tr class="separator:adca2be655bc530c52ca0d4837cce2ece inherit pro_attribs_classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>CLI compatible interface for IJON. </p>

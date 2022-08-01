@@ -104,8 +104,6 @@ Collaboration diagram for fuzzuf::algorithm::afl_symcc::AFLSymCCFuzzerTemplate&l
 Public Member Functions</h2></td></tr>
 <tr class="memitem:acf2a45e7744b7bd56e9d7125e28dde76"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html#acf2a45e7744b7bd56e9d7125e28dde76">AFLSymCCFuzzerTemplate</a> (std::unique_ptr&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate.html">AFLFuzzerTemplate</a>&lt; State &gt;&gt; &amp;&amp;afl_, <a class="el" href="structfuzzuf_1_1cli_1_1fuzzer_1_1afl__symcc_1_1SymCCOptions.html">fuzzuf::cli::fuzzer::afl_symcc::SymCCOptions</a> &amp;&amp;options_, std::shared_ptr&lt; <a class="el" href="classfuzzuf_1_1executor_1_1AFLSymCCExecutorInterface.html">fuzzuf::executor::AFLSymCCExecutorInterface</a> &gt; &amp;&amp;executor_)</td></tr>
 <tr class="separator:acf2a45e7744b7bd56e9d7125e28dde76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a745d5d8ed5b2340f7fd02efe6b7e24c8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html#a745d5d8ed5b2340f7fd02efe6b7e24c8">BuildFuzzFlow</a> ()</td></tr>
-<tr class="separator:a745d5d8ed5b2340f7fd02efe6b7e24c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a56ce76f3d4571abc258312f83553fd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html#a7a56ce76f3d4571abc258312f83553fd">OneLoop</a> ()</td></tr>
 <tr class="separator:a7a56ce76f3d4571abc258312f83553fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71e5947321bfdfbbf97ca17fed240753"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html#a71e5947321bfdfbbf97ca17fed240753">ReceiveStopSignal</a> ()</td></tr>
@@ -148,7 +146,7 @@ class fuzzuf::algorithm::afl_symcc::AFLSymCCFuzzerTemplate&lt; State &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00091">91</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00098">98</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acf2a45e7744b7bd56e9d7125e28dde76"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acf2a45e7744b7bd56e9d7125e28dde76">&#9670;&nbsp;</a></span>AFLSymCCFuzzerTemplate()</h2>
@@ -200,43 +198,11 @@ template&lt;typename State &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00098">98</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00105">105</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a745d5d8ed5b2340f7fd02efe6b7e24c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a745d5d8ed5b2340f7fd02efe6b7e24c8">&#9670;&nbsp;</a></span>BuildFuzzFlow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename State &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void <a class="el" href="classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html">fuzzuf::algorithm::afl_symcc::AFLSymCCFuzzerTemplate</a>&lt; State &gt;::BuildFuzzFlow </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Call AFLFuzzerTemplate::BuildFuzzFlow() </p>
-
-<p>Reimplemented from <a class="el" href="classfuzzuf_1_1fuzzer_1_1Fuzzer.html">fuzzuf::fuzzer::Fuzzer</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00109">109</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
-
-</div>
-</div>
 <a id="a7a56ce76f3d4571abc258312f83553fd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a56ce76f3d4571abc258312f83553fd">&#9670;&nbsp;</a></span>OneLoop()</h2>
 
@@ -265,7 +231,7 @@ template&lt;typename State &gt; </div>
 
 <p>Reimplemented from <a class="el" href="classfuzzuf_1_1fuzzer_1_1Fuzzer.html">fuzzuf::fuzzer::Fuzzer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00113">113</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00116">116</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
 
 </div>
 </div>
@@ -297,7 +263,7 @@ template&lt;typename State &gt; </div>
 
 <p>Implements <a class="el" href="classfuzzuf_1_1fuzzer_1_1Fuzzer.html">fuzzuf::fuzzer::Fuzzer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00124">124</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00127">127</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
 
 </div>
 </div>
@@ -327,7 +293,7 @@ template&lt;typename State &gt; </div>
 </div><div class="memdoc">
 <p><a class="el" href="classExecute.html" title="Run target with input specified by the Path, and acquire coverage, outputs, execution result to the v...">Execute</a> SymCC </p>
 
-<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00134">134</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00137">137</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
 
 </div>
 </div>
@@ -359,7 +325,7 @@ template&lt;typename State &gt; </div>
 
 <p>Reimplemented from <a class="el" href="classfuzzuf_1_1fuzzer_1_1Fuzzer.html">fuzzuf::fuzzer::Fuzzer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00128">128</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html#l00131">131</a> of file <a class="el" href="algorithms_2afl__symcc_2fuzzer_8hpp_source.html">fuzzer.hpp</a>.</p>
 
 </div>
 </div>
