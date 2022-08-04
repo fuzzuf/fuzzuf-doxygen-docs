@@ -597,7 +597,7 @@ $(function() {
 <div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160; </div>
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;<span class="preprocessor">#define ROL64(_x, _r) ((((u64)(_x)) &lt;&lt; (_r)) | (((u64)(_x)) &gt;&gt; (64 - (_r))))</span></div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160; </div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;u32 Hash32(<span class="keyword">const</span> <span class="keywordtype">void</span> *key, u32 len, u32 seed) {</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;u32 MurmurHash32(<span class="keyword">const</span> <span class="keywordtype">void</span> *key, u32 len, u32 seed) {</div>
 <div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;  <span class="keyword">const</span> u64 *data = (u64 *)key;</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;  u64 h1 = seed ^ len;</div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160; </div>
@@ -627,7 +627,7 @@ $(function() {
 <div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160; </div>
 <div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;<span class="preprocessor">#define ROL32(_x, _r) ((((u32)(_x)) &lt;&lt; (_r)) | (((u32)(_x)) &gt;&gt; (32 - (_r))))</span></div>
 <div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160; </div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;u32 Hash32(<span class="keyword">const</span> <span class="keywordtype">void</span> *key, u32 len, u32 seed) {</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;u32 MurmurHash32(<span class="keyword">const</span> <span class="keywordtype">void</span> *key, u32 len, u32 seed) {</div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;  <span class="keyword">const</span> u32 *data = (u32 *)key;</div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;  u32 h1 = seed ^ len;</div>
 <div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160; </div>

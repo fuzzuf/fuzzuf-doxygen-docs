@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['zip_5frange_2ecpp_1832',['zip_range.cpp',['../zip__range_8cpp.html',1,'']]],
-  ['zip_5frange_2ehpp_1833',['zip_range.hpp',['../zip__range_8hpp.html',1,'']]]
+  ['xxhash_2eh_1878',['xxhash.h',['../xxhash_8h.html',1,'']]]
 ];
