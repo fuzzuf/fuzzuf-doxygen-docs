@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['nautilus_2289',['Nautilus',['../md_docs_algorithms_nautilus_algorithm_en.html',1,'']]],
-  ['nezha_2290',['Nezha',['../md_docs_algorithms_nezha_algorithm_en.html',1,'']]]
+  ['mopt_2333',['MOpt',['../md_docs_algorithms_mopt_algorithm_en.html',1,'']]],
+  ['mopt_20implementation_20in_20fuzzuf_2334',['MOpt implementation in fuzzuf',['../md_docs_algorithms_mopt_implementation_en.html',1,'']]]
 ];

@@ -1,6 +1,8 @@
 <map id="fuzzuf::algorithm::afl::routine::mutation::HavocBaseTemplate&lt; State &gt;" name="fuzzuf::algorithm::afl::routine::mutation::HavocBaseTemplate&lt; State &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="252,45,479,101"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html" title=" " alt="" coords="532,5,727,61"/>
-<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html" title=" " alt="" coords="527,85,732,141"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="5,38,204,109"/>
+<area shape="rect" id="node1" title=" " alt="" coords="252,125,479,181"/>
+<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1HavocTemplate.html" title=" " alt="" coords="537,5,731,61"/>
+<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1mutation_1_1SplicingTemplate.html" title=" " alt="" coords="531,85,737,141"/>
+<area shape="rect" id="node5" href="$structfuzzuf_1_1algorithm_1_1mopt_1_1routine_1_1mutation_1_1MOptHavoc.html" title=" " alt="" coords="531,165,737,221"/>
+<area shape="rect" id="node6" href="$structfuzzuf_1_1algorithm_1_1mopt_1_1routine_1_1mutation_1_1MOptSplicing.html" title=" " alt="" coords="527,245,741,301"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="5,118,204,189"/>
 </map>

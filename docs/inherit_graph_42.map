@@ -1,3 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structfuzzuf_1_1algorithm_1_1libfuzzer_1_1DynamicRepeat.html" title="Invoke all child nodes until loop counter is equal or greater than total cycles. Total cycles is spec..." alt="" coords="5,5,196,61"/>
+<area shape="rect" id="node1" href="$structfuzzuf_1_1algorithm_1_1libfuzzer_1_1DynamicMask.html" title="This node masks input using the mask specified by the Path Only masked elements of input are passed t..." alt="" coords="5,5,184,61"/>
 </map>

@@ -93,7 +93,7 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::afl {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">   24</a></span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt; <span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">   24</a></span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt; <span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate</a>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::afl </span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
@@ -142,8 +142,8 @@ $(function() {
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1afl_1_1option_1_1AFLTag.html">   71</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1option_1_1AFLTag.html">AFLTag</a> {};</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* GetVersion(<a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html">AFLStateTemplate&lt;Testcase&gt;</a>&amp;) { </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* GetVersion(State&amp;) { </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;2.57b&quot;</span>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
@@ -171,54 +171,54 @@ $(function() {
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;constexpr u32 GetCalCycles(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;constexpr u32 GetCalCycles(State&amp;) { </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> 8;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;constexpr u32 GetCalCyclesLong(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;constexpr u32 GetCalCyclesLong(State&amp;) { </div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">return</span> 40;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/* Number of subsequent timeouts before abandoning an input file: */</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;constexpr u32 GetTmoutLimit(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;constexpr u32 GetTmoutLimit(State&amp;) { </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> 250;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">/* Maximum number of unique hangs or crashes to record: */</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;constexpr u32 GetKeepUniqueHang(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;constexpr u32 GetKeepUniqueHang(State&amp;) { </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> 500;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;constexpr u32 GetKeepUniqueCrash(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;constexpr u32 GetKeepUniqueCrash(State&amp;) { </div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">return</span> 5000;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">/* Baseline number of random tweaks during a single &#39;havoc&#39; stage: */</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;constexpr u32 GetHavocCycles(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;constexpr u32 GetHavocCycles(State&amp;) { </div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">return</span> 256;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;constexpr u32 GetHavocCyclesInit(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;constexpr u32 GetHavocCyclesInit(State&amp;) { </div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">return</span> 1024;</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">/* Maximum multiplier for the above (should be a power of two, beware</span></div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">    of 32-bit int overflows): */</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;constexpr u32 GetHavocMaxMult(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;constexpr u32 GetHavocMaxMult(State&amp;) { </div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">return</span> 16;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/* Absolute minimum number of havoc cycles (after all adjustments): */</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;constexpr s32 GetHavocMin(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;constexpr s32 GetHavocMin(State&amp;) { </div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">return</span> 16;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    </div>
@@ -231,8 +231,8 @@ $(function() {
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">    In other words, the default (n = 7) produces 2, 4, 8, 16, 32, 64, or</span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">    128 stacked tweaks: */</span></div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;constexpr u32 GetHavocStackPow2(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;constexpr u32 GetHavocStackPow2(State&amp;) { </div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">return</span> 7;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
@@ -243,7 +243,7 @@ $(function() {
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">// NOTE: these functions cannot have the argument</span></div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">// because these are used in Mutator.</span></div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">// If you want to refer to State in these functions,</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">// probably we need to have also GetHavocBlkSmall(AFLStateTemplate&lt;Testcase&gt;&amp;).</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">// probably we need to have also GetHavocBlkSmall(State&amp;).</span></div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Tag&gt;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;constexpr u32 GetHavocBlkSmall(<span class="keywordtype">void</span>) { </div>
@@ -271,20 +271,20 @@ $(function() {
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">    fuzzing sessions or trying to calibrate already-added internal finds.</span></div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">    The first value is a percentage, the other is in milliseconds: */</span></div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;constexpr u32 GetCalTmoutPerc(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;constexpr u32 GetCalTmoutPerc(State&amp;) { </div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">return</span> 125;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;constexpr u32 GetCalTmoutAdd(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;constexpr u32 GetCalTmoutAdd(State&amp;) { </div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">return</span> 50;</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;}</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">/* Number of chances to calibrate a case before giving up: */</span></div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;constexpr u32 GetCalChances(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;constexpr u32 GetCalChances(State&amp;) { </div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">return</span> 3;</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;}</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    </div>
@@ -304,8 +304,8 @@ $(function() {
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">return</span> 1 &lt;&lt; GetMapSizePow2&lt;Tag&gt;();</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;}</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;constexpr u32 GetStatusUpdateFreq(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;constexpr u32 GetStatusUpdateFreq(State&amp;) { </div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;}</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
@@ -318,53 +318,53 @@ $(function() {
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;.cur_input&quot;</span>;</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;}</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* GetClangEnvVar(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* GetClangEnvVar(State&amp;) { </div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;__AFL_CLANG_MODE&quot;</span>;</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* GetAsLoopEnvVar(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* GetAsLoopEnvVar(State&amp;) { </div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;__AFL_AS_LOOPCHECK&quot;</span>;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;}</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* GetPersistEnvVar(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* GetPersistEnvVar(State&amp;) { </div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;__AFL_PERSISTENT&quot;</span>;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* GetDeferEnvVar(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;constexpr <span class="keyword">const</span> <span class="keywordtype">char</span>* GetDeferEnvVar(State&amp;) { </div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;__AFL_DEFER_FORKSRV&quot;</span>;</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">/* ...when there are new, pending favorites */</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;constexpr u32 GetSkipToNewProb(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;constexpr u32 GetSkipToNewProb(State&amp;) { </div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">return</span> 99;</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;}</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">/* ...no new favs, cur entry already fuzzed */</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;constexpr u32 GetSkipNfavOldProb(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;constexpr u32 GetSkipNfavOldProb(State&amp;) { </div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> 95;</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">/* ...no new favs, cur entry not fuzzed yet */</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;constexpr u32 GetSkipNfavNewProb(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;constexpr u32 GetSkipNfavNewProb(State&amp;) { </div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordflow">return</span> 75;</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">/* Splicing cycle count: */</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;constexpr u32 GetSpliceCycles(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;constexpr u32 GetSpliceCycles(State&amp;) { </div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordflow">return</span> 15;</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;}</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">/* Nominal per-splice havoc cycle length: */</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;constexpr u32 GetSpliceHavoc(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;constexpr u32 GetSpliceHavoc(State&amp;) { </div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">return</span> 32;</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
@@ -389,19 +389,19 @@ $(function() {
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;}</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="comment">/* The same, for the test case minimizer: */</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;constexpr u32 GetTminMaxFile(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;constexpr u32 GetTminMaxFile(State&amp;) { </div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordflow">return</span> 10 * 1024 * 1024;</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;}</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="comment">/* Block normalization steps for afl-tmin: */</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;constexpr u32 GetTminSetMinSize(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;constexpr u32 GetTminSetMinSize(State&amp;) { </div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordflow">return</span> 4;</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;constexpr u32 GetTminSetSteps(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;constexpr u32 GetTminSetSteps(State&amp;) { </div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordflow">return</span> 128;</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;}</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
@@ -412,34 +412,34 @@ $(function() {
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;}</div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment">/* Length limits for auto-detected dictionary tokens: */</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;constexpr u32 GetMinAutoExtra(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;constexpr u32 GetMinAutoExtra(State&amp;) { </div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordflow">return</span> 3;</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;constexpr u32 GetMaxAutoExtra(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;constexpr u32 GetMaxAutoExtra(State&amp;) { </div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keywordflow">return</span> 32;</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;}</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">/* Maximum number of user-specified dictionary tokens to use in deterministic</span></div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="comment">    steps; past this point, the &quot;extras/user&quot; step will be still carried out,</span></div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment">    but with proportionally lower odds: */</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;constexpr u32 GetMaxDetExtras(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;constexpr u32 GetMaxDetExtras(State&amp;) { </div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordflow">return</span> 200;</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;}</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment">/* Maximum number of auto-extracted dictionary tokens to actually use in fuzzing</span></div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment">    (first value), and to keep in memory as candidates. The latter should be much</span></div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment">    higher than the former. */</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;constexpr u32 GetUseAutoExtras(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;constexpr u32 GetUseAutoExtras(State&amp;) { </div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keywordflow">return</span> 50;</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;}</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;constexpr u32 GetMaxAutoExtras(AFLStateTemplate&lt;Testcase&gt;&amp; state) { </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;constexpr u32 GetMaxAutoExtras(State&amp; state) { </div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="keywordflow">return</span> GetUseAutoExtras(state) * 10;</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
@@ -450,61 +450,61 @@ $(function() {
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="comment">// NOTE: this function cannot have the argument</span></div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="comment">// because this is used in afl::util.</span></div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;constexpr u32 GetEffMapScale2(<span class="keywordtype">void</span>) { </div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">return</span> 3;</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;}</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="comment">/* Minimum input file length at which the effector logic kicks in: */</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;constexpr u32 GetEffMinLen(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;constexpr u32 GetEffMinLen(State&amp;) { </div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordflow">return</span> 128;</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;}</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="comment">/* Maximum effector density past which everything is just fuzzed</span></div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="comment">    unconditionally (%): */</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;constexpr u32 GetEffMaxPerc(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;constexpr u32 GetEffMaxPerc(State&amp;) { </div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordflow">return</span> 90;</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;}</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="comment">/* UI refresh frequency (Hz): */</span></div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;constexpr u32 GetUiTargetHz(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;constexpr u32 GetUiTargetHz(State&amp;) { </div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <span class="keywordflow">return</span> 5;</div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;}</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="comment">/* Fuzzer stats file and plot update intervals (sec): */</span></div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;constexpr u32 GetStatsUpdateSec(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;constexpr u32 GetStatsUpdateSec(State&amp;) { </div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <span class="keywordflow">return</span> 60;</div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;}</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;constexpr u32 GetPlotUpdateSec(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;constexpr u32 GetPlotUpdateSec(State&amp;) { </div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <span class="keywordflow">return</span> 60;</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;}</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="comment">/* Smoothing divisor for CPU load and exec speed stats (1 - no smoothing). */</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;constexpr u32 GetAvgSmoothing(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;constexpr u32 GetAvgSmoothing(State&amp;) { </div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">return</span> 16;</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;}</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    </div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="comment">/* Limits for the test case trimmer. The absolute minimum chunk size; and</span></div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="comment">    the starting and ending divisors for chopping up the input file: */</span></div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;constexpr u32 GetTrimMinBytes(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;constexpr u32 GetTrimMinBytes(State&amp;) { </div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keywordflow">return</span> 4;</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;}</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;constexpr u32 GetTrimStartSteps(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;constexpr u32 GetTrimStartSteps(State&amp;) { </div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="keywordflow">return</span> 16;</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;}</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> Testcase&gt;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;constexpr u32 GetTrimEndSteps(AFLStateTemplate&lt;Testcase&gt;&amp;) { </div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;constexpr u32 GetTrimEndSteps(State&amp;) { </div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="keywordflow">return</span> 1024;</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;}</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    </div>
