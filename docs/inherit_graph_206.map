@@ -1,7 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="5,141,193,197"/>
-<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1afl_1_1routine_1_1other_1_1CullQueueTemplate.html" title=" " alt="" coords="245,5,413,76"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1FuzzLoop.html" title=" " alt="" coords="241,101,417,157"/>
-<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1other_1_1FuzzLoop.html" title=" " alt="" coords="249,181,410,237"/>
-<area shape="rect" id="node5" href="$structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1UpdateQueue.html" title=" " alt="" coords="243,261,415,317"/>
+<area shape="rect" id="node1" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="5,24,229,95"/>
+<area shape="rect" id="node2" href="$structfuzzuf_1_1bindings_1_1python_1_1routine_1_1PyBitFlip.html" title=" " alt="" coords="277,5,455,47"/>
+<area shape="rect" id="node3" href="$structfuzzuf_1_1bindings_1_1python_1_1routine_1_1PyByteFlip.html" title=" " alt="" coords="277,71,455,112"/>
 </map>
