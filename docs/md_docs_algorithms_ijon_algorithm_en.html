@@ -66,7 +66,7 @@ $(function() {
 <div class="title">IJON </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md45"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md58"></a>
 What is IJON?</h1>
 <p><a href="https://github.com/RUB-SysSec/ijon/">IJON</a>[^ijon] is an annotation mechanism that allows PUTs to return new types of feedback to fuzzers, and a fuzzer that supports those feedback, proposed by <a href="https://informatik.rub.de/syssec/">SysSec</a>. Many famous fuzzers are classified as coverage-guided fuzzers, which try to find new behavior in a program by receiving code coverage as feedback from PUTs. A typical coverage-guided fuzzer has the following weaknesses:</p>
 <ul>
@@ -78,7 +78,7 @@ What is IJON?</h1>
 </ul>
 <p>IJON proposes a simple solution to these problems: human annotation on PUTs. When building a PUT from source code and instrumenting it to obtain coverage, humans can add annotations to the source code to customize the feedback that the PUT gives to a fuzzer. There are various annotations provided by IJON that humans can use to specify what they consider to be important internal states. For example, annotations such as "record the maximum value of a variable in the feedback" or "record the minimum difference between two variables" are possible.</p>
 <p>In practice, because IJON's fuzzer is implemented based on AFL, the feedback returned by PUT is (Hashed) Edge Coverage, which is passed on to the fuzzer via shared memory. Therefore, IJON specifically implemented the annotations, which users can write in the source code, as functions and macros that write values to the shared memory. These macros and functions are compiled together when the instrumentation tools instrument the Edge Coverage. Thus, because IJON has an AFL-based fuzzer and an interface for harness description required in practical fuzzing, it has been implemented on fuzzuf to improve the applicability of fuzzuf.</p>
-<h1><a class="anchor" id="autotoc_md46"></a>
+<h1><a class="anchor" id="autotoc_md59"></a>
 How to use fuzzuf's IJON CLI</h1>
 <p>To use IJON's fuzzer, first you need to prepare annotated PUTs with instrumentation tools. Because fuzzuf doesn't have its own instrumentation tool, please visit <a href="https://github.com/RUB-SysSec/ijon/">IJON's repo</a> and build the original instrumentation tool.</p>
 <p>After you create a PUT and install <code>fuzzuf</code>, run</p>
@@ -91,7 +91,7 @@ How to use fuzzuf's IJON CLI</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md47"></a>
+<h1><a class="anchor" id="autotoc_md60"></a>
 Example Usage</h1>
 <p>You can test the original instrumentation tool and IJON's fuzzer in fuzzuf by building and fuzzing <a href="https://github.com/RUB-SysSec/ijon/blob/master/test.c">test.c</a> and <a href="https://github.com/RUB-SysSec/ijon/blob/master/test2.c">test2.c</a> found in IJON's repo. Note that, <a class="el" href="test_8c_source.html">test.c</a>, included in the latest commit (56ebfe34), may yield compilation errors and in that case you need to apply the following changes:</p>
 <div class="fragment"><div class="line">diff --git a/llvm_mode/afl-rt.h b/llvm_mode/afl-rt.h</div>
@@ -133,7 +133,7 @@ Example Usage</h1>
 <div class="line">$ fuzzuf ijon -i /tmp/ijon_test_indir/ ./test</div>
 </div><!-- fragment --><p>Here, you don't need to specify <code>@@</code> in the last command because the binary receives inputs via stdin. If IJON's instrumentation tool and fuzzer operate properly, the fuzzer will detect a crash within 3 to 5 minutes with a high probability.</p>
 <p>While <a class="el" href="test_8c_source.html">test.c</a> and <a class="el" href="test2_8c_source.html">test2.c</a> gives you an idea how you can use annotations, you can check README and source code in IJON's repo to understand their further usage.</p>
-<h1><a class="anchor" id="autotoc_md48"></a>
+<h1><a class="anchor" id="autotoc_md61"></a>
 Algorithm Overview</h1>
 <p>IJON is implemented in a way that retains most of the functions of AFL, and adds additional functions. Roughly speaking, the differences from AFL are as follows:</p>
 <ul>

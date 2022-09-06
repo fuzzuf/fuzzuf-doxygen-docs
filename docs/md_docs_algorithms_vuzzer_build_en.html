@@ -74,7 +74,7 @@ $(function() {
 <li>fuzzuf/PolyTracker</li>
 </ul>
 <p>This document covers the above dependency installations and how to build VUzzer.</p>
-<h1><a class="anchor" id="autotoc_md185"></a>
+<h1><a class="anchor" id="autotoc_md198"></a>
 Install Python</h1>
 <p>PolyTracker requires Python version 3.7 or above.</p>
 <p>On Ubuntu 20.04, the default <code>python3</code> (version 3.8) apt package meets this requirement. You can skip this section and go to the Intel Pin section.</p>
@@ -96,20 +96,20 @@ Install Python</h1>
 <div class="fragment"><div class="line">$ python3 --version</div>
 <div class="line">Python 3.7.12</div>
 </div><!-- fragment --><p>Go to the following Intel Pin section.</p>
-<h1><a class="anchor" id="autotoc_md186"></a>
+<h1><a class="anchor" id="autotoc_md199"></a>
 Download Intel Pin</h1>
 <p>Download Intel Pin 3.7 from the Intel official website, and extract the tarball.</p>
 <div class="fragment"><div class="line">wget https://software.intel.com/sites/landingpage/pintool/downloads/pin-3.7-97619-g0d0c92f4f-gcc-linux.tar.gz</div>
 <div class="line">tar -zxvf pin-3.7-97619-g0d0c92f4f-gcc-linux.tar.gz</div>
 </div><!-- fragment --><p>Go to the next PolyTracker section.</p>
-<h1><a class="anchor" id="autotoc_md187"></a>
+<h1><a class="anchor" id="autotoc_md200"></a>
 Install PolyTracker</h1>
 <p>VUzzer implementation on fuzzuf employs <a href="https://github.com/fuzzuf/polytracker">fuzzuf/polytracker</a> for data flow analysis.</p>
 <p>&lt;details&gt;</p>
 <p>The reason why we use PolyTracker instead of <a href="https://github.com/vusec/vuzzer64/tree/master/libdft64">libdft64</a>, used by the <a href="https://github.com/vusec/vuzzer64">VUzzer reference implementation</a> is that we conclude that libdft64 cannot achieve enough analysis accuracy to reproduce the original VUzzer performance on a newer version of Ubuntu (18.04/20.04).</p>
 <p>Our <a href="https://github.com/trailofbits/polytracker">trailofbits/polytracker</a> fork adds some changes to reproduce libdft64 data flow analysis. &lt;/details&gt;</p>
 <p>Refer to the <a href="https://github.com/fuzzuf/polytracker/blob/feature/make-polytracker-libdft64-compatible/README.md">PolyTracker README</a> for PolyTracker installation.</p>
-<h1><a class="anchor" id="autotoc_md188"></a>
+<h1><a class="anchor" id="autotoc_md201"></a>
 Build fuzzuf</h1>
 <p>Run the following command in the fuzzuf local repository specifying <code>PIN_ROOT</code> to the extracted Intel Pin 3.7 directory.</p>
 <div class="fragment"><div class="line">cd /path/to/fuzzuf/directory</div>
