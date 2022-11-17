@@ -93,7 +93,7 @@ How to use fuzzuf's IJON CLI</h1>
 </ul>
 <h1><a class="anchor" id="autotoc_md60"></a>
 Example Usage</h1>
-<p>You can test the original instrumentation tool and IJON's fuzzer in fuzzuf by building and fuzzing <a href="https://github.com/RUB-SysSec/ijon/blob/master/test.c">test.c</a> and <a href="https://github.com/RUB-SysSec/ijon/blob/master/test2.c">test2.c</a> found in IJON's repo. Note that, <a class="el" href="test_8c_source.html">test.c</a>, included in the latest commit (56ebfe34), may yield compilation errors and in that case you need to apply the following changes:</p>
+<p>You can test the original instrumentation tool and IJON's fuzzer in fuzzuf by building and fuzzing <a href="https://github.com/RUB-SysSec/ijon/blob/master/test.c">test.c</a> and <a href="https://github.com/RUB-SysSec/ijon/blob/master/test2.c">test2.c</a> found in IJON's repo. Note that, test.c, included in the latest commit (56ebfe34), may yield compilation errors and in that case you need to apply the following changes:</p>
 <div class="fragment"><div class="line">diff --git a/llvm_mode/afl-rt.h b/llvm_mode/afl-rt.h</div>
 <div class="line">index 616cbd8..28d5f9d 100644</div>
 <div class="line">--- a/llvm_mode/afl-rt.h</div>
@@ -127,12 +127,12 @@ Example Usage</h1>
 <div class="line"> </div>
 <div class="line"> #define compare(x,y) IJON_CTX(compare_w((x),(y)))</div>
 <div class="line"> bool compare_w(int x, int y){</div>
-</div><!-- fragment --><p>For example, you can build <a class="el" href="test_8c_source.html">test.c</a> and fuzz the produced binary with the following commands:</p>
+</div><!-- fragment --><p>For example, you can build test.c and fuzz the produced binary with the following commands:</p>
 <div class="fragment"><div class="line">$ (path_to_ijon)/afl-clang-fast (path_to_ijon)/test.c -o test</div>
 <div class="line">$ mkdir /tmp/ijon_test_indir/ &amp;&amp; echo hello &gt; /tmp/ijon_test_indir/hello</div>
 <div class="line">$ fuzzuf ijon -i /tmp/ijon_test_indir/ ./test</div>
 </div><!-- fragment --><p>Here, you don't need to specify <code>@@</code> in the last command because the binary receives inputs via stdin. If IJON's instrumentation tool and fuzzer operate properly, the fuzzer will detect a crash within 3 to 5 minutes with a high probability.</p>
-<p>While <a class="el" href="test_8c_source.html">test.c</a> and <a class="el" href="test2_8c_source.html">test2.c</a> gives you an idea how you can use annotations, you can check README and source code in IJON's repo to understand their further usage.</p>
+<p>While test.c and <a class="el" href="test2_8c_source.html">test2.c</a> gives you an idea how you can use annotations, you can check README and source code in IJON's repo to understand their further usage.</p>
 <h1><a class="anchor" id="autotoc_md61"></a>
 Algorithm Overview</h1>
 <p>IJON is implemented in a way that retains most of the functions of AFL, and adds additional functions. Roughly speaking, the differences from AFL are as follows:</p>
