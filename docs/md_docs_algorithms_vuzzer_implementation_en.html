@@ -66,16 +66,16 @@ $(function() {
 <div class="title">VUzzer Implementation in fuzzuf </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md203"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md205"></a>
 Reference VUzzer Implementation</h1>
 <ul>
 <li>Version: 1.0</li>
 <li>Commit: <a href="https://github.com/vusec/vuzzer64/commit/2b1b0ed757a3dca114db0192fa4ab1add92348bc">2b1b0ed757a3dca114db0192fa4ab1add92348bc</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md204"></a>
+<h1><a class="anchor" id="autotoc_md206"></a>
 Directory Layout</h1>
 <p>In fuzzuf, implementations of VUzzer are located in <a href="/include/fuzzuf/algorithms/vuzzer">include/fuzzuf/algorithms/vuzzer</a> and <a href="/algorithms/vuzzer">algorithms/vuzzer</a>.</p>
-<h1><a class="anchor" id="autotoc_md205"></a>
+<h1><a class="anchor" id="autotoc_md207"></a>
 VUzzer in HierarFlow</h1>
 <p>VUzzer is represented in HierarFlow as in <a href="/algorithms/vuzzer/vuzzer.cpp">algorithms/vuzzer/vuzzer.cpp</a>:</p>
 <div class="fragment"><div class="line">fuzz_loop &lt;&lt;</div>
@@ -101,7 +101,7 @@ VUzzer in HierarFlow</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md206"></a>
+<h1><a class="anchor" id="autotoc_md208"></a>
 Different part from an original one</h1>
 <p>In fuzzuf, the implementation of VUzzer is a bit different from the original one. One of the most notable different parts is the lightweight design of the seed queues to reduce the performance overhead of manipulating seeds. A new design of VUzzer uses <code>OnDiskExecInput</code> to implement seeds, which can delay I/O operations until it is required. </p>
 </div></div><!-- contents -->

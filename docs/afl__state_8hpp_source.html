@@ -389,17 +389,20 @@ $(function() {
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  std::shared_ptr&lt;optimizer::Optimizer&lt;u32&gt;&gt; mutop_optimizer;</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordtype">bool</span> should_construct_auto_dict;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;};</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="keyword">using</span> AFLState = AFLStateTemplate&lt;AFLTestcase&gt;;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::afl</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/templates/afl_state.hpp&quot;</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <span class="keywordtype">bool</span> sync_external_queue = <span class="keyword">false</span>; <span class="comment">/* Enable parallel mode */</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  std::uint32_t sync_interval_cnt = 0u;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keywordtype">bool</span> should_construct_auto_dict;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;};</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="keyword">using</span> AFLState = AFLStateTemplate&lt;AFLTestcase&gt;;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::afl</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/algorithms/afl/templates/afl_state.hpp&quot;</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aafl__executor__interface_8hpp_html"><div class="ttname"><a href="afl__executor__interface_8hpp.html">afl_executor_interface.hpp</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>

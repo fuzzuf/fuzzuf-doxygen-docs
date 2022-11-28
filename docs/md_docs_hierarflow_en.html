@@ -66,49 +66,49 @@ $(function() {
 <div class="title">Implementation of HierarFlow </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md229"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md231"></a>
 HierarFlow's Tree Structure</h1>
 <p>As stated in README, a HierarFlow constructs a tree structure. For example, <a href="/README.md#example-afl-in-hierarflow">AFL implementation</a> would form the following tree:</p>
 <p><img src="/docs/resources/img/afl_hierarflow_tree.png" alt="afl_hierarflow_tree.png" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md230"></a>
+<h1><a class="anchor" id="autotoc_md232"></a>
 &lt;tt&gt;HardLink()&lt;/tt&gt;-ing a node</h1>
 <p><a href="/README.md#example-afl-in-hierarflow">In an AFL example</a>, we can see that some nodes are used with <code>HardLink()</code> member function. This function generates a fresh copy of that node which is independent from its origin. <br  />
  Since each node represents a single node in a tree, a copy must be generated if a node originating from the same routine appears multiple times (otherwise a node may have multiple parents and a tree structure collapses).</p>
-<h1><a class="anchor" id="autotoc_md231"></a>
+<h1><a class="anchor" id="autotoc_md233"></a>
 Summary of HierarFlow</h1>
 <p>HierarFlow consist of several C++ classes and template classes. This section briefly summarizes some of the most essential ones. <br  />
 </p>
-<h2><a class="anchor" id="autotoc_md232"></a>
+<h2><a class="anchor" id="autotoc_md234"></a>
 &lt;tt&gt;HierarFlowNode&lt;IReturn(IArgs...), O, IS_REGULAR&gt;&lt;/tt&gt;</h2>
 <p>A primitive class describing a node in a tree structure, that depends on several template parameters. It is a wrapper of <code>HierarFlowNodeImpl</code>, which is explained later.</p>
-<h2><a class="anchor" id="autotoc_md233"></a>
+<h2><a class="anchor" id="autotoc_md235"></a>
 &lt;tt&gt;HierarFlowRoutine&lt;I, O&gt;&lt;/tt&gt;</h2>
 <p>A template class which describes a routine (procedure) executed by its derived nodes.</p>
-<h2><a class="anchor" id="autotoc_md234"></a>
+<h2><a class="anchor" id="autotoc_md236"></a>
 &lt;tt&gt;HierarFlowPath&lt;/tt&gt;</h2>
 <p>A class describing a parent-child relationship of succeeding nodes, that is made by an operator <code>&lt;&lt;</code>. The path (i.e. parent-child relationship) defines the order of execution.</p>
-<h2><a class="anchor" id="autotoc_md235"></a>
+<h2><a class="anchor" id="autotoc_md237"></a>
 &lt;tt&gt;HierarFlowChildren&lt;/tt&gt;</h2>
 <p>A class that describes a set of sibling nodes having the same parent node, that are coupled together by an operator <code>||</code>.</p>
-<h2><a class="anchor" id="autotoc_md236"></a>
+<h2><a class="anchor" id="autotoc_md238"></a>
 &lt;tt&gt;HierarFlowCallee&lt;IReturn(IArgs...)&gt;&lt;/tt&gt;</h2>
 <p>A template class which handles a node as an object called by its parent.</p>
-<h2><a class="anchor" id="autotoc_md237"></a>
+<h2><a class="anchor" id="autotoc_md239"></a>
 &lt;tt&gt;HierarFlowCaller&lt;OReturn(OArgs...)&gt;&lt;/tt&gt;</h2>
 <p>A template class which handles a node as an object that calls its chlidren (thus, a companion of <code>HierarFlowCallee</code>).</p>
-<h2><a class="anchor" id="autotoc_md238"></a>
+<h2><a class="anchor" id="autotoc_md240"></a>
 &lt;tt&gt;HierarFlowNodeImpl&lt;I, O, IS_REGULAR&gt;&lt;/tt&gt;</h2>
 <p>A template class wrapped by <code>HierarFlowNode</code> shown above. It represents an entity of the node and is coupled with a routine that corresponds to as a class member <code>routine</code>.</p>
 <p>Usually, users do not have to care about this class when using HierarFlow and should keep using a wraper class <code>HierarFlowNode</code>. <br  />
  The exception is when they are using <code>UnwrapCurrentLinkedNodeRef()</code> function, usually in a routine that is going to create an irregular node.</p>
-<h1><a class="anchor" id="autotoc_md239"></a>
+<h1><a class="anchor" id="autotoc_md241"></a>
 HierarFlow in detail</h1>
 <p>A building block in HierarFlow is a user-implemented class derived from the template class <code>HierarFlowRoutine</code>. In fuzzuf, those routines become templates for block generation. <br  />
  Users who want to add a new fuzzer to fuzzuf should implement a new class deriving <code>HierarFlowRoutine</code> as a procedure linked to each block dividing a fuzzing loop. <br  />
  Each building block is generated as a node in a tree structure and connected with operators to make a fuzzing loop as a structured flow.</p>
 <p>Further, since blocks include an executor primitive responsible for PUT execution, a fuzzer can support multi-platform by replacing those relevant parts. <br  />
  Specifically, users should define a new class deriving the <code>Executor</code> class, then implement required member functions per platform and virtual functions such as <code>virtual void Run(...)</code>.</p>
-<h2><a class="anchor" id="autotoc_md240"></a>
+<h2><a class="anchor" id="autotoc_md242"></a>
 &lt;tt&gt;HierarFlowNode&lt;IReturn(IArgs...), O, IS_REGULAR&gt;&lt;/tt&gt;</h2>
 <p>This primitive class describes a node in a tree structure. It depends on template parameters <code>IReturn</code>, <code>IArgs...</code> (parameter pack), &lsquo;O&rsquo;, and <code>IS_REGULAR</code>, whereas:</p>
 <ul>
@@ -135,29 +135,29 @@ HierarFlow in detail</h1>
 <p>In contrast, an irregular node (<code>IS_REGULAR=false</code>) may handle its succeeding nodes differently. <br  />
  On this occasion, the function may get a reference to the <code>HierarFlowNodeImpl</code> object currently linked through the <code>UnwrapCurrentLinkedNodeRef()</code> function to modify the order of successor executions directly. <br  />
  It is also possible to override the virtual function <code>CallSuccessors()</code> itself to control each child node's execution freely.</p>
-<h2><a class="anchor" id="autotoc_md241"></a>
+<h2><a class="anchor" id="autotoc_md243"></a>
 &lt;tt&gt;HierarFlowRoutine&lt;I, O&gt;&lt;/tt&gt;</h2>
 <p>This class describes a routine (procedure) executed by its derived nodes. Like <code>HierarFlowNode</code>, it is a template class depending on <code>I</code> and <code>O</code>.</p>
 <p>The user mainly implements derivatives of this class for their new fuzzer as needed. The users can create a node from each routine with the function <code>Create[Irregular]Node&lt;R&gt;()</code> where <code>R</code> represents a routine class implemented. <br  />
  This class must override and implement <code>operator() (IArgs args...)</code> to describe what the routine should perform when called.</p>
-<h2><a class="anchor" id="autotoc_md242"></a>
+<h2><a class="anchor" id="autotoc_md244"></a>
 &lt;tt&gt;HierarFlowPath&lt;/tt&gt;</h2>
 <p>This class describes a parent-child relationship of succeeding nodes made by an operator <code>&lt;&lt;</code>. The path (i.e., parent-child relationship) defines the order of execution. <br  />
  Users should beware that the parent-side should transfer the control to the child-side (e.g., by calling <code>GoToDefaultNext()</code>) for the routines linked to the nodes connected by <code>&lt;&lt;</code>, when the former finishes its duty before it returns.</p>
-<h2><a class="anchor" id="autotoc_md243"></a>
+<h2><a class="anchor" id="autotoc_md245"></a>
 &lt;tt&gt;HierarFlowChildren&lt;/tt&gt;</h2>
 <p>This class describes a set of sibling nodes with the same parent node, coupled with the <code>||</code> operator.</p>
 <p>The user who implements a fuzzing loop can transfer the control from the current node to the next one after being transferred from its parent (by calling <code>GoToDefaultNext()</code> from each routine, for example) to execute each of sibling nodes in the order as denoted. <br  />
  Alternatively, by using <code>GoToParent</code>, the child can transfer the control back to the parent without executing the rest of the sibling nodes.</p>
-<h2><a class="anchor" id="autotoc_md244"></a>
+<h2><a class="anchor" id="autotoc_md246"></a>
 &lt;tt&gt;HierarFlowCallee&lt;IReturn(IArgs...)&gt;&lt;/tt&gt;</h2>
 <p>This template class handles a node as an object called by its parent.</p>
 <p>The class holds the information of its caller (i.e., parent) as a pointer <code>HierarFlowCaller&lt;I&gt; *parent</code>.</p>
-<h2><a class="anchor" id="autotoc_md245"></a>
+<h2><a class="anchor" id="autotoc_md247"></a>
 &lt;tt&gt;HierarFlowCaller&lt;OReturn(OArgs...)&gt;&lt;/tt&gt;</h2>
 <p>This template class handles a node as an object that calls its children (thus, a companion of <code>HierarFlowCallee</code>).</p>
 <p>Similar to <code>HierarFlowCallee</code>, it has a member variable <code>OReturn resp_val</code>, which holds a return value from its child nodes (n.b. there is only one return value even there are multiple child nodes).</p>
-<h2><a class="anchor" id="autotoc_md246"></a>
+<h2><a class="anchor" id="autotoc_md248"></a>
 &lt;tt&gt;HierarFlowNodeImpl&lt;I, O, IS_REGULAR&gt;&lt;/tt&gt;</h2>
 <p>This template class is wrapped by <code>HierarFlowNode</code> explained above. It represents an entity of the node and is coupled with a routine that corresponds to a class member <code>routine</code>.</p>
 <p><code>HierarFlowNode</code> holds a pointer to this class as a <code>std::shared_ptr</code> named <code>impl</code>.</p>
@@ -167,7 +167,7 @@ HierarFlow in detail</h1>
 <p>As described in the above diagram, a node (<code>HierarFlowNode</code>) simultaneously has attributes of <b>a child of its parent</b> and <b>a parent of its child</b> as an internal structure (<code>HierarFlowNodeImpl</code>). Although there are exceptions (i.e., a root node, leaf nodes), consider only ordinary nodes here. <br  />
  The child node represents the caller of the parent node, and the parent node represents the caller of the child node.</p>
 <p>Note, the node's <code>IReturn</code> and <code>IArgs...</code> types are the same as its parent's <code>OReturn</code> and <code>OArgs...</code>. Thus, the node's <code>I = IReturn(IArgs...)</code> type is equal to its parent's <code>O = OReturn(OArgs...)</code> type.</p>
-<h1><a class="anchor" id="autotoc_md247"></a>
+<h1><a class="anchor" id="autotoc_md249"></a>
 Internals of HierarFlow</h1>
 <p>When a HierarFlow code is evaluated as a fuzzing loop, the internal processes are as follows:</p>
 <ol type="1">

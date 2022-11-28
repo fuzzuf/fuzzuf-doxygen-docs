@@ -99,20 +99,20 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_intermediates.hpp&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_node.hpp&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/hierarflow/hierarflow_routine.hpp&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/common.hpp&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::aflplusplus {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer.html">   34</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer.html">AFLplusplusFuzzer</a> final</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">afl::AFLFuzzerTemplate</a>&lt;AFLplusplusState&gt; {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer.html">AFLplusplusFuzzer</a>(std::unique_ptr&lt;AFLplusplusState&gt;&amp;&amp; state)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      : <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">afl::AFLFuzzerTemplate&lt;AFLplusplusState&gt;</a>(std::move(state)),</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        fuzz_loop(afl::BuildAFLFuzzLoop(</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            *<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">afl::AFLFuzzerTemplate&lt;AFLplusplusState&gt;::state</a>)) {}</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> OneLoop(<span class="keywordtype">void</span>)<span class="keyword"> override </span>{ fuzz_loop(); }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::aflplusplus {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer.html">AFLplusplusFuzzer</a> final</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">afl::AFLFuzzerTemplate</a>&lt;AFLplusplusState&gt; {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer.html">AFLplusplusFuzzer</a>(std::unique_ptr&lt;AFLplusplusState&gt;&amp;&amp; state)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      : <a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">afl::AFLFuzzerTemplate&lt;AFLplusplusState&gt;</a>(std::move(state)),</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        fuzz_loop(afl::BuildAFLFuzzLoop(</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            *<a class="code" href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">afl::AFLFuzzerTemplate&lt;AFLplusplusState&gt;::state</a>)) {}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> OneLoop(<span class="keywordtype">void</span>) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">void</span> SyncFuzzers();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html">hierarflow::HierarFlowNode</a>&lt;void(<span class="keywordtype">void</span>), void(<span class="keywordtype">void</span>)&gt; fuzz_loop;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
@@ -122,7 +122,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassfuzzuf_1_1hierarflow_1_1HierarFlowNode_html"><div class="ttname"><a href="classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html">fuzzuf::hierarflow::HierarFlowNode</a></div><div class="ttdef"><b>Definition:</b> <a href="hierarflow__node_8hpp_source.html#l00060">hierarflow_node.hpp:60</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html">fuzzuf::algorithm::afl::AFLFuzzerTemplate</a></div><div class="ttdef"><b>Definition:</b> <a href="afl__fuzzer_8hpp_source.html#l00031">afl_fuzzer.hpp:31</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer.html">fuzzuf::algorithm::aflplusplus::AFLplusplusFuzzer</a></div><div class="ttdef"><b>Definition:</b> <a href="aflplusplus__fuzzer_8hpp_source.html#l00034">aflplusplus_fuzzer.hpp:34</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer.html">fuzzuf::algorithm::aflplusplus::AFLplusplusFuzzer</a></div><div class="ttdef"><b>Definition:</b> <a href="aflplusplus__fuzzer_8hpp_source.html#l00033">aflplusplus_fuzzer.hpp:33</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
