@@ -237,7 +237,7 @@ $(function() {
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  }</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="comment">// get the testcase indexed by state.current_entry and start mutations</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  state.current_entry = <span class="keyword">static_cast&lt;</span>u32<span class="keyword">&gt;</span>((*state.alias_probability)());</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  state.current_entry = (*state.alias_probability)();</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="keyword">auto</span> &amp;testcase = state.case_queue[state.current_entry];</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  this-&gt;CallSuccessors(testcase);</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
@@ -258,7 +258,7 @@ $(function() {
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  std::vector&lt;double&gt; vw;</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  ComputeWeightVector(state, vw);</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="keyword">using</span> <a class="code" href="classfuzzuf_1_1utils_1_1random_1_1WalkerDiscreteDistribution.html">fuzzuf::utils::random::WalkerDiscreteDistribution</a>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  state.alias_probability.reset(<span class="keyword">new</span> WalkerDiscreteDistribution&lt;double&gt;(vw));</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  state.alias_probability.reset(<span class="keyword">new</span> WalkerDiscreteDistribution&lt;u32&gt;(vw));</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keywordtype">void</span> ComputeWeightVector(AFLplusplusState &amp;state, std::vector&lt;double&gt; &amp;vw) {</div>
@@ -307,7 +307,7 @@ $(function() {
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::afl::routine::other</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassfuzzuf_1_1utils_1_1random_1_1WalkerDiscreteDistribution_html"><div class="ttname"><a href="classfuzzuf_1_1utils_1_1random_1_1WalkerDiscreteDistribution.html">fuzzuf::utils::random::WalkerDiscreteDistribution</a></div><div class="ttdef"><b>Definition:</b> <a href="utils_2random_8hpp_source.html#l00112">random.hpp:112</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1utils_1_1random_1_1WalkerDiscreteDistribution_html"><div class="ttname"><a href="classfuzzuf_1_1utils_1_1random_1_1WalkerDiscreteDistribution.html">fuzzuf::utils::random::WalkerDiscreteDistribution</a></div><div class="ttdef"><b>Definition:</b> <a href="utils_2random_8hpp_source.html#l00106">random.hpp:106</a></div></div>
 <div class="ttc" id="autils_2random_8hpp_html"><div class="ttname"><a href="utils_2random_8hpp.html">random.hpp</a></div><div class="ttdoc">Generate random numbers.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
