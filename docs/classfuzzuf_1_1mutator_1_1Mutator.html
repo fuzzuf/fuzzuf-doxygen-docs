@@ -153,9 +153,9 @@ template&lt;typename T &gt; </td></tr>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ac2f0ddf7fb25e9a1e955e740f27b375d"><td class="memTemplItemLeft" align="right" valign="top">u32&#160;</td><td class="memTemplItemRight" valign="bottom"><b>InterestN</b> (int pos, int idx, int be)</td></tr>
 <tr class="separator:ac2f0ddf7fb25e9a1e955e740f27b375d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af063217121fea5dd0100036a9145694b"><td class="memTemplParams" colspan="2">template&lt;typename CustomCases &gt; </td></tr>
-<tr class="memitem:af063217121fea5dd0100036a9145694b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1mutator_1_1Mutator.html#af063217121fea5dd0100036a9145694b">Havoc</a> (u32 stacking, const std::vector&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> &gt; &amp;extras, const std::vector&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> &gt; &amp;a_extras, <a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">fuzzuf::optimizer::Optimizer</a>&lt; u32 &gt; &amp;mutop_optimizer, CustomCases custom_cases)</td></tr>
-<tr class="separator:af063217121fea5dd0100036a9145694b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad54a376a93a697628dbb15a4088cef6"><td class="memTemplParams" colspan="2">template&lt;typename CustomCases &gt; </td></tr>
+<tr class="memitem:aad54a376a93a697628dbb15a4088cef6"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfuzzuf_1_1mutator_1_1Mutator.html#aad54a376a93a697628dbb15a4088cef6">Havoc</a> (const std::vector&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> &gt; &amp;extras, const std::vector&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> &gt; &amp;a_extras, <a class="el" href="classfuzzuf_1_1optimizer_1_1HavocOptimizer.html">optimizer::HavocOptimizer</a> &amp;havoc_optimizer, CustomCases custom_cases)</td></tr>
+<tr class="separator:aad54a376a93a697628dbb15a4088cef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf7b554c6924fe3032051524737d4d18"><td class="memItemLeft" align="right" valign="top"><a id="abf7b554c6924fe3032051524737d4d18"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>RestoreHavoc</b> (void)</td></tr>
 <tr class="separator:abf7b554c6924fe3032051524737d4d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -214,10 +214,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rand_fd</b></td></tr>
 class fuzzuf::mutator::Mutator&lt; Tag &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00052">52</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00053">53</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="af063217121fea5dd0100036a9145694b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af063217121fea5dd0100036a9145694b">&#9670;&nbsp;</a></span>Havoc()</h2>
+<a id="aad54a376a93a697628dbb15a4088cef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad54a376a93a697628dbb15a4088cef6">&#9670;&nbsp;</a></span>Havoc()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,12 +229,6 @@ template&lt;typename CustomCases &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classfuzzuf_1_1mutator_1_1Mutator.html">fuzzuf::mutator::Mutator</a>&lt; Tag &gt;::Havoc </td>
           <td>(</td>
-          <td class="paramtype">u32&#160;</td>
-          <td class="paramname"><em>stacking</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const std::vector&lt; <a class="el" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">AFLDictData</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>extras</em>, </td>
         </tr>
@@ -247,8 +241,8 @@ template&lt;typename CustomCases &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">fuzzuf::optimizer::Optimizer</a>&lt; u32 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>mutop_optimizer</em>, </td>
+          <td class="paramtype"><a class="el" href="classfuzzuf_1_1optimizer_1_1HavocOptimizer.html">optimizer::HavocOptimizer</a> &amp;&#160;</td>
+          <td class="paramname"><em>havoc_optimizer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -271,18 +265,17 @@ template&lt;typename CustomCases &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stacking</td><td>the number of times mutation operators are applied. </td></tr>
     <tr><td class="paramname">extras</td><td>the vector of extras (constant strings) that works as a dictionary. </td></tr>
     <tr><td class="paramname">a_extras</td><td>the vector of auto extras (automatically generated constant strings). </td></tr>
-    <tr><td class="paramname">mutop_optimizer</td><td>(the reference of) the optimizer that selects mutation operators to be applied. </td></tr>
+    <tr><td class="paramname">havoc_optimizer</td><td>(the reference of) the optimizer that selects mutation operators to be applied and the number of times mutation operators are applied. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>About mutop_optimizer and CustomCases. To allow users to customize Havoc, two callable objects are provided.</dd></dl>
-<p>mutop_optimizer should be an instance of <code><a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">fuzzuf::optimizer::Optimizer</a>&lt;u32&gt;</code>, and should return integers that describe switch cases of havoc(i.e., a constant defined in HavocCase). This works as a probability distribution with which Havoc decides which mutation(switch case) to be used. mutop_optimizer is provided with two dictionaries via <code><a class="el" href="classfuzzuf_1_1optimizer_1_1Store.html" title="Key-value store that bridges between fuzzers and optimizers.">fuzzuf::optimizer::Store</a></code>: extras and a_extras. They can be accessed with the keys <code>optimizer::keys::Extras</code> and <code>optimizer::keys::AutoExtras</code>. If these dictionaries are available and non-empty, mutop_optimizer can select the mutation operators of placing keywords picked from the dictionaries. Note that, conversely, mutop_optimizer MUST NOT return OVERWRITE_WITH_EXTRA and INSERT_EXTRA if the value extras is empty. If it does, Havoc can cause access violations. The same is true for OVERWRITE_WITH_AEXTRA and INSERT_AEXTRA.</p>
+<dl class="section note"><dt>Note</dt><dd>About havoc_optimizer and CustomCases. To allow users to customize Havoc, two callable objects are provided.</dd></dl>
+<p>havoc_optimizer should be an instance of <code><a class="el" href="classfuzzuf_1_1optimizer_1_1HavocOptimizer.html" title="Optimizer for two parameters used in Mutator::Havoc">fuzzuf::optimizer::HavocOptimizer</a></code>. <code>HavocOptimizer::CalcMutop</code> should return integers that describe switch cases of havoc (i.e., a constant defined in HavocCase). This works as a probability distribution with which Havoc decides which mutation (switch case) to be used. <code>CalcMutop</code> is provided with two dictionaries via <code><a class="el" href="classfuzzuf_1_1optimizer_1_1Store.html" title="Key-value store that bridges between fuzzers and optimizers.">fuzzuf::optimizer::Store</a></code>: extras and a_extras. They can be accessed with the keys <code>optimizer::keys::Extras</code> and <code>optimizer::keys::AutoExtras</code>. If these dictionaries are available and non-empty, <code>CalcMutop</code> can select the mutation operators of placing keywords picked from the dictionaries. Note that, conversely, <code>CalcMutop</code> MUST NOT return OVERWRITE_WITH_EXTRA and INSERT_EXTRA if the value extras is empty. If it does, Havoc can cause access violations. The same is true for OVERWRITE_WITH_AEXTRA and INSERT_AEXTRA. <code>HavocOptimizer::CalcBatchSize</code> should return how many times mutation operators should be applied to the retained buffer.</p>
 <p>CustomCases is a callable object used to execute your own cases instead of preset cases. It should receive as its arguments a number representing which case should be executed, the references of outbuf and len, extras and a_extras. Note that, in order to select custom cases in Havoc, CaseDistrib should return numbers more than or equal to HavocCase::NUM_CASE. For example, if CaseDistrib returns HavocCase::NUM_CASE+1, then CustomCases receives HavocCase::NUM_CASE+1 as one of its arguments. </p>
 
-<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00270">270</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00274">274</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
 
 </div>
 </div>
@@ -311,7 +304,7 @@ template&lt;class Tag &gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line">{INTERESTING_8,</div>
 <div class="line">                                                    INTERESTING_16}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00071">71</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00072">72</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
 
 </div>
 </div>
@@ -339,7 +332,7 @@ template&lt;class Tag &gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
 <div class="line">    INTERESTING_8, INTERESTING_16, INTERESTING_32}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00072">72</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mutator_2mutator_8hpp_source.html#l00073">73</a> of file <a class="el" href="mutator_2mutator_8hpp_source.html">mutator.hpp</a>.</p>
 
 </div>
 </div>

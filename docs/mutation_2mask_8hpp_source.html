@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="mutation_2mask_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -89,71 +89,71 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_MUTATION_MASK_HPP</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_MUTATION_MASK_HPP</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="filtered__range_8hpp.html">fuzzuf/utils/filtered_range.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nth__range_8hpp.html">fuzzuf/utils/nth_range.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="zip__range_8hpp.html">fuzzuf/utils/zip_range.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::mutator {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> R1, <span class="keyword">typename</span> Mask_, <span class="keyword">typename</span> R2&gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="mutation_2mask_8hpp.html#a57781c5b0dae52ed9870ab9b87cd7af5">   49</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="mutation_2mask_8hpp.html#a57781c5b0dae52ed9870ab9b87cd7af5">Mask</a>(<span class="keyword">const</span> R1 &amp;data, <span class="keyword">const</span> Mask_ &amp;mask, R2 &amp;dest) -&gt; std::enable_if_t&lt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    utils::range::is_range_of_v&lt;R1, std::uint8_t&gt; &amp;&amp;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        std::is_integral_v&lt;utils::range::RangeValueT&lt;Mask_&gt;&gt; &amp;&amp;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        utils::range::is_range_of_v&lt;R2, std::uint8_t&gt;,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span>&gt; {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">size_t</span> masked_size =</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      std::min(utils::range::rangeSize(data), utils::range::rangeSize(mask));</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// * Copy the worthy bytes into a temporary array T</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// * Mutate T</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// * Copy T back.</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="comment">// This is totally unoptimized.</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  dest.clear();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  dest.reserve(masked_size);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  utils::range::copy(utils::range::zip(mask, data) |</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                         utils::range::adaptor::filtered(</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                             [](<span class="keyword">const</span> <span class="keyword">auto</span> v) { <span class="keywordflow">return</span> std::get&lt;0&gt;(v); }) |</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                         utils::range::adaptor::nth&lt;1u&gt;,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                     std::back_inserter(dest));</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> R1, <span class="keyword">typename</span> Mask, <span class="keyword">typename</span> R2&gt;</div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="mutation_2mask_8hpp.html#a5e86225a1b6c6fff717821979ba17ab1">   84</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="mutation_2mask_8hpp.html#a5e86225a1b6c6fff717821979ba17ab1">Unmask</a>(<span class="keyword">const</span> R1 &amp;src, <span class="keyword">const</span> Mask &amp;mask, R2 &amp;data) -&gt; std::enable_if_t&lt;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    utils::range::is_range_of_v&lt;R1, std::uint8_t&gt; &amp;&amp;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        std::is_integral_v&lt;utils::range::RangeValueT&lt;Mask&gt;&gt; &amp;&amp;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        utils::range::is_range_of_v&lt;R2, std::uint8_t&gt;,</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span>&gt; {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  assert(utils::range::rangeSize(mask) &lt;= utils::range::rangeSize(data));</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keyword">auto</span> mi = mask.begin();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keyword">auto</span> si = src.begin();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">auto</span> di = data.begin();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  std::vector&lt;std::uint8_t&gt; temp;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  temp.reserve(data.size());</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordflow">for</span> (; mi != mask.end() &amp;&amp; si != src.end() &amp;&amp; di != data.end(); ++mi, ++di) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> (*mi) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      temp.push_back(*si);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      ++si;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      temp.push_back(*di);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">for</span> (; mi != mask.end() &amp;&amp; di != data.end(); ++mi, ++di) {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">if</span> (!*mi)</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      temp.push_back(*di);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">for</span> (; di != data.end(); ++di) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    temp.push_back(*di);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  utils::range::assign(temp, data);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::mutator</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="filtered__range_8hpp.html">fuzzuf/utils/filtered_range.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nth__range_8hpp.html">fuzzuf/utils/nth_range.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="zip__range_8hpp.html">fuzzuf/utils/zip_range.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::mutator {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> R1, <span class="keyword">typename</span> Mask_, <span class="keyword">typename</span> R2&gt;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="mutation_2mask_8hpp.html#a57781c5b0dae52ed9870ab9b87cd7af5">   50</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="mutation_2mask_8hpp.html#a57781c5b0dae52ed9870ab9b87cd7af5">Mask</a>(<span class="keyword">const</span> R1 &amp;data, <span class="keyword">const</span> Mask_ &amp;mask, R2 &amp;dest) -&gt; std::enable_if_t&lt;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    utils::range::is_range_of_v&lt;R1, std::uint8_t&gt; &amp;&amp;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        std::is_integral_v&lt;utils::range::RangeValueT&lt;Mask_&gt;&gt; &amp;&amp;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        utils::range::is_range_of_v&lt;R2, std::uint8_t&gt;,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span>&gt; {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">size_t</span> masked_size =</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      std::min(utils::range::rangeSize(data), utils::range::rangeSize(mask));</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// * Copy the worthy bytes into a temporary array T</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// * Mutate T</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="comment">// * Copy T back.</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">// This is totally unoptimized.</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  dest.clear();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  dest.reserve(masked_size);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  utils::range::copy(utils::range::zip(mask, data) |</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                         utils::range::adaptor::filtered(</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                             [](<span class="keyword">const</span> <span class="keyword">auto</span> v) { <span class="keywordflow">return</span> std::get&lt;0&gt;(v); }) |</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                         utils::range::adaptor::nth&lt;1u&gt;,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                     std::back_inserter(dest));</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> R1, <span class="keyword">typename</span> Mask, <span class="keyword">typename</span> R2&gt;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="mutation_2mask_8hpp.html#a5e86225a1b6c6fff717821979ba17ab1">   86</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="mutation_2mask_8hpp.html#a5e86225a1b6c6fff717821979ba17ab1">Unmask</a>(<span class="keyword">const</span> R1 &amp;src, <span class="keyword">const</span> Mask &amp;mask, R2 &amp;data) -&gt; std::enable_if_t&lt;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    utils::range::is_range_of_v&lt;R1, std::uint8_t&gt; &amp;&amp;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        std::is_integral_v&lt;utils::range::RangeValueT&lt;Mask&gt;&gt; &amp;&amp;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        utils::range::is_range_of_v&lt;R2, std::uint8_t&gt;,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span>&gt; {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  assert(utils::range::rangeSize(mask) &lt;= utils::range::rangeSize(data));</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">auto</span> mi = mask.begin();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keyword">auto</span> si = src.begin();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keyword">auto</span> di = data.begin();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  std::vector&lt;std::uint8_t&gt; temp;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  temp.reserve(data.size());</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordflow">for</span> (; mi != mask.end() &amp;&amp; si != src.end() &amp;&amp; di != data.end(); ++mi, ++di) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (*mi) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      temp.push_back(*si);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      ++si;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      temp.push_back(*di);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordflow">for</span> (; mi != mask.end() &amp;&amp; di != data.end(); ++mi, ++di) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span> (!*mi) temp.push_back(*di);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">for</span> (; di != data.end(); ++di) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    temp.push_back(*di);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  utils::range::assign(temp, data);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::mutator</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="amutation_2mask_8hpp_html_a57781c5b0dae52ed9870ab9b87cd7af5"><div class="ttname"><a href="mutation_2mask_8hpp.html#a57781c5b0dae52ed9870ab9b87cd7af5">fuzzuf::algorithm::libfuzzer::mutator::Mask</a></div><div class="ttdeci">auto Mask(const R1 &amp;data, const Mask_ &amp;mask, R2 &amp;dest) -&gt; std::enable_if_t&lt; utils::range::is_range_of_v&lt; R1, std::uint8_t &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; Mask_ &gt;&gt; &amp;&amp;utils::range::is_range_of_v&lt; R2, std::uint8_t &gt;, void &gt;</div><div class="ttdef"><b>Definition:</b> <a href="mutation_2mask_8hpp_source.html#l00049">mask.hpp:49</a></div></div>
-<div class="ttc" id="amutation_2mask_8hpp_html_a5e86225a1b6c6fff717821979ba17ab1"><div class="ttname"><a href="mutation_2mask_8hpp.html#a5e86225a1b6c6fff717821979ba17ab1">fuzzuf::algorithm::libfuzzer::mutator::Unmask</a></div><div class="ttdeci">auto Unmask(const R1 &amp;src, const Mask &amp;mask, R2 &amp;data) -&gt; std::enable_if_t&lt; utils::range::is_range_of_v&lt; R1, std::uint8_t &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; Mask &gt;&gt; &amp;&amp;utils::range::is_range_of_v&lt; R2, std::uint8_t &gt;, void &gt;</div><div class="ttdef"><b>Definition:</b> <a href="mutation_2mask_8hpp_source.html#l00084">mask.hpp:84</a></div></div>
+<div class="ttc" id="amutation_2mask_8hpp_html_a57781c5b0dae52ed9870ab9b87cd7af5"><div class="ttname"><a href="mutation_2mask_8hpp.html#a57781c5b0dae52ed9870ab9b87cd7af5">fuzzuf::algorithm::libfuzzer::mutator::Mask</a></div><div class="ttdeci">auto Mask(const R1 &amp;data, const Mask_ &amp;mask, R2 &amp;dest) -&gt; std::enable_if_t&lt; utils::range::is_range_of_v&lt; R1, std::uint8_t &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; Mask_ &gt;&gt; &amp;&amp;utils::range::is_range_of_v&lt; R2, std::uint8_t &gt;, void &gt;</div><div class="ttdef"><b>Definition:</b> <a href="mutation_2mask_8hpp_source.html#l00050">mask.hpp:50</a></div></div>
+<div class="ttc" id="amutation_2mask_8hpp_html_a5e86225a1b6c6fff717821979ba17ab1"><div class="ttname"><a href="mutation_2mask_8hpp.html#a5e86225a1b6c6fff717821979ba17ab1">fuzzuf::algorithm::libfuzzer::mutator::Unmask</a></div><div class="ttdeci">auto Unmask(const R1 &amp;src, const Mask &amp;mask, R2 &amp;data) -&gt; std::enable_if_t&lt; utils::range::is_range_of_v&lt; R1, std::uint8_t &gt; &amp;&amp;std::is_integral_v&lt; utils::range::RangeValueT&lt; Mask &gt;&gt; &amp;&amp;utils::range::is_range_of_v&lt; R2, std::uint8_t &gt;, void &gt;</div><div class="ttdef"><b>Definition:</b> <a href="mutation_2mask_8hpp_source.html#l00086">mask.hpp:86</a></div></div>
 <div class="ttc" id="arange__traits_8hpp_html"><div class="ttname"><a href="range__traits_8hpp.html">range_traits.hpp</a></div></div>
 <div class="ttc" id="anth__range_8hpp_html"><div class="ttname"><a href="nth__range_8hpp.html">nth_range.hpp</a></div></div>
 <div class="ttc" id="azip__range_8hpp_html"><div class="ttname"><a href="zip__range_8hpp.html">zip_range.hpp</a></div></div>

@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -90,33 +90,35 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE util.InsertNth</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define BOOST_TEST_DYN_LINK</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="insert__nth_8hpp.html">fuzzuf/utils/type_traits/insert_nth.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i&gt; <span class="keyword">struct </span><a class="code" href="structnum__t.html">num_t</a> {};</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;BOOST_AUTO_TEST_CASE(InsertTemplateParameter) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  BOOST_CHECK((std::is_same_v&lt;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;               fuzzuf::utils::type_traits::InsertNthT&lt;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                   1U, <a class="code" href="structnum__t.html">num_t&lt;3U&gt;</a>, std::tuple&lt;<a class="code" href="structnum__t.html">num_t&lt;0U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;1U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;2U&gt;</a>&gt;&gt;,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;               std::tuple&lt;<a class="code" href="structnum__t.html">num_t&lt;0U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;3U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;1U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;2U&gt;</a>&gt;&gt;));</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;BOOST_AUTO_TEST_CASE(InsertFunctionParameter) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  BOOST_CHECK(</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      (std::is_same_v&lt;fuzzuf::utils::type_traits::InsertNthT&lt;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                          1U, <a class="code" href="structnum__t.html">num_t&lt;3U&gt;</a>, <span class="keywordtype">int</span>(<a class="code" href="structnum__t.html">num_t&lt;0U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;1U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;2U&gt;</a>)&gt;,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                      <span class="keywordtype">int</span>(<a class="code" href="structnum__t.html">num_t&lt;0U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;3U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;1U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;2U&gt;</a>)&gt;));</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;BOOST_AUTO_TEST_CASE(InsertInteger) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  BOOST_CHECK((std::is_same_v&lt;fuzzuf::utils::type_traits::InsertNthT&lt;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                  1U, std::integer_sequence&lt;int, 6&gt;,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                  std::integer_sequence&lt;int, 3, 4, 5&gt;&gt;,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                              std::integer_sequence&lt;int, 3, 6, 4, 5&gt;&gt;));</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i&gt;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">struct </span><a class="code" href="structnum__t.html">num_t</a> {};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;BOOST_AUTO_TEST_CASE(InsertTemplateParameter) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  BOOST_CHECK((std::is_same_v&lt;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;               fuzzuf::utils::type_traits::InsertNthT&lt;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                   1U, <a class="code" href="structnum__t.html">num_t&lt;3U&gt;</a>, std::tuple&lt;<a class="code" href="structnum__t.html">num_t&lt;0U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;1U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;2U&gt;</a>&gt;&gt;,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;               std::tuple&lt;<a class="code" href="structnum__t.html">num_t&lt;0U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;3U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;1U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;2U&gt;</a>&gt;&gt;));</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;BOOST_AUTO_TEST_CASE(InsertFunctionParameter) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  BOOST_CHECK(</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      (std::is_same_v&lt;fuzzuf::utils::type_traits::InsertNthT&lt;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                          1U, <a class="code" href="structnum__t.html">num_t&lt;3U&gt;</a>, <span class="keywordtype">int</span>(<a class="code" href="structnum__t.html">num_t&lt;0U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;1U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;2U&gt;</a>)&gt;,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                      <span class="keywordtype">int</span>(<a class="code" href="structnum__t.html">num_t&lt;0U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;3U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;1U&gt;</a>, <a class="code" href="structnum__t.html">num_t&lt;2U&gt;</a>)&gt;));</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;BOOST_AUTO_TEST_CASE(InsertInteger) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  BOOST_CHECK((std::is_same_v&lt;fuzzuf::utils::type_traits::InsertNthT&lt;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                  1U, std::integer_sequence&lt;int, 6&gt;,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                  std::integer_sequence&lt;int, 3, 4, 5&gt;&gt;,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                              std::integer_sequence&lt;int, 3, 6, 4, 5&gt;&gt;));</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructnum__t_html"><div class="ttname"><a href="structnum__t.html">num_t</a></div><div class="ttdef"><b>Definition:</b> <a href="erase__nth_8cpp_source.html#l00024">erase_nth.cpp:24</a></div></div>
+<div class="ttc" id="astructnum__t_html"><div class="ttname"><a href="structnum__t.html">num_t</a></div><div class="ttdef"><b>Definition:</b> <a href="erase__nth_8cpp_source.html#l00026">erase_nth.cpp:26</a></div></div>
 <div class="ttc" id="ainsert__nth_8hpp_html"><div class="ttname"><a href="insert__nth_8hpp.html">insert_nth.hpp</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

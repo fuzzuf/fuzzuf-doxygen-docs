@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="remove__cvr_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -95,9 +95,9 @@ $(function() {
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#if __cplusplus &gt;= 202002L</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">using</span> RemoveCvrT = std::remove_cvref_t&lt;T&gt;;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="remove__cvr_8hpp.html#a3c48a14e39899353a39a7fd9bd086b41">   44</a></span>&#160;<span class="keyword">using</span> <a class="code" href="remove__cvr_8hpp.html#a3c48a14e39899353a39a7fd9bd086b41">RemoveCvrT</a> = std::remove_cv_t&lt;std::remove_reference_t&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="remove__cvr_8hpp.html#a3c48a14e39899353a39a7fd9bd086b41">   44</a></span>&#160;<span class="keyword">using</span> <a class="code" href="remove__cvr_8hpp.html#a3c48a14e39899353a39a7fd9bd086b41">RemoveCvrT</a> = std::remove_cv_t&lt;std::remove_reference_t&lt;T&gt; &gt;;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <span class="comment">// namespace fuzzuf::utils::type_traits</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}  <span class="comment">// namespace fuzzuf::utils::type_traits</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aremove__cvr_8hpp_html_a3c48a14e39899353a39a7fd9bd086b41"><div class="ttname"><a href="remove__cvr_8hpp.html#a3c48a14e39899353a39a7fd9bd086b41">fuzzuf::utils::type_traits::RemoveCvrT</a></div><div class="ttdeci">std::remove_cv_t&lt; std::remove_reference_t&lt; T &gt; &gt; RemoveCvrT</div><div class="ttdef"><b>Definition:</b> <a href="remove__cvr_8hpp_source.html#l00044">remove_cvr.hpp:44</a></div></div>

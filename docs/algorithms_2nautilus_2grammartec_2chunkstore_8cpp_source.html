@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="algorithms_2nautilus_2grammartec_2chunkstore_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2022 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -88,10 +88,10 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * along with this program.  If not, see http://www.gnu.org/licenses/.</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="chunkstore_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/chunkstore.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/exceptions.hpp&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/common.hpp&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_2random_8hpp.html">fuzzuf/utils/random.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/exceptions.hpp&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/utils/common.hpp&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_2random_8hpp.html">fuzzuf/utils/random.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::nautilus::grammartec {</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
@@ -122,62 +122,56 @@ $(function() {
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="comment">/* Save tree to file */</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      std::string filepath = fuzzuf::utils::StrPrintf(</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="stringliteral">&quot;%s/chunks/chunk_%09ld&quot;</span>,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        _work_dir.c_str(), _number_of_chunks++</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      );</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(filepath,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                              O_WRONLY | O_CREAT | O_TRUNC,</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                              S_IWUSR | S_IRUSR); <span class="comment">// 0600</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keywordflow">if</span> (fd == -1) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">throw</span> exceptions::unable_to_create_file(</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;          fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;Cannot save tree: %s&quot;</span>, filepath.c_str()),</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;          __FILE__, __LINE__</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        );</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      fuzzuf::utils::WriteFile(fd, buffer.data(), buffer.size());</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      fuzzuf::utils::CloseFile(fd);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;          <span class="stringliteral">&quot;%s/chunks/chunk_%09ld&quot;</span>, _work_dir.c_str(), _number_of_chunks++);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordtype">int</span> fd = fuzzuf::utils::OpenFile(filepath, O_WRONLY | O_CREAT | O_TRUNC,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                       S_IWUSR | S_IRUSR);  <span class="comment">// 0600</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordflow">if</span> (fd == -1) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">throw</span> exceptions::unable_to_create_file(</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            fuzzuf::utils::StrPrintf(<span class="stringliteral">&quot;Cannot save tree: %s&quot;</span>, filepath.c_str()),</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            __FILE__, __LINE__);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      fuzzuf::utils::WriteFile(fd, buffer.data(), buffer.size());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      fuzzuf::utils::CloseFile(fd);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      contains_new_chunk = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      contains_new_chunk = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">if</span> (contains_new_chunk) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    _trees.push_back(tree);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">if</span> (contains_new_chunk) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    _trees.push_back(tree);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;std::optional&lt;AlternativePair&gt; ChunkStore::GetAlternativeTo(</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keyword">const</span> RuleID&amp; r, Context&amp; ctx</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  NTermID nt = ctx.GetNT(RuleIDOrCustom(r));</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;std::optional&lt;AlternativePair&gt; ChunkStore::GetAlternativeTo(</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">const</span> RuleID&amp; r, Context&amp; ctx)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  NTermID nt = ctx.GetNT(RuleIDOrCustom(r));</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordflow">if</span> (_nts_to_chunks.find(nt) == _nts_to_chunks.end()) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// TODO: is this correct?</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  }</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordflow">if</span> (_nts_to_chunks.find(nt) == _nts_to_chunks.end()) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// TODO: is this correct?</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keyword">const</span> std::vector&lt;Chunk&gt;&amp; chunks = _nts_to_chunks.at(nt);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  std::vector&lt;Chunk&gt; relevant;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> Chunk&amp; chunk: chunks) {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keyword">auto</span>&amp; [tid, nid] = chunk;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">if</span> (_trees.at(tid).GetRuleID(nid) != r) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      relevant.emplace_back(tid, nid);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordflow">if</span> (relevant.size() == 0) {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  Chunk selected = utils::random::Choose(relevant);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keywordflow">return</span> std::make_pair(</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    std::move(std::make_unique&lt;Tree&gt;(_trees.at(selected.first))),</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    selected.second</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  );</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::nautilus::grammartec</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keyword">const</span> std::vector&lt;Chunk&gt;&amp; chunks = _nts_to_chunks.at(nt);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  std::vector&lt;Chunk&gt; relevant;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> Chunk&amp; chunk : chunks) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">auto</span>&amp; [tid, nid] = chunk;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span> (_trees.at(tid).GetRuleID(nid) != r) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      relevant.emplace_back(tid, nid);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordflow">if</span> (relevant.size() == 0) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  Chunk selected = utils::random::Choose(relevant);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordflow">return</span> std::make_pair(</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      std::move(std::make_unique&lt;Tree&gt;(_trees.at(selected.first))),</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      selected.second);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::nautilus::grammartec</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="achunkstore_8hpp_html"><div class="ttname"><a href="chunkstore_8hpp.html">chunkstore.hpp</a></div><div class="ttdoc">Disk storage to save (sub)trees.</div></div>
 <div class="ttc" id="autils_2random_8hpp_html"><div class="ttname"><a href="utils_2random_8hpp.html">random.hpp</a></div><div class="ttdoc">Generate random numbers.</div></div>

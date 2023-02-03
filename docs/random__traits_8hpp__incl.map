@@ -1,7 +1,7 @@
 <map id="include/fuzzuf/algorithms/libfuzzer/state/random_traits.hpp" name="include/fuzzuf/algorithms/libfuzzer/state/random_traits.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="167,5,354,61"/>
-<area shape="rect" id="node2" href="$check__capability_8hpp.html" title=" " alt="" coords="87,109,223,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="164,273,256,300"/>
-<area shape="rect" id="node5" title=" " alt="" coords="298,117,370,143"/>
-<area shape="rect" id="node3" href="$void__t_8hpp.html" title=" " alt="" coords="5,199,172,225"/>
+<area shape="rect" id="node1" title=" " alt="" coords="21,5,208,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,117,77,143"/>
+<area shape="rect" id="node3" title=" " alt="" coords="119,273,211,300"/>
+<area shape="rect" id="node4" href="$check__capability_8hpp.html" title=" " alt="" coords="152,109,288,151"/>
+<area shape="rect" id="node5" href="$void__t_8hpp.html" title=" " alt="" coords="203,199,370,225"/>
 </map>

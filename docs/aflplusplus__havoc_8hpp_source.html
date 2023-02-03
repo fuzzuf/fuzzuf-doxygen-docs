@@ -72,7 +72,7 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2022 Ricerca Security</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
@@ -100,29 +100,157 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  AFLPLUSPLUS_ADDBYTE = mutator::NUM_CASE,</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  AFLPLUSPLUS_SUBBYTE,</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  AFLPLUSPLUS_SWITCH_BYTES,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  AFLPLUSPLUS_NUM_CASE  <span class="comment">// number of cases in AFL++ havoc</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> AFLplusplusCustomCases(</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    u32 case_idx, u8*&amp; outbuf, u32&amp; len,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">const</span> std::vector&lt;afl::dictionary::AFLDictData&gt;&amp; extras,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">const</span> std::vector&lt;afl::dictionary::AFLDictData&gt;&amp; a_extras);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib.html">AFLplusplusHavocCaseDistrib</a> : <span class="keyword">public</span> <a class="code" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">optimizer::Optimizer</a>&lt;u32&gt; {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib.html">AFLplusplusHavocCaseDistrib</a>();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  ~<a class="code" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib.html">AFLplusplusHavocCaseDistrib</a>();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  u32 CalcValue() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;u32 ChooseBlockLen(u32 limit);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::aflplusplus::havoc</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  AFLPLUSPLUS_SPLICE_OVERWRITE,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  AFLPLUSPLUS_SPLICE_INSERT,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  AFLPLUSPLUS_NUM_CASE  <span class="comment">// number of cases in AFL++ havoc</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib.html">AFLplusplusHavocCaseDistrib</a> : <span class="keyword">public</span> <a class="code" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">optimizer::Optimizer</a>&lt;u32&gt; {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib.html">AFLplusplusHavocCaseDistrib</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  ~<a class="code" href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib.html">AFLplusplusHavocCaseDistrib</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  u32 CalcValue() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;u32 ChooseBlockLen(u32 limit);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> *  The lifetime of this struct should be shorter than State.</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusCustomCases.html">   49</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusCustomCases.html">AFLplusplusCustomCases</a> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusCustomCases.html">AFLplusplusCustomCases</a>(State&amp; _state) : state(_state) {}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  ~<a class="code" href="structfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusCustomCases.html">AFLplusplusCustomCases</a>() {}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">void</span> operator()(u32 case_idx, u8*&amp; outbuf, u32&amp; len,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                  <span class="keyword">const</span> std::vector&lt;afl::dictionary::AFLDictData&gt;&amp; extras,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                  <span class="keyword">const</span> std::vector&lt;afl::dictionary::AFLDictData&gt;&amp; a_extras);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  State&amp; state;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> State&gt;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusCustomCases.html">AFLplusplusCustomCases&lt;State&gt;::operator()</a>(</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    u32 case_idx, u8*&amp; outbuf, u32&amp; len,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    [[maybe_unused]] <span class="keyword">const</span> std::vector&lt;afl::dictionary::AFLDictData&gt;&amp; extras,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    [[maybe_unused]] <span class="keyword">const</span> std::vector&lt;afl::dictionary::AFLDictData&gt;&amp;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        a_extras) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">auto</span> UR = [](u32 limit) { <span class="keywordflow">return</span> afl::util::UR(limit, -1); };</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">switch</span> (case_idx) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">case</span> AFLPLUSPLUS_ADDBYTE:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      outbuf[UR(len)]++;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">case</span> AFLPLUSPLUS_SUBBYTE:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      outbuf[UR(len)]--;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">case</span> AFLPLUSPLUS_SWITCH_BYTES: {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="keywordflow">if</span> (len &lt; 4) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      u32 to_end, switch_to, switch_len, switch_from;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      switch_from = UR(len);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        switch_to = UR(len);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      } <span class="keywordflow">while</span> (switch_from == switch_to);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <span class="keywordflow">if</span> (switch_from &lt; switch_to) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        switch_len = switch_to - switch_from;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        to_end = len - switch_to;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        switch_len = switch_from - switch_to;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        to_end = len - switch_from;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      switch_len = ChooseBlockLen(std::min(switch_len, to_end));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      std::unique_ptr&lt;u8[]&gt; new_buf(<span class="keyword">new</span> u8[switch_len]);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      <span class="comment">/* Backup */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      memcpy(new_buf.get(), outbuf + switch_from, switch_len);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="comment">/* Switch 1 */</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      memcpy(outbuf + switch_from, outbuf + switch_to, switch_len);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="comment">/* Switch 2 */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      memcpy(outbuf + switch_to, new_buf.get(), switch_len);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">case</span> AFLPLUSPLUS_SPLICE_OVERWRITE:</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">case</span> AFLPLUSPLUS_SPLICE_INSERT: {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      <span class="keywordflow">if</span> (state.case_queue.size() &lt;= 1) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      u32 tid;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        tid = UR(state.queued_paths);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      } <span class="keywordflow">while</span> (tid == state.current_entry);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="keywordflow">if</span> (tid == state.case_queue.size()) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="keyword">auto</span>&amp; target_case = *state.case_queue[tid];</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      target_case.input-&gt;Load();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      u32 target_len = target_case.input-&gt;GetLen();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="keyword">using</span> afl::option::GetHavocBlkXl;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="keyword">using</span> afl::option::GetMaxFile;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="keyword">using</span> Tag = <span class="keyword">typename</span> State::Tag;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="keywordflow">if</span> (case_idx == AFLPLUSPLUS_SPLICE_OVERWRITE ||</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;          len + GetHavocBlkXl&lt;Tag&gt;() &gt;= GetMaxFile&lt;Tag&gt;()) {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        u32 copy_len = ChooseBlockLen(target_len);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">if</span> (copy_len &gt; len) copy_len = len;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        u32 copy_from = UR(target_len - copy_len + 1);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        u32 copy_to = UR(len - copy_len + 1);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        memmove(outbuf + copy_to, target_case.input-&gt;GetBuf() + copy_from,</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                copy_len);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        u32 clone_len = ChooseBlockLen(target_len);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        u32 clone_from = UR(target_len - clone_len + 1);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        u32 clone_to = UR(len + 1);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        u8* new_buf = <span class="keyword">new</span> u8[len + clone_len];</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="comment">/* Head */</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        std::memcpy(new_buf, outbuf, clone_to);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="comment">/* Inserted part */</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        std::memcpy(new_buf + clone_to,</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    target_case.input-&gt;GetBuf() + clone_from, clone_len);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="comment">/* Tail */</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        std::memcpy(new_buf + clone_to + clone_len, outbuf + clone_to,</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    len - clone_to);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keyword">delete</span>[] outbuf;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        outbuf = new_buf;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        len += clone_len;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      target_case.input-&gt;Unload();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::aflplusplus::havoc</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusCustomCases_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusCustomCases.html">fuzzuf::algorithm::aflplusplus::havoc::AFLplusplusCustomCases</a></div><div class="ttdef"><b>Definition:</b> <a href="aflplusplus__havoc_8hpp_source.html#l00049">aflplusplus_havoc.hpp:49</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1optimizer_1_1Optimizer_html"><div class="ttname"><a href="classfuzzuf_1_1optimizer_1_1Optimizer.html">fuzzuf::optimizer::Optimizer</a></div><div class="ttdef"><b>Definition:</b> <a href="optimizer_8hpp_source.html#l00025">optimizer.hpp:25</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib.html">fuzzuf::algorithm::aflplusplus::havoc::AFLplusplusHavocCaseDistrib</a></div><div class="ttdef"><b>Definition:</b> <a href="aflplusplus__havoc_8hpp_source.html#l00039">aflplusplus_havoc.hpp:39</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1aflplusplus_1_1havoc_1_1AFLplusplusHavocCaseDistrib.html">fuzzuf::algorithm::aflplusplus::havoc::AFLplusplusHavocCaseDistrib</a></div><div class="ttdef"><b>Definition:</b> <a href="aflplusplus__havoc_8hpp_source.html#l00036">aflplusplus_havoc.hpp:36</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="corpus_2add__to__corpus_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -89,34 +89,33 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_CORPUS_ADD_TO_CORPUS_HPP</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_CORPUS_ADD_TO_CORPUS_HPP</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="corpus_8hpp.html">fuzzuf/algorithms/libfuzzer/state/corpus.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="input__info_8hpp.html">fuzzuf/algorithms/libfuzzer/state/input_info.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="libfuzzer_2state_2state_8hpp.html">fuzzuf/algorithms/libfuzzer/state/state.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/exec_input/exec_input_set.hpp&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/executor/native_linux_executor.hpp&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/feedback/exit_status_feedback.hpp&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sha1_8hpp.html">fuzzuf/utils/sha1.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::corpus {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Corpus, <span class="keyword">typename</span> Range, <span class="keyword">typename</span> InputInfo&gt;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="corpus_2add__to__corpus_8hpp.html#a2edc4b6183de64d2cf731b55924c5720">   57</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1AddToCorpus.html">AddToCorpus</a>(Corpus &amp;corpus, Range &amp;range, <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html">InputInfo</a> &amp;testcase_,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                 <span class="keywordtype">bool</span> persistent, <span class="keyword">const</span> fs::path &amp;path_prefix)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    -&gt; std::enable_if_t&lt;is_full_corpus_v&lt;Corpus&gt; &amp;&amp;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                        is_input_info_v&lt;InputInfo&gt;&gt; {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  assert(!utils::range::rangeEmpty(range));</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">// Inputs.size() is cast to uint32_t below.</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  assert(corpus.corpus.size() &lt; std::numeric_limits&lt;uint32_t&gt;::max());</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  std::uint64_t <span class="keywordtype">id</span> = 0u;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  testcase_.sha1 = utils::ToSerializedSha1(range);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  testcase_.input_size = utils::range::rangeSize(range);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">if</span> (testcase_.name.empty())</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    testcase_.name = testcase_.sha1;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="corpus_8hpp.html">fuzzuf/algorithms/libfuzzer/state/corpus.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="input__info_8hpp.html">fuzzuf/algorithms/libfuzzer/state/input_info.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="libfuzzer_2state_2state_8hpp.html">fuzzuf/algorithms/libfuzzer/state/state.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/exec_input/exec_input_set.hpp&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/executor/native_linux_executor.hpp&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;fuzzuf/feedback/exit_status_feedback.hpp&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sha1_8hpp.html">fuzzuf/utils/sha1.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::corpus {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Corpus, <span class="keyword">typename</span> Range, <span class="keyword">typename</span> InputInfo&gt;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="corpus_2add__to__corpus_8hpp.html#a2edc4b6183de64d2cf731b55924c5720">   59</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="classfuzzuf_1_1algorithm_1_1libfuzzer_1_1AddToCorpus.html">AddToCorpus</a>(Corpus &amp;corpus, Range &amp;range, <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1InputInfo.html">InputInfo</a> &amp;testcase_,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                 <span class="keywordtype">bool</span> persistent, <span class="keyword">const</span> fs::path &amp;path_prefix)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    -&gt; std::enable_if_t&lt;is_full_corpus_v&lt;Corpus&gt; &amp;&amp;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        is_input_info_v&lt;InputInfo&gt;&gt; {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  assert(!utils::range::rangeEmpty(range));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="comment">// Inputs.size() is cast to uint32_t below.</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  assert(corpus.corpus.size() &lt; std::numeric_limits&lt;uint32_t&gt;::max());</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::uint64_t <span class="keywordtype">id</span> = 0u;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  testcase_.sha1 = utils::ToSerializedSha1(range);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  testcase_.input_size = utils::range::rangeSize(range);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">if</span> (testcase_.name.empty()) testcase_.name = testcase_.sha1;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">auto</span> &amp;hashed = corpus.corpus.template get&lt;ByName&gt;();</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> existing = hashed.find(testcase_.name);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">if</span> (existing != hashed.end()) {</div>
@@ -165,7 +164,7 @@ $(function() {
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::corpus</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::corpus</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->

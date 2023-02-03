@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="mutation_2dictionary_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -89,29 +89,29 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_MUTATION_DICTIONARY_HPP</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_MUTATION_DICTIONARY_HPP</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mutation_2utils_8hpp.html">fuzzuf/algorithms/libfuzzer/mutation/utils.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mutation__history_8hpp.html">fuzzuf/algorithms/libfuzzer/mutation_history.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="algorithms_2libfuzzer_2random_8hpp.html">fuzzuf/algorithms/libfuzzer/random.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::mutator {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> RNG, <span class="keyword">typename</span> Range, <span class="keyword">typename</span> Dict&gt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="mutation_2dictionary_8hpp.html#a426a43c02ed34f932b6371922382987b">   52</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="mutation_2dictionary_8hpp.html#a426a43c02ed34f932b6371922382987b">Dictionary</a>(RNG &amp;rng, Range &amp;data, std::size_t max_size,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                MutationHistory &amp;history,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                std::vector&lt;utils::range::RangeValueT&lt;Dict&gt; *&gt; &amp;dict_entry,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                Dict &amp;dict)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    -&gt; std::enable_if_t&lt;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// Rangeは辞書の単語の要素の型を要素の型とするrangeである</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        utils::range::is_range_of_v&lt;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            Range, utils::range::RangeValueT&lt;dictionary::WordTypeT&lt;Dict&gt;&gt;&gt;,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        std::size_t&gt; {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> name[] = <span class="stringliteral">&quot;Dict&quot;</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  history.push_back(<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1MutationHistoryEntry.html">MutationHistoryEntry</a>{name});</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">return</span> detail::AddWordFromDictionary(rng, dict, data, max_size,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                          dict_entry);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mutation_2utils_8hpp.html">fuzzuf/algorithms/libfuzzer/mutation/utils.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mutation__history_8hpp.html">fuzzuf/algorithms/libfuzzer/mutation_history.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="algorithms_2libfuzzer_2random_8hpp.html">fuzzuf/algorithms/libfuzzer/random.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::mutator {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> RNG, <span class="keyword">typename</span> Range, <span class="keyword">typename</span> Dict&gt;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="mutation_2dictionary_8hpp.html#a426a43c02ed34f932b6371922382987b">   53</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="mutation_2dictionary_8hpp.html#a426a43c02ed34f932b6371922382987b">Dictionary</a>(RNG &amp;rng, Range &amp;data, std::size_t max_size,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                MutationHistory &amp;history,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                std::vector&lt;utils::range::RangeValueT&lt;Dict&gt; *&gt; &amp;dict_entry,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                Dict &amp;dict)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    -&gt; std::enable_if_t&lt;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// Rangeは辞書の単語の要素の型を要素の型とするrangeである</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        utils::range::is_range_of_v&lt;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            Range, utils::range::RangeValueT&lt;dictionary::WordTypeT&lt;Dict&gt;&gt;&gt;,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        std::size_t&gt; {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> name[] = <span class="stringliteral">&quot;Dict&quot;</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  history.push_back(<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1MutationHistoryEntry.html">MutationHistoryEntry</a>{name});</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">return</span> detail::AddWordFromDictionary(rng, dict, data, max_size, dict_entry);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Dict&gt;</div>
@@ -129,21 +129,20 @@ $(function() {
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;dict_entry : copied_dict_entries) {</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;new_word = dict_entry.get();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">if</span> (std::find_if(dict.begin(), dict.end(), [&amp;](<span class="keyword">auto</span> &amp;v) {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;          if (dict_entry.get_hash() != v.get_hash())</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            return false;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;          const auto &amp;existing_word = v.get();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;          <span class="comment">// Linear search is fine here as this happens seldom.</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;          return std::equal(existing_word.begin(), existing_word.end(),</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                            new_word.begin(), new_word.end());</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }) == dict.end()) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      dict_entry.reset_use_count();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      utils::range::append(dict_entry, dict);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::mutator</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;          if (dict_entry.get_hash() != v.get_hash()) return false;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;          const auto &amp;existing_word = v.get();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;          <span class="comment">// Linear search is fine here as this happens seldom.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;          return std::equal(existing_word.begin(), existing_word.end(),</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                            new_word.begin(), new_word.end());</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }) == dict.end()) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      dict_entry.reset_use_count();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      utils::range::append(dict_entry, dict);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::mutator</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="amutation_2utils_8hpp_html"><div class="ttname"><a href="mutation_2utils_8hpp.html">utils.hpp</a></div></div>
 <div class="ttc" id="aalgorithms_2libfuzzer_2random_8hpp_html"><div class="ttname"><a href="algorithms_2libfuzzer_2random_8hpp.html">random.hpp</a></div></div>
@@ -151,7 +150,7 @@ $(function() {
 <div class="ttc" id="arange__traits_8hpp_html"><div class="ttname"><a href="range__traits_8hpp.html">range_traits.hpp</a></div></div>
 <div class="ttc" id="amutation__history_8hpp_html"><div class="ttname"><a href="mutation__history_8hpp.html">mutation_history.hpp</a></div></div>
 <div class="ttc" id="aclassUpdateDictionary_html"><div class="ttname"><a href="classUpdateDictionary.html">UpdateDictionary</a></div><div class="ttdoc">Add dictionary history entries to the dictionary specified by the Path. libFuzzer has &quot;Parsistent Aut...</div></div>
-<div class="ttc" id="amutation_2dictionary_8hpp_html_a426a43c02ed34f932b6371922382987b"><div class="ttname"><a href="mutation_2dictionary_8hpp.html#a426a43c02ed34f932b6371922382987b">fuzzuf::algorithm::libfuzzer::mutator::Dictionary</a></div><div class="ttdeci">auto Dictionary(RNG &amp;rng, Range &amp;data, std::size_t max_size, MutationHistory &amp;history, std::vector&lt; utils::range::RangeValueT&lt; Dict &gt; * &gt; &amp;dict_entry, Dict &amp;dict) -&gt; std::enable_if_t&lt; utils::range::is_range_of_v&lt; Range, utils::range::RangeValueT&lt; dictionary::WordTypeT&lt; Dict &gt;&gt;&gt;, std::size_t &gt;</div><div class="ttdef"><b>Definition:</b> <a href="mutation_2dictionary_8hpp_source.html#l00052">dictionary.hpp:52</a></div></div>
+<div class="ttc" id="amutation_2dictionary_8hpp_html_a426a43c02ed34f932b6371922382987b"><div class="ttname"><a href="mutation_2dictionary_8hpp.html#a426a43c02ed34f932b6371922382987b">fuzzuf::algorithm::libfuzzer::mutator::Dictionary</a></div><div class="ttdeci">auto Dictionary(RNG &amp;rng, Range &amp;data, std::size_t max_size, MutationHistory &amp;history, std::vector&lt; utils::range::RangeValueT&lt; Dict &gt; * &gt; &amp;dict_entry, Dict &amp;dict) -&gt; std::enable_if_t&lt; utils::range::is_range_of_v&lt; Range, utils::range::RangeValueT&lt; dictionary::WordTypeT&lt; Dict &gt;&gt;&gt;, std::size_t &gt;</div><div class="ttdef"><b>Definition:</b> <a href="mutation_2dictionary_8hpp_source.html#l00053">dictionary.hpp:53</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

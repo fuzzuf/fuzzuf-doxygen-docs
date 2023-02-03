@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="erase__nth_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -132,9 +132,10 @@ $(function() {
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                 std::enable_if_t&lt;i == 0u&gt;&gt; {</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keyword">using</span> type = std::integer_sequence&lt;T, prev..., tail...&gt;;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// namespace detail</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}  <span class="comment">// namespace detail</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1utils_1_1type__traits_1_1erase__nth.html">   81</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i, <span class="keyword">typename</span> U&gt; <span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1utils_1_1type__traits_1_1erase__nth.html">erase_nth</a> {};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i, <span class="keyword">typename</span> U&gt;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1utils_1_1type__traits_1_1erase__nth.html">   81</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1utils_1_1type__traits_1_1erase__nth.html">erase_nth</a> {};</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i, <span class="keyword">template</span> &lt;<span class="keyword">typename</span>...&gt; <span class="keyword">typename</span> L, <span class="keyword">typename</span>... U&gt;</div>
 <div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1utils_1_1type__traits_1_1erase__nth_3_01i_00_01L_3_01U_8_8_8_01_4_01_4.html">   83</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1utils_1_1type__traits_1_1erase__nth.html">erase_nth</a>&lt;i, L&lt;U...&gt;&gt; : <span class="keyword">public</span> <a class="code" href="structfuzzuf_1_1utils_1_1type__traits_1_1detail_1_1erase__nth.html">detail::erase_nth</a>&lt;i, L&lt;&gt;, L&lt;U...&gt;&gt; {};</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i, <span class="keyword">typename</span> R, <span class="keyword">typename</span>... U&gt;</div>
@@ -147,7 +148,7 @@ $(function() {
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i, <span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">using</span> erase_nth_t = <span class="keyword">typename</span> <a class="code" href="structfuzzuf_1_1utils_1_1type__traits_1_1erase__nth.html">erase_nth&lt;i, T&gt;::type</a>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;} <span class="comment">// namespace fuzzuf::utils::type_traits</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}  <span class="comment">// namespace fuzzuf::utils::type_traits</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructfuzzuf_1_1utils_1_1type__traits_1_1detail_1_1erase__nth_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1type__traits_1_1detail_1_1erase__nth.html">fuzzuf::utils::type_traits::detail::erase_nth</a></div><div class="ttdef"><b>Definition:</b> <a href="erase__nth_8hpp_source.html#l00030">erase_nth.hpp:30</a></div></div>

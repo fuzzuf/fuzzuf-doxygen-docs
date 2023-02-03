@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -90,23 +90,24 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE util.bswap</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define BOOST_TEST_DYN_LINK</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bswap_8hpp.html">fuzzuf/utils/bswap.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// エンディアン変換</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;BOOST_AUTO_TEST_CASE(Bswap) {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint8__t_01_4.html">fuzzuf::utils::bswap&lt;std::uint8_t&gt;</a>()(0x12U), 0x12U);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint16__t_01_4.html">fuzzuf::utils::bswap&lt;std::uint16_t&gt;</a>()(0x1234U), 0x3412U);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint32__t_01_4.html">fuzzuf::utils::bswap&lt;std::uint32_t&gt;</a>()(0x12345678U),</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    0x78563412U);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint64__t_01_4.html">fuzzuf::utils::bswap&lt;std::uint64_t&gt;</a>()(0x1234567891234567U),</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    0x6745239178563412U);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// エンディアン変換</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;BOOST_AUTO_TEST_CASE(Bswap) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint8__t_01_4.html">fuzzuf::utils::bswap&lt;std::uint8_t&gt;</a>()(0x12U), 0x12U);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint16__t_01_4.html">fuzzuf::utils::bswap&lt;std::uint16_t&gt;</a>()(0x1234U), 0x3412U);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint32__t_01_4.html">fuzzuf::utils::bswap&lt;std::uint32_t&gt;</a>()(0x12345678U),</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    0x78563412U);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint64__t_01_4.html">fuzzuf::utils::bswap&lt;std::uint64_t&gt;</a>()(0x1234567891234567U),</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                    0x6745239178563412U);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint8__t_01_4_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint8__t_01_4.html">fuzzuf::utils::bswap&lt; std::uint8_t &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="bswap_8hpp_source.html#l00034">bswap.hpp:34</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint8__t_01_4_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint8__t_01_4.html">fuzzuf::utils::bswap&lt; std::uint8_t &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="bswap_8hpp_source.html#l00036">bswap.hpp:36</a></div></div>
 <div class="ttc" id="abswap_8hpp_html"><div class="ttname"><a href="bswap_8hpp.html">bswap.hpp</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint16__t_01_4_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint16__t_01_4.html">fuzzuf::utils::bswap&lt; std::uint16_t &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="bswap_8hpp_source.html#l00037">bswap.hpp:37</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint32__t_01_4_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint32__t_01_4.html">fuzzuf::utils::bswap&lt; std::uint32_t &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="bswap_8hpp_source.html#l00046">bswap.hpp:46</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint64__t_01_4_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint64__t_01_4.html">fuzzuf::utils::bswap&lt; std::uint64_t &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="bswap_8hpp_source.html#l00056">bswap.hpp:56</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint16__t_01_4_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint16__t_01_4.html">fuzzuf::utils::bswap&lt; std::uint16_t &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="bswap_8hpp_source.html#l00040">bswap.hpp:40</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint32__t_01_4_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint32__t_01_4.html">fuzzuf::utils::bswap&lt; std::uint32_t &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="bswap_8hpp_source.html#l00050">bswap.hpp:50</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint64__t_01_4_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1bswap_3_01std_1_1uint64__t_01_4.html">fuzzuf::utils::bswap&lt; std::uint64_t &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="bswap_8hpp_source.html#l00061">bswap.hpp:61</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

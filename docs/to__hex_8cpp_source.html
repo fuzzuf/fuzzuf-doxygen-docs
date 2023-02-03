@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="to__hex_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -88,27 +88,28 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * along with this program.  If not, see http://www.gnu.org/licenses/.</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="to__hex_8hpp.html">fuzzuf/utils/to_hex.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;boost/spirit/include/karma.hpp&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>fuzzuf::utils {</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="to__hex_8hpp.html#a404d1ed03f5107b61707694d502aa2e7">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="to__hex_8hpp.html#a404d1ed03f5107b61707694d502aa2e7">toHex</a>(std::string &amp;message, <span class="keyword">const</span> std::vector&lt;std::uint8_t&gt; &amp;range) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">namespace </span>karma = boost::spirit::karma;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  karma::generate(std::back_inserter(message),</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                  *karma::right_align(2, <span class="charliteral">&#39;0&#39;</span>)[karma::hex], range);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  message += <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> end = std::find(range.begin(), range.end(), <span class="charliteral">&#39;\0&#39;</span>);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  message += std::string(range.begin(), end);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  message += <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="to__hex_8hpp.html#ab3658ebf06a5b786093f9ca7aca59037">   34</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="to__hex_8hpp.html#a404d1ed03f5107b61707694d502aa2e7">toHex</a>(std::string &amp;message, std::uintptr_t value) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">namespace </span>karma = boost::spirit::karma;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">static</span> <span class="keyword">const</span> karma::uint_generator&lt;std::uintptr_t, 16&gt; long_int_g;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  karma::generate(std::back_inserter(message),</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                  karma::right_align(16, <span class="charliteral">&#39;0&#39;</span>)[long_int_g], value);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;} <span class="comment">// namespace fuzzuf::utils</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/spirit/include/karma.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>fuzzuf::utils {</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="to__hex_8hpp.html#a404d1ed03f5107b61707694d502aa2e7">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="to__hex_8hpp.html#a404d1ed03f5107b61707694d502aa2e7">toHex</a>(std::string &amp;message, <span class="keyword">const</span> std::vector&lt;std::uint8_t&gt; &amp;range) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keyword">namespace </span>karma = boost::spirit::karma;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  karma::generate(std::back_inserter(message),</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                  *karma::right_align(2, <span class="charliteral">&#39;0&#39;</span>)[karma::hex], range);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  message += <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> end = std::find(range.begin(), range.end(), <span class="charliteral">&#39;\0&#39;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  message += std::string(range.begin(), end);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  message += <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="to__hex_8hpp.html#ab3658ebf06a5b786093f9ca7aca59037">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="to__hex_8hpp.html#a404d1ed03f5107b61707694d502aa2e7">toHex</a>(std::string &amp;message, std::uintptr_t value) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">namespace </span>karma = boost::spirit::karma;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">static</span> <span class="keyword">const</span> karma::uint_generator&lt;std::uintptr_t, 16&gt; long_int_g;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  karma::generate(std::back_inserter(message),</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                  karma::right_align(16, <span class="charliteral">&#39;0&#39;</span>)[long_int_g], value);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}  <span class="comment">// namespace fuzzuf::utils</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="ato__hex_8hpp_html"><div class="ttname"><a href="to__hex_8hpp.html">to_hex.hpp</a></div></div>
-<div class="ttc" id="ato__hex_8hpp_html_a404d1ed03f5107b61707694d502aa2e7"><div class="ttname"><a href="to__hex_8hpp.html#a404d1ed03f5107b61707694d502aa2e7">fuzzuf::utils::toHex</a></div><div class="ttdeci">void toHex(std::string &amp;message, const std::vector&lt; std::uint8_t &gt; &amp;range)</div><div class="ttdef"><b>Definition:</b> <a href="to__hex_8cpp_source.html#l00025">to_hex.cpp:25</a></div></div>
+<div class="ttc" id="ato__hex_8hpp_html_a404d1ed03f5107b61707694d502aa2e7"><div class="ttname"><a href="to__hex_8hpp.html#a404d1ed03f5107b61707694d502aa2e7">fuzzuf::utils::toHex</a></div><div class="ttdeci">void toHex(std::string &amp;message, const std::vector&lt; std::uint8_t &gt; &amp;range)</div><div class="ttdef"><b>Definition:</b> <a href="to__hex_8cpp_source.html#l00026">to_hex.cpp:26</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

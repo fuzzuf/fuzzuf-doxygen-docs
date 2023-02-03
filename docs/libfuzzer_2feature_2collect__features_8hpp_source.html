@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="libfuzzer_2feature_2collect__features_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -89,71 +89,72 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_FEATURE_COLLECT_FEATURES_HPP</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_FEATURE_COLLECT_FEATURES_HPP</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="counter__to__feature_8hpp.html">fuzzuf/algorithms/libfuzzer/feature/counter_to_feature.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="for__each__non__zero__byte_8hpp.html">fuzzuf/algorithms/libfuzzer/feature/for_each_non_zero_byte.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="libfuzzer_2state_2state_8hpp.html">fuzzuf/algorithms/libfuzzer/state/state.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="void__t_8hpp.html">fuzzuf/utils/void_t.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;boost/range/iterator_range.hpp&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::feature {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">   37</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Cov, <span class="keyword">typename</span> Enable = <span class="keywordtype">void</span>&gt; <span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">CoverageDepth</a> {};</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Cov&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth_3_01Cov_00_01std_1_1enable__ic0f3d217e437776a78894e8a48656737.html">   39</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">CoverageDepth</a>&lt;Cov,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                     std::enable_if_t&lt;utils::range::is_range_of_v&lt;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                         utils::type_traits::RemoveCvrT&lt;Cov&gt;, std::uint8_t&gt;&gt;&gt;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    : <span class="keyword">public</span> std::integral_constant&lt;unsigned int, 1u&gt; {};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Cov&gt;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth_3_01Cov_00_01std_1_1enable__ifcb916d9ae0259f1f4155ab480b1f8e4.html">   44</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">CoverageDepth</a>&lt;Cov,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                     std::enable_if_t&lt;!utils::range::is_range_of_v&lt;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                         utils::type_traits::RemoveCvrT&lt;Cov&gt;, std::uint8_t&gt;&gt;&gt;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    : <span class="keyword">public</span> std::integral_constant&lt;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;          unsigned int, CoverageDepth&lt;utils::range::RangeValueT&lt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                            utils::type_traits::RemoveCvrT&lt;Cov&gt;&gt;&gt;::value +</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                            1u&gt; {};</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Cov&gt;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> coverage_depth_v = <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">CoverageDepth&lt;Cov&gt;::value</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Cov, <span class="keyword">typename</span> Callback&gt;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="libfuzzer_2feature_2collect__features_8hpp.html#a6472bc3b0fc11300864eeb2f57d86ebc">   68</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1CollectFeatures.html">CollectFeatures</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html">State</a> &amp;state, <span class="keyword">const</span> Cov &amp;cov, std::uint32_t module_offset,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                     Callback cb)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    -&gt; std::enable_if_t&lt;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        is_state_v&lt;State&gt; &amp;&amp; coverage_depth_v&lt;Cov&gt; == 1u &amp;&amp;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            std::is_void_v&lt;<a class="code" href="void__t_8hpp.html#a663314bcfa004215e329a9a3ce51a6f8">utils::void_t</a>&lt;decltype(</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                std::declval&lt;Callback&gt;()(std::declval&lt;std::uint32_t&gt;()))&gt;&gt;,</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        std::size_t&gt; {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">using</span> count_t = std::uint32_t;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">auto</span> handle_8bit_counter = [&amp;](count_t first_feature, count_t index,</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                 std::uint8_t counter) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">if</span> (state.create_info.config.use_counters)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      cb(first_feature * 8 + index * 8 + <a class="code" href="counter__to__feature_8hpp.html#a942f3d587b5e99488c662c9fcf7db58a">CounterToFeature</a>(counter));</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      cb(first_feature + index);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  };</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  std::size_t first_feature = <a class="code" href="for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007">ForEachNonZeroByte</a>(</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      boost::make_iterator_range(cov.data(), std::next(cov.data(), cov.size())),</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      module_offset, handle_8bit_counter);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">return</span> first_feature;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::feature</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/range/iterator_range.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="counter__to__feature_8hpp.html">fuzzuf/algorithms/libfuzzer/feature/counter_to_feature.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="for__each__non__zero__byte_8hpp.html">fuzzuf/algorithms/libfuzzer/feature/for_each_non_zero_byte.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="libfuzzer_2state_2state_8hpp.html">fuzzuf/algorithms/libfuzzer/state/state.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="void__t_8hpp.html">fuzzuf/utils/void_t.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::feature {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Cov, <span class="keyword">typename</span> Enable = <span class="keywordtype">void</span>&gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">   39</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">CoverageDepth</a> {};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Cov&gt;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth_3_01Cov_00_01std_1_1enable__ic0f3d217e437776a78894e8a48656737.html">   41</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">CoverageDepth</a>&lt;Cov,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                     std::enable_if_t&lt;utils::range::is_range_of_v&lt;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                         utils::type_traits::RemoveCvrT&lt;Cov&gt;, std::uint8_t&gt;&gt;&gt;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    : <span class="keyword">public</span> std::integral_constant&lt;unsigned int, 1u&gt; {};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Cov&gt;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth_3_01Cov_00_01std_1_1enable__ifcb916d9ae0259f1f4155ab480b1f8e4.html">   46</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">CoverageDepth</a>&lt;Cov,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                     std::enable_if_t&lt;!utils::range::is_range_of_v&lt;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                         utils::type_traits::RemoveCvrT&lt;Cov&gt;, std::uint8_t&gt;&gt;&gt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    : <span class="keyword">public</span> std::integral_constant&lt;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;          unsigned int, CoverageDepth&lt;utils::range::RangeValueT&lt;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                            utils::type_traits::RemoveCvrT&lt;Cov&gt;&gt;&gt;::value +</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                            1u&gt; {};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Cov&gt;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> coverage_depth_v = <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">CoverageDepth&lt;Cov&gt;::value</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Cov, <span class="keyword">typename</span> Callback&gt;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="libfuzzer_2feature_2collect__features_8hpp.html#a6472bc3b0fc11300864eeb2f57d86ebc">   72</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1CollectFeatures.html">CollectFeatures</a>(<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html">State</a> &amp;state, <span class="keyword">const</span> Cov &amp;cov, std::uint32_t module_offset,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                     Callback cb)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    -&gt; std::enable_if_t&lt;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        is_state_v&lt;State&gt; &amp;&amp; coverage_depth_v&lt;Cov&gt; == 1u &amp;&amp;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            std::is_void_v&lt;utils::void_t&lt;decltype(std::declval&lt;Callback&gt;()(</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                std::declval&lt;std::uint32_t&gt;()))&gt;&gt;,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        std::size_t&gt; {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keyword">using</span> count_t = std::uint32_t;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">auto</span> handle_8bit_counter = [&amp;](count_t first_feature, count_t index,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                 std::uint8_t counter) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span> (state.create_info.config.use_counters)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      cb(first_feature * 8 + index * 8 + <a class="code" href="counter__to__feature_8hpp.html#a942f3d587b5e99488c662c9fcf7db58a">CounterToFeature</a>(counter));</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      cb(first_feature + index);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  };</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  std::size_t first_feature = <a class="code" href="for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007">ForEachNonZeroByte</a>(</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      boost::make_iterator_range(cov.data(), std::next(cov.data(), cov.size())),</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      module_offset, handle_8bit_counter);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">return</span> first_feature;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::feature</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="acounter__to__feature_8hpp_html_a942f3d587b5e99488c662c9fcf7db58a"><div class="ttname"><a href="counter__to__feature_8hpp.html#a942f3d587b5e99488c662c9fcf7db58a">fuzzuf::algorithm::libfuzzer::feature::CounterToFeature</a></div><div class="ttdeci">unsigned int CounterToFeature(T counter)</div><div class="ttdef"><b>Definition:</b> <a href="counter__to__feature_8hpp_source.html#l00038">counter_to_feature.hpp:38</a></div></div>
+<div class="ttc" id="acounter__to__feature_8hpp_html_a942f3d587b5e99488c662c9fcf7db58a"><div class="ttname"><a href="counter__to__feature_8hpp.html#a942f3d587b5e99488c662c9fcf7db58a">fuzzuf::algorithm::libfuzzer::feature::CounterToFeature</a></div><div class="ttdeci">unsigned int CounterToFeature(T counter)</div><div class="ttdef"><b>Definition:</b> <a href="counter__to__feature_8hpp_source.html#l00039">counter_to_feature.hpp:39</a></div></div>
 <div class="ttc" id="alibfuzzer_2state_2state_8hpp_html"><div class="ttname"><a href="libfuzzer_2state_2state_8hpp.html">state.hpp</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1State_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html">fuzzuf::algorithm::libfuzzer::State</a></div><div class="ttdoc">Struct to hold libFuzzer state.</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2state_2state_8hpp_source.html#l00045">state.hpp:45</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1State_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1State.html">fuzzuf::algorithm::libfuzzer::State</a></div><div class="ttdoc">Struct to hold libFuzzer state.</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2state_2state_8hpp_source.html#l00046">state.hpp:46</a></div></div>
 <div class="ttc" id="avoid__t_8hpp_html"><div class="ttname"><a href="void__t_8hpp.html">void_t.hpp</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">fuzzuf::algorithm::libfuzzer::feature::CoverageDepth</a></div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2feature_2collect__features_8hpp_source.html#l00037">collect_features.hpp:37</a></div></div>
-<div class="ttc" id="avoid__t_8hpp_html_a663314bcfa004215e329a9a3ce51a6f8"><div class="ttname"><a href="void__t_8hpp.html#a663314bcfa004215e329a9a3ce51a6f8">fuzzuf::utils::void_t</a></div><div class="ttdeci">std::void_t&lt; T... &gt; void_t</div><div class="ttdef"><b>Definition:</b> <a href="void__t_8hpp_source.html#l00039">void_t.hpp:39</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1feature_1_1CoverageDepth.html">fuzzuf::algorithm::libfuzzer::feature::CoverageDepth</a></div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2feature_2collect__features_8hpp_source.html#l00039">collect_features.hpp:39</a></div></div>
 <div class="ttc" id="afor__each__non__zero__byte_8hpp_html"><div class="ttname"><a href="for__each__non__zero__byte_8hpp.html">for_each_non_zero_byte.hpp</a></div></div>
-<div class="ttc" id="afor__each__non__zero__byte_8hpp_html_a1b1c85734876276377ad571750ef9007"><div class="ttname"><a href="for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007">fuzzuf::algorithm::libfuzzer::feature::ForEachNonZeroByte</a></div><div class="ttdeci">auto ForEachNonZeroByte(const Range &amp;data, Integer first_feature, Callback cb) -&gt; std::enable_if_t&lt; std::is_pointer_v&lt; utils::range::RangeIteratorT&lt; Range &gt;&gt; &amp;&amp;utils::range::is_range_of_v&lt; Range, std::uint8_t &gt; &amp;&amp;std::is_integral_v&lt; Integer &gt; &amp;&amp;std::is_void_v&lt; utils::void_t&lt; decltype(std::declval&lt; Callback &gt;()(Integer(0), Integer(0), std::uint8_t(0)))&gt;&gt;, size_t &gt;</div><div class="ttdef"><b>Definition:</b> <a href="for__each__non__zero__byte_8hpp_source.html#l00051">for_each_non_zero_byte.hpp:51</a></div></div>
+<div class="ttc" id="afor__each__non__zero__byte_8hpp_html_a1b1c85734876276377ad571750ef9007"><div class="ttname"><a href="for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007">fuzzuf::algorithm::libfuzzer::feature::ForEachNonZeroByte</a></div><div class="ttdeci">auto ForEachNonZeroByte(const Range &amp;data, Integer first_feature, Callback cb) -&gt; std::enable_if_t&lt; std::is_pointer_v&lt; utils::range::RangeIteratorT&lt; Range &gt;&gt; &amp;&amp;utils::range::is_range_of_v&lt; Range, std::uint8_t &gt; &amp;&amp;std::is_integral_v&lt; Integer &gt; &amp;&amp;std::is_void_v&lt; utils::void_t&lt; decltype(std::declval&lt; Callback &gt;()(Integer(0), Integer(0), std::uint8_t(0)))&gt;&gt;, size_t &gt;</div><div class="ttdef"><b>Definition:</b> <a href="for__each__non__zero__byte_8hpp_source.html#l00054">for_each_non_zero_byte.hpp:54</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1CollectFeatures_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1CollectFeatures.html">fuzzuf::algorithm::libfuzzer::CollectFeatures</a></div><div class="ttdoc">Calculate features of specified execution result. &quot;Feature&quot; is a outstanding feature of the execution...</div><div class="ttdef"><b>Definition:</b> <a href="libfuzzer_2hierarflow_2collect__features_8hpp_source.html#l00049">collect_features.hpp:49</a></div></div>
 <div class="ttc" id="arange__traits_8hpp_html"><div class="ttname"><a href="range__traits_8hpp.html">range_traits.hpp</a></div></div>
 <div class="ttc" id="acounter__to__feature_8hpp_html"><div class="ttname"><a href="counter__to__feature_8hpp.html">counter_to_feature.hpp</a></div></div>

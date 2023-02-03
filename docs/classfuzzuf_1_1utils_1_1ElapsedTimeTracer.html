@@ -119,7 +119,7 @@ std::unordered_map&lt; std::string, <a class="el" href="structfuzzuf_1_1utils_1_
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Record time duration from Checkpoint::enter to Checkpoint::leave for each node names The tracer is intended to detect heavy node The tracer records two kind of durations Inclusive duration is elapsed time between enter and leave including whole child node execution time Exclusive duration is elapsed time between enter and leave excluding child node execution time. </p>
 
-<p class="definition">Definition at line <a class="el" href="node__tracer_8hpp_source.html#l00225">225</a> of file <a class="el" href="node__tracer_8hpp_source.html">node_tracer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="node__tracer_8hpp_source.html#l00233">233</a> of file <a class="el" href="node__tracer_8hpp_source.html">node_tracer.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4831c3a7c61872e8e184a82bf8b622bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4831c3a7c61872e8e184a82bf8b622bd">&#9670;&nbsp;</a></span>operator()() <span class="overload">[1/2]</span></h2>
@@ -182,7 +182,7 @@ template&lt;typename Node , typename... Args&gt; </div>
 </div><div class="memdoc">
 <p>The function is called when an event with code location infomation is sent If the checkpoint is enter, record begin date If the checkpoint is leave, subtract begin date from current date, then append the duration to total duration </p>
 
-<p class="definition">Definition at line <a class="el" href="node__tracer_8hpp_source.html#l00297">297</a> of file <a class="el" href="node__tracer_8hpp_source.html">node_tracer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="node__tracer_8hpp_source.html#l00307">307</a> of file <a class="el" href="node__tracer_8hpp_source.html">node_tracer.hpp</a>.</p>
 
 </div>
 </div>
@@ -213,7 +213,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>The function is called when an event without code location infomation is sent The tracer ignores events without location infomation </p>
 
-<p class="definition">Definition at line <a class="el" href="node__tracer_8hpp_source.html#l00290">290</a> of file <a class="el" href="node__tracer_8hpp_source.html">node_tracer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="node__tracer_8hpp_source.html#l00299">299</a> of file <a class="el" href="node__tracer_8hpp_source.html">node_tracer.hpp</a>.</p>
 
 </div>
 </div>

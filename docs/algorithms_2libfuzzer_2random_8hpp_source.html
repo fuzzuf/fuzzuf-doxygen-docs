@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="algorithms_2libfuzzer_2random_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -99,13 +99,12 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="algorithms_2libfuzzer_2random_8hpp.html#a61a5952ebd034b0085809857fcd58290">   43</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac2ceab672705d6acca0a5d40b643390f">random_value</a>(RNG &amp;rng, V min, V max)</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    -&gt; std::enable_if_t&lt;std::is_integral_v&lt;V&gt;, V&gt; {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  assert(min &lt; max);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">if</span> (min == max)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">return</span> min + (rng() % (max - min));</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} <span class="comment">// namespace detail</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">if</span> (min == max) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">return</span> min + (rng() % (max - min));</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}  <span class="comment">// namespace detail</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> V, <span class="keyword">typename</span> RNG&gt;</div>
 <div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac2ceab672705d6acca0a5d40b643390f">   66</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#ac2ceab672705d6acca0a5d40b643390f">random_value</a>(RNG &amp;rng, V max)</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    -&gt; std::enable_if_t&lt;std::is_integral_v&lt;V&gt;, V&gt; {</div>
@@ -125,7 +124,7 @@ $(function() {
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                              std::numeric_limits&lt;V&gt;::max());</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::libfuzzer</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacefuzzuf_1_1algorithm_1_1libfuzzer_html_a10903973045cb9c57d70dc40c71c2210"><div class="ttname"><a href="namespacefuzzuf_1_1algorithm_1_1libfuzzer.html#a10903973045cb9c57d70dc40c71c2210">fuzzuf::algorithm::libfuzzer::random_value</a></div><div class="ttdeci">auto random_value(RNG &amp;rng) -&gt; std::enable_if_t&lt; std::is_integral_v&lt; V &gt; &amp;&amp;std::is_same_v&lt; bool, V &gt;, V &gt;</div><div class="ttdef"><b>Definition:</b> <a href="algorithms_2libfuzzer_2random_8hpp_source.html#l00082">random.hpp:82</a></div></div>

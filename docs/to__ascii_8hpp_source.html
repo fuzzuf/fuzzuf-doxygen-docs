@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="to__ascii_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -89,32 +89,32 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_MUTATION_TO_ASCII_HPP</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_MUTATION_TO_ASCII_HPP</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::mutator {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Range&gt;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="to__ascii_8hpp.html#a59e0806fc89cb93fd0949421dd93269c">   40</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="to__ascii_8hpp.html#a59e0806fc89cb93fd0949421dd93269c">ToASCII</a>(Range &amp;data) -&gt; std::enable_if_t&lt;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// Rangeは整数のrangeである</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    utils::range::is_range_v&lt;Range&gt;, <span class="keywordtype">bool</span>&gt; {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">bool</span> changed = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;x : data) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">auto</span> new_x = x;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    new_x &amp;= 127;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span> (!std::isspace(new_x) &amp;&amp; !std::isprint(new_x))</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      new_x = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    changed |= new_x != x;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    x = new_x;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">return</span> changed;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::mutator</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::mutator {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Range&gt;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="to__ascii_8hpp.html#a59e0806fc89cb93fd0949421dd93269c">   42</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="to__ascii_8hpp.html#a59e0806fc89cb93fd0949421dd93269c">ToASCII</a>(Range &amp;data) -&gt; std::enable_if_t&lt;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// Rangeは整数のrangeである</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    utils::range::is_range_v&lt;Range&gt;, <span class="keywordtype">bool</span>&gt; {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">bool</span> changed = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;x : data) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">auto</span> new_x = x;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    new_x &amp;= 127;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span> (!std::isspace(new_x) &amp;&amp; !std::isprint(new_x)) new_x = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    changed |= new_x != x;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    x = new_x;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">return</span> changed;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::mutator</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="ato__ascii_8hpp_html_a59e0806fc89cb93fd0949421dd93269c"><div class="ttname"><a href="to__ascii_8hpp.html#a59e0806fc89cb93fd0949421dd93269c">fuzzuf::algorithm::libfuzzer::mutator::ToASCII</a></div><div class="ttdeci">auto ToASCII(Range &amp;data) -&gt; std::enable_if_t&lt; utils::range::is_range_v&lt; Range &gt;, bool &gt;</div><div class="ttdef"><b>Definition:</b> <a href="to__ascii_8hpp_source.html#l00040">to_ascii.hpp:40</a></div></div>
+<div class="ttc" id="ato__ascii_8hpp_html_a59e0806fc89cb93fd0949421dd93269c"><div class="ttname"><a href="to__ascii_8hpp.html#a59e0806fc89cb93fd0949421dd93269c">fuzzuf::algorithm::libfuzzer::mutator::ToASCII</a></div><div class="ttdeci">auto ToASCII(Range &amp;data) -&gt; std::enable_if_t&lt; utils::range::is_range_v&lt; Range &gt;, bool &gt;</div><div class="ttdef"><b>Definition:</b> <a href="to__ascii_8hpp_source.html#l00042">to_ascii.hpp:42</a></div></div>
 <div class="ttc" id="arange__traits_8hpp_html"><div class="ttname"><a href="range__traits_8hpp.html">range_traits.hpp</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

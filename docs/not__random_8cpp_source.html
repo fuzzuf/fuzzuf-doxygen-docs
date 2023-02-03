@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -90,42 +90,43 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE util.not_random</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define BOOST_TEST_DYN_LINK</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="not__random_8hpp.html">fuzzuf/utils/not_random.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// 固定値が返る乱数生成器</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;BOOST_AUTO_TEST_CASE(Fixed) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="structfuzzuf_1_1utils_1_1not__random_1_1fixed.html">fuzzuf::utils::not_random::fixed&lt;uint32_t&gt;</a> a;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  BOOST_CHECK_EQUAL(a(), 0U);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// 固定値が返る乱数生成器</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;BOOST_AUTO_TEST_CASE(Fixed) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="structfuzzuf_1_1utils_1_1not__random_1_1fixed.html">fuzzuf::utils::not_random::fixed&lt;uint32_t&gt;</a> a;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  BOOST_CHECK_EQUAL(a(), 0U);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  a.seed(3U);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  BOOST_CHECK_EQUAL(a(), 3U);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  BOOST_CHECK_EQUAL(a(), 0U);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  a.seed(3U);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  BOOST_CHECK_EQUAL(a(), 3U);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="structfuzzuf_1_1utils_1_1not__random_1_1fixed.html">fuzzuf::utils::not_random::fixed&lt;uint32_t&gt;</a> b(5U);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  BOOST_CHECK_EQUAL(b(), 5U);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  BOOST_CHECK_EQUAL(a(), 3U);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="structfuzzuf_1_1utils_1_1not__random_1_1fixed.html">fuzzuf::utils::not_random::fixed&lt;uint32_t&gt;</a> b(5U);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  BOOST_CHECK_EQUAL(b(), 5U);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  BOOST_CHECK_EQUAL(b.min(), std::numeric_limits&lt;uint32_t&gt;::min());</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  BOOST_CHECK_EQUAL(b.max(), std::numeric_limits&lt;uint32_t&gt;::max());</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// インクリメンタルな値が返る乱数生成器</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;BOOST_AUTO_TEST_CASE(Sequential) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="structfuzzuf_1_1utils_1_1not__random_1_1Sequential.html">fuzzuf::utils::not_random::Sequential&lt;uint32_t&gt;</a> a;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  BOOST_CHECK_EQUAL(a(), 0U);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  BOOST_CHECK_EQUAL(a(), 1U);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  a.seed(3U);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  BOOST_CHECK_EQUAL(a(), 3U);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  BOOST_CHECK_EQUAL(a(), 4U);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="structfuzzuf_1_1utils_1_1not__random_1_1Sequential.html">fuzzuf::utils::not_random::Sequential&lt;uint32_t&gt;</a> b(5U);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  BOOST_CHECK_EQUAL(b(), 5U);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_CHECK_EQUAL(b(), 6U);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  BOOST_CHECK_EQUAL(b.min(), std::numeric_limits&lt;uint32_t&gt;::min());</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  BOOST_CHECK_EQUAL(b.max(), std::numeric_limits&lt;uint32_t&gt;::max());</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  BOOST_CHECK_EQUAL(b(), 5U);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  BOOST_CHECK_EQUAL(b.min(), std::numeric_limits&lt;uint32_t&gt;::min());</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  BOOST_CHECK_EQUAL(b.max(), std::numeric_limits&lt;uint32_t&gt;::max());</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// インクリメンタルな値が返る乱数生成器</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;BOOST_AUTO_TEST_CASE(Sequential) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="structfuzzuf_1_1utils_1_1not__random_1_1Sequential.html">fuzzuf::utils::not_random::Sequential&lt;uint32_t&gt;</a> a;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  BOOST_CHECK_EQUAL(a(), 0U);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  BOOST_CHECK_EQUAL(a(), 1U);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  a.seed(3U);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  BOOST_CHECK_EQUAL(a(), 3U);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  BOOST_CHECK_EQUAL(a(), 4U);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="structfuzzuf_1_1utils_1_1not__random_1_1Sequential.html">fuzzuf::utils::not_random::Sequential&lt;uint32_t&gt;</a> b(5U);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_CHECK_EQUAL(b(), 5U);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  BOOST_CHECK_EQUAL(b(), 6U);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  BOOST_CHECK_EQUAL(b.min(), std::numeric_limits&lt;uint32_t&gt;::min());</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  BOOST_CHECK_EQUAL(b.max(), std::numeric_limits&lt;uint32_t&gt;::max());</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructfuzzuf_1_1utils_1_1not__random_1_1fixed_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1not__random_1_1fixed.html">fuzzuf::utils::not_random::fixed</a></div><div class="ttdef"><b>Definition:</b> <a href="not__random_8hpp_source.html#l00029">not_random.hpp:29</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1utils_1_1not__random_1_1fixed_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1not__random_1_1fixed.html">fuzzuf::utils::not_random::fixed</a></div><div class="ttdef"><b>Definition:</b> <a href="not__random_8hpp_source.html#l00030">not_random.hpp:30</a></div></div>
 <div class="ttc" id="anot__random_8hpp_html"><div class="ttname"><a href="not__random_8hpp.html">not_random.hpp</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1utils_1_1not__random_1_1Sequential_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1not__random_1_1Sequential.html">fuzzuf::utils::not_random::Sequential</a></div><div class="ttdef"><b>Definition:</b> <a href="not__random_8hpp_source.html#l00048">not_random.hpp:48</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1utils_1_1not__random_1_1Sequential_html"><div class="ttname"><a href="structfuzzuf_1_1utils_1_1not__random_1_1Sequential.html">fuzzuf::utils::not_random::Sequential</a></div><div class="ttdef"><b>Definition:</b> <a href="not__random_8hpp_source.html#l00054">not_random.hpp:54</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

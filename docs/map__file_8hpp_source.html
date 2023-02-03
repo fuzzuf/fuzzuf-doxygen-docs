@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="map__file_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -89,21 +89,22 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef FUZZUF_INCLUDE_UTILS_MAP_FILE_HPP</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_UTILS_MAP_FILE_HPP</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="shared__range_8hpp.html">fuzzuf/utils/shared_range.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;boost/range/iterator_range.hpp&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>fuzzuf::utils {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> mapped_file_t = boost::iterator_range&lt;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    range::shared_iterator&lt;uint8_t *, std::shared_ptr&lt;uint8_t&gt;&gt;&gt;;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">auto</span> <a class="code" href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">map_file</a>(<span class="keyword">const</span> std::string &amp;filename, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> flags, <span class="keywordtype">bool</span> populate)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    -&gt; mapped_file_t;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;} <span class="comment">// namespace fuzzuf::utils</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/range/iterator_range.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="shared__range_8hpp.html">fuzzuf/utils/shared_range.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>fuzzuf::utils {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> mapped_file_t = boost::iterator_range&lt;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    range::shared_iterator&lt;uint8_t *, std::shared_ptr&lt;uint8_t&gt;&gt;&gt;;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">auto</span> <a class="code" href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">map_file</a>(<span class="keyword">const</span> std::string &amp;filename, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> flags, <span class="keywordtype">bool</span> populate)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    -&gt; mapped_file_t;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}  <span class="comment">// namespace fuzzuf::utils</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="amap__file_8hpp_html_a708389fa3e099bba04eeab4c70035e43"><div class="ttname"><a href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">fuzzuf::utils::map_file</a></div><div class="ttdeci">auto map_file(const std::string &amp;filename, unsigned int flags, bool populate) -&gt; mapped_file_t</div><div class="ttdef"><b>Definition:</b> <a href="map__file_8cpp_source.html#l00035">map_file.cpp:35</a></div></div>
+<div class="ttc" id="amap__file_8hpp_html_a708389fa3e099bba04eeab4c70035e43"><div class="ttname"><a href="map__file_8hpp.html#a708389fa3e099bba04eeab4c70035e43">fuzzuf::utils::map_file</a></div><div class="ttdeci">auto map_file(const std::string &amp;filename, unsigned int flags, bool populate) -&gt; mapped_file_t</div><div class="ttdef"><b>Definition:</b> <a href="map__file_8cpp_source.html#l00037">map_file.cpp:37</a></div></div>
 <div class="ttc" id="ashared__range_8hpp_html"><div class="ttname"><a href="shared__range_8hpp.html">shared_range.hpp</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="copy__part_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -89,38 +89,38 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_MUTATION_COPY_PART_HPP</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_MUTATION_COPY_PART_HPP</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mutation_2utils_8hpp.html">fuzzuf/algorithms/libfuzzer/mutation/utils.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mutation__history_8hpp.html">fuzzuf/algorithms/libfuzzer/mutation_history.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="algorithms_2libfuzzer_2random_8hpp.html">fuzzuf/algorithms/libfuzzer/random.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::mutator {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> RNG, <span class="keyword">typename</span> Range&gt;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="copy__part_8hpp.html#a09fbfd57e721c8c7ea5fb44c56706b42">   46</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="copy__part_8hpp.html#a09fbfd57e721c8c7ea5fb44c56706b42">CopyPart</a>(RNG &amp;rng, Range &amp;data, std::size_t max_size,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;              MutationHistory &amp;history)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    -&gt; std::enable_if_t&lt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// Rangeは整数のrangeである</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        utils::range::is_range_v&lt;Range&gt;, std::size_t&gt; {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">const</span> std::size_t size = utils::range::rangeSize(data);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">if</span> (size &gt; max_size || size == 0)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="comment">// If Size == MaxSize, `InsertPartOf(...)` will</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">// fail so there&#39;s no point using it in this case.</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">if</span> (size == max_size || random_value&lt;bool&gt;(rng))</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    detail::CopyPartOf(rng, data, data, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    detail::InsertPartOf(rng, data, data, <span class="keyword">true</span>, max_size);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> name[] = <span class="stringliteral">&quot;CopyPart&quot;</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  history.push_back(<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1MutationHistoryEntry.html">MutationHistoryEntry</a>{name});</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> utils::range::rangeSize(data);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::mutator</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mutation_2utils_8hpp.html">fuzzuf/algorithms/libfuzzer/mutation/utils.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mutation__history_8hpp.html">fuzzuf/algorithms/libfuzzer/mutation_history.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="algorithms_2libfuzzer_2random_8hpp.html">fuzzuf/algorithms/libfuzzer/random.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::mutator {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> RNG, <span class="keyword">typename</span> Range&gt;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="copy__part_8hpp.html#a09fbfd57e721c8c7ea5fb44c56706b42">   48</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="copy__part_8hpp.html#a09fbfd57e721c8c7ea5fb44c56706b42">CopyPart</a>(RNG &amp;rng, Range &amp;data, std::size_t max_size,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;              MutationHistory &amp;history)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    -&gt; std::enable_if_t&lt;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="comment">// Rangeは整数のrangeである</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        utils::range::is_range_v&lt;Range&gt;, std::size_t&gt; {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">const</span> std::size_t size = utils::range::rangeSize(data);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">if</span> (size &gt; max_size || size == 0) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">// If Size == MaxSize, `InsertPartOf(...)` will</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// fail so there&#39;s no point using it in this case.</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">if</span> (size == max_size || random_value&lt;bool&gt;(rng))</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    detail::CopyPartOf(rng, data, data, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    detail::InsertPartOf(rng, data, data, <span class="keyword">true</span>, max_size);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> name[] = <span class="stringliteral">&quot;CopyPart&quot;</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  history.push_back(<a class="code" href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1MutationHistoryEntry.html">MutationHistoryEntry</a>{name});</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">return</span> utils::range::rangeSize(data);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::mutator</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="acopy__part_8hpp_html_a09fbfd57e721c8c7ea5fb44c56706b42"><div class="ttname"><a href="copy__part_8hpp.html#a09fbfd57e721c8c7ea5fb44c56706b42">fuzzuf::algorithm::libfuzzer::mutator::CopyPart</a></div><div class="ttdeci">auto CopyPart(RNG &amp;rng, Range &amp;data, std::size_t max_size, MutationHistory &amp;history) -&gt; std::enable_if_t&lt; utils::range::is_range_v&lt; Range &gt;, std::size_t &gt;</div><div class="ttdef"><b>Definition:</b> <a href="copy__part_8hpp_source.html#l00046">copy_part.hpp:46</a></div></div>
+<div class="ttc" id="acopy__part_8hpp_html_a09fbfd57e721c8c7ea5fb44c56706b42"><div class="ttname"><a href="copy__part_8hpp.html#a09fbfd57e721c8c7ea5fb44c56706b42">fuzzuf::algorithm::libfuzzer::mutator::CopyPart</a></div><div class="ttdeci">auto CopyPart(RNG &amp;rng, Range &amp;data, std::size_t max_size, MutationHistory &amp;history) -&gt; std::enable_if_t&lt; utils::range::is_range_v&lt; Range &gt;, std::size_t &gt;</div><div class="ttdef"><b>Definition:</b> <a href="copy__part_8hpp_source.html#l00048">copy_part.hpp:48</a></div></div>
 <div class="ttc" id="amutation_2utils_8hpp_html"><div class="ttname"><a href="mutation_2utils_8hpp.html">utils.hpp</a></div></div>
 <div class="ttc" id="aalgorithms_2libfuzzer_2random_8hpp_html"><div class="ttname"><a href="algorithms_2libfuzzer_2random_8hpp.html">random.hpp</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1libfuzzer_1_1MutationHistoryEntry_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1libfuzzer_1_1MutationHistoryEntry.html">fuzzuf::algorithm::libfuzzer::MutationHistoryEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="mutation__history_8hpp_source.html#l00029">mutation_history.hpp:29</a></div></div>

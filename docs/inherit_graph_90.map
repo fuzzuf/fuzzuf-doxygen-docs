@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1PlainRule.html" title=" " alt="" coords="5,5,168,61"/>
+<area shape="rect" id="node1" href="$classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1IDBase.html" title=" " alt="" coords="5,85,168,141"/>
+<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID.html" title=" " alt="" coords="216,5,379,61"/>
+<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html" title=" " alt="" coords="216,85,379,141"/>
+<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html" title=" " alt="" coords="216,165,379,221"/>
 </map>

@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="standard__end_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -91,13 +91,13 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_END_HPP</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="trace_8hpp.html">fuzzuf/algorithms/libfuzzer/hierarflow/trace.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="standard__end_8hpp.html#ae94a6b7a11c6e75fa51a56fc965cb1e6">   29</a></span>&#160;<span class="preprocessor">#define FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_END(name)               \</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">  if (this-&gt;CallSuccessors(std::forward&lt;Args&gt;(args)...)) {                     \</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">    base_type::SetResponseValue(true);                                         \</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(#name, abort)             \</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">    return base_type::GoToParent();                                            \</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">  }                                                                            \</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">  FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(#name, leave)               \</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="standard__end_8hpp.html#ae94a6b7a11c6e75fa51a56fc965cb1e6">   29</a></span>&#160;<span class="preprocessor">#define FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_STANDARD_END(name)   \</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">  if (this-&gt;CallSuccessors(std::forward&lt;Args&gt;(args)...)) {         \</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">    base_type::SetResponseValue(true);                             \</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">    FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(#name, abort) \</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">    return base_type::GoToParent();                                \</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">  }                                                                \</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">  FUZZUF_ALGORITHM_LIBFUZZER_HIERARFLOW_CHECKPOINT(#name, leave)   \</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">  return base_type::GoToDefaultNext();</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif</span></div>

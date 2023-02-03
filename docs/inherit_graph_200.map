@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="5,5,203,105"/>
-<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1vuzzer_1_1routine_1_1update_1_1TrimQueue.html" title=" " alt="" coords="251,27,423,83"/>
+<area shape="rect" id="node1" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="5,5,225,61"/>
+<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1routine_1_1other_1_1SelectInput.html" title=" " alt="" coords="273,5,449,61"/>
 </map>

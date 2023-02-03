@@ -76,54 +76,54 @@ $(function() {
 <div class="title">afl_dict_parser.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;fuzzuf/exceptions.hpp&quot;</code><br />
+<div class="textblock"><code>#include &lt;fcntl.h&gt;</code><br />
+<code>#include &lt;boost/phoenix.hpp&gt;</code><br />
+<code>#include &lt;boost/spirit/home/support/char_encoding/standard.hpp&gt;</code><br />
+<code>#include &lt;boost/spirit/include/qi.hpp&gt;</code><br />
+<code>#include &lt;boost/version.hpp&gt;</code><br />
+<code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;system_error&gt;</code><br />
+<code>#include &quot;fuzzuf/exceptions.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="check__capability_8hpp_source.html">fuzzuf/utils/check_capability.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="filesystem_8hpp_source.html">fuzzuf/utils/filesystem.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="map__file_8hpp_source.html">fuzzuf/utils/map_file.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="range__traits_8hpp_source.html">fuzzuf/utils/range_traits.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="remove__cvr_8hpp_source.html">fuzzuf/utils/type_traits/remove_cvr.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="void__t_8hpp_source.html">fuzzuf/utils/void_t.hpp</a>&quot;</code><br />
-<code>#include &lt;boost/phoenix.hpp&gt;</code><br />
-<code>#include &lt;boost/spirit/include/qi.hpp&gt;</code><br />
-<code>#include &lt;boost/version.hpp&gt;</code><br />
-<code>#include &lt;boost/spirit/home/support/char_encoding/standard.hpp&gt;</code><br />
-<code>#include &lt;cstdint&gt;</code><br />
-<code>#include &lt;fcntl.h&gt;</code><br />
-<code>#include &lt;functional&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;system_error&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for afl_dict_parser.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="afl__dict__parser_8hpp__incl.png" border="0" usemap="#include_2fuzzuf_2utils_2afl__dict__parser_8hpp" alt=""/></div>
 <map name="include_2fuzzuf_2utils_2afl__dict__parser_8hpp" id="include_2fuzzuf_2utils_2afl__dict__parser_8hpp">
-<area shape="rect" title=" " alt="" coords="1135,5,1283,47"/>
-<area shape="rect" href="exceptions_8hpp_source.html" title=" " alt="" coords="5,102,171,129"/>
-<area shape="rect" href="check__capability_8hpp.html" title=" " alt="" coords="245,363,381,404"/>
-<area shape="rect" href="void__t_8hpp.html" title=" " alt="" coords="343,452,510,479"/>
-<area shape="rect" href="filesystem_8hpp.html" title=" " alt="" coords="1016,102,1211,129"/>
-<area shape="rect" href="map__file_8hpp.html" title=" " alt="" coords="758,102,941,129"/>
-<area shape="rect" href="range__traits_8hpp.html" title=" " alt="" coords="533,273,667,315"/>
-<area shape="rect" href="remove__cvr_8hpp.html" title=" " alt="" coords="781,363,949,404"/>
-<area shape="rect" title=" " alt="" coords="1012,191,1079,218"/>
-<area shape="rect" title=" " alt="" coords="1235,102,1378,129"/>
-<area shape="rect" title=" " alt="" coords="1403,95,1549,136"/>
-<area shape="rect" title=" " alt="" coords="1573,102,1712,129"/>
-<area shape="rect" title=" " alt="" coords="1737,95,1946,136"/>
-<area shape="rect" title=" " alt="" coords="1970,102,2033,129"/>
-<area shape="rect" title=" " alt="" coords="2057,102,2143,129"/>
-<area shape="rect" title=" " alt="" coords="2168,102,2227,129"/>
-<area shape="rect" title=" " alt="" coords="2251,102,2359,129"/>
-<area shape="rect" title=" " alt="" coords="45,191,131,218"/>
-<area shape="rect" title=" " alt="" coords="698,527,790,553"/>
-<area shape="rect" href="config_8h_source.html" title=" " alt="" coords="1286,191,1359,218"/>
-<area shape="rect" title=" " alt="" coords="1103,191,1262,218"/>
-<area shape="rect" href="shared__range_8hpp.html" title=" " alt="" coords="794,184,937,225"/>
-<area shape="rect" title=" " alt="" coords="1025,273,1175,315"/>
-<area shape="rect" title=" " alt="" coords="747,281,824,307"/>
-<area shape="rect" title=" " alt="" coords="457,370,527,397"/>
-<area shape="rect" title=" " alt="" coords="551,370,622,397"/>
-<area shape="rect" title=" " alt="" coords="646,370,706,397"/>
+<area shape="rect" title=" " alt="" coords="1136,5,1284,47"/>
+<area shape="rect" title=" " alt="" coords="5,102,68,129"/>
+<area shape="rect" title=" " alt="" coords="92,102,235,129"/>
+<area shape="rect" title=" " alt="" coords="259,95,468,136"/>
+<area shape="rect" title=" " alt="" coords="493,95,639,136"/>
+<area shape="rect" title=" " alt="" coords="663,102,802,129"/>
+<area shape="rect" title=" " alt="" coords="1777,191,1843,218"/>
+<area shape="rect" title=" " alt="" coords="1016,102,1103,129"/>
+<area shape="rect" title=" " alt="" coords="1127,102,1186,129"/>
+<area shape="rect" title=" " alt="" coords="1211,102,1319,129"/>
+<area shape="rect" href="exceptions_8hpp_source.html" title=" " alt="" coords="826,102,991,129"/>
+<area shape="rect" href="check__capability_8hpp.html" title=" " alt="" coords="1445,363,1581,404"/>
+<area shape="rect" href="void__t_8hpp.html" title=" " alt="" coords="1377,452,1544,479"/>
+<area shape="rect" href="filesystem_8hpp.html" title=" " alt="" coords="1445,102,1639,129"/>
+<area shape="rect" href="map__file_8hpp.html" title=" " alt="" coords="1828,102,2011,129"/>
+<area shape="rect" href="range__traits_8hpp.html" title=" " alt="" coords="1671,273,1805,315"/>
+<area shape="rect" href="remove__cvr_8hpp.html" title=" " alt="" coords="1982,363,2150,404"/>
+<area shape="rect" title=" " alt="" coords="865,191,952,218"/>
+<area shape="rect" title=" " alt="" coords="1657,527,1749,553"/>
+<area shape="rect" href="config_8h_source.html" title=" " alt="" coords="1445,191,1519,218"/>
+<area shape="rect" title=" " alt="" coords="1543,191,1701,218"/>
+<area shape="rect" title=" " alt="" coords="2033,273,2184,315"/>
+<area shape="rect" title=" " alt="" coords="1830,281,1907,307"/>
+<area shape="rect" href="shared__range_8hpp.html" title=" " alt="" coords="1919,184,2061,225"/>
+<area shape="rect" title=" " alt="" coords="1741,370,1812,397"/>
+<area shape="rect" title=" " alt="" coords="1836,370,1907,397"/>
+<area shape="rect" title=" " alt="" coords="1605,370,1665,397"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -170,8 +170,7 @@ template&lt;typename T &gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a3cadbaf4cc3f77f4d91a0da610cf433d"><td class="memItemLeft" align="right" valign="top"><a id="a3cadbaf4cc3f77f4d91a0da610cf433d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>fuzzuf::utils::dictionary::Enable</b> = void&gt; struct <a class="el" href="classDictionaryWord.html">DictionaryWord</a> {}</td></tr>
+<tr class="memitem:a3cadbaf4cc3f77f4d91a0da610cf433d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><b>fuzzuf::utils::dictionary::Enable</b></td></tr>
 <tr class="separator:a3cadbaf4cc3f77f4d91a0da610cf433d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

@@ -1,8 +1,8 @@
 <map id="include/fuzzuf/utils/enum_cast.hpp" name="include/fuzzuf/utils/enum_cast.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="213,5,359,47"/>
-<area shape="rect" id="node2" href="$check__capability_8hpp.html" title=" " alt="" coords="87,95,223,136"/>
-<area shape="rect" id="node4" title=" " alt="" coords="189,273,281,300"/>
-<area shape="rect" id="node5" href="$remove__cvr_8hpp.html" title=" " alt="" coords="298,184,466,225"/>
-<area shape="rect" id="node6" title=" " alt="" coords="349,102,407,129"/>
-<area shape="rect" id="node3" href="$void__t_8hpp.html" title=" " alt="" coords="5,191,172,218"/>
+<area shape="rect" id="node1" title=" " alt="" coords="81,5,226,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,102,64,129"/>
+<area shape="rect" id="node3" title=" " alt="" coords="166,273,258,300"/>
+<area shape="rect" id="node4" href="$check__capability_8hpp.html" title=" " alt="" coords="139,95,275,136"/>
+<area shape="rect" id="node6" href="$remove__cvr_8hpp.html" title=" " alt="" coords="381,184,549,225"/>
+<area shape="rect" id="node5" href="$void__t_8hpp.html" title=" " alt="" coords="190,191,357,218"/>
 </map>

@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="for__each__non__zero__byte_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -89,80 +89,80 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_FEATURE_FOR_EACH_NON_ZERO_BYTE_HPP</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define FUZZUF_INCLUDE_ALGORITHM_LIBFUZZER_FEATURE_FOR_EACH_NON_ZERO_BYTE_HPP</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bswap_8hpp.html">fuzzuf/utils/bswap.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="void__t_8hpp.html">fuzzuf/utils/void_t.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;boost/range/iterator_range.hpp&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::feature {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Range, <span class="keyword">typename</span> Integer, <span class="keyword">typename</span> Callback&gt;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007">   51</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007">ForEachNonZeroByte</a>(<span class="keyword">const</span> Range &amp;data, Integer first_feature, Callback cb)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    -&gt; std::enable_if_t&lt;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        std::is_pointer_v&lt;utils::range::RangeIteratorT&lt;Range&gt;&gt; &amp;&amp;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            utils::range::is_range_of_v&lt;Range, std::uint8_t&gt; &amp;&amp;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            std::is_integral_v&lt;Integer&gt; &amp;&amp;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            std::is_void_v&lt;utils::void_t&lt;decltype(std::declval&lt;Callback&gt;()(</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                Integer(0), Integer(0), std::uint8_t(0)))&gt;&gt;,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">size_t</span>&gt; {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  constexpr std::size_t step = <span class="keyword">sizeof</span>(std::uintptr_t) / <span class="keyword">sizeof</span>(std::uint8_t);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  constexpr std::size_t step_mask = step - 1u;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">auto</span> iter = data.begin();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">auto</span> end = data.end();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">// Iterate by 1 byte until either the alignment boundary or the end.</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">for</span> (; <span class="keyword">reinterpret_cast&lt;</span>std::uintptr_t<span class="keyword">&gt;</span>(iter) &amp; step_mask &amp;&amp; iter &lt; end;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;       ++iter) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">auto</span> v = *iter)</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      cb(first_feature, Integer(std::distance(data.begin(), iter)), v);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="comment">// Iterate by Step bytes at a time.</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">for</span> (; iter + step &lt;= end; iter += step)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (std::uintptr_t bundle = *<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uintptr_t *<span class="keyword">&gt;</span>(iter)) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      bundle = utils::htole&lt;std::uintptr_t&gt;()(bundle);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordflow">for</span> (std::size_t i = 0u; i &lt; step; ++i, bundle &gt;&gt;= 8) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (uint8_t v = bundle &amp; 0xFFu)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;          cb(first_feature, Integer(std::distance(data.begin(), iter) + i), v);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="comment">// Iterate by 1 byte until the end.</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordflow">for</span> (; iter &lt; end; ++iter) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (std::uint8_t v = *iter)</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      cb(first_feature, Integer(std::distance(data.begin(), iter)), v);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">return</span> std::distance(data.begin(), end);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Range, <span class="keyword">typename</span> Integer, <span class="keyword">typename</span> Callback&gt;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">auto</span> ForEachNonZeroByte(<span class="keyword">const</span> Range &amp;data, Integer first_feature, Callback cb)</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    -&gt; std::enable_if_t&lt;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        !std::is_pointer_v&lt;utils::range::RangeIteratorT&lt;Range&gt;&gt; &amp;&amp;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            utils::range::is_range_of_v&lt;Range, std::uint8_t&gt; &amp;&amp;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            std::is_integral_v&lt;Integer&gt; &amp;&amp;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            std::is_void_v&lt;utils::void_t&lt;decltype(std::declval&lt;Callback&gt;()(</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                Integer(0), Integer(0), std::uint8_t(0)))&gt;&gt;,</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordtype">size_t</span>&gt; {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  std::size_t index = 0u;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="comment">// Iterate by 1 byte until the end.</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> v : data) {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">if</span> (v)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      cb(first_feature, Integer(index), v);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    ++index;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordflow">return</span> std::distance(data.begin(), data.end());</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::feature</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/range/iterator_range.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bswap_8hpp.html">fuzzuf/utils/bswap.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="range__traits_8hpp.html">fuzzuf/utils/range_traits.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="void__t_8hpp.html">fuzzuf/utils/void_t.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::libfuzzer::feature {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Range, <span class="keyword">typename</span> Integer, <span class="keyword">typename</span> Callback&gt;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007">   54</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007">ForEachNonZeroByte</a>(<span class="keyword">const</span> Range &amp;data, Integer first_feature, Callback cb)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    -&gt; std::enable_if_t&lt;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        std::is_pointer_v&lt;utils::range::RangeIteratorT&lt;Range&gt;&gt; &amp;&amp;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            utils::range::is_range_of_v&lt;Range, std::uint8_t&gt; &amp;&amp;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            std::is_integral_v&lt;Integer&gt; &amp;&amp;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            std::is_void_v&lt;utils::void_t&lt;decltype(std::declval&lt;Callback&gt;()(</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                Integer(0), Integer(0), std::uint8_t(0)))&gt;&gt;,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">size_t</span>&gt; {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  constexpr std::size_t step = <span class="keyword">sizeof</span>(std::uintptr_t) / <span class="keyword">sizeof</span>(std::uint8_t);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  constexpr std::size_t step_mask = step - 1u;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keyword">auto</span> iter = data.begin();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keyword">auto</span> end = data.end();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment">// Iterate by 1 byte until either the alignment boundary or the end.</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordflow">for</span> (; <span class="keyword">reinterpret_cast&lt;</span>std::uintptr_t<span class="keyword">&gt;</span>(iter) &amp; step_mask &amp;&amp; iter &lt; end;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;       ++iter) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">auto</span> v = *iter)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      cb(first_feature, Integer(std::distance(data.begin(), iter)), v);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="comment">// Iterate by Step bytes at a time.</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">for</span> (; iter + step &lt;= end; iter += step)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (std::uintptr_t bundle = *<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uintptr_t *<span class="keyword">&gt;</span>(iter)) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      bundle = utils::htole&lt;std::uintptr_t&gt;()(bundle);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">for</span> (std::size_t i = 0u; i &lt; step; ++i, bundle &gt;&gt;= 8) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> (uint8_t v = bundle &amp; 0xFFu)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;          cb(first_feature, Integer(std::distance(data.begin(), iter) + i), v);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">// Iterate by 1 byte until the end.</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">for</span> (; iter &lt; end; ++iter) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">if</span> (std::uint8_t v = *iter)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      cb(first_feature, Integer(std::distance(data.begin(), iter)), v);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">return</span> std::distance(data.begin(), end);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Range, <span class="keyword">typename</span> Integer, <span class="keyword">typename</span> Callback&gt;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">auto</span> ForEachNonZeroByte(<span class="keyword">const</span> Range &amp;data, Integer first_feature, Callback cb)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    -&gt; std::enable_if_t&lt;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        !std::is_pointer_v&lt;utils::range::RangeIteratorT&lt;Range&gt;&gt; &amp;&amp;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            utils::range::is_range_of_v&lt;Range, std::uint8_t&gt; &amp;&amp;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            std::is_integral_v&lt;Integer&gt; &amp;&amp;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            std::is_void_v&lt;utils::void_t&lt;decltype(std::declval&lt;Callback&gt;()(</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                Integer(0), Integer(0), std::uint8_t(0)))&gt;&gt;,</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordtype">size_t</span>&gt; {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  std::size_t index = 0u;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="comment">// Iterate by 1 byte until the end.</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> v : data) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> (v) cb(first_feature, Integer(index), v);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    ++index;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordflow">return</span> std::distance(data.begin(), data.end());</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::libfuzzer::feature</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="avoid__t_8hpp_html"><div class="ttname"><a href="void__t_8hpp.html">void_t.hpp</a></div></div>
 <div class="ttc" id="abswap_8hpp_html"><div class="ttname"><a href="bswap_8hpp.html">bswap.hpp</a></div></div>
-<div class="ttc" id="afor__each__non__zero__byte_8hpp_html_a1b1c85734876276377ad571750ef9007"><div class="ttname"><a href="for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007">fuzzuf::algorithm::libfuzzer::feature::ForEachNonZeroByte</a></div><div class="ttdeci">auto ForEachNonZeroByte(const Range &amp;data, Integer first_feature, Callback cb) -&gt; std::enable_if_t&lt; std::is_pointer_v&lt; utils::range::RangeIteratorT&lt; Range &gt;&gt; &amp;&amp;utils::range::is_range_of_v&lt; Range, std::uint8_t &gt; &amp;&amp;std::is_integral_v&lt; Integer &gt; &amp;&amp;std::is_void_v&lt; utils::void_t&lt; decltype(std::declval&lt; Callback &gt;()(Integer(0), Integer(0), std::uint8_t(0)))&gt;&gt;, size_t &gt;</div><div class="ttdef"><b>Definition:</b> <a href="for__each__non__zero__byte_8hpp_source.html#l00051">for_each_non_zero_byte.hpp:51</a></div></div>
+<div class="ttc" id="afor__each__non__zero__byte_8hpp_html_a1b1c85734876276377ad571750ef9007"><div class="ttname"><a href="for__each__non__zero__byte_8hpp.html#a1b1c85734876276377ad571750ef9007">fuzzuf::algorithm::libfuzzer::feature::ForEachNonZeroByte</a></div><div class="ttdeci">auto ForEachNonZeroByte(const Range &amp;data, Integer first_feature, Callback cb) -&gt; std::enable_if_t&lt; std::is_pointer_v&lt; utils::range::RangeIteratorT&lt; Range &gt;&gt; &amp;&amp;utils::range::is_range_of_v&lt; Range, std::uint8_t &gt; &amp;&amp;std::is_integral_v&lt; Integer &gt; &amp;&amp;std::is_void_v&lt; utils::void_t&lt; decltype(std::declval&lt; Callback &gt;()(Integer(0), Integer(0), std::uint8_t(0)))&gt;&gt;, size_t &gt;</div><div class="ttdef"><b>Definition:</b> <a href="for__each__non__zero__byte_8hpp_source.html#l00054">for_each_non_zero_byte.hpp:54</a></div></div>
 <div class="ttc" id="arange__traits_8hpp_html"><div class="ttname"><a href="range__traits_8hpp.html">range_traits.hpp</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

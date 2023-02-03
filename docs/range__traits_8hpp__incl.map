@@ -1,10 +1,10 @@
 <map id="include/fuzzuf/utils/range_traits.hpp" name="include/fuzzuf/utils/range_traits.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="239,5,384,47"/>
-<area shape="rect" id="node2" href="$check__capability_8hpp.html" title=" " alt="" coords="87,95,223,136"/>
-<area shape="rect" id="node3" href="$void__t_8hpp.html" title=" " alt="" coords="5,191,172,218"/>
-<area shape="rect" id="node4" title=" " alt="" coords="189,273,281,300"/>
-<area shape="rect" id="node5" href="$remove__cvr_8hpp.html" title=" " alt="" coords="298,184,466,225"/>
-<area shape="rect" id="node6" title=" " alt="" coords="349,102,420,129"/>
-<area shape="rect" id="node7" title=" " alt="" coords="444,102,515,129"/>
-<area shape="rect" id="node8" title=" " alt="" coords="539,102,599,129"/>
+<area shape="rect" id="node1" title=" " alt="" coords="204,5,349,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,102,76,129"/>
+<area shape="rect" id="node3" title=" " alt="" coords="100,102,171,129"/>
+<area shape="rect" id="node4" title=" " alt="" coords="292,273,384,300"/>
+<area shape="rect" id="node5" title=" " alt="" coords="247,102,307,129"/>
+<area shape="rect" id="node6" href="$check__capability_8hpp.html" title=" " alt="" coords="331,95,467,136"/>
+<area shape="rect" id="node7" href="$void__t_8hpp.html" title=" " alt="" coords="316,191,483,218"/>
+<area shape="rect" id="node8" href="$remove__cvr_8hpp.html" title=" " alt="" coords="507,184,675,225"/>
 </map>

@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -89,74 +89,75 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE util.range</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define BOOST_TEST_DYN_LINK</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="filtered__range_8hpp.html">fuzzuf/utils/filtered_range.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nth__range_8hpp.html">fuzzuf/utils/nth_range.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="shared__range_8hpp.html">fuzzuf/utils/shared_range.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="zip__range_8hpp.html">fuzzuf/utils/zip_range.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// shared_rangeしたvectorのiteratorがrandom_access_iteratorの要件を満たす事を確認</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;BOOST_AUTO_TEST_CASE(SharedRange) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">using namespace </span>fuzzuf::utils::range::adaptor;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  std::shared_ptr&lt;std::vector&lt;int&gt;&gt; p(<span class="keyword">new</span> std::vector&lt;int&gt;{1, 2, 3, 4, 5});</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">auto</span> sr1 = p | shared;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">auto</span> sr2 = p | shared;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">auto</span> sr3 = sr2;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  BOOST_CHECK((sr1.begin().get() == p-&gt;begin()));</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  BOOST_CHECK((sr2.begin().get() == p-&gt;begin()));</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  BOOST_CHECK((sr1.end().get() == p-&gt;end()));</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  BOOST_CHECK((sr2.end().get() == p-&gt;end()));</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  BOOST_CHECK_EQUAL(sr1.size(), p-&gt;size());</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  BOOST_CHECK_EQUAL(sr2.size(), p-&gt;size());</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  BOOST_CHECK_EQUAL(sr1.empty(), p-&gt;empty());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  BOOST_CHECK_EQUAL(sr2.empty(), p-&gt;empty());</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  p.reset();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  BOOST_CHECK((sr1.begin() == sr2.begin()));</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  BOOST_CHECK((sr1.end() == sr2.end()));</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  BOOST_CHECK((++sr1.begin() == ++sr2.begin()));</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  BOOST_CHECK((--sr1.end() == --sr2.end()));</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  BOOST_CHECK((*sr1.begin() == *sr2.begin()));</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  BOOST_CHECK((sr1.begin()[2] == sr2.begin()[2]));</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_CHECK((sr1.begin() == sr3.begin()));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  BOOST_CHECK((sr1.end() == sr3.end()));</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">// zip_range</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;BOOST_AUTO_TEST_CASE(ZipRange) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">using namespace </span>fuzzuf::utils::range::adaptor;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  std::vector&lt;int&gt; p1{1, 2, 3, 4, 5};</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  std::vector&lt;int&gt; p2{2, 4, 6, 8, 10};</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">auto</span> zipped = fuzzuf::utils::range::zip(p1, p2);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  BOOST_CHECK((std::get&lt;0&gt;(zipped.begin().get()) == p1.begin()));</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  BOOST_CHECK((std::get&lt;1&gt;(zipped.begin().get()) == p2.begin()));</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  BOOST_CHECK((std::get&lt;0&gt;(zipped.end().get()) == p1.end()));</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  BOOST_CHECK((std::get&lt;1&gt;(zipped.end().get()) == p2.end()));</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[a, b] : zipped) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    BOOST_CHECK_EQUAL(a * 2, b);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">// filtered_range</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;BOOST_AUTO_TEST_CASE(FilteredRange) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">using namespace </span>fuzzuf::utils::range::adaptor;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  std::vector&lt;int&gt; data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  std::vector&lt;int&gt; expected{1, 3, 5, 7, 9};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">auto</span> filtered_ = data | filtered([](<span class="keywordtype">int</span> v) { <span class="keywordflow">return</span> v % 2; });</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(filtered_.begin(), filtered_.end(),</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                expected.begin(), expected.end());</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">// nth_range</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;BOOST_AUTO_TEST_CASE(NthRange) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">using namespace </span>fuzzuf::utils::range::adaptor;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  std::vector&lt;std::pair&lt;int, int&gt;&gt; data{</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      {1, 2}, {3, 4}, {5, 6}, {7, 8}, {9, 10}};</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  std::vector&lt;int&gt; expected{1, 3, 5, 7, 9};</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">auto</span> nth_ = data | nth&lt;0U&gt;;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(nth_.begin(), nth_.end(), expected.begin(),</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                expected.end());</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="filtered__range_8hpp.html">fuzzuf/utils/filtered_range.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nth__range_8hpp.html">fuzzuf/utils/nth_range.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="shared__range_8hpp.html">fuzzuf/utils/shared_range.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="zip__range_8hpp.html">fuzzuf/utils/zip_range.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// shared_rangeしたvectorのiteratorがrandom_access_iteratorの要件を満たす事を確認</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;BOOST_AUTO_TEST_CASE(SharedRange) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">using namespace </span>fuzzuf::utils::range::adaptor;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  std::shared_ptr&lt;std::vector&lt;int&gt;&gt; p(<span class="keyword">new</span> std::vector&lt;int&gt;{1, 2, 3, 4, 5});</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">auto</span> sr1 = p | shared;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">auto</span> sr2 = p | shared;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keyword">auto</span> sr3 = sr2;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  BOOST_CHECK((sr1.begin().get() == p-&gt;begin()));</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  BOOST_CHECK((sr2.begin().get() == p-&gt;begin()));</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  BOOST_CHECK((sr1.end().get() == p-&gt;end()));</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  BOOST_CHECK((sr2.end().get() == p-&gt;end()));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  BOOST_CHECK_EQUAL(sr1.size(), p-&gt;size());</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  BOOST_CHECK_EQUAL(sr2.size(), p-&gt;size());</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  BOOST_CHECK_EQUAL(sr1.empty(), p-&gt;empty());</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  BOOST_CHECK_EQUAL(sr2.empty(), p-&gt;empty());</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  p.reset();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  BOOST_CHECK((sr1.begin() == sr2.begin()));</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  BOOST_CHECK((sr1.end() == sr2.end()));</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  BOOST_CHECK((++sr1.begin() == ++sr2.begin()));</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  BOOST_CHECK((--sr1.end() == --sr2.end()));</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  BOOST_CHECK((*sr1.begin() == *sr2.begin()));</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_CHECK((sr1.begin()[2] == sr2.begin()[2]));</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  BOOST_CHECK((sr1.begin() == sr3.begin()));</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  BOOST_CHECK((sr1.end() == sr3.end()));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// zip_range</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;BOOST_AUTO_TEST_CASE(ZipRange) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">using namespace </span>fuzzuf::utils::range::adaptor;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  std::vector&lt;int&gt; p1{1, 2, 3, 4, 5};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  std::vector&lt;int&gt; p2{2, 4, 6, 8, 10};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">auto</span> zipped = fuzzuf::utils::range::zip(p1, p2);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  BOOST_CHECK((std::get&lt;0&gt;(zipped.begin().get()) == p1.begin()));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  BOOST_CHECK((std::get&lt;1&gt;(zipped.begin().get()) == p2.begin()));</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  BOOST_CHECK((std::get&lt;0&gt;(zipped.end().get()) == p1.end()));</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  BOOST_CHECK((std::get&lt;1&gt;(zipped.end().get()) == p2.end()));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[a, b] : zipped) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    BOOST_CHECK_EQUAL(a * 2, b);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">// filtered_range</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;BOOST_AUTO_TEST_CASE(FilteredRange) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">using namespace </span>fuzzuf::utils::range::adaptor;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  std::vector&lt;int&gt; data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  std::vector&lt;int&gt; expected{1, 3, 5, 7, 9};</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keyword">auto</span> filtered_ = data | filtered([](<span class="keywordtype">int</span> v) { <span class="keywordflow">return</span> v % 2; });</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(filtered_.begin(), filtered_.end(),</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                expected.begin(), expected.end());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">// nth_range</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;BOOST_AUTO_TEST_CASE(NthRange) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keyword">using namespace </span>fuzzuf::utils::range::adaptor;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  std::vector&lt;std::pair&lt;int, int&gt;&gt; data{</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      {1, 2}, {3, 4}, {5, 6}, {7, 8}, {9, 10}};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  std::vector&lt;int&gt; expected{1, 3, 5, 7, 9};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keyword">auto</span> nth_ = data | nth&lt;0U&gt;;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  BOOST_CHECK_EQUAL_COLLECTIONS(nth_.begin(), nth_.end(), expected.begin(),</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                expected.end());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="ashared__range_8hpp_html"><div class="ttname"><a href="shared__range_8hpp.html">shared_range.hpp</a></div></div>
 <div class="ttc" id="anth__range_8hpp_html"><div class="ttname"><a href="nth__range_8hpp.html">nth_range.hpp</a></div></div>

@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2022 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -90,19 +90,19 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE nautilus.tree</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define BOOST_TEST_DYN_LINK</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="context_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/context.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="recursion__info_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/recursion_info.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rule_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/rule.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tree_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/tree.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using namespace </span>fuzzuf::algorithm::nautilus::grammartec;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">size_t</span> CalcSubTreeSizesAndParentsRecTest(</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree.html">Tree</a>&amp; tree, <span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID.html">NodeID</a>&amp; n, <a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context.html">Context</a>&amp; ctx</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tree_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/tree.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="context_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/context.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="recursion__info_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/recursion_info.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rule_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/rule.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using namespace </span>fuzzuf::algorithm::nautilus::grammartec;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">size_t</span> CalcSubTreeSizesAndParentsRecTest(<a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree.html">Tree</a>&amp; tree, <span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID.html">NodeID</a>&amp; n,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                         <a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context.html">Context</a>&amp; ctx) {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID.html">NodeID</a> cur(n + 1);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">size_t</span> size = 1;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">size_t</span> iter_n = tree.GetRule(n, ctx).NumberOfNonterms();</div>
@@ -216,32 +216,31 @@ $(function() {
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">auto</span> recursions = tree.CalcRecursions(ctx)) {</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      BOOST_CHECK(recursions.value().size() != 0);</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      <span class="keywordflow">for</span> (<a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RecursionInfo.html">RecursionInfo</a>&amp; recursion_info: recursions.value()) {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> offset = 0;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;             offset &lt; recursion_info.GetNumberOfRecursions();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;             offset++) {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;          std::pair&lt;NodeID, NodeID&gt; tuple</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            = recursion_info.GetRecursionPairByOffset(offset);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;          some_recursion = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;          BOOST_CHECK(<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(tuple.first)</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                      &lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(tuple.second));</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  }</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  BOOST_CHECK(some_recursion);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      <span class="keywordflow">for</span> (<a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RecursionInfo.html">RecursionInfo</a>&amp; recursion_info : recursions.value()) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> offset = 0; offset &lt; recursion_info.GetNumberOfRecursions();</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;             offset++) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;          std::pair&lt;NodeID, NodeID&gt; tuple =</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;              recursion_info.GetRecursionPairByOffset(offset);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;          some_recursion = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;          BOOST_CHECK(<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(tuple.first) &lt;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                      <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(tuple.second));</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  BOOST_CHECK(some_recursion);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="arecursion__info_8hpp_html"><div class="ttname"><a href="recursion__info_8hpp.html">recursion_info.hpp</a></div><div class="ttdoc">Recursion of tree.</div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RecursionInfo_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RecursionInfo.html">fuzzuf::algorithm::nautilus::grammartec::RecursionInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="recursion__info_8hpp_source.html#l00045">recursion_info.hpp:45</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID.html">fuzzuf::algorithm::nautilus::grammartec::NodeID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00059">newtypes.hpp:59</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RecursionInfo_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RecursionInfo.html">fuzzuf::algorithm::nautilus::grammartec::RecursionInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="recursion__info_8hpp_source.html#l00044">recursion_info.hpp:44</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID.html">fuzzuf::algorithm::nautilus::grammartec::NodeID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00058">newtypes.hpp:58</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context.html">fuzzuf::algorithm::nautilus::grammartec::Context</a></div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00039">context.hpp:39</a></div></div>
 <div class="ttc" id="acontext_8hpp_html"><div class="ttname"><a href="context_8hpp.html">context.hpp</a></div><div class="ttdoc">Context class for context-free grammar.</div></div>
 <div class="ttc" id="atree_8hpp_html"><div class="ttname"><a href="tree_8hpp.html">tree.hpp</a></div><div class="ttdoc">Tree for context-free grammar.</div></div>
 <div class="ttc" id="arule_8hpp_html"><div class="ttname"><a href="rule_8hpp.html">rule.hpp</a></div><div class="ttdoc">Grammar rules and parser/unparser.</div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree.html">fuzzuf::algorithm::nautilus::grammartec::Tree</a></div><div class="ttdef"><b>Definition:</b> <a href="tree_8hpp_source.html#l00067">tree.hpp:67</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree.html">fuzzuf::algorithm::nautilus::grammartec::Tree</a></div><div class="ttdef"><b>Definition:</b> <a href="tree_8hpp_source.html#l00065">tree.hpp:65</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <a href="context_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2022 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -94,8 +94,8 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="newtypes_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/newtypes.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="newtypes_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/newtypes.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span>fuzzuf::algorithm::nautilus::grammartec {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
@@ -104,7 +104,7 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">class </span>Tree;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context.html">Context</a> {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context.html">Context</a>() : _max_len(0) {}</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">void</span> Initialize(<span class="keywordtype">size_t</span> max_len);</div>
@@ -126,42 +126,40 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">void</span> CalcMinLen();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">bool</span> CheckIfNTermHasMultiplePossibilities(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp; nt) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordtype">size_t</span> GetRandomLen(</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">size_t</span> number_of_children, <span class="keywordtype">size_t</span> total_remaining_len</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  ) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  std::vector&lt;RuleID&gt; GetApplicableRules(</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">size_t</span> max_len, <span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp; nt, <span class="keywordtype">size_t</span> p_include_short_rules</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  ) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html">RuleID</a> GetRandomRuleForNT(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp; nt, <span class="keywordtype">size_t</span> len) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">size_t</span> GetRandomLenForRuleID(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html">RuleID</a>&amp;) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">size_t</span> GetRandomLenForNT(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp;) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">const</span> std::vector&lt;RuleID&gt;&amp; GetRulesForNT(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp; nt) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree.html">Tree</a> GenerateTreeFromNT(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp; nt, <span class="keywordtype">size_t</span> max_len);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree.html">Tree</a> GenerateTreeFromRule(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html">RuleID</a>&amp; r, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::vector&lt;Rule&gt; _rules;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  std::unordered_map&lt;NTermID, std::vector&lt;RuleID&gt;&gt; _nts_to_rules;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  std::unordered_map&lt;NTermID, std::string&gt; _nt_ids_to_name;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  std::unordered_map&lt;std::string, NTermID&gt; _names_to_nt_id;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  std::unordered_map&lt;RuleID, size_t&gt; _rules_to_min_size;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  std::unordered_map&lt;NTermID, size_t&gt; _nts_to_min_size;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  std::unordered_map&lt;RuleID, size_t&gt; _rules_to_num_options;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  std::unordered_map&lt;NTermID, size_t&gt; _nts_to_num_options;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">size_t</span> _max_len;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordtype">size_t</span> GetRandomLen(<span class="keywordtype">size_t</span> number_of_children,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                      <span class="keywordtype">size_t</span> total_remaining_len) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  std::vector&lt;RuleID&gt; GetApplicableRules(<span class="keywordtype">size_t</span> max_len, <span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp; nt,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                         <span class="keywordtype">size_t</span> p_include_short_rules) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html">RuleID</a> GetRandomRuleForNT(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp; nt, <span class="keywordtype">size_t</span> len) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">size_t</span> GetRandomLenForRuleID(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html">RuleID</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">size_t</span> GetRandomLenForNT(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keyword">const</span> std::vector&lt;RuleID&gt;&amp; GetRulesForNT(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp; nt) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree.html">Tree</a> GenerateTreeFromNT(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">NTermID</a>&amp; nt, <span class="keywordtype">size_t</span> max_len);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree.html">Tree</a> GenerateTreeFromRule(<span class="keyword">const</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html">RuleID</a>&amp; r, <span class="keywordtype">size_t</span> len);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  std::vector&lt;Rule&gt; _rules;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  std::unordered_map&lt;NTermID, std::vector&lt;RuleID&gt;&gt; _nts_to_rules;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::unordered_map&lt;NTermID, std::string&gt; _nt_ids_to_name;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  std::unordered_map&lt;std::string, NTermID&gt; _names_to_nt_id;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  std::unordered_map&lt;RuleID, size_t&gt; _rules_to_min_size;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  std::unordered_map&lt;NTermID, size_t&gt; _nts_to_min_size;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  std::unordered_map&lt;RuleID, size_t&gt; _rules_to_num_options;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  std::unordered_map&lt;NTermID, size_t&gt; _nts_to_num_options;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">size_t</span> _max_len;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}  <span class="comment">// namespace fuzzuf::algorithm::nautilus::grammartec</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;} <span class="comment">// namespace fuzzuf::algorithm::nautilus::grammartec</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Rule_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Rule.html">fuzzuf::algorithm::nautilus::grammartec::Rule</a></div><div class="ttdef"><b>Definition:</b> <a href="rule_8hpp_source.html#l00101">rule.hpp:101</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Rule_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Rule.html">fuzzuf::algorithm::nautilus::grammartec::Rule</a></div><div class="ttdef"><b>Definition:</b> <a href="rule_8hpp_source.html#l00096">rule.hpp:96</a></div></div>
 <div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Context.html">fuzzuf::algorithm::nautilus::grammartec::Context</a></div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00039">context.hpp:39</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">fuzzuf::algorithm::nautilus::grammartec::NTermID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00069">newtypes.hpp:69</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">fuzzuf::algorithm::nautilus::grammartec::NTermID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00068">newtypes.hpp:68</a></div></div>
 <div class="ttc" id="anewtypes_8hpp_html"><div class="ttname"><a href="newtypes_8hpp.html">newtypes.hpp</a></div><div class="ttdoc">Definitions of some simple types.</div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleIDOrCustom_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleIDOrCustom.html">fuzzuf::algorithm::nautilus::grammartec::RuleIDOrCustom</a></div><div class="ttdef"><b>Definition:</b> <a href="rule_8hpp_source.html#l00062">rule.hpp:62</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html">fuzzuf::algorithm::nautilus::grammartec::RuleID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00055">newtypes.hpp:55</a></div></div>
-<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree.html">fuzzuf::algorithm::nautilus::grammartec::Tree</a></div><div class="ttdef"><b>Definition:</b> <a href="tree_8hpp_source.html#l00067">tree.hpp:67</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleIDOrCustom_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleIDOrCustom.html">fuzzuf::algorithm::nautilus::grammartec::RuleIDOrCustom</a></div><div class="ttdef"><b>Definition:</b> <a href="rule_8hpp_source.html#l00061">rule.hpp:61</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html">fuzzuf::algorithm::nautilus::grammartec::RuleID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00054">newtypes.hpp:54</a></div></div>
+<div class="ttc" id="aclassfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree_html"><div class="ttname"><a href="classfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1Tree.html">fuzzuf::algorithm::nautilus::grammartec::Tree</a></div><div class="ttdef"><b>Definition:</b> <a href="tree_8hpp_source.html#l00065">tree.hpp:65</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

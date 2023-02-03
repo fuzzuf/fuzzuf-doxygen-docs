@@ -72,8 +72,8 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * fuzzuf</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2022 Ricerca Security</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2021-2023 Ricerca Security</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * it under the terms of the GNU Affero General Public License as published by</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -90,10 +90,10 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE nautilus.newtypes</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define BOOST_TEST_DYN_LINK</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/range/irange.hpp&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="newtypes_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/newtypes.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="newtypes_8hpp.html">fuzzuf/algorithms/nautilus/grammartec/newtypes.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;boost/range/irange.hpp&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span>fuzzuf::algorithm::nautilus::grammartec;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
@@ -136,20 +136,20 @@ $(function() {
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID.html">NodeID</a> r1 = x;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID.html">NodeID</a> r2(y);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">size_t</span> sum_from_nodes = 0;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> node: boost::irange(r1, r2)) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> node : boost::irange(r1, r2)) {</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    sum_from_nodes += node;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">size_t</span> sum_from_ints = 0;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> i: boost::irange(x, y)) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> i : boost::irange(x, y)) {</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    sum_from_ints += i;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  }</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  BOOST_CHECK_EQUAL(sum_from_nodes, sum_from_ints);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID.html">fuzzuf::algorithm::nautilus::grammartec::NodeID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00059">newtypes.hpp:59</a></div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">fuzzuf::algorithm::nautilus::grammartec::NTermID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00069">newtypes.hpp:69</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NodeID.html">fuzzuf::algorithm::nautilus::grammartec::NodeID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00058">newtypes.hpp:58</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1NTermID.html">fuzzuf::algorithm::nautilus::grammartec::NTermID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00068">newtypes.hpp:68</a></div></div>
 <div class="ttc" id="anewtypes_8hpp_html"><div class="ttname"><a href="newtypes_8hpp.html">newtypes.hpp</a></div><div class="ttdoc">Definitions of some simple types.</div></div>
-<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html">fuzzuf::algorithm::nautilus::grammartec::RuleID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00055">newtypes.hpp:55</a></div></div>
+<div class="ttc" id="astructfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1nautilus_1_1grammartec_1_1RuleID.html">fuzzuf::algorithm::nautilus::grammartec::RuleID</a></div><div class="ttdef"><b>Definition:</b> <a href="newtypes_8hpp_source.html#l00054">newtypes.hpp:54</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
