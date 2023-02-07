@@ -183,7 +183,7 @@ $(function() {
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="comment">/* Every now and then, write plot data. */</span></div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">if</span> (cur_ms - last_plot_ms &gt; GetPlotUpdateSec(*<span class="keyword">this</span>) * 1000) {</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    last_plot_ms = cur_ms;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    MaybeUpdatePlotFile(t_byte_ratio, avg_exec);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    MaybeUpdatePlotFile(t_byte_ratio, avg_exec, t_bytes);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  }</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="comment">/* Honor AFL_EXIT_WHEN_DONE and AFL_BENCH_UNTIL_CRASH. */</span></div>

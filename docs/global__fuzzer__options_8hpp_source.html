@@ -143,27 +143,29 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  std::string in_dir;   <span class="comment">// Required; TODO: fs::path might be better</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::string out_dir;  <span class="comment">// Required</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="classfuzzuf_1_1cli_1_1ExecutorKind.html">fuzzuf::cli::ExecutorKind</a> executor;    <span class="comment">// Optional</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  std::optional&lt;fs::path&gt; proxy_path;    <span class="comment">// Optional</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  std::optional&lt;u32&gt; exec_timelimit_ms;  <span class="comment">// Optional</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  std::optional&lt;u32&gt; exec_memlimit;      <span class="comment">// Optional</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  utils::Logger logger;                  <span class="comment">// Required</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  std::optional&lt;fs::path&gt; log_file;      <span class="comment">// Optional</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="comment">// Default values</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="structfuzzuf_1_1cli_1_1GlobalFuzzerOptions.html">GlobalFuzzerOptions</a>()</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      : help(<span class="keyword">false</span>),</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        fuzzer(<span class="stringliteral">&quot;afl&quot;</span>),</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        in_dir(<span class="stringliteral">&quot;./seeds&quot;</span>),               <span class="comment">// FIXME: Assuming Linux</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        out_dir(<span class="stringliteral">&quot;/tmp/fuzzuf-out_dir&quot;</span>),  <span class="comment">// FIXME: Assuming Linux</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        executor(fuzzuf::cli::ExecutorKind::NATIVE),</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        proxy_path(std::nullopt),</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        exec_timelimit_ms(std::nullopt),  <span class="comment">// Specify no limits</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        exec_memlimit(std::nullopt),</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        logger(utils::Logger::Stdout),</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        log_file(std::nullopt){};</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;};</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}  <span class="comment">// namespace fuzzuf::cli</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">int</span> cpuid_to_bind;                     <span class="comment">// Optional</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  std::optional&lt;fs::path&gt; proxy_path;    <span class="comment">// Optional</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  std::optional&lt;u32&gt; exec_timelimit_ms;  <span class="comment">// Optional</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  std::optional&lt;u32&gt; exec_memlimit;      <span class="comment">// Optional</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  utils::Logger logger;                  <span class="comment">// Required</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  std::optional&lt;fs::path&gt; log_file;      <span class="comment">// Optional</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="comment">// Default values</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="structfuzzuf_1_1cli_1_1GlobalFuzzerOptions.html">GlobalFuzzerOptions</a>()</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      : help(<span class="keyword">false</span>),</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        fuzzer(<span class="stringliteral">&quot;afl&quot;</span>),</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        in_dir(<span class="stringliteral">&quot;./seeds&quot;</span>),               <span class="comment">// FIXME: Assuming Linux</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        out_dir(<span class="stringliteral">&quot;/tmp/fuzzuf-out_dir&quot;</span>),  <span class="comment">// FIXME: Assuming Linux</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        executor(fuzzuf::cli::ExecutorKind::NATIVE),</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        cpuid_to_bind(utils::CPUID_BIND_WHICHEVER),</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        proxy_path(std::nullopt),</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        exec_timelimit_ms(std::nullopt),  <span class="comment">// Specify no limits</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        exec_memlimit(std::nullopt),</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        logger(utils::Logger::Stdout),</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        log_file(std::nullopt){};</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}  <span class="comment">// namespace fuzzuf::cli</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassfuzzuf_1_1cli_1_1ExecutorKind_html"><div class="ttname"><a href="classfuzzuf_1_1cli_1_1ExecutorKind.html">fuzzuf::cli::ExecutorKind</a></div><div class="ttdoc">Represents an executor type for CLI.</div><div class="ttdef"><b>Definition:</b> <a href="global__fuzzer__options_8hpp_source.html#l00033">global_fuzzer_options.hpp:33</a></div></div>
 <div class="ttc" id="afilesystem_8hpp_html"><div class="ttname"><a href="filesystem_8hpp.html">filesystem.hpp</a></div></div>

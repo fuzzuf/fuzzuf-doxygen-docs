@@ -262,7 +262,7 @@ $(function() {
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      global_options.exec_timelimit_ms.value_or(GetExecTimeout&lt;RezzufTag&gt;()),</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      mem_limit, rezzuf_options.forksrv,</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      <span class="comment">/* dumb_mode */</span> <span class="keyword">false</span>,  <span class="comment">// FIXME: add dumb_mode</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      fuzzuf::utils::CPUID_BIND_WHICHEVER, schedule, rezzuf_options.schedule);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      global_options.cpuid_to_bind, schedule, rezzuf_options.schedule);</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="comment">// NativeLinuxExecutor needs the directory specified by &quot;out_dir&quot; to be</span></div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="comment">// already set up so we need to create the directory first, and then</span></div>

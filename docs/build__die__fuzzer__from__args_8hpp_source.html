@@ -233,7 +233,7 @@ $(function() {
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      global_options.exec_timelimit_ms.value_or(GetExecTimeout&lt;DIETag&gt;()),</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      global_options.exec_memlimit.value_or(GetMemLimit&lt;DIETag&gt;()),</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      <span class="comment">/* forksrv */</span> <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      <span class="comment">/* dumb_mode */</span> <span class="keyword">false</span>, fuzzuf::utils::CPUID_BIND_WHICHEVER,</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      <span class="comment">/* dumb_mode */</span> <span class="keyword">false</span>, global_options.cpuid_to_bind,</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      die_options.die_dir,  <span class="comment">// vvv DIE vvv</span></div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      die_options.cmd_py, die_options.cmd_node, die_options.d8_path,</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;      die_options.d8_flags, die_options.typer_path, die_options.mut_cnt);</div>
