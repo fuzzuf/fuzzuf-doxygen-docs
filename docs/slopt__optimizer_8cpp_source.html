@@ -131,7 +131,7 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  prev_pulled_batch =</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      bat_bandits[prev_bucket_idx][prev_pulled_mutop].PullArm({});</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> prev_pulled_batch;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> 1u &lt;&lt; prev_pulled_batch;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;u32 SloptOptimizer::CalcMutop([[maybe_unused]] u32 batch_idx) {</div>
