@@ -96,9 +96,9 @@ Collaboration diagram for fuzzuf::algorithm::afl::AFLHavocOptimizer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a51174b5397d247fe2fb6189cee2da34c"><td class="memItemLeft" align="right" valign="top"><a id="a51174b5397d247fe2fb6189cee2da34c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AFLHavocOptimizer</b> (std::shared_ptr&lt; <a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">optimizer::Optimizer</a>&lt; u32 &gt;&gt; mutop_optimizer)</td></tr>
-<tr class="separator:a51174b5397d247fe2fb6189cee2da34c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b33892faba8c750d53b4c93b58faa9e"><td class="memItemLeft" align="right" valign="top"><a id="a5b33892faba8c750d53b4c93b58faa9e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>AFLHavocOptimizer</b> (std::shared_ptr&lt; <a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">optimizer::Optimizer</a>&lt; u32 &gt;&gt; mutop_optimizer, int havoc_stack_pow)</td></tr>
+<tr class="separator:a5b33892faba8c750d53b4c93b58faa9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9f3afe0665a429dfc912ee35deb1775"><td class="memItemLeft" align="right" valign="top"><a id="ab9f3afe0665a429dfc912ee35deb1775"></a>
 u32&#160;</td><td class="memItemRight" valign="bottom"><b>CalcMutop</b> (u32 batch_idx) override</td></tr>
 <tr class="separator:ab9f3afe0665a429dfc912ee35deb1775"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,6 +121,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:affb020c4de40130a1bcb53323d822392"><td class="memItemLeft" align="right" valign="top"><a id="affb020c4de40130a1bcb53323d822392"></a>
 std::shared_ptr&lt; <a class="el" href="classfuzzuf_1_1optimizer_1_1Optimizer.html">optimizer::Optimizer</a>&lt; u32 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mutop_optimizer</b></td></tr>
 <tr class="separator:affb020c4de40130a1bcb53323d822392"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94496e43df7cb52aab361097cfdc3727"><td class="memItemLeft" align="right" valign="top"><a id="a94496e43df7cb52aab361097cfdc3727"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>havoc_stack_pow</b></td></tr>
+<tr class="separator:a94496e43df7cb52aab361097cfdc3727"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">

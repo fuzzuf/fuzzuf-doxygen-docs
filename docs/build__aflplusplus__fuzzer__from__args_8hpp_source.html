@@ -356,43 +356,47 @@ $(function() {
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        AFLPLUSPLUS_NUM_CASE, GetMaxFile&lt;AFLplusplusTag&gt;(),</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        GetHavocStackPow2&lt;AFLplusplusTag&gt;()));</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    std::unique_ptr&lt;optimizer::Optimizer&lt;u32&gt;&gt; mutop_optimizer(</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keyword">new</span> algorithm::aflplusplus::havoc::AFLplusplusHavocCaseDistrib());</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    havoc_optimizer.reset(</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keyword">new</span> algorithm::afl::AFLHavocOptimizer(std::move(mutop_optimizer)));</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  <span class="comment">// Create AFLplusplusState</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  <span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusState.html">fuzzuf::algorithm::aflplusplus::AFLplusplusState</a>;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="keyword">auto</span> state = std::make_unique&lt;AFLplusplusState&gt;(setting, executor,</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                                                  std::move(havoc_optimizer));</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  state-&gt;skip_deterministic = !vm.count(<span class="stringliteral">&quot;det&quot;</span>);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="comment">// Load dictionary</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;d : aflplusplus_options.dict_file) {</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">fuzzuf::algorithm::afl::dictionary::AFLDictData</a>;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keyword">using</span> algorithm::afl::AFLHavocOptimizer;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keyword">using</span> algorithm::afl::option::GetHavocStackPow2;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keyword">using</span> algorithm::aflplusplus::havoc::AFLplusplusHavocCaseDistrib;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    std::unique_ptr&lt;optimizer::Optimizer&lt;u32&gt;&gt; mutop_optimizer(</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keyword">new</span> AFLplusplusHavocCaseDistrib());</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    havoc_optimizer.reset(<span class="keyword">new</span> AFLHavocOptimizer(</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        std::move(mutop_optimizer), GetHavocStackPow2&lt;AFLplusplusTag&gt;()));</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  }</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <span class="comment">// Create AFLplusplusState</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusState.html">fuzzuf::algorithm::aflplusplus::AFLplusplusState</a>;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="keyword">auto</span> state = std::make_unique&lt;AFLplusplusState&gt;(setting, executor,</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                                                  std::move(havoc_optimizer));</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  state-&gt;skip_deterministic = !vm.count(<span class="stringliteral">&quot;det&quot;</span>);</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keyword">const</span> std::function&lt;void(std::string &amp;&amp;)&gt; f = [](std::string s) {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      ERROR(<span class="stringliteral">&quot;Dictionary error: %s&quot;</span>, s.c_str());</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    };</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <span class="comment">// Load dictionary</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;d : aflplusplus_options.dict_file) {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keyword">using</span> <a class="code" href="structfuzzuf_1_1algorithm_1_1afl_1_1dictionary_1_1AFLDictData.html">fuzzuf::algorithm::afl::dictionary::AFLDictData</a>;</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    fuzzuf::algorithm::afl::dictionary::load(d, state-&gt;extras, <span class="keyword">false</span>, f);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  }</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  fuzzuf::algorithm::afl::dictionary::SortDictByLength(state-&gt;extras);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keyword">const</span> std::function&lt;void(std::string &amp;&amp;)&gt; f = [](std::string s) {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      ERROR(<span class="stringliteral">&quot;Dictionary error: %s&quot;</span>, s.c_str());</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    };</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">if</span> (aflplusplus_options.parallel_mode != utils::ParallelModeT::SINGLE) {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    state-&gt;sync_external_queue = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    state-&gt;sync_id = aflplusplus_options.instance_id;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <span class="keywordflow">return</span> std::unique_ptr&lt;TFuzzer&gt;(</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      <span class="keyword">dynamic_cast&lt;</span>TFuzzer *<span class="keyword">&gt;</span>(<span class="keyword">new</span> TAFLFuzzer(std::move(state))));</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;}</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    fuzzuf::algorithm::afl::dictionary::load(d, state-&gt;extras, <span class="keyword">false</span>, f);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  fuzzuf::algorithm::afl::dictionary::SortDictByLength(state-&gt;extras);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordflow">if</span> (aflplusplus_options.parallel_mode != utils::ParallelModeT::SINGLE) {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    state-&gt;sync_external_queue = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    state-&gt;sync_id = aflplusplus_options.instance_id;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  }</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}  <span class="comment">// namespace fuzzuf::cli::fuzzer::aflplusplus</span></div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordflow">return</span> std::unique_ptr&lt;TFuzzer&gt;(</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;      <span class="keyword">dynamic_cast&lt;</span>TFuzzer *<span class="keyword">&gt;</span>(<span class="keyword">new</span> TAFLFuzzer(std::move(state))));</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;}</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;}  <span class="comment">// namespace fuzzuf::cli::fuzzer::aflplusplus</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassfuzzuf_1_1cli_1_1ExecutorKind_html"><div class="ttname"><a href="classfuzzuf_1_1cli_1_1ExecutorKind.html">fuzzuf::cli::ExecutorKind</a></div><div class="ttdoc">Represents an executor type for CLI.</div><div class="ttdef"><b>Definition:</b> <a href="global__fuzzer__options_8hpp_source.html#l00033">global_fuzzer_options.hpp:33</a></div></div>
 <div class="ttc" id="astructfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusSetting_html"><div class="ttname"><a href="structfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusSetting.html">fuzzuf::algorithm::aflplusplus::AFLplusplusSetting</a></div><div class="ttdef"><b>Definition:</b> <a href="aflplusplus__setting_8hpp_source.html#l00025">aflplusplus_setting.hpp:25</a></div></div>
