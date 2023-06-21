@@ -250,7 +250,7 @@ $(function() {
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  ssize_t nbytes = read_n(fd, buf, len, original_behaviour);</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keywordflow">if</span> (nbytes != len) {</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">throw</span> FileError(</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        StrPrintf(<span class="stringliteral">&quot;Failed to read exact len bytes: fd=%d, len=%d, nbytes=%d&quot;</span>,</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        StrPrintf(<span class="stringliteral">&quot;Failed to read exact len bytes: fd=%d, len=%d, nbytes=%ld&quot;</span>,</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                  fd, len, nbytes));</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  }</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <span class="keywordflow">return</span> nbytes;</div>
@@ -261,7 +261,7 @@ $(function() {
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  ssize_t nbytes = write_n(fd, buf, len);</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="keywordflow">if</span> (nbytes != len) {</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">throw</span> FileError(</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        StrPrintf(<span class="stringliteral">&quot;Failed to write exact len bytes: fd=%d, len=%d, nbytes=%d&quot;</span>,</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        StrPrintf(<span class="stringliteral">&quot;Failed to write exact len bytes: fd=%d, len=%d, nbytes=%ld&quot;</span>,</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                  fd, len, nbytes));</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  }</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordflow">return</span> nbytes;</div>
@@ -375,7 +375,7 @@ $(function() {
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  off_t result = 0;</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  <span class="keywordflow">if</span> ((result = lseek(fd, offset, whence)) &lt; 0)</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">throw</span> FileError(</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        StrPrintf(<span class="stringliteral">&quot;Failed to lseek(fd=%d, offset=%d, whence=%d) = %d&quot;</span>, fd,</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        StrPrintf(<span class="stringliteral">&quot;Failed to lseek(fd=%d, offset=%ld, whence=%d) = %ld&quot;</span>, fd,</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                  offset, whence, result));</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;}</div>
