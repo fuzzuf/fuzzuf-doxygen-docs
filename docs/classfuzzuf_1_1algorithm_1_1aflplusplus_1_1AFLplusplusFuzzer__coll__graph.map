@@ -1,6 +1,0 @@
-<map id="fuzzuf::algorithm::aflplusplus::AFLplusplusFuzzer" name="fuzzuf::algorithm::aflplusplus::AFLplusplusFuzzer">
-<area shape="rect" id="node1" title=" " alt="" coords="507,75,727,117"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="217,5,389,61"/>
-<area shape="rect" id="node3" href="$classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="5,20,164,47"/>
-<area shape="rect" id="node4" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html" title=" " alt="" coords="213,85,392,141"/>
-</map>

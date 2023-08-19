@@ -1,4 +1,0 @@
-<map id="fuzzuf::algorithm::libfuzzer::Config" name="fuzzuf::algorithm::libfuzzer::Config">
-<area shape="rect" id="node1" title="libFuzzer parameters" alt="" coords="25,109,165,151"/>
-<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html" title="libFuzzer parameters affecting on entropic mode" alt="" coords="5,5,185,47"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="fuzzuf::algorithm::afl_symcc::AFLSymCCFuzzerTemplate&lt; State &gt;" name="fuzzuf::algorithm::afl_symcc::AFLSymCCFuzzerTemplate&lt; State &gt;">
-<area shape="rect" id="node1" title="The fuzzer executes AFL and SymCC alternately." alt="" coords="52,109,320,165"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="5,13,164,39"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1cli_1_1fuzzer_1_1afl__symcc_1_1SymCCOptions.html" title=" " alt="" coords="189,5,389,47"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="fuzzuf::executor::AFLExecutorInterface" name="fuzzuf::executor::AFLExecutorInterface">
-<area shape="rect" id="node1" title="Represents minimal requirements for an AFL&#45;capable executor." alt="" coords="7,5,221,47"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1executor_1_1IJONExecutorInterface.html" title="Represents minimal requirements for an AFL&#45;capable executor." alt="" coords="5,95,223,136"/>
-</map>

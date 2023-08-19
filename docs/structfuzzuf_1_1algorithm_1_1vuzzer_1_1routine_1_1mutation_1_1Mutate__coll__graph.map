@@ -1,6 +1,0 @@
-<map id="fuzzuf::algorithm::vuzzer::routine::mutation::Mutate" name="fuzzuf::algorithm::vuzzer::routine::mutation::Mutate">
-<area shape="rect" id="node1" title=" " alt="" coords="529,53,716,109"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="257,5,444,76"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html" title=" " alt="" coords="274,100,427,141"/>
-<area shape="rect" id="node4" href="$classfuzzuf_1_1exec__input_1_1ExecInputSet.html" title=" " alt="" coords="5,100,144,141"/>
-</map>

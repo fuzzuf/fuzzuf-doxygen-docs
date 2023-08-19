@@ -1,7 +1,0 @@
-<map id="fuzzuf::executor::ProxyExecutor" name="fuzzuf::executor::ProxyExecutor">
-<area shape="rect" id="node1" title=" " alt="" coords="109,169,335,196"/>
-<area shape="rect" id="node4" href="$classfuzzuf_1_1executor_1_1CoreSightExecutor.html" title=" " alt="" coords="5,244,201,285"/>
-<area shape="rect" id="node5" href="$classfuzzuf_1_1executor_1_1QEMUExecutor.html" title=" " alt="" coords="226,251,455,278"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1executor_1_1BaseProxyExecutor.html" title=" " alt="" coords="121,80,323,121"/>
-<area shape="rect" id="node3" href="$classfuzzuf_1_1executor_1_1Executor.html" title=" " alt="" coords="127,5,317,32"/>
-</map>

@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['fuzzuf_2414',['fuzzuf',['../md_README.html',1,'']]],
-  ['fuzzuf_20to_2ddos_2415',['fuzzuf To-Dos',['../md_TODO.html',1,'']]]
-];

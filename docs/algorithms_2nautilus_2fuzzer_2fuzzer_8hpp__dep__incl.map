@@ -1,7 +1,0 @@
-<map id="include/fuzzuf/algorithms/nautilus/fuzzer/fuzzer.hpp" name="include/fuzzuf/algorithms/nautilus/fuzzer/fuzzer.hpp">
-<area shape="rect" id="node1" title="Fuzzing loop of Nautilus." alt="" coords="293,5,487,47"/>
-<area shape="rect" id="node2" href="$nautilus_2fuzzer_2fuzzer_8cpp.html" title="Fuzzing loop of Nautilus." alt="" coords="5,95,153,136"/>
-<area shape="rect" id="node3" href="$register__nautilus__fuzzer_8cpp_source.html" title=" " alt="" coords="178,95,386,136"/>
-<area shape="rect" id="node4" href="$algorithms_2nautilus_2loop_8cpp.html" title="Test code for VUzzers loop." alt="" coords="411,95,588,136"/>
-<area shape="rect" id="node5" href="$generator_8cpp.html" title="Generate strings using a grammar." alt="" coords="613,102,815,129"/>
-</map>
