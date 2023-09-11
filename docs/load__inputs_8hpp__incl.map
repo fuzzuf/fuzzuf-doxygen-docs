@@ -1,0 +1,20 @@
+<map id="include/fuzzuf/utils/load_inputs.hpp" name="include/fuzzuf/utils/load_inputs.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="325,5,471,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="213,95,276,121"/>
+<area shape="rect" id="node3" href="$filesystem_8hpp.html" title=" " alt="" coords="301,95,495,121"/>
+<area shape="rect" id="node6" href="$map__file_8hpp.html" title=" " alt="" coords="533,95,716,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="221,177,295,203"/>
+<area shape="rect" id="node5" title=" " alt="" coords="319,177,477,203"/>
+<area shape="rect" id="node7" title=" " alt="" coords="784,259,935,300"/>
+<area shape="rect" id="node8" title=" " alt="" coords="771,177,838,203"/>
+<area shape="rect" id="node9" title=" " alt="" coords="309,266,386,293"/>
+<area shape="rect" id="node10" href="$shared__range_8hpp.html" title=" " alt="" coords="553,169,696,211"/>
+<area shape="rect" id="node11" title=" " alt="" coords="457,512,549,539"/>
+<area shape="rect" id="node12" href="$range__traits_8hpp.html" title=" " alt="" coords="411,259,545,300"/>
+<area shape="rect" id="node18" href="$remove__cvr_8hpp.html" title=" " alt="" coords="541,348,709,389"/>
+<area shape="rect" id="node13" title=" " alt="" coords="5,355,76,382"/>
+<area shape="rect" id="node14" title=" " alt="" coords="100,355,171,382"/>
+<area shape="rect" id="node15" title=" " alt="" coords="195,355,255,382"/>
+<area shape="rect" id="node16" href="$check__capability_8hpp.html" title=" " alt="" coords="279,348,415,389"/>
+<area shape="rect" id="node17" href="$void__t_8hpp.html" title=" " alt="" coords="299,437,465,464"/>
+</map>

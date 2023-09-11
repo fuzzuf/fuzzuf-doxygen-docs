@@ -1,0 +1,5 @@
+<map id="fuzzuf::optimizer::ConstantBatchHavocOptimizer" name="fuzzuf::optimizer::ConstantBatchHavocOptimizer">
+<area shape="rect" id="node1" title="Wrapper for mutop optimizer." alt="" coords="45,109,267,151"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1optimizer_1_1HavocOptimizer.html" title="Optimizer for two parameters used in Mutator::Havoc" alt="" coords="5,5,144,47"/>
+<area shape="rect" id="node3" href="$classfuzzuf_1_1optimizer_1_1Optimizer.html" title=" " alt="" coords="169,5,309,47"/>
+</map>

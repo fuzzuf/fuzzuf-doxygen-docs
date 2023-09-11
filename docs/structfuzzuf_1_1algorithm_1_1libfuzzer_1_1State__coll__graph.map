@@ -1,0 +1,6 @@
+<map id="fuzzuf::algorithm::libfuzzer::State" name="fuzzuf::algorithm::libfuzzer::State">
+<area shape="rect" id="node1" title="Struct to hold libFuzzer state." alt="" coords="33,317,173,359"/>
+<area shape="rect" id="node2" href="$structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html" title=" " alt="" coords="5,213,201,255"/>
+<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1libfuzzer_1_1Config.html" title="libFuzzer parameters" alt="" coords="33,109,173,151"/>
+<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1libfuzzer_1_1EntropicConfig.html" title="libFuzzer parameters affecting on entropic mode" alt="" coords="13,5,193,47"/>
+</map>

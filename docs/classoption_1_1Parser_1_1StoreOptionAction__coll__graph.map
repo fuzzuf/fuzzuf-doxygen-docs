@@ -1,0 +1,7 @@
+<map id="option::Parser::StoreOptionAction" name="option::Parser::StoreOptionAction">
+<area shape="rect" id="node1" title=" " alt="" coords="149,201,345,243"/>
+<area shape="rect" id="node2" href="$structoption_1_1Parser_1_1Action.html" title=" " alt="" coords="5,96,165,123"/>
+<area shape="rect" id="node3" href="$classoption_1_1Option.html" title="A parsed option from the command line together with its argument if it has one." alt="" coords="189,96,304,123"/>
+<area shape="rect" id="node4" href="$structoption_1_1Descriptor.html" title="Describes an option, its help text (usage) and how it should be parsed." alt="" coords="177,5,316,32"/>
+<area shape="rect" id="node5" href="$classoption_1_1Parser.html" title="Checks argument vectors for validity and parses them into data structures that are easier to work wit..." alt="" coords="394,96,505,123"/>
+</map>
