@@ -153,17 +153,6 @@ Support for multiple types of executors in non-AFL family fuzzers</h2>
 Update &lt;tt&gt;HierarFlowRoutine::CallSuccessors&lt;/tt&gt;</h2>
 <p>As a comment in <code>HierarFlowRoutine::CallSuccessors</code> says, <code>HierarFlowCallee&lt;I&gt;::operator()</code> doesn't need to return <code>NullableRef&lt;HierarFlowCallee&lt;I&gt;&gt;</code> now. Formerly, HierarFlowNode has been expressed by linked lists, which made us use NullableRef (equivalent of raw pointer) to efficiently describe which node should be executed next. Now that HierarFlowNode is implemented with std::vector, <code>HierarFlowCallee&lt;I&gt;::operator()</code> can return integers(indices) instead of pointers. Although there is no worry about applying this change, the change is just too big to be suddenly made without notice to the others. Also, we'll have to update some documents.</p>
 <h2><a class="anchor" id="autotoc_md12025"></a>
-Implement more fuzzing algorithms</h2>
-<p>The following algorithms are currently planned to be implemented: <br  />
-</p>
-<ul>
-<li>MOpt [^mopt]</li>
-<li>Eclipser [^eclipser]</li>
-<li>QSYM [^qsym]</li>
-</ul>
-<p>About some algorithms, it is difficult to determine what is considered a <em>complete</em> implementation. For example, Eclipser is designed differently in v1.0 and v2.0, and we have to discuss whether to implement one or the other (or both). Such algorithms require some discussions.</p>
-<p>Among these, the implementation of MOpt is in progress.</p>
-<h2><a class="anchor" id="autotoc_md12026"></a>
 Implement more types of Executor</h2>
 <p>The following executors will be implemented in the future:</p>
 <ul>
@@ -171,35 +160,35 @@ Implement more types of Executor</h2>
 <li>AndroidExecutor</li>
 <li>Other Executor using dynamic instrumentation tools such as Frida and DynamoRIO</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12027"></a>
+<h2><a class="anchor" id="autotoc_md12026"></a>
 Take various benchmarks</h2>
 <p>We need to benchmark our implementation to know how fast it really is. In addition, the more benchmarks we have, the more likely we are to notice degrades and bugs. Maybe the results of benchmarking will help us come up with new algorithm ideas. We would like to talk about what kind of benchmarks would be nice to have.</p>
-<h1><a class="anchor" id="autotoc_md12028"></a>
+<h1><a class="anchor" id="autotoc_md12027"></a>
 To-Dos that don't require careful consideration</h1>
-<h2><a class="anchor" id="autotoc_md12029"></a>
+<h2><a class="anchor" id="autotoc_md12028"></a>
 Add the &lt;em&gt;virtual&lt;/em&gt; fork server for the non-fork-server mode of &lt;tt&gt;NativeLinuxExecutor&lt;/tt&gt;</h2>
 <p><code>NativeLinuxExecutor</code> has two modes: fork-server mode and non-fork-server mode. These modes are implemented by reference to AFL. However, that implementation has some issues. Its worst drawback is that it heavily uses signals and per-process timers. This means it can't have multiple fuzzer instances in one process (though we are not sure if someone has such purposes in practice). Also, it prevents us from consolidating signal handlers because AFL requires another signal handler for its private use. These issues can be resolved by preparing <em>virtual</em> fork server, which follows the same protocol as the fork server inside PUTs compatible with fork-server mode, and which internally executes a specified PUT with fork() and exec() once it receives the request to do so. Actually, AFL++ has this feature.</p>
-<h2><a class="anchor" id="autotoc_md12030"></a>
+<h2><a class="anchor" id="autotoc_md12029"></a>
 Implement persistent mode in &lt;tt&gt;NativeLinuxExecutor&lt;/tt&gt;</h2>
 <p>We should implement this: <a href="https://lcamtuf.blogspot.com/2015/06/new-in-afl-persistent-mode.html">https://lcamtuf.blogspot.com/2015/06/new-in-afl-persistent-mode.html</a> With this mode, the performance of fuzzuf's libFuzzer would be comparable to that of the original libFuzzer.</p>
-<h2><a class="anchor" id="autotoc_md12031"></a>
+<h2><a class="anchor" id="autotoc_md12030"></a>
 Remove raw pointers/buffers from &lt;tt&gt;Mutator&lt;/tt&gt;</h2>
 <p>It's too bad <code>Mutator</code> has some raw pointers as its members, such as <code>u8 *Mutator::outbuf</code> and <code>u8 *Mutator::tmpbuf</code>. These members can be smart pointers or <code>std::vector</code>. We just want to replace them.</p>
-<h2><a class="anchor" id="autotoc_md12032"></a>
+<h2><a class="anchor" id="autotoc_md12031"></a>
 Add CODING_RULE.md and refactor the code in accordance with CODING_RULE.md</h2>
 <p>In the past, we didn't have no explicit coding rules. Nevertheless, we have continued developping fuzzuf simultaneously and almost independently of each other. As a result, the code base doesn't look well-organized. This would make the contributors and users confusing, so we must fix it. We have already almost finished creating CODING_RULE.md internally. We will release it after review and formatting is complete. Especially, because we started implementing libFuzzer at a very early stage, the large part of the implementation of libFuzzer doesn't conform to that rules. We will resolve this issue gradually simply because they are too large to fix immediately.</p>
-<h1><a class="anchor" id="autotoc_md12033"></a>
+<h1><a class="anchor" id="autotoc_md12032"></a>
 To-Dos in each fuzzing algorithm (most of which don't require careful consideration)</h1>
-<h2><a class="anchor" id="autotoc_md12034"></a>
+<h2><a class="anchor" id="autotoc_md12033"></a>
 AFL</h2>
 <p>This section documents To-Dos of AFL.</p>
-<h3><a class="anchor" id="autotoc_md12035"></a>
+<h3><a class="anchor" id="autotoc_md12034"></a>
 Implement resume mode and parallel fuzzing in AFL</h3>
 <p>They are just unimplemented.</p>
-<h3><a class="anchor" id="autotoc_md12036"></a>
+<h3><a class="anchor" id="autotoc_md12035"></a>
 Implement SIGUSR1 Handling on AFL</h3>
 <p>This feature is just unimplemented.</p>
-<h3><a class="anchor" id="autotoc_md12037"></a>
+<h3><a class="anchor" id="autotoc_md12036"></a>
 Remove careless templates from AFL</h3>
 <p>In the implmentation of AFL, we use a lot of <code>template</code> to allow users to define the derived classes of <code>AFLTestcase</code> and <code>AFLState</code>. But this is just cutting corners. Let us explain what we've done with an example. Let's say, we want to define a function that takes a reference of some struct as an argument. The struct has a member named "x". The function would look like the following:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> SomeFunc(<span class="keyword">const</span> SomeStruct&amp; stru) {</div>
@@ -216,25 +205,25 @@ Remove careless templates from AFL</h3>
 <div class="line">  std::cout &lt;&lt; stru.GetX() &lt;&lt; std::endl;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>We should rewrite the classes of AFL in the same way eventually.</p>
-<h2><a class="anchor" id="autotoc_md12038"></a>
+<h2><a class="anchor" id="autotoc_md12037"></a>
 IJON</h2>
 <p>This section documents To-Dos of IJON.</p>
-<h3><a class="anchor" id="autotoc_md12039"></a>
+<h3><a class="anchor" id="autotoc_md12038"></a>
 Implement annotations</h3>
 <p>What IJON proposed is not just a fuzzer, but a set of a fuzzer and an annotation mechanism in PUTs. Unfortunately, the annotation mechanism is not implemented in fuzzuf because fuzzuf doesn't have its own instrumentation tool yet. This should be implemented immediately after fuzzuf-cc becomes ready.</p>
-<h3><a class="anchor" id="autotoc_md12040"></a>
+<h3><a class="anchor" id="autotoc_md12039"></a>
 Test with Super Mario Bros.</h3>
 <p>To prove that our IJON fuzzer works well to some extent, one of the most comprehensible tests would be check if the fuzzer can play Super Mario Bros. well, as done in the paper of IJON.</p>
-<h2><a class="anchor" id="autotoc_md12041"></a>
+<h2><a class="anchor" id="autotoc_md12040"></a>
 Nautilus</h2>
 <p>This section documents To-Dos of Nautilus.</p>
-<h3><a class="anchor" id="autotoc_md12042"></a>
+<h3><a class="anchor" id="autotoc_md12041"></a>
 Use vector instead of string</h3>
 <p>The current parser/unparser of the grammar and rules uses <code>std::string</code> as its data pool instead of <code>std::vector&lt;u8&gt;</code>. This should be changed to <code>std::vector&lt;u8&gt;</code> because <code>std::string</code> is originally not meant to hold unprintable strings.</p>
-<h3><a class="anchor" id="autotoc_md12043"></a>
+<h3><a class="anchor" id="autotoc_md12042"></a>
 Improve queue</h3>
 <p>The implementation of the seed queue in the original Nautilus has a lot of room for optimization. The current implementation of fuzzuf is similar to the original one and should be improved.</p>
-<p>[^mopt]: Chenyang Lyu, Shouling Ji, Chao Zhang, Yuwei Li, Wei-Han Lee, Yu Song, and Raheem Beyah. 2019. MOpt: Optimized Mutation Scheduling for Fuzzers. In Proceedings of the 28th USENIX Security Symposium (Security'19). [^eclipser]: Jaeseung Choi, Joonun Jang, Choongwoo Han, and Sang K. Cha. 2019. Grey-box Concolic Testing on Binary Code. In Proceedings of the 41st ACM/IEEE International Conference on Software Engineering (ICSE'19). [^qsym]: Insu Yun, Sangho Lee, Meng Xu, Yeongjin Jang, and Taesoo Kim. 2018. QSYM : A Practical Concolic Execution Engine Tailored for Hybrid Fuzzing. In Proceedings of the 27th USENIX Security Symposium (Security'18). [^die]: Soyeon Park, Wen Xu, Insu Yun, Daehee Jang, and Taesoo Kim. 2020. Fuzzing JavaScript Engines with Aspect-preserving Mutation. In Proceedings of the 41st IEEE Symposium on Security and Privacy (S&amp;P’20). [^winafl]: Google Project Zero. "WinAFL" <a href="https://github.com/googleprojectzero/winafl">https://github.com/googleprojectzero/winafl</a> [^winnie]: Jinho Jung, Stephen Tong, Hong Hu, Jungwon Lim, Yonghwi Jin, and Taesoo Kim. 2021. WINNIE: Fuzzing Windows Applications with Harness Synthesis and Fast Cloning. In the Network and Distribution System Security (NDSS'21). </p>
+<p>[^winafl]: Google Project Zero. "WinAFL" <a href="https://github.com/googleprojectzero/winafl">https://github.com/googleprojectzero/winafl</a> [^winnie]: Jinho Jung, Stephen Tong, Hong Hu, Jungwon Lim, Yonghwi Jin, and Taesoo Kim. 2021. WINNIE: Fuzzing Windows Applications with Harness Synthesis and Fast Cloning. In the Network and Distribution System Security (NDSS'21). </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
