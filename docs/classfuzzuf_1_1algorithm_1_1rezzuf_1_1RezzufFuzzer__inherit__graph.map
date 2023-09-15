@@ -1,5 +1,5 @@
 <map id="fuzzuf::algorithm::rezzuf::RezzufFuzzer" name="fuzzuf::algorithm::rezzuf::RezzufFuzzer">
-<area shape="rect" id="node1" title=" " alt="" coords="14,184,169,225"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="5,80,177,136"/>
-<area shape="rect" id="node3" href="$classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="12,5,171,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="15,184,169,225"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="5,80,179,136"/>
+<area shape="rect" id="node3" href="$classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="13,5,171,32"/>
 </map>

@@ -1,30 +1,30 @@
 <map id="fuzzuf::fuzzer::Fuzzer" name="fuzzuf::fuzzer::Fuzzer">
 <area shape="rect" id="node1" title=" " alt="" coords="5,700,164,727"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,5,432,61"/>
-<area shape="rect" id="node4" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,85,432,141"/>
-<area shape="rect" id="node6" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,165,432,221"/>
-<area shape="rect" id="node8" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,245,432,301"/>
-<area shape="rect" id="node10" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,325,432,381"/>
-<area shape="rect" id="node12" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,405,432,461"/>
-<area shape="rect" id="node14" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,485,432,541"/>
-<area shape="rect" id="node16" href="$classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html" title=" " alt="" coords="212,565,480,621"/>
-<area shape="rect" id="node18" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,645,432,701"/>
-<area shape="rect" id="node20" href="$classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html" title="The fuzzer executes AFL and SymCC alternately." alt="" coords="212,725,480,781"/>
-<area shape="rect" id="node21" href="$classfuzzuf_1_1algorithm_1_1eclipser_1_1EclipserFuzzer.html" title=" " alt="" coords="259,806,433,847"/>
-<area shape="rect" id="node22" href="$classfuzzuf_1_1algorithm_1_1libfuzzer_1_1LibFuzzer.html" title=" " alt="" coords="273,871,419,913"/>
-<area shape="rect" id="node23" href="$classfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusFuzzer.html" title=" " alt="" coords="254,937,438,993"/>
-<area shape="rect" id="node24" href="$classfuzzuf_1_1algorithm_1_1nezha_1_1NezhaFuzzer.html" title=" " alt="" coords="270,1018,422,1059"/>
-<area shape="rect" id="node25" href="$classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzer.html" title=" " alt="" coords="276,1083,416,1125"/>
-<area shape="rect" id="node26" href="$classfuzzuf_1_1bindings_1_1python_1_1PythonFuzzer.html" title=" " alt="" coords="257,1149,435,1190"/>
-<area shape="rect" id="node27" href="$classfuzzuf_1_1cli_1_1AFLFuzzerStub.html" title=" " alt="" coords="253,1214,439,1255"/>
-<area shape="rect" id="node28" href="$classfuzzuf_1_1cli_1_1VUzzerStub.html" title=" " alt="" coords="263,1279,429,1321"/>
-<area shape="rect" id="node3" href="$classfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastFuzzer.html" title=" " alt="" coords="557,13,720,54"/>
-<area shape="rect" id="node5" href="$classfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer.html" title=" " alt="" coords="529,93,749,134"/>
-<area shape="rect" id="node7" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzer.html" title=" " alt="" coords="569,173,709,214"/>
-<area shape="rect" id="node9" href="$classfuzzuf_1_1algorithm_1_1die_1_1DIEFuzzer.html" title=" " alt="" coords="569,253,709,294"/>
-<area shape="rect" id="node11" href="$classfuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer.html" title="CLI compatible interface for IJON." alt="" coords="569,333,709,374"/>
-<area shape="rect" id="node13" href="$classfuzzuf_1_1algorithm_1_1mopt_1_1MOptFuzzer.html" title=" " alt="" coords="568,413,709,454"/>
-<area shape="rect" id="node15" href="$classfuzzuf_1_1algorithm_1_1rezzuf_1_1RezzufFuzzer.html" title=" " alt="" coords="561,493,716,534"/>
-<area shape="rect" id="node17" href="$classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzer.html" title=" " alt="" coords="535,573,743,614"/>
-<area shape="rect" id="node19" href="$structfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate.html" title="Wrapper to afl::AFLFuzzerTemplate. This class append two member functions required to run SymCC." alt="" coords="528,645,749,701"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,5,433,61"/>
+<area shape="rect" id="node4" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,85,433,141"/>
+<area shape="rect" id="node6" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,165,433,221"/>
+<area shape="rect" id="node8" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,245,433,301"/>
+<area shape="rect" id="node10" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,325,433,381"/>
+<area shape="rect" id="node12" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,405,433,461"/>
+<area shape="rect" id="node14" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,485,433,541"/>
+<area shape="rect" id="node16" href="$classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html" title=" " alt="" coords="212,565,481,621"/>
+<area shape="rect" id="node18" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="260,645,433,701"/>
+<area shape="rect" id="node20" href="$classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html" title="The fuzzer executes AFL and SymCC alternately." alt="" coords="212,725,481,781"/>
+<area shape="rect" id="node21" href="$classfuzzuf_1_1algorithm_1_1eclipser_1_1EclipserFuzzer.html" title=" " alt="" coords="259,806,434,847"/>
+<area shape="rect" id="node22" href="$classfuzzuf_1_1algorithm_1_1libfuzzer_1_1LibFuzzer.html" title=" " alt="" coords="273,871,420,913"/>
+<area shape="rect" id="node23" href="$classfuzzuf_1_1algorithm_1_1nautilus_1_1fuzzer_1_1NautilusFuzzer.html" title=" " alt="" coords="255,937,439,993"/>
+<area shape="rect" id="node24" href="$classfuzzuf_1_1algorithm_1_1nezha_1_1NezhaFuzzer.html" title=" " alt="" coords="271,1018,423,1059"/>
+<area shape="rect" id="node25" href="$classfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzer.html" title=" " alt="" coords="277,1083,417,1125"/>
+<area shape="rect" id="node26" href="$classfuzzuf_1_1bindings_1_1python_1_1PythonFuzzer.html" title=" " alt="" coords="258,1149,435,1190"/>
+<area shape="rect" id="node27" href="$classfuzzuf_1_1cli_1_1AFLFuzzerStub.html" title=" " alt="" coords="253,1214,440,1255"/>
+<area shape="rect" id="node28" href="$classfuzzuf_1_1cli_1_1VUzzerStub.html" title=" " alt="" coords="263,1279,430,1321"/>
+<area shape="rect" id="node3" href="$classfuzzuf_1_1algorithm_1_1aflfast_1_1AFLFastFuzzer.html" title=" " alt="" coords="558,13,723,54"/>
+<area shape="rect" id="node5" href="$classfuzzuf_1_1algorithm_1_1aflplusplus_1_1AFLplusplusFuzzer.html" title=" " alt="" coords="530,93,751,134"/>
+<area shape="rect" id="node7" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzer.html" title=" " alt="" coords="571,173,711,214"/>
+<area shape="rect" id="node9" href="$classfuzzuf_1_1algorithm_1_1die_1_1DIEFuzzer.html" title=" " alt="" coords="571,253,711,294"/>
+<area shape="rect" id="node11" href="$classfuzzuf_1_1algorithm_1_1ijon_1_1IJONFuzzer.html" title="CLI compatible interface for IJON." alt="" coords="571,333,711,374"/>
+<area shape="rect" id="node13" href="$classfuzzuf_1_1algorithm_1_1mopt_1_1MOptFuzzer.html" title=" " alt="" coords="570,413,711,454"/>
+<area shape="rect" id="node15" href="$classfuzzuf_1_1algorithm_1_1rezzuf_1_1RezzufFuzzer.html" title=" " alt="" coords="563,493,718,534"/>
+<area shape="rect" id="node17" href="$classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzer.html" title=" " alt="" coords="536,573,745,614"/>
+<area shape="rect" id="node19" href="$structfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate.html" title="Wrapper to afl::AFLFuzzerTemplate. This class append two member functions required to run SymCC." alt="" coords="529,645,752,701"/>
 </map>

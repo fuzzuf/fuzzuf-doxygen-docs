@@ -1,8 +1,8 @@
 <map id="include/fuzzuf/algorithms/eclipser/fuzz/fuzz.hpp" name="include/fuzzuf/algorithms/eclipser/fuzz/fuzz.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="362,5,549,47"/>
-<area shape="rect" id="node2" href="$eclipser_2cli__compat_2fuzzer_8cpp.html" title=" " alt="" coords="5,95,172,136"/>
-<area shape="rect" id="node3" href="$fuzz_8cpp.html" title=" " alt="" coords="197,95,343,136"/>
-<area shape="rect" id="node4" href="$fuzz__linear_8cpp_source.html" title=" " alt="" coords="367,95,543,136"/>
-<area shape="rect" id="node5" href="$fuzz__monoton_8cpp_source.html" title=" " alt="" coords="567,95,743,136"/>
-<area shape="rect" id="node6" href="$fuzz__stdin_8cpp_source.html" title=" " alt="" coords="767,95,943,136"/>
+<area shape="rect" id="node1" title=" " alt="" coords="363,5,549,47"/>
+<area shape="rect" id="node2" href="$eclipser_2cli__compat_2fuzzer_8cpp.html" title=" " alt="" coords="5,95,173,136"/>
+<area shape="rect" id="node3" href="$fuzz_8cpp.html" title=" " alt="" coords="197,95,344,136"/>
+<area shape="rect" id="node4" href="$fuzz__linear_8cpp_source.html" title=" " alt="" coords="368,95,544,136"/>
+<area shape="rect" id="node5" href="$fuzz__monoton_8cpp_source.html" title=" " alt="" coords="568,95,744,136"/>
+<area shape="rect" id="node6" href="$fuzz__stdin_8cpp_source.html" title=" " alt="" coords="768,95,944,136"/>
 </map>

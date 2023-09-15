@@ -1,6 +1,6 @@
 <map id="fuzzuf::algorithm::afl_symcc::AFLSymCCFuzzer" name="fuzzuf::algorithm::afl_symcc::AFLSymCCFuzzer">
-<area shape="rect" id="node1" title=" " alt="" coords="82,215,290,256"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html" title=" " alt="" coords="52,109,320,165"/>
+<area shape="rect" id="node1" title=" " alt="" coords="81,215,291,256"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLSymCCFuzzerTemplate.html" title=" " alt="" coords="51,109,321,165"/>
 <area shape="rect" id="node3" href="$classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="5,13,164,39"/>
-<area shape="rect" id="node4" href="$structfuzzuf_1_1cli_1_1fuzzer_1_1afl__symcc_1_1SymCCOptions.html" title=" " alt="" coords="189,5,389,47"/>
+<area shape="rect" id="node4" href="$structfuzzuf_1_1cli_1_1fuzzer_1_1afl__symcc_1_1SymCCOptions.html" title=" " alt="" coords="188,5,389,47"/>
 </map>

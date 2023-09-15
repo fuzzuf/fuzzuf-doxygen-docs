@@ -1,5 +1,5 @@
 <map id="fuzzuf::algorithm::afl::AFLFuzzerTemplate&lt; State &gt;" name="fuzzuf::algorithm::afl::AFLFuzzerTemplate&lt; State &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="30,80,202,136"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate.html" title="Wrapper to afl::AFLFuzzerTemplate. This class append two member functions required to run SymCC." alt="" coords="5,184,227,240"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="37,5,195,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="30,80,203,136"/>
+<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1afl__symcc_1_1AFLFuzzerTemplate.html" title="Wrapper to afl::AFLFuzzerTemplate. This class append two member functions required to run SymCC." alt="" coords="5,184,228,240"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="37,5,196,32"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="fuzzuf::algorithm::afl::AFLHavocOptimizer" name="fuzzuf::algorithm::afl::AFLHavocOptimizer">
-<area shape="rect" id="node1" title=" " alt="" coords="5,95,180,136"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1optimizer_1_1HavocOptimizer.html" title="Optimizer for two parameters used in Mutator::Havoc" alt="" coords="23,5,162,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,95,181,136"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1optimizer_1_1HavocOptimizer.html" title="Optimizer for two parameters used in Mutator::Havoc" alt="" coords="24,5,163,47"/>
 </map>

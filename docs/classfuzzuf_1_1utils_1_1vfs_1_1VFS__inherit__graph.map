@@ -1,4 +1,4 @@
 <map id="fuzzuf::utils::vfs::VFS" name="fuzzuf::utils::vfs::VFS">
-<area shape="rect" id="node1" title="Base class of virtual filesystem. This class provides basic path conversion and path range check." alt="" coords="5,5,163,32"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html" title="Virtual filesystem implementation that interface to local filesystem. This is a wrapper to the standa..." alt="" coords="17,80,151,121"/>
+<area shape="rect" id="node1" title="Base class of virtual filesystem. This class provides basic path conversion and path range check." alt="" coords="5,5,164,32"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1utils_1_1vfs_1_1LocalFilesystem.html" title="Virtual filesystem implementation that interface to local filesystem. This is a wrapper to the standa..." alt="" coords="17,80,152,121"/>
 </map>

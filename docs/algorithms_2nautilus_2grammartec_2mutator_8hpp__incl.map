@@ -1,5 +1,5 @@
 <map id="include/fuzzuf/algorithms/nautilus/grammartec/mutator.hpp" name="include/fuzzuf/algorithms/nautilus/grammartec/mutator.hpp">
-<area shape="rect" id="node1" title="Tree mutation engine." alt="" coords="770,5,1015,47"/>
+<area shape="rect" id="node1" title="Tree mutation engine." alt="" coords="769,5,1016,47"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,102,92,129"/>
 <area shape="rect" id="node3" title=" " alt="" coords="617,370,691,397"/>
 <area shape="rect" id="node4" title=" " alt="" coords="167,191,282,218"/>
@@ -19,7 +19,7 @@
 <area shape="rect" id="node15" title=" " alt="" coords="1349,281,1423,307"/>
 <area shape="rect" id="node16" title=" " alt="" coords="1695,370,1763,397"/>
 <area shape="rect" id="node19" title=" " alt="" coords="477,281,551,307"/>
-<area shape="rect" id="node20" title=" " alt="" coords="295,281,453,307"/>
+<area shape="rect" id="node20" title=" " alt="" coords="293,281,452,307"/>
 <area shape="rect" id="node22" title=" " alt="" coords="1617,191,1672,218"/>
 <area shape="rect" id="node23" href="$utils_2random_8hpp.html" title="Generate random numbers." alt="" coords="2251,191,2427,218"/>
 <area shape="rect" id="node24" title=" " alt="" coords="2523,281,2609,307"/>

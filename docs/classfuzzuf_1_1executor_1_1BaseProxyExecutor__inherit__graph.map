@@ -1,10 +1,10 @@
 <map id="fuzzuf::executor::BaseProxyExecutor" name="fuzzuf::executor::BaseProxyExecutor">
-<area shape="rect" id="node1" title=" " alt="" coords="243,100,445,141"/>
-<area shape="rect" id="node3" href="$classfuzzuf_1_1executor_1_1PinToolExecutor.html" title=" " alt="" coords="517,5,696,47"/>
-<area shape="rect" id="node4" href="$classfuzzuf_1_1executor_1_1PolyTrackerExecutor.html" title=" " alt="" coords="503,71,710,112"/>
-<area shape="rect" id="node5" href="$classfuzzuf_1_1executor_1_1ProxyExecutor.html" title=" " alt="" coords="493,137,720,163"/>
-<area shape="rect" id="node8" href="$classfuzzuf_1_1executor_1_1PTExecutor.html" title=" " alt="" coords="504,187,709,214"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1executor_1_1Executor.html" title=" " alt="" coords="5,107,195,134"/>
-<area shape="rect" id="node6" href="$classfuzzuf_1_1executor_1_1CoreSightExecutor.html" title=" " alt="" coords="785,100,981,141"/>
-<area shape="rect" id="node7" href="$classfuzzuf_1_1executor_1_1QEMUExecutor.html" title=" " alt="" coords="768,166,997,193"/>
+<area shape="rect" id="node1" title=" " alt="" coords="244,100,447,141"/>
+<area shape="rect" id="node3" href="$classfuzzuf_1_1executor_1_1PinToolExecutor.html" title=" " alt="" coords="519,5,699,47"/>
+<area shape="rect" id="node4" href="$classfuzzuf_1_1executor_1_1PolyTrackerExecutor.html" title=" " alt="" coords="504,71,713,112"/>
+<area shape="rect" id="node5" href="$classfuzzuf_1_1executor_1_1ProxyExecutor.html" title=" " alt="" coords="495,137,723,163"/>
+<area shape="rect" id="node8" href="$classfuzzuf_1_1executor_1_1PTExecutor.html" title=" " alt="" coords="505,187,712,214"/>
+<area shape="rect" id="node2" href="$classfuzzuf_1_1executor_1_1Executor.html" title=" " alt="" coords="5,107,196,134"/>
+<area shape="rect" id="node6" href="$classfuzzuf_1_1executor_1_1CoreSightExecutor.html" title=" " alt="" coords="787,100,985,141"/>
+<area shape="rect" id="node7" href="$classfuzzuf_1_1executor_1_1QEMUExecutor.html" title=" " alt="" coords="771,166,1001,193"/>
 </map>

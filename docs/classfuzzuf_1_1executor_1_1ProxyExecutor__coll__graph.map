@@ -1,7 +1,7 @@
 <map id="fuzzuf::executor::ProxyExecutor" name="fuzzuf::executor::ProxyExecutor">
-<area shape="rect" id="node1" title=" " alt="" coords="169,200,396,227"/>
+<area shape="rect" id="node1" title=" " alt="" coords="169,200,397,227"/>
 <area shape="rect" id="node2" href="$classfuzzuf_1_1executor_1_1BaseProxyExecutor.html" title=" " alt="" coords="5,96,208,137"/>
-<area shape="rect" id="node3" href="$classfuzzuf_1_1executor_1_1Executor.html" title=" " alt="" coords="12,13,201,39"/>
+<area shape="rect" id="node3" href="$classfuzzuf_1_1executor_1_1Executor.html" title=" " alt="" coords="11,13,202,39"/>
 <area shape="rect" id="node4" href="$classfuzzuf_1_1coverage_1_1AFLEdgeCovAttacher.html" title="AFL&#45;compatible hashed edge coverage attacher." alt="" coords="363,96,557,137"/>
 <area shape="rect" id="node5" href="$classfuzzuf_1_1coverage_1_1ShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="365,5,555,47"/>
 </map>

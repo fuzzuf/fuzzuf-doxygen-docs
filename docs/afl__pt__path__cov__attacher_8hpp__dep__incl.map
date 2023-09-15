@@ -1,6 +1,6 @@
 <map id="include/fuzzuf/coverage/afl_pt_path_cov_attacher.hpp" name="include/fuzzuf/coverage/afl_pt_path_cov_attacher.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="93,5,309,47"/>
-<area shape="rect" id="node2" href="$pt__executor_8hpp_source.html" title=" " alt="" coords="115,95,288,136"/>
-<area shape="rect" id="node3" href="$pt__executor_8cpp_source.html" title=" " alt="" coords="5,191,189,218"/>
-<area shape="rect" id="node4" href="$pt__executor_2run_8cpp_source.html" title=" " alt="" coords="213,184,400,225"/>
+<area shape="rect" id="node1" title=" " alt="" coords="95,5,313,47"/>
+<area shape="rect" id="node2" href="$pt__executor_8hpp_source.html" title=" " alt="" coords="117,95,291,136"/>
+<area shape="rect" id="node3" href="$pt__executor_8cpp_source.html" title=" " alt="" coords="5,191,192,218"/>
+<area shape="rect" id="node4" href="$pt__executor_2run_8cpp_source.html" title=" " alt="" coords="216,184,405,225"/>
 </map>

@@ -1,6 +1,6 @@
 <map id="include/fuzzuf/utils/interprocess_shared_object.hpp" name="include/fuzzuf/utils/interprocess_shared_object.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="188,5,345,61"/>
-<area shape="rect" id="node2" href="$base__proxy__executor_8cpp_source.html" title=" " alt="" coords="5,109,163,151"/>
-<area shape="rect" id="node3" href="$linux__fork__server__executor_8cpp_source.html" title=" " alt="" coords="187,109,346,151"/>
-<area shape="rect" id="node4" href="$native__linux__executor_8cpp_source.html" title=" " alt="" coords="371,109,533,151"/>
+<area shape="rect" id="node1" title=" " alt="" coords="190,5,347,61"/>
+<area shape="rect" id="node2" href="$base__proxy__executor_8cpp_source.html" title=" " alt="" coords="5,109,164,151"/>
+<area shape="rect" id="node3" href="$linux__fork__server__executor_8cpp_source.html" title=" " alt="" coords="188,109,349,151"/>
+<area shape="rect" id="node4" href="$native__linux__executor_8cpp_source.html" title=" " alt="" coords="374,109,537,151"/>
 </map>
