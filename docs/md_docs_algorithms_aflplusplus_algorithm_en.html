@@ -66,16 +66,16 @@ $(function() {
 <div class="title">AFLplusplus (AFL++) </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md11745"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md12281"></a>
 Description</h1>
 <p><a href="https://github.com/AFLplusplus/AFLplusplus">https://github.com/AFLplusplus/AFLplusplus</a></p>
 <p>AFLplusplus[^woot20] is a superior fork to Google's (Michał Zalewski's) AFL, originally began as a collection of patches applicable to AFL v2.52b, which had become inactive at then.</p>
 <p>After Zalewski released AFL v2.52b in 2017 and stopped updating, lots of community-provided patches have been published for fixes and enhancements (e.g. llvm-mode fixes and qemu-mode optimization). However, some of them conflicted when applied together since they are based on the same origin, and sometimes tried to overwrite the same line. Marc Heuse started merging them into one single repository as AFLplusplus in 2019 with Marcel Böhme's AFLFast patch[^group-uqRFf7rmCQAJ] [^group-jSNsWNmPCAAJ].</p>
 <p>As it got updated, Heuse and developer team did not only enhanced existing features, but also adopted new ones including multi-architecture support, more ways to perform binary-only fuzzing, new mutators and instrumentations proposed in academic papers, and so on.</p>
 <p>fuzzuf currently adopts fuzzer-side enhancements in AFLplusplus only. That is, compiler-side enhancements (e.g. NeverZero) are not included.</p>
-<h1><a class="anchor" id="autotoc_md11746"></a>
+<h1><a class="anchor" id="autotoc_md12282"></a>
 List of enhanced features</h1>
-<h2><a class="anchor" id="autotoc_md11747"></a>
+<h2><a class="anchor" id="autotoc_md12283"></a>
 FAST3</h2>
 <p>Originally provided as a patch to improve scheduling (a way to compute seed's score) for AFLplusplus by Marcel Böhme (an author of AFLFast) in <a href="https://github.com/AFLplusplus/AFLplusplus/commit/e87eca7f">AFLplusplus/AFLplusplus@e87eca7f</a> (later improved by AFLplusplus developers).</p>
 <p>Before the PR was made, there were some experiments done on fuzzbench to compare the performance among several parameter tunings. It seems the adopted one is a something between schedulings called fast3 and fast4.</p>
@@ -86,19 +86,19 @@ FAST3</h2>
 <li>div by zero in LIN and QUAD schedulings</li>
 <li>division done in <code>u32</code>, not in <code>double</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md11748"></a>
+<h2><a class="anchor" id="autotoc_md12284"></a>
 more_havoc</h2>
 <p>They also added several new mutations to havoc with their probability to be chosen. It is unclear what that probability is based on.</p>
 <p>The first change occurred in <a href="https://github.com/AFLplusplus/AFLplusplus/commit/70bf4b4a">AFLplusplus/AFLplusplus@70bf4b4a</a> as <code>havoc2</code> (a name of the merged branch) to change the uniform probability of mutations to make them have their own values.</p>
 <p>Nextly, new mutations came in at <a href="https://github.com/AFLplusplus/AFLplusplus/commit/b8e61da8">AFLplusplus/AFLplusplus@b8e61da8</a> as <code>more_havoc</code>. This PR reflects those probabilities with Walker's alias distribution.</p>
-<h2><a class="anchor" id="autotoc_md11749"></a>
+<h2><a class="anchor" id="autotoc_md12285"></a>
 Weighted random seed selection</h2>
 <p>Although the original AFL selects its seeds sequentially, it was pointed out that choosing them randomly produces a better fuzzing result.</p>
 <p>AFL++ adopted a random seed selection with Walker's alias method at <a href="https://github.com/AFLplusplus/AFLplusplus/commit/6a397d61">AFLplusplus/AFLplusplus@6a397d61</a>. At this point, weights (values) used to create the alias table are based on the conventional <code>calculate_score()</code> function.</p>
 <p>Thereafter, a patch by Marcel Böhme (<a href="https://github.com/AFLplusplus/AFLplusplus/commit/06ec5ab3">AFLplusplus/AFLplusplus@06ec5ab3</a>) changed AFL++ to use the new <code>compute_weight</code> function to create it. The purpose of this patch was: </p><blockquote class="doxtable">
 <p>This commit extends the weight-based sampling by assigning weights based on how often the seed's path is exercised, the number of branches it covers, and the time it takes to execute. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md11750"></a>
+<h1><a class="anchor" id="autotoc_md12286"></a>
 CLI usage</h1>
 <p>Just like fuzzuf's AFL or AFLFast, you can use AFL-like syntax on CLI on fuzzuf-AFLplusplus. So we're not going explain the common options here again.</p>
 <p>To start a fuzzing from CLI, execute the following in your shell:</p>

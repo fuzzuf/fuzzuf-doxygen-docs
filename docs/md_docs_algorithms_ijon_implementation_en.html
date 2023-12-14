@@ -66,19 +66,19 @@ $(function() {
 <div class="title">IJON implementation in fuzzuf </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md11794"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md12330"></a>
 Reference IJON Implementation</h1>
 <ul>
 <li>Version: 2.51b-ijon</li>
 <li>Commit: <a href="https://github.com/RUB-SysSec/ijon/commit/56ebfe34709dd93f5da7871624ce6eadacc3ae4c">https://github.com/RUB-SysSec/ijon/commit/56ebfe34709dd93f5da7871624ce6eadacc3ae4c</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11795"></a>
+<h1><a class="anchor" id="autotoc_md12331"></a>
 Differences from the original implementation</h1>
 <p>Unless there are unintended discrepancies due to bugs, the original implementation has been completely reproduced and there are no differences between it and ours. However, the functions of the original AFL, which are not implemented in fuzzuf AFL, cannot be used of course also in IJON.</p>
-<h1><a class="anchor" id="autotoc_md11796"></a>
+<h1><a class="anchor" id="autotoc_md12332"></a>
 Important To-Do: Implementing Annotations</h1>
 <p>Be noted that annotation, which is one of the major components of IJON, is not implemented in fuzzuf at present. This is due to the fact that fuzzuf does not have its own instrumentation tool yet, and therefore we will start implementing it as soon as the instrumentation tool is ready. For other To-Dos, please check <a href="https://github.com/fuzzuf/fuzzuf/blob/master/TODO.md">TODO.md</a>.</p>
-<h1><a class="anchor" id="autotoc_md11797"></a>
+<h1><a class="anchor" id="autotoc_md12333"></a>
 HierarFlow routines that have been added</h1>
 <ul>
 <li>SelectSeed: selects a seed from the IJON seed queue.</li>

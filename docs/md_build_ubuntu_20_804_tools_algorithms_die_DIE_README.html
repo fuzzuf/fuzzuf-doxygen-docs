@@ -67,26 +67,26 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Repository for "Fuzzing JavaScript Engines with Aspect-preserving Mutation" (in S&amp;P'20). You can check the <a href="https://gts3.org/assets/papers/2020/park:die.pdf">paper</a> for technical details.</p>
-<h1><a class="anchor" id="autotoc_md2736"></a>
+<h1><a class="anchor" id="autotoc_md3272"></a>
 Environment</h1>
 <p>Tested on Ubuntu 18.04 with following environment.</p><ul>
 <li>Python v3.6.10</li>
 <li>npm v6.14.6</li>
 <li>n v6.7.0</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md2737"></a>
+<h1><a class="anchor" id="autotoc_md3273"></a>
 General Setup</h1>
 <p>For nodejs and npm, </p><div class="fragment"><div class="line">$ sudo apt-get -y install npm</div>
 <div class="line">$ sudo npm install -g n</div>
 <div class="line">$ sudo n stable</div>
 </div><!-- fragment --><p>For redis-server, </p><div class="fragment"><div class="line">$ sudo apt install redis-server</div>
 </div><!-- fragment --><p>we choose clang-6.0 to compile afl and browsers smoothly. </p><div class="fragment"><div class="line">$ sudo apt-get -y install clang-6.0</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2738"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3274"></a>
 DIE Setup</h1>
 <p>To setup environment for AFL, </p><div class="fragment"><div class="line">$ cd fuzz/scripts</div>
 <div class="line">$ sudo ./prepare.sh</div>
 </div><!-- fragment --><p>To compile whole project, </p><div class="fragment"><div class="line">$ ./compile.sh</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2739"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3275"></a>
 Server Setup</h2>
 <ul>
 <li>Make Corpus Directory (We used <a href="https://github.com/sslab-gatech/DIE-corpus.git">Die-corpus</a> as corpus) <div class="fragment"><div class="line">$ git clone https://github.com/sslab-gatech/DIE-corpus.git</div>
@@ -100,12 +100,12 @@ Server Setup</h2>
 </div><!-- fragment --></li>
 </ul>
 <p>It's done! Your corpus is well executed and the data should be located on redis-server.</p>
-<h3><a class="anchor" id="autotoc_md2740"></a>
+<h3><a class="anchor" id="autotoc_md3276"></a>
 Tips</h3>
 <p>To check the redis-data, </p><div class="fragment"><div class="line">$ redis-cli -p 9000</div>
 <div class="line">127.0.0.1:9000&gt; keys *</div>
 </div><!-- fragment --><p>If the result contains "crashBitmap", "crashQueue", "pathBitmap", "newPathsQueue" keys, the fuzzer was well registered and executed.</p>
-<h2><a class="anchor" id="autotoc_md2741"></a>
+<h2><a class="anchor" id="autotoc_md3277"></a>
 Client Setup</h2>
 <ul>
 <li>Make ssh-tunnel for connection with redis-server <div class="fragment"><div class="line">$ ./fuzz/scripts/redis.py</div>
@@ -118,13 +118,13 @@ Client Setup</h2>
 </div><!-- fragment --></li>
 </ul>
 <p>You can find a session named <code>fuzzer</code> if it's running.</p>
-<h2><a class="anchor" id="autotoc_md2742"></a>
+<h2><a class="anchor" id="autotoc_md3278"></a>
 Typer</h2>
 <p>We used d8 to profile type information. So, please change d8_path in <a class="el" href="build__ubuntu__20_804_2tools_2algorithms_2die_2DIE_2fuzz_2TS_2typer_2typer_8py_source.html">fuzz/TS/typer/typer.py</a> before execution.</p>
 <div class="fragment"><div class="line">cd fuzz/TS/typer</div>
 <div class="line">python3 typer.py [corpus directory]</div>
 </div><!-- fragment --><p>*.jsi file will be created if instrumentation works well. *.t file will be created if profiling works well.</p>
-<h1><a class="anchor" id="autotoc_md2743"></a>
+<h1><a class="anchor" id="autotoc_md3279"></a>
 CVEs</h1>
 <p>If you find bugs and get CVEs by running DIE, please let us know.</p>
 <ul>
@@ -132,7 +132,7 @@ CVEs</h1>
 <li>JavaScriptCore: CVE-2019-8676, CVE-2019-8673, CVE-2019-8811, CVE-2019-8816</li>
 <li>V8: CVE-2019-13730, CVE-2019-13764, CVE-2020-6382</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md2744"></a>
+<h1><a class="anchor" id="autotoc_md3280"></a>
 Contacts</h1>
 <ul>
 <li>Soyeon Park <a href="#" onclick="location.href='mai'+'lto:'+'soy'+'eo'+'n@g'+'at'+'ech'+'.e'+'du'; return false;">soyeo<span style="display: none;">.nosp@m.</span>n@ga<span style="display: none;">.nosp@m.</span>tech.<span style="display: none;">.nosp@m.</span>edu</a></li>
@@ -141,7 +141,7 @@ Contacts</h1>
 <li>Daehee Jang <a href="#" onclick="location.href='mai'+'lto:'+'dae'+'he'+'e87'+'@g'+'ate'+'ch'+'.ed'+'u'; return false;">daehe<span style="display: none;">.nosp@m.</span>e87@<span style="display: none;">.nosp@m.</span>gatec<span style="display: none;">.nosp@m.</span>h.ed<span style="display: none;">.nosp@m.</span>u</a></li>
 <li>Taesoo Kim <a href="#" onclick="location.href='mai'+'lto:'+'tae'+'so'+'o@g'+'at'+'ech'+'.e'+'du'; return false;">taeso<span style="display: none;">.nosp@m.</span>o@ga<span style="display: none;">.nosp@m.</span>tech.<span style="display: none;">.nosp@m.</span>edu</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md2745"></a>
+<h1><a class="anchor" id="autotoc_md3281"></a>
 Citation</h1>
 <div class="fragment"><div class="line">@inproceedings{park:die,</div>
 <div class="line">  title        = {{Fuzzing JavaScript Engines with Aspect-preserving Mutation}},</div>

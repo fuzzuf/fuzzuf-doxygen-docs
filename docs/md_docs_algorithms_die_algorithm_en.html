@@ -66,7 +66,7 @@ $(function() {
 <div class="title">DIE </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md11758"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md12294"></a>
 About DIE</h1>
 <p><a href="https://github.com/sslab-gatech/DIE/">DIE</a>[^die] is a fuzzer developed by <a href="https://gts3.org/">SSLab</a> to find bugs in JavaScript engines. Generally speaking, there are several problems in fuzzing JavaScript engines:</p>
 <ul>
@@ -80,9 +80,9 @@ About DIE</h1>
 <p>State-of-the-Art fuzzers such as <a href="https://github.com/googleprojectzero/fuzzilli">fuzzilli</a> address these obstacles. DIE, as well as fuzzilli, does not only resolve the problems but also has a feature called aspect-preserving.</p>
 <p>The intention of DIE is to give "finding bugs similar to the past bugs" priority. Therefore, it mutates JavaScript test cases with keeping its basic structure such as function calls or for-statements. In this way, DIE is likely to be able to preserve the "aspect" of the original test cases through the mutation process.</p>
 <p>DIE mode is available on fuzzuf as an example implementation of a fuzzer to take advantages of an external mutation engine.</p>
-<h1><a class="anchor" id="autotoc_md11759"></a>
+<h1><a class="anchor" id="autotoc_md12295"></a>
 Usage on CLI</h1>
-<h2><a class="anchor" id="autotoc_md11760"></a>
+<h2><a class="anchor" id="autotoc_md12296"></a>
 Requirements</h2>
 <p>DIE requires the following tools (Tested on Ubuntu 14.04/18.04/20.04):</p>
 <ul>
@@ -93,12 +93,12 @@ Requirements</h2>
 </li>
 <li>Python 3 (3.6 or later is recommended)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md11761"></a>
+<h2><a class="anchor" id="autotoc_md12297"></a>
 Automated Setup</h2>
 <p>A bash script to setup DIE is available in fuzzuf. Run the following command after building fuzzuf to setup DIE.</p>
 <div class="fragment"><div class="line">cmake --build build --target die</div>
 </div><!-- fragment --><p>If the following message shows up after running the command above, the installation is successful. Jump to the section "Preparing Seeds." </p><div class="fragment"><div class="line">[+] DIE successfully setup!</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11762"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12298"></a>
 Manual Setup</h2>
 <p>If you don't choose to use the automated setup for some reason, follow the next steps to manually setup DIE.</p>
 <p>First of all, clone DIE from the official repository. We've tested with the latest commit <code>f1ab180c18ea4096d6c3336a7dc3e00af897549d</code> at Jan 17th, 2022. </p><div class="fragment"><div class="line">git clone https://github.com/sslab-gatech/DIE/</div>
@@ -106,11 +106,11 @@ Manual Setup</h2>
 <div class="line">npm install</div>
 </div><!-- fragment --><p>You also need to transpile TypeScript into JavaScript. </p><div class="fragment"><div class="line">node_module/.bin/tsc</div>
 </div><!-- fragment --><p>Now you finished everything required to use DIE mode of fuzzuf.</p>
-<h2><a class="anchor" id="autotoc_md11763"></a>
+<h2><a class="anchor" id="autotoc_md12299"></a>
 Preparing Seeds</h2>
 <p>DIE requires initial seeds to be mutated. The seeds must be JavaScript files that have extension <code>.js</code> and one or more seeds are necessary. Because of the nature of DIE, it's desirable to use Proof-of-Concepts of the bugs found in the past as test cases. The seed set used in the original paper of DIE is <a href="https://github.com/sslab-gatech/DIE-corpus">published in GitHub</a>.</p>
 <p>The JavaScript files in the seed directory are instrumented before starting the fuzzing loop and the type information is collected. Those type infomation is saved to a file with the extension <code>.t</code>. If this file exists, fuzzuf skips to collect type information for the test case when fuzzing is rerun in the future. (Therefore, you need to delete the files with the extension <code>.t</code> if you change the contents of test cases in the seed directory.)</p>
-<h2><a class="anchor" id="autotoc_md11764"></a>
+<h2><a class="anchor" id="autotoc_md12300"></a>
 Fuzzing with DIE</h2>
 <p>You can use DIE mode with the following command, for example:</p>
 <div class="fragment"><div class="line">fuzzuf die --in_dir=input --out_dir=output -- ./target/d8 @@</div>
@@ -124,10 +124,10 @@ Fuzzing with DIE</h2>
 <li><code>--d8_flags</code>: Flags passed to JS engine specified by <code>--d8</code> (default: empty)</li>
 <li><code>--mut_cnt</code>: Number of scripts to be generated in one mutation (default: 100)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11765"></a>
+<h1><a class="anchor" id="autotoc_md12301"></a>
 Overview of Algorithm</h1>
 <p>The fuzzing loop of DIE consists of "seed selection", "mutation", "execution", and "coverage feedback." DIE instruments the seed test cases and executes them to dynamically collect the type of variables in the scripts, which will be used for mutation.</p>
-<h2><a class="anchor" id="autotoc_md11766"></a>
+<h2><a class="anchor" id="autotoc_md12302"></a>
 Collecting Type Information</h2>
 <p>DIE is a mutational fuzzer that takes one or more JavaScript files as input and changes them through mutation. DIE collects type information of the input test case dynamically and use it to reduce the amount of runtime errors. For example, consider the mutation of the following code:</p>
 <div class="fragment"><div class="line">let s = &quot;Hello World&quot;;</div>
@@ -143,7 +143,7 @@ Collecting Type Information</h2>
 <div class="line">let v = s.split(&quot; &quot;);</div>
 <div class="line">console.log(&quot;loc:2,typeof(v):&quot;+typeof(v));</div>
 </div><!-- fragment --><p>By executing the instrumented code, DIE dynamicaly collects type information for each variable in the script. Note that the reason why the type is checked everywhere, even for variables with the same name, is that JavaScript is a dynamically typed language.</p>
-<h2><a class="anchor" id="autotoc_md11767"></a>
+<h2><a class="anchor" id="autotoc_md12303"></a>
 Mutation</h2>
 <p>DIE is designed to mutate only with variables of the same type as much as possible using the type information collected in advance. It also supports variables that can have multiple types in the same location depending on the execution, and object types with properties.</p>
 <p>There are three main mutation strategies for DIE.</p>
@@ -153,16 +153,16 @@ Mutation</h2>
 <li>Creating new variables</li>
 </ul>
 <p>All of them are executed in a way that does not destroy the structure of the script. The number of mutations and the probability of inserting a new statement are defined in <code>DIE/fuzz/TS/esfuzz.ts</code>.</p>
-<h2><a class="anchor" id="autotoc_md11768"></a>
+<h2><a class="anchor" id="autotoc_md12304"></a>
 Coverage</h2>
 <p>The original DIE implementation collects coverage information in the same way as AFL. The code coverage of AFL uses a hit count of one byte for each edge. However, DIE does not use a hit count, but provides one bit of data for each edge, and only records whether or not it passed through the edge. This is because in JavaScript, for example, simply changing the loop counter will increase the hit count, and such a change is meaningless. In fuzzuf, this refined coverage for JavaScript fuzzers is to be implemented in the future.</p>
-<h2><a class="anchor" id="autotoc_md11769"></a>
+<h2><a class="anchor" id="autotoc_md12305"></a>
 Scheduling</h2>
 <p>DIE uses the same scheduling as AFL.</p>
-<h2><a class="anchor" id="autotoc_md11770"></a>
+<h2><a class="anchor" id="autotoc_md12306"></a>
 Distributed Fuzzing</h2>
 <p>DIE can distribute the fuzzing process on multiple machines by communicating with redis server. The coverage information is also shared among all machines. However, the current fuzzuf does not implement this feature.</p>
-<h1><a class="anchor" id="autotoc_md11771"></a>
+<h1><a class="anchor" id="autotoc_md12307"></a>
 Reference</h1>
 <p>[^die]: S. Park, W. Xu, I. Yun, D. Jang and T. Kim, "Fuzzing JavaScript Engines with Aspect-preserving Mutation," 2020 IEEE Symposium on Security and Privacy (SP), 2020, pp. 1629-1642, doi: 10.1109/SP40000.2020.00067. </p>
 </div></div><!-- contents -->

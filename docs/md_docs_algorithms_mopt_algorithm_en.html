@@ -66,15 +66,15 @@ $(function() {
 <div class="title">MOpt </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md11871"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md12407"></a>
 What is MOpt</h1>
 <p><a href="https://github.com/puppet-meteor/MOpt-AFL">MOpt-AFL</a> is an example implementation for MOpt[^usenix19] paper. It tries to optimize the selection of mutation operators to find more interesting inputs by generating probability distributions from <em>particles</em> calculated with its original heuristics inspired by PSO (Particle Swarm Optimization).</p>
-<h1><a class="anchor" id="autotoc_md11872"></a>
+<h1><a class="anchor" id="autotoc_md12408"></a>
 CLI Usage</h1>
 <p>fuzzuf MOpt provides the same CLI interface with fuzzuf AFL:</p>
 <div class="fragment"><div class="line">fuzzuf mopt --in_dir=path/to/initial/seeds/ -- path/to/PUT @@</div>
 </div><!-- fragment --><p>The MOpt CLI has the same global options as the fuzzuf AFL CLI. Refer to the AFL/algorithm_en.md for the available options. The MOpt CLI does not have specific local options.</p>
-<h1><a class="anchor" id="autotoc_md11873"></a>
+<h1><a class="anchor" id="autotoc_md12409"></a>
 Algorithm Overview</h1>
 <p>Original MOpt-AFL consists of 4 modules:</p><ul>
 <li>PSO Initialization Module</li>
@@ -84,13 +84,13 @@ Algorithm Overview</h1>
 </ul>
 <p>Workflows of these modules are similar to PSO algorithm: Initialize particles in PSO Initialization Module, evaluate and update local best in Pilot/Core Fuzzing Module and then update global best in PSO Updating Module. fuzzuf MOpt implements same algorithm with some additional HierarFlow <code>MOptUpdate</code>.</p>
 <p>For pacemaker mode in MOpt-AFL, fuzzuf MOpt has HierarFlow <code>CheckPacemakerThreshold</code> inserted before <code>ApplyDetMuts</code>. Pacemaker will skip determined mutations like bitflips to speed up fuzzing process under some conditions.</p>
-<h2><a class="anchor" id="autotoc_md11874"></a>
+<h2><a class="anchor" id="autotoc_md12410"></a>
 PSO Initialization Module</h2>
 <p>MOpt intializes swarms and local/global bests in MOptOptimizer constructor. The number of dimension is equal to the number of mutation operations; <code>fuzzuf::mutator::NUM_CASE</code>.</p>
-<h2><a class="anchor" id="autotoc_md11875"></a>
+<h2><a class="anchor" id="autotoc_md12411"></a>
 Pilot/Core Fuzzing Module</h2>
 <p>There are two different functions for pilot/core fuzzing module in original implementation of MOpt-AFL, however, MOptState has boolean member (<code>bool pacemaker_mode</code>) inside to switch state for pilot/core fuzzing module. In MOpt-related flow, they will check/update the value according to their state. HierarFlow <code>MOptUpdate</code> will update swarm index and calculate local best. MOpt-AFL do that at the end of pilot/core fuzzing module.</p>
-<h2><a class="anchor" id="autotoc_md11876"></a>
+<h2><a class="anchor" id="autotoc_md12412"></a>
 PSO Updating Module</h2>
 <p>PSO Updating Module originally update global best; probability distribution. fuzzuf MOpt implements <code>MOptUpdate</code> for updating global best as well. </p>
 </div></div><!-- contents -->

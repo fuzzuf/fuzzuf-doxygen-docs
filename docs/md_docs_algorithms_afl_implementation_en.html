@@ -66,17 +66,17 @@ $(function() {
 <div class="title">AFL Implementation in fuzzuf </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md11724"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md12260"></a>
 Reference AFL Implementation</h1>
 <ul>
 <li>Version: 2.57b</li>
 <li>Commit: <a href="https://github.com/google/AFL/commit/fab1ca5ed7e3552833a18fc2116d33a9241699bc">fab1ca5ed7e3552833a18fc2116d33a9241699bc</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11725"></a>
+<h1><a class="anchor" id="autotoc_md12261"></a>
 Directory Layout</h1>
 <p>In fuzzuf, implementations of AFL are located in <a href="/include/fuzzuf/algorithms/afl">include/fuzzuf/algorithms/afl</a> and <a href="/algorithms/afl">algorithms/afl</a>. Because AFL has many derived algorithms, we implemented most of the classes by templates. Therefore, the declarations and definitions of those classes are in the header files under <a href="/include/fuzzuf/algorithms/afl">include/fuzzuf/algorithms/afl</a>.</p>
 <p>These template classes are declared in <a href="/include/fuzzuf/algorithms/afl">include/fuzzuf/algorithms/afl</a> and defined in <a href="/include/fuzzuf/algorithms/afl/templates">include/fuzzuf/algorithms/afl/templates</a>. This directory layout is due to historical reasons and not due to the coding conventions of fuzzuf; it was designed to reduce the difference of changes when the AFL implementation was reconstructed as template classes to improve reusability. We consider removing the <code>templates</code> subdirectory and merging the files in future refactorings.</p>
-<h1><a class="anchor" id="autotoc_md11726"></a>
+<h1><a class="anchor" id="autotoc_md12262"></a>
 AFL in HierarFlow</h1>
 <p>AFL is represented in HierarFlow as in <a href="/include/fuzzuf/algorithms/afl/templates/afl_fuzzer.hpp">include/fuzzuf/algorithms/afl/templates/afl_fuzzer.hpp</a>:</p>
 <div class="fragment"><div class="line">fuzz_loop &lt;&lt; (</div>
@@ -121,35 +121,35 @@ AFL in HierarFlow</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11727"></a>
+<h1><a class="anchor" id="autotoc_md12263"></a>
 Consistency</h1>
 <p>The AFL of fuzzuf has been confirmed to be identical in behavior to the original implementation, which means that it is fully consistent. For more details on consistency testing, please check the following repository:</p>
 <ul>
 <li><a href="https://github.com/fuzzuf/fuzzuf-afl-artifact">https://github.com/fuzzuf/fuzzuf-afl-artifact</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md11728"></a>
+<h2><a class="anchor" id="autotoc_md12264"></a>
 Changes after Consistency Test</h2>
 <p>The current implementation has changed significantly from the implementation at the time of the consistency check. One of the most notable changes is the customizable design of the mutation havoc to facilitate the implementation of AFL-derived algorithms. As a result, the current AFL on fuzzuf does not produce the same results as the original AFL.</p>
 <p>However, since there is no difference in the mutations themselves, and the probability of each type of mutation being selected in havoc should be the same as in the original AFL, the statistical behavior should not have changed at all.</p>
-<h1><a class="anchor" id="autotoc_md11729"></a>
+<h1><a class="anchor" id="autotoc_md12265"></a>
 How to Implement an AFL Derived Algorithm</h1>
 <p>Many users may want to use fuzzuf to implement AFL-derived algorithms. Here is a quick overview of how to implement an AFL-derived algorithm. Please refer to AFLFast Implementation for the detailed implementation.</p>
-<h2><a class="anchor" id="autotoc_md11730"></a>
+<h2><a class="anchor" id="autotoc_md12266"></a>
 1. Define a Tag</h2>
 <p>First of all, define an empty structure called Tag for the derived algorithm you want to create (e.g., <code>struct AFLDerivedTag {};</code>). For example, the Tag for AFL is defined in <a href="/include/fuzzuf/algorithms/afl/afl_option.hpp">include/fuzzuf/algorithms/afl/afl_option.hpp</a>:</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>AFLTag {};</div>
 </div><!-- fragment --><p>In fuzzuf, Tag allows you to arbitrarily change the value of a constant. See the comments in <a href="/include/fuzzuf/algorithms/afl/afl_option.hpp">include/fuzzuf/algorithms/afl/afl_option.hpp</a> for details.</p>
-<h2><a class="anchor" id="autotoc_md11731"></a>
+<h2><a class="anchor" id="autotoc_md12267"></a>
 2. Inherit AFLTestcase</h2>
 <p>If you want a seed to have its information in addition to what AFL has, define a new Testcase class that inherits from <code>AFLTestcase</code> (e.g. <code>AFLDerivedTestcase</code>). You should declare <code>AFLDerivedTestcase::Tag</code> using an alias declaration with <code>using</code>. For example, the code can look like this:</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>AFLDerivedTestcase : <span class="keyword">public</span> AFLTestcase {</div>
 <div class="line">  <span class="keyword">using</span> Tag = AFLDerivedTag;</div>
 <div class="line"> </div>
 <div class="line">  ...</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11732"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12268"></a>
 3. Inherit AFLState</h2>
 <p>If you want additional information in the whole algorithm, define a new State class that inherits from <code>AFLState</code> (e.g. <code>AFLDerivedState</code>).</p>
-<h2><a class="anchor" id="autotoc_md11733"></a>
+<h2><a class="anchor" id="autotoc_md12269"></a>
 4. Specialize AFLState Member Functions and/or Add a HierarFlowRoutine</h2>
 <p>If the derived algorithm has the same algorithm flow as AFL but needs to be handled differently, use member function overrides or template class specialization.</p>
 <p>Alternatively, if the derived algorithm has a different algorithm flow from AFL, define a HierarFlowRoutine that corresponds to the processing. In this case, define <code>AFLFuzzerTemplate&lt;AFLDerivedState&gt;::BuildFuzzFlow</code> and describe the algorithm flow. </p>
