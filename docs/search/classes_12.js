@@ -8,7 +8,7 @@ var searchData=
   ['testfindcycles_3159',['TestFindCycles',['../classgyp_1_1input__test_1_1TestFindCycles.html',1,'gyp::input_test']]],
   ['testgetflavor_3160',['TestGetFlavor',['../classgyp_1_1common__test_1_1TestGetFlavor.html',1,'gyp::common_test']]],
   ['testprefixesandsuffixes_3161',['TestPrefixesAndSuffixes',['../classgyp_1_1generator_1_1ninja__test_1_1TestPrefixesAndSuffixes.html',1,'gyp::generator::ninja_test']]],
-  ['testsequencefunctions_3162',['TestSequenceFunctions',['../classgyp_1_1MSVSSettings__test_1_1TestSequenceFunctions.html',1,'gyp.MSVSSettings_test.TestSequenceFunctions'],['../classgyp_1_1generator_1_1msvs__test_1_1TestSequenceFunctions.html',1,'gyp.generator.msvs_test.TestSequenceFunctions'],['../classgyp_1_1easy__xml__test_1_1TestSequenceFunctions.html',1,'gyp.easy_xml_test.TestSequenceFunctions']]],
+  ['testsequencefunctions_3162',['TestSequenceFunctions',['../classgyp_1_1generator_1_1msvs__test_1_1TestSequenceFunctions.html',1,'gyp.generator.msvs_test.TestSequenceFunctions'],['../classgyp_1_1MSVSSettings__test_1_1TestSequenceFunctions.html',1,'gyp.MSVSSettings_test.TestSequenceFunctions'],['../classgyp_1_1easy__xml__test_1_1TestSequenceFunctions.html',1,'gyp.easy_xml_test.TestSequenceFunctions']]],
   ['testtag_3163',['TestTag',['../structTestTag.html',1,'']]],
   ['testtopologicallysorted_3164',['TestTopologicallySorted',['../classgyp_1_1common__test_1_1TestTopologicallySorted.html',1,'gyp::common_test']]],
   ['thompsonsampling_3165',['ThompsonSampling',['../classfuzzuf_1_1optimizer_1_1slopt_1_1ThompsonSampling.html',1,'fuzzuf::optimizer::slopt']]],
