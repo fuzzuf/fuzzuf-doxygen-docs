@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['bb_5fshm_5fsize_4010',['bb_shm_size',['../structfuzzuf_1_1algorithm_1_1libfuzzer_1_1FuzzerCreateInfo.html#afefb0620d92f61ee6ae1ff3e1b7d92cc',1,'fuzzuf::algorithm::libfuzzer::FuzzerCreateInfo']]],
-  ['bitmap_5fsize_4011',['BITMAP_SIZE',['../eclipser_2core_2config_8hpp.html#a05feaac0acb2987c99095f81458add78',1,'fuzzuf::algorithm::eclipser']]],
-  ['buffer_5fmax_4012',['buffer_max',['../structoption_1_1Stats.html#a2c9a7b4174f91ba8bcadaa9ad6f0db06',1,'option::Stats']]]
-];

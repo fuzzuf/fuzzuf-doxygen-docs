@@ -1,8 +1,0 @@
-<map id="include/fuzzuf/algorithms/libfuzzer/corpus/add_to_initial_exec_input_set.hpp" name="include/fuzzuf/algorithms/libfuzzer/corpus/add_to_initial_exec_input_set.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="391,5,590,61"/>
-<area shape="rect" id="node2" href="$libfuzzer__common_2options_8cpp.html" title=" " alt="" coords="5,109,171,151"/>
-<area shape="rect" id="node3" href="$execute2_8cpp_source.html" title=" " alt="" coords="195,109,376,151"/>
-<area shape="rect" id="node4" href="$feature_8cpp_source.html" title=" " alt="" coords="400,109,581,151"/>
-<area shape="rect" id="node5" href="$initialize_8cpp_source.html" title=" " alt="" coords="605,109,787,151"/>
-<area shape="rect" id="node6" href="$output__hash2_8cpp_source.html" title=" " alt="" coords="811,109,975,151"/>
-</map>

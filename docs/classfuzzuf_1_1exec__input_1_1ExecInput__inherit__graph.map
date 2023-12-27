@@ -1,5 +1,0 @@
-<map id="fuzzuf::exec_input::ExecInput" name="fuzzuf::exec_input::ExecInput">
-<area shape="rect" id="node1" title=" " alt="" coords="95,5,235,47"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1exec__input_1_1OnDiskExecInput.html" title=" " alt="" coords="5,95,147,136"/>
-<area shape="rect" id="node3" href="$classfuzzuf_1_1exec__input_1_1OnMemoryExecInput.html" title=" " alt="" coords="171,95,338,136"/>
-</map>

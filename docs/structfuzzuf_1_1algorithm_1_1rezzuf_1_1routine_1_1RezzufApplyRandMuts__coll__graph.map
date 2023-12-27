@@ -1,8 +1,0 @@
-<map id="fuzzuf::algorithm::rezzuf::routine::RezzufApplyRandMuts" name="fuzzuf::algorithm::rezzuf::routine::RezzufApplyRandMuts">
-<area shape="rect" id="node1" title=" " alt="" coords="913,93,1117,149"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="473,5,764,76"/>
-<area shape="rect" id="node3" title=" " alt="" coords="498,100,739,141"/>
-<area shape="rect" id="node4" href="$structfuzzuf_1_1algorithm_1_1rezzuf_1_1RezzufState.html" title=" " alt="" coords="545,165,692,207"/>
-<area shape="rect" id="node5" href="$structfuzzuf_1_1algorithm_1_1afl_1_1AFLStateTemplate.html" title=" " alt="" coords="259,158,424,214"/>
-<area shape="rect" id="node6" href="$classfuzzuf_1_1exec__input_1_1ExecInputSet.html" title=" " alt="" coords="5,165,145,207"/>
-</map>

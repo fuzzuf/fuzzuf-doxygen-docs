@@ -1,8 +1,0 @@
-<map id="include/fuzzuf/algorithms/eclipser/gray_concolic/branch_tree.hpp" name="include/fuzzuf/algorithms/eclipser/gray_concolic/branch_tree.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="243,5,429,61"/>
-<area shape="rect" id="node2" href="$algorithms_2eclipser_2gray__concolic_2branch__tree_8cpp.html" title=" " alt="" coords="5,109,168,165"/>
-<area shape="rect" id="node3" href="$algorithms_2eclipser_2gray__concolic_2gray__concolic_8cpp.html" title=" " alt="" coords="167,213,315,269"/>
-<area shape="rect" id="node4" href="$solve_8cpp.html" title=" " alt="" coords="357,221,539,262"/>
-<area shape="rect" id="node5" href="$solve_8hpp.html" title=" " alt="" coords="243,109,429,165"/>
-<area shape="rect" id="node6" href="$test_2algorithms_2eclipser_2branch__tree_8cpp_source.html" title=" " alt="" coords="504,117,680,158"/>
-</map>

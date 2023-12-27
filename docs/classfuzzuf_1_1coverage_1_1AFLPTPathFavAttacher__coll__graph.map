@@ -1,4 +1,0 @@
-<map id="fuzzuf::coverage::AFLPTPathFavAttacher" name="fuzzuf::coverage::AFLPTPathFavAttacher">
-<area shape="rect" id="node1" title="Intel PT&#45;based PTrix&#45;specific bitmap attacher used for calculating favorite seeds." alt="" coords="5,95,212,136"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1coverage_1_1ShmCovAttacher.html" title="Base class that attaches coverage stored in shared memory." alt="" coords="13,5,204,47"/>
-</map>

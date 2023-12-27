@@ -1,6 +1,0 @@
-<map id="include/fuzzuf/algorithms/nautilus/fuzzer/option.hpp" name="include/fuzzuf/algorithms/nautilus/fuzzer/option.hpp">
-<area shape="rect" id="node1" title="Option of nautilus." alt="" coords="110,5,305,47"/>
-<area shape="rect" id="node2" href="$build__nautilus__fuzzer__from__args_8hpp.html" title="Register CLI option for Nautilus." alt="" coords="27,95,193,165"/>
-<area shape="rect" id="node4" href="$algorithms_2nautilus_2loop_8cpp.html" title="Test code for VUzzers loop." alt="" coords="217,109,395,151"/>
-<area shape="rect" id="node3" href="$register__nautilus__fuzzer_8cpp_source.html" title=" " alt="" coords="5,213,215,255"/>
-</map>

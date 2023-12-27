@@ -1,6 +1,0 @@
-<map id="fuzzuf::algorithm::ijon::IJONFuzzer" name="fuzzuf::algorithm::ijon::IJONFuzzer">
-<area shape="rect" id="node1" title="CLI compatible interface for IJON." alt="" coords="533,69,673,110"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1algorithm_1_1afl_1_1AFLFuzzerTemplate.html" title=" " alt="" coords="216,5,389,61"/>
-<area shape="rect" id="node3" href="$classfuzzuf_1_1fuzzer_1_1Fuzzer.html" title=" " alt="" coords="5,20,164,47"/>
-<area shape="rect" id="node4" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowNode.html" title=" " alt="" coords="213,85,392,141"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="include/fuzzuf/algorithms/die/die_fuzzer.hpp" name="include/fuzzuf/algorithms/die/die_fuzzer.hpp">
-<area shape="rect" id="node1" title="Fuzzing loop of DIE." alt="" coords="159,5,346,47"/>
-<area shape="rect" id="node2" href="$die__fuzzer_8cpp.html" title="Fuzzing loop of DIE." alt="" coords="5,95,145,136"/>
-<area shape="rect" id="node3" href="$register__die__fuzzer_8cpp.html" title="Register CLI option for DIE." alt="" coords="169,95,336,136"/>
-<area shape="rect" id="node4" href="$algorithms_2die_2loop_8cpp.html" title="Test code for VUzzers loop." alt="" coords="360,95,505,136"/>
-</map>

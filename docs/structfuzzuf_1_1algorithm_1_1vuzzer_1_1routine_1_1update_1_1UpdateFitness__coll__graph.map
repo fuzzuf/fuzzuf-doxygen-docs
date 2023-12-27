@@ -1,6 +1,0 @@
-<map id="fuzzuf::algorithm::vuzzer::routine::update::UpdateFitness" name="fuzzuf::algorithm::vuzzer::routine::update::UpdateFitness">
-<area shape="rect" id="node1" title=" " alt="" coords="543,74,715,130"/>
-<area shape="rect" id="node2" href="$classfuzzuf_1_1hierarflow_1_1HierarFlowRoutine.html" title=" " alt="" coords="259,5,457,105"/>
-<area shape="rect" id="node3" href="$structfuzzuf_1_1algorithm_1_1vuzzer_1_1VUzzerState.html" title=" " alt="" coords="281,129,435,171"/>
-<area shape="rect" id="node4" href="$classfuzzuf_1_1exec__input_1_1ExecInputSet.html" title=" " alt="" coords="5,129,145,171"/>
-</map>
